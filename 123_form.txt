@@ -1,0 +1,106 @@
+Verzeichnis von Verarbeitungstätigkeiten (VVT)
+Mitarbeiterverwaltung (Arbeitszeit/Urlaub) & Parkplatzberechtigung
+
+Verantwortliche Stelle und Kontaktdaten
+
+Wir, die APOR GmbH, fungieren als datenschutzrechtlich Verantwortliche gemäß Art. 4 Nr. 7 DSGVO für die im Folgenden beschriebenen Verarbeitungstätigkeiten.
+• Firmenname: APOR GmbH
+• Anschrift: Mainstraße 67
+• E-Mail-Adresse: mail@apor.eu
+• Telefonnummer: 012345678
+• Vertreter: A. I. (ai@apor.eu)
+• Datenschutzbeauftragter: A. I. (ai@apor.eu)
+
+Zwecke und Rechtsgrundlagen der Verarbeitung
+
+2.1 Verarbeitungszwecke
+Wir verarbeiten personenbezogene Daten für folgende Zwecke:
+• Verwaltung von Mitarbeitenden vom Eintritt bis zum Austritt, einschließlich:
+• Anlegen neuer Mitarbeitender
+• Dokumentation von Arbeitszeiten
+• Verwaltung von Urlaub und Abwesenheiten
+• Verwaltung von Parkplatzberechtigungen für berechtigte Mitarbeitende
+
+2.2 Rechtsgrundlagen der Verarbeitung
+Die Verarbeitung erfolgt auf Grundlage folgender Rechtsnormen:
+• Art. 6 Abs. 1 lit. b DSGVO (Erfüllung eines Vertrags oder vorvertraglicher Maßnahmen)
+• § 26 BDSG (Datenverarbeitung für Zwecke des Beschäftigungsverhältnisses)
+
+Kategorien personenbezogener Daten und Datenquellen
+
+3.1 Verarbeitete Datenkategorien
+Wir verarbeiten folgende personenbezogene Daten:
+
+Personenbezogene Grunddaten:
+• Nachname
+• Vorname
+• Geburtsdatum
+• Anschrift
+• E-Mail-Adresse
+
+Beschäftigungsdaten:
+• Arbeitszeiten
+• Berufliche Position
+• Personalnummer
+• Unternehmenszugehörigkeit
+• Urlaubsanspruch
+• Urlaubstage
+• Urlaubszeiten
+
+Finanzdaten:
+• Gehalt/Lohn
+• Bankverbindung
+• Steueridentifikationsnummer
+
+Vertrags- und Rechtsdaten:
+• Vertragsdaten
+
+Dokumentations- und Aufzeichnungsdaten:
+• Individuelle Dokumentation
+
+Fahrzeugdaten:
+• Kennzeichen
+
+Sonstige Daten:
+• Parkplatzberechtigungsdaten
+
+3.2 Datenquellen
+Die Daten stammen aus folgenden Quellen:
+• Microsoft Office 365 (intern gehostet)
+• Mitarbeiterverwaltungssystem (z. B. für Arbeitszeit, Urlaub und Parkplatzberechtigungen)
+• HR-Software
+
+Betroffene Personen und Empfänger
+
+4.1 Kategorien betroffener Personen
+Die Verarbeitung betrifft folgende Personengruppen:
+• Interne Gruppen (Mitarbeitende)
+
+4.2 Interne Empfänger
+Die Daten werden innerhalb unserer Organisation an folgende interne Empfänger übermittelt:
+• Verwaltung
+• Personal- und Rekrutierungsverantwortliche (HR-Rollen)
+
+4.3 Externe Empfänger
+Es erfolgt keine Übermittlung personenbezogener Daten an externe Empfänger innerhalb oder außerhalb der EU.
+
+Löschfristen und Aufbewahrungsdauern
+
+Wir löschen die personenbezogenen Daten drei Monate nach Beendigung des Beschäftigungsverhältnisses, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+
+Technische und organisatorische Maßnahmen (TOM)
+
+Zum Schutz der verarbeiteten personenbezogenen Daten haben wir folgende technische und organisatorische Maßnahmen implementiert:
+• Zugriffsbeschränkung nach dem Need-to-know-Prinzip: Nur berechtigte Mitarbeitende erhalten Zugang zu den Daten.
+• Passwortschutz und Multi-Faktor-Authentifizierung (MFA): Wo technisch möglich, setzen wir MFA ein.
+• Regelmäßige Backups: Sicherungskopien werden in definierten Intervallen erstellt.
+• Zutrittskontrolle zu Serverräumen und Archiven: Physische Zugangskontrollen schützen die IT-Infrastruktur.
+• Vertraulichkeitsverpflichtung: Berechtigte Mitarbeitende sind zur Vertraulichkeit verpflichtet.
+
+Dieses Verzeichnis wird regelmäßig überprüft und bei Bedarf aktualisiert.
+
+---
+User ID: 123
+Mode: form
+Time elapsed: 1374 seconds
+Date: 2026-03-15T20:33:42.504Z
