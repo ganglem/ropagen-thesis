@@ -1,0 +1,28 @@
+# Core data analysis
+pandas
+numpy
+scipy
+scikit-posthocs
+
+# Visualisation
+matplotlib
+seaborn
+
+# NLP metrics
+evaluate
+rouge-score
+nltk
+bert-score
+
+# Embeddings & models
+torch
+transformers
+sentence-transformers
+
+# Utilities
+tqdm
+python-dotenv
+
+# Notebooks
+jupyterlab
+ipykernel
