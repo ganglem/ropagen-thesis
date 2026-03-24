@@ -15,3 +15,5 @@ env/
 # IDE
 .idea/
 
+.claude/settings.local.json
+
