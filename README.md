@@ -9,7 +9,7 @@ ROPAgen is a web application that helps users create **Records of Processing Act
 | Mode | Description |
 |---|---|
 | `form` | User fills checkboxes; AI suggests remaining fields (most user input) |
-| `ask` | Conversational Q&A — AI asks targeted questions and generates the document |
+| `ask` | Conversational Q&A — AI asks targeted questions, user has to provide answers |
 | `chat` | Free-form chat — AI generates the document from open-ended user input |
 
 This notebook evaluates 117 generated documents (38 ask · 39 form · 40 chat) against a single human-written reference document using seven NLP metrics.
