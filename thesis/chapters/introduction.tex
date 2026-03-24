@@ -1,0 +1,74 @@
+\chapter{Introduction}
+
+\section{Kontext}
+The General Data Protection Regulation (GDPR) requires organizations to maintain a Record of Processing Activities (ROPA), a formal document that outlines how personal data is collected, processed, stored, and shared. Creating and maintaining these ROPA documents is often a resource-intensive process, especially for small and medium-sized organizations that lack specialized legal or data-protection expertise.
+Previous research developed an application that leverages Large Language Models (LLMs) to support users in generating GDPR-compliant ROPA documentation. The application provides three distinct interaction modes, each offering different degrees of assistance from the LLM, from basic text suggestions to highly automated drafting of ROPA entries. This system aims to reduce the effort needed to create legally compliant documentation while maintaining transparency and user control.
+Although the application provides a functional framework for assisted ROPA generation, its effectiveness, usability, and impact on documentation quality have not yet been systematically evaluated. To ensure that such a system can be confidently integrated into practical compliance workflows, both qualitative and quantitative assessments are needed. These evaluations must determine whether users can efficiently and correctly create ROPA documents, how the varying levels of LLM support influence performance and trust, and whether the system produces outputs aligned with GDPR requirements.
+
+ 
+\section{Reserach Problem and Research Questions}
+The goal of this thesis is to conduct a comprehensive evaluation of the existing LLM-supported ROPA generation application. The work will focus on assessing how the different interaction modes affect user experience, efficiency, output quality, and perceived reliability.
+
+\paragraph{RQ1:}
+\begin{itemize}
+    \item How do varying degrees of LLM support influence Novice users during ROPA document creation?
+    \item How do novice users perceive the usability, efficiency, and satisfaction of the three interaction modes (Form, Ask, Chat)?
+    \item How does cognitive load differ across the three modes for users with no prior GDPR knowledge?
+    \item Which mode do novice users find most intuitive and prefer, and why?
+    \item How confident do users feel about the quality of their generated documents in each mode? (This is now crucial - perception vs. reality)
+\end{itemize}
+
+\paragraph{RQ2:}
+\begin{itemize}
+    \item How do varying degrees of LLM support influence Document quality when used by novice users?
+    \item How does document quality differ across the three generation modes based on semantic similarity to an expert-created reference (BERTScore)?
+    \item Compare documents using an LLM
+    \item Are all fields present? (Does my pipeline work)
+    \item Is there a discrepancy between user confidence (RQ1) and document quality (RQ2)?
+\end{itemize}
+
+
+\section{3. Teil: Objectives und Contributions }
+
+
+\section*{Thesis Organization}
+
+\begin{itemize}
+    \item \textbf{Chapter 1: Introduction}
+    \begin{itemize}
+        \item Motivation, research questions, and contributions
+    \end{itemize}
+    
+    \item \textbf{Chapter 2: Background and Related Work}
+    \begin{itemize}
+        \item GDPR and ROPA 
+        \item Related work in AI-assisted legal document generation 
+    \end{itemize}
+    
+    \item \textbf{Chapter 3: Methodology}
+    \begin{itemize}
+        \item Brief overview of ROPAgen
+    \end{itemize}
+    \begin{itemize}
+        \item User study design (within-subjects, balanced Latin Square)
+        \item Data collection instruments (SUS, R-TLX, confidence questions)
+        \item Document quality assessment (BERTScore, LLM-as-a-judge)
+    \end{itemize}
+    
+    \item \textbf{Chapter 5: Evaluation and Results}
+    \begin{itemize}
+        \item RQ1: User experience and preferences
+        \item RQ2: Document quality and confidence-quality gap
+    \end{itemize}
+    
+    \item \textbf{Chapter 6: Discussion}
+    \begin{itemize}
+        \item Interpretation of findings and implications
+        \item Limitations and comparison with related work
+    \end{itemize}
+    
+    \item \textbf{Chapter 7: Conclusion}
+    \begin{itemize}
+        \item Summary of contributions and future work
+    \end{itemize}
+\end{itemize}
