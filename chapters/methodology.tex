@@ -1,0 +1,99 @@
+\chapter{Methodology}
+
+\section{User Study}
+
+\subsection*{Study Design}
+\begin{itemize}
+    \item \textbf{Type:} Within-subjects experiment with counterbalanced order using a Balanced Latin Square design
+    \item \textbf{Sample:} N = 73 university students (novice users, no prior GDPR experience)
+    \item \textbf{Duration:} Approximately 90 minutes per participant
+    \item \textbf{Counterbalancing:}
+    \begin{itemize}
+        \item Balanced Latin Square with 6 groups (reflecting 3 AI modes tested in randomized sequences)
+        \item Each participant completes all three modes in a predetermined counterbalanced order
+        \item \textit{Rationale:} Controls for order effects, learning effects, and fatigue
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Task Scenario}
+\begin{itemize}
+    \item \textbf{Consistency:} Single standardized scenario used across all participants and modes
+    \item \textbf{Content:} A relatable university-based data processing activity covering all GDPR Article 30 fields
+    \item \textit{Rationale:} Ensures comparability across conditions while remaining accessible to participants without legal expertise
+    \item \textbf{LLM Model:} Mistral (consistent across all modes)
+\end{itemize}
+
+\subsection*{Participants}
+\begin{itemize}
+    \item \textbf{Recruitment:} N = 73 university students
+    \item \textbf{Screening Criteria:}
+    \begin{itemize}
+        \item Minimal to no GDPR knowledge (expected and required)
+        \item Prior AI tool usage experience (documented)
+        \item General technology comfort level (assessed)
+        \item No professional legal or compliance background
+    \end{itemize}
+    \item \textbf{Onboarding:} Participants receive a brief standardized introduction to GDPR and ROPA concepts (e.g., short instructional video or text) before beginning the tasks
+    \item \textbf{Reference Material:} Participants are shown an example of a high-quality ROPA document prior to starting
+\end{itemize}
+
+\subsection*{Data Collection}
+\begin{itemize}
+    \item \textbf{Quantitative Measures (collected after each mode):}
+    \begin{itemize}
+        \item System Usability Scale (SUS): 10 standardized questions
+        \item Raw Task Load Index (R-TLX): 6 cognitive load dimensions
+        \item LLM-Specific Confidence Questions (7-point Likert scale):
+        \begin{enumerate}
+            \item \textit{Perceived Usefulness:} ``The LLM was helpful in creating this document.''
+            \item \textit{Efficiency:} ``This mode let me complete the ROPA faster than I could on my own.''
+            \item \textit{Transparency:} ``I understood why the AI suggested certain GDPR fields.''
+            \item \textit{Reliance Comfort:} ``I felt comfortable relying on the AI's suggested categories.''
+            \item \textit{Task-Specific Confidence:} ``I am confident the AI identified the appropriate legal basis.''
+            \item \textit{Intention to Use:} ``I would use this mode again for similar work.''
+            \item \textit{Professional Applicability:} ``If I were responsible for GDPR in a real company, I would use this specific mode to generate my documentation.''
+        \end{enumerate}
+        \item Free-text qualitative feedback (collected after each mode)
+        \item Automatic completion time tracking (per mode)
+    \end{itemize}
+    \item \textbf{Post-Experiment Ranking:}
+    \begin{itemize}
+        \item Participants rank all three modes by overall preference after completing all conditions
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Quality Assessment}
+\begin{itemize}
+    \item \textbf{BERTScore Evaluation:}
+    \begin{itemize}
+        \item Compare all documents (73 participants × 3 modes) against an expert-created reference (ECR)
+        \item Aggregate scores by mode to establish baseline quality metrics
+        \item Perform pairwise comparisons between modes and against the ECR for comprehensive evaluation
+    \end{itemize}
+    \item \textbf{LLM-as-a-Judge Validation:}
+    \begin{itemize}
+        \item Evaluate a representative subset of mode-generated documents using Claude
+        \item Cross-validate BERTScore findings with LLM-based quality assessment
+        \item \textit{Rationale:} Ensures BERTScore captures meaningful quality differences beyond lexical similarity
+    \end{itemize}
+    \item \textbf{Confidence-Quality Gap Analysis:}
+    \begin{itemize}
+        \item Correlate self-reported confidence scores with actual document quality (BERTScore)
+        \item Identify potential over-confidence or under-confidence patterns across modes
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Statistical Analysis}
+\begin{itemize}
+    \item \textbf{RQ1 (User Experience \& Preference):}
+    \begin{itemize}
+        \item Repeated measures ANOVA on SUS scores, R-TLX dimensions, and LLM confidence questions
+        \item Post-hoc pairwise comparisons (with Bonferroni correction) to identify significant differences between modes
+        \item Thematic analysis of free-text qualitative feedback and post-experiment rankings
+    \end{itemize}
+    \item \textbf{RQ2 (Document Quality \& Confidence Calibration):}
+    \begin{itemize}
+        \item Repeated measures ANOVA on BERTScore results across modes
+        \item Correlation analysis between self-reported confidence and actual quality (BERTScore)
+    \end{itemize}
+\end{itemize}
