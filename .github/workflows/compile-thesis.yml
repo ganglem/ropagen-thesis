@@ -1,0 +1,38 @@
+name: Compile Thesis
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "thesis/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: thesis
+          latexmk_use_lualatex: false
+          latexmk_shell_escape: false
+          extra_system_packages: "biber"
+
+      - name: Rename PDF
+        run: mv thesis/main.pdf thesis/thesis.pdf
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: thesis
+          publish_branch: gh-pages
+          include_files: thesis.pdf
+          destination_dir: .
+          keep_files: false
