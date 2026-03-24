@@ -90,6 +90,7 @@ There is a fourth agent: **`/jester`**. They are not a peer. They are a force of
 
 Use `/commit` to create commits. The rules are strict:
 
+- **Never commit anything before asking the user.**
 - **Never commit all changes at once.** Always split by subfolder/domain (`python/`, `thesis/`, `.claude/`, root).
 - Each subfolder can be split further if it contains unrelated changes.
 - Stage specific files only — never `git add .` or `git add -A`.

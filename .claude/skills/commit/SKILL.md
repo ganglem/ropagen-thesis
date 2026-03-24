@@ -17,7 +17,7 @@ allowed-tools:
 
 ## Rules
 
-**Never commit all changes in a single commit.** Changes must always be split by subfolder or domain. Each logical unit of work gets its own commit. Subfolders can be split further if they contain unrelated changes.
+**Never commit all changes in a single commit.** Changes must always be split by subfolder or domain. Each logical unit of work gets its own commit. Subfolders can be split further if they contain unrelated changes. **Never commit anything before asking the user.**
 
 ## Instructions
 
