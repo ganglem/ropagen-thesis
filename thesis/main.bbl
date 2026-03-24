@@ -1,0 +1,730 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{abualhaijaLLMassistedExtractionRegulatory2025}{inproceedings}{}{}
+      \name{author}{8}{}{%
+        {{hash=751c06a93f5d590c847931bcff3e615c}{%
+           family={Abualhaija},
+           familyi={A\bibinitperiod},
+           given={Sallam},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b1fd48209adfd465bf67f7d1857c2371}{%
+           family={Ceci},
+           familyi={C\bibinitperiod},
+           given={Marcello},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5349f28c0596851128436e7ccc7e8090}{%
+           family={Sannier},
+           familyi={S\bibinitperiod},
+           given={Nicolas},
+           giveni={N\bibinitperiod}}}%
+        {{hash=dc08d74d69b4382abc776c553633e273}{%
+           family={Bianculli},
+           familyi={B\bibinitperiod},
+           given={Domenico},
+           giveni={D\bibinitperiod}}}%
+        {{hash=ef192a6a679c27634c0ee2b9dd8614a7}{%
+           family={Lannier},
+           familyi={L\bibinitperiod},
+           given={Salomé},
+           giveni={S\bibinitperiod}}}%
+        {{hash=46478c84bf550831f91701ddafd58764}{%
+           family={Siclari},
+           familyi={S\bibinitperiod},
+           given={Martina},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b776ce88cd40ea181219693703df66fa}{%
+           family={Voordeckers},
+           familyi={V\bibinitperiod},
+           given={Olivier},
+           giveni={O\bibinitperiod}}}%
+        {{hash=34f22edb61f73fc3870b4cd76b943e47}{%
+           family={Tosza},
+           familyi={T\bibinitperiod},
+           given={Stanisław},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{a59e31ec48447edd52eddd31c910ffbc}
+      \strng{fullhash}{11349cd6e7ee70904fdb326aa2770ad9}
+      \strng{fullhashraw}{11349cd6e7ee70904fdb326aa2770ad9}
+      \strng{bibnamehash}{a59e31ec48447edd52eddd31c910ffbc}
+      \strng{authorbibnamehash}{a59e31ec48447edd52eddd31c910ffbc}
+      \strng{authornamehash}{a59e31ec48447edd52eddd31c910ffbc}
+      \strng{authorfullhash}{11349cd6e7ee70904fdb326aa2770ad9}
+      \strng{authorfullhashraw}{11349cd6e7ee70904fdb326aa2770ad9}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Modern software systems increasingly rely on personal data. Despite the enforcement of the European General Data Protection Regulation (GDPR) and the growing awareness about privacy and data protection, many individuals’ rights remain unsatisfactorily implemented in software systems. This is partially due to the knowledge gap between legal interpretation and software development.In this paper, we address this gap first by extracting, in close collaboration with legal experts, a list of 108 requirements pertinent to the right of access (ACC) and the right to portability (PRT), two fundamental rights under the GDPR. We further propose the XTRAREG approach, which utilizes large language models (LLMs) and retrieval augmented generation (RAG) to provide automated assistance in extracting privacy requirements from predefined legal sources.Compared to the manually extracted requirements, XTRAREG can automatically generate requirements with an accuracy of 81.8\% for ACC and 85.7\% for PRT. Our empirical evaluation reveals two notable observations: (i) A skewed performance in terms of coverage in the favor of ACC, indicating the significant impact of abundant training data of the LLM, (ii) despite explicit exposure of legal references through RAG, the LLM generates requirements predominantly from the GDPR.}
+      \field{booktitle}{2025 {{IEEE}} 33rd {{International Requirements Engineering Conference}} ({{RE}})}
+      \field{eventtitle}{2025 {{IEEE}} 33rd {{International Requirements Engineering Conference}} ({{RE}})}
+      \field{issn}{2332-6441}
+      \field{month}{9}
+      \field{shorttitle}{{{LLM-assisted Extraction}} of {{Regulatory Requirements}}}
+      \field{title}{{{LLM-assisted Extraction}} of {{Regulatory Requirements}}: {{A Case Study}} on the {{GDPR}}}
+      \field{urlday}{9}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{142\bibrangedash 154}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1109/RE63999.2025.00023
+      \endverb
+      \verb{file}
+      \verb C:\Users\emilija\Zotero\storage\6LTGDBK7\Abualhaija et al. - 2025 - LLM-assisted Extraction of Regulatory Requirements A Case Study on the GDPR.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://ieeexplore.ieee.org/abstract/document/11190380
+      \endverb
+      \verb{url}
+      \verb https://ieeexplore.ieee.org/abstract/document/11190380
+      \endverb
+      \keyw{Accuracy,Collaboration,General Data Protection Regulation,General Data Protection Regulation (GDPR),high,Large language models,Large Language Models (LLMs),Law,Natural language processing,Natural Language Processing (NLP),Privacy Requirements,Requirements Generation,Retrieval augmented generation,Retrieval Augmented Generation (RAG),Software systems,Temperature distribution,Training data}
+    \endentry
+    \entry{gdpr-info-art30}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=b2105d03ce9faac52d73d37ff4ec7d1e}{%
+           family={{GDPR-info.eu}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{b2105d03ce9faac52d73d37ff4ec7d1e}
+      \strng{fullhash}{b2105d03ce9faac52d73d37ff4ec7d1e}
+      \strng{fullhashraw}{b2105d03ce9faac52d73d37ff4ec7d1e}
+      \strng{bibnamehash}{b2105d03ce9faac52d73d37ff4ec7d1e}
+      \strng{authorbibnamehash}{b2105d03ce9faac52d73d37ff4ec7d1e}
+      \strng{authornamehash}{b2105d03ce9faac52d73d37ff4ec7d1e}
+      \strng{authorfullhash}{b2105d03ce9faac52d73d37ff4ec7d1e}
+      \strng{authorfullhashraw}{b2105d03ce9faac52d73d37ff4ec7d1e}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://gdpr-info.eu/art-30-gdpr/}}
+      \field{note}{Accessed: 2026-01-05}
+      \field{title}{Art. 30 GDPR --- Records of processing activities}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://gdpr-info.eu/art-30-gdpr/
+      \endverb
+      \verb{url}
+      \verb https://gdpr-info.eu/art-30-gdpr/
+      \endverb
+    \endentry
+    \entry{gdpr-eu-overview}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=627946836d03e2a2a0b67c7e34045ffc}{%
+           family={{GDPR.eu}},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{627946836d03e2a2a0b67c7e34045ffc}
+      \strng{fullhash}{627946836d03e2a2a0b67c7e34045ffc}
+      \strng{fullhashraw}{627946836d03e2a2a0b67c7e34045ffc}
+      \strng{bibnamehash}{627946836d03e2a2a0b67c7e34045ffc}
+      \strng{authorbibnamehash}{627946836d03e2a2a0b67c7e34045ffc}
+      \strng{authornamehash}{627946836d03e2a2a0b67c7e34045ffc}
+      \strng{authorfullhash}{627946836d03e2a2a0b67c7e34045ffc}
+      \strng{authorfullhashraw}{627946836d03e2a2a0b67c7e34045ffc}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://gdpr.eu/what-is-gdpr/}}
+      \field{note}{Accessed: 2026-01-05}
+      \field{title}{What is GDPR, the EU’s new data protection law?}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://gdpr.eu/what-is-gdpr/
+      \endverb
+      \verb{url}
+      \verb https://gdpr.eu/what-is-gdpr/
+      \endverb
+    \endentry
+    \entry{liCaseGenBenchmarkMultiStage2025}{online}{}{}
+      \name{author}{11}{}{%
+        {{hash=2b2e4fb833b9d7101b582bca3225fbb9}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Haitao},
+           giveni={H\bibinitperiod}}}%
+        {{hash=e9d6553739e9704572727c3cd3560e36}{%
+           family={Ye},
+           familyi={Y\bibinitperiod},
+           given={Jiaying},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a0c3f01cfeea17c7ea03f6dc226db004}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Yiran},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=95d25145789eb692784f0e434ed1b801}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Jia},
+           giveni={J\bibinitperiod}}}%
+        {{hash=eb294f4a1f98b3664bcc1539456b1130}{%
+           family={Ai},
+           familyi={A\bibinitperiod},
+           given={Qingyao},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=80bb34f72f7fd35971dc88030d9ea6aa}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Yueyue},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=c69ee7339b53c7220a54cac68184110a}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Junjie},
+           giveni={J\bibinitperiod}}}%
+        {{hash=b45fc3561031fcbc2bf68efba71f7c36}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Yifan},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=e5efba984d90e32d22dd4e4a17d5d4be}{%
+           family={Luo},
+           familyi={L\bibinitperiod},
+           given={Cheng},
+           giveni={C\bibinitperiod}}}%
+        {{hash=d3c3e9bdc367d0e76a52de2dc29e2d1a}{%
+           family={Zhou},
+           familyi={Z\bibinitperiod},
+           given={Quan},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=e98c31f0239c26bfe8cf759cf214500d}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Yiqun},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{142f5708bc0391fb016a986ec07c14a4}
+      \strng{fullhash}{aacce45949d79c128743fe3f08748e63}
+      \strng{fullhashraw}{aacce45949d79c128743fe3f08748e63}
+      \strng{bibnamehash}{142f5708bc0391fb016a986ec07c14a4}
+      \strng{authorbibnamehash}{142f5708bc0391fb016a986ec07c14a4}
+      \strng{authornamehash}{142f5708bc0391fb016a986ec07c14a4}
+      \strng{authorfullhash}{aacce45949d79c128743fe3f08748e63}
+      \strng{authorfullhashraw}{aacce45949d79c128743fe3f08748e63}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Legal case documents play a critical role in judicial proceedings. As the number of cases continues to rise, the reliance on manual drafting of legal case documents is facing increasing pressure and challenges. The development of large language models (LLMs) offers a promising solution for automating document generation. However, existing benchmarks fail to fully capture the complexities involved in drafting legal case documents in real-world scenarios. To address this gap, we introduce CaseGen, the benchmark for multi-stage legal case documents generation in the Chinese legal domain. CaseGen is based on 500 real case samples annotated by legal experts and covers seven essential case sections. It supports four key tasks: drafting defense statements, writing trial facts, composing legal reasoning, and generating judgment results. To the best of our knowledge, CaseGen is the first benchmark designed to evaluate LLMs in the context of legal case document generation. To ensure an accurate and comprehensive evaluation, we design the LLM-as-a-judge evaluation framework and validate its effectiveness through human annotations. We evaluate several widely used general-domain LLMs and legal-specific LLMs, highlighting their limitations in case document generation and pinpointing areas for potential improvement. This work marks a step toward a more effective framework for automating legal case documents drafting, paving the way for the reliable application of AI in the legal field. The dataset and code are publicly available at https://github.com/CSHaitao/CaseGen.}
+      \field{day}{25}
+      \field{eprintclass}{cs}
+      \field{eprinttype}{arXiv}
+      \field{month}{2}
+      \field{pubstate}{prepublished}
+      \field{shorttitle}{{{CaseGen}}}
+      \field{title}{{{CaseGen}}: {{A Benchmark}} for {{Multi-Stage Legal Case Documents Generation}}}
+      \field{urlday}{9}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.48550/arXiv.2502.17943
+      \endverb
+      \verb{eprint}
+      \verb 2502.17943
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\emilija\\Zotero\\storage\\NKXU4LTM\\Li et al. - 2025 - CaseGen A Benchmark for Multi-Stage Legal Case Documents Generation.pdf;C\:\\Users\\emilija\\Zotero\\storage\\ANHBGIWM\\2502.html
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/2502.17943
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/2502.17943
+      \endverb
+      \keyw{Computer Science - Computation and Language,high}
+    \endentry
+    \entry{linLegalDocumentsDrafting2024}{online}{}{}
+      \name{author}{2}{}{%
+        {{hash=c2a7f6ae0150e6c8ce5df959bdf905ce}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Chun-Hsien},
+           giveni={C\bibinithyphendelim H\bibinitperiod}}}%
+        {{hash=3b20e88f23bcf31f73dbcc3e357865ee}{%
+           family={Cheng},
+           familyi={C\bibinitperiod},
+           given={Pu-Jen},
+           giveni={P\bibinithyphendelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{20c3b5a4f6b483043df5c8061cf705a5}
+      \strng{fullhash}{20c3b5a4f6b483043df5c8061cf705a5}
+      \strng{fullhashraw}{20c3b5a4f6b483043df5c8061cf705a5}
+      \strng{bibnamehash}{20c3b5a4f6b483043df5c8061cf705a5}
+      \strng{authorbibnamehash}{20c3b5a4f6b483043df5c8061cf705a5}
+      \strng{authornamehash}{20c3b5a4f6b483043df5c8061cf705a5}
+      \strng{authorfullhash}{20c3b5a4f6b483043df5c8061cf705a5}
+      \strng{authorfullhashraw}{20c3b5a4f6b483043df5c8061cf705a5}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{With the development of large-scale Language Models (LLM), fine-tuning pre-trained LLM has become a mainstream paradigm for solving downstream tasks of natural language processing. However, training a language model in the legal field requires a large number of legal documents so that the language model can learn legal terminology and the particularity of the format of legal documents. The typical NLP approaches usually rely on many manually annotated data sets for training. However, in the legal field application, it is difficult to obtain a large number of manually annotated data sets, which restricts the typical method applied to the task of drafting legal documents. The experimental results of this paper show that not only can we leverage a large number of annotation-free legal documents without Chinese word segmentation to fine-tune a large-scale language model, but more importantly, it can fine-tune a pre-trained LLM on the local computer to achieve the generating legal document drafts task, and at the same time achieve the protection of information privacy and to improve information security issues.}
+      \field{day}{6}
+      \field{eprintclass}{cs}
+      \field{eprinttype}{arXiv}
+      \field{month}{6}
+      \field{pubstate}{prepublished}
+      \field{title}{Legal {{Documents Drafting}} with {{Fine-Tuned Pre-Trained Large Language Model}}}
+      \field{urlday}{9}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.48550/arXiv.2406.04202
+      \endverb
+      \verb{eprint}
+      \verb 2406.04202
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\emilija\\Zotero\\storage\\AJNN2GCS\\Lin and Cheng - 2024 - Legal Documents Drafting with Fine-Tuned Pre-Trained Large Language Model.pdf;C\:\\Users\\emilija\\Zotero\\storage\\UQ7P7AHF\\2406.html
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/2406.04202
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/2406.04202
+      \endverb
+      \keyw{Computer Science - Artificial Intelligence,Computer Science - Computation and Language,high}
+    \endentry
+    \entry{nigamStructuredLegalDocument2025}{online}{}{}
+      \name{author}{6}{}{%
+        {{hash=25cba2c37b4edfae0c93425a00f399ee}{%
+           family={Nigam},
+           familyi={N\bibinitperiod},
+           given={Shubham\bibnamedelima Kumar},
+           giveni={S\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=67e0b7ecac49975881d76462be6d600d}{%
+           family={Patnaik},
+           familyi={P\bibinitperiod},
+           given={Balaramamahanthi\bibnamedelima Deepak},
+           giveni={B\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=7cb3679ffe63eb806927145ee04dd9c4}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Ajay\bibnamedelima Varghese},
+           giveni={A\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=830db3f2220801bf23de5629a849c05d}{%
+           family={Shallum},
+           familyi={S\bibinitperiod},
+           given={Noel},
+           giveni={N\bibinitperiod}}}%
+        {{hash=45724464df7ed6d504e7dc91fb12689a}{%
+           family={Ghosh},
+           familyi={G\bibinitperiod},
+           given={Kripabandhu},
+           giveni={K\bibinitperiod}}}%
+        {{hash=a51d526ee32085f01f4cab3fe616c43c}{%
+           family={Bhattacharya},
+           familyi={B\bibinitperiod},
+           given={Arnab},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{cb6c07416a0b09f398195afb03dc117a}
+      \strng{fullhash}{c5f429a62f08ee40ba629ac7d56bf1b0}
+      \strng{fullhashraw}{c5f429a62f08ee40ba629ac7d56bf1b0}
+      \strng{bibnamehash}{cb6c07416a0b09f398195afb03dc117a}
+      \strng{authorbibnamehash}{cb6c07416a0b09f398195afb03dc117a}
+      \strng{authornamehash}{cb6c07416a0b09f398195afb03dc117a}
+      \strng{authorfullhash}{c5f429a62f08ee40ba629ac7d56bf1b0}
+      \strng{authorfullhashraw}{c5f429a62f08ee40ba629ac7d56bf1b0}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Automating legal document drafting can significantly enhance efficiency, reduce manual effort, and streamline legal workflows. While prior research has explored tasks such as judgment prediction and case summarization, the structured generation of private legal documents in the Indian legal domain remains largely unaddressed. To bridge this gap, we introduce VidhikDastaavej, a novel, anonymized dataset of private legal documents, and develop NyayaShilp, a fine-tuned legal document generation model specifically adapted to Indian legal texts. We propose a Model-Agnostic Wrapper (MAW), a two-step framework that first generates structured section titles and then iteratively produces content while leveraging retrieval-based mechanisms to ensure coherence and factual accuracy. We benchmark multiple open-source LLMs, including instruction-tuned and domain-adapted versions, alongside proprietary models for comparison. Our findings indicate that while direct fine-tuning on small datasets does not always yield improvements, our structured wrapper significantly enhances coherence, factual adherence, and overall document quality while mitigating hallucinations. To ensure real-world applicability, we developed a Human-in-the-Loop (HITL) Document Generation System, an interactive user interface that enables users to specify document types, refine section details, and generate structured legal drafts. This tool allows legal professionals and researchers to generate, validate, and refine AI-generated legal documents efficiently. Extensive evaluations, including expert assessments, confirm that our framework achieves high reliability in structured legal drafting. This research establishes a scalable and adaptable foundation for AI-assisted legal drafting in India, offering an effective approach to structured legal document generation.}
+      \field{day}{4}
+      \field{eprintclass}{cs}
+      \field{eprinttype}{arXiv}
+      \field{month}{4}
+      \field{pubstate}{prepublished}
+      \field{shorttitle}{Structured {{Legal Document Generation}} in {{India}}}
+      \field{title}{Structured {{Legal Document Generation}} in {{India}}: {{A Model-Agnostic Wrapper Approach}} with {{VidhikDastaavej}}}
+      \field{urlday}{9}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.48550/arXiv.2504.03486
+      \endverb
+      \verb{eprint}
+      \verb 2504.03486
+      \endverb
+      \verb{file}
+      \verb C:\Users\emilija\Zotero\storage\MMX548UI\Nigam et al. - 2025 - Structured Legal Document Generation in India A Model-Agnostic Wrapper Approach with VidhikDastaave.pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://arxiv.org/abs/2504.03486
+      \endverb
+      \verb{url}
+      \verb http://arxiv.org/abs/2504.03486
+      \endverb
+      \keyw{Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Information Retrieval,Computer Science - Machine Learning,high}
+    \endentry
+    \entry{osano-ropa}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=50387dabb61ecf9b8a1c573cc72e7541}{%
+           family={{Osano Staff}},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{50387dabb61ecf9b8a1c573cc72e7541}
+      \strng{fullhash}{50387dabb61ecf9b8a1c573cc72e7541}
+      \strng{fullhashraw}{50387dabb61ecf9b8a1c573cc72e7541}
+      \strng{bibnamehash}{50387dabb61ecf9b8a1c573cc72e7541}
+      \strng{authorbibnamehash}{50387dabb61ecf9b8a1c573cc72e7541}
+      \strng{authornamehash}{50387dabb61ecf9b8a1c573cc72e7541}
+      \strng{authorfullhash}{50387dabb61ecf9b8a1c573cc72e7541}
+      \strng{authorfullhashraw}{50387dabb61ecf9b8a1c573cc72e7541}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.osano.com/articles/what-is-a-ropa-gdpr-requirements-for-record-of-processing-activities}}
+      \field{note}{Accessed: 2026-01-05}
+      \field{title}{What Is a RoPA? GDPR Requirements for Record of Processing Activities}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.osano.com/articles/what-is-a-ropa-gdpr-requirements-for-record-of-processing-activities
+      \endverb
+      \verb{url}
+      \verb https://www.osano.com/articles/what-is-a-ropa-gdpr-requirements-for-record-of-processing-activities
+      \endverb
+    \endentry
+    \entry{schwerinSystematicComparisonOpen2024}{article}{}{}
+      \name{author}{2}{}{%
+        {{useprefix=false,hash=056d0095db0742fbc4711b5482783637}{%
+           family={Schwerin},
+           familyi={S\bibinitperiod},
+           given={Magdalena},
+           giveni={M\bibinitperiod},
+           prefix={von},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=8eaa44e89e43f01f5d0fd74865b3bb51}{%
+           family={Reichert},
+           familyi={R\bibinitperiod},
+           given={Manfred},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {publisher}%
+      }
+      \strng{namehash}{3afff5b86e4427d0a6d083d221bea407}
+      \strng{fullhash}{3afff5b86e4427d0a6d083d221bea407}
+      \strng{fullhashraw}{3afff5b86e4427d0a6d083d221bea407}
+      \strng{bibnamehash}{3afff5b86e4427d0a6d083d221bea407}
+      \strng{authorbibnamehash}{3afff5b86e4427d0a6d083d221bea407}
+      \strng{authornamehash}{3afff5b86e4427d0a6d083d221bea407}
+      \strng{authorfullhash}{3afff5b86e4427d0a6d083d221bea407}
+      \strng{authorfullhashraw}{3afff5b86e4427d0a6d083d221bea407}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This study investigates the capabilities of open-source Large Language Models (LLMs) in automating GDPR compliance documentation, specifically in gene...}
+      \field{day}{5}
+      \field{issn}{1999-5903}
+      \field{journaltitle}{Future Internet}
+      \field{langid}{english}
+      \field{month}{12}
+      \field{number}{12}
+      \field{title}{A {{Systematic Comparison Between Open-}} and {{Closed-Source Large Language Models}} in the {{Context}} of {{Generating GDPR-Compliant Data Categories}} for {{Processing Activity Records}}}
+      \field{urlday}{17}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{volume}{16}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.3390/fi16120459
+      \endverb
+      \verb{file}
+      \verb C:\Users\emilija\Zotero\storage\XMK9BYX9\Schwerin and Reichert - 2024 - A Systematic Comparison Between Open- and Closed-Source Large Language Models in the Context of Gene.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/1999-5903/16/12/459
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/1999-5903/16/12/459
+      \endverb
+      \keyw{GDPR documentation,high,large language model,natural language processing}
+    \endentry
+    \entry{suJuDGEBenchmarkingJudgment2025}{inproceedings}{}{}
+      \name{author}{9}{}{%
+        {{hash=e7aca689857c0f2e9e8ad17aa20e1186}{%
+           family={Su},
+           familyi={S\bibinitperiod},
+           given={Weihang},
+           giveni={W\bibinitperiod}}}%
+        {{hash=d8d573b7798df25c54fa789ec9a9473a}{%
+           family={Yue},
+           familyi={Y\bibinitperiod},
+           given={Baoqing},
+           giveni={B\bibinitperiod}}}%
+        {{hash=eb294f4a1f98b3664bcc1539456b1130}{%
+           family={Ai},
+           familyi={A\bibinitperiod},
+           given={Qingyao},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=a0c3f01cfeea17c7ea03f6dc226db004}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Yiran},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=19f3a902ce19dfffbf86b45523f204d7}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Jiaqi},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a1895e086e7e9a66152a3ce76d4166f2}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Changyue},
+           giveni={C\bibinitperiod}}}%
+        {{hash=7911677493e83c4d5fcaf94f8a53ac7e}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Kaiyuan},
+           giveni={K\bibinitperiod}}}%
+        {{hash=80bb34f72f7fd35971dc88030d9ea6aa}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Yueyue},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=e98c31f0239c26bfe8cf759cf214500d}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Yiqun},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{8c46090fbf0d99ad4cfd7d703fb9db27}
+      \strng{fullhash}{006084a387e0358a4c4e3483df5860be}
+      \strng{fullhashraw}{006084a387e0358a4c4e3483df5860be}
+      \strng{bibnamehash}{8c46090fbf0d99ad4cfd7d703fb9db27}
+      \strng{authorbibnamehash}{8c46090fbf0d99ad4cfd7d703fb9db27}
+      \strng{authornamehash}{8c46090fbf0d99ad4cfd7d703fb9db27}
+      \strng{authorfullhash}{006084a387e0358a4c4e3483df5860be}
+      \strng{authorfullhashraw}{006084a387e0358a4c4e3483df5860be}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{This paper introduces JuDGE (Judgment Document Generation Evaluation), a novel benchmark for evaluating the performance of judgment document generation in the Chinese legal system. We define the task as generating a complete legal judgment document from the given factual description of the case. To facilitate this benchmark, we construct a comprehensive dataset consisting of factual descriptions from real legal cases, paired with their corresponding full judgment documents, which serve as the ground truth for evaluating the quality of generated documents. This dataset is further augmented by two external legal corpora that provide additional legal knowledge for the task: one comprising statutes and regulations, and the other consisting of a large collection of past judgment documents. In collaboration with legal professionals, we establish a comprehensive automated evaluation framework to assess the quality of generated judgment documents across various dimensions. We evaluate various baseline approaches, including few-shot in-context learning, fine-tuning, and a multi-source retrieval-augmented generation (RAG) approach, using both general and legal-domain LLMs. The experimental results demonstrate that, while RAG approaches can effectively improve performance in this task, there is still substantial room for further improvement. All the codes and datasets are available at: https://github.com/oneal2000/JuDGE}
+      \field{booktitle}{Proceedings of the 48th {{International ACM SIGIR Conference}} on {{Research}} and {{Development}} in {{Information Retrieval}}}
+      \field{day}{13}
+      \field{isbn}{979-8-4007-1592-1}
+      \field{month}{7}
+      \field{series}{{{SIGIR}} '25}
+      \field{shorttitle}{{{JuDGE}}}
+      \field{title}{{{JuDGE}}: {{Benchmarking Judgment Document Generation}} for {{Chinese Legal System}}}
+      \field{urlday}{9}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{3573\bibrangedash 3583}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1145/3726302.3730295
+      \endverb
+      \verb{file}
+      \verb C:\Users\emilija\Zotero\storage\FD53TM9P\Su et al. - 2025 - JuDGE Benchmarking Judgment Document Generation for Chinese Legal System.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://dl.acm.org/doi/10.1145/3726302.3730295
+      \endverb
+      \verb{url}
+      \verb https://dl.acm.org/doi/10.1145/3726302.3730295
+      \endverb
+      \keyw{high}
+    \endentry
+    \entry{suryaAIPoweredInteractiveLegal2025}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=1a561158ed941d16d1aebbcef785cf3f}{%
+           family={Surya},
+           familyi={S\bibinitperiod},
+           given={K.\bibnamedelimi L.\bibnamedelimi Srujan},
+           giveni={K\bibinitperiod\bibinitdelim L\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=0b8b418e32767bb18453b011c77f03df}{%
+           family={K},
+           familyi={K\bibinitperiod},
+           given={Edwin\bibnamedelima Mark},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=afe22e9832b1a7d35f1da6ad221d18a1}{%
+           family={S},
+           familyi={S\bibinitperiod},
+           given={Kushal},
+           giveni={K\bibinitperiod}}}%
+        {{hash=ee291ac34daa0f95f7a60e7b6bb187d3}{%
+           family={P},
+           familyi={P\bibinitperiod},
+           given={Charan\bibnamedelima Tej},
+           giveni={C\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=aa3953935e0a304f9ea7c48451778f18}{%
+           family={Fathima},
+           familyi={F\bibinitperiod},
+           given={Afifa\bibnamedelima Salsabil},
+           giveni={A\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{4abd5e1754049e31944efeff40039240}
+      \strng{fullhash}{402d2d60159d352ed0d64682bf5d5a36}
+      \strng{fullhashraw}{402d2d60159d352ed0d64682bf5d5a36}
+      \strng{bibnamehash}{4abd5e1754049e31944efeff40039240}
+      \strng{authorbibnamehash}{4abd5e1754049e31944efeff40039240}
+      \strng{authornamehash}{4abd5e1754049e31944efeff40039240}
+      \strng{authorfullhash}{402d2d60159d352ed0d64682bf5d5a36}
+      \strng{authorfullhashraw}{402d2d60159d352ed0d64682bf5d5a36}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper details the development and conceptual framework of an AI-based interactive chatbot designed for the Department of Justice website in India, aimed at bridging the significant accessibility gap in public legal assistance. Thesystem leverages a Flask backend, a JavaScript-powered frontend, and the LLaMA 3.1 large language model accessed via Ollama to provide real-time legal query responses, summarization of legal documents (PDF/DOCs including FIRs and petitions), and basic multilingual capabilities (English/Hindi) with citation support. The Paper focuses on creating a free, user-friendly, and scalable virtual legal assistant tailored for common public queries and document analysis, thereby enhancing legal literacy and empowering citizens. This paper outlines the chatbot's system architecture, core feature implementation (including prompt engineering and translation services), illustrative use cases demonstrating its functionality, and discusses the technical challenges, ethical considerations, and potential societal impact of deploying such a system in the Indian legal context. It concludes by summarizing the Paper's contributions and suggesting avenues for future development to further improve its efficacy and reach in democratizing legal information.}
+      \field{day}{19}
+      \field{journaltitle}{International Journal of Computational Learning \& Intelligence}
+      \field{langid}{english}
+      \field{month}{5}
+      \field{number}{4}
+      \field{title}{{{AI-Powered Interactive Legal Chatbot}} for the {{Department}} of {{Justice}}}
+      \field{urlday}{9}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{volume}{4}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{809\bibrangedash 817}
+      \range{pages}{9}
+      \verb{doi}
+      \verb 10.5281/zenodo.15465000
+      \endverb
+      \verb{file}
+      \verb C:\Users\emilija\Zotero\storage\HTU9ETYY\Surya et al. - 2025 - AI-Powered Interactive Legal Chatbot for the Department of Justice.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://milestoneresearch.in/JOURNALS/index.php/IJCLI/article/view/234
+      \endverb
+      \verb{url}
+      \verb https://milestoneresearch.in/JOURNALS/index.php/IJCLI/article/view/234
+      \endverb
+      \keyw{AI assistant,high,justice system,legal chatbot,legal document summarization,LLaMA 3.1}
+    \endentry
+    \entry{vayadandeAIPoweredLegalDocumentation2024}{inproceedings}{}{}
+      \name{author}{6}{}{%
+        {{hash=a2514f1f1eee89b6918059386e688407}{%
+           family={Vayadande},
+           familyi={V\bibinitperiod},
+           given={Kuldeep},
+           giveni={K\bibinitperiod}}}%
+        {{hash=16f9f004804dbfc268c12014e560d095}{%
+           family={Bhat},
+           familyi={B\bibinitperiod},
+           given={Aditi},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b3d88fd50d17e3598bf3ce3d02ffa564}{%
+           family={Bachhav},
+           familyi={B\bibinitperiod},
+           given={Pranav},
+           giveni={P\bibinitperiod}}}%
+        {{hash=417cee2db651b43e0461d0906a943bfe}{%
+           family={Bhoyar},
+           familyi={B\bibinitperiod},
+           given={Aditya},
+           giveni={A\bibinitperiod}}}%
+        {{hash=9801fac641c87931346c5d81a25b7193}{%
+           family={Charoliya},
+           familyi={C\bibinitperiod},
+           given={Zulfikar},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=52c025d54107bd0bf52924a6fd4f4f5e}{%
+           family={Chavan},
+           familyi={C\bibinitperiod},
+           given={Aayush},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{7eaf9e06be99a8def38ff2e9b2117dc3}
+      \strng{fullhash}{b82bfde20faf43abb8a0204b95b53d08}
+      \strng{fullhashraw}{b82bfde20faf43abb8a0204b95b53d08}
+      \strng{bibnamehash}{7eaf9e06be99a8def38ff2e9b2117dc3}
+      \strng{authorbibnamehash}{7eaf9e06be99a8def38ff2e9b2117dc3}
+      \strng{authornamehash}{7eaf9e06be99a8def38ff2e9b2117dc3}
+      \strng{authorfullhash}{b82bfde20faf43abb8a0204b95b53d08}
+      \strng{authorfullhashraw}{b82bfde20faf43abb8a0204b95b53d08}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Legal systems worldwide vary in structure and principles, reflecting the diverse legal traditions of different countries. The legal system, inherently complex and reliant on meticulous documentation, often faces challenges related to time-consuming manual processes and the potential for human errors. The system proposed provides a transformative solution to the above problems. The system emerges as a groundbreaking solution within the intricate landscape of legal systems which responds to these challenges by seamlessly integrating advanced AI techniques. At its core, OpenAI embeddings takes center stage, demonstrating unparalleled proficiency in document generation, comprehension, and abnormality detection, addressing the complexities ingrained in legal documentation. In contrast to traditional approaches, this system maximizes the versatility of ChatGPT 3.5, allowing it to not only issue commands but also proficiently generate a diverse array of legal documents. By incorporating an understanding module equipped with PyPDF, Amazon Textract, and langchain utilities, the system adeptly handles document intricacies. The utilization of OpenAI Embeddings further enhances natural language understanding. Leveraging sentiment analysis and Named Entity Recognition (NER) in its natural language processing (NLP) toolkit, the system employs an intuitive web interface for irregularities detection. The exploration of AI for automated irregularity detection showcases its transformative potential in ensuring document accuracy within the legal domain. This project, therefore, stands as a beacon of innovation, promising to reshape the dynamics of legal document processing by merging advanced AI capabilities with the unique demands of legal systems.}
+      \field{booktitle}{2024 4th {{International Conference}} on {{Pervasive Computing}} and {{Social Networking}} ({{ICPCSN}})}
+      \field{eventtitle}{2024 4th {{International Conference}} on {{Pervasive Computing}} and {{Social Networking}} ({{ICPCSN}})}
+      \field{month}{5}
+      \field{title}{{{AI-Powered Legal Documentation Assistant}}}
+      \field{urlday}{9}
+      \field{urlmonth}{2}
+      \field{urlyear}{2026}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{84\bibrangedash 91}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1109/ICPCSN62568.2024.00022
+      \endverb
+      \verb{file}
+      \verb C:\Users\emilija\Zotero\storage\MM4FD8WQ\Vayadande et al. - 2024 - AI-Powered Legal Documentation Assistant.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://ieeexplore.ieee.org/abstract/document/10607645
+      \endverb
+      \verb{url}
+      \verb https://ieeexplore.ieee.org/abstract/document/10607645
+      \endverb
+      \keyw{Documentation,high,Irregularities Detection,Law,Legal Document Processing,Legal Technology,Named entity recognition,Natural Language Processing (NLP),OpenAI Embeddings,Pervasive computing,Sentiment analysis,Social networking (online),Technological innovation}
+    \endentry
+  \enddatalist
+  \missing{Knappen2009}
+  \missing{Mittelbach2005}
+  \missing{Schlosser2014}
+  \missing{Sturm2012}
+  \missing{Voss2010}
+\endrefsection
+\endinput
+
