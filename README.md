@@ -1,5 +1,10 @@
 # ropagen-bert
 
+[![Compile Thesis](https://github.com/ganglem/ropagen-bert/actions/workflows/compile-thesis.yml/badge.svg)](https://github.com/ganglem/ropagen-bert/actions/workflows/compile-thesis.yml)
+&nbsp;[**Read the thesis (PDF)**](https://ganglem.github.io/ropagen-bert/thesis.pdf)
+
+---
+
 Research repository for the Master's thesis:
 
 > **Assessing the Effectiveness of Large Language Model Support for Generating GDPR ROPA Documentation**
@@ -42,7 +47,7 @@ Open with Jupyter Lab or VS Code.
 ```bash
 cd thesis
 pdflatex main.tex
-bibtex main
+biber main
 pdflatex main.tex
 pdflatex main.tex
 ```
