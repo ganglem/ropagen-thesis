@@ -1,4 +1,4 @@
-# ropagen-bert
+# ROPAgen Thesis
 
 [![Compile Thesis](https://github.com/ganglem/ropagen-thesis/actions/workflows/compile-thesis.yml/badge.svg)](https://github.com/ganglem/ropagen-thesis/actions/workflows/compile-thesis.yml)
 &nbsp;[**Read the thesis (PDF)**](https://ganglem.github.io/ropagen-thesis/thesis.pdf)
