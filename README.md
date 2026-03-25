@@ -1,7 +1,7 @@
 # ropagen-bert
 
-[![Compile Thesis](https://github.com/ganglem/ropagen-bert/actions/workflows/compile-thesis.yml/badge.svg)](https://github.com/ganglem/ropagen-bert/actions/workflows/compile-thesis.yml)
-&nbsp;[**Read the thesis (PDF)**](https://ganglem.github.io/ropagen-bert/thesis.pdf)
+[![Compile Thesis](https://github.com/ganglem/ropagen-thesis/actions/workflows/compile-thesis.yml/badge.svg)](https://github.com/ganglem/ropagen-thesis/actions/workflows/compile-thesis.yml)
+&nbsp;[**Read the thesis (PDF)**](https://ganglem.github.io/ropagen-thesis/thesis.pdf)
 
 ---
 
