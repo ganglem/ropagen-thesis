@@ -4,6 +4,8 @@ numpy
 scipy
 scikit-posthocs
 
+dotenv
+
 # Visualisation
 matplotlib
 seaborn
@@ -15,7 +17,7 @@ nltk
 bert-score
 
 # Embeddings & models
-torch
+# torch
 transformers
 sentence-transformers
 
