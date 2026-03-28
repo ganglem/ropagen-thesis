@@ -95,6 +95,7 @@ Use `/commit` to create commits. The rules are strict:
 - Each subfolder can be split further if it contains unrelated changes.
 - Stage specific files only — never `git add .` or `git add -A`.
 - Commit messages are concise, imperative, one line.
+- **Never add `Co-Authored-By` lines.** All commits and pushes are in ganglem's name only — never Claude's.
 
 ## Coordination
 
