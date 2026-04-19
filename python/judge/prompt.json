@@ -1,0 +1,92 @@
+{
+  "judge": {
+    "model": "google/gemini-3.1-pro-preview",
+    "temperature": 0.0,
+    "system": "You are an expert GDPR compliance reviewer evaluating Records of Processing Activities (ROPA) documents under Article 30 GDPR. The documents are written by novices (non-experts, no prior GDPR training) who described the same processing scenario using different LLM-assisted tools. Your job is to judge each ROPA document against (a) the provided scenario and (b) GDPR Article 30 requirements. Be strict but fair. Do not reward verbosity. Do not penalise a document for merely restating scenario facts. Respond with valid JSON only - no prose, no Markdown fences, no commentary before or after the JSON object.",
+    "user_template": "You will evaluate one ROPA document against the scenario it is supposed to cover.\n\n=== SCENARIO (verbatim, German) ===\n{scenario}\n=== END SCENARIO ===\n\n=== ROPA DOCUMENT TO EVALUATE ===\n{document}\n=== END DOCUMENT ===\n\nScore the document on each of the following five metrics using a 1-5 Likert scale, and give a short rationale (max 2 sentences, English) for each score. The scale for all metrics is:\n1 = very poor, 2 = poor, 3 = adequate, 4 = good, 5 = excellent.\n\nMetrics and what to assess:\n- completeness: Coverage of Art. 30(1) GDPR required elements - controller identity and contact, DPO, purposes of processing, legal basis, categories of data subjects and personal data, categories of recipients, retention periods, and technical/organisational measures (TOMs). Missing elements lower the score.\n- scenario_faithfulness: How accurately the document reflects the concrete facts of THIS scenario - APOR GmbH, Ulm (Mainstraße 67), ~50 employees, internally hosted Microsoft Office and internal servers (NO external cloud), no medical/sickness data, 3-month deletion after employee departure, parking lot authorisation using a distinguishing feature such as a licence plate. Generic ROPA boilerplate that ignores these specifics lowers the score.\n- legal_correctness: Correct use of GDPR terminology and correct citation of legal basis (typically Art. 6(1)(b) performance of contract for employment data, Art. 6(1)(c) legal obligation where applicable, Art. 6(1)(f) legitimate interest for parking authorisation). Wrong articles, invented legal bases, or confusing controller/processor/DPO roles lower the score.\n- hallucination_inverse: Inverse score for invented facts not supported by the scenario (e.g. invented third-party processors, invented data categories like medical data, invented addresses, invented retention periods different from 3 months). 5 = no hallucinations, 1 = many invented facts.\n- overall: Holistic judgement of how useful this document would be as a real Art. 30 ROPA record for this scenario, taking the four dimensions above into account.\n\nReturn a single JSON object with exactly this shape:\n{{\n  \"completeness\":           {{\"score\": <int 1-5>, \"rationale\": \"<string>\"}},\n  \"scenario_faithfulness\":  {{\"score\": <int 1-5>, \"rationale\": \"<string>\"}},\n  \"legal_correctness\":      {{\"score\": <int 1-5>, \"rationale\": \"<string>\"}},\n  \"hallucination_inverse\":  {{\"score\": <int 1-5>, \"rationale\": \"<string>\"}},\n  \"overall\":                {{\"score\": <int 1-5>, \"rationale\": \"<string>\"}}\n}}",
+    "metrics": [
+      "completeness",
+      "scenario_faithfulness",
+      "legal_correctness",
+      "hallucination_inverse",
+      "overall"
+    ],
+    "response_schema": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "ropa_judge_result",
+        "strict": true,
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "completeness",
+            "scenario_faithfulness",
+            "legal_correctness",
+            "hallucination_inverse",
+            "overall"
+          ],
+          "properties": {
+            "completeness": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["score", "rationale"],
+              "properties": {
+                "score": {"type": "integer", "minimum": 1, "maximum": 5},
+                "rationale": {"type": "string"}
+              }
+            },
+            "scenario_faithfulness": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["score", "rationale"],
+              "properties": {
+                "score": {"type": "integer", "minimum": 1, "maximum": 5},
+                "rationale": {"type": "string"}
+              }
+            },
+            "legal_correctness": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["score", "rationale"],
+              "properties": {
+                "score": {"type": "integer", "minimum": 1, "maximum": 5},
+                "rationale": {"type": "string"}
+              }
+            },
+            "hallucination_inverse": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["score", "rationale"],
+              "properties": {
+                "score": {"type": "integer", "minimum": 1, "maximum": 5},
+                "rationale": {"type": "string"}
+              }
+            },
+            "overall": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["score", "rationale"],
+              "properties": {
+                "score": {"type": "integer", "minimum": 1, "maximum": 5},
+                "rationale": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "meta_judge": {
+    "model": "anthropic/claude-sonnet-4.6",
+    "temperature": 0.2,
+    "system": "You are a methodology reviewer for a Master's thesis evaluation chapter on LLM-assisted GDPR ROPA document generation. Study context: 73 novice participants (no prior GDPR knowledge) each used three interaction modes of ropagen — Form (structured questionnaire, minimal LLM guidance), Ask (guided dialogue, moderate LLM guidance), Chat (freeform conversation, full LLM guidance) — to produce ROPA documents. The ropagen tool ran Mistral Large 3 (2512) as its backend LLM for document generation. Two complementary evaluation layers were applied to 113 of these documents: (1) reference-based NLP similarity metrics (BLEU, ROUGE-1/2/L, METEOR, BERTScore P/R/F1, SBERT cosine similarity) computed against a single expert-written reference using answerdotai/ModernBERT-base embeddings for both BERTScore and SBERT; (2) a reference-free LLM-as-judge (Gemini 3.1 Pro Preview) scoring each document against the scenario and Art. 30 GDPR requirements on five 1–5 Likert dimensions (completeness, scenario faithfulness, legal correctness, hallucination-inverse, overall). Your task is to reflect on how the two layers compare across modes: where they agree, where they diverge, and what that means for the research question about document quality and the confidence-quality gap. Be measured, academic, and honest about limitations — specifically: single-reference bias (one expert document cannot capture all valid phrasings); single-judge bias (Gemini 3.1 Pro Preview operationalises the rubric; legal expert agreement is unknown); model-family bias (the judge is Gemini 3.1 Pro Preview from Google, while the documents were generated by Mistral Large 3 from Mistral AI — different model families reduce but do not eliminate stylistic-preference bias); and statistical power (N=113, unequal mode groups).",
+    "user_template": "=== JUDGE SUMMARY (per mode, 1-5 Likert) ===\n{judge_summary}\n\n=== NLP METRIC SUMMARY (per mode, 0-1) ===\n{nlp_summary}\n\n=== SURVEY CONFIDENCE DATA (per mode, 1-5 Likert) ===\n{survey_confidence}\n\n=== JUDGE REFLECTION (qualitative narrative by Gemini 3.1 Pro) ===\n{judge_reflection}\n\n=== CONCRETE EXAMPLES (Fallbeispiele — best and worst per mode on overall score) ===\n{fallbeispiele}\n\nWrite a 500–700 word reflection in Markdown. Structure it as:\n\n1. Agreement across layers: which mode ordering (if any) is consistent between judge metrics and NLP metrics?\n2. Divergences: where do judge and NLP disagree, and what is the most plausible explanation (reference-bias, rubric coverage, etc.)?\n3. Implications for RQs — address all four:\n   - RQ1: How do varying degrees of LLM support influence document quality for novices?\n   - RQ2a: Are all required Art. 30 fields present across modes?\n   - RQ2b: Is there a discrepancy between user confidence and actual document quality?\n   - RQ3: How does document quality differ across modes based on BERTScore semantic similarity to the expert reference?\n4. Limitations of this triangulation.\n\nDo not invent numbers beyond what is provided. Quote specific mean scores when making claims."
+  },
+  "judge_reflection": {
+    "model": "google/gemini-3.1-pro-preview",
+    "temperature": 0.2,
+    "system": "You are a qualitative research analyst writing a methodological reflection for a Master's thesis on LLM-assisted GDPR compliance document generation. You will be given quantitative judge scores and concrete document examples. Your task is to write a structured narrative that interprets the data and addresses three specific research questions. Write in academic English, 500–700 words, using Markdown headings. Be precise: quote actual score values when making claims. Do not invent findings beyond what the data shows.",
+    "user_template": "You are evaluating three interaction modes of a GDPR ROPA generation tool (ropagen) used by 73 novice participants. The modes differ in LLM scaffolding level:\n- Form: structured questionnaire with AI auto-fill (highest scaffolding)\n- Ask: guided dialogue, user provides final answers (moderate scaffolding)\n- Chat: freeform conversation, AI generates output directly (lowest scaffolding)\n\nThe backend LLM for document generation was Mistral Large 3 (2512). Documents were scored by Gemini 3.1 Pro Preview against the scenario and Art. 30 GDPR requirements (1–5 Likert; hallucination_inverse: 5 = no hallucinations, 1 = many).\n\n=== JUDGE SUMMARY (per mode, means) ===\n{judge_summary}\n\n=== SURVEY CONFIDENCE DATA (per mode, 1–5 Likert) ===\n{survey_confidence}\n\n=== CONCRETE EXAMPLES (Fallbeispiele) ===\n\n{fallbeispiele}\n\nWrite a 500–700 word reflection in Markdown with exactly these four sections:\n\n## RQ1: Influence of LLM Support Level on Document Quality\nHow do varying degrees of LLM support influence document quality for novices? Reference specific score patterns across modes. Discuss whether more scaffolding reliably improves quality or introduces trade-offs.\n\n## RQ2a: Art. 30 Field Coverage Across Modes\nAre all required Art. 30 GDPR fields present across modes? Reference the completeness scores and the concrete examples. Identify which mode is most reliable for structural coverage and why.\n\n## RQ2b: Confidence–Quality Gap\nIs there a discrepancy between user confidence in the AI output and actual document quality? Compare the survey confidence means to the judge scores, especially hallucination_inverse. Reference the Fallbeispiele where the gap is most visible.\n\n## Synthesis\nOne paragraph summarising what the three findings together imply for the use of LLM-assisted ROPA generation by novices."
+  }
+}
