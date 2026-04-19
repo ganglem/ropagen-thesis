@@ -21,6 +21,9 @@ bert-score
 transformers
 sentence-transformers
 
+# LLM API
+openai>=1.0
+
 # Utilities
 tqdm
 python-dotenv
