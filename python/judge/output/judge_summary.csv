@@ -1,0 +1,16 @@
+ai_mode,metric,n,mean,median,std
+ask,completeness,37,3.838,5.0,1.537
+ask,hallucination_inverse,37,2.405,2.0,1.117
+ask,legal_correctness,37,3.432,4.0,1.345
+ask,overall,37,2.486,3.0,1.044
+ask,scenario_faithfulness,37,2.297,2.0,1.199
+chat,completeness,39,3.179,3.0,1.587
+chat,hallucination_inverse,39,2.538,3.0,0.913
+chat,legal_correctness,39,3.154,3.0,1.424
+chat,overall,39,2.615,2.0,1.31
+chat,scenario_faithfulness,39,2.487,2.0,1.189
+form,completeness,37,4.838,5.0,0.553
+form,hallucination_inverse,37,1.649,2.0,0.716
+form,legal_correctness,37,3.595,4.0,0.551
+form,overall,37,2.405,2.0,0.686
+form,scenario_faithfulness,37,1.838,2.0,0.764

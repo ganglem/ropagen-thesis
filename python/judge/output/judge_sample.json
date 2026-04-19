@@ -1,0 +1,83 @@
+[
+  {
+    "id": 5,
+    "user_id": "EHN0215",
+    "ai_mode": "ask",
+    "judge": {
+      "completeness": {
+        "score": 5,
+        "rationale": "The document comprehensively covers all mandatory elements required by Article 30(1) GDPR, including controller and DPO details, purposes, data categories, recipients, retention periods, and TOMs."
+      },
+      "scenario_faithfulness": {
+        "score": 1,
+        "rationale": "The document directly contradicts the scenario's explicit constraints by including health data (sick days), external cloud services (Microsoft 365, Google Mail), and completely ignoring the strict 3-month deletion rule."
+      },
+      "legal_correctness": {
+        "score": 4,
+        "rationale": "The legal bases cited (Art. 6(1)(b), (c), (f) GDPR and § 26 BDSG) are appropriate for HR and parking management, and GDPR terminology is generally used correctly."
+      },
+      "hallucination_inverse": {
+        "score": 1,
+        "rationale": "The text invents numerous external recipients, cloud systems, applicant data, and complex retention schedules that were not part of the provided scenario."
+      },
+      "overall": {
+        "score": 2,
+        "rationale": "Although structurally sound and legally plausible as a generic template, its blatant disregard for the scenario's specific constraints (no cloud, no health data, 3-month retention) makes it highly flawed for this specific use case."
+      }
+    }
+  },
+  {
+    "id": 4,
+    "user_id": "EHN0215",
+    "ai_mode": "chat",
+    "judge": {
+      "completeness": {
+        "score": 5,
+        "rationale": "The document successfully includes all mandatory elements under Article 30(1) GDPR, such as controller and DPO details, purposes, data categories, subjects, recipients, retention periods, and TOMs."
+      },
+      "scenario_faithfulness": {
+        "score": 2,
+        "rationale": "The document completely ignores the scenario's explicit 3-month deletion rule, substituting it with generic 10-year and immediate deletion periods. It also incorrectly refers to 'Office 365' despite the scenario specifying internally hosted Office with no external cloud."
+      },
+      "legal_correctness": {
+        "score": 4,
+        "rationale": "The legal bases are well-chosen and appropriate for the German employment context (Art. 6(1)(b), (c), (f) GDPR and § 26 BDSG). However, listing IT systems as 'data sources' is a slight terminological inaccuracy."
+      },
+      "hallucination_inverse": {
+        "score": 2,
+        "rationale": "The document invents retention periods (10 years and 'unverzüglich') that directly contradict the scenario. It also introduces 'Microsoft Office 365', which implies a cloud environment contrary to the prompt."
+      },
+      "overall": {
+        "score": 3,
+        "rationale": "While structurally excellent and legally plausible, the document's failure to adhere to the scenario's specific retention periods and its inclusion of cloud-based Office 365 significantly reduce its accuracy for this specific case."
+      }
+    }
+  },
+  {
+    "id": 3,
+    "user_id": "EHN0215",
+    "ai_mode": "form",
+    "judge": {
+      "completeness": {
+        "score": 5,
+        "rationale": "The document successfully covers all mandatory elements required by Article 30(1) GDPR, including controller details, purposes, data categories, recipients, retention periods, and TOMs."
+      },
+      "scenario_faithfulness": {
+        "score": 2,
+        "rationale": "Directly contradicts the scenario by including 'sick days' (which were explicitly excluded) and stating 3- to 10-year retention periods instead of the specified 3 months."
+      },
+      "legal_correctness": {
+        "score": 3,
+        "rationale": "Uses correct GDPR terminology and standard legal bases for employment, but unnecessarily includes irrelevant laws like the Infection Protection Act (IfSG) which contradicts the exclusion of medical data."
+      },
+      "hallucination_inverse": {
+        "score": 2,
+        "rationale": "Contains significant hallucinations, including invented retention periods, unmentioned software systems (e.g., HR-Software, Enterprise Systems), and external recipients (authorities)."
+      },
+      "overall": {
+        "score": 2,
+        "rationale": "While structurally complete and professional, the document's failure to adhere to the scenario's specific constraints (especially regarding retention and data categories) makes it an inaccurate record."
+      }
+    }
+  }
+]
