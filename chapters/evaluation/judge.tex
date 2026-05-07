@@ -1,0 +1,116 @@
+\section{Document Quality — LLM-as-a-Judge}
+\label{sec:eval-judge}
+
+The LLM-as-a-Judge evaluation provides a reference-free, GDPR-specific quality
+signal across five dimensions: \emph{Completeness}, \emph{Scenario
+Faithfulness}, \emph{Legal Correctness}, \emph{Hallucination} (inverse-coded;
+higher equals less hallucination), and \emph{Overall}. The judge is a single
+LLM (Gemini~3.1 Pro Preview, temperature $0$) prompted with the rubric
+documented in Appendix~\ref{app:judge-prompt}. All $113$ retained documents
+are scored. Per-mode results are reported in the order Form, Ask, Chat,
+followed by the aggregated mean across all documents.
+
+\subsection{Per-Dimension Results}
+
+Table~\ref{tab:judge-summary} reports the per-dimension mean and standard
+deviation per mode and the aggregated mean. Figure~\ref{fig:judge-boxplot}
+shows the corresponding distributions.
+
+\begin{table}[htbp]
+\centering
+\caption{LLM-as-Judge dimension means $\pm$ standard deviation by mode (full
+sample $n = 113$, scale $1$--$5$, higher is better including for
+\emph{Hallucination (inverse)}). The aggregated ``All'' column is the mean
+across all $113$ documents.}
+\label{tab:judge-summary}
+\begin{tabular}{@{}l r r r r@{}}
+\toprule
+Dimension & Form & Ask & Chat & All \\
+\midrule
+Completeness            & $4.84 \pm 0.55$ & $3.84 \pm 1.54$ & $3.18 \pm 1.59$ & $3.94 \pm 1.43$ \\
+Scenario Faithfulness   & $1.84 \pm 0.76$ & $2.30 \pm 1.20$ & $2.49 \pm 1.19$ & $2.21 \pm 1.10$ \\
+Legal Correctness       & $3.59 \pm 0.55$ & $3.43 \pm 1.34$ & $3.15 \pm 1.42$ & $3.39 \pm 1.18$ \\
+Hallucination (inverse) & $1.65 \pm 0.72$ & $2.40 \pm 1.12$ & $2.54 \pm 0.91$ & $2.20 \pm 1.02$ \\
+Overall                 & $2.41 \pm 0.69$ & $2.49 \pm 1.04$ & $2.62 \pm 1.31$ & $2.50 \pm 1.04$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{judge_metrics_boxplot.png}
+\caption{Distributions of the five LLM-as-Judge dimensions by mode (full
+sample $n = 113$, scale $1$--$5$).}
+\label{fig:judge-boxplot}
+\end{figure}
+
+For \emph{Completeness}, Form scores highest by a substantial margin (mean
+$4.84$, median $5.0$), with Ask second ($3.84$, median $5.0$) and Chat lowest
+($3.18$, median $3.0$); aggregated mean $3.94$. Completeness decreases by
+approximately $1.66$~points from Form to Chat. Form's standard deviation
+is also the lowest of the three modes ($0.55$ versus Ask $1.54$ and Chat
+$1.59$), indicating that Form yields uniformly complete documents.
+
+For \emph{Scenario Faithfulness}, the ordering inverts. Form scores lowest
+($1.84$, median $2.0$), Ask second ($2.30$, median $2.0$), Chat highest
+($2.49$, median $2.0$); aggregated mean $2.21$. Faithfulness to the specific
+study scenario increases by approximately $0.65$~points from Form to Chat.
+
+For \emph{Legal Correctness}, Form scores highest ($3.59$, median $4.0$),
+Ask second ($3.43$, median $4.0$), Chat lowest ($3.15$, median $3.0$);
+aggregated mean $3.39$. The spread is approximately $0.45$~points across
+modes; Form's standard deviation ($0.55$) is again the lowest, reflecting a
+narrow concentration of Legal Correctness scores around the value $4.0$.
+
+For \emph{Hallucination (inverse)}, the ordering matches Scenario
+Faithfulness. Form scores lowest ($1.65$, median $2.0$), Ask second ($2.40$,
+median $2.0$), Chat highest ($2.54$, median $3.0$); aggregated mean $2.20$.
+Because the dimension is inverse-coded, this means Form documents are judged
+to contain the most fabricated content and Chat documents the least.
+
+For \emph{Overall}, the three modes are clustered closely together: Form
+$2.41$, Ask $2.49$, Chat $2.62$; aggregated $2.50$. The aggregate Overall
+score thus sits below the midpoint of the $1$--$5$ scale across all modes.
+Form's standard deviation ($0.69$) is again the lowest, while Chat's is the
+highest ($1.31$), indicating that Chat produces both the highest- and
+lowest-rated documents in the sample.
+
+\subsection{Cross-Dimension Patterns}
+
+Three patterns emerge from the per-dimension means. First, the
+Completeness ordering (Form $>$ Ask $>$ Chat) is the inverse of the
+Scenario Faithfulness and Hallucination orderings (Form $<$ Ask $<$ Chat).
+Form documents are judged to be the most structurally complete but also
+the most prone to fabricated content, while Chat documents are judged to be
+the most faithful to the specific scenario but the least structurally
+complete. Ask sits between the two extremes on every dimension.
+
+Second, the Legal Correctness scores are flat relative to the Completeness
+spread: the gap between modes is approximately $0.45$~points on Legal
+Correctness compared to $1.66$~points on Completeness. The judge therefore
+distinguishes between modes more sharply on whether the document covers
+all required Article 30(1) fields than on whether the legal terminology is
+appropriate.
+
+Third, the Overall scores compress the per-dimension spread into a narrow
+range (Form $2.41$ to Chat $2.62$, $\Delta = 0.21$), with the ordering Form
+$<$ Ask $<$ Chat. This is consistent with Overall reflecting a holistic
+judgement that weighs Faithfulness and Hallucination against Completeness;
+Form's high Completeness is partially offset by its low Faithfulness and
+high Hallucination, and the net result is a slight Chat advantage.
+
+\subsection{Note on the Form Completeness Pattern}
+
+A descriptive observation that recurs across the judge data is that
+$31$ of the $37$ Form documents ($83.8\,\%$) achieve Completeness $= 5$ while
+simultaneously scoring Hallucination (inverse) $\leq 2$, indicating
+``moderate'' or ``significant'' hallucination per the judge rubric. Of these,
+$17$ Form documents combine the maximum Completeness score of $5$ with the
+minimum Hallucination (inverse) score of $1$. By contrast, the Ask and Chat
+distributions on Completeness are more dispersed (standard deviations of
+$1.54$ and $1.59$ respectively versus Form's $0.55$), and the joint
+incidence of high Completeness with low Hallucination (inverse) is
+correspondingly less frequent. This descriptive co-occurrence is the
+proximate source of the Form-versus-Faithfulness inversion noted above; its
+interpretation in terms of the checkbox interface design is reserved for
+the Discussion chapter.

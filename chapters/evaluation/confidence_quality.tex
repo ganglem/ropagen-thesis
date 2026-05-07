@@ -1,0 +1,71 @@
+\section{Confidence and Quality Across Modes}
+\label{sec:eval-conf-quality}
+
+This section places the primary self-report confidence measure (item~$5_{ai}$
+of the Perceived AI Support instrument) alongside the principal document
+quality indicators (BERTScore F1 and Judge Overall) at the mode level, in
+preparation for the Discussion chapter's calibration analysis. Per-mode
+results are reported in the order Form, Ask, Chat, followed by the aggregated
+mean across all documents.
+
+Table~\ref{tab:conf-quality} reports, for the survey × NLP joined sample
+($n = 106$ documents, per-mode $n = 34$ Form, $34$ Ask, $38$ Chat), the
+mean self-reported legal-basis confidence, the mean document-level BERTScore
+F1, and the mean Judge Overall.
+
+\begin{table}[htbp]
+\centering
+\caption{Confidence and quality means by mode in the survey~$\times$~NLP
+joined sample ($n = 106$ documents). Confidence is the primary measure
+(item~$5_{ai}$, scale $1$--$5$); Judge Overall is on a $1$--$5$ scale; BERTScore
+F1 is on a $0$--$1$ scale. Ranks are stated in parentheses ($1$ = best of the
+three modes).}
+\label{tab:conf-quality}
+\begin{tabular}{@{}l r r r@{}}
+\toprule
+Mode & Confidence ($5_{ai}$) & BERTScore F1 & Judge Overall \\
+\midrule
+Form & 3.38 (rank 3) & 0.906 (rank 1) & 2.38 (rank 3) \\
+Ask  & 3.68 (rank 2) & 0.896 (rank 3) & 2.56 (rank 2) \\
+Chat & 3.76 (rank 1) & 0.904 (rank 2) & 2.63 (rank 1) \\
+\midrule
+All  & 3.61 & 0.902 & 2.52 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For \emph{self-reported confidence}, Form ranks third ($3.38$), Ask second
+($3.68$), and Chat first ($3.76$); aggregated $3.61$. For \emph{BERTScore
+F1}, Form ranks first ($0.906$), Chat second ($0.904$), and Ask third
+($0.896$); aggregated $0.902$. For \emph{Judge Overall}, Form ranks third
+($2.38$), Ask second ($2.56$), and Chat first ($2.63$); aggregated $2.52$.
+The mode-level rank ordering on legal-basis confidence therefore matches
+Judge Overall but is the inverse of BERTScore F1.
+
+Within-mode Spearman correlations between item~$5_{ai}$ and the two quality
+measures are reported in Table~\ref{tab:conf-quality-corr}. The pooled
+correlations across all $106$ documents are essentially zero. The
+mode-specific correlations differ in sign: Form and Ask show non-significant
+negative trends, while Chat shows a non-significant positive trend on
+BERTScore F1 and a significant positive correlation with Judge Overall
+($\rho = +0.41$, $p = 0.012$, $n = 38$).
+
+\begin{table}[htbp]
+\centering
+\caption{Spearman rank correlations of legal-basis confidence (item
+$5_{ai}$) with document-quality measures, per mode and pooled (survey
+$\times$ NLP joined sample). $\rho$ is the rank correlation coefficient.}
+\label{tab:conf-quality-corr}
+\begin{tabular}{@{}l c c c c@{}}
+\toprule
+& \multicolumn{2}{c}{$5_{ai}$ vs BERTScore F1} & \multicolumn{2}{c}{$5_{ai}$ vs Judge Overall} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Mode & $\rho$ & $p$ & $\rho$ & $p$ \\
+\midrule
+Form (n=34) & $-0.22$ & $0.22$ & $+0.07$ & $0.70$ \\
+Ask  (n=34) & $-0.23$ & $0.19$ & $-0.21$ & $0.24$ \\
+Chat (n=38) & $+0.28$ & $0.09$ & $+0.41$ & $0.012$ \\
+Pooled (n=106) & $-0.02$ & $0.88$ & $+0.14$ & $0.14$ \\
+\bottomrule
+\end{tabular}
+\end{table}

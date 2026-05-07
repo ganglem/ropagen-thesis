@@ -1,99 +1,75 @@
 \chapter{Methodology}
+\label{ch:methodology}
 
 \section{User Study}
 
 \subsection*{Study Design}
-\begin{itemize}
-    \item \textbf{Type:} Within-subjects experiment with counterbalanced order using a Balanced Latin Square design
-    \item \textbf{Sample:} N = 73 university students (novice users, no prior GDPR experience)
-    \item \textbf{Duration:} Approximately 90 minutes per participant
-    \item \textbf{Counterbalancing:}
-    \begin{itemize}
-        \item Balanced Latin Square with 6 groups (reflecting 3 AI modes tested in randomized sequences)
-        \item Each participant completes all three modes in a predetermined counterbalanced order
-        \item \textit{Rationale:} Controls for order effects, learning effects, and fatigue
-    \end{itemize}
-\end{itemize}
+
+The study followed a within-subjects experimental design with counterbalanced ordering, using a Balanced Latin Square. The recruited sample consisted of $N=73$ university students, all novice users with no prior GDPR experience, and each session lasted approximately 90 minutes per participant. Counterbalancing was implemented through a Balanced Latin Square with six groups, reflecting the three AI modes tested in randomised sequences; participants were randomly assigned to one of the six groups, and each completed all three modes in a predetermined counterbalanced order. This design controls for order effects, learning effects, and fatigue.
 
 \subsection*{Task Scenario}
-\begin{itemize}
-    \item \textbf{Consistency:} Single standardized scenario used across all participants and modes
-    \item \textbf{Content:} A relatable university-based data processing activity covering all GDPR Article 30 fields
-    \item \textit{Rationale:} Ensures comparability across conditions while remaining accessible to participants without legal expertise
-    \item \textbf{LLM Model:} Mistral (consistent across all modes)
-\end{itemize}
+
+A single standardised scenario was used across all participants and modes to ensure consistency. The scenario described a relatable university-based data processing activity covering all GDPR Article~30 fields, ensuring comparability across conditions while remaining accessible to participants without legal expertise. The underlying LLM was Mistral Large~3 (model identifier \texttt{mistralai/mistral-large-2512}), held constant across all modes and routed via OpenRouter.
 
 \subsection*{Participants}
+
+Recruitment yielded $N=73$ university students. Participants were screened for minimal to no GDPR knowledge (expected and required), prior AI tool usage experience (documented), general technology comfort level (assessed), and the absence of any professional legal or compliance background. As part of onboarding, participants received a brief standardised introduction to GDPR and ROPA concepts before beginning the tasks, and were shown an example of a high-quality ROPA document as reference material prior to starting.
+
+\subsection*{Data Availability and Sample Sizes}
+Due to technical data loss and incomplete submissions during data collection, the effective sample sizes differ across analysis streams. The canonical sample sizes used throughout this thesis are summarised below; all counts are derived from the raw data files committed to the repository and documented in full in \texttt{python/output/sample\_sizes.md}.
 \begin{itemize}
-    \item \textbf{Recruitment:} N = 73 university students
-    \item \textbf{Screening Criteria:}
-    \begin{itemize}
-        \item Minimal to no GDPR knowledge (expected and required)
-        \item Prior AI tool usage experience (documented)
-        \item General technology comfort level (assessed)
-        \item No professional legal or compliance background
-    \end{itemize}
-    \item \textbf{Onboarding:} Participants receive a brief standardized introduction to GDPR and ROPA concepts (e.g., short instructional video or text) before beginning the tasks
-    \item \textbf{Reference Material:} Participants are shown an example of a high-quality ROPA document prior to starting
+    \item \textbf{Survey, recruited N = 73 / valid N = 70} — 73 participants completed the study; 70 retained after dropping cases with invalid consent or quality flags. Per-mode sample size: \textbf{n = 69} for each of Form, Ask, and Chat (one participant has a valid Form response but no Ask/Chat). The matched-triple survey subset (participants with valid responses for all three modes) is \textbf{n = 69}; this is used for within-subjects Friedman and Wilcoxon signed-rank tests on SUS, R-TLX, confidence items, and the perceived AI support composite.
+    \item \textbf{Documents, 113 generated ROPAs} — distributed across modes as 37 (Form), 37 (Ask), and 39 (Chat); used for all NLP metric and LLM-as-a-judge analyses at the document level. The 113 documents represent \textbf{47 unique participants}; \textbf{28 participants} have at least one document in each of the three modes (loose match), and \textbf{26 participants} have exactly one document per mode (strict matched triple). The strict \textbf{n = 26} set is used for all within-subjects tests on document-quality measures (Friedman, Wilcoxon signed-rank); the unbalanced full sample (n = 113) is used only for between-groups sensitivity checks (Kruskal--Wallis, Mann--Whitney U).
+    \item \textbf{Survey × NLP join, 106 rows} — inner join on participant and mode yields 106 rows (Form 34, Ask 34, Chat 38) across \textbf{44 unique participants}. Per-mode joined samples (n = 34 / 34 / 38) are used for per-mode Spearman correlations between confidence and quality, which do not require complete triples.
+    \item \textbf{Triangulated sample, n = 27} — participants with survey × NLP coverage in all three modes. This is the canonical N for confidence--quality correlation analyses that require within-subjects matching across all three modes simultaneously.
 \end{itemize}
+The reconciliation between these canonical Ns and earlier reporting is as follows: 47 corresponds to unique participants with at least one judge-evaluated document, 28 to participants with at least one document per mode (loose match), and 44 to unique participants in the survey × NLP join. The canonical figures used in the inferential analyses are \textbf{n = 26} for paired NLP/judge tests and \textbf{n = 27} for triangulated correlations across all three modes.
+
+Descriptive statistics (means, medians, standard deviations) are computed on the full available N per mode for each analysis stream. Within-subjects inferential tests are restricted to the matched-triple subsets specified above. Where the unbalanced full sample makes matching impossible, between-groups sensitivity checks are reported alongside the matched analyses (see \emph{Statistical Analysis}, below).
 
 \subsection*{Data Collection}
-\begin{itemize}
-    \item \textbf{Quantitative Measures (collected after each mode):}
-    \begin{itemize}
-        \item System Usability Scale (SUS): 10 standardized questions
-        \item Raw Task Load Index (R-TLX): 6 cognitive load dimensions
-        \item LLM-Specific Confidence Questions (7-point Likert scale):
-        \begin{enumerate}
-            \item \textit{Perceived Usefulness:} ``The LLM was helpful in creating this document.''
-            \item \textit{Efficiency:} ``This mode let me complete the ROPA faster than I could on my own.''
-            \item \textit{Transparency:} ``I understood why the AI suggested certain GDPR fields.''
-            \item \textit{Reliance Comfort:} ``I felt comfortable relying on the AI's suggested categories.''
-            \item \textit{Task-Specific Confidence:} ``I am confident the AI identified the appropriate legal basis.''
-            \item \textit{Intention to Use:} ``I would use this mode again for similar work.''
-            \item \textit{Professional Applicability:} ``If I were responsible for GDPR in a real company, I would use this specific mode to generate my documentation.''
-        \end{enumerate}
-        \item Free-text qualitative feedback (collected after each mode)
-        \item Automatic completion time tracking (per mode)
-    \end{itemize}
-    \item \textbf{Post-Experiment Ranking:}
-    \begin{itemize}
-        \item Participants rank all three modes by overall preference after completing all conditions
-    \end{itemize}
-\end{itemize}
+
+Quantitative measures were collected after each mode. The System Usability Scale (SUS) was administered as ten standardised questions on a 5-point Likert scale, and the Raw Task Load Index (R-TLX) captured six cognitive load dimensions, also on a 5-point Likert scale. In addition, participants completed a six-item Perceived AI Support instrument on a 5-point Likert scale:
+
+\begin{enumerate}
+    \item \textit{Perceived Usefulness:} ``The LLM was helpful in creating this document.''
+    \item \textit{Efficiency:} ``This mode let me complete the ROPA faster than I could on my own.''
+    \item \textit{Transparency:} ``I understood why the AI suggested certain GDPR fields.''
+    \item \textit{Reliance Comfort:} ``I felt comfortable relying on the AI's suggested categories.''
+    \item \textit{Task-Specific Confidence (primary confidence measure):} ``I am confident the AI identified the appropriate legal basis.''
+    \item \textit{Intention to Use:} ``I would use this mode again for similar work.''
+\end{enumerate}
+
+Item~5 is treated as the \textbf{primary confidence measure} throughout the analysis: it is the only item that asks participants to judge the substantive correctness of the AI's output (the legal basis under Article 6 GDPR), and is therefore directly comparable to the document-quality signals from the NLP and judge pipelines. The remaining five items (usefulness, efficiency, transparency, reliance comfort, intention to use) capture distinct facets of \emph{perceived AI support} rather than confidence in output correctness, and are reported as a secondary composite. Free-text qualitative feedback was also collected after each mode, and total session duration was recorded as a single value per participant; per-mode timing was not recorded. After completing all three conditions, participants ranked all three modes by overall preference in a post-experiment ranking task.
 
 \subsection*{Quality Assessment}
+
+\subsubsection*{NLP Metrics}
+All participant-generated documents (73 participants $\times$ 3 modes = 219 documents) are compared against a single reference document using a suite of automated NLP metrics. The reference document was created by the study author using the Form mode of ropagen, applying the same standardised scenario presented to participants. This document is treated as the authoritative baseline — a root-of-trust representing a careful, complete application of the most structured interaction mode. It should be noted that this introduces an inherent framing effect: NLP metrics measure similarity to Form-style output, which may disadvantage the more conversational outputs of Ask and Chat modes independently of their substantive quality.
 \begin{itemize}
-    \item \textbf{BERTScore Evaluation:}
-    \begin{itemize}
-        \item Compare all documents (73 participants × 3 modes) against an expert-created reference (ECR)
-        \item Aggregate scores by mode to establish baseline quality metrics
-        \item Perform pairwise comparisons between modes and against the ECR for comprehensive evaluation
-    \end{itemize}
-    \item \textbf{LLM-as-a-Judge Validation:}
-    \begin{itemize}
-        \item Evaluate a representative subset of mode-generated documents using Claude
-        \item Cross-validate BERTScore findings with LLM-based quality assessment
-        \item \textit{Rationale:} Ensures BERTScore captures meaningful quality differences beyond lexical similarity
-    \end{itemize}
-    \item \textbf{Confidence-Quality Gap Analysis:}
-    \begin{itemize}
-        \item Correlate self-reported confidence scores with actual document quality (BERTScore)
-        \item Identify potential over-confidence or under-confidence patterns across modes
-    \end{itemize}
+    \item \textbf{BLEU} (Bilingual Evaluation Understudy): n-gram precision with brevity penalty
+    \item \textbf{ROUGE-1, ROUGE-2, ROUGE-L}: unigram overlap, bigram overlap, and longest common subsequence F1
+    \item \textbf{METEOR}: precision--recall balance with synonym matching
+    \item \textbf{BERTScore} (Precision, Recall, F1): token-level semantic similarity using ModernBERT embeddings
+    \item \textbf{SBERT Cosine Similarity}: document-level semantic similarity using sentence embeddings
 \end{itemize}
+Metrics are computed at both the document level (aggregated across all Article 30 sections) and the chapter level (per individual GDPR section). Results are aggregated by mode to establish comparative quality baselines.
+
+\subsubsection*{LLM-as-a-Judge Evaluation}
+Documents are additionally evaluated using an LLM-as-a-judge approach, in which \textbf{Gemini~3.1 Pro Preview} (model identifier \texttt{google/gemini-3.1-pro-preview}, accessed via OpenRouter at temperature~0) serves as an automated evaluator assessing GDPR-specific quality. The judge is positioned as a \emph{supplementary} evaluator: it is a single-pass, single-model assessment without inter-rater replication or legal-expert validation, and its scores are reported alongside, not in place of, the NLP metrics. The reference-based NLP metrics remain the primary RQ2 evidence; the judge complements them by providing a reference-free signal that captures GDPR-specific quality properties (legal correctness, hallucination, scenario faithfulness) which similarity-based metrics cannot directly observe. The judge evaluates each document across five dimensions on a 1--5 scale:
+\begin{enumerate}
+    \item \textbf{Completeness:} Coverage of all required Article 30(1) fields (controller identity, DPO contact, purposes, legal basis, data categories, recipients, retention periods, technical and organisational measures)
+    \item \textbf{Scenario Faithfulness:} Adherence to the specific details of the study scenario rather than generic or hallucinated content
+    \item \textbf{Legal Correctness:} Appropriate use of GDPR terminology and accurate citation of relevant articles
+    \item \textbf{Hallucination (inverse):} Absence of invented facts not present in the scenario (scored inversely: 5 = no hallucinations)
+    \item \textbf{Overall:} Holistic assessment of the document's usability as a real-world ROPA record
+\end{enumerate}
+The judge evaluation is applied to all 113 retained documents. The full evaluation rubric and system prompt used for the judge are provided in Appendix~\ref{app:judge-prompt}. The interpretive narrative summarising judge scores in the accompanying analysis artefact (\texttt{judge\_interpretation.md}) was drafted by Claude Sonnet~4.6 from the raw per-document scores and rationales as a working aid; the interpretation reported in this thesis is authored by the researcher directly from the same raw judge scores.
+
+\subsubsection*{Confidence--Quality Gap Analysis}
+To investigate whether perceived confidence in the AI-generated output corresponds to actual document quality, self-reported confidence is correlated with both NLP metric scores and LLM-as-a-judge scores. The \textbf{primary confidence measure} is the single Likert item on legal-basis confidence (item~5 of the perceived AI support instrument: ``I am confident the AI identified the appropriate legal basis''), chosen because it is the only survey item that asks participants to judge the substantive correctness of the AI's output. The 6-item Perceived AI Support composite is reported as a \textbf{secondary} analysis to capture broader attitudinal facets (usefulness, efficiency, transparency, reliance comfort, intention to use). Both measures are correlated against three signals: confidence against NLP metrics (reference-based lexical and semantic similarity); confidence against LLM judge scores (GDPR-specific holistic quality); and NLP metrics against LLM judge scores (agreement between the two automated assessment systems). Analyses are restricted to participants for whom data from all three sources (survey, NLP pipeline, judge evaluation) are available; the exact triangulated~N is reported in the \emph{Data Availability and Sample Sizes} subsection.
 
 \subsection*{Statistical Analysis}
-\begin{itemize}
-    \item \textbf{RQ1 (User Experience \& Preference):}
-    \begin{itemize}
-        \item Repeated measures ANOVA on SUS scores, R-TLX dimensions, and LLM confidence questions
-        \item Post-hoc pairwise comparisons (with Bonferroni correction) to identify significant differences between modes
-        \item Thematic analysis of free-text qualitative feedback and post-experiment rankings
-    \end{itemize}
-    \item \textbf{RQ2 (Document Quality \& Confidence Calibration):}
-    \begin{itemize}
-        \item Repeated measures ANOVA on BERTScore results across modes
-        \item Correlation analysis between self-reported confidence and actual quality (BERTScore)
-    \end{itemize}
-\end{itemize}
+A significance threshold of $\alpha = 0.05$ is applied to all tests. All within-subjects comparisons across the three modes follow a two-step procedure: a Friedman test as the omnibus test, followed by pairwise Wilcoxon signed-rank tests with Bonferroni correction for post-hoc analysis. Where the unbalanced full sample makes within-subjects matching impossible (e.g.\ when only one or two documents are available per participant), Mann--Whitney U tests are reported as a between-groups sensitivity check on the corresponding mode pair. Effect sizes are reported as $\varepsilon^2$ for the Friedman / Kruskal--Wallis omnibus tests, Kendall's~$W$ as the coefficient of concordance for Friedman, and rank-biserial correlation~$r$ for pairwise Wilcoxon signed-rank tests.
+
+For RQ1 (User Experience and Preference), the Friedman test is applied to SUS scores, the R-TLX composite, and the confidence question composites across modes; post-hoc pairwise Wilcoxon signed-rank tests with Bonferroni correction identify which mode pairs differ significantly; and mode preference distributions are reported as frequencies and rankings. For RQ2 (Document Quality and Confidence Calibration), the Friedman test is applied to NLP metric scores and LLM-as-a-judge scores across modes, with Bonferroni-corrected pairwise Wilcoxon signed-rank tests as post-hoc analysis where the omnibus is significant. Spearman rank correlation ($\rho$) is used for the confidence--quality gap analysis (non-parametric; appropriate for ordinal-to-continuous relationships).
