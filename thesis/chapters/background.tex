@@ -38,390 +38,93 @@ Where an organization acts as a data processor, the RoPA must additionally refle
 
 The GDPR does not prescribe a fixed update cycle for RoPAs; instead, it requires that records remain accurate and up to date. Consequently, any substantive change in processing purposes, data categories, recipients, or safeguards should trigger a review and update of the RoPA. Many organizations delegate the responsibility for maintaining the RoPA to a data protection officer, where one is appointed, to ensure consistency, avoid duplication of effort, and reduce the risk of omissions. \cite{gdpr-info-art30, osano-ropa}
 
-Finally, Article~30 emphasizes the external relevance of RoPA. Organizations must be prepared to present their records to supervisory authorities upon request, and such requests may be accompanied by demands for supplementary documentation, including privacy notices, consent records, or contractual arrangements. In this sense, RoPA operates as a foundational compliance artifact, anchoring broader data protection governance and demonstrating an organization’s commitment to accountability under the GDPR. \cite{gdpr-info-art30, osano-ropa}.
+Finally, Article~30 emphasizes the external relevance of RoPA. Organizations must be prepared to present their records to supervisory authorities upon request, and such requests may be accompanied by demands for supplementary documentation, including privacy notices, consent records, or contractual arrangements. In this sense, RoPA operates as a foundational compliance artifact, anchoring broader data protection governance and demonstrating an organization's commitment to accountability under the GDPR. \cite{gdpr-info-art30, osano-ropa}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Related Work}
 
-"A Systematic Comparison Between Open- and Closed-Source Large Language Models in the Context of Generating GDPR-Compliant Data Categories for Processing Activity Records" (von Schwerin et al., 2024) \cite{schwerinSystematicComparisonOpen2024}
-\begin{itemize}
-  \item Domain Focus and Research Gap 
-    \begin{itemize}
-        \item  The sources focus on the automation of GDPR compliance documentation, specifically the generation of data categories (e.g., contact info, payment data) for Records of Processing Activities (ROPA).
-    \end{itemize}
-      \begin{itemize}
-          \item While general legal AI research exists for tasks like case retrieval and judgment prediction, the authors identify a significant research gap regarding the generation of structured, regulatory-compliant outputs.
-      \end{itemize}
-      \begin{itemize}
-          \item Existing legal benchmarks, such as LawBench or LegalBench, primarily evaluate static knowledge recall rather than the ability to produce documents that adhere to the precise formatting and terminology required by the GDPR.
-      \end{itemize}
+\subsection*{Open- vs.\ Closed-Source LLMs for ROPA Data Categories (von Schwerin et al., 2024)}
 
-  \item Methodology and Evaluation 
-  \begin{itemize}
-      \item The study employs a quantitative experimental design comparing four open-source models (Qwen2-7B, Meta-Llama-3-8B, zephyr-7b-beta, and orca\_mini\_v7\_7b) against the closed-source GPT-4 as a baseline.
-  \end{itemize}
-  \begin{itemize}
-    \item The methodology is structured around four experiments: basic performance, model-specific prompting, few-shot prompting, and Retrieval-Augmented Generation (RAG).
-    \item To evaluate the documents, the authors developed a comprehensive scoring metric called a Model Utility Score.
-    \item This metric weights five key criteria:
-    \begin{itemize}
-      \item Latency (Weight 1): Response speed.
-      \item Structure and Style (Weight 2): Adherence to list formats and precise language.
-      \item Grammar (Weight 3): Credibility and professional standards.
-      \item Validity (Weight 4): Relevance of data categories to GDPR guidelines.
-      \item Contextual Understanding (Weight 5): Comprehensiveness and lack of redundancy in covering specific data fields.
-    \end{itemize}
-    \item Additionally, they utilized two specialized benchmarks: a multiple-choice benchmark for contextual knowledge and a generation benchmark to compare LLM outputs against a reference database of correct data categories.
-  \end{itemize}
+The most directly relevant prior work is the systematic comparison by von Schwerin et al.\ \cite{schwerinSystematicComparisonOpen2024}, which targets the automation of GDPR compliance documentation, specifically the generation of data categories (e.g., contact information, payment data) for Records of Processing Activities (ROPA). Although general legal AI research has covered tasks such as case retrieval and judgment prediction, the authors identify a significant research gap regarding the generation of structured, regulatory-compliant outputs, observing that existing legal benchmarks such as LawBench or LegalBench primarily evaluate static knowledge recall rather than the ability to produce documents that adhere to the precise formatting and terminology required by the GDPR.
 
-  \item Key Results and Synthesis 
-  \begin{itemize}
-      \item The findings demonstrate that open-source models, particularly Qwen2-7B, can achieve performance comparable to or even exceeding GPT-4 in generating structured ROPA data categories.
-  \end{itemize}
-  \begin{itemize}
-    \item Synthesis of the results suggests:
-    \begin{itemize}
-      \item Prompting Nuance: Surprisingly, model-specific prompts aligned with pretraining formats did not necessarily improve performance; simplicity and clarity in prompts often yielded better results.
-      \item Context Augmentation: Few-shot prompting had a limited impact on quality, while RAG showed mixed results.
-      \item RAG improved performance for categories explicitly found in the source text but caused models to struggle with novel categories and ignore structural instructions (like list formatting).
-      \item Viability: The study validates that open-source LLMs are cost-effective and privacy-preserving alternatives for ROPA documentation, as they allow for local deployment to satisfy strict GDPR data handling requirements.
-    \end{itemize}
-  \end{itemize}
+Methodologically, the study employs a quantitative experimental design comparing four open-source models (Qwen2-7B, Meta-Llama-3-8B, zephyr-7b-beta, and orca\_mini\_v7\_7b) against the closed-source GPT-4 as a baseline, structured around four experiments: basic performance, model-specific prompting, few-shot prompting, and Retrieval-Augmented Generation (RAG). To evaluate the documents the authors developed a comprehensive scoring metric called a Model Utility Score, weighting five criteria---Latency (weight 1, response speed), Structure and Style (weight 2, adherence to list formats and precise language), Grammar (weight 3, credibility and professional standards), Validity (weight 4, relevance of data categories to GDPR guidelines), and Contextual Understanding (weight 5, comprehensiveness and lack of redundancy in covering specific data fields). They also used two specialised benchmarks: a multiple-choice benchmark for contextual knowledge and a generation benchmark to compare LLM outputs against a reference database of correct data categories.
 
-  \item Limitations 
-  \begin{itemize}
-      \item The sources highlight several critical limitations for AI-driven compliance:
-  \end{itemize}
-  \begin{itemize}
-    \item Ambiguity: LLMs still struggle with ambiguous legal language (e.g., terms like "necessary" or "adequate") and variations in jurisdiction-specific terminology.
-    \item Static Knowledge: The models rely on static datasets and may not reflect real-time updates to evolving GDPR regulations.
-    \item Hallucination: A persistent risk remains where models generate plausible but legally incorrect information, necessitating a "human-in-the-loop" review process.
-    \item Scope: The evaluation was limited specifically to data category generation, which may not generalize to more complex GDPR tasks like Privacy Impact Assessments.
-  \end{itemize}
-\end{itemize}
+The findings demonstrate that open-source models, particularly Qwen2-7B, can achieve performance comparable to or even exceeding GPT-4 in generating structured ROPA data categories. Several nuances emerge from the synthesis: surprisingly, model-specific prompts aligned with pretraining formats did not necessarily improve performance, and simplicity and clarity in prompts often yielded better results; few-shot prompting had a limited impact on quality, while RAG showed mixed results, improving performance for categories explicitly found in the source text but causing models to struggle with novel categories and to ignore structural instructions such as list formatting. Overall, the study validates that open-source LLMs are cost-effective and privacy-preserving alternatives for ROPA documentation, since they allow for local deployment to satisfy strict GDPR data handling requirements.
 
+The authors highlight several critical limitations for AI-driven compliance: LLMs still struggle with ambiguous legal language (e.g., terms like "necessary" or "adequate") and variations in jurisdiction-specific terminology; the models rely on static datasets and may not reflect real-time updates to evolving GDPR regulations; a persistent risk of hallucination remains, where models generate plausible but legally incorrect information, necessitating a "human-in-the-loop" review process; and the evaluation was limited specifically to data category generation, which may not generalise to more complex GDPR tasks such as Privacy Impact Assessments.
 
-%%%
+\subsection*{Structured Indian Legal Document Generation (Nigam et al., 2025)}
 
-"Structured Legal Document Generation in India: A Model-Agnostic Wrapper Approach with VidhikDastaavej" by Nigam et al. (2025) \cite{nigamStructuredLegalDocument2025}
-\begin{itemize}
-  \item Domain Focus and Research Gap
-  \begin{itemize}
-    \item The study addresses the automation of private legal document drafting within the Indian legal system.
-    \item The authors identify a significant research gap: while previous work has extensively covered public legal tasks like judgment prediction and case summarization, the generation of private, structured legal documents remains largely unexplored due to data confidentiality and the complexity of legal drafting standards.
-  \end{itemize}
+Nigam et al.\ \cite{nigamStructuredLegalDocument2025} present \emph{Structured Legal Document Generation in India: A Model-Agnostic Wrapper Approach with VidhikDastaavej}, addressing the automation of private legal document drafting within the Indian legal system. The authors identify a significant research gap: while previous work has extensively covered public legal tasks like judgment prediction and case summarisation, the generation of private, structured legal documents remains largely unexplored due to data confidentiality and the complexity of legal drafting standards.
 
-  \item The AI Generation Framework
-  \begin{itemize}
-    \item The researchers developed NyayaShilp, a domain-adapted model based on LLaMA-2-7B, which underwent continued pretraining (CPT) on Indian case laws and supervised fine-tuning (SFT) on a specialized dataset.
-    \item Central to their approach is the Model-Agnostic Wrapper (MAW), a two-phase framework designed to improve long-form coherence:
-    \begin{itemize}
-      \item Phase 1 (Section Title Generation): The model generates a structured list of section titles based on user input, which the user can manually refine.
-      \item Phase 2 (Section Content Generation): The system iteratively generates content for each section, utilizing a vector database (ChromaDB) to store and retrieve summaries of previous sections to maintain logical flow and reduce hallucinations.
-      \item The system is integrated into an interactive Human-in-the-Loop (HITL) interface, allowing users to specify document types, customize sections, and refine AI-generated drafts.
-    \end{itemize}
-  \end{itemize}
+The researchers developed NyayaShilp, a domain-adapted model based on LLaMA-2-7B which underwent continued pretraining (CPT) on Indian case laws and supervised fine-tuning (SFT) on a specialised dataset. Central to their approach is the Model-Agnostic Wrapper (MAW), a two-phase framework designed to improve long-form coherence: in Phase 1 (Section Title Generation) the model generates a structured list of section titles based on user input, which the user can manually refine; in Phase 2 (Section Content Generation) the system iteratively generates content for each section, using a vector database (ChromaDB) to store and retrieve summaries of previous sections to maintain logical flow and reduce hallucinations. The system is integrated into an interactive Human-in-the-Loop (HITL) interface that allows users to specify document types, customise sections, and refine AI-generated drafts. To support the work, the authors introduced VidhikDastaavej, a novel anonymised dataset of 489 private legal documents (e.g., petitions, affidavits, lease deeds). Their evaluation methodology mirrors a dual-evaluation structure: quantitative lexical and semantic metrics including ROUGE, BLEU, METEOR and BERTScore for semantic similarity between generated and reference texts; an automatic LLM-based evaluation using G-Eval, a GPT-4-based framework, to assess coherence, factual accuracy, and completeness; and a qualitative expert assessment in which three legal experts evaluated documents on a 1--10 Likert scale for factual accuracy and completeness, with inter-annotator agreement (IAA) measured via Intraclass Correlation and Krippendorff's Alpha.
 
-  \item Methodology and Evaluation
-  \begin{itemize}
-    \item To support this work, the authors introduced VidhikDastaavej, a novel, anonymized dataset of 489 private legal documents (e.g., petitions, affidavits, lease deeds).
-    \item Their evaluation methodology is comprehensive and mirrors the dual-evaluation structure of your thesis:
-    \begin{itemize}
-      \item Quantitative Lexical and Semantic Metrics: The study uses standard metrics like ROUGE, BLEU, and METEOR, alongside BERTScore to measure semantic similarity between generated and reference texts.
-      \item Automatic LLM-based Evaluation (LLM-as-a-judge): They employ G-Eval, a GPT-4-based framework, to assess coherence, factual accuracy, and completeness.
-      \item Qualitative Expert Assessment: Three legal experts evaluated the documents on a 1-10 Likert scale for factual accuracy and completeness, with inter-annotator agreement (IAA) measured via Intraclass Correlation and Krippendorff’s Alpha.
-    \end{itemize}
-  \end{itemize}
+The findings indicate that direct fine-tuning (SFT) on small datasets can actually lead to performance degradation and hallucinations. In contrast, the structured wrapper approach (MAW) significantly enhanced document quality, achieving scores comparable to GPT-4o even when using smaller open-source models, and experts confirmed that the wrapper-assisted models produced more coherent, well-structured, and legally valid documents compared to base models.
 
-  \item Key Results and Synthesis
-  \begin{itemize}
-    \item The findings indicate that direct fine-tuning (SFT) on small datasets can actually lead to performance degradation and hallucinations.
-    \item In contrast, the structured wrapper approach (MAW) significantly enhanced document quality, achieving scores comparable to GPT-4o even when using smaller open-source models.
-    \item Experts confirmed that the wrapper-assisted models produced more coherent, well-structured, and legally valid documents compared to base models.
-  \end{itemize}
+The authors note several limitations: the training data was imbalanced, with a heavy focus on case judgments, leading to difficulties in generating underrepresented legal formats like contracts or agreements; while the wrapper reduced inconsistencies, it did not entirely eliminate hallucinations, suggesting a need for more robust fact-verification modules; the study primarily relied on expert evaluation, with large-scale user feedback from practising lawyers and broader usability testing across different jurisdictions identified as necessary future steps; and computational constraints meant the research did not fully explore larger architectures (e.g., LLaMA-3-70B) for fine-tuning.
 
-  \item Limitations
-  \begin{itemize}
-      \item Dataset Diversity: The training data was imbalanced, with a heavy focus on case judgments, leading to difficulties in generating underrepresented legal formats like contracts or agreements.
-      \item Hallucinations: While the wrapper reduced inconsistencies, it did not entirely eliminate hallucinations, suggesting a need for more robust fact-verification modules.
-      \item Real-World Usability Testing: The study primarily relied on expert evaluation; large-scale user feedback from practicing lawyers and broader usability testing across different jurisdictions were identified as necessary future steps.
-      \item Computational Constraints: The research did not fully explore larger architectures (e.g., LLaMA-3-70B) for fine-tuning due to resource limitations.
-  \end{itemize}
-\end{itemize}
+\subsection*{LLM-Assisted Extraction of GDPR Requirements (Abualhaija et al., 2025)}
 
-%
+Abualhaija et al.\ \cite{abualhaijaLLMassistedExtractionRegulatory2025}, in \emph{LLM-assisted Extraction of Regulatory Requirements: A Case Study on the GDPR}, address the knowledge gap between legal interpretation and software development, focusing on the extraction of technical requirements from the GDPR. They argue that while the GDPR establishes fundamental data subject rights, it often lacks the detailed technical guidance necessary for software implementation, leading to low compliance rates. The authors identify a specific research gap in the requirements engineering (RE) literature: most studies provide only generic mentions of the GDPR, with very few investigating specific data subject rights---such as the right of access (ACC) and the right to portability (PRT)---in depth. The study further explores the potential for LLMs to bridge this gap by leveraging additional legal sources (guidelines, case law, etc.) beyond the primary GDPR text.
 
-"LLM-assisted Extraction of Regulatory Requirements: A Case Study on the GDPR" (Abualhaija et al., 2025) \cite{abualhaijaLLMassistedExtractionRegulatory2025}
+The authors used a mixed-methods approach combining qualitative manual extraction and quantitative automated generation. As a manual baseline, in collaboration with six legal and RE experts, they extracted 108 reference requirements (61 for ACC; 47 for PRT) from mandatory legal sources, advisory guidelines, and academic literature. Their automated approach, XTRAREG, uses GPT-3.5 and GPT-4o combined with Retrieval-Augmented Generation (RAG), and tests different prompting techniques including Zero-Shot Learning (ZSL) and Chain-of-Thought (CoT) to instruct the LLM to generate requirements informed by indexed legal documents. The dual evaluation framework comprises a quantitative side---automated NLP metrics comparing generated text to the manual ground truth, including precision/recall-oriented metrics (BLEU, ROUGE-L, METEOR) and the semantic similarity metric BERTScore---and a qualitative side, in which legal experts performed an extrinsic assessment of the generated requirements based on Correctness (factually accurate), Groundedness (valid legal references), Plausibility (reasonable rationale), and Coverage (percentage of reference requirements identified).
 
-\begin{itemize}
-  \item Domain Focus and Research Gap
-  \begin{itemize}
-    \item The paper addresses the knowledge gap between legal interpretation and software development, specifically focusing on the extraction of technical requirements from the General Data Protection Regulation (GDPR).
-    \item While the GDPR establishes fundamental data subject rights, it often lacks the detailed technical guidance necessary for software implementation, leading to low compliance rates.
-    \item The authors identify a specific research gap in the requirements engineering (RE) literature: most studies provide only generic mentions of the GDPR, with very few investigating specific data subject rights—such as the right of access (ACC) and the right to portability (PRT)—in-depth.
-    \item Furthermore, the study explores the potential for Large Language Models (LLMs) to bridge this gap by leveraging additional legal sources (guidelines, case law, etc.) beyond the primary text of the GDPR.
-  \end{itemize}
+GPT-4o significantly outperformed GPT-3.5, particularly in the volume and completeness of generated requirements. XTRAREG achieved a correctness accuracy of 81.8\,\% for ACC and 85.7\,\% for PRT; the inclusion of RAG significantly improved performance across all metrics compared to "ablation" runs in which the LLM relied only on its pre-trained knowledge; the models achieved high BERTScores, indicating that they successfully captured the semantic meaning of the requirements even when they did not match the manual baseline verbatim (as shown by lower BLEU scores); and despite being exposed to various sources via RAG, the LLMs showed a strong tendency to generate requirements predominantly from the GDPR itself, often overlooking more specific technical details found in supplementary guidelines.
 
-  \item Methodology and Evaluation
-  \begin{itemize}
-    \item The authors utilized a mixed-methods approach involving both qualitative manual extraction and quantitative automated generation:
-    \begin{itemize}
-      \item Manual Baseline: In collaboration with six legal and RE experts, they manually extracted 108 reference requirements (61 for ACC; 47 for PRT) from mandatory legal sources, advisory guidelines, and academic literature.
-      \item Automated Approach (XTRAREG): They developed an automated approach using GPT-3.5 and GPT-4o combined with Retrieval-Augmented Generation (RAG).
-      \item They tested different prompting techniques, including Zero-Shot Learning (ZSL) and Chain-of-Thought (CoT), to instruct the LLM to generate requirements informed by indexed legal documents.
-      \item Dual-Evaluation Framework:
-      \begin{itemize}
-        \item Quantitative: The authors used automated NLP metrics to compare generated text to the manual ground truth, including precision/recall-oriented metrics (BLEU, ROUGE-L, METEOR) and the semantic similarity metric BERTScore.
-        \item Qualitative: Legal experts performed an extrinsic assessment of the generated requirements based on Correctness (factually accurate), Groundedness (valid legal references), Plausibility (reasonable rationale), and Coverage (percentage of reference requirements identified).
-      \end{itemize}
-    \end{itemize}
-  \end{itemize}
+Several limitations of using LLMs for regulatory tasks are highlighted: while the requirements generated were often correct, the LLM only covered a fraction of the total requirements identified by human experts; the LLM frequently adopted an incorrect perspective, writing from the viewpoint of the data subject (e.g., "the user may\ldots") rather than the system (e.g., "the system shall\ldots"); some outputs were non-actionable, providing verbatim legal excerpts rather than technical requirements, or failing to account for legal exceptions; and the models occasionally suggested incomplete or misgrounded references, sometimes citing recitals (which are non-binding in civil law systems) instead of specific normative articles.
 
-  \item Key Results and Synthesis
-  \begin{itemize}
-    \item The study found that GPT-4o significantly outperformed GPT-3.5, particularly in the volume and completeness of generated requirements.
-    \item Key findings include:
-    \begin{itemize}
-      \item Accuracy and Correctness: XTRAREG achieved a correctness accuracy of 81.8\% for ACC and 85.7\% for PRT.
-      \item Impact of RAG: The inclusion of RAG significantly improved performance across all metrics compared to "ablation" runs where the LLM relied only on its pre-trained knowledge.
-      \item Semantic Similarity vs. Verbatim: The models achieved high BERTScores, indicating they successfully captured the semantic meaning of the requirements even when they did not match the manual baseline verbatim (as shown by lower BLEU scores).
-      \item Source Preference: Despite being exposed to various sources via RAG, the LLMs showed a strong tendency to generate requirements predominantly from the GDPR itself, often overlooking more specific technical details found in supplementary guidelines.
-    \end{itemize}
-  \end{itemize}
+\subsection*{Fine-Tuned LLM for Chinese Legal Drafting (Lin and Cheng, 2024)}
 
-  \item Limitations
-  \begin{itemize}
-    \item The authors highlighted several limitations inherent in using LLMs for regulatory tasks:
-    \begin{itemize}
-      \item Low Coverage: While the requirements generated were often correct, the LLM only covered a fraction of the total requirements identified by human experts.
-      \item Perspective Errors: The LLM frequently adopted an incorrect perspective, writing from the viewpoint of the data subject (e.g., "the user may...") rather than the system (e.g., "the system shall...").
-      \item Genericity and Actionability: Some outputs were non-actionable, providing verbatim legal excerpts rather than technical requirements, or failing to account for legal exceptions.
-      \item Groundedness Issues: The models occasionally suggested incomplete or misgrounded references, sometimes citing recitals (which are non-binding in civil law systems) instead of specific normative articles
-    \end{itemize}
-  \end{itemize}
-\end{itemize}
+Lin and Cheng \cite{linLegalDocumentsDrafting2024}, in \emph{Legal Documents Drafting with Fine-Tuned Pre-Trained Large Language Model}, focus on the automated drafting of legal documents, specifically targeting "criminal facts" descriptions in Traditional Chinese fraud case verdicts. The authors identify a significant research gap in the legal domain: traditional Natural Language Processing (NLP) methods rely heavily on manually annotated datasets, which are difficult and costly to obtain for specialised legal tasks; furthermore, most existing LLMs are trained on general text, leading to suboptimal performance when generating documents that require specific legal terminology and rigid formatting. A critical secondary gap is the privacy and security risk associated with third-party AI systems, as legal professionals are often reluctant to use cloud-based LLMs because they handle sensitive information.
 
-%%%
+The researchers employed a quantitative approach to model training and a structural qualitative-to-quantitative metric for document evaluation. To address privacy concerns, the authors fine-tuned an open-source BLOOM-560M model on a local machine (RTX 3090). They used a large unlabelled dataset of 74,823 fraud verdicts from the Taiwan Judicial Yuan (2011--2021) without requiring Chinese word segmentation, lowering the threshold for processing Chinese legal text. A core methodological contribution is a structural-correctness evaluation based on legal constitutive elements: the authors defined a specific order for document elements---Subject of Crime (LEO\_SOC), Subjective Legal Element (LEO\_SLE), Act (LEO\_ACT), Victim (LEO\_VIC), Causation (LEO\_CAU), and Result of Hazard (LEO\_ROH)---to evaluate whether the LLM-generated draft follows the correct legal logic and format. The model was further evaluated using perplexity and training/validation loss.
 
-"Legal Documents Drafting with Fine-Tuned Pre-Trained Large Language Model" (Lin and Cheng, 2024) \cite{linLegalDocumentsDrafting2024}
+The study demonstrates that local fine-tuning of a small-scale LLM (560M parameters) significantly improves its ability to generate legal drafts compared to the base model, which failed to produce relevant legal content. The fine-tuned model successfully generated drafts that adhered to the pre-defined structural order of legal elements (Equation~1), confirming the feasibility of using LLMs for specialised legal drafting. Synthesising these results, the paper shows that domain-specific performance can be achieved without massive computational resources or cloud-based infrastructure, making it a viable solution for privacy-sensitive legal applications.
 
-\begin{itemize}
-    \item Domain Focus and Research Gap
-    \begin{itemize}
-         \item The paper focuses on the automated drafting of legal documents, specifically targeting "criminal facts" descriptions in Traditional Chinese fraud case verdicts.
-        \item The authors identify a significant research gap in the legal domain: traditional Natural Language Processing (NLP) methods rely heavily on manually annotated datasets, which are difficult and costly to obtain for specialized legal tasks.
-        \item Furthermore, most existing Large Language Models (LLMs) are trained on general text, leading to suboptimal performance when generating documents that require specific legal terminology and rigid formatting.
-        \item A critical secondary gap is the privacy and security risk associated with third-party AI systems; legal professionals are often reluctant to use cloud-based LLMs because they handle sensitive information.
-  \end{itemize}
+The authors acknowledge several limitations: the experimental dataset is relatively small and focused only on fraud cases, requiring broader validation; perplexity alone may not fully reflect the practical utility or quality of the documents in a real-world application; fine-tuning larger models (e.g., 1.1B parameters) requires substantial GPU memory beyond standard consumer-grade hardware; and the model occasionally produces irrelevant or non-existent terms (e.g., the word "nueve"), a persistent challenge in natural language generation.
 
-  \item Methodology and Evaluation 
-  \begin{itemize}
-      \item The researchers employed a quantitative approach to model training and a structural qualitative-to-quantitative metric for document evaluation:
-  \end{itemize}
-  \begin{itemize}
-    \item Local Fine-tuning: To address privacy concerns, the authors fine-tuned an open-source BLOOM-560M model on a local machine (RTX 3090).
-    \item Dataset: They utilized a large, unlabeled dataset of 74,823 fraud verdicts from the Taiwan Judicial Yuan (2011--2021) without requiring Chinese word segmentation, thereby lowering the threshold for processing Chinese legal text.
-    \item Evaluation Metric (Structural Correctness): A core contribution of the methodology is a decomposition method based on legal constitutive elements.
-    \item The authors defined a specific order for document elements---Subject of Crime (LEO\_SOC), Subjective Legal Element (LEO\_SLE), Act (LEO\_ACT), Victim (LEO\_VIC), Causation (LEO\_CAU), and Result of Hazard (LEO\_ROH)---to evaluate if the LLM-generated draft follows the correct legal logic and format.
-    \item Performance Metrics: The model was evaluated using perplexity and training/validation loss.
-  \end{itemize}
+\subsection*{AI-Powered Legal Documentation Assistant (Vayadande et al., 2024)}
 
-  \item Key Results and Synthesis 
-      \begin{itemize} 
-          \item The study demonstrates that local fine-tuning of a small-scale LLM (560M parameters) significantly improves its ability to generate legal drafts compared to the base model, which failed to produce relevant legal content.
-      \begin{itemize}
-        \item The fine-tuned model successfully generated drafts that adhered to the pre-defined structural order of legal elements (Equation 1), confirming the feasibility of using LLMs for specialized legal drafting.
-        \item Synthesizing these results, the paper shows that domain-specific performance can be achieved without massive computational resources or cloud-based infrastructure, making it a viable solution for privacy-sensitive legal applications.
-      \end{itemize}
-    \end{itemize}
+Vayadande et al.\ \cite{vayadandeAIPoweredLegalDocumentation2024} describe an \emph{AI-Powered Legal Documentation Assistant} focused on the automation of legal document processing, specifically addressing document generation, comprehension, and abnormality detection. The authors identify a significant research gap in the inherent complexity of legal systems, which traditionally rely on manual, time-consuming processes prone to human error, and characterise existing document processing systems as inadequate because they cannot keep pace with the precision-oriented nature of legal documentation or the intricacies of specialised legal language.
 
-  \item Limitations The authors acknowledge several limitations:
-  \begin{itemize}
-    \item Dataset Scope: The experimental dataset is relatively small and focused only on fraud cases, requiring broader validation.
-    \item Evaluation Metrics: Perplexity alone may not fully reflect the practical utility or quality of the documents in a real-world application.
-    \item Hardware Constraints: Fine-tuning larger models (e.g., 1.1B parameters) requires substantial GPU memory beyond standard consumer-grade hardware.
-    \item Hallucinations: The model occasionally produces irrelevant or non-existent terms (e.g., the word "nueve"), a persistent challenge in natural language generation.
-  \end{itemize}
-\end{itemize}
+The authors developed a system using ChatGPT 3.5 integrated with OpenAI Embeddings and the LangChain framework. The architecture follows a multi-stage pipeline: data assembly of multilingual legal styles, data cleansing, and the use of FAISS vector stores for similarity searches. It employs PyPDF and Amazon Textract for document parsing, and Named Entity Recognition (NER) combined with sentiment analysis to identify inconsistencies. Evaluation is primarily quantitative, featuring a comparative analysis of the proposed LDA against existing market solutions like Kira Systems and Evisort, with metrics including accuracy percentages, time efficiency (hours), and document processing speed (pages per minute). The study additionally incorporates a qualitative element through a debugging phase that uses feedback and "balanced comments" from legal experts to refine the system's practical utility.
 
-%%%
+The study reports that the AI-powered assistant significantly outperforms traditional methods: an accuracy rate of 93--97\,\%, comparable to or higher than established legal AI tools; a reduction in the time required for document tasks from 20 hours (manual) to 5 hours (AI-assisted); and an error rate lowered to 5\,\%, compared to a 15\,\% error rate in manual processing. The synthesis of these results suggests that combining LLMs with specialised NLP toolkits (such as NER and sentiment analysis) provides a "force of change" for making legal practices more frictionless.
 
-"AI-Powered Legal Documentation Assistant" (Vayadande et al., 2024) \cite{vayadandeAIPoweredLegalDocumentation2024}
+Despite the high performance, the authors note several limitations: the system still lacks "absolute accuracy" and may struggle with the extreme nuances of certain judicial texts; while designed for multilingual potential, it does not yet apply to a wide enough variety of languages, and accuracy is highly dependent on the quality of input, such as the clarity of audio recordings or the success of digitising handwritten notes; and using different text extraction tools for various formats (PDF vs.\ DOC) can lead to inconsistencies in how information is expressed.
 
-\begin{itemize}
-  \item Domain Focus and Research Gap
-  \begin{itemize}
-    \item The research focuses on the automation of legal document processing, specifically addressing document generation, comprehension, and abnormality detection.
-    \item The authors identify a significant research gap in the inherent complexity of legal systems, which traditionally rely on manual, time-consuming processes prone to human error.
-    \item Existing document processing systems are often characterized as inadequate because they cannot keep pace with the precision-oriented nature of legal documentation or the intricacies of specialized legal language.
-  \end{itemize}
+\subsection*{AI-Powered Interactive Legal Chatbot (Surya et al., 2025)}
 
-  \item Methodology and Evaluation
-  \begin{itemize}
-    \item The authors developed a system utilizing ChatGPT 3.5 integrated with OpenAI Embeddings and the LangChain framework,.
-    \item System Architecture: The methodology involves a multi-stage pipeline: data assembly of multilingual legal styles, data cleansing, and the use of FAISS vector stores for similarity searches.
-    \item It employs PyPDF and Amazon Textract for document parsing and Named Entity Recognition (NER) combined with sentiment analysis to identify inconsistencies,.
-    \item Evaluation Approach: The evaluation is primarily quantitative, featuring a comparative analysis of the proposed LDA against existing market solutions like Kira Systems and Evisort.
-    \item Metrics used for evaluation include accuracy percentages, time efficiency (hours), and document processing speed (pages per minute).
-    \item Additionally, the study incorporates a qualitative element through a debugging phase that utilizes feedback and "balanced comments" from legal experts to refine the system’s practical utility.
-  \end{itemize}
+Surya et al.\ \cite{suryaAIPoweredInteractiveLegal2025} describe an \emph{AI-Powered Interactive Legal Chatbot for the Department of Justice}, focusing on the Indian public legal assistance domain and specifically targeting the significant gap in accessibility to understandable and affordable legal information. They identify a research gap in providing scalable, real-time, and multilingual support for citizens who struggle with complex legal jargon and the financial burden of professional counsel, and aim to democratise legal information, particularly for marginalised communities and those with limited resources.
 
-  \item Key Results and Synthesis
-  \begin{itemize}
-    \item The study demonstrates that the AI-powered assistant significantly outperforms traditional methods:
-    \begin{itemize}
-      \item Accuracy: The system achieved an accuracy rate of 93--97\%, which is comparable to or higher than established legal AI tools.
-      \item Efficiency: It reduced the time required for document tasks from 20 hours (manual) to 5 hours (AI-assisted).
-      \item Error Reduction: The error rate was lowered to 5\%, compared to a 15\% error rate in manual processing.
-    \end{itemize}
-    \item The synthesis of these results suggests that combining LLMs with specialized NLP toolkits (like NER and sentiment analysis) provides a "force of change" for making legal practices more frictionless.
-  \end{itemize}
+The methodology centres on the development of a three-tier conceptual and technical framework for an AI-powered chatbot. The system architecture comprises a frontend (a JavaScript-powered single-page application for user interaction and document uploads), a backend (a Python Flask orchestrator handling API requests and language translation), and an LLM service (LLaMA 3.1 accessed via the Ollama framework, using specific prompt engineering for legal queries and document summarisation). For evaluation, the paper uses qualitative illustrative use cases to demonstrate functionality rather than a rigorous quantitative user study. These use cases simulate real-world scenarios, such as a user inquiring about consumer complaint procedures or another requesting a summary of a First Information Report (FIR), and also showcase multilingual interaction by processing a query in Hindi, translating it to English for the LLM, and returning the response in Hindi.
 
-  \item Limitations
-  \begin{itemize}
-    \item Despite the high performance, the authors note several limitations:
-    \begin{itemize}
-      \item Accuracy Constraints: The system still lacks "absolute accuracy" and may struggle with the extreme nuances of certain judicial texts.
-      \item Language and Format: While designed for multilingual potential, it does not yet apply to a wide enough variety of languages.
-      \item Furthermore, the accuracy of the system is highly dependent on the quality of input, such as the clarity of audio recordings or the success of digitizing handwritten notes.
-      \item Extraction Challenges: Using different text extraction tools for various formats (PDF vs. DOC) can lead to inconsistencies in how information is expressed.
-    \end{itemize}
-  \end{itemize}
-\end{itemize}
+The primary result is the successful integration of real-time query processing and document summarisation within a unified legal assistant. The authors synthesise these features to show how such a tool can provide 24/7 availability, reduce cost barriers, and simplify complex legal language for laypersons. A significant contribution is the multilingual capability, which allows the system to reach a broader demographic by breaking down language barriers, and the system also emphasises transparency through citation support, providing users with relevant legal references and government portal links to verify information.
 
-%%%
+The paper identifies several critical limitations: LLMs may generate plausible but incorrect information, which is particularly risky in the legal domain where precision is paramount; the system may struggle with the subtleties of legal language, potentially leading to oversimplifications or misinterpretations in summaries of complex documents like FIRs or petitions; while the system handles sensitive personal data, current implementations require more robust measures like encryption and access controls to comply with India's Digital Personal Data Protection Act; and there is an inherent risk of AI bias and a fine line between providing information and offering actionable legal advice, which users might misinterpret despite disclaimers.
 
-"AI-Powered Interactive Legal Chatbot for the Department of Justice" (Surya et al., 2025) \cite{suryaAIPoweredInteractiveLegal2025}
+\subsection*{JuDGE: Judgment Document Generation Benchmark (Su et al., 2025)}
 
-\begin{itemize}
-  \item Domain Focus and Research Gap Surya et al. (2025) focus on the Indian public legal assistance domain, specifically targeting the significant gap in accessibility to understandable and affordable legal information.
-  \begin{itemize}
-    \item They identify a research gap in providing scalable, real-time, and multilingual support for citizens who struggle with complex legal jargon and the financial burden of professional counsel.
-    \item The work aims to democratize legal information, particularly for marginalized communities and those with limited resources.
-  \end{itemize}
+Su et al.\ \cite{suJuDGEBenchmarkingJudgment2025}, in \emph{JuDGE: Benchmarking Judgment Document Generation for Chinese Legal System}, focus on the automated generation of complete legal judgment documents within the Chinese legal system, a task that demands complex legal reasoning and the integration of professional knowledge. While previous work in Legal Judgment Prediction (LJP) primarily formulated the problem as a classification task---predicting discrete labels for charges or sentences---this paper addresses the generative gap by requiring models to produce structurally coherent and legally sound full-text documents. The authors identify a critical research gap: the absence of standardised benchmarks and automated evaluation frameworks, which previously necessitated time-consuming and unscalable expert annotations.
 
-  \item Methodology and Evaluation 
-  The methodology centers on the development of a three-tier conceptual and technical framework for an AI-powered chatbot.
-  \begin{itemize}
-    \item The system architecture includes:
-    \begin{itemize}
-      \item Frontend: A JavaScript-powered single-page application for user interaction and document uploads.
-      \item Backend: A Python Flask orchestrator handling API requests and language translation.
-      \item LLM Service: LLaMA 3.1 accessed via the Ollama framework, utilizing specific prompt engineering for legal queries and document summarization.
-    \end{itemize}
-    \item Regarding evaluation, the paper employs qualitative illustrative use cases to demonstrate functionality rather than a rigorous quantitative user study.
-    \item These use cases simulate real-world scenarios, such as a user inquiring about consumer complaint procedures or another requesting a summary of a First Information Report (FIR).
-    \item The evaluation also showcases multilingual interaction by processing a query in Hindi, translating it to English for the LLM, and returning the response in Hindi.
-  \end{itemize}
+The authors introduce JuDGE (Judgment Document Generation Evaluation), a benchmark designed to mirror the judicial syllogism process: using statutes and precedents as the major premise and case facts as the minor premise to reach a legal conclusion. The benchmark includes 2,505 fact-judgment pairs from real criminal cases, supplemented by an external corpus of over 55,000 statutory articles and 103,000 past judgments. The study employs a multi-dimensional automated framework to assess quality across four perspectives: \emph{Penalty Accuracy}, measuring the precision of prison terms and fines using a normalised absolute difference score; \emph{Convicting Accuracy}, using Recall, Precision, and F1 scores to evaluate charge identification; \emph{Referencing Accuracy}, assessing the correctness of statutory citations; and \emph{Documenting Similarity}, evaluating semantic alignment with ground truth via METEOR and BERTScore to capture nuanced legal reasoning beyond simple lexical matching.
 
-  \item Key Results and Synthesis The primary result is the successful integration of real-time query processing and document summarization within a unified legal assistant.
-  \begin{itemize}
-    \item The authors synthesize these features to show how such a tool can provide 24/7 availability, reduce cost barriers, and simplify complex legal language for laypersons.
-    \item A significant contribution is the multilingual capability, which allows the system to reach a broader demographic by breaking down language barriers.
-    \item The system also emphasizes transparency through citation support, providing users with relevant legal references and government portal links to verify information.
-  \end{itemize}
+The experiments compared several baselines, including direct generation, few-shot in-context learning (ICL), supervised fine-tuning (SFT), and Multi-source Retrieval-Augmented Generation (MRAG). General and legal-domain LLMs performed poorly when used directly or via ICL, often failing to incorporate case-specific facts; however, SFT significantly improved performance across all models, making previously "unusable" legal LLMs competitive. The proposed MRAG approach, which retrieves both relevant statutes and similar cases, achieved the highest performance in convicting accuracy. Synthesising the results, the authors observe that while advanced techniques like RAG and SFT enhance document quality, current LLMs still struggle to consistently produce documents that match the legal rigor of professional ground truths, indicating that the task remains highly challenging.
 
-  \item Limitations The paper identifies several critical limitations:
-  \begin{itemize}
-    \item Accuracy and Hallucination: LLMs may generate plausible but incorrect information, which is particularly risky in the legal domain where precision is paramount.
-    \item Nuance and Context: The system may struggle with the subtleties of legal language, potentially leading to oversimplifications or misinterpretations in summaries of complex documents like FIRs or petitions.
-    \item Data Security: While the system handles sensitive personal data, current implementations require more robust measures like encryption and access controls to comply with India’s Digital Personal Data Protection Act.
-    \item Ethical Concerns: There is an inherent risk of AI bias and a fine line between providing information and offering actionable legal advice, which users might misinterpret despite disclaimers.
-  \end{itemize}
-\end{itemize}
+The paper notes several limitations. First, while MRAG improves recall for legal references, it often suffers from lower precision because current LLMs struggle to filter out irrelevant statutes provided by the retriever. Second, the automated metrics provided are currently focused on criminal law, which may limit their immediate applicability to other legal domains. Finally, the authors acknowledge that metrics like METEOR and BERTScore are proxies for semantic consistency and may not fully capture the absolute legal validity that a human expert would provide.
 
-%%%
+\subsection*{CaseGen: Multi-Stage Legal Case Documents (Li et al., 2025)}
 
+Li et al.\ \cite{liCaseGenBenchmarkMultiStage2025}, in \emph{CaseGen: A Benchmark for Multi-Stage Legal Case Documents Generation}, focus on the Chinese legal domain, specifically the automation of drafting official judicial records, which traditionally requires significant manual effort and domain expertise. They identify a critical research gap: while LLMs show promise in legal applications, existing benchmarks are limited to general text tasks (like summarisation) or simple discriminative legal tasks (like judgment prediction or case retrieval), and there was previously no benchmark capable of capturing the complexity, professional rigour, and multi-stage nature of drafting real-world legal documents.
 
-"JuDGE: Benchmarking Judgment Document Generation for Chinese Legal System" (Su et al., 2025) \cite{suJuDGEBenchmarkingJudgment2025}
+CaseGen uses a dataset of 500 real-world legal cases annotated by five legal experts to ensure authenticity and completeness. The methodology is defined by two core components. The first is a multi-stage task design: instead of generating a document in a single step, the benchmark breaks the process into four distinct tasks---drafting defence statements, writing trial facts, composing legal reasoning, and generating judgment results---an approach that aligns with the actual logic of legal writing and allows for a more nuanced assessment of an LLM's strengths and weaknesses. The second is a hybrid evaluation framework. On the quantitative side, traditional metrics like ROUGE-L and BERTScore are used, but noted for their inability to capture logical coherence or factuality. The primary evaluation is an LLM-as-a-Judge pointwise scoring system (1--10) where an LLM (GPT-4o) acts as a judge, using Chain-of-Thought (CoT) reasoning, task-oriented criteria (accuracy, completeness, logic), and reference-based comparisons to ground truth documents. The effectiveness of the LLM judge was validated through human expert annotations, showing a 75\,\% Spearman correlation, which suggests that LLM-as-a-judge is a reliable alternative for large-scale legal text evaluation.
 
-\begin{itemize}
-    \item Domain Focus and Research Gap 
-    \begin{itemize}
-    \item The research focuses on the automated generation of complete legal judgment documents within the Chinese legal system, a task that demands complex legal reasoning and the integration of professional knowledge.
-    \item While previous work in Legal Judgment Prediction (LJP) primarily formulated the problem as a classification task---predicting discrete labels for charges or sentences---this paper addresses the generative gap by requiring models to produce structurally coherent and legally sound full-text documents.
-    \item The authors identify a critical research gap: the absence of standardized benchmarks and automated evaluation frameworks, which previously necessitated time-consuming and unscalable expert annotations.
-  \end{itemize}
+Surprisingly, general-domain LLMs (such as GPT-4o and Qwen2.5) consistently outperformed legal-specific models like ChatLaw or LexiLaw; the authors suggest that specialised models may suffer from limited base-model reasoning or information loss due to shorter context windows. Despite the capabilities of modern LLMs, most models achieved unsatisfactory scores (below 6 out of 10), indicating that existing AI still struggles with the logical rigor and complex reasoning required for professional legal drafting. The study found that the LLM-as-a-judge score had significantly higher consistency with human experts than lexical matching metrics like ROUGE-L.
 
-  \item Methodology and Evaluation 
-  \begin{itemize}
-  \item The authors introduce JuDGE (Judgment Document Generation Evaluation), a benchmark designed to mirror the judicial syllogism process: using statutes and precedents as the major premise and case facts as the minor premise to reach a legal conclusion.
-  \begin{itemize}
-    \item Dataset: The benchmark includes 2,505 fact-judgment pairs from real criminal cases, supplemented by an external corpus of over 55,000 statutory articles and 103,000 past judgments.
-    \item Quantitative Evaluation: The study employs a multi-dimensional automated framework to assess quality across four perspectives:
-    \begin{itemize}
-      \item Penalty Accuracy: Measuring the precision of prison terms and fines using a normalized absolute difference score.
-      \item Convicting Accuracy: Utilizing Recall, Precision, and F1 scores to evaluate charge identification.
-      \item Referencing Accuracy: Assessing the correctness of statutory citations.
-      \item Documenting Similarity: Evaluating semantic alignment with ground truth via METEOR and BERTScore to capture nuanced legal reasoning beyond simple lexical matching.
-    \end{itemize}
-  \end{itemize}
-  \end{itemize}
+The authors note several limitations: the benchmark is currently limited to the Chinese legal system, meaning the findings may not generalise to different legal frameworks or document formats; while highly correlated with humans, LLM judges can still be influenced by inherent biases or adversarial inputs and cannot yet fully replace nuanced professional judgment; and the study emphasises that AI should remain a supportive tool for efficiency rather than a substitute for human legal expertise, especially given the risks of hallucinations in high-stakes environments.
 
-  \item Key Results and Synthesis 
-  \begin{itemize}
-      \item The experiments compared several baselines, including direct generation, few-shot in-context learning (ICL), supervised fine-tuning (SFT), and Multi-source Retrieval-Augmented Generation (MRAG).
-  \end{itemize}
-  \begin{itemize}
-    \item Instruction-Following and Fine-Tuning: General and legal-domain LLMs performed poorly when used directly or via ICL, often failing to incorporate case-specific facts.
-    \item However, SFT significantly improved performance across all models, making previously "unusable" legal LLMs competitive.
-    \item RAG Effectiveness: The proposed MRAG approach, which retrieves both relevant statutes and similar cases, achieved the highest performance in convicting accuracy.
-    \item Synthesis: While advanced techniques like RAG and SFT enhance document quality, current LLMs still struggle to consistently produce documents that match the legal rigor of professional ground truths, indicating that the task remains highly challenging.
-  \end{itemize}
+\subsection*{Synthesis}
 
-  \item Limitations 
-  \begin{itemize}
-    \item First, while MRAG improves recall for legal references, it often suffers from lower precision because current LLMs struggle to filter out irrelevant statutes provided by the retriever.
-    \item Second, the automated metrics provided are currently focused on criminal law, which may limit their immediate applicability to other legal domains.
-    \item Finally, the authors acknowledge that metrics like METEOR and BERTScore are proxies for semantic consistency and may not fully capture the absolute legal validity that a human expert would provide.
-  \end{itemize}
-  \end{itemize}
-
-%%%
-
-"CaseGen: A Benchmark for Multi-Stage Legal Case Documents Generation" (Li et al., 2025) \cite{liCaseGenBenchmarkMultiStage2025}
-
-\begin{itemize}
-
-  \item Domain Focus and Research Gap
-  \begin{itemize}
-    \item The authors focus on the Chinese legal domain, specifically the automation of drafting official judicial records, which traditionally requires significant manual effort and domain expertise.
-    \item They identify a critical research gap: while LLMs show promise in legal applications, existing benchmarks are limited to general text tasks (like summarization) or simple, discriminative legal tasks (like judgment prediction or case retrieval).
-    \item There was previously no benchmark capable of capturing the complexity, professional rigor, and multi-stage nature of drafting real-world legal documents.
-  \end{itemize}
-
-  \item Methodology and Evaluation
-  \begin{itemize}
-    \item CaseGen utilizes a dataset of 500 real-world legal cases annotated by five legal experts to ensure authenticity and completeness.
-    \item The methodology is defined by two core components:
-    \begin{itemize}
-      \item Multi-Stage Task Design: Instead of generating a document in a single step, the benchmark breaks the process into four distinct tasks: drafting defense statements, writing trial facts, composing legal reasoning, and generating judgment results.
-      \item This approach aligns with the actual logic of legal writing and allows for a more nuanced assessment of an LLM's strengths and weaknesses.
-      \item Evaluation Framework (Quantitative \& Qualitative): The study employs a hybrid evaluation approach.
-      \begin{itemize}
-        \item Quantitative: Traditional metrics like ROUGE-L and BERTScore are used but noted for their inability to capture logical coherence or factuality.
-        \item LLM-as-a-Judge: The primary evaluation is a pointwise scoring system (1-10) where an LLM (GPT-4o) acts as a judge.
-        \item This judge uses Chain-of-Thought (CoT) reasoning, task-oriented criteria (accuracy, completeness, logic), and reference-based comparisons to ground truth documents.
-        \item Expert Validation: The effectiveness of the LLM judge was validated through human expert annotations, showing a 75\% Spearman correlation, which suggests that LLM-as-a-judge is a reliable alternative for large-scale legal text evaluation.
-      \end{itemize}
-    \end{itemize}
-  \end{itemize}
-
-  \item Key Results and Synthesis
-  \begin{itemize}
-    \item General LLMs vs. Legal-Specific LLMs: Surprisingly, general-domain LLMs (such as GPT-4o and Qwen2.5) consistently outperformed legal-specific models like ChatLaw or LexiLaw.
-    \item The authors suggest that specialized models may suffer from limited base-model reasoning or information loss due to shorter context windows.
-    \item Current Performance Gap: Despite the capabilities of modern LLMs, most models achieved unsatisfactory scores (below 6 out of 10).
-    \item This indicates that existing AI still struggles with the logical rigor and complex reasoning required for professional legal drafting.
-    \item Metric Consistency: The study found that the LLM-as-a-judge score had significantly higher consistency with human experts than lexical matching metrics like ROUGE-L.
-  \end{itemize}
-
-  \item Limitations
-    \begin{itemize}
-      \item Geographic and Linguistic Scope: The benchmark is currently limited to the Chinese legal system, meaning the findings may not generalize to different legal frameworks or document formats.
-      \item Judge Reliability: While highly correlated with humans, LLM judges can still be influenced by inherent biases or adversarial inputs and cannot yet fully replace nuanced professional judgment.
-      \item Ethical Constraints: The study emphasizes that AI should remain a supportive tool for efficiency rather than a substitute for human legal expertise, especially given the risks of hallucinations in high-stakes environments.
-    \end{itemize}
-  \end{itemize}
+Across the eight works reviewed, two patterns emerge that frame the present thesis. First, dual evaluation---combining surface-overlap NLP metrics (BLEU, ROUGE, METEOR), semantic-similarity metrics (BERTScore), and either expert assessment or LLM-as-a-Judge scoring---is becoming the de facto standard for legal-document generation, and is the methodological template adopted here. Second, while several works explore architectures (RAG, fine-tuning, structured wrappers) that improve generated-document quality on benchmarks, none of them measure how \emph{novice users} interact with such systems on a GDPR-specific task or how user confidence relates to actual document quality. The thesis fills that gap by combining a within-subjects user study with a dual-evaluation pipeline against a single shared scenario.

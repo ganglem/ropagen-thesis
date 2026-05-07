@@ -22,6 +22,10 @@ BCOR15mm               % Bindekorrektur
 \renewcommand{\familydefault}{\sfdefault} 
 
 \usepackage{graphicx}
+\graphicspath{{images/}{../python/survey/output/}{../python/metrics/output/}{../python/judge/output/}}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\sisetup{detect-all,group-separator={\,},output-decimal-marker={.}}
 
 % Literaturverzeichnis mit BibLaTeX
 \usepackage[autostyle]{csquotes}
@@ -160,6 +164,7 @@ pdfborder=0 0 0	% keine Box um die Links!
 \appendix
 % hier Anhänge einbinden
 \input{chapters/sources}
+\input{chapters/appendix_inferential}
 
 \backmatter
 \nocite{Knappen2009}
