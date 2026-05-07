@@ -6,7 +6,7 @@ Previous research developed an application that leverages Large Language Models 
 Although the application provides a functional framework for assisted ROPA generation, its effectiveness, usability, and impact on documentation quality have not yet been systematically evaluated. To ensure that such a system can be confidently integrated into practical compliance workflows, both qualitative and quantitative assessments are needed. These evaluations must determine whether users can efficiently and correctly create ROPA documents, how the varying levels of LLM support influence performance and trust, and whether the system produces outputs aligned with GDPR requirements.
 
  
-\section{Reserach Problem and Research Questions}
+\section{Research Problem and Research Questions}
 The goal of this thesis is to conduct a comprehensive evaluation of the existing LLM-supported ROPA generation application. The work will focus on assessing how the different interaction modes affect user experience, efficiency, output quality, and perceived reliability.
 
 \paragraph{RQ1:}
@@ -38,37 +38,46 @@ The goal of this thesis is to conduct a comprehensive evaluation of the existing
     \begin{itemize}
         \item Motivation, research questions, and contributions
     \end{itemize}
-    
+
     \item \textbf{Chapter 2: Background and Related Work}
     \begin{itemize}
-        \item GDPR and ROPA 
-        \item Related work in AI-assisted legal document generation 
+        \item GDPR and ROPA
+        \item Related work in AI-assisted legal document generation
     \end{itemize}
-    
+
     \item \textbf{Chapter 3: Methodology}
     \begin{itemize}
         \item Brief overview of ROPAgen
-    \end{itemize}
-    \begin{itemize}
         \item User study design (within-subjects, balanced Latin Square)
         \item Data collection instruments (SUS, R-TLX, confidence questions)
-        \item Document quality assessment (BERTScore, LLM-as-a-judge)
+        \item Document quality assessment (NLP metrics, LLM-as-a-judge)
     \end{itemize}
-    
-    \item \textbf{Chapter 5: Evaluation and Results}
+
+    \item \textbf{Chapter 4: Evaluation and Results}
     \begin{itemize}
-        \item RQ1: User experience and preferences
-        \item RQ2: Document quality and confidence-quality gap
+        \item Usability (SUS)
+        \item Cognitive Load (NASA R-TLX)
+        \item User Preference and Open Feedback (Mode Preference, Perceived AI Support, Open-Ended Feedback)
+        \item Document Similarity (NLP Metrics)
+        \item GDPR-Specific Quality (LLM-as-a-Judge)
+        \item Fallbeispielhafte Dokumentanalyse (qualitative insights into generated ROPA entries)
     \end{itemize}
-    
-    \item \textbf{Chapter 6: Discussion}
+
+    \item \textbf{Chapter 5: Discussion}
     \begin{itemize}
-        \item Interpretation of findings and implications
+        \item Interpretation of findings against the research questions
+        \item Confidence--quality gap and implications
         \item Limitations and comparison with related work
     \end{itemize}
-    
-    \item \textbf{Chapter 7: Conclusion}
+
+    \item \textbf{Chapter 6: Conclusion}
     \begin{itemize}
         \item Summary of contributions and future work
+    \end{itemize}
+
+    \item \textbf{Appendix}
+    \begin{itemize}
+        \item Appendix A: Study Scenario (German original and English translation)
+        \item Appendix B: LLM-as-a-Judge Configuration (system/user prompt, rubric, model settings)
     \end{itemize}
 \end{itemize}

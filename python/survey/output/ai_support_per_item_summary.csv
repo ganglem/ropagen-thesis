@@ -1,0 +1,19 @@
+item,item_text,mode,n,mean,sd,median,q1,q3
+1,The AI was helpful in creating this document.,Form,69,4.2319,0.9723,5.0,4.0,5.0
+1,The AI was helpful in creating this document.,Ask,69,4.3188,0.7572,4.0,4.0,5.0
+1,The AI was helpful in creating this document.,Chat,69,4.1304,0.9987,4.0,4.0,5.0
+2,The AI helped me to complete the document faster.,Form,69,4.4348,0.9622,5.0,4.0,5.0
+2,The AI helped me to complete the document faster.,Ask,69,4.2464,1.0348,5.0,4.0,5.0
+2,The AI helped me to complete the document faster.,Chat,69,3.9855,1.3228,4.0,4.0,5.0
+3,I understood why the AI suggested specific GDPR fields.,Form,69,3.5072,1.171,4.0,3.0,4.0
+3,I understood why the AI suggested specific GDPR fields.,Ask,69,4.1594,0.9175,4.0,4.0,5.0
+3,I understood why the AI suggested specific GDPR fields.,Chat,69,3.7536,0.9763,4.0,3.0,5.0
+4,I trust that the AI made correct suggestions.,Form,69,3.4058,1.089,4.0,3.0,4.0
+4,I trust that the AI made correct suggestions.,Ask,69,3.7971,0.8674,4.0,3.0,4.0
+4,I trust that the AI made correct suggestions.,Chat,69,3.6812,0.9154,4.0,3.0,4.0
+5,I am confident that the AI identified the correct legal basis.,Form,69,3.5797,0.8978,4.0,3.0,4.0
+5,I am confident that the AI identified the correct legal basis.,Ask,69,3.7391,0.8686,4.0,3.0,4.0
+5,I am confident that the AI identified the correct legal basis.,Chat,69,3.8116,0.8791,4.0,3.0,4.0
+6,I would use this mode again.,Form,69,3.9855,1.1439,4.0,4.0,5.0
+6,I would use this mode again.,Ask,69,3.5507,1.1573,4.0,3.0,4.0
+6,I would use this mode again.,Chat,69,3.4203,1.387,4.0,2.0,5.0

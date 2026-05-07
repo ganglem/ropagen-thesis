@@ -6,23 +6,23 @@
     "judge": {
       "completeness": {
         "score": 5,
-        "rationale": "The document comprehensively covers all mandatory elements required by Article 30(1) GDPR, including controller and DPO details, purposes, data categories, recipients, retention periods, and TOMs."
+        "rationale": "The document comprehensively covers all required elements under Article 30(1) GDPR, including controller and DPO details, purposes, legal bases, data categories, recipients, retention periods, and TOMs."
       },
       "scenario_faithfulness": {
         "score": 1,
-        "rationale": "The document directly contradicts the scenario's explicit constraints by including health data (sick days), external cloud services (Microsoft 365, Google Mail), and completely ignoring the strict 3-month deletion rule."
+        "rationale": "The document directly contradicts the scenario by including cloud services (MS 365), health data (sick days), and retention periods up to 10 years instead of the strictly specified 3 months."
       },
       "legal_correctness": {
         "score": 4,
-        "rationale": "The legal bases cited (Art. 6(1)(b), (c), (f) GDPR and § 26 BDSG) are appropriate for HR and parking management, and GDPR terminology is generally used correctly."
+        "rationale": "The legal bases are cited correctly, including Art. 6(1)(b) for employment contracts and Art. 6(1)(f) for parking management. However, it includes legal bases for processing activities that do not exist in the scenario."
       },
       "hallucination_inverse": {
         "score": 1,
-        "rationale": "The text invents numerous external recipients, cloud systems, applicant data, and complex retention schedules that were not part of the provided scenario."
+        "rationale": "The text invents numerous external recipients, cloud services, health data categories, and complex retention schedules that were explicitly excluded or not mentioned in the provided facts."
       },
       "overall": {
         "score": 2,
-        "rationale": "Although structurally sound and legally plausible as a generic template, its blatant disregard for the scenario's specific constraints (no cloud, no health data, 3-month retention) makes it highly flawed for this specific use case."
+        "rationale": "While structurally complete and legally plausible for a generic HR department, it fails as a record for this specific scenario due to severe hallucinations and direct contradictions of the given constraints."
       }
     }
   },
@@ -33,23 +33,23 @@
     "judge": {
       "completeness": {
         "score": 5,
-        "rationale": "The document successfully includes all mandatory elements under Article 30(1) GDPR, such as controller and DPO details, purposes, data categories, subjects, recipients, retention periods, and TOMs."
+        "rationale": "The document includes all required elements under Article 30(1) GDPR, including controller details, DPO, purposes, data categories, recipients, retention periods, and TOMs."
       },
       "scenario_faithfulness": {
         "score": 2,
-        "rationale": "The document completely ignores the scenario's explicit 3-month deletion rule, substituting it with generic 10-year and immediate deletion periods. It also incorrectly refers to 'Office 365' despite the scenario specifying internally hosted Office with no external cloud."
+        "rationale": "The document completely ignores the scenario's explicit instruction that all data is deleted within 3 months of departure, substituting it with a 10-year retention period. It also inaccurately lists 'Microsoft Office 365' instead of internally hosted MS Office."
       },
       "legal_correctness": {
         "score": 4,
-        "rationale": "The legal bases are well-chosen and appropriate for the German employment context (Art. 6(1)(b), (c), (f) GDPR and § 26 BDSG). However, listing IT systems as 'data sources' is a slight terminological inaccuracy."
+        "rationale": "Legal bases are correctly identified (Art. 6(1)(b), (c), (f) GDPR and § 26 BDSG). However, listing IT systems (MS Office, servers) as 'data sources' rather than processing environments is technically inaccurate."
       },
       "hallucination_inverse": {
-        "score": 2,
-        "rationale": "The document invents retention periods (10 years and 'unverzüglich') that directly contradict the scenario. It also introduces 'Microsoft Office 365', which implies a cloud environment contrary to the prompt."
+        "score": 3,
+        "rationale": "The author invented a 10-year retention period and a specific zip code (89073) not provided in the text. It also assumed 'Office 365' despite the scenario specifying internally hosted software."
       },
       "overall": {
         "score": 3,
-        "rationale": "While structurally excellent and legally plausible, the document's failure to adhere to the scenario's specific retention periods and its inclusion of cloud-based Office 365 significantly reduce its accuracy for this specific case."
+        "rationale": "While structurally excellent and legally sound in its framework, the document fails to follow the specific constraints of the provided scenario, particularly regarding retention periods."
       }
     }
   },

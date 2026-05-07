@@ -1,0 +1,150 @@
+\section{Usability — System Usability Scale}
+\label{sec:eval-sus}
+
+The System Usability Scale is administered after each interaction mode. It
+consists of ten Likert items on a five-point scale, with odd-numbered items
+phrased positively (higher response equals more positive evaluation) and
+even-numbered items phrased negatively (lower response equals more positive
+evaluation). The ten items are scored and summed into a composite from $0$ to
+$100$.
+
+\subsection{Per-Item Results}
+
+Table~\ref{tab:sus-per-item} reports the mean response per item per mode and
+the aggregated mean across all three modes. The aggregated column is the
+unweighted mean of the three per-mode means.
+
+\begin{table}[htbp]
+\centering
+\caption{System Usability Scale, mean response per item by mode ($n = 69$ per
+mode). Items are reported on the original five-point Likert scale; the
+``All'' column averages the three per-mode means. Odd items: higher is better;
+even items: lower is better.}
+\label{tab:sus-per-item}
+\small
+\begin{tabularx}{\linewidth}{@{}c X r r r r@{}}
+\toprule
+\# & Item & Form & Ask & Chat & All \\
+\midrule
+1 & I think that I would like to use this system frequently. & 3.52 & 3.22 & 3.22 & 3.32 \\
+2 & I found the system unnecessarily complex. & 1.64 & 2.25 & 2.12 & 2.00 \\
+3 & I thought the system was easy to use. & 4.38 & 4.01 & 3.99 & 4.13 \\
+4 & I think that I would need the support of a technical person to be able to use this system. & 1.52 & 1.49 & 1.55 & 1.52 \\
+5 & I found the various functions in this system were well integrated. & 4.00 & 3.67 & 3.64 & 3.77 \\
+6 & I thought there was too much inconsistency in this system. & 2.16 & 2.04 & 2.01 & 2.07 \\
+7 & I would imagine that most people would learn to use this system very quickly. & 4.30 & 4.00 & 4.03 & 4.11 \\
+8 & I found the system very cumbersome to use. & 1.65 & 2.16 & 2.29 & 2.03 \\
+9 & I felt very confident using the system. & 3.83 & 3.84 & 3.90 & 3.86 \\
+10 & I needed to learn a lot of things before I could get going with this system. & 1.61 & 1.61 & 1.62 & 1.61 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+For \emph{``I think that I would like to use this system frequently''} (item~1),
+Form yields the highest mean (3.52), followed by Ask and Chat at the same level
+(3.22 each); the aggregated mean is 3.32. Frequent-use intent therefore decreases
+from Form to the two LLM-driven modes by approximately 0.30~points.
+
+For \emph{``I found the system unnecessarily complex''} (item~2, lower is
+better), Form is rated lowest (1.64), Chat second (2.12), and Ask highest at
+2.25; the aggregated mean is 2.00. Perceived complexity is approximately
+0.5~points higher in the LLM-driven modes than in Form.
+
+For \emph{``I thought the system was easy to use''} (item~3), Form is rated
+highest (4.38), with Ask and Chat closely matched at 4.01 and 3.99; the
+aggregated mean is 4.13. Ease-of-use ratings decrease by roughly 0.4~points
+from Form to the LLM-driven modes.
+
+For \emph{``I think that I would need the support of a technical person to be
+able to use this system''} (item~4, lower is better), the three modes are
+essentially indistinguishable (Form 1.52, Ask 1.49, Chat 1.55), with an
+aggregated mean of 1.52. None of the three modes is perceived to require
+technical support.
+
+For \emph{``I found the various functions in this system were well
+integrated''} (item~5), Form scores highest (4.00), Ask and Chat lower (3.67
+and 3.64); aggregated mean is 3.77. The integration rating drops by
+approximately 0.35~points from Form to the LLM-driven modes.
+
+For \emph{``I thought there was too much inconsistency in this system''}
+(item~6, lower is better), the three modes are similar (Form 2.16, Ask 2.04,
+Chat 2.01), aggregated mean 2.07. Form is rated marginally higher on this
+negative item than the two LLM-driven modes.
+
+For \emph{``I would imagine that most people would learn to use this system
+very quickly''} (item~7), Form scores 4.30, Ask 4.00, Chat 4.03; aggregated
+mean is 4.11. Perceived learnability decreases by approximately 0.30~points
+from Form to the LLM-driven modes.
+
+For \emph{``I found the system very cumbersome to use''} (item~8, lower is
+better), the largest spread is observed: Form 1.65, Ask 2.16, Chat 2.29;
+aggregated mean 2.03. Cumbersomeness is rated approximately 0.5–0.65~points
+higher in the LLM-driven modes than in Form.
+
+For \emph{``I felt very confident using the system''} (item~9), all three modes
+are rated similarly and slightly higher in the LLM-driven modes (Form 3.83,
+Ask 3.84, Chat 3.90); aggregated mean 3.86. Within-system confidence is
+broadly comparable across modes, with a small upward trend from Form to Chat.
+
+For \emph{``I needed to learn a lot of things before I could get going with
+this system''} (item~10, lower is better), the three modes are virtually
+identical (Form 1.61, Ask 1.61, Chat 1.62), aggregated mean 1.61. The amount
+of prior learning required is perceived as low and equal across all modes.
+
+The per-item distributions are visualised in Figure~\ref{fig:sus-subquestions}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{sus_subquestions_boxplot.png}
+\caption{Box plots of the ten SUS items by mode ($n = 69$ per mode). Boxes show
+the interquartile range; the central line marks the median, and the diamond
+marks the mean.}
+\label{fig:sus-subquestions}
+\end{figure}
+
+\subsection{Composite SUS Score}
+
+The composite SUS score, aggregated across the ten items and rescaled to
+$0$--$100$, is shown in Table~\ref{tab:sus-composite} and
+Figure~\ref{fig:sus-aggregate}. Form scores highest (mean $78.62$, median
+$80.0$), followed by Ask (mean $72.97$, median $72.5$) and Chat (mean $72.93$,
+median $75.0$). The aggregated mean across all three modes is $74.84$. The
+drop from Form to the LLM-driven modes is approximately $5.7$~SUS points; Ask
+and Chat are essentially indistinguishable on the composite. All three modes
+fall above the conventional acceptability threshold of $68$.
+
+\begin{table}[htbp]
+\centering
+\caption{Composite SUS score by mode ($n = 69$ per mode). The aggregated
+``All'' column is the unweighted mean of the three per-mode means.}
+\label{tab:sus-composite}
+\begin{tabular}{@{}l r r r r@{}}
+\toprule
+Statistic & Form & Ask & Chat & All \\
+\midrule
+Mean       & 78.62 & 72.97 & 72.93 & 74.84 \\
+Median     & 80.00 & 72.50 & 75.00 & 75.83 \\
+SD         & 16.09 & 15.36 & 19.03 & 16.83 \\
+Minimum    & 40.00 & 32.50 & 5.00 & — \\
+Maximum    & 100.00 & 100.00 & 100.00 & — \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\linewidth]{sus_aggregate_barplot.png}
+\caption{Composite SUS score by mode ($n = 69$ per mode). Error bars denote
+one standard deviation; the dashed line marks the conventional acceptability
+threshold of $68$.}
+\label{fig:sus-aggregate}
+\end{figure}
+
+A Friedman omnibus test on the composite SUS score yields $\chi^2(2) = 5.51$,
+$p = 0.064$, $W = 0.040$, which does not reach the $\alpha = 0.05$ threshold.
+Pairwise Wilcoxon signed-rank post-hoc tests with Bonferroni correction
+($\alpha = 0.0167$) indicate a significant Form-vs-Ask difference
+($W = 578.5$, $p = 0.013$, rank-biserial $r = +0.368$, medium effect), a
+non-significant Form-vs-Chat difference ($p = 0.018$, just above the
+Bonferroni threshold), and no Ask-vs-Chat difference ($p = 0.666$). Full test
+statistics are reproduced in Appendix~\ref{app:inferential}.
