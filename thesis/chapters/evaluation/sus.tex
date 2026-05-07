@@ -163,49 +163,14 @@ this system''} (item~10, lower is better), the three modes are virtually
 identical (Form 1.61, Ask 1.61, Chat 1.62), aggregated mean 1.61. The amount
 of prior learning required is perceived as low and equal across all modes.
 
-\subsection{Composite SUS Score}
-
-The composite SUS score, aggregated across the ten items and rescaled to
-$0$--$100$, is shown in Table~\ref{tab:sus-composite} and
-Figure~\ref{fig:sus-aggregate}. Form scores highest (mean $78.62$, median
-$80.0$), followed by Ask (mean $72.97$, median $72.5$) and Chat (mean $72.93$,
-median $75.0$). The aggregated mean across all three modes is $74.84$. The
-drop from Form to the LLM-driven modes is approximately $5.7$~SUS points; Ask
-and Chat are essentially indistinguishable on the composite. All three modes
-fall above the conventional acceptability threshold of $68$.
-
-\begin{table}[htbp]
-\centering
-\caption{Composite SUS score by mode ($n = 69$ per mode), $0$--$100$ scale.
-Source: \texttt{survey\_summary.csv}.}
-\label{tab:sus-composite}
-\begin{tabular}{@{}l r r r r r r@{}}
-\toprule
-Mode & $n$ & Mean & Median & SD & Min & Max \\
-\midrule
-Form & 69 & 78.62 & 80.00 & 16.09 & 40.00 & 100.00 \\
-Ask  & 69 & 72.97 & 72.50 & 15.36 & 32.50 & 100.00 \\
-Chat & 69 & 72.93 & 75.00 & 19.03 &  5.00 & 100.00 \\
-\midrule
-All  & 207 & 74.84 & 75.83 & 16.83 & — & — \\
-\bottomrule
-\end{tabular}
-\end{table}
+The aggregated SUS score distribution is illustrated in
+Figure~\ref{fig:sus-aggregate} for reference; the composite SUS analysis
+is deferred to a later iteration of this chapter and is not reported here.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{sus_aggregate_barplot.png}
-\caption{Composite SUS score by mode ($n = 69$ per mode). Error bars denote
-one standard deviation; the dashed line marks the conventional acceptability
-threshold of $68$.}
+\caption{Aggregated SUS score distribution by mode ($n = 69$ per mode). The
+dashed line marks the conventional acceptability threshold of $68$.}
 \label{fig:sus-aggregate}
 \end{figure}
-
-A Friedman omnibus test on the composite SUS score yields $\chi^2(2) = 5.51$,
-$p = 0.064$, $W = 0.040$, which does not reach the $\alpha = 0.05$ threshold.
-Pairwise Wilcoxon signed-rank post-hoc tests with Bonferroni correction
-($\alpha = 0.0167$) indicate a significant Form-vs-Ask difference
-($W = 578.5$, $p = 0.013$, rank-biserial $r = +0.368$, medium effect), a
-non-significant Form-vs-Chat difference ($p = 0.018$, just above the
-Bonferroni threshold), and no Ask-vs-Chat difference ($p = 0.666$). Full test
-statistics are reproduced in Appendix~\ref{app:inferential}.

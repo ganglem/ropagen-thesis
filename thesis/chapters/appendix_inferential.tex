@@ -28,15 +28,6 @@ SUS & Chat & 0.927 & 0.001 & No \\
 R-TLX composite & Form & 0.940 & 0.003 & No \\
 R-TLX composite & Ask  & 0.926 & 0.001 & No \\
 R-TLX composite & Chat & 0.945 & 0.005 & No \\
-AI Support (6-item) & Form & 0.923 & $<0.001$ & No \\
-AI Support (6-item) & Ask  & 0.965 & 0.048 & No \\
-AI Support (6-item) & Chat & 0.952 & 0.010 & No \\
-AI Confidence ($5_{ai}$) & Form & 0.846 & $<0.001$ & No \\
-AI Confidence ($5_{ai}$) & Ask  & 0.856 & $<0.001$ & No \\
-AI Confidence ($5_{ai}$) & Chat & 0.864 & $<0.001$ & No \\
-AI Reuse ($6_{ai}$) & Form & 0.799 & $<0.001$ & No \\
-AI Reuse ($6_{ai}$) & Ask  & 0.872 & $<0.001$ & No \\
-AI Reuse ($6_{ai}$) & Chat & 0.861 & $<0.001$ & No \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -65,9 +56,6 @@ R-TLX Temporal Demand           & 12.77 & 2 & 0.002  & 0.093 & \textbf{Yes} \\
 R-TLX Effort                    & 3.78  & 2 & 0.151  & 0.027 & No \\
 R-TLX Frustration               & 8.93  & 2 & 0.012  & 0.065 & \textbf{Yes} \\
 R-TLX Performance (pos.)        & 2.33  & 2 & 0.311  & 0.017 & No \\
-AI Confidence ($5_{ai}$)        & 3.76  & 2 & 0.152  & 0.027 & No \\
-AI Support (6-item composite)   & 1.05  & 2 & 0.592  & 0.008 & No \\
-AI Reuse intention ($6_{ai}$)   & 11.12 & 2 & 0.004  & 0.081 & \textbf{Yes} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -100,9 +88,6 @@ Temporal Demand   & Ask vs Chat  & 46 & 427.0 & 0.211   & $-0.210$ small       &
 Frustration       & Form vs Ask  & 52 & 403.5 & 0.009   & $-0.414$ medium      & \textbf{Yes} \\
 Frustration       & Form vs Chat & 57 & 519.5 & 0.014   & $-0.371$ medium      & \textbf{Yes} \\
 Frustration       & Ask vs Chat  & 52 & 629.0 & 0.584   & $+0.087$ negligible  & No \\
-AI Reuse ($6_{ai}$) & Form vs Ask  & 49 & 402.5 & 0.034 & $+0.343$ medium      & No \\
-AI Reuse ($6_{ai}$) & Form vs Chat & 43 & 216.0 & 0.002 & $+0.543$ large       & \textbf{Yes} \\
-AI Reuse ($6_{ai}$) & Ask vs Chat  & 45 & 454.5 & 0.468 & $+0.122$ small       & No \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -250,37 +235,3 @@ The sensitivity check broadly agrees with the matched-pairs result on
 direction (Ask $<$ Form, Ask $<$ Chat on most metrics), with the matched
 analysis producing larger and more consistent effect sizes — as expected for
 a within-subjects design.
-
-\section{Confidence--Quality Correlations}
-\label{app:inf-corr}
-
-Spearman rank correlation $\rho$ between the primary confidence measure
-(item~$5_{ai}$, ``I am confident the AI identified the correct legal basis'')
-and document-quality measures, computed on the survey~$\times$~NLP joined
-sample. Per-mode joined samples: Form $n = 34$, Ask $n = 34$, Chat $n = 38$;
-pooled $n = 106$.
-
-\begin{table}[htbp]
-\centering
-\caption{Spearman rank correlations: primary confidence ($5_{ai}$) versus
-document-quality measures, by mode.}
-\label{tab:app-corr-primary}
-\small
-\begin{tabular}{@{}l r r r r r r@{}}
-\toprule
-& \multicolumn{3}{c}{$5_{ai}$ vs BERTScore F1} & \multicolumn{3}{c}{$5_{ai}$ vs Judge Overall} \\
-\cmidrule(lr){2-4}\cmidrule(lr){5-7}
-Mode  & $n$ & $\rho$ & $p$ & $n$ & $\rho$ & $p$ \\
-\midrule
-Form  & 34 & $-0.22$ & 0.22 & 34 & $+0.07$ & 0.70 \\
-Ask   & 34 & $-0.23$ & 0.19 & 34 & $-0.21$ & 0.24 \\
-Chat  & 38 & $+0.28$ & 0.09 & 38 & $+0.41$ & \textbf{0.012} \\
-Pooled & 106 & $-0.02$ & 0.88 & 106 & $+0.14$ & 0.14 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-For comparison, the secondary 6-item Perceived AI Support composite produces
-weaker mode-specific correlations with BERTScore F1 (Form $\rho = -0.22$,
-Ask $\rho = -0.04$, Chat $\rho = +0.20$) and a small but significant pooled
-correlation with Judge Overall ($\rho = +0.21$, $p = 0.033$, $n = 106$).

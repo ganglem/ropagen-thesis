@@ -103,57 +103,14 @@ performance), Form and Ask are essentially identical ($8.71$ and $8.68$); Chat
 is slightly higher at $9.39$; aggregated $8.93$. Perceived self-performance
 is comparable across modes, with a marginal degradation in Chat.
 
-\subsection{Composite R-TLX}
-
-Table~\ref{tab:rtlx-composite-full} reports the two composite R-TLX measures
-from \texttt{survey\_summary.csv}: \emph{TLX Demand} (the unweighted mean of
-Mental, Physical, Temporal, Effort and Frustration) and \emph{TLX Performance}
-(the Performance subscale, reported separately because of its inverse coding
-relative to the demand subscales). Figure~\ref{fig:rtlx-aggregate} shows the
-demand composite by mode.
-
-\begin{table}[htbp]
-\centering
-\caption{Composite NASA R-TLX measures by mode ($n = 69$ per mode), $1$--$21$
-scale. Source: \texttt{survey\_summary.csv}.}
-\label{tab:rtlx-composite-full}
-\begin{tabular}{@{}l l r r r r r r@{}}
-\toprule
-Composite & Mode & $n$ & Mean & Median & SD & Min & Max \\
-\midrule
-TLX Demand      & Form & 69 & 4.85 & 4.20 & 3.28 & 1.00 & 15.60 \\
-TLX Demand      & Ask  & 69 & 5.86 & 5.20 & 3.48 & 1.00 & 18.40 \\
-TLX Demand      & Chat & 69 & 5.72 & 4.60 & 3.80 & 1.00 & 19.80 \\
-\midrule
-TLX Performance & Form & 69 & 8.71 & 8.00 & 5.48 & 1.00 & 21.00 \\
-TLX Performance & Ask  & 69 & 8.68 & 8.00 & 5.64 & 1.00 & 19.00 \\
-TLX Performance & Chat & 69 & 9.39 & 10.00 & 6.36 & 1.00 & 21.00 \\
-\bottomrule
-\end{tabular}
-\end{table}
+The aggregated R-TLX distribution is illustrated in
+Figure~\ref{fig:rtlx-aggregate} for reference; the composite R-TLX analysis
+is deferred to a later iteration of this chapter and is not reported here.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{rtlx_aggregate_barplot.png}
-\caption{Composite R-TLX score by mode ($n = 69$ per mode). Lower values
-indicate lower cognitive load.}
+\caption{Aggregated R-TLX score distribution by mode ($n = 69$ per mode).
+Lower values indicate lower cognitive load.}
 \label{fig:rtlx-aggregate}
 \end{figure}
-
-On the \emph{TLX Demand} composite, Form yields the lowest mean ($4.85$),
-Chat second ($5.72$), and Ask the highest ($5.86$); the spread between Form
-and the LLM-driven modes is approximately $0.9$--$1.0$~points. On
-\emph{TLX Performance}, Form and Ask are essentially identical ($8.71$ and
-$8.68$); Chat is the highest at $9.39$; the absolute spread is below
-$0.7$~points.
-
-The Friedman omnibus on the demand composite is non-significant
-($\chi^2(2) = 5.24$, $p = 0.073$, $W = 0.038$). Among the six subscales, two
-reach significance: Temporal Demand ($\chi^2(2) = 12.77$, $p = 0.002$,
-$W = 0.093$) and Frustration ($\chi^2(2) = 8.93$, $p = 0.012$, $W = 0.065$).
-Pairwise post-hoc Wilcoxon signed-rank tests with Bonferroni correction
-identify Form versus Ask and Form versus Chat as significant for both the
-composite and these two subscales, with medium-to-large rank-biserial effect
-sizes ($|r| = 0.36$ to $0.57$); Ask versus Chat is non-significant on every
-measure. Full test statistics are reproduced in
-Appendix~\ref{app:inferential}.
