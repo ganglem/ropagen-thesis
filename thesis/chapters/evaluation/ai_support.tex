@@ -8,29 +8,31 @@ five items capture distinct facets of perceived AI support and are reported
 descriptively here; the six-item composite is reported as a secondary
 attitudinal measure.
 
-\subsection{Per-Item Results}
+\subsection{Per-Item Distribution}
 
-Table~\ref{tab:ai-per-item} reports the mean response per item per mode and
-the aggregated mean. Figure~\ref{fig:ai-subquestions} shows the corresponding
-distributions.
+Table~\ref{tab:ai-per-item-full} reports the full per-item distribution
+statistics by mode. Figure~\ref{fig:ai-subquestions} shows the corresponding
+box plots.
 
 \begin{table}[htbp]
 \centering
-\caption{Perceived AI Support, mean response per item by mode ($n = 69$ per
-mode), five-point Likert scale (higher is better). The aggregated ``All''
-column is the unweighted mean of the three per-mode means.}
-\label{tab:ai-per-item}
-\small
-\begin{tabularx}{\linewidth}{@{}c X r r r r@{}}
+\caption{Perceived AI Support per-item distribution by mode ($n = 69$ per
+mode), five-point Likert scale (higher is better). SD = standard deviation,
+Med = median, Q1 / Q3 = first / third quartile.}
+\label{tab:ai-per-item-full}
+\scriptsize
+\begin{tabularx}{\linewidth}{@{}c X r r r r r r r r r r r r r r r@{}}
 \toprule
-\# & Item & Form & Ask & Chat & All \\
+& & \multicolumn{5}{c}{Form} & \multicolumn{5}{c}{Ask} & \multicolumn{5}{c}{Chat} \\
+\cmidrule(lr){3-7}\cmidrule(lr){8-12}\cmidrule(lr){13-17}
+\# & Item & Mean & SD & Med & Q1 & Q3 & Mean & SD & Med & Q1 & Q3 & Mean & SD & Med & Q1 & Q3 \\
 \midrule
-1 & The AI was helpful in creating this document. & 4.23 & 4.32 & 4.13 & 4.23 \\
-2 & The AI helped me to complete the document faster. & 4.43 & 4.25 & 3.99 & 4.22 \\
-3 & I understood why the AI suggested specific GDPR fields. & 3.51 & 4.16 & 3.75 & 3.81 \\
-4 & I trust that the AI made correct suggestions. & 3.41 & 3.80 & 3.68 & 3.63 \\
-5 & I am confident that the AI identified the correct legal basis. & 3.58 & 3.74 & 3.81 & 3.71 \\
-6 & I would use this mode again. & 3.99 & 3.55 & 3.42 & 3.65 \\
+1 & The AI was helpful in creating this document.                  & 4.23 & 0.97 & 5.0 & 4.0 & 5.0 & 4.32 & 0.76 & 4.0 & 4.0 & 5.0 & 4.13 & 1.00 & 4.0 & 4.0 & 5.0 \\
+2 & The AI helped me to complete the document faster.              & 4.43 & 0.96 & 5.0 & 4.0 & 5.0 & 4.25 & 1.03 & 5.0 & 4.0 & 5.0 & 3.99 & 1.32 & 4.0 & 4.0 & 5.0 \\
+3 & I understood why the AI suggested specific GDPR fields.        & 3.51 & 1.17 & 4.0 & 3.0 & 4.0 & 4.16 & 0.92 & 4.0 & 4.0 & 5.0 & 3.75 & 0.98 & 4.0 & 3.0 & 5.0 \\
+4 & I trust that the AI made correct suggestions.                  & 3.41 & 1.09 & 4.0 & 3.0 & 4.0 & 3.80 & 0.87 & 4.0 & 3.0 & 4.0 & 3.68 & 0.92 & 4.0 & 3.0 & 4.0 \\
+5 & I am confident that the AI identified the correct legal basis. & 3.58 & 0.90 & 4.0 & 3.0 & 4.0 & 3.74 & 0.87 & 4.0 & 3.0 & 4.0 & 3.81 & 0.88 & 4.0 & 3.0 & 4.0 \\
+6 & I would use this mode again.                                   & 3.99 & 1.14 & 4.0 & 4.0 & 5.0 & 3.55 & 1.16 & 4.0 & 3.0 & 4.0 & 3.42 & 1.39 & 4.0 & 2.0 & 5.0 \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -76,9 +78,37 @@ the largest negative gap of the six items.
 
 \subsection{Composite Perceived AI Support}
 
-The unweighted mean of all six items yields a composite Perceived AI Support
-score of $3.86$ for Form, $3.97$ for Ask, and $3.80$ for Chat (aggregated
-$3.87$). The omnibus Friedman test on the composite is non-significant
+Table~\ref{tab:ai-composite-full} reports three composite measures from
+\texttt{survey\_summary.csv}: the six-item \emph{AI Support} mean, the single
+\emph{AI Confidence} item ($5_{ai}$, legal-basis confidence — primary), and
+the single \emph{AI Reuse} item ($6_{ai}$, intent to re-use the mode).
+
+\begin{table}[htbp]
+\centering
+\caption{Composite Perceived AI Support measures by mode ($n = 69$ per mode),
+five-point Likert scale (higher is better). Source:
+\texttt{survey\_summary.csv}.}
+\label{tab:ai-composite-full}
+\begin{tabular}{@{}l l r r r r r r@{}}
+\toprule
+Composite & Mode & $n$ & Mean & Median & SD & Min & Max \\
+\midrule
+AI Support (6-item)            & Form & 69 & 3.86 & 4.00 & 0.77 & 1.83 & 5.00 \\
+AI Support (6-item)            & Ask  & 69 & 3.97 & 4.00 & 0.62 & 2.50 & 5.00 \\
+AI Support (6-item)            & Chat & 69 & 3.80 & 4.00 & 0.82 & 1.67 & 5.00 \\
+\midrule
+AI Confidence ($5_{ai}$)       & Form & 69 & 3.58 & 4.00 & 0.90 & 1.00 & 5.00 \\
+AI Confidence ($5_{ai}$)       & Ask  & 69 & 3.74 & 4.00 & 0.87 & 2.00 & 5.00 \\
+AI Confidence ($5_{ai}$)       & Chat & 69 & 3.81 & 4.00 & 0.88 & 2.00 & 5.00 \\
+\midrule
+AI Reuse ($6_{ai}$)            & Form & 69 & 3.99 & 4.00 & 1.14 & 1.00 & 5.00 \\
+AI Reuse ($6_{ai}$)            & Ask  & 69 & 3.55 & 4.00 & 1.16 & 1.00 & 5.00 \\
+AI Reuse ($6_{ai}$)            & Chat & 69 & 3.42 & 4.00 & 1.39 & 1.00 & 5.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The omnibus Friedman test on the six-item composite is non-significant
 ($\chi^2(2) = 1.05$, $p = 0.592$, $W = 0.008$), indicating that overall
 perceived support does not differ meaningfully across modes once the six
 items are pooled. The single legal-basis confidence item ($5_{ai}$) is also

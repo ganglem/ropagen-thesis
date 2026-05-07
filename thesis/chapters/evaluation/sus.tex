@@ -5,40 +5,112 @@ The System Usability Scale is administered after each interaction mode. It
 consists of ten Likert items on a five-point scale, with odd-numbered items
 phrased positively (higher response equals more positive evaluation) and
 even-numbered items phrased negatively (lower response equals more positive
-evaluation). The ten items are scored and summed into a composite from $0$ to
+evaluation). The ten items are scored and rescaled to a composite from $0$ to
 $100$.
 
-\subsection{Per-Item Results}
+\subsection{Per-Item Comprehensive Descriptive Statistics}
 
-Table~\ref{tab:sus-per-item} reports the mean response per item per mode and
-the aggregated mean across all three modes. The aggregated column is the
-unweighted mean of the three per-mode means.
+Table~\ref{tab:sus-comprehensive} reports the comprehensive per-item
+descriptive statistics by mode and the pooled \emph{All} aggregate
+($n = 207$ across all three modes). Reported quantities follow the standard
+descriptive set used throughout: mean, median, modal response (most-frequent
+value), standard deviation, variance, minimum, first quartile (Q1), second
+quartile (Q2 = median), third quartile (Q3), and maximum. The full
+distribution is also exported to
+\texttt{python/survey/output/sus\_descriptive\_summary.csv}. The per-item
+SUS items are denoted $1_{sus}$ through $10_{sus}$.
 
 \begin{table}[htbp]
 \centering
-\caption{System Usability Scale, mean response per item by mode ($n = 69$ per
-mode). Items are reported on the original five-point Likert scale; the
-``All'' column averages the three per-mode means. Odd items: higher is better;
-even items: lower is better.}
-\label{tab:sus-per-item}
-\small
-\begin{tabularx}{\linewidth}{@{}c X r r r r@{}}
+\caption{Corrected SUS Descriptive Statistics Summary by item and mode
+(including \emph{All} pooled across modes). Source: SUS items 1--10,
+five-point Likert. Mode\textsubscript{V} = modal value (most frequent).}
+\label{tab:sus-comprehensive}
+\scriptsize
+\begin{tabular}{@{}l l r r r r r r r r r r@{}}
 \toprule
-\# & Item & Form & Ask & Chat & All \\
+Mode & Item & Mean & Median & Mode\textsubscript{V} & SD & Var & Min & Q1 & Q2 & Q3 & Max \\
 \midrule
-1 & I think that I would like to use this system frequently. & 3.52 & 3.22 & 3.22 & 3.32 \\
-2 & I found the system unnecessarily complex. & 1.64 & 2.25 & 2.12 & 2.00 \\
-3 & I thought the system was easy to use. & 4.38 & 4.01 & 3.99 & 4.13 \\
-4 & I think that I would need the support of a technical person to be able to use this system. & 1.52 & 1.49 & 1.55 & 1.52 \\
-5 & I found the various functions in this system were well integrated. & 4.00 & 3.67 & 3.64 & 3.77 \\
-6 & I thought there was too much inconsistency in this system. & 2.16 & 2.04 & 2.01 & 2.07 \\
-7 & I would imagine that most people would learn to use this system very quickly. & 4.30 & 4.00 & 4.03 & 4.11 \\
-8 & I found the system very cumbersome to use. & 1.65 & 2.16 & 2.29 & 2.03 \\
-9 & I felt very confident using the system. & 3.83 & 3.84 & 3.90 & 3.86 \\
-10 & I needed to learn a lot of things before I could get going with this system. & 1.61 & 1.61 & 1.62 & 1.61 \\
+All & $1_{sus}$  & 3.32 & 3.0 & 4 & 1.14 & 1.31 & 1.0 & 3.0 & 3.0 & 4.0 & 5.0 \\
+All & $2_{sus}$  & 2.00 & 2.0 & 1 & 1.12 & 1.25 & 1.0 & 1.0 & 2.0 & 3.0 & 5.0 \\
+All & $3_{sus}$  & 4.13 & 4.0 & 5 & 0.97 & 0.95 & 1.0 & 4.0 & 4.0 & 5.0 & 5.0 \\
+All & $4_{sus}$  & 1.52 & 1.0 & 1 & 0.89 & 0.78 & 1.0 & 1.0 & 1.0 & 2.0 & 5.0 \\
+All & $5_{sus}$  & 3.77 & 4.0 & 4 & 1.05 & 1.10 & 1.0 & 3.0 & 4.0 & 5.0 & 5.0 \\
+All & $6_{sus}$  & 2.07 & 2.0 & 1 & 1.00 & 1.00 & 1.0 & 1.0 & 2.0 & 3.0 & 5.0 \\
+All & $7_{sus}$  & 4.11 & 4.0 & 5 & 0.98 & 0.96 & 1.0 & 4.0 & 4.0 & 5.0 & 5.0 \\
+All & $8_{sus}$  & 2.03 & 2.0 & 1 & 1.13 & 1.28 & 1.0 & 1.0 & 2.0 & 3.0 & 5.0 \\
+All & $9_{sus}$  & 3.86 & 4.0 & 4 & 1.04 & 1.09 & 1.0 & 3.0 & 4.0 & 5.0 & 5.0 \\
+All & $10_{sus}$ & 1.61 & 1.0 & 1 & 0.90 & 0.81 & 1.0 & 1.0 & 1.0 & 2.0 & 5.0 \\
+\midrule
+Form & $1_{sus}$  & 3.52 & 4.0 & 4 & 1.09 & 1.19 & 1.0 & 3.0 & 4.0 & 4.0 & 5.0 \\
+Form & $2_{sus}$  & 1.64 & 1.0 & 1 & 0.92 & 0.85 & 1.0 & 1.0 & 1.0 & 2.0 & 4.0 \\
+Form & $3_{sus}$  & 4.38 & 5.0 & 5 & 0.91 & 0.83 & 1.0 & 4.0 & 5.0 & 5.0 & 5.0 \\
+Form & $4_{sus}$  & 1.52 & 1.0 & 1 & 0.85 & 0.72 & 1.0 & 1.0 & 1.0 & 2.0 & 5.0 \\
+Form & $5_{sus}$  & 4.00 & 4.0 & 4 & 0.92 & 0.85 & 1.0 & 4.0 & 4.0 & 5.0 & 5.0 \\
+Form & $6_{sus}$  & 2.16 & 2.0 & 2 & 0.96 & 0.93 & 1.0 & 1.0 & 2.0 & 3.0 & 5.0 \\
+Form & $7_{sus}$  & 4.30 & 5.0 & 5 & 0.96 & 0.92 & 2.0 & 4.0 & 5.0 & 5.0 & 5.0 \\
+Form & $8_{sus}$  & 1.65 & 1.0 & 1 & 0.94 & 0.88 & 1.0 & 1.0 & 1.0 & 2.0 & 5.0 \\
+Form & $9_{sus}$  & 3.83 & 4.0 & 4 & 1.04 & 1.09 & 1.0 & 3.0 & 4.0 & 5.0 & 5.0 \\
+Form & $10_{sus}$ & 1.61 & 1.0 & 1 & 0.86 & 0.74 & 1.0 & 1.0 & 1.0 & 2.0 & 4.0 \\
+\midrule
+Ask & $1_{sus}$  & 3.22 & 3.0 & 4 & 1.08 & 1.17 & 1.0 & 3.0 & 3.0 & 4.0 & 5.0 \\
+Ask & $2_{sus}$  & 2.25 & 2.0 & 1 & 1.22 & 1.48 & 1.0 & 1.0 & 2.0 & 3.0 & 5.0 \\
+Ask & $3_{sus}$  & 4.01 & 4.0 & 4 & 0.81 & 0.66 & 2.0 & 4.0 & 4.0 & 5.0 & 5.0 \\
+Ask & $4_{sus}$  & 1.49 & 1.0 & 1 & 0.80 & 0.64 & 1.0 & 1.0 & 1.0 & 2.0 & 4.0 \\
+Ask & $5_{sus}$  & 3.67 & 4.0 & 4 & 1.02 & 1.05 & 1.0 & 3.0 & 4.0 & 4.0 & 5.0 \\
+Ask & $6_{sus}$  & 2.04 & 2.0 & 1 & 1.06 & 1.13 & 1.0 & 1.0 & 2.0 & 3.0 & 5.0 \\
+Ask & $7_{sus}$  & 4.00 & 4.0 & 4 & 0.95 & 0.91 & 1.0 & 4.0 & 4.0 & 5.0 & 5.0 \\
+Ask & $8_{sus}$  & 2.16 & 2.0 & 1 & 1.12 & 1.25 & 1.0 & 1.0 & 2.0 & 3.0 & 5.0 \\
+Ask & $9_{sus}$  & 3.84 & 4.0 & 4 & 0.93 & 0.87 & 2.0 & 3.0 & 4.0 & 4.0 & 5.0 \\
+Ask & $10_{sus}$ & 1.61 & 1.0 & 1 & 0.81 & 0.65 & 1.0 & 1.0 & 1.0 & 2.0 & 4.0 \\
+\midrule
+Chat & $1_{sus}$  & 3.22 & 3.0 & 4 & 1.24 & 1.53 & 1.0 & 2.0 & 3.0 & 4.0 & 5.0 \\
+Chat & $2_{sus}$  & 2.12 & 2.0 & 1 & 1.12 & 1.25 & 1.0 & 1.0 & 2.0 & 3.0 & 5.0 \\
+Chat & $3_{sus}$  & 3.99 & 4.0 & 5 & 1.13 & 1.28 & 1.0 & 3.0 & 4.0 & 5.0 & 5.0 \\
+Chat & $4_{sus}$  & 1.55 & 1.0 & 1 & 1.01 & 1.02 & 1.0 & 1.0 & 1.0 & 2.0 & 5.0 \\
+Chat & $5_{sus}$  & 3.64 & 4.0 & 4 & 1.16 & 1.35 & 1.0 & 3.0 & 4.0 & 5.0 & 5.0 \\
+Chat & $6_{sus}$  & 2.01 & 2.0 & 1 & 0.98 & 0.96 & 1.0 & 1.0 & 2.0 & 3.0 & 5.0 \\
+Chat & $7_{sus}$  & 4.03 & 4.0 & 5 & 1.01 & 1.03 & 1.0 & 4.0 & 4.0 & 5.0 & 5.0 \\
+Chat & $8_{sus}$  & 2.29 & 2.0 & 1 & 1.23 & 1.50 & 1.0 & 1.0 & 2.0 & 3.0 & 5.0 \\
+Chat & $9_{sus}$  & 3.90 & 4.0 & 5 & 1.15 & 1.33 & 1.0 & 4.0 & 4.0 & 5.0 & 5.0 \\
+Chat & $10_{sus}$ & 1.62 & 1.0 & 1 & 1.03 & 1.06 & 1.0 & 1.0 & 1.0 & 2.0 & 5.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The per-item text labels are:
+
+\begin{table}[htbp]
+\centering
+\caption{SUS item identifiers and item text.}
+\label{tab:sus-item-labels}
+\small
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\toprule
+ID & Item text \\
+\midrule
+$1_{sus}$  & I think that I would like to use this system frequently. \\
+$2_{sus}$  & I found the system unnecessarily complex. \\
+$3_{sus}$  & I thought the system was easy to use. \\
+$4_{sus}$  & I think that I would need the support of a technical person to be able to use this system. \\
+$5_{sus}$  & I found the various functions in this system were well integrated. \\
+$6_{sus}$  & I thought there was too much inconsistency in this system. \\
+$7_{sus}$  & I would imagine that most people would learn to use this system very quickly. \\
+$8_{sus}$  & I found the system very cumbersome to use. \\
+$9_{sus}$  & I felt very confident using the system. \\
+$10_{sus}$ & I needed to learn a lot of things before I could get going with this system. \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{sus_subquestions_boxplot.png}
+\caption{Box plots of the ten SUS items by mode ($n = 69$ per mode). Boxes show
+the interquartile range; the central line marks the median, and the diamond
+marks the mean.}
+\label{fig:sus-subquestions}
+\end{figure}
 
 For \emph{``I think that I would like to use this system frequently''} (item~1),
 Form yields the highest mean (3.52), followed by Ask and Chat at the same level
@@ -91,17 +163,6 @@ this system''} (item~10, lower is better), the three modes are virtually
 identical (Form 1.61, Ask 1.61, Chat 1.62), aggregated mean 1.61. The amount
 of prior learning required is perceived as low and equal across all modes.
 
-The per-item distributions are visualised in Figure~\ref{fig:sus-subquestions}.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\linewidth]{sus_subquestions_boxplot.png}
-\caption{Box plots of the ten SUS items by mode ($n = 69$ per mode). Boxes show
-the interquartile range; the central line marks the median, and the diamond
-marks the mean.}
-\label{fig:sus-subquestions}
-\end{figure}
-
 \subsection{Composite SUS Score}
 
 The composite SUS score, aggregated across the ten items and rescaled to
@@ -115,18 +176,18 @@ fall above the conventional acceptability threshold of $68$.
 
 \begin{table}[htbp]
 \centering
-\caption{Composite SUS score by mode ($n = 69$ per mode). The aggregated
-``All'' column is the unweighted mean of the three per-mode means.}
+\caption{Composite SUS score by mode ($n = 69$ per mode), $0$--$100$ scale.
+Source: \texttt{survey\_summary.csv}.}
 \label{tab:sus-composite}
-\begin{tabular}{@{}l r r r r@{}}
+\begin{tabular}{@{}l r r r r r r@{}}
 \toprule
-Statistic & Form & Ask & Chat & All \\
+Mode & $n$ & Mean & Median & SD & Min & Max \\
 \midrule
-Mean       & 78.62 & 72.97 & 72.93 & 74.84 \\
-Median     & 80.00 & 72.50 & 75.00 & 75.83 \\
-SD         & 16.09 & 15.36 & 19.03 & 16.83 \\
-Minimum    & 40.00 & 32.50 & 5.00 & — \\
-Maximum    & 100.00 & 100.00 & 100.00 & — \\
+Form & 69 & 78.62 & 80.00 & 16.09 & 40.00 & 100.00 \\
+Ask  & 69 & 72.97 & 72.50 & 15.36 & 32.50 & 100.00 \\
+Chat & 69 & 72.93 & 75.00 & 19.03 &  5.00 & 100.00 \\
+\midrule
+All  & 207 & 74.84 & 75.83 & 16.83 & — & — \\
 \bottomrule
 \end{tabular}
 \end{table}

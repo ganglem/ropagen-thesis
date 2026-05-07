@@ -3,35 +3,67 @@
 
 The Raw Task Load Index captures six dimensions of perceived workload — Mental
 Demand, Physical Demand, Temporal Demand, Performance, Effort, and Frustration
-— each on a five-point Likert scale. Performance is reported in the
-positive-coded direction (higher equals worse perceived performance) for
-internal consistency with the other subscales. The composite R-TLX in this
-study is the unweighted mean of the six subscales, rescaled to a $1$--$21$
-range.
+— each on a five-point Likert scale, then rescaled to a $1$--$21$ range.
+Performance is reported in the positive-coded direction (higher equals worse
+perceived performance) for internal consistency with the other subscales. Two
+composites are reported: a five-subscale \emph{demand} composite (Mental,
+Physical, Temporal, Effort, Frustration) and a separate \emph{Performance}
+composite, both following the operationalisation in
+\texttt{survey\_summary.csv}.
 
-\subsection{Per-Subscale Results}
+\subsection{Per-Subscale Comprehensive Descriptive Statistics}
 
-Table~\ref{tab:rtlx-per-subscale} reports the per-subscale mean and standard
-deviation per mode and the aggregated mean across modes.
-Figure~\ref{fig:rtlx-subquestions} shows the corresponding distributions.
+Table~\ref{tab:rtlx-comprehensive} reports the comprehensive per-subscale
+descriptive statistics by mode and the pooled \emph{All} aggregate
+($n = 207$ across all three modes). Reported quantities follow the standard
+descriptive set: mean, median, modal response (most-frequent value),
+standard deviation, variance, minimum, first quartile (Q1), second quartile
+(Q2 = median), third quartile (Q3), and maximum. The full distribution is
+also exported to \texttt{python/survey/output/tlx\_descriptive\_summary.csv}.
+The six R-TLX subscales are denoted $1_{tlx\_demand}$ (Mental Demand),
+$2_{tlx\_demand}$ (Physical Demand), $3_{tlx\_demand}$ (Temporal Demand),
+$4_{tlx\_demand}$ (Effort), $5_{tlx\_demand}$ (Frustration), and
+$1_{tlx\_perf}$ (Performance, positive-coded — higher equals worse
+perceived performance).
 
 \begin{table}[htbp]
 \centering
-\caption{NASA R-TLX subscale means $\pm$ standard deviation by mode ($n = 69$
-per mode), $1$--$21$ scale. The aggregated ``All'' column is the unweighted
-mean of the three per-mode means. All subscales are coded so that lower equals
-less workload.}
-\label{tab:rtlx-per-subscale}
-\begin{tabular}{@{}l r r r r@{}}
+\caption{NASA-TLX Descriptive Statistics Summary by item and mode (including
+\emph{All} pooled across modes). $1$--$21$ scale.
+Mode\textsubscript{V} = modal value (most frequent).}
+\label{tab:rtlx-comprehensive}
+\scriptsize
+\begin{tabular}{@{}l l r r r r r r r r r r@{}}
 \toprule
-Subscale & Form & Ask & Chat & All \\
+Mode & Subscale & Mean & Median & Mode\textsubscript{V} & SD & Var & Min & Q1 & Q2 & Q3 & Max \\
 \midrule
-Mental Demand     & $5.77 \pm 4.23$ & $6.80 \pm 4.60$ & $6.36 \pm 5.27$ & $6.31$ \\
-Physical Demand   & $2.77 \pm 2.69$ & $3.54 \pm 3.89$ & $3.26 \pm 3.43$ & $3.19$ \\
-Temporal Demand   & $4.16 \pm 3.79$ & $4.97 \pm 4.12$ & $5.54 \pm 4.74$ & $4.89$ \\
-Effort            & $5.68 \pm 4.53$ & $6.39 \pm 4.37$ & $6.32 \pm 4.74$ & $6.13$ \\
-Frustration       & $5.88 \pm 4.80$ & $7.58 \pm 5.30$ & $7.13 \pm 5.41$ & $6.86$ \\
-Performance (pos.) & $8.71 \pm 5.44$ & $8.68 \pm 5.60$ & $9.39 \pm 6.32$ & $8.93$ \\
+All & Mental Demand     & 6.31 & 5.0 & 1  & 4.75 & 22.57 & 1.0 & 2.0 & 5.0 &  9.5 & 21.0 \\
+All & Physical Demand   & 3.19 & 2.0 & 1  & 3.40 & 11.55 & 1.0 & 1.0 & 2.0 &  4.0 & 21.0 \\
+All & Temporal Demand   & 4.89 & 4.0 & 1  & 4.28 & 18.35 & 1.0 & 1.0 & 4.0 &  7.0 & 19.0 \\
+All & Effort            & 6.13 & 5.0 & 1  & 4.57 & 20.91 & 1.0 & 3.0 & 5.0 & 10.0 & 20.0 \\
+All & Frustration       & 6.86 & 5.0 & 1  & 5.24 & 27.45 & 1.0 & 2.5 & 5.0 & 11.0 & 21.0 \\
+All & Performance (pos.) & 8.93 & 9.0 & 10 & 5.82 & 33.90 & 1.0 & 4.0 & 9.0 & 13.0 & 21.0 \\
+\midrule
+Form & Mental Demand     & 5.77 & 5.0 & 1 & 4.26 & 18.18 & 1.0 & 2.0 & 5.0 &  9.0 & 17.0 \\
+Form & Physical Demand   & 2.77 & 1.0 & 1 & 2.71 &  7.36 & 1.0 & 1.0 & 1.0 &  4.0 & 14.0 \\
+Form & Temporal Demand   & 4.16 & 3.0 & 1 & 3.82 & 14.61 & 1.0 & 1.0 & 3.0 &  6.0 & 15.0 \\
+Form & Effort            & 5.68 & 4.0 & 1 & 4.56 & 20.84 & 1.0 & 2.0 & 4.0 &  9.0 & 17.0 \\
+Form & Frustration       & 5.88 & 5.0 & 1 & 4.84 & 23.43 & 1.0 & 2.0 & 5.0 &  8.0 & 18.0 \\
+Form & Performance (pos.) & 8.71 & 8.0 & 5 & 5.48 & 30.03 & 1.0 & 4.0 & 8.0 & 12.0 & 21.0 \\
+\midrule
+Ask & Mental Demand     & 6.80 & 6.0 & 1  & 4.63 & 21.46 & 1.0 & 3.0 & 6.0 & 10.0 & 21.0 \\
+Ask & Physical Demand   & 3.54 & 2.0 & 1  & 3.92 & 15.37 & 1.0 & 1.0 & 2.0 &  5.0 & 21.0 \\
+Ask & Temporal Demand   & 4.97 & 4.0 & 1  & 4.15 & 17.21 & 1.0 & 1.0 & 4.0 &  7.0 & 18.0 \\
+Ask & Effort            & 6.39 & 5.0 & 3  & 4.41 & 19.42 & 1.0 & 3.0 & 5.0 & 10.0 & 19.0 \\
+Ask & Frustration       & 7.58 & 6.0 & 3  & 5.34 & 28.51 & 1.0 & 3.0 & 6.0 & 12.0 & 21.0 \\
+Ask & Performance (pos.) & 8.68 & 8.0 & 10 & 5.64 & 31.84 & 1.0 & 4.0 & 8.0 & 12.0 & 19.0 \\
+\midrule
+Chat & Mental Demand     & 6.36 & 5.0 & 1 & 5.31 & 28.21 & 1.0 & 2.0 & 5.0 & 10.0 & 21.0 \\
+Chat & Physical Demand   & 3.26 & 2.0 & 1 & 3.46 & 11.96 & 1.0 & 1.0 & 2.0 &  4.0 & 20.0 \\
+Chat & Temporal Demand   & 5.54 & 4.0 & 1 & 4.78 & 22.81 & 1.0 & 2.0 & 4.0 &  8.0 & 19.0 \\
+Chat & Effort            & 6.32 & 5.0 & 3 & 4.77 & 22.78 & 1.0 & 3.0 & 5.0 & 10.0 & 20.0 \\
+Chat & Frustration       & 7.13 & 5.0 & 1 & 5.44 & 29.64 & 1.0 & 3.0 & 5.0 & 11.0 & 19.0 \\
+Chat & Performance (pos.) & 9.39 & 10.0 & 1 & 6.36 & 40.51 & 1.0 & 3.0 & 10.0 & 14.0 & 21.0 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -71,24 +103,31 @@ performance), Form and Ask are essentially identical ($8.71$ and $8.68$); Chat
 is slightly higher at $9.39$; aggregated $8.93$. Perceived self-performance
 is comparable across modes, with a marginal degradation in Chat.
 
-\subsection{Composite R-TLX Score}
+\subsection{Composite R-TLX}
 
-The composite R-TLX is reported in Table~\ref{tab:rtlx-composite} and
-Figure~\ref{fig:rtlx-aggregate}. Form yields the lowest composite ($5.50$),
-Ask and Chat yield identical higher values ($6.33$ each); the aggregated mean
-is $6.05$. The composite increases by approximately $0.83$~points from Form
-to the LLM-driven modes.
+Table~\ref{tab:rtlx-composite-full} reports the two composite R-TLX measures
+from \texttt{survey\_summary.csv}: \emph{TLX Demand} (the unweighted mean of
+Mental, Physical, Temporal, Effort and Frustration) and \emph{TLX Performance}
+(the Performance subscale, reported separately because of its inverse coding
+relative to the demand subscales). Figure~\ref{fig:rtlx-aggregate} shows the
+demand composite by mode.
 
 \begin{table}[htbp]
 \centering
-\caption{Composite NASA R-TLX score by mode ($n = 69$ per mode), $1$--$21$
-scale (lower is better).}
-\label{tab:rtlx-composite}
-\begin{tabular}{@{}l r r r r@{}}
+\caption{Composite NASA R-TLX measures by mode ($n = 69$ per mode), $1$--$21$
+scale. Source: \texttt{survey\_summary.csv}.}
+\label{tab:rtlx-composite-full}
+\begin{tabular}{@{}l l r r r r r r@{}}
 \toprule
-Statistic & Form & Ask & Chat & All \\
+Composite & Mode & $n$ & Mean & Median & SD & Min & Max \\
 \midrule
-Mean   & 5.50 & 6.33 & 6.33 & 6.05 \\
+TLX Demand      & Form & 69 & 4.85 & 4.20 & 3.28 & 1.00 & 15.60 \\
+TLX Demand      & Ask  & 69 & 5.86 & 5.20 & 3.48 & 1.00 & 18.40 \\
+TLX Demand      & Chat & 69 & 5.72 & 4.60 & 3.80 & 1.00 & 19.80 \\
+\midrule
+TLX Performance & Form & 69 & 8.71 & 8.00 & 5.48 & 1.00 & 21.00 \\
+TLX Performance & Ask  & 69 & 8.68 & 8.00 & 5.64 & 1.00 & 19.00 \\
+TLX Performance & Chat & 69 & 9.39 & 10.00 & 6.36 & 1.00 & 21.00 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -101,7 +140,14 @@ indicate lower cognitive load.}
 \label{fig:rtlx-aggregate}
 \end{figure}
 
-The Friedman omnibus on the composite R-TLX is non-significant
+On the \emph{TLX Demand} composite, Form yields the lowest mean ($4.85$),
+Chat second ($5.72$), and Ask the highest ($5.86$); the spread between Form
+and the LLM-driven modes is approximately $0.9$--$1.0$~points. On
+\emph{TLX Performance}, Form and Ask are essentially identical ($8.71$ and
+$8.68$); Chat is the highest at $9.39$; the absolute spread is below
+$0.7$~points.
+
+The Friedman omnibus on the demand composite is non-significant
 ($\chi^2(2) = 5.24$, $p = 0.073$, $W = 0.038$). Among the six subscales, two
 reach significance: Temporal Demand ($\chi^2(2) = 12.77$, $p = 0.002$,
 $W = 0.093$) and Frustration ($\chi^2(2) = 8.93$, $p = 0.012$, $W = 0.065$).
