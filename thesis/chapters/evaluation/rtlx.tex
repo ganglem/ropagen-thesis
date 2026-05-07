@@ -1,0 +1,113 @@
+\section{Cognitive Load — NASA Raw Task Load Index}
+\label{sec:eval-rtlx}
+
+The Raw Task Load Index captures six dimensions of perceived workload — Mental
+Demand, Physical Demand, Temporal Demand, Performance, Effort, and Frustration
+— each on a five-point Likert scale. Performance is reported in the
+positive-coded direction (higher equals worse perceived performance) for
+internal consistency with the other subscales. The composite R-TLX in this
+study is the unweighted mean of the six subscales, rescaled to a $1$--$21$
+range.
+
+\subsection{Per-Subscale Results}
+
+Table~\ref{tab:rtlx-per-subscale} reports the per-subscale mean and standard
+deviation per mode and the aggregated mean across modes.
+Figure~\ref{fig:rtlx-subquestions} shows the corresponding distributions.
+
+\begin{table}[htbp]
+\centering
+\caption{NASA R-TLX subscale means $\pm$ standard deviation by mode ($n = 69$
+per mode), $1$--$21$ scale. The aggregated ``All'' column is the unweighted
+mean of the three per-mode means. All subscales are coded so that lower equals
+less workload.}
+\label{tab:rtlx-per-subscale}
+\begin{tabular}{@{}l r r r r@{}}
+\toprule
+Subscale & Form & Ask & Chat & All \\
+\midrule
+Mental Demand     & $5.77 \pm 4.23$ & $6.80 \pm 4.60$ & $6.36 \pm 5.27$ & $6.31$ \\
+Physical Demand   & $2.77 \pm 2.69$ & $3.54 \pm 3.89$ & $3.26 \pm 3.43$ & $3.19$ \\
+Temporal Demand   & $4.16 \pm 3.79$ & $4.97 \pm 4.12$ & $5.54 \pm 4.74$ & $4.89$ \\
+Effort            & $5.68 \pm 4.53$ & $6.39 \pm 4.37$ & $6.32 \pm 4.74$ & $6.13$ \\
+Frustration       & $5.88 \pm 4.80$ & $7.58 \pm 5.30$ & $7.13 \pm 5.41$ & $6.86$ \\
+Performance (pos.) & $8.71 \pm 5.44$ & $8.68 \pm 5.60$ & $9.39 \pm 6.32$ & $8.93$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{tlx_subquestions_boxplot.png}
+\caption{Box plots of the six R-TLX subscales by mode ($n = 69$ per mode).}
+\label{fig:rtlx-subquestions}
+\end{figure}
+
+For \emph{Mental Demand}, Form scores lowest (mean $5.77$), Chat next ($6.36$),
+and Ask highest ($6.80$); the aggregated mean is $6.31$. Mental Demand
+increases by approximately $0.6$--$1.0$~points when moving from Form to the
+LLM-driven modes.
+
+For \emph{Physical Demand}, Form scores lowest ($2.77$), Chat second ($3.26$),
+Ask highest ($3.54$); aggregated $3.19$. The absolute spread is small
+($\approx 0.8$~points). Physical Demand is the lowest-rated subscale in all
+three modes.
+
+For \emph{Temporal Demand}, the values increase monotonically from Form ($4.16$)
+to Ask ($4.97$) to Chat ($5.54$); aggregated $4.89$. Temporal Demand is
+approximately $1.4$~points higher in Chat than in Form, the largest monotonic
+increase observed across the six subscales.
+
+For \emph{Effort}, Form scores lowest ($5.68$), with Ask ($6.39$) and Chat
+($6.32$) at a closely comparable level; aggregated $6.13$. Effort increases
+by approximately $0.65$~points from Form to the LLM-driven modes.
+
+For \emph{Frustration}, Form scores lowest ($5.88$), Chat second ($7.13$), and
+Ask highest ($7.58$); aggregated $6.86$. Frustration shows the largest
+absolute gap between Form and the LLM-driven modes ($+1.25$ to $+1.70$~points).
+
+For \emph{Performance} (positive-coded, higher equals worse perceived
+performance), Form and Ask are essentially identical ($8.71$ and $8.68$); Chat
+is slightly higher at $9.39$; aggregated $8.93$. Perceived self-performance
+is comparable across modes, with a marginal degradation in Chat.
+
+\subsection{Composite R-TLX Score}
+
+The composite R-TLX is reported in Table~\ref{tab:rtlx-composite} and
+Figure~\ref{fig:rtlx-aggregate}. Form yields the lowest composite ($5.50$),
+Ask and Chat yield identical higher values ($6.33$ each); the aggregated mean
+is $6.05$. The composite increases by approximately $0.83$~points from Form
+to the LLM-driven modes.
+
+\begin{table}[htbp]
+\centering
+\caption{Composite NASA R-TLX score by mode ($n = 69$ per mode), $1$--$21$
+scale (lower is better).}
+\label{tab:rtlx-composite}
+\begin{tabular}{@{}l r r r r@{}}
+\toprule
+Statistic & Form & Ask & Chat & All \\
+\midrule
+Mean   & 5.50 & 6.33 & 6.33 & 6.05 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\linewidth]{rtlx_aggregate_barplot.png}
+\caption{Composite R-TLX score by mode ($n = 69$ per mode). Lower values
+indicate lower cognitive load.}
+\label{fig:rtlx-aggregate}
+\end{figure}
+
+The Friedman omnibus on the composite R-TLX is non-significant
+($\chi^2(2) = 5.24$, $p = 0.073$, $W = 0.038$). Among the six subscales, two
+reach significance: Temporal Demand ($\chi^2(2) = 12.77$, $p = 0.002$,
+$W = 0.093$) and Frustration ($\chi^2(2) = 8.93$, $p = 0.012$, $W = 0.065$).
+Pairwise post-hoc Wilcoxon signed-rank tests with Bonferroni correction
+identify Form versus Ask and Form versus Chat as significant for both the
+composite and these two subscales, with medium-to-large rank-biserial effect
+sizes ($|r| = 0.36$ to $0.57$); Ask versus Chat is non-significant on every
+measure. Full test statistics are reproduced in
+Appendix~\ref{app:inferential}.

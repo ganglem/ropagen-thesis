@@ -1,0 +1,286 @@
+\chapter{Inferential Statistics in Full}
+\label{app:inferential}
+
+This appendix reproduces the complete inferential test output referenced in
+Chapter~\ref{ch:evaluation}. Sample-size definitions follow
+Chapter~\ref{ch:methodology}: the within-subjects survey tests use $n = 69$,
+the within-subjects document-quality tests use the matched-triple subset of
+$n = 26$, and between-groups sensitivity checks on the unbalanced full
+sample use $n = 113$.
+
+\section{Survey Inferential Tests}
+\label{app:inf-survey}
+
+\subsection{Normality (Shapiro--Wilk, $n = 69$)}
+
+\begin{table}[htbp]
+\centering
+\caption{Shapiro--Wilk normality tests for survey measures by mode.}
+\label{tab:app-survey-normality}
+\small
+\begin{tabular}{@{}l l r r l@{}}
+\toprule
+Measure & Mode & $W$ & $p$ & Normal? \\
+\midrule
+SUS & Form & 0.944 & 0.004 & No \\
+SUS & Ask  & 0.976 & 0.210 & Yes \\
+SUS & Chat & 0.927 & 0.001 & No \\
+R-TLX composite & Form & 0.940 & 0.003 & No \\
+R-TLX composite & Ask  & 0.926 & 0.001 & No \\
+R-TLX composite & Chat & 0.945 & 0.005 & No \\
+AI Support (6-item) & Form & 0.923 & $<0.001$ & No \\
+AI Support (6-item) & Ask  & 0.965 & 0.048 & No \\
+AI Support (6-item) & Chat & 0.952 & 0.010 & No \\
+AI Confidence ($5_{ai}$) & Form & 0.846 & $<0.001$ & No \\
+AI Confidence ($5_{ai}$) & Ask  & 0.856 & $<0.001$ & No \\
+AI Confidence ($5_{ai}$) & Chat & 0.864 & $<0.001$ & No \\
+AI Reuse ($6_{ai}$) & Form & 0.799 & $<0.001$ & No \\
+AI Reuse ($6_{ai}$) & Ask  & 0.872 & $<0.001$ & No \\
+AI Reuse ($6_{ai}$) & Chat & 0.861 & $<0.001$ & No \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Non-normal distributions are detected for nearly every measure. Non-parametric
+tests (Friedman omnibus and Wilcoxon signed-rank post-hoc) are used
+throughout.
+
+\subsection{Friedman Omnibus ($n = 69$ matched triple)}
+
+\begin{table}[htbp]
+\centering
+\caption{Friedman omnibus tests across the three modes for survey measures.
+Kendall's $W$: 0--0.1 weak, 0.1--0.3 moderate, 0.3--0.5 strong.}
+\label{tab:app-survey-friedman}
+\small
+\begin{tabular}{@{}l r r r r l@{}}
+\toprule
+Measure & $\chi^2$ & df & $p$ & $W$ & Significant \\
+\midrule
+SUS (0--100)                    & 5.51  & 2 & 0.064  & 0.040 & No \\
+R-TLX composite (1--21)         & 5.24  & 2 & 0.073  & 0.038 & No \\
+R-TLX Mental Demand             & 3.13  & 2 & 0.209  & 0.023 & No \\
+R-TLX Physical Demand           & 2.08  & 2 & 0.354  & 0.015 & No \\
+R-TLX Temporal Demand           & 12.77 & 2 & 0.002  & 0.093 & \textbf{Yes} \\
+R-TLX Effort                    & 3.78  & 2 & 0.151  & 0.027 & No \\
+R-TLX Frustration               & 8.93  & 2 & 0.012  & 0.065 & \textbf{Yes} \\
+R-TLX Performance (pos.)        & 2.33  & 2 & 0.311  & 0.017 & No \\
+AI Confidence ($5_{ai}$)        & 3.76  & 2 & 0.152  & 0.027 & No \\
+AI Support (6-item composite)   & 1.05  & 2 & 0.592  & 0.008 & No \\
+AI Reuse intention ($6_{ai}$)   & 11.12 & 2 & 0.004  & 0.081 & \textbf{Yes} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Pairwise Wilcoxon Signed-Rank Post-hoc (Bonferroni $\alpha = 0.0167$)}
+
+Post-hoc tests are reported for measures with a significant Friedman result
+and, for completeness, for SUS and the R-TLX composite. Sign convention:
+positive $r$ means the first-named mode ranks higher. Effect-size labels:
+$|r| < 0.1$ negligible, $0.1$--$0.3$ small, $0.3$--$0.5$ medium, $\geq 0.5$ large.
+
+\begin{table}[htbp]
+\centering
+\caption{Pairwise Wilcoxon signed-rank post-hoc tests for survey measures.}
+\label{tab:app-survey-posthoc}
+\small
+\begin{tabular}{@{}l l r r r r l@{}}
+\toprule
+Measure & Pair & $n$ & $W$ & $p$ & $r$ & Sig (Bonf) \\
+\midrule
+SUS               & Form vs Ask  & 60 & 578.5 & 0.013   & $+0.368$ medium      & \textbf{Yes} \\
+SUS               & Form vs Chat & 58 & 549.5 & 0.018   & $+0.358$ medium      & No \\
+SUS               & Ask vs Chat  & 61 & 885.5 & 0.666   & $-0.063$ negligible  & No \\
+R-TLX composite   & Form vs Ask  & 65 & 684.0 & 0.011   & $-0.362$ medium      & \textbf{Yes} \\
+R-TLX composite   & Form vs Chat & 65 & 636.0 & 0.004   & $-0.407$ medium      & \textbf{Yes} \\
+R-TLX composite   & Ask vs Chat  & 63 & 995.5 & 0.932   & $+0.012$ negligible  & No \\
+Temporal Demand   & Form vs Ask  & 43 & 237.0 & 0.004   & $-0.499$ medium      & \textbf{Yes} \\
+Temporal Demand   & Form vs Chat & 46 & 233.0 & $<0.001$& $-0.569$ large       & \textbf{Yes} \\
+Temporal Demand   & Ask vs Chat  & 46 & 427.0 & 0.211   & $-0.210$ small       & No \\
+Frustration       & Form vs Ask  & 52 & 403.5 & 0.009   & $-0.414$ medium      & \textbf{Yes} \\
+Frustration       & Form vs Chat & 57 & 519.5 & 0.014   & $-0.371$ medium      & \textbf{Yes} \\
+Frustration       & Ask vs Chat  & 52 & 629.0 & 0.584   & $+0.087$ negligible  & No \\
+AI Reuse ($6_{ai}$) & Form vs Ask  & 49 & 402.5 & 0.034 & $+0.343$ medium      & No \\
+AI Reuse ($6_{ai}$) & Form vs Chat & 43 & 216.0 & 0.002 & $+0.543$ large       & \textbf{Yes} \\
+AI Reuse ($6_{ai}$) & Ask vs Chat  & 45 & 454.5 & 0.468 & $+0.122$ small       & No \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Mode Preference Ranking}
+
+A chi-square goodness-of-fit test on the rank-1 vote distribution against a
+uniform null gives $\chi^2(2, N = 69) = 14.17$, $p < 0.001$, Cramér's
+$V = 0.320$ (medium effect). The Friedman test on the full rank scores
+($1$--$3$) is non-significant: $\chi^2(2) = 5.07$, $p = 0.079$, $W = 0.037$.
+
+\section{NLP Metric Inferential Tests}
+\label{app:inf-nlp}
+
+\subsection{Kruskal--Wallis Sensitivity Check ($n = 113$, unbalanced)}
+
+\begin{table}[htbp]
+\centering
+\caption{Kruskal--Wallis $H$ tests on the unbalanced full document set.
+Reported as a between-groups sensitivity check, not the primary post-hoc
+family.}
+\label{tab:app-nlp-kw}
+\small
+\begin{tabular}{@{}l r r l l@{}}
+\toprule
+Metric & $H$ & $p$ & Sig ($\alpha = 0.05$) & $\varepsilon^2$ \\
+\midrule
+BLEU                  & 4.48  & 0.107  & No  & — \\
+ROUGE-1               & 5.57  & 0.062  & No  & — \\
+ROUGE-2               & 9.56  & 0.008  & Yes & 0.069 (moderate) \\
+ROUGE-L               & 7.79  & 0.020  & Yes & — \\
+METEOR                & 9.80  & 0.007  & Yes & 0.071 (moderate) \\
+BERTScore Precision   & 9.11  & 0.011  & Yes & — \\
+BERTScore Recall      & 32.38 & $<0.001$ & Yes & 0.276 (large) \\
+BERTScore F1          & 9.75  & 0.008  & Yes & 0.071 (moderate) \\
+SBERT (ModernBERT)    & 17.43 & $<0.001$ & Yes & 0.140 (large) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Friedman Omnibus ($n = 26$ matched triple)}
+
+\begin{table}[htbp]
+\centering
+\caption{Friedman omnibus tests on the matched-triple subset of $n = 26$
+participants. Kendall's $W$ approximate where the metric required tie
+correction.}
+\label{tab:app-nlp-friedman}
+\small
+\begin{tabular}{@{}l r r l l@{}}
+\toprule
+Metric & $\chi^2$ & $p$ & Sig & $W$ \\
+\midrule
+BLEU                  & 6.23  & 0.044    & Yes & 0.083 (weak)        \\
+ROUGE-1               & 10.69 & 0.005    & Yes & $\sim$0.18 (moderate) \\
+ROUGE-2               & 13.46 & 0.001    & Yes & $\sim$0.22 (moderate) \\
+ROUGE-L               & 11.31 & 0.004    & Yes & $\sim$0.19 (moderate) \\
+METEOR                & 9.92  & 0.007    & Yes & $\sim$0.17 (moderate) \\
+BERTScore Precision   & 18.54 & $<0.001$ & Yes & $\sim$0.30 (strong)  \\
+BERTScore Recall      & 30.77 & $<0.001$ & Yes & 0.410 (strong)       \\
+BERTScore F1          & 13.00 & 0.002    & Yes & $\sim$0.21 (moderate) \\
+SBERT (ModernBERT)    & 16.69 & $<0.001$ & Yes & $\sim$0.27 (moderate) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Pairwise Wilcoxon Signed-Rank Post-hoc ($n = 26$, primary)}
+
+Bonferroni-corrected $\alpha = 0.0167$. Effect size: matched-pairs
+rank-biserial $r$ (positive when the first-named mode in the pair scores
+higher).
+
+\begin{table}[htbp]
+\centering
+\caption{Pairwise Wilcoxon signed-rank post-hoc tests for document-level NLP
+metrics on the matched-triple subset.}
+\label{tab:app-nlp-posthoc}
+\small
+\begin{tabular}{@{}l l r r r l l@{}}
+\toprule
+Metric & Pair & $W$ & $p$ & $r$ & Direction & Sig (Bonf) \\
+\midrule
+BLEU                & Form vs Ask  & 108 & 0.089    & $+0.385$ medium     & Form $>$ Ask  & No \\
+BLEU                & Form vs Chat & 133 & 0.291    & $-0.242$ small      & Chat $>$ Form & No \\
+BLEU                & Ask vs Chat  &  74 & 0.009    & $-0.578$ large      & Chat $>$ Ask  & \textbf{Yes} \\
+ROUGE-1             & Form vs Ask  &  77 & 0.011    & $+0.561$ large      & Form $>$ Ask  & \textbf{Yes} \\
+ROUGE-1             & Form vs Chat & 147 & 0.483    & $-0.162$ small      & Chat $>$ Form & No \\
+ROUGE-1             & Ask vs Chat  &  63 & 0.003    & $-0.641$ large      & Chat $>$ Ask  & \textbf{Yes} \\
+ROUGE-2             & Form vs Ask  &  30 & $<0.001$ & $+0.829$ large      & Form $>$ Ask  & \textbf{Yes} \\
+ROUGE-2             & Form vs Chat & 136 & 0.328    & $+0.225$ small      & Form $>$ Chat & No \\
+ROUGE-2             & Ask vs Chat  &  71 & 0.007    & $-0.595$ large      & Chat $>$ Ask  & \textbf{Yes} \\
+ROUGE-L             & Form vs Ask  &  44 & $<0.001$ & $+0.749$ large      & Form $>$ Ask  & \textbf{Yes} \\
+ROUGE-L             & Form vs Chat & 161 & 0.727    & $+0.083$ negligible & Form $>$ Chat & No \\
+ROUGE-L             & Ask vs Chat  &  66 & 0.004    & $-0.624$ large      & Chat $>$ Ask  & \textbf{Yes} \\
+METEOR              & Form vs Ask  &  33 & $<0.001$ & $+0.812$ large      & Form $>$ Ask  & \textbf{Yes} \\
+METEOR              & Form vs Chat & 137 & 0.340    & $+0.219$ small      & Form $>$ Chat & No \\
+METEOR              & Ask vs Chat  &  84 & 0.019    & $-0.521$ large      & Chat $>$ Ask  & No (above Bonf) \\
+BERTScore Precision & Form vs Ask  &  63 & 0.003    & $+0.641$ large      & Form $>$ Ask  & \textbf{Yes} \\
+BERTScore Precision & Form vs Chat & 106 & 0.080    & $-0.396$ medium     & Chat $>$ Form & No \\
+BERTScore Precision & Ask vs Chat  &  40 & $<0.001$ & $-0.772$ large      & Chat $>$ Ask  & \textbf{Yes} \\
+BERTScore Recall    & Form vs Ask  &   0 & $<0.001$ & $+1.000$ large      & Form $>$ Ask  & \textbf{Yes} \\
+BERTScore Recall    & Form vs Chat &  55 & 0.001    & $+0.687$ large      & Form $>$ Chat & \textbf{Yes} \\
+BERTScore Recall    & Ask vs Chat  &  99 & 0.053    & $-0.436$ medium     & Chat $>$ Ask  & No \\
+BERTScore F1        & Form vs Ask  &  24 & $<0.001$ & $+0.863$ large      & Form $>$ Ask  & \textbf{Yes} \\
+BERTScore F1        & Form vs Chat & 172 & 0.940    & $+0.020$ negligible & Form $>$ Chat & No \\
+BERTScore F1        & Ask vs Chat  &  59 & 0.002    & $-0.664$ large      & Chat $>$ Ask  & \textbf{Yes} \\
+SBERT               & Form vs Ask  & 110 & 0.099    & $+0.373$ medium     & Form $>$ Ask  & No \\
+SBERT               & Form vs Chat &  56 & 0.002    & $-0.681$ large      & Chat $>$ Form & \textbf{Yes} \\
+SBERT               & Ask vs Chat  &  26 & $<0.001$ & $-0.852$ large      & Chat $>$ Ask  & \textbf{Yes} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Mann--Whitney $U$ Sensitivity Check ($n = 113$, unbalanced)}
+
+The Mann--Whitney $U$ test is reported as a between-groups sensitivity check
+on the unbalanced full sample. Bonferroni-corrected $\alpha = 0.0167$. Only
+significant comparisons are listed; non-significant comparisons are omitted
+for brevity.
+
+\begin{table}[htbp]
+\centering
+\caption{Mann--Whitney $U$ between-groups sensitivity check on the
+unbalanced full sample of $n = 113$ documents.}
+\label{tab:app-nlp-mwu}
+\small
+\begin{tabular}{@{}l l r r l@{}}
+\toprule
+Metric & Comparison & $p$ & $r$ & Sig \\
+\midrule
+BERTScore Recall & Form $>$ Ask  & $<0.001$ & 0.756 (large)  & Yes \\
+BERTScore Recall & Form $>$ Chat & $<0.001$ & 0.512 (large)  & Yes \\
+BERTScore F1     & Form $>$ Ask  & 0.004    & 0.386 (medium) & Yes \\
+BERTScore F1     & Chat $>$ Ask  & 0.011    & 0.340 (medium) & Yes \\
+SBERT            & Chat $>$ Form & $<0.001$ & 0.505 (large)  & Yes \\
+SBERT            & Chat $>$ Ask  & $<0.001$ & 0.453 (large)  & Yes \\
+ROUGE-2          & Form $>$ Ask  & 0.006    & 0.369 (medium) & Yes \\
+ROUGE-2          & Chat $>$ Ask  & 0.011    & 0.342 (medium) & Yes \\
+METEOR           & Form $>$ Ask  & 0.003    & 0.407 (medium) & Yes \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The sensitivity check broadly agrees with the matched-pairs result on
+direction (Ask $<$ Form, Ask $<$ Chat on most metrics), with the matched
+analysis producing larger and more consistent effect sizes — as expected for
+a within-subjects design.
+
+\section{Confidence--Quality Correlations}
+\label{app:inf-corr}
+
+Spearman rank correlation $\rho$ between the primary confidence measure
+(item~$5_{ai}$, ``I am confident the AI identified the correct legal basis'')
+and document-quality measures, computed on the survey~$\times$~NLP joined
+sample. Per-mode joined samples: Form $n = 34$, Ask $n = 34$, Chat $n = 38$;
+pooled $n = 106$.
+
+\begin{table}[htbp]
+\centering
+\caption{Spearman rank correlations: primary confidence ($5_{ai}$) versus
+document-quality measures, by mode.}
+\label{tab:app-corr-primary}
+\small
+\begin{tabular}{@{}l r r r r r r@{}}
+\toprule
+& \multicolumn{3}{c}{$5_{ai}$ vs BERTScore F1} & \multicolumn{3}{c}{$5_{ai}$ vs Judge Overall} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Mode  & $n$ & $\rho$ & $p$ & $n$ & $\rho$ & $p$ \\
+\midrule
+Form  & 34 & $-0.22$ & 0.22 & 34 & $+0.07$ & 0.70 \\
+Ask   & 34 & $-0.23$ & 0.19 & 34 & $-0.21$ & 0.24 \\
+Chat  & 38 & $+0.28$ & 0.09 & 38 & $+0.41$ & \textbf{0.012} \\
+Pooled & 106 & $-0.02$ & 0.88 & 106 & $+0.14$ & 0.14 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For comparison, the secondary 6-item Perceived AI Support composite produces
+weaker mode-specific correlations with BERTScore F1 (Form $\rho = -0.22$,
+Ask $\rho = -0.04$, Chat $\rho = +0.20$) and a small but significant pooled
+correlation with Judge Overall ($\rho = +0.21$, $p = 0.033$, $n = 106$).
