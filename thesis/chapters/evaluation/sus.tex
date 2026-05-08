@@ -1,12 +1,13 @@
 \section{Usability — System Usability Scale}
 \label{sec:eval-sus}
 
-The System Usability Scale is administered after each interaction mode. It
-consists of ten Likert items on a five-point scale, with odd-numbered items
-phrased positively (higher response equals more positive evaluation) and
-even-numbered items phrased negatively (lower response equals more positive
-evaluation). The ten items are scored and rescaled to an overall
-$0$--$100$ score using the standard SUS scoring algorithm.
+The System Usability Scale is administered after each interaction
+mode. It consists of ten Likert items on a five-point scale, with
+odd-numbered items phrased positively (higher response equals more
+positive evaluation) and even-numbered items phrased negatively
+(lower response equals more positive evaluation). The aggregated
+``All'' column in the tables below pools the three per-mode samples
+into a single per-item descriptive across all $207$ ratings.
 
 \subsection{Per-Item Results}
 
@@ -171,59 +172,12 @@ marks the mean.}
 \label{fig:sus-subquestions}
 \end{figure}
 
-\subsection{Overall SUS Score}
-
-The overall SUS score per mode is computed with the standard SUS
-scoring algorithm — odd-numbered items contribute (response $-\,1$),
-even-numbered items contribute ($5\,-$ response), the ten contributions
-are summed and multiplied by $2.5$ to rescale to a $0$--$100$ range.
-This rescaled overall score is therefore on a different scale from
-the per-item ``All'' column reported above (which is the mean Likert
-rating on each item, $1$--$5$); the two are not directly comparable
-numerically. Table~\ref{tab:sus-composite} and
-Figure~\ref{fig:sus-aggregate} report the rescaled overall score per
-mode. Form scores highest (mean $78.62$, median $80.0$), followed by
-Ask (mean $72.97$, median $72.5$) and Chat (mean $72.93$, median
-$75.0$). The aggregated mean across all three modes is $74.84$. The
-drop from Form to the LLM-driven modes is approximately $5.7$~SUS
-points; Ask and Chat are essentially indistinguishable on the overall
-score. All three modes fall above the conventional acceptability
-threshold of $68$.
-
-\begin{table}[htbp]
-\centering
-\caption{Overall SUS score by mode ($n = 69$ per mode), 0--100
-scale (higher is better). The aggregated ``All'' column is the
-unweighted mean of the three per-mode means.}
-\label{tab:sus-composite}
-\begin{tabular}{@{}l r r r r@{}}
-\toprule
-Statistic & Form & Ask & Chat & All \\
-\midrule
-Mean      & 78.62  & 72.97  & 72.93  & 74.84 \\
-SD        & 16.09  & 15.36  & 19.03  & 16.83 \\
-Median    & 80.00  & 72.50  & 75.00  & 75.83 \\
-Min       & 40.00  & 32.50  &  5.00  & —     \\
-Max       & 100.00 & 100.00 & 100.00 & —     \\
-$n$       & 69     & 69     & 69     & 207   \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.85\linewidth]{sus_aggregate_barplot.png}
-\caption{Overall SUS score by mode ($n = 69$ per mode), 0--100
-scale. Error bars denote one standard deviation; the dashed line
-marks the conventional acceptability threshold of $68$.}
-\label{fig:sus-aggregate}
-\end{figure}
-
-A Friedman omnibus test on the overall SUS score yields $\chi^2(2) = 5.51$,
-$p = 0.064$, $W = 0.040$, which does not reach the $\alpha = 0.05$ threshold.
-Pairwise Wilcoxon signed-rank post-hoc tests with Bonferroni correction
-($\alpha = 0.0167$) indicate a significant Form-vs-Ask difference
-($W = 578.5$, $p = 0.013$, rank-biserial $r = +0.368$, medium effect), a
-non-significant Form-vs-Chat difference ($p = 0.018$, just above the
-Bonferroni threshold), and no Ask-vs-Chat difference ($p = 0.666$). Full test
+A Friedman omnibus test on the per-mode aggregate yields
+$\chi^2(2) = 5.51$, $p = 0.064$, $W = 0.040$, which does not reach
+the $\alpha = 0.05$ threshold. Pairwise Wilcoxon signed-rank post-hoc
+tests with Bonferroni correction ($\alpha = 0.0167$) indicate a
+significant Form-vs-Ask difference ($W = 578.5$, $p = 0.013$,
+rank-biserial $r = +0.368$, medium effect), a non-significant
+Form-vs-Chat difference ($p = 0.018$, just above the Bonferroni
+threshold), and no Ask-vs-Chat difference ($p = 0.666$). Full test
 statistics are reproduced in Appendix~\ref{app:inferential}.

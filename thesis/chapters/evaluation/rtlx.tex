@@ -121,49 +121,13 @@ performance), Form and Ask are essentially identical ($8.71$ and $8.68$); Chat
 is slightly higher at $9.39$; aggregated $8.93$. Perceived self-performance
 is comparable across modes, with a marginal degradation in Chat.
 
-\subsection{Overall R-TLX Score}
-
-The overall R-TLX is reported in Table~\ref{tab:rtlx-composite} and
-Figure~\ref{fig:rtlx-aggregate}. Form yields the lowest overall score ($5.50$),
-Ask and Chat yield identical higher values ($6.33$ each); the aggregated mean
-is $6.05$. The overall score increases by approximately $0.83$~points from Form
-to the LLM-driven modes.
-
-\begin{table}[htbp]
-\centering
-\caption{Overall NASA R-TLX score by mode ($n = 69$ per mode),
-$1$--$21$ scale (lower is better). The six-subscale overall score is
-the unweighted mean of all six R-TLX subscales (the five Demand
-subscales plus the positive-coded Performance subscale). The
-five-subscale demand-only score excludes Performance and is reported
-here as a secondary aggregate; its source values are in the
-dedicated row of \texttt{survey\_summary.csv}.}
-\label{tab:rtlx-composite}
-\begin{tabular}{@{}l r r r r@{}}
-\toprule
-Statistic & Form & Ask & Chat & All \\
-\midrule
-Six-subscale overall mean   & 5.50 & 6.33 & 6.33 & 6.05 \\
-Five-subscale (demand-only) mean & 4.85 & 5.86 & 5.72 & 5.48 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.85\linewidth]{rtlx_aggregate_barplot.png}
-\caption{Overall R-TLX score by mode ($n = 69$ per mode). Lower values
-indicate lower cognitive load.}
-\label{fig:rtlx-aggregate}
-\end{figure}
-
-The Friedman omnibus on the overall R-TLX is non-significant
-($\chi^2(2) = 5.24$, $p = 0.073$, $W = 0.038$). Among the six subscales, two
-reach significance: Temporal Demand ($\chi^2(2) = 12.77$, $p = 0.002$,
-$W = 0.093$) and Frustration ($\chi^2(2) = 8.93$, $p = 0.012$, $W = 0.065$).
-Pairwise post-hoc Wilcoxon signed-rank tests with Bonferroni correction
-identify Form versus Ask and Form versus Chat as significant for both the
-overall score and these two subscales, with medium-to-large rank-biserial effect
-sizes ($|r| = 0.36$ to $0.57$); Ask versus Chat is non-significant on every
-measure. Full test statistics are reproduced in
-Appendix~\ref{app:inferential}.
+A Friedman omnibus across the six subscales is non-significant
+($\chi^2(2) = 5.24$, $p = 0.073$, $W = 0.038$). Among the six
+subscales, two reach significance: Temporal Demand
+($\chi^2(2) = 12.77$, $p = 0.002$, $W = 0.093$) and Frustration
+($\chi^2(2) = 8.93$, $p = 0.012$, $W = 0.065$). Pairwise post-hoc
+Wilcoxon signed-rank tests with Bonferroni correction identify
+Form-vs-Ask and Form-vs-Chat as significant on these two subscales,
+with medium-to-large rank-biserial effect sizes ($|r| = 0.36$ to
+$0.57$); Ask versus Chat is non-significant on every measure. Full
+test statistics are reproduced in Appendix~\ref{app:inferential}.

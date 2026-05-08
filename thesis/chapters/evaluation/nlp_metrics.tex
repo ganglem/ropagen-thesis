@@ -290,45 +290,6 @@ leads) or semantic-document-level fluency (Chat leads). The full
 within-subjects test results are reproduced in
 Appendix~\ref{app:inferential}.
 
-\subsubsection{Best- and Worst-Scoring Documents}
-
-Table~\ref{tab:nlp-doc-extremes} reports the participant
-identifier of the highest- and lowest-scoring document on each
-metric, separately per mode. The participant identifiers are the
-pseudonyms recorded in the source data. Some participants appear
-repeatedly across metrics (e.g.\ \texttt{IOL1223} achieves the best
-Ask result on five of the nine metrics, while \texttt{PVV2109} is the
-worst-performing Ask document on three lexical metrics).
-
-\begin{table}[htbp]
-\centering
-\caption{Best- and worst-scoring document identifiers per metric per
-mode, derived from
-\texttt{doc\_nlp\_summary.csv} and
-\texttt{doc\_bert\_summary.csv}.}
-\label{tab:nlp-doc-extremes}
-\small
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{@{}l l l l l l l@{}}
-\toprule
-& \multicolumn{2}{c}{Form} & \multicolumn{2}{c}{Ask} & \multicolumn{2}{c}{Chat} \\
-\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
-Metric & Best & Worst & Best & Worst & Best & Worst \\
-\midrule
-BLEU                 & aea2442 & Jer1205 & IOL1223 & PVV2109 & IOL1223 & aal1412 \\
-ROUGE-1              & NNL2811 & Jer1205 & AHR0531 & DLZ2800 & EHN0215 & aal1412 \\
-ROUGE-2              & aea2442 & Jer1205 & IOL1223 & PVV2109 & EHN0215 & PVV2109 \\
-ROUGE-L              & aea2442 & IHB1316 & IOL1223 & PVV2109 & EHN0215 & aal1412 \\
-METEOR               & EHN0215 & Jer1205 & IOL1223 & OAZ2611 & EHN0215 & PVV2109 \\
-BERTScore Precision  & AHR0531 & UAB0821 & IOL1223 & thg1620 & IOL1223 & PVV2109 \\
-BERTScore Recall     & EII0925 & KIR2546 & AMR2620 & DAB1519 & EHN0215 & EHJ2314 \\
-BERTScore F1         & AMR2620 & UAB0821 & IOL1223 & thg1620 & EHN0215 & PVV2109 \\
-SBERT (ModernBERT)   & NUG0102 & UAB0821 & IOL1223 & thg1620 & NAN277  & EHJ2314 \\
-\bottomrule
-\end{tabular}%
-}
-\end{table}
-
 \subsection{Chapter-Level Results}
 \label{ssec:nlp-chapter}
 
