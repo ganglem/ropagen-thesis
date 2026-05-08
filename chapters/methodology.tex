@@ -73,3 +73,104 @@ To investigate whether perceived confidence in the AI-generated output correspon
 A significance threshold of $\alpha = 0.05$ is applied to all tests. All within-subjects comparisons across the three modes follow a two-step procedure: a Friedman test as the omnibus test, followed by pairwise Wilcoxon signed-rank tests with Bonferroni correction for post-hoc analysis. Where the unbalanced full sample makes within-subjects matching impossible (e.g.\ when only one or two documents are available per participant), Mann--Whitney U tests are reported as a between-groups sensitivity check on the corresponding mode pair. Effect sizes are reported as $\varepsilon^2$ for the Friedman / Kruskal--Wallis omnibus tests, Kendall's~$W$ as the coefficient of concordance for Friedman, and rank-biserial correlation~$r$ for pairwise Wilcoxon signed-rank tests.
 
 For RQ1 (User Experience and Preference), the Friedman test is applied to SUS scores, the R-TLX composite, and the confidence question composites across modes; post-hoc pairwise Wilcoxon signed-rank tests with Bonferroni correction identify which mode pairs differ significantly; and mode preference distributions are reported as frequencies and rankings. For RQ2 (Document Quality and Confidence Calibration), the Friedman test is applied to NLP metric scores and LLM-as-a-judge scores across modes, with Bonferroni-corrected pairwise Wilcoxon signed-rank tests as post-hoc analysis where the omnibus is significant. Spearman rank correlation ($\rho$) is used for the confidence--quality gap analysis (non-parametric; appropriate for ordinal-to-continuous relationships).
+
+\subsubsection*{Definitions of Statistical Tests and Effect Sizes}
+
+The following definitions apply to every measurement reported in
+the Evaluation chapter. They are listed once here rather than
+re-introduced for every instrument.
+
+\paragraph{Shapiro--Wilk normality test.} Tests the null hypothesis
+that a sample is drawn from a normal distribution. The statistic is
+\begin{equation}
+W = \frac{\bigl( \sum_{i=1}^{n} a_i x_{(i)} \bigr)^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2},
+\end{equation}
+where $x_{(i)}$ are the order statistics and $a_i$ are tabulated
+constants. $W$ close to $1$ indicates normality; small $p$-values
+reject normality. In this study, normality is rejected for nearly
+every survey measure, motivating the non-parametric tests below.
+
+\paragraph{Friedman test.} Non-parametric repeated-measures omnibus
+test for $k \geq 3$ related samples. Each participant's $k$ values
+are ranked within-subject; the test statistic on $n$ participants
+across $k$ conditions is
+\begin{equation}
+\chi^2_F = \frac{12}{n k (k+1)} \sum_{j=1}^{k} R_j^2 - 3 n (k+1),
+\end{equation}
+where $R_j$ is the sum of ranks for condition $j$. Under $H_0$ (no
+difference among conditions), $\chi^2_F$ is asymptotically $\chi^2$
+distributed with $k - 1$ degrees of freedom. A significant Friedman
+statistic motivates pairwise post-hoc comparisons.
+
+\paragraph{Wilcoxon signed-rank test (post-hoc).} Non-parametric
+test for two related samples, applied as a pairwise post-hoc to a
+significant Friedman omnibus. Differences $d_i = x_i - y_i$ are
+ranked by absolute value; the statistic
+\begin{equation}
+W = \min(W_+, W_-),
+\quad W_+ = \!\!\!\sum_{d_i > 0}\!\! \mathrm{rank}(|d_i|), \quad
+W_- = \!\!\!\sum_{d_i < 0}\!\! \mathrm{rank}(|d_i|).
+\end{equation}
+With three modes there are three pairwise comparisons; the
+Bonferroni-corrected significance threshold is therefore
+$\alpha' = 0.05 / 3 = 0.0167$.
+
+\paragraph{Mann--Whitney $U$ test (between-groups sensitivity check).}
+Non-parametric two-sample test on independent groups, used here as
+a sensitivity check on the unbalanced full sample where
+matched-pair tests are not applicable. With $n_1$ and $n_2$ the two
+group sizes and $R_1$ the sum of ranks in group $1$,
+\begin{equation}
+U = R_1 - \frac{n_1 (n_1 + 1)}{2}.
+\end{equation}
+
+\paragraph{Kruskal--Wallis $H$ test.} Non-parametric one-way ANOVA
+analogue for $k$ independent groups, used in the Evaluation chapter
+as a between-groups sensitivity check on the unbalanced full
+document sample. With $N$ total observations, $n_j$ observations in
+group $j$, and $R_j$ the sum of ranks in group $j$,
+\begin{equation}
+H = \frac{12}{N (N+1)} \sum_{j=1}^{k} \frac{R_j^2}{n_j} - 3 (N + 1).
+\end{equation}
+
+\paragraph{Chi-square goodness-of-fit test.} Used here on the
+distribution of rank-1 votes in the mode-preference data, against a
+uniform null. With $O_i$ observed and $E_i$ expected counts in $k$
+categories,
+\begin{equation}
+\chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}.
+\end{equation}
+
+\paragraph{Effect sizes.} Effect sizes complement $p$-values by
+quantifying the magnitude of the difference, independent of sample
+size.
+\begin{itemize}
+  \item Kendall's $W$ (coefficient of concordance) is the Friedman
+        test's effect size on $[0, 1]$:
+        $W = \chi^2_F / (n (k - 1))$. Conventional bands: $0$--$0.1$
+        weak, $0.1$--$0.3$ moderate, $0.3$--$0.5$ strong.
+  \item Rank-biserial correlation $r$ is the matched-pairs effect
+        size for the Wilcoxon signed-rank test, given by
+        $r = (W_+ - W_-) / (W_+ + W_-)$. Conventional bands:
+        $|r| < 0.1$ negligible, $0.1$--$0.3$ small, $0.3$--$0.5$
+        medium, $\geq 0.5$ large.
+  \item Cramér's $V$ is the chi-square effect size on $[0, 1]$:
+        $V = \sqrt{\chi^2 / (N (k - 1))}$. Conventional bands match
+        Kendall's $W$.
+  \item $\varepsilon^2$ (epsilon squared) is the Kruskal--Wallis
+        effect size on $[0, 1]$:
+        $\varepsilon^2 = (H - k + 1) / (N - k)$.
+  \item Spearman's $\rho$ is the rank correlation coefficient on
+        $[-1, +1]$, used for the confidence--quality analyses;
+        magnitudes follow the standard correlation conventions
+        (small $|\rho| \approx 0.1$, medium $\approx 0.3$, large
+        $\geq 0.5$).
+\end{itemize}
+
+\paragraph{Bonferroni correction.} A simple family-wise
+error-rate adjustment that divides the per-test significance
+threshold by the number of comparisons in the family. With $m$
+comparisons and a desired family-wise $\alpha = 0.05$, each
+individual test is evaluated against $\alpha' = \alpha / m$. With
+the three pairwise mode comparisons used throughout this work,
+$\alpha' = 0.0167$.
