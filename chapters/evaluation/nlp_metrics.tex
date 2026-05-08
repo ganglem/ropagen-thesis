@@ -64,14 +64,14 @@ Metric & Mode & $n$ & Min & Q1 & Median & Q3 & Max & Mean & SD \\
 \end{tabular}
 \end{sidewaystable}
 
-\begin{figure}[htbp]
+\begin{sidewaysfigure}
 \centering
 \includegraphics[width=\linewidth]{nlp_metrics_boxplot.png}
 \caption{Document-level distributions of BLEU, ROUGE-1/2/L, and
 METEOR by mode (full sample $n = 113$). Boxes show the interquartile
 range; the diamond marks the mean.}
 \label{fig:nlp-doc-boxplot}
-\end{figure}
+\end{sidewaysfigure}
 
 \paragraph{BLEU.} BLEU \emph{(Bilingual Evaluation Understudy)}
 \cite{Papineni2002} measures the geometric mean of $n$-gram
@@ -204,14 +204,14 @@ Metric & Mode & $n$ & Min & Q1 & Median & Q3 & Max & Mean & SD \\
 \end{tabular}
 \end{sidewaystable}
 
-\begin{figure}[htbp]
+\begin{sidewaysfigure}
 \centering
 \includegraphics[width=\linewidth]{bert_metrics_boxplot.png}
 \caption{Document-level distributions of BERTScore Precision /
 Recall / F1 and SBERT cosine similarity (ModernBERT) by mode (full
 sample $n = 113$).}
 \label{fig:bert-doc-boxplot}
-\end{figure}
+\end{sidewaysfigure}
 
 \paragraph{BERTScore Precision, Recall, F1.} BERTScore
 \cite{Zhang2020} replaces surface-form $n$-gram matching with
