@@ -4,39 +4,62 @@
 Document-quality results are reported on the full retained set of $113$
 documents (Form $n = 37$, Ask $n = 37$, Chat $n = 39$) for descriptive
 statistics, and on the strict matched-triple subset of $n = 26$ for
-within-subjects significance tests. All metrics are computed against the
-single expert-authored Form-mode reference document described in
-Chapter~\ref{ch:methodology}. For each metric, the per-mode results are
-reported in the order Form, Ask, Chat, followed by the aggregated value
-across all three modes.
+within-subjects significance tests. All metrics are computed against
+the single expert-authored Form-mode reference document described in
+Chapter~\ref{ch:methodology}. For each metric, the per-mode results
+are reported in the order Form, Ask, Chat, followed by the aggregated
+value across all three modes. The descriptive tables in this section
+report — per metric and per mode — the full empirical distribution
+($n$, min, Q1, median, Q3, max, mean, SD) computed from the raw
+per-document scores in the pipeline outputs
+\texttt{document\_results.csv} and \texttt{chapter\_results.csv}.
 
 \subsection{Document-Level Results}
 \label{ssec:nlp-doc}
 
-Table~\ref{tab:nlp-doc-summary} reports the document-level mean and standard
-deviation per metric per mode and the aggregated mean.
-Figures~\ref{fig:nlp-doc-boxplot} and \ref{fig:bert-doc-boxplot} show the
-corresponding distributions.
+\subsubsection{Lexical Metrics}
+
+Table~\ref{tab:nlp-doc-distrib-lexical} reports the full
+distribution of the five lexical metrics (BLEU, ROUGE-1/2/L, METEOR)
+per mode, plus the aggregated row across all $113$ documents.
+Figure~\ref{fig:nlp-doc-boxplot} shows the corresponding box-plot
+distributions.
 
 \begin{table}[htbp]
 \centering
-\caption{Document-level NLP metric means $\pm$ standard deviations by mode
-(full sample $n = 113$: Form $37$, Ask $37$, Chat $39$). The aggregated
-``All'' column is the mean across all $113$ documents.}
-\label{tab:nlp-doc-summary}
-\begin{tabular}{@{}l r r r r@{}}
+\caption{Document-level lexical metric distributions by mode (full
+sample $n = 113$). Source:
+\texttt{doc\_nlp\_summary.csv}.}
+\label{tab:nlp-doc-distrib-lexical}
+\small
+\begin{tabular}{@{}l l r r r r r r r r@{}}
 \toprule
-Metric & Form & Ask & Chat & All \\
+Metric & Mode & $n$ & Min & Q1 & Median & Q3 & Max & Mean & SD \\
 \midrule
-BLEU                  & $0.129 \pm 0.048$ & $0.127 \pm 0.056$ & $0.143 \pm 0.039$ & $0.133 \pm 0.048$ \\
-ROUGE-1               & $0.488 \pm 0.098$ & $0.465 \pm 0.088$ & $0.511 \pm 0.071$ & $0.488 \pm 0.087$ \\
-ROUGE-2               & $0.306 \pm 0.076$ & $0.257 \pm 0.080$ & $0.291 \pm 0.069$ & $0.285 \pm 0.077$ \\
-ROUGE-L               & $0.388 \pm 0.094$ & $0.347 \pm 0.091$ & $0.389 \pm 0.072$ & $0.375 \pm 0.087$ \\
-METEOR                & $0.412 \pm 0.051$ & $0.365 \pm 0.068$ & $0.390 \pm 0.057$ & $0.389 \pm 0.062$ \\
-BERTScore Precision   & $0.889 \pm 0.014$ & $0.886 \pm 0.016$ & $0.895 \pm 0.012$ & $0.890 \pm 0.014$ \\
-BERTScore Recall      & $0.923 \pm 0.005$ & $0.908 \pm 0.017$ & $0.913 \pm 0.013$ & $0.915 \pm 0.014$ \\
-BERTScore F1          & $0.905 \pm 0.009$ & $0.897 \pm 0.013$ & $0.904 \pm 0.010$ & $0.902 \pm 0.011$ \\
-SBERT (ModernBERT)    & $0.986 \pm 0.004$ & $0.986 \pm 0.005$ & $0.990 \pm 0.002$ & $0.987 \pm 0.004$ \\
+\multirow{4}{*}{BLEU}    & Form & 37  & 0.064 & 0.088 & 0.124 & 0.158 & 0.230 & 0.129 & 0.048 \\
+                         & Ask  & 37  & 0.047 & 0.083 & 0.125 & 0.148 & 0.246 & 0.127 & 0.056 \\
+                         & Chat & 39  & 0.067 & 0.122 & 0.134 & 0.163 & 0.235 & 0.143 & 0.039 \\
+                         & All  & 113 & 0.047 & 0.094 & 0.128 & 0.159 & 0.246 & 0.133 & 0.048 \\
+\midrule
+\multirow{4}{*}{ROUGE-1} & Form & 37  & 0.313 & 0.421 & 0.493 & 0.569 & 0.644 & 0.488 & 0.098 \\
+                         & Ask  & 37  & 0.322 & 0.412 & 0.449 & 0.522 & 0.618 & 0.465 & 0.088 \\
+                         & Chat & 39  & 0.330 & 0.468 & 0.517 & 0.561 & 0.645 & 0.511 & 0.071 \\
+                         & All  & 113 & 0.313 & 0.425 & 0.491 & 0.560 & 0.645 & 0.488 & 0.087 \\
+\midrule
+\multirow{4}{*}{ROUGE-2} & Form & 37  & 0.178 & 0.241 & 0.301 & 0.361 & 0.455 & 0.306 & 0.076 \\
+                         & Ask  & 37  & 0.121 & 0.200 & 0.238 & 0.275 & 0.429 & 0.257 & 0.080 \\
+                         & Chat & 39  & 0.131 & 0.253 & 0.283 & 0.344 & 0.447 & 0.291 & 0.069 \\
+                         & All  & 113 & 0.121 & 0.234 & 0.268 & 0.344 & 0.455 & 0.285 & 0.077 \\
+\midrule
+\multirow{4}{*}{ROUGE-L} & Form & 37  & 0.238 & 0.320 & 0.391 & 0.468 & 0.566 & 0.388 & 0.094 \\
+                         & Ask  & 37  & 0.194 & 0.296 & 0.326 & 0.376 & 0.545 & 0.347 & 0.091 \\
+                         & Chat & 39  & 0.230 & 0.348 & 0.387 & 0.444 & 0.544 & 0.389 & 0.072 \\
+                         & All  & 113 & 0.194 & 0.311 & 0.359 & 0.441 & 0.566 & 0.375 & 0.087 \\
+\midrule
+\multirow{4}{*}{METEOR}  & Form & 37  & 0.335 & 0.367 & 0.419 & 0.442 & 0.514 & 0.412 & 0.051 \\
+                         & Ask  & 37  & 0.234 & 0.327 & 0.366 & 0.409 & 0.488 & 0.365 & 0.068 \\
+                         & Chat & 39  & 0.235 & 0.374 & 0.389 & 0.421 & 0.501 & 0.390 & 0.057 \\
+                         & All  & 113 & 0.234 & 0.359 & 0.388 & 0.431 & 0.514 & 0.389 & 0.062 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -44,144 +67,365 @@ SBERT (ModernBERT)    & $0.986 \pm 0.004$ & $0.986 \pm 0.005$ & $0.990 \pm 0.002
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{nlp_metrics_boxplot.png}
-\caption{Document-level distributions of BLEU, ROUGE-1/2/L, and METEOR by
-mode (full sample $n = 113$). Boxes show the interquartile range; the
-diamond marks the mean.}
+\caption{Document-level distributions of BLEU, ROUGE-1/2/L, and
+METEOR by mode (full sample $n = 113$). Boxes show the interquartile
+range; the diamond marks the mean.}
 \label{fig:nlp-doc-boxplot}
 \end{figure}
+
+For \emph{BLEU}, Form yields a mean of $0.129$, Ask $0.127$, Chat
+$0.143$; the aggregated mean is $0.133$. Chat scores marginally
+higher than Form and Ask, which are essentially indistinguishable.
+The Friedman omnibus on the matched subset is significant
+($\chi^2(2) = 6.23$, $p = 0.044$); the significant pairwise
+difference is Chat $>$ Ask ($r = -0.578$, large effect).
+
+For \emph{ROUGE-1}, Form yields $0.488$, Ask $0.465$, Chat $0.511$;
+aggregated $0.488$. ROUGE-1 increases from Ask to Form to Chat. The
+Friedman omnibus is significant ($\chi^2(2) = 10.69$, $p = 0.005$);
+Form $>$ Ask and Chat $>$ Ask are significant pairwise differences
+with large effects, while Form versus Chat is not significant.
+
+For \emph{ROUGE-2}, Form yields the highest mean ($0.306$), Chat
+second ($0.291$), Ask lowest ($0.257$); aggregated $0.285$. ROUGE-2
+follows the Form $>$ Chat $>$ Ask ordering. The Friedman omnibus is
+significant ($\chi^2(2) = 13.46$, $p = 0.001$); Form $>$ Ask is
+significant ($r = +0.829$, large effect), as is Chat $>$ Ask.
+
+For \emph{ROUGE-L}, Form ($0.388$) and Chat ($0.389$) are essentially
+tied, with Ask trailing ($0.347$); aggregated $0.375$. The Friedman
+omnibus is significant ($\chi^2(2) = 11.31$, $p = 0.004$); Form $>$
+Ask and Chat $>$ Ask are significant pairwise differences with large
+effects.
+
+For \emph{METEOR}, Form yields the highest mean ($0.412$), Chat
+second ($0.390$), Ask lowest ($0.365$); aggregated $0.389$. The
+Friedman omnibus is significant ($\chi^2(2) = 9.92$, $p = 0.007$);
+Form $>$ Ask is significant ($r = +0.812$, large effect), and the
+remaining pairwise differences do not reach the Bonferroni threshold.
+
+\subsubsection{BERT-Based and Sentence-Embedding Metrics}
+
+Table~\ref{tab:nlp-doc-distrib-bert} reports the same full
+distribution for the BERT-based metrics (BERTScore Precision /
+Recall / F1) and the document-level SBERT cosine similarity computed
+with ModernBERT embeddings. Figure~\ref{fig:bert-doc-boxplot} shows
+the corresponding box-plot distributions.
+
+\begin{table}[htbp]
+\centering
+\caption{Document-level BERT-based and SBERT distributions by mode
+(full sample $n = 113$). Source:
+\texttt{doc\_bert\_summary.csv}.}
+\label{tab:nlp-doc-distrib-bert}
+\small
+\begin{tabular}{@{}l l r r r r r r r r@{}}
+\toprule
+Metric & Mode & $n$ & Min & Q1 & Median & Q3 & Max & Mean & SD \\
+\midrule
+\multirow{4}{*}{BERTScore Precision} & Form & 37  & 0.862 & 0.880 & 0.889 & 0.899 & 0.912 & 0.889 & 0.014 \\
+                                     & Ask  & 37  & 0.861 & 0.872 & 0.889 & 0.899 & 0.918 & 0.886 & 0.016 \\
+                                     & Chat & 39  & 0.867 & 0.890 & 0.896 & 0.902 & 0.922 & 0.895 & 0.012 \\
+                                     & All  & 113 & 0.861 & 0.880 & 0.891 & 0.900 & 0.922 & 0.890 & 0.014 \\
+\midrule
+\multirow{4}{*}{BERTScore Recall}    & Form & 37  & 0.914 & 0.919 & 0.923 & 0.926 & 0.936 & 0.923 & 0.005 \\
+                                     & Ask  & 37  & 0.861 & 0.908 & 0.915 & 0.918 & 0.925 & 0.908 & 0.017 \\
+                                     & Chat & 39  & 0.874 & 0.908 & 0.917 & 0.922 & 0.933 & 0.913 & 0.013 \\
+                                     & All  & 113 & 0.861 & 0.914 & 0.918 & 0.922 & 0.936 & 0.915 & 0.014 \\
+\midrule
+\multirow{4}{*}{BERTScore F1}        & Form & 37  & 0.887 & 0.900 & 0.906 & 0.912 & 0.920 & 0.905 & 0.009 \\
+                                     & Ask  & 37  & 0.863 & 0.892 & 0.896 & 0.906 & 0.918 & 0.897 & 0.013 \\
+                                     & Chat & 39  & 0.872 & 0.899 & 0.906 & 0.911 & 0.922 & 0.904 & 0.010 \\
+                                     & All  & 113 & 0.863 & 0.895 & 0.904 & 0.910 & 0.922 & 0.902 & 0.011 \\
+\midrule
+\multirow{4}{*}{SBERT (ModernBERT)}  & Form & 37  & 0.974 & 0.984 & 0.988 & 0.989 & 0.992 & 0.986 & 0.004 \\
+                                     & Ask  & 37  & 0.971 & 0.983 & 0.987 & 0.990 & 0.993 & 0.986 & 0.005 \\
+                                     & Chat & 39  & 0.985 & 0.988 & 0.990 & 0.991 & 0.994 & 0.990 & 0.002 \\
+                                     & All  & 113 & 0.971 & 0.985 & 0.988 & 0.990 & 0.994 & 0.987 & 0.004 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{bert_metrics_boxplot.png}
-\caption{Document-level distributions of BERTScore Precision/Recall/F1 and
-SBERT cosine similarity (ModernBERT) by mode (full sample $n = 113$).}
+\caption{Document-level distributions of BERTScore Precision /
+Recall / F1 and SBERT cosine similarity (ModernBERT) by mode (full
+sample $n = 113$).}
 \label{fig:bert-doc-boxplot}
 \end{figure}
 
-For \emph{BLEU}, Form yields a mean of $0.129$, Ask $0.127$, Chat $0.143$;
-the aggregated mean is $0.133$. Chat scores marginally higher than Form and
-Ask, which are essentially indistinguishable. The Friedman omnibus on the
-matched subset is significant ($\chi^2(2) = 6.23$, $p = 0.044$); the
-significant pairwise difference is Chat $>$ Ask ($r = -0.578$, large effect).
+For \emph{BERTScore Precision}, Chat yields the highest mean
+($0.895$), Form second ($0.889$), Ask lowest ($0.886$); aggregated
+$0.890$. The Friedman omnibus is significant
+($\chi^2(2) = 18.54$, $p < 0.001$); Form $>$ Ask and Chat $>$ Ask
+are significant.
 
-For \emph{ROUGE-1}, Form yields $0.488$, Ask $0.465$, Chat $0.511$;
-aggregated $0.488$. ROUGE-1 increases from Ask to Form to Chat. The Friedman
-omnibus is significant ($\chi^2(2) = 10.69$, $p = 0.005$); Form $>$ Ask and
-Chat $>$ Ask are significant pairwise differences with large effects, while
-Form versus Chat is not significant.
+For \emph{BERTScore Recall}, Form yields the highest mean ($0.923$),
+with Chat ($0.913$) and Ask ($0.908$) trailing; aggregated $0.915$.
+The Friedman omnibus is significant
+($\chi^2(2) = 30.77$, $p < 0.001$, $W = 0.410$, the largest effect
+observed in the metric pipeline); Form $>$ Ask is significant with
+the maximum possible matched-pairs effect ($r = +1.000$), and
+Form $>$ Chat is also significant ($r = +0.687$, large effect). Ask
+versus Chat is non-significant.
 
-For \emph{ROUGE-2}, Form yields the highest mean ($0.306$), Chat second
-($0.291$), Ask lowest ($0.257$); aggregated $0.285$. ROUGE-2 follows the
-Form $>$ Chat $>$ Ask ordering. The Friedman omnibus is significant
-($\chi^2(2) = 13.46$, $p = 0.001$); Form $>$ Ask is significant
-($r = +0.829$, large effect), as is Chat $>$ Ask.
+For \emph{BERTScore F1}, Form yields the highest mean ($0.905$), Chat
+second ($0.904$), Ask lowest ($0.897$); aggregated $0.902$. The
+Friedman omnibus is significant ($\chi^2(2) = 13.00$, $p = 0.002$);
+Form $>$ Ask and Chat $>$ Ask are significant with large effects.
+Form versus Chat is non-significant on F1, reflecting the trade-off
+between Form's higher Recall and Chat's higher Precision.
 
-For \emph{ROUGE-L}, Form ($0.388$) and Chat ($0.389$) are essentially tied,
-with Ask trailing ($0.347$); aggregated $0.375$. The Friedman omnibus is
-significant ($\chi^2(2) = 11.31$, $p = 0.004$); Form $>$ Ask and Chat $>$ Ask
-are significant pairwise differences with large effects.
+For \emph{SBERT cosine similarity (ModernBERT)}, Chat yields the
+highest mean ($0.990$), with Form and Ask tied at $0.986$; aggregated
+$0.987$. The Friedman omnibus is significant
+($\chi^2(2) = 16.69$, $p < 0.001$); Chat $>$ Form and Chat $>$ Ask
+are both significant with large effects.
 
-For \emph{METEOR}, Form yields the highest mean ($0.412$), Chat second
-($0.390$), Ask lowest ($0.365$); aggregated $0.389$. The Friedman omnibus is
-significant ($\chi^2(2) = 9.92$, $p = 0.007$); Form $>$ Ask is significant
-($r = +0.812$, large effect), and the remaining pairwise differences do not
-reach the Bonferroni threshold.
-
-For \emph{BERTScore Precision}, Chat yields the highest mean ($0.895$), Form
-second ($0.889$), Ask lowest ($0.886$); aggregated $0.890$. The Friedman
-omnibus is significant ($\chi^2(2) = 18.54$, $p < 0.001$); Form $>$ Ask and
-Chat $>$ Ask are significant.
-
-For \emph{BERTScore Recall}, Form yields the highest mean ($0.923$), with
-Chat ($0.913$) and Ask ($0.908$) trailing; aggregated $0.915$. The Friedman
-omnibus is significant ($\chi^2(2) = 30.77$, $p < 0.001$, $W = 0.410$, the
-largest effect observed in the metric pipeline); Form $>$ Ask is significant
-with the maximum possible matched-pairs effect ($r = +1.000$), and Form $>$
-Chat is also significant ($r = +0.687$, large effect). Ask versus Chat is
-non-significant.
-
-For \emph{BERTScore F1}, Form yields the highest mean ($0.905$), Chat second
-($0.904$), Ask lowest ($0.897$); aggregated $0.902$. The Friedman omnibus is
-significant ($\chi^2(2) = 13.00$, $p = 0.002$); Form $>$ Ask and Chat $>$ Ask
-are significant with large effects. Form versus Chat is non-significant on
-F1, reflecting the trade-off between Form's higher Recall and Chat's higher
-Precision.
-
-For \emph{SBERT cosine similarity (ModernBERT)}, Chat yields the highest
-mean ($0.990$), with Form and Ask tied at $0.986$; aggregated $0.987$. The
-Friedman omnibus is significant ($\chi^2(2) = 16.69$, $p < 0.001$); Chat $>$
-Form and Chat $>$ Ask are both significant with large effects.
-
-In summary, on the document level the three modes split into the patterns
-\emph{Form $\approx$ Chat $>$ Ask} (BLEU, ROUGE-1, ROUGE-L, METEOR, BERTScore
-Precision, BERTScore F1), \emph{Form $>$ Chat $>$ Ask} on n-gram overlap of
-size two and BERTScore Recall, and \emph{Chat $>$ Form $\approx$ Ask} on
-SBERT. Ask underperforms both Form and Chat on every metric; Form and Chat
-trade leadership depending on whether the metric emphasises lexical recall
-(Form leads) or semantic-document-level fluency (Chat leads). The full
+In summary, on the document level the three modes split into the
+patterns \emph{Form $\approx$ Chat $>$ Ask} (BLEU, ROUGE-1, ROUGE-L,
+METEOR, BERTScore Precision, BERTScore F1), \emph{Form $>$ Chat $>$
+Ask} on n-gram overlap of size two and BERTScore Recall, and
+\emph{Chat $>$ Form $\approx$ Ask} on SBERT. Ask underperforms both
+Form and Chat on every metric; Form and Chat trade leadership
+depending on whether the metric emphasises lexical recall (Form
+leads) or semantic-document-level fluency (Chat leads). The full
 within-subjects test results are reproduced in
 Appendix~\ref{app:inferential}.
+
+\subsubsection{Best- and Worst-Scoring Documents}
+
+Table~\ref{tab:nlp-doc-extremes} reports the participant
+identifier of the highest- and lowest-scoring document on each
+metric, separately per mode. The participant identifiers are the
+pseudonyms recorded in the source data. Some participants appear
+repeatedly across metrics (e.g.\ \texttt{IOL1223} achieves the best
+Ask result on five of the nine metrics, while \texttt{PVV2109} is the
+worst-performing Ask document on three lexical metrics).
+
+\begin{table}[htbp]
+\centering
+\caption{Best- and worst-scoring document identifiers per metric per
+mode, derived from
+\texttt{doc\_nlp\_summary.csv} and
+\texttt{doc\_bert\_summary.csv}.}
+\label{tab:nlp-doc-extremes}
+\small
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l l l l l l l@{}}
+\toprule
+& \multicolumn{2}{c}{Form} & \multicolumn{2}{c}{Ask} & \multicolumn{2}{c}{Chat} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+Metric & Best & Worst & Best & Worst & Best & Worst \\
+\midrule
+BLEU                 & aea2442 & Jer1205 & IOL1223 & PVV2109 & IOL1223 & aal1412 \\
+ROUGE-1              & NNL2811 & Jer1205 & AHR0531 & DLZ2800 & EHN0215 & aal1412 \\
+ROUGE-2              & aea2442 & Jer1205 & IOL1223 & PVV2109 & EHN0215 & PVV2109 \\
+ROUGE-L              & aea2442 & IHB1316 & IOL1223 & PVV2109 & EHN0215 & aal1412 \\
+METEOR               & EHN0215 & Jer1205 & IOL1223 & OAZ2611 & EHN0215 & PVV2109 \\
+BERTScore Precision  & AHR0531 & UAB0821 & IOL1223 & thg1620 & IOL1223 & PVV2109 \\
+BERTScore Recall     & EII0925 & KIR2546 & AMR2620 & DAB1519 & EHN0215 & EHJ2314 \\
+BERTScore F1         & AMR2620 & UAB0821 & IOL1223 & thg1620 & EHN0215 & PVV2109 \\
+SBERT (ModernBERT)   & NUG0102 & UAB0821 & IOL1223 & thg1620 & NAN277  & EHJ2314 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
 
 \subsection{Chapter-Level Results}
 \label{ssec:nlp-chapter}
 
-The same metrics are recomputed at the level of the six Article 30(1) ROPA
-sections — \emph{Verantwortliche Stelle und Kontaktdaten} (Controller and
-Contact Details), \emph{Zwecke und Rechtsgrundlagen der Verarbeitung}
-(Purposes and Legal Bases of Processing), \emph{Kategorien personenbezogener
-Daten und Datenquellen} (Categories of Personal Data and Sources),
-\emph{Betroffene Personen und Empfänger} (Data Subjects and Recipients),
-\emph{Aufbewahrungsfristen und Löschung} (Retention Periods and Deletion),
-and \emph{Technische und organisatorische Maßnahmen} (Technical and
-Organisational Measures). Chapter-level results characterise where in the
-document each mode performs best.
-
-Table~\ref{tab:nlp-chapter-overview} reports the BERTScore F1 mean per
-chapter per mode and the aggregated mean across all $113$ documents;
-Table~\ref{tab:nlp-chapter-bleu-meteor} reports BLEU and METEOR for the same
-breakdown. Figures~\ref{fig:chapter-nlp-boxplot} and
-\ref{fig:chapter-bert-boxplot} show the full distributions for the lexical
-and BERT-based families, respectively.
+The same nine metrics are recomputed at the level of the six
+Article 30(1) ROPA sections — \emph{Verantwortliche Stelle und
+Kontaktdaten} (Controller and Contact Details), \emph{Zwecke und
+Rechtsgrundlagen der Verarbeitung} (Purposes and Legal Bases of
+Processing), \emph{Kategorien personenbezogener Daten und
+Datenquellen} (Categories of Personal Data and Sources),
+\emph{Betroffene Personen und Empfänger} (Data Subjects and
+Recipients), \emph{Aufbewahrungsfristen und Löschung} (Retention
+Periods and Deletion), and \emph{Technische und organisatorische
+Maßnahmen} (Technical and Organisational Measures). Chapter-level
+results characterise where in the document each mode performs best.
+Tables~\ref{tab:nlp-chapter-bleu}--\ref{tab:nlp-chapter-sbert}
+report mean (SD) per chapter per mode for each of the nine metrics.
 
 \begin{table}[htbp]
 \centering
-\caption{Chapter-level BERTScore F1 mean by mode and chapter (full sample
-$n = 113$). The aggregated ``All'' column is the mean across all
-$113$ documents for that chapter.}
-\label{tab:nlp-chapter-overview}
+\caption{Chapter-level BLEU mean (SD) by mode (full sample
+$n = 113$).}
+\label{tab:nlp-chapter-bleu}
 \small
-\begin{tabular}{@{}l r r r r@{}}
+\begin{tabular}{@{}l c c c c@{}}
 \toprule
 Chapter & Form & Ask & Chat & All \\
 \midrule
-Controller and Contact Details             & 0.867 & 0.875 & 0.867 & 0.869 \\
-Purposes and Legal Bases of Processing     & 0.610 & 0.614 & 0.611 & 0.612 \\
-Categories of Personal Data and Sources    & 0.749 & 0.761 & 0.765 & 0.759 \\
-Data Subjects and Recipients               & 0.760 & 0.762 & 0.769 & 0.764 \\
-Retention Periods and Deletion             & 0.850 & 0.847 & 0.867 & 0.855 \\
-Technical and Organisational Measures      & 0.864 & 0.870 & 0.878 & 0.871 \\
+Controller \& Contact         & 0.179 (0.077) & 0.200 (0.085) & 0.166 (0.076) & 0.181 (0.080) \\
+Purposes \& Legal Bases       & 0.000 (0.000) & 0.000 (0.000) & 0.000 (0.000) & 0.000 (0.000) \\
+Personal Data Categories      & 0.000 (0.000) & 0.000 (0.000) & 0.000 (0.000) & 0.000 (0.000) \\
+Data Subjects \& Recipients   & 0.013 (0.010) & 0.008 (0.014) & 0.014 (0.015) & 0.012 (0.014) \\
+Retention \& Deletion         & 0.038 (0.044) & 0.023 (0.073) & 0.068 (0.094) & 0.044 (0.076) \\
+Technical \& Org. Measures    & 0.078 (0.068) & 0.070 (0.080) & 0.091 (0.047) & 0.080 (0.066) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{table}[htbp]
 \centering
-\caption{Chapter-level BLEU and METEOR means by mode (full sample
+\caption{Chapter-level ROUGE-1 mean (SD) by mode (full sample
 $n = 113$).}
-\label{tab:nlp-chapter-bleu-meteor}
+\label{tab:nlp-chapter-rouge1}
 \small
-\begin{tabular}{@{}l r r r r r r r r@{}}
+\begin{tabular}{@{}l c c c c@{}}
 \toprule
-& \multicolumn{4}{c}{BLEU} & \multicolumn{4}{c}{METEOR} \\
-\cmidrule(lr){2-5}\cmidrule(lr){6-9}
-Chapter & Form & Ask & Chat & All & Form & Ask & Chat & All \\
+Chapter & Form & Ask & Chat & All \\
 \midrule
-Controller and Contact Details          & 0.179 & 0.200 & 0.166 & 0.181 & 0.456 & 0.506 & 0.453 & 0.471 \\
-Purposes and Legal Bases of Processing  & 0.000 & 0.000 & 0.000 & 0.000 & 0.034 & 0.034 & 0.015 & 0.027 \\
-Categories of Personal Data and Sources & 0.000 & 0.000 & 0.000 & 0.000 & 0.079 & 0.140 & 0.101 & 0.106 \\
-Data Subjects and Recipients            & 0.013 & 0.008 & 0.014 & 0.012 & 0.199 & 0.203 & 0.270 & 0.225 \\
-Retention Periods and Deletion          & 0.038 & 0.023 & 0.068 & 0.044 & 0.332 & 0.245 & 0.362 & 0.314 \\
-Technical and Organisational Measures   & 0.078 & 0.070 & 0.091 & 0.080 & 0.295 & 0.280 & 0.305 & 0.293 \\
+Controller \& Contact         & 0.550 (0.097) & 0.605 (0.129) & 0.559 (0.109) & 0.571 (0.114) \\
+Purposes \& Legal Bases       & 0.029 (0.014) & 0.031 (0.024) & 0.024 (0.012) & 0.028 (0.017) \\
+Personal Data Categories      & 0.056 (0.035) & 0.082 (0.062) & 0.071 (0.045) & 0.070 (0.049) \\
+Data Subjects \& Recipients   & 0.090 (0.034) & 0.093 (0.060) & 0.123 (0.052) & 0.103 (0.052) \\
+Retention \& Deletion         & 0.252 (0.092) & 0.212 (0.132) & 0.314 (0.143) & 0.260 (0.131) \\
+Technical \& Org. Measures    & 0.313 (0.137) & 0.330 (0.157) & 0.350 (0.090) & 0.331 (0.130) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Chapter-level ROUGE-2 mean (SD) by mode (full sample
+$n = 113$).}
+\label{tab:nlp-chapter-rouge2}
+\small
+\begin{tabular}{@{}l c c c c@{}}
+\toprule
+Chapter & Form & Ask & Chat & All \\
+\midrule
+Controller \& Contact         & 0.363 (0.131) & 0.430 (0.158) & 0.365 (0.138) & 0.386 (0.145) \\
+Purposes \& Legal Bases       & 0.014 (0.013) & 0.012 (0.016) & 0.008 (0.009) & 0.011 (0.013) \\
+Personal Data Categories      & 0.035 (0.030) & 0.053 (0.046) & 0.036 (0.029) & 0.041 (0.036) \\
+Data Subjects \& Recipients   & 0.072 (0.030) & 0.059 (0.056) & 0.089 (0.049) & 0.073 (0.048) \\
+Retention \& Deletion         & 0.134 (0.071) & 0.087 (0.107) & 0.168 (0.137) & 0.131 (0.113) \\
+Technical \& Org. Measures    & 0.166 (0.120) & 0.163 (0.141) & 0.197 (0.089) & 0.176 (0.118) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Chapter-level ROUGE-L mean (SD) by mode (full sample
+$n = 113$).}
+\label{tab:nlp-chapter-rougeL}
+\small
+\begin{tabular}{@{}l c c c c@{}}
+\toprule
+Chapter & Form & Ask & Chat & All \\
+\midrule
+Controller \& Contact         & 0.518 (0.110) & 0.576 (0.140) & 0.511 (0.128) & 0.534 (0.129) \\
+Purposes \& Legal Bases       & 0.028 (0.015) & 0.030 (0.022) & 0.024 (0.012) & 0.027 (0.017) \\
+Personal Data Categories      & 0.056 (0.035) & 0.082 (0.062) & 0.071 (0.045) & 0.070 (0.049) \\
+Data Subjects \& Recipients   & 0.090 (0.034) & 0.093 (0.060) & 0.123 (0.052) & 0.103 (0.052) \\
+Retention \& Deletion         & 0.218 (0.087) & 0.183 (0.141) & 0.283 (0.152) & 0.229 (0.136) \\
+Technical \& Org. Measures    & 0.237 (0.140) & 0.246 (0.158) & 0.285 (0.100) & 0.257 (0.135) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Chapter-level METEOR mean (SD) by mode (full sample
+$n = 113$).}
+\label{tab:nlp-chapter-meteor}
+\small
+\begin{tabular}{@{}l c c c c@{}}
+\toprule
+Chapter & Form & Ask & Chat & All \\
+\midrule
+Controller \& Contact         & 0.456 (0.120) & 0.506 (0.136) & 0.453 (0.124) & 0.471 (0.128) \\
+Purposes \& Legal Bases       & 0.034 (0.037) & 0.034 (0.047) & 0.015 (0.019) & 0.027 (0.037) \\
+Personal Data Categories      & 0.079 (0.073) & 0.140 (0.116) & 0.101 (0.086) & 0.106 (0.096) \\
+Data Subjects \& Recipients   & 0.199 (0.078) & 0.203 (0.134) & 0.270 (0.105) & 0.225 (0.112) \\
+Retention \& Deletion         & 0.332 (0.114) & 0.245 (0.160) & 0.362 (0.177) & 0.314 (0.160) \\
+Technical \& Org. Measures    & 0.295 (0.108) & 0.280 (0.145) & 0.305 (0.079) & 0.293 (0.113) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Chapter-level BERTScore Precision mean (SD) by mode (full
+sample $n = 113$).}
+\label{tab:nlp-chapter-bertp}
+\small
+\begin{tabular}{@{}l c c c c@{}}
+\toprule
+Chapter & Form & Ask & Chat & All \\
+\midrule
+Controller \& Contact         & 0.855 (0.015) & 0.862 (0.020) & 0.855 (0.016) & 0.857 (0.017) \\
+Purposes \& Legal Bases       & 0.560 (0.009) & 0.570 (0.025) & 0.568 (0.016) & 0.566 (0.019) \\
+Personal Data Categories      & 0.670 (0.022) & 0.690 (0.040) & 0.698 (0.032) & 0.686 (0.034) \\
+Data Subjects \& Recipients   & 0.686 (0.018) & 0.700 (0.035) & 0.712 (0.030) & 0.700 (0.030) \\
+Retention \& Deletion         & 0.814 (0.033) & 0.817 (0.050) & 0.840 (0.037) & 0.824 (0.042) \\
+Technical \& Org. Measures    & 0.841 (0.038) & 0.858 (0.031) & 0.863 (0.027) & 0.854 (0.033) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Chapter-level BERTScore Recall mean (SD) by mode (full
+sample $n = 113$).}
+\label{tab:nlp-chapter-bertr}
+\small
+\begin{tabular}{@{}l c c c c@{}}
+\toprule
+Chapter & Form & Ask & Chat & All \\
+\midrule
+Controller \& Contact         & 0.879 (0.019) & 0.887 (0.025) & 0.879 (0.022) & 0.882 (0.022) \\
+Purposes \& Legal Bases       & 0.670 (0.016) & 0.667 (0.017) & 0.662 (0.016) & 0.666 (0.016) \\
+Personal Data Categories      & 0.850 (0.012) & 0.849 (0.015) & 0.847 (0.011) & 0.849 (0.013) \\
+Data Subjects \& Recipients   & 0.851 (0.016) & 0.838 (0.017) & 0.836 (0.022) & 0.842 (0.020) \\
+Retention \& Deletion         & 0.890 (0.018) & 0.879 (0.023) & 0.897 (0.027) & 0.889 (0.024) \\
+Technical \& Org. Measures    & 0.889 (0.018) & 0.882 (0.032) & 0.893 (0.022) & 0.888 (0.025) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Chapter-level BERTScore F1 mean (SD) by mode (full sample
+$n = 113$).}
+\label{tab:nlp-chapter-bertf1}
+\small
+\begin{tabular}{@{}l c c c c@{}}
+\toprule
+Chapter & Form & Ask & Chat & All \\
+\midrule
+Controller \& Contact         & 0.867 (0.016) & 0.875 (0.022) & 0.867 (0.017) & 0.869 (0.019) \\
+Purposes \& Legal Bases       & 0.610 (0.009) & 0.614 (0.014) & 0.611 (0.010) & 0.612 (0.012) \\
+Personal Data Categories      & 0.749 (0.016) & 0.761 (0.028) & 0.765 (0.022) & 0.759 (0.023) \\
+Data Subjects \& Recipients   & 0.760 (0.014) & 0.762 (0.024) & 0.769 (0.022) & 0.764 (0.020) \\
+Retention \& Deletion         & 0.850 (0.024) & 0.847 (0.035) & 0.867 (0.031) & 0.855 (0.031) \\
+Technical \& Org. Measures    & 0.864 (0.027) & 0.870 (0.027) & 0.878 (0.019) & 0.871 (0.025) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Chapter-level SBERT (ModernBERT) cosine similarity mean
+(SD) by mode (full sample $n = 113$).}
+\label{tab:nlp-chapter-sbert}
+\small
+\begin{tabular}{@{}l c c c c@{}}
+\toprule
+Chapter & Form & Ask & Chat & All \\
+\midrule
+Controller \& Contact         & 0.975 (0.004) & 0.977 (0.006) & 0.975 (0.005) & 0.976 (0.005) \\
+Purposes \& Legal Bases       & 0.736 (0.009) & 0.736 (0.012) & 0.732 (0.007) & 0.735 (0.010) \\
+Personal Data Categories      & 0.859 (0.015) & 0.869 (0.021) & 0.871 (0.018) & 0.866 (0.019) \\
+Data Subjects \& Recipients   & 0.868 (0.013) & 0.872 (0.019) & 0.872 (0.022) & 0.871 (0.018) \\
+Retention \& Deletion         & 0.945 (0.013) & 0.946 (0.018) & 0.955 (0.014) & 0.949 (0.016) \\
+Technical \& Org. Measures    & 0.967 (0.012) & 0.972 (0.010) & 0.975 (0.007) & 0.971 (0.010) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -189,81 +433,62 @@ Technical and Organisational Measures   & 0.078 & 0.070 & 0.091 & 0.080 & 0.295 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{chapter_nlp_metrics_boxplot.png}
-\caption{Chapter-level distributions of BLEU, ROUGE-1/2/L, and METEOR by
-mode (full sample $n = 113$).}
+\caption{Chapter-level distributions of BLEU, ROUGE-1/2/L, and
+METEOR by mode (full sample $n = 113$).}
 \label{fig:chapter-nlp-boxplot}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{chapter_bert_metrics_boxplot.png}
-\caption{Chapter-level distributions of BERTScore Precision/Recall/F1 and
-SBERT cosine similarity (ModernBERT) by mode (full sample $n = 113$).}
+\caption{Chapter-level distributions of BERTScore Precision /
+Recall / F1 and SBERT cosine similarity (ModernBERT) by mode (full
+sample $n = 113$).}
 \label{fig:chapter-bert-boxplot}
 \end{figure}
 
-For \emph{Controller and Contact Details}, all three modes score similarly
-on BERTScore F1 (Form $0.867$, Ask $0.875$, Chat $0.867$; aggregated
-$0.869$) and on BLEU (Form $0.179$, Ask $0.200$, Chat $0.166$; aggregated
-$0.181$). METEOR is highest in Ask ($0.506$) compared with Form ($0.456$)
-and Chat ($0.453$); aggregated $0.471$. This chapter contains the most
-templated content (company name, address, DPO contact), and the per-mode
-spread is correspondingly small.
+\paragraph{Patterns across chapters.} \emph{Controller and Contact
+Details} contains the most templated content (company name, address,
+DPO contact); the per-mode spread is correspondingly small on every
+metric, and the absolute scores are the highest of the six chapters
+on the lexical metrics (BLEU $\approx 0.18$, ROUGE-1 $\approx 0.57$,
+METEOR $\approx 0.47$). \emph{Purposes and Legal Bases} is the
+weakest chapter across every metric, with BLEU collapsing to zero
+and METEOR below $0.04$ in every mode; this chapter is dominated by
+free-text legal formulation, and the reference document and
+participant documents share almost no surface n-grams even where the
+underlying content overlaps. \emph{Categories of Personal Data} and
+\emph{Data Subjects and Recipients} sit in an intermediate range
+($0.06$--$0.27$ on the lexical metrics) with Chat scoring highest on
+\emph{Data Subjects} (METEOR $0.270$ vs $0.199$/$0.203$ for
+Form/Ask). \emph{Retention Periods} and \emph{Technical and
+Organisational Measures} are the chapters where Chat establishes its
+clearest advantage: on Retention, Chat leads on every metric
+(BERTScore F1 $0.867$, BLEU $0.068$, METEOR $0.362$); on T\&O
+Measures, Chat leads on BLEU ($0.091$), ROUGE-1 ($0.350$), BERTScore
+F1 ($0.878$), and SBERT ($0.975$).
 
-For \emph{Purposes and Legal Bases of Processing}, BERTScore F1 is uniformly
-the lowest of the six chapters across all modes (Form $0.610$, Ask $0.614$,
-Chat $0.611$; aggregated $0.612$), and BLEU is identically zero in every
-mode. METEOR is also extremely low (Form $0.034$, Ask $0.034$, Chat $0.015$;
-aggregated $0.027$). This chapter is dominated by free-text legal
-formulation; the reference document and the participant documents share
-almost no surface n-grams, even where the underlying content overlaps.
-
-For \emph{Categories of Personal Data and Sources}, BERTScore F1 is
-relatively flat (Form $0.749$, Ask $0.761$, Chat $0.765$; aggregated
-$0.759$). BLEU is uniformly zero across modes. METEOR shows the largest
-spread of any chapter on this metric, with Ask the highest ($0.140$),
-Chat second ($0.101$), and Form lowest ($0.079$); aggregated $0.106$.
-The LLM-driven modes therefore share more lexical content with the reference
-on data categories than Form does.
-
-For \emph{Data Subjects and Recipients}, BERTScore F1 is broadly comparable
-across modes (Form $0.760$, Ask $0.762$, Chat $0.769$; aggregated $0.764$).
-METEOR is highest in Chat ($0.270$), with Form ($0.199$) and Ask ($0.203$)
-trailing; aggregated $0.225$. BLEU is essentially zero across all three
-modes ($0.008$ to $0.014$); aggregated $0.012$.
-
-For \emph{Retention Periods and Deletion}, Chat scores highest on every
-metric: BERTScore F1 $0.867$ versus Form $0.850$ and Ask $0.847$
-(aggregated $0.855$); BLEU $0.068$ versus Form $0.038$ and Ask $0.023$
-(aggregated $0.044$); METEOR $0.362$ versus Form $0.332$ and Ask $0.245$
-(aggregated $0.314$). This chapter shows the largest Chat advantage on
-chapter-level metrics: the conversational mode appears to elicit the most
-reference-aligned wording for retention specifications.
-
-For \emph{Technical and Organisational Measures}, Chat again leads on
-BERTScore F1 ($0.878$) and BLEU ($0.091$), with Ask second on F1 ($0.870$)
-and Form third ($0.864$); aggregated F1 $0.871$, aggregated BLEU $0.080$.
-METEOR is comparable across modes (Form $0.295$, Ask $0.280$, Chat $0.305$;
-aggregated $0.293$). All three modes score relatively high on this chapter
-because the underlying content (encryption, role-based access, backup
-schedules) is the most stylistically conventional in the document.
+\subsection{Document-Level versus Chapter-Level Comparison}
 
 A direct comparison of the document-level and chapter-level means is
 provided by Table~\ref{tab:doc-vs-chapter}. Document-level means are
-substantially higher than the cross-chapter means for every metric: for
-example, the aggregated document-level BERTScore F1 of $0.902$ exceeds the
-average chapter-level F1 of $0.788$ by approximately $0.114$. The same
-gap is observable for the lexical metrics, and most pronounced for ROUGE-1
-($\Delta \approx 0.26$). This is consistent with the document-level
-calculation pooling token overlap across all six chapters, which dilutes
-chapter-specific zero-overlap regions (notably the Purposes and Legal
-Bases chapter) and pushes the aggregate scores upward.
+substantially higher than the cross-chapter means for every metric:
+for example, the aggregated document-level BERTScore F1 of $0.902$
+exceeds the average chapter-level F1 of $0.788$ by approximately
+$0.114$. The same gap is observable for the lexical metrics, and
+most pronounced for ROUGE-1 ($\Delta \approx 0.26$). This is
+consistent with the document-level calculation pooling token overlap
+across all six chapters, which dilutes chapter-specific zero-overlap
+regions (notably the Purposes and Legal Bases chapter) and pushes
+the aggregate scores upward.
 
 \begin{table}[htbp]
 \centering
-\caption{Document-level versus mean chapter-level metric values by mode.
-The mean chapter-level value is the unweighted average across the six
-chapters. Differences are document-level minus chapter-level mean.}
+\caption{Document-level versus mean chapter-level metric values by
+mode. The mean chapter-level value is the unweighted average across
+the six chapters. Differences are document-level minus chapter-level
+mean. Source:
+\texttt{doc\_vs\_chapter\_diff.csv}.}
 \label{tab:doc-vs-chapter}
 \small
 \begin{tabular}{@{}l r r r r r r@{}}
@@ -274,7 +499,11 @@ Metric & Doc & Chapter & Doc & Chapter & Doc & Chapter \\
 \midrule
 BLEU                & 0.129 & 0.051 & 0.127 & 0.050 & 0.143 & 0.057 \\
 ROUGE-1             & 0.488 & 0.215 & 0.465 & 0.226 & 0.511 & 0.240 \\
+ROUGE-2             & 0.306 & 0.131 & 0.257 & 0.134 & 0.291 & 0.144 \\
+ROUGE-L             & 0.388 & 0.191 & 0.347 & 0.202 & 0.389 & 0.216 \\
 METEOR              & 0.412 & 0.232 & 0.365 & 0.235 & 0.390 & 0.251 \\
+BERTScore Precision & 0.889 & 0.738 & 0.886 & 0.750 & 0.895 & 0.756 \\
+BERTScore Recall    & 0.923 & 0.838 & 0.908 & 0.834 & 0.913 & 0.836 \\
 BERTScore F1        & 0.905 & 0.783 & 0.897 & 0.788 & 0.904 & 0.793 \\
 SBERT (ModernBERT)  & 0.986 & 0.892 & 0.986 & 0.895 & 0.990 & 0.897 \\
 \bottomrule

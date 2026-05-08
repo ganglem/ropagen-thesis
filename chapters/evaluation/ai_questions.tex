@@ -1,0 +1,176 @@
+\section{Perceived AI Support — AI Questionnaire}
+\label{sec:eval-ai-support}
+
+After each interaction mode, in addition to the SUS and R-TLX,
+participants completed a six-item Perceived AI Support questionnaire
+on a five-point Likert scale (1 = strong disagreement, 5 = strong
+agreement). The six items capture distinct facets of how participants
+perceived the AI's contribution to the document they had just
+created: helpfulness (item~1), efficiency (item~2), transparency
+(item~3), trust (item~4), legal-basis confidence (item~5), and
+re-use intent (item~6). Item~5 is the primary self-report confidence
+measure referenced in Chapter~\ref{ch:methodology}; the six items are
+also pooled into a composite Perceived AI Support score reported as
+a secondary attitudinal measure.
+
+\subsection{Per-Item Means}
+
+Table~\ref{tab:ai-per-item} reports the mean response per item per
+mode and the aggregated mean across the three modes; the full
+descriptive distribution per item is reported in
+Table~\ref{tab:ai-per-item-distribution}.
+Figure~\ref{fig:ai-subquestions} shows the corresponding box-plot
+distributions.
+
+\begin{table}[htbp]
+\centering
+\caption{Perceived AI Support, mean response per item by mode
+($n = 69$ per mode), five-point Likert scale (higher is better). The
+aggregated ``All'' column is the unweighted mean of the three per-mode
+means.}
+\label{tab:ai-per-item}
+\small
+\begin{tabularx}{\linewidth}{@{}c X r r r r@{}}
+\toprule
+\# & Item & Form & Ask & Chat & All \\
+\midrule
+1 & The AI was helpful in creating this document. & 4.23 & 4.32 & 4.13 & 4.23 \\
+2 & The AI helped me to complete the document faster. & 4.43 & 4.25 & 3.99 & 4.22 \\
+3 & I understood why the AI suggested specific GDPR fields. & 3.51 & 4.16 & 3.75 & 3.81 \\
+4 & I trust that the AI made correct suggestions. & 3.41 & 3.80 & 3.68 & 3.63 \\
+5 & I am confident that the AI identified the correct legal basis. & 3.58 & 3.74 & 3.81 & 3.71 \\
+6 & I would use this mode again. & 3.99 & 3.55 & 3.42 & 3.65 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{ai_subquestions_boxplot.png}
+\caption{Box plots of the six Perceived AI Support items by mode
+($n = 69$ per mode). Boxes show the interquartile range; the central
+line marks the median, and the diamond marks the mean.}
+\label{fig:ai-subquestions}
+\end{figure}
+
+For \emph{``The AI was helpful in creating this document''} (item~1),
+Form scores $4.23$, Ask $4.32$, Chat $4.13$; aggregated $4.23$.
+Helpfulness is rated highest in Ask and lowest in Chat, with a small
+absolute spread of roughly $0.20$~points.
+
+For \emph{``The AI helped me to complete the document faster''}
+(item~2), Form is rated highest ($4.43$), Ask second ($4.25$), Chat
+lowest ($3.99$); aggregated $4.22$. Perceived speed-up decreases
+monotonically with increasing LLM involvement, dropping by
+approximately $0.45$~points from Form to Chat.
+
+For \emph{``I understood why the AI suggested specific GDPR fields''}
+(item~3), Form scores lowest ($3.51$), Chat second ($3.75$), Ask
+highest ($4.16$); aggregated $3.81$. Transparency is rated
+approximately $0.65$~points higher in Ask than in Form. Ask is the
+only mode that explicitly explains each suggestion.
+
+For \emph{``I trust that the AI made correct suggestions''} (item~4),
+Form scores lowest ($3.41$), Chat second ($3.68$), Ask highest
+($3.80$); aggregated $3.63$. Trust increases by approximately
+$0.27$--$0.39$~points from Form to the LLM-driven modes.
+
+For \emph{``I am confident that the AI identified the correct legal
+basis''} (item~5, primary confidence measure), the three modes show a
+monotonic increase: Form $3.58$, Ask $3.74$, Chat $3.81$; aggregated
+$3.71$. Confidence in legal correctness rises by approximately
+$0.23$~points from Form to Chat.
+
+For \emph{``I would use this mode again''} (item~6), Form scores
+highest ($3.99$), Ask second ($3.55$), Chat lowest ($3.42$);
+aggregated $3.65$. Re-use intent decreases by approximately
+$0.57$~points from Form to Chat, the largest negative gap of the six
+items.
+
+\subsection{Per-Item Descriptive Distributions}
+
+Table~\ref{tab:ai-per-item-distribution} reports the full descriptive
+distribution per item per mode: mean, standard deviation, median, Q1,
+and Q3. The minimum is $1$ and the maximum is $5$ for every cell
+(both endpoints of the Likert scale are realised in every
+item~$\times$~mode combination), so they are omitted from the table
+for compactness.
+
+\begin{table}[htbp]
+\centering
+\caption{Perceived AI Support, full per-item descriptive distribution
+by mode ($n = 69$ per mode). Source:
+\texttt{ai\_support\_per\_item\_summary.csv}.}
+\label{tab:ai-per-item-distribution}
+\small
+\begin{tabular}{@{}c l r r r r r@{}}
+\toprule
+\# & Mode & Mean & SD & Median & Q1 & Q3 \\
+\midrule
+\multirow{4}{*}{1} & All  & 4.23 & 0.91 & 4 & 4 & 5 \\
+                   & Form & 4.23 & 0.97 & 5 & 4 & 5 \\
+                   & Ask  & 4.32 & 0.76 & 4 & 4 & 5 \\
+                   & Chat & 4.13 & 1.00 & 4 & 4 & 5 \\
+\midrule
+\multirow{4}{*}{2} & All  & 4.22 & 1.13 & 5 & 4 & 5 \\
+                   & Form & 4.43 & 0.96 & 5 & 4 & 5 \\
+                   & Ask  & 4.25 & 1.03 & 5 & 4 & 5 \\
+                   & Chat & 3.99 & 1.32 & 4 & 4 & 5 \\
+\midrule
+\multirow{4}{*}{3} & All  & 3.81 & 1.06 & 4 & 3 & 5 \\
+                   & Form & 3.51 & 1.17 & 4 & 3 & 4 \\
+                   & Ask  & 4.16 & 0.92 & 4 & 4 & 5 \\
+                   & Chat & 3.75 & 0.98 & 4 & 3 & 5 \\
+\midrule
+\multirow{4}{*}{4} & All  & 3.63 & 0.97 & 4 & 3 & 4 \\
+                   & Form & 3.41 & 1.09 & 4 & 3 & 4 \\
+                   & Ask  & 3.80 & 0.87 & 4 & 3 & 4 \\
+                   & Chat & 3.68 & 0.92 & 4 & 3 & 4 \\
+\midrule
+\multirow{4}{*}{5} & All  & 3.71 & 0.88 & 4 & 3 & 4 \\
+                   & Form & 3.58 & 0.90 & 4 & 3 & 4 \\
+                   & Ask  & 3.74 & 0.87 & 4 & 3 & 4 \\
+                   & Chat & 3.81 & 0.88 & 4 & 3 & 4 \\
+\midrule
+\multirow{4}{*}{6} & All  & 3.65 & 1.25 & 4 & 3 & 5 \\
+                   & Form & 3.99 & 1.14 & 4 & 4 & 5 \\
+                   & Ask  & 3.55 & 1.16 & 4 & 3 & 4 \\
+                   & Chat & 3.42 & 1.39 & 4 & 2 & 5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Composite Perceived AI Support}
+
+The unweighted mean of all six items yields the composite Perceived
+AI Support score reported in Table~\ref{tab:ai-composite}. Form
+scores $3.86$, Ask $3.97$, and Chat $3.80$; aggregated $3.87$. The
+omnibus Friedman test on the composite is non-significant
+($\chi^2(2) = 1.05$, $p = 0.592$, $W = 0.008$), indicating that
+overall perceived AI support does not differ meaningfully across
+modes once the six items are pooled. The single legal-basis
+confidence item~$5_{ai}$ is also non-significant under Friedman
+($\chi^2(2) = 3.76$, $p = 0.152$). The re-use item~$6_{ai}$ does
+reach significance ($\chi^2(2) = 11.12$, $p = 0.004$, $W = 0.081$),
+with a large rank-biserial effect for Form versus Chat
+($r = +0.543$). Full statistics are reproduced in
+Appendix~\ref{app:inferential}.
+
+\begin{table}[htbp]
+\centering
+\caption{Composite Perceived AI Support score by mode ($n = 69$ per
+mode), five-point scale (unweighted mean of the six AI items, higher
+is better).}
+\label{tab:ai-composite}
+\begin{tabular}{@{}l r r r r r r@{}}
+\toprule
+Mode & Mean & SD & Median & Min & Max & $n$ \\
+\midrule
+Form & 3.86 & 0.77 & 4.00 & 1.83 & 5.00 & 69 \\
+Ask  & 3.97 & 0.62 & 4.00 & 2.50 & 5.00 & 69 \\
+Chat & 3.80 & 0.82 & 4.00 & 1.67 & 5.00 & 69 \\
+\midrule
+All  & 3.87 & 0.74 & 4.00 & 1.67 & 5.00 & 207 \\
+\bottomrule
+\end{tabular}
+\end{table}
