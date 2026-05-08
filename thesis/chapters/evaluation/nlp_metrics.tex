@@ -25,7 +25,7 @@ per mode, plus the aggregated row across all $113$ documents.
 Figure~\ref{fig:nlp-doc-boxplot} shows the corresponding box-plot
 distributions.
 
-\begin{table}[htbp]
+\begin{sidewaystable}
 \centering
 \caption{Document-level lexical metric distributions by mode (full
 sample $n = 113$). Source:
@@ -62,7 +62,7 @@ Metric & Mode & $n$ & Min & Q1 & Median & Q3 & Max & Mean & SD \\
                          & All  & 113 & 0.234 & 0.359 & 0.388 & 0.431 & 0.514 & 0.389 & 0.062 \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{sidewaystable}
 
 \begin{figure}[htbp]
 \centering
@@ -73,12 +73,54 @@ range; the diamond marks the mean.}
 \label{fig:nlp-doc-boxplot}
 \end{figure}
 
+\paragraph{BLEU.} BLEU \emph{(Bilingual Evaluation Understudy)}
+\cite{Papineni2002} measures the geometric mean of $n$-gram
+precisions between a candidate and one or more reference texts,
+multiplied by a brevity penalty that discourages outputs much shorter
+than the reference. With $p_n$ the modified $n$-gram precision,
+$w_n = 1/N$ uniform weights, $c$ the candidate length, and $r$ the
+closest reference length,
+\begin{equation}
+\mathrm{BLEU} = \mathrm{BP} \cdot \exp\!\left( \sum_{n=1}^{N} w_n \log p_n \right),
+\quad
+\mathrm{BP} =
+\begin{cases}
+1 & \text{if } c > r \\
+e^{1 - r/c} & \text{if } c \leq r.
+\end{cases}
+\end{equation}
+This work uses $N = 4$ (matching unigrams through 4-grams). BLEU is
+a precision-oriented surface-form metric: it rewards exact $n$-gram
+overlap and is therefore harsh on paraphrase.
+
 For \emph{BLEU}, Form yields a mean of $0.129$, Ask $0.127$, Chat
 $0.143$; the aggregated mean is $0.133$. Chat scores marginally
 higher than Form and Ask, which are essentially indistinguishable.
 The Friedman omnibus on the matched subset is significant
 ($\chi^2(2) = 6.23$, $p = 0.044$); the significant pairwise
 difference is Chat $>$ Ask ($r = -0.578$, large effect).
+
+\paragraph{ROUGE-1, ROUGE-2, ROUGE-L.} ROUGE \emph{(Recall-Oriented
+Understudy for Gisting Evaluation)} \cite{Lin2004} reports the F1
+score of $n$-gram overlap between candidate and reference. ROUGE-1
+counts unigrams, ROUGE-2 counts bigrams, and ROUGE-L counts the
+length of the longest common subsequence (LCS). Let $X$ be the
+candidate, $Y$ the reference, and $\mathrm{LCS}(X, Y)$ their longest
+common subsequence; then for ROUGE-N
+\begin{equation}
+P_N = \frac{|\mathrm{ngrams}(X) \cap \mathrm{ngrams}(Y)|}{|\mathrm{ngrams}(X)|},
+\quad
+R_N = \frac{|\mathrm{ngrams}(X) \cap \mathrm{ngrams}(Y)|}{|\mathrm{ngrams}(Y)|},
+\end{equation}
+and for ROUGE-L
+\begin{equation}
+P_L = \frac{|\mathrm{LCS}(X, Y)|}{|X|},
+\quad
+R_L = \frac{|\mathrm{LCS}(X, Y)|}{|Y|}.
+\end{equation}
+The reported value in both cases is the harmonic mean (F1) of
+precision and recall. ROUGE rewards lexical overlap with the
+reference and is more permissive than BLEU in word order.
 
 For \emph{ROUGE-1}, Form yields $0.488$, Ask $0.465$, Chat $0.511$;
 aggregated $0.488$. ROUGE-1 increases from Ask to Form to Chat. The
@@ -98,6 +140,22 @@ omnibus is significant ($\chi^2(2) = 11.31$, $p = 0.004$); Form $>$
 Ask and Chat $>$ Ask are significant pairwise differences with large
 effects.
 
+\paragraph{METEOR.} METEOR \emph{(Metric for Evaluation of
+Translation with Explicit ORdering)} \cite{Banerjee2005} is the
+weighted harmonic mean of unigram precision $P$ and recall $R$, with
+recall up-weighted by a factor $\alpha$, multiplied by a fragmentation
+penalty that grows with the number of disjoint matching chunks
+$\mathrm{ch}$ relative to the number of matched unigrams $m$:
+\begin{equation}
+\mathrm{METEOR} = \underbrace{\frac{P \cdot R}{\alpha P + (1 - \alpha) R}}_{F_{\mathrm{mean}}}
+\cdot
+\underbrace{\Bigl(1 - \gamma \bigl(\tfrac{\mathrm{ch}}{m}\bigr)^{\beta}\Bigr)}_{\text{penalty}}.
+\end{equation}
+Standard values $\alpha = 0.9$, $\beta = 3$, $\gamma = 0.5$ are used;
+matching is performed against exact, stemmed, and synonym/paraphrase
+matches via WordNet. METEOR therefore rewards both lexical recall and
+contiguous matching.
+
 For \emph{METEOR}, Form yields the highest mean ($0.412$), Chat
 second ($0.390$), Ask lowest ($0.365$); aggregated $0.389$. The
 Friedman omnibus is significant ($\chi^2(2) = 9.92$, $p = 0.007$);
@@ -112,7 +170,7 @@ Recall / F1) and the document-level SBERT cosine similarity computed
 with ModernBERT embeddings. Figure~\ref{fig:bert-doc-boxplot} shows
 the corresponding box-plot distributions.
 
-\begin{table}[htbp]
+\begin{sidewaystable}
 \centering
 \caption{Document-level BERT-based and SBERT distributions by mode
 (full sample $n = 113$). Source:
@@ -144,7 +202,7 @@ Metric & Mode & $n$ & Min & Q1 & Median & Q3 & Max & Mean & SD \\
                                      & All  & 113 & 0.971 & 0.985 & 0.988 & 0.990 & 0.994 & 0.987 & 0.004 \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{sidewaystable}
 
 \begin{figure}[htbp]
 \centering
@@ -154,6 +212,31 @@ Recall / F1 and SBERT cosine similarity (ModernBERT) by mode (full
 sample $n = 113$).}
 \label{fig:bert-doc-boxplot}
 \end{figure}
+
+\paragraph{BERTScore Precision, Recall, F1.} BERTScore
+\cite{Zhang2020} replaces surface-form $n$-gram matching with
+contextual token embeddings. Each token in the candidate $\hat{x}$
+and the reference $x$ is encoded with a pretrained transformer
+(here, ModernBERT \cite{Warner2024} via the
+\texttt{bert\_score} library). For each candidate token, the
+maximum cosine similarity with any reference token is taken, and
+vice versa for recall. With L2-normalised embeddings $\mathbf{x}_i$
+and $\hat{\mathbf{x}}_j$,
+\begin{equation}
+P_{\text{BERT}} = \frac{1}{|\hat{x}|} \sum_{\hat{x}_j \in \hat{x}} \max_{x_i \in x} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j,
+\quad
+R_{\text{BERT}} = \frac{1}{|x|} \sum_{x_i \in x} \max_{\hat{x}_j \in \hat{x}} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j,
+\end{equation}
+\begin{equation}
+F1_{\text{BERT}} = \frac{2 \cdot P_{\text{BERT}} \cdot R_{\text{BERT}}}{P_{\text{BERT}} + R_{\text{BERT}}}.
+\end{equation}
+\emph{Precision} measures how many candidate tokens have a close
+match in the reference (penalising spurious content), \emph{recall}
+measures how many reference tokens have a close match in the
+candidate (penalising omission), and \emph{F1} is their harmonic
+mean. Because the comparison is at the embedding level, BERTScore
+credits paraphrase that shares meaning even without surface-form
+overlap.
 
 For \emph{BERTScore Precision}, Chat yields the highest mean
 ($0.895$), Form second ($0.889$), Ask lowest ($0.886$); aggregated
@@ -176,6 +259,19 @@ Friedman omnibus is significant ($\chi^2(2) = 13.00$, $p = 0.002$);
 Form $>$ Ask and Chat $>$ Ask are significant with large effects.
 Form versus Chat is non-significant on F1, reflecting the trade-off
 between Form's higher Recall and Chat's higher Precision.
+
+\paragraph{SBERT (ModernBERT) cosine similarity.} Sentence-BERT
+\cite{Reimers2019} produces a single fixed-length embedding per
+document by mean-pooling token embeddings from a transformer
+(here, ModernBERT). Document similarity is the cosine of the angle
+between the two document embeddings:
+\begin{equation}
+\mathrm{SBERT}(d_1, d_2) = \frac{\mathbf{e}(d_1)^{\top} \mathbf{e}(d_2)}{\| \mathbf{e}(d_1) \| \, \| \mathbf{e}(d_2) \|}.
+\end{equation}
+Because the comparison is at the document-embedding level rather
+than the token level, SBERT is the most lenient of the metrics
+reported here: two documents that cover the same topics with
+different wording typically obtain values close to $1$.
 
 For \emph{SBERT cosine similarity (ModernBERT)}, Chat yields the
 highest mean ($0.990$), with Form and Ask tied at $0.986$; aggregated
@@ -430,22 +526,22 @@ Technical \& Org. Measures    & 0.967 (0.012) & 0.972 (0.010) & 0.975 (0.007) & 
 \end{tabular}
 \end{table}
 
-\begin{figure}[htbp]
+\begin{sidewaysfigure}
 \centering
 \includegraphics[width=\linewidth]{chapter_nlp_metrics_boxplot.png}
 \caption{Chapter-level distributions of BLEU, ROUGE-1/2/L, and
 METEOR by mode (full sample $n = 113$).}
 \label{fig:chapter-nlp-boxplot}
-\end{figure}
+\end{sidewaysfigure}
 
-\begin{figure}[htbp]
+\begin{sidewaysfigure}
 \centering
 \includegraphics[width=\linewidth]{chapter_bert_metrics_boxplot.png}
 \caption{Chapter-level distributions of BERTScore Precision /
 Recall / F1 and SBERT cosine similarity (ModernBERT) by mode (full
 sample $n = 113$).}
 \label{fig:chapter-bert-boxplot}
-\end{figure}
+\end{sidewaysfigure}
 
 \paragraph{Patterns across chapters.} \emph{Controller and Contact
 Details} contains the most templated content (company name, address,
@@ -482,7 +578,7 @@ across all six chapters, which dilutes chapter-specific zero-overlap
 regions (notably the Purposes and Legal Bases chapter) and pushes
 the aggregate scores upward.
 
-\begin{table}[htbp]
+\begin{sidewaystable}
 \centering
 \caption{Document-level versus mean chapter-level metric values by
 mode. The mean chapter-level value is the unweighted average across
@@ -508,4 +604,4 @@ BERTScore F1        & 0.905 & 0.783 & 0.897 & 0.788 & 0.904 & 0.793 \\
 SBERT (ModernBERT)  & 0.986 & 0.892 & 0.986 & 0.895 & 0.990 & 0.897 \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{sidewaystable}
