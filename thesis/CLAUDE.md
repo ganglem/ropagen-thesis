@@ -76,6 +76,69 @@ The three interaction modes are **Form** (structured questionnaire), **Ask** (gu
 - **Tense:** past tense for what was done ("participants completed…"), present for standing facts ("GDPR requires…")
 - **Transitions:** each section should end with a sentence signposting what comes next; each chapter should open with a one-paragraph overview
 
+## Writing style — chapters, sections, and paragraphs
+
+Adhere to the patterns already established in the completed chapters
+(Introduction, Background, Methodology, Evaluation). Specifically:
+
+- **Chapter openings.** A one-paragraph overview that names the
+  chapter's purpose, lists what it covers, and forecasts the order
+  of presentation. The reader should be able to predict the rest of
+  the chapter from this paragraph alone.
+- **Section openings.** A sentence or short paragraph framing why
+  this section comes here, what gap it closes, and what it adds to
+  the chapter's argument. Avoid jumping straight into a table or
+  result.
+- **Section closings.** A signposting sentence that names the next
+  section by reference and frames it as a question the current
+  section has raised but not yet answered: *"Whether X holds when Y
+  is the question taken up next in §\ref{...}."* Sections should
+  read as a chain, not a list.
+- **Paragraph-to-paragraph segues.** Use explicit connective tissue:
+  *"Echoing the X ordering..."*, *"In contrast to..."*, *"By the same
+  token..."*, *"The picture changes when..."*. Never start a
+  paragraph with a number or a result with no narrative anchor —
+  every paragraph must answer the question *"why does this come
+  next?"*.
+- **Item / metric walk-throughs.** Hold to a consistent template per
+  paragraph: italicised verbatim item text first, then the per-mode
+  reading in fixed order (Form, Ask, Chat, All), then a one-sentence
+  take-away naming the direction and approximate magnitude. Repeat
+  for every item in the instrument.
+- **Numbers serve the argument; they do not carry it.** Lead each
+  results paragraph with the substantive claim ("Form leads on
+  perceived ease of use…"); follow with the supporting numerical
+  evidence. A paragraph that opens with a statistic has lost the
+  thread.
+
+## Framing — this is not a statistics paper
+
+The research question is **how AI assistance changes the way people
+produce documents** — what they experience, what they trust, what
+they end up with. Statistics provide evidence for claims about that
+question; they are not the question.
+
+When writing Discussion, Conclusion, the ROPAgen chapter, and any
+chapter introduction or summary:
+
+- **Lead with the human-side finding** — what participants
+  experienced, what their behaviour suggests, what the evidence
+  implies for the design of LLM-assisted document tooling. Bring
+  numerical results in as supporting detail, not as the headline.
+- **The Discussion is not a reanalysis.** A stats-heavy Discussion
+  reads as a second results chapter; a human-side-led Discussion
+  reads as a thesis. Use the numbers, do not be used by them.
+- **The Conclusion answers the research questions in plain
+  English.** Statistical detail belongs in Evaluation; the
+  Conclusion is for the answer and its consequence.
+- **The Evaluation chapter is the one place where the statistical
+  apparatus *is* foregrounded** — that is correct and should remain.
+  But even there, every paragraph should make a claim a non-statistician
+  could understand, with the numbers as evidence.
+
+The thesis is about people using AI to make legal documents. Keep
+the people in view.
+
 ## Evaluation chapter structure (suggested)
 
 When populating `evaluation.tex`, follow this skeleton unless instructed otherwise:
