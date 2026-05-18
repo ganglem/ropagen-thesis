@@ -1,22 +1,98 @@
 \babel@toc {english}{}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Kontext}{1}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Reserach Problem and Research Questions}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.2}Research Problem and Research Questions}{2}{section.1.2}%
 \contentsline {paragraph}{\nonumberline RQ1:}{2}{paragraph*.2}%
 \contentsline {paragraph}{\nonumberline RQ2:}{2}{paragraph*.3}%
 \contentsline {section}{\numberline {1.3}3. Teil: Objectives und Contributions}{3}{section.1.3}%
-\contentsline {chapter}{\numberline {2}Background}{4}{chapter.2}%
-\contentsline {section}{\numberline {2.1}GDPR}{4}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Records of Processing Activities under Article 30 GDPR}{5}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Related Work}{7}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Methodology}{24}{chapter.3}%
-\contentsline {section}{\numberline {3.1}User Study}{24}{section.3.1}%
-\contentsline {chapter}{\numberline {4}Evaluation and Results}{28}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Discussion}{29}{chapter.5}%
-\contentsline {section}{\numberline {5.1}User Study Discussion}{29}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Document Discussion}{29}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Conclusion}{30}{chapter.6}%
+\contentsline {chapter}{\numberline {2}Background}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}GDPR}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Records of Processing Activities under Article 30 GDPR}{6}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Related Work}{8}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}GDPR Compliance Automation}{9}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Structured Legal-Document Generation}{10}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Evaluation Methodologies for Legal AI}{11}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}User-Facing Legal AI Systems}{12}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Synthesis}{13}{subsection.2.3.5}%
+\contentsline {chapter}{\numberline {3}Methodology}{14}{chapter.3}%
+\contentsline {section}{\numberline {3.1}User Study}{14}{section.3.1}%
+\contentsline {paragraph}{\nonumberline Shapiro--Wilk normality test.}{23}{paragraph*.4}%
+\contentsline {paragraph}{\nonumberline Friedman test.}{23}{paragraph*.5}%
+\contentsline {paragraph}{\nonumberline Wilcoxon signed-rank test (post-hoc).}{24}{paragraph*.6}%
+\contentsline {paragraph}{\nonumberline Mann--Whitney $U$ test (between-groups sensitivity check).}{24}{paragraph*.7}%
+\contentsline {paragraph}{\nonumberline Kruskal--Wallis $H$ test.}{24}{paragraph*.8}%
+\contentsline {paragraph}{\nonumberline Chi-square goodness-of-fit test.}{25}{paragraph*.9}%
+\contentsline {paragraph}{\nonumberline Effect sizes.}{25}{paragraph*.10}%
+\contentsline {paragraph}{\nonumberline Bonferroni correction.}{25}{paragraph*.11}%
+\contentsline {chapter}{\numberline {4}Evaluation and Results}{26}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Usability — System Usability Scale}{26}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Cognitive Load — NASA Raw Task Load Index}{29}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Perceived AI Support — AI Questionnaire}{36}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Mode Preference and Free-Text Feedback}{40}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Mode Preference Ranking}{40}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Free-Text Comments}{42}{subsection.4.4.2}%
+\contentsline {paragraph}{\nonumberline Form.}{42}{paragraph*.12}%
+\contentsline {paragraph}{\nonumberline Ask.}{42}{paragraph*.13}%
+\contentsline {paragraph}{\nonumberline Chat.}{43}{paragraph*.14}%
+\contentsline {paragraph}{\nonumberline Across modes (overall comments).}{43}{paragraph*.15}%
+\contentsline {section}{\numberline {4.5}Document Quality — Reference-Based NLP Metrics}{44}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Document-Level Results}{44}{subsection.4.5.1}%
+\contentsline {subsubsection}{\nonumberline Lexical Metrics}{44}{subsubsection*.16}%
+\contentsline {paragraph}{\nonumberline BLEU.}{45}{paragraph*.17}%
+\contentsline {paragraph}{\nonumberline ROUGE-1, ROUGE-2, ROUGE-L.}{45}{paragraph*.18}%
+\contentsline {paragraph}{\nonumberline METEOR.}{48}{paragraph*.19}%
+\contentsline {subsubsection}{\nonumberline BERT-Based and Sentence-Embedding Metrics}{48}{subsubsection*.20}%
+\contentsline {paragraph}{\nonumberline BERTScore Precision, Recall, F1.}{48}{paragraph*.21}%
+\contentsline {paragraph}{\nonumberline SBERT (ModernBERT) cosine similarity.}{51}{paragraph*.22}%
+\contentsline {subsection}{\numberline {4.5.2}Chapter-Level Results}{52}{subsection.4.5.2}%
+\contentsline {paragraph}{\nonumberline Patterns across chapters.}{57}{paragraph*.23}%
+\contentsline {subsection}{\numberline {4.5.3}Document-Level versus Chapter-Level Comparison}{57}{subsection.4.5.3}%
+\contentsline {section}{\numberline {4.6}Document Quality — LLM-as-a-Judge}{58}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Per-Dimension Results}{58}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Patterns Across the Five Dimensions}{62}{subsection.4.6.2}%
+\contentsline {section}{\numberline {4.7}Summary of Findings}{63}{section.4.7}%
+\contentsline {paragraph}{\nonumberline Usability (SUS).}{63}{paragraph*.24}%
+\contentsline {paragraph}{\nonumberline Workload (NASA R-TLX).}{64}{paragraph*.25}%
+\contentsline {paragraph}{\nonumberline Perceived AI Support.}{64}{paragraph*.26}%
+\contentsline {paragraph}{\nonumberline Mode Preference.}{64}{paragraph*.27}%
+\contentsline {paragraph}{\nonumberline NLP Metrics (document level, $n = 113$).}{65}{paragraph*.28}%
+\contentsline {paragraph}{\nonumberline LLM-as-a-Judge ($1$--$5$ scale).}{65}{paragraph*.29}%
+\contentsline {section}{\numberline {4.8}Participant Demographics}{66}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}Numeric and Ordinal Variables}{66}{subsection.4.8.1}%
+\contentsline {subsection}{\numberline {4.8.2}Categorical Variables}{67}{subsection.4.8.2}%
+\contentsline {chapter}{\numberline {5}Discussion}{70}{chapter.5}%
+\contentsline {section}{\numberline {5.1}RQ1: User Experience Across Modes}{70}{section.5.1}%
+\contentsline {section}{\numberline {5.2}RQ2: Document Quality and the Confidence Gap}{71}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Conclusion}{73}{chapter.6}%
 \def \@chapapp {\appendixname }
-\contentsline {chapter}{\numberline {A}Quelltexte}{31}{appendix.A}%
-\contentsline {chapter}{\nonumberline Bibliography}{32}{chapter*.4}%
+\contentsline {chapter}{\numberline {A}Study Scenario}{74}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Original (German)}{74}{section.A.1}%
+\contentsline {section}{\numberline {A.2}English Translation}{75}{section.A.2}%
+\contentsline {chapter}{\numberline {B}Survey Instruments}{77}{appendix.B}%
+\contentsline {section}{\numberline {B.1}System Usability Scale (SUS)}{77}{section.B.1}%
+\contentsline {section}{\numberline {B.2}NASA Raw Task Load Index Subscales}{78}{section.B.2}%
+\contentsline {chapter}{\numberline {C}LLM-as-a-Judge Configuration}{79}{appendix.C}%
+\contentsline {section}{\numberline {C.1}System and User Prompt}{79}{section.C.1}%
+\contentsline {section}{\numberline {C.2}Rubric --- Five Dimensions}{81}{section.C.2}%
+\contentsline {section}{\numberline {C.3}Model Configuration and Limitations}{81}{section.C.3}%
+\contentsline {paragraph}{\nonumberline Known limitations.}{83}{paragraph*.30}%
+\contentsline {chapter}{\numberline {D}Full Inferential Tables}{84}{appendix.D}%
+\contentsline {section}{\numberline {D.1}Sample-Size Derivation}{84}{section.D.1}%
+\contentsline {section}{\numberline {D.2}Survey Inferential Tables}{84}{section.D.2}%
+\contentsline {paragraph}{\nonumberline Mode preference ranking ($n = 69$).}{86}{paragraph*.31}%
+\contentsline {section}{\numberline {D.3}NLP and Judge Inferential Tables}{86}{section.D.3}%
+\contentsline {paragraph}{\nonumberline Confidence--quality correlations.}{88}{paragraph*.32}%
+\contentsline {chapter}{\numberline {E}Inferential Statistics in Full}{90}{appendix.E}%
+\contentsline {section}{\numberline {E.1}Survey Inferential Tests}{90}{section.E.1}%
+\contentsline {subsection}{\numberline {E.1.1}Normality (Shapiro--Wilk, $n = 69$)}{90}{subsection.E.1.1}%
+\contentsline {subsection}{\numberline {E.1.2}Friedman Omnibus ($n = 69$ matched triple)}{91}{subsection.E.1.2}%
+\contentsline {subsection}{\numberline {E.1.3}Pairwise Wilcoxon Signed-Rank Post-hoc (Bonferroni $\alpha = 0.0167$)}{91}{subsection.E.1.3}%
+\contentsline {subsection}{\numberline {E.1.4}Mode Preference Ranking}{91}{subsection.E.1.4}%
+\contentsline {section}{\numberline {E.2}NLP Metric Inferential Tests}{92}{section.E.2}%
+\contentsline {subsection}{\numberline {E.2.1}Kruskal--Wallis Sensitivity Check ($n = 113$, unbalanced)}{92}{subsection.E.2.1}%
+\contentsline {subsection}{\numberline {E.2.2}Friedman Omnibus ($n = 26$ matched triple)}{93}{subsection.E.2.2}%
+\contentsline {subsection}{\numberline {E.2.3}Pairwise Wilcoxon Signed-Rank Post-hoc ($n = 26$, primary)}{93}{subsection.E.2.3}%
+\contentsline {subsection}{\numberline {E.2.4}Mann--Whitney $U$ Sensitivity Check ($n = 113$, unbalanced)}{93}{subsection.E.2.4}%
+\contentsline {section}{\numberline {E.3}Confidence--Quality Correlations}{93}{section.E.3}%
+\contentsline {chapter}{\nonumberline Bibliography}{96}{chapter*.33}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

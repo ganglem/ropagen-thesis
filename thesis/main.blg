@@ -1,21 +1,21 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'main.blg'
-[39] biber:342> INFO - === Wed Mar 25, 2026, 00:46:40
-[52] Biber.pm:421> INFO - Reading 'main.bcf'
-[84] Biber.pm:1002> INFO - Found 16 citekeys in bib section 0
-[93] Biber.pm:4487> INFO - Processing section 0
-[98] Biber.pm:4678> INFO - Looking for bibtex file 'bibliography.bib' for section 0
-[101] bibtex.pm:1713> INFO - LaTeX decoding ...
-[111] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliography.bib'
-[187] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[188] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[188] Biber.pm:4307> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[188] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[197] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[204] bbl.pm:779> INFO - Output to main.bbl
-[204] Biber.pm:132> WARN - I didn't find a database entry for 'Knappen2009' (section 0)
-[205] Biber.pm:132> WARN - I didn't find a database entry for 'Mittelbach2005' (section 0)
-[205] Biber.pm:132> WARN - I didn't find a database entry for 'Schlosser2014' (section 0)
-[205] Biber.pm:132> WARN - I didn't find a database entry for 'Sturm2012' (section 0)
-[205] Biber.pm:132> WARN - I didn't find a database entry for 'Voss2010' (section 0)
-[205] Biber.pm:134> INFO - WARNINGS: 5
+[38] biber:342> INFO - === Fri May  8, 2026, 17:39:45
+[54] Biber.pm:421> INFO - Reading 'main.bcf'
+[91] Biber.pm:1002> INFO - Found 24 citekeys in bib section 0
+[100] Biber.pm:4487> INFO - Processing section 0
+[105] Biber.pm:4678> INFO - Looking for bibtex file 'bibliography.bib' for section 0
+[112] bibtex.pm:1713> INFO - LaTeX decoding ...
+[127] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliography.bib'
+[231] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[231] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[232] Biber.pm:4307> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[232] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[243] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[259] bbl.pm:779> INFO - Output to main.bbl
+[260] Biber.pm:132> WARN - I didn't find a database entry for 'Knappen2009' (section 0)
+[260] Biber.pm:132> WARN - I didn't find a database entry for 'Mittelbach2005' (section 0)
+[260] Biber.pm:132> WARN - I didn't find a database entry for 'Schlosser2014' (section 0)
+[260] Biber.pm:132> WARN - I didn't find a database entry for 'Sturm2012' (section 0)
+[261] Biber.pm:132> WARN - I didn't find a database entry for 'Voss2010' (section 0)
+[261] Biber.pm:134> INFO - WARNINGS: 5
