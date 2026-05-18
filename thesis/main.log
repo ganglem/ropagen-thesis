@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.3.25)  8 MAY 2026 22:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.3.25)  18 MAY 2026 16:50
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
@@ -1125,24 +1124,1337 @@ Package biblatex Info: Reference segment=0 on input line 108.
 Package tocbasic Info: setting babel extension for `lol' on input line 108.
 \scr@dte@lstlisting@maxnumwidth=\skip98
 Package hyperref Info: Link coloring OFF on input line 108.
+<images/logo_uulm_sw.png, id=4, 285.9483pt x 81.1833pt>
+File: images/logo_uulm_sw.png Graphic file (type png)
+<use images/logo_uulm_sw.png>
+Package pdftex.def Info: images/logo_uulm_sw.png  used on input line 116.
+(pdftex.def)             Requested size: 180.39706pt x 51.21504pt.
 
-./main.tex:108: I can't write on file `main.pdf'.
-(Press Enter to retry, or Control-D to exit; default file extension is `.pdf')
-Please type another file name for output
-./main.tex:108: Emergency stop.
-<to be read again> 
-                   \edef 
-l.108 \begin{document}
-                      
-*** (job aborted, file error in nonstop mode)
+Underfull \hbox (badness 10000) in paragraph at lines 115--117
 
- 
+ []
+
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 9.49997pt on input line 118.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 9.49997pt on input line 123.
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
+\T1/phv/b/n/10 Engineering, Com-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--123
+\T1/phv/b/n/10 puter Sci-ence and
+ []
+
+
+Underfull \hbox (badness 2790) in paragraph at lines 123--123
+\T1/phv/m/n/10 Institute for Database
+ []
+
+
+Underfull \hbox (badness 5475) in paragraph at lines 123--123
+\T1/phv/m/n/10 and In-for-ma-tion Sys-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--124
+
+ []
+
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 19.70294pt on input line 125.
+
+Underfull \hbox (badness 5359) in paragraph at lines 125--125
+[]\T1/phv/b/n/20.74 Assessing the Ef-fec-tive-ness of Large
+ []
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 125
+.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 125
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Underfull \hbox (badness 10000) in paragraph at lines 125--127
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--136
+
+ []
+
+[1
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-di
+st/fonts/enc/dvips/base/8r.enc} <./images/logo_uulm_sw.png>]
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 10.40245pt on input line 142.
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 1
+45.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
+File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
+)
+LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
+(Font)              scaled to size 10.40245pt on input line 145.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.59998pt on input line 148.
+ [2
+
+]
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 11.39996pt on input line 154.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 23.63593pt on input line 154.
+ (./main.toc
+[3
+
+]
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 11.39996pt on input line 86.
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[4]
+Overfull \hbox (8.07697pt too wide) in paragraph at lines 87--87
+ [][] [][]\T1/phv/m/n/12 Pairwise Wilcoxon Signed-Rank Post-hoc (Bon-fer-roni $
+\OML/cmm/m/it/12  \OT1/cmr/m/n/12 = 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0167$\T
+1/phv/m/n/12 )[] [][]  
+ []
+
+)
+\tf@toc=\write4
+\openout4 = `main.toc'.
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[5] (./chapters/introduction.tex
+chapter 1.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 16.41594pt on input line 3.
+[1
+
+
+]
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 13.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 11.39996pt on input line 13.
+LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
+(Font)              scaled to size 11.39996pt on input line 35.
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[2]
+Overfull \hbox (10.51294pt too wide) in paragraph at lines 51--52
+\T1/phv/m/n/12 Load In-dex, six-item Per-ceived AI Sup-port ques-tion-naire, mo
+de-preference
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[3]) (./chapters/background.tex
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[4]
+chapter 2.
+[5
+
+]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[6]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[7]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[8]
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 13.67995pt on input line 50.
+
+Overfull \hbox (4.0905pt too wide) in paragraph at lines 52--53
+\T1/phv/m/n/12 8B, zephyr-7b-beta, and orca_mini_v7_7b) against GPT-4 across fo
+ur experiments---
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[9]
+Overfull \hbox (15.76065pt too wide) in paragraph at lines 60--61
+\T1/phv/m/n/12 Subject of Crime, Sub-jec-tive Le-gal El-e-ment, Act, Vic-tim, C
+au-sa-tion, Re-sult of Hazard---
+ []
+
+
+Overfull \hbox (3.33743pt too wide) in paragraph at lines 60--61
+\T1/phv/m/n/12 expert-annotated cases. Their find-ing that general-domain LLMs 
+(GPT-4o, Qwen2.5)
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[10]
+Overfull \hbox (4.6081pt too wide) in paragraph at lines 64--65
+\T1/phv/m/n/12 on prison terms and fines), Con-vict-ing Ac-cu-racy (Re-call, Pr
+e-ci-sion, F1 over charges),
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[11]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[12]) (./chapters/methodology.tex
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[13]
+chapter 3.
+[14
+
+]
+Overfull \hbox (3.55092pt too wide) in paragraph at lines 22--23
+\T1/phv/m/n/12 ents within the EU, and au-tho-rised per-son-nel, each pop-u-lat
+ed through Boolean
+ []
+
+
+LaTeX Warning: Reference `app:ropagen-reference' on page 15 undefined on input 
+line 28.
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[15{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
+
+LaTeX Warning: Reference `app:ropagen-form-screenshot' on page 16 undefined on 
+input line 36.
+
+
+LaTeX Warning: Reference `app:ropagen-ask-screenshot' on page 16 undefined on i
+nput line 40.
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[16]
+
+LaTeX Warning: Reference `app:ropagen-chat-screenshot' on page 17 undefined on 
+input line 44.
+
+
+LaTeX Warning: Reference `app:ropagen-prompts' on page 17 undefined on input li
+ne 48.
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[17]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[18]
+Overfull \hbox (97.92772pt too wide) in paragraph at lines 67--68
+\T1/phv/m/n/12 raw data files com-mit-ted to the repos-i-tory and doc-u-mented 
+in full in \T1/cmtt/m/n/12 python/output/sample_sizes.md\T1/phv/m/n/12 . 
+ []
+
+
+Overfull \hbox (8.05511pt too wide) in paragraph at lines 70--71
+[]\T1/phv/b/n/12 Documents, 113 gen-er-ated ROPAs \T1/phv/m/n/12 ^^V dis-tribut
+ed across modes as 37 (Form),
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[19]
+LaTeX Font Info:    Font shape `TS1/phv/b/n' will be
+(Font)              scaled to size 11.39996pt on input line 71.
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[20]
+
+LaTeX Warning: Reference `app:ropagen-reference' on page 21 undefined on input 
+line 98.
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[21]
+Overfull \hbox (1.55348pt too wide) in paragraph at lines 100--101
+[]\T1/phv/b/n/12 BLEU \T1/phv/m/n/12 (Bilin-gual Eval-u-a-tion Un-der-study): n
+-gram pre-ci-sion with brevity penalty 
+ []
+
+
+Overfull \hbox (9.50905pt too wide) in paragraph at lines 101--102
+[]\T1/phv/b/n/12 ROUGE-1, ROUGE-2, ROUGE-L\T1/phv/m/n/12 : un-i-gram over-lap, 
+bi-gram over-lap, and longest
+ []
+
+
+Overfull \hbox (3.02957pt too wide) in paragraph at lines 103--104
+[]\T1/phv/b/n/12 BERTScore \T1/phv/m/n/12 (Pre-ci-sion, Re-call, F1): token-lev
+el se-man-tic sim-i-lar-ity us-ing Mod-
+ []
+
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 5.69998pt on input line 121.
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[22]
+Overfull \hbox (44.09344pt too wide) detected at line 137
+[][][]\OML/cmm/m/it/12 P[] \OT1/cmr/m/n/12 = []\OML/cmm/m/it/12 ;  R[] \OT1/cmr
+/m/n/12 = []\OML/cmm/m/it/12 ;  F\OT1/cmr/m/n/12 1[] = []\OML/cmm/m/it/12 :
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[23]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[24]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[25]
+Overfull \hbox (1.97585pt too wide) in paragraph at lines 198--199
+[]\T1/phv/b/n/12 Overall: \T1/phv/m/n/12 Holis-tic as-sess-ment of the doc-u-me
+nt's us-abil-ity as a real-world ROPA
+ []
+
+
+Overfull \hbox (1.27188pt too wide) in paragraph at lines 203--204
+\T1/phv/m/n/12 To in-ves-ti-gate whether per-ceived con-fi-dence in the AI-gene
+rated out-put cor-re-sponds
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[26]
+Overfull \hbox (10.32791pt too wide) in paragraph at lines 208--209
+\T1/phv/m/n/12 scores, the R-TLX com-pos-ite, and the con-fi-dence ques-tion co
+m-pos-ites across modes;
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[27]
+Overfull \hbox (5.87767pt too wide) in paragraph at lines 252--256
+[] \T1/phv/b/n/12 Mann--Whitney $\OML/cmm/m/it/12 U$ \T1/phv/b/n/12 test (betwe
+en-groups sen-si-tiv-ity check).[][] \T1/phv/m/n/12 Non-parametric two-
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[28]) (./chapters/evaluation.tex
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[29]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[30]
+chapter 4.
+(./chapters/evaluation/demographics.tex [31
+
+]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[32]
+<../python/survey/output/demographics.png, id=425, 1144.275pt x 1723.3986pt>
+File: ../python/survey/output/demographics.png Graphic file (type png)
+<use ../python/survey/output/demographics.png>
+Package pdftex.def Info: ../python/survey/output/demographics.png  used on inpu
+t line 115.
+(pdftex.def)             Requested size: 416.12161pt x 626.7343pt.
+
+
+LaTeX Warning: Float too large for page by 89.23428pt on input line 121.
+
+)
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[33]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[34 <../python/survey/output/demographics.png>] (./chapters/evaluation/sus.tex
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[35]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[36]
+
+LaTeX Warning: Float too large for page by 58.51248pt on input line 197.
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[37]
+<../python/survey/output/sus_subquestions_boxplot.png, id=455, 1581.7494pt x 74
+0.0448pt>
+File: ../python/survey/output/sus_subquestions_boxplot.png Graphic file (type p
+ng)
+<use ../python/survey/output/sus_subquestions_boxplot.png>
+Package pdftex.def Info: ../python/survey/output/sus_subquestions_boxplot.png  
+used on input line 203.
+(pdftex.def)             Requested size: 606.5pt x 283.76068pt.
+) (./chapters/evaluation/rtlx.tex
+<../python/survey/output/tlx_subquestions_boxplot.png, id=462, 1437.2094pt x 88
+6.9938pt>
+File: ../python/survey/output/tlx_subquestions_boxplot.png Graphic file (type p
+ng)
+<use ../python/survey/output/tlx_subquestions_boxplot.png>
+Package pdftex.def Info: ../python/survey/output/tlx_subquestions_boxplot.png  
+used on input line 51.
+(pdftex.def)             Requested size: 606.5pt x 374.30786pt.
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[38]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[39]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[40 <../python/survey/output/sus_subquestions_boxplot.png>]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[41 <../python/survey/output/tlx_subquestions_boxplot.png>]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[42]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[43]) (./chapters/evaluation/ai_questions.tex
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[44]
+<../python/survey/output/ai_subquestions_boxplot.png, id=508, 1437.2094pt x 859
+.5312pt>
+File: ../python/survey/output/ai_subquestions_boxplot.png Graphic file (type pn
+g)
+<use ../python/survey/output/ai_subquestions_boxplot.png>
+Package pdftex.def Info: ../python/survey/output/ai_subquestions_boxplot.png  u
+sed on input line 56.
+(pdftex.def)             Requested size: 606.5pt x 362.71875pt.
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[45]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[46 <../python/survey/output/ai_subquestions_boxplot.png>]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[47]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[48]) (./chapters/evaluation/freeform.tex
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[49]
+<../python/survey/output/ranking_distribution.png, id=543, 725.5908pt x 458.673
+6pt>
+File: ../python/survey/output/ranking_distribution.png Graphic file (type png)
+<use ../python/survey/output/ranking_distribution.png>
+Package pdftex.def Info: ../python/survey/output/ranking_distribution.png  used
+ on input line 63.
+(pdftex.def)             Requested size: 353.7059pt x 223.59723pt.
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[50 <../python/survey/output/ranking_distribution.png>]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[51]) (./chapters/evaluation/nlp_metrics.tex
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[52]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[53]
+<../python/metrics/output/nlp_metrics_boxplot.png, id=576, 1582.713pt x 886.512
+pt>
+File: ../python/metrics/output/nlp_metrics_boxplot.png Graphic file (type png)
+<use ../python/metrics/output/nlp_metrics_boxplot.png>
+Package pdftex.def Info: ../python/metrics/output/nlp_metrics_boxplot.png  used
+ on input line 89.
+(pdftex.def)             Requested size: 606.5pt x 339.70522pt.
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[54]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[55]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[56 <../python/metrics/output/nlp_metrics_boxplot.png>]
+Underfull \hbox (badness 1596) in paragraph at lines 166--166
+[][][]\T1/phv/m/n/12 Document-level BERT-based and SBERT dis-tri-bu-tions by mo
+de (full sam-ple $\OML/cmm/m/it/12 n \OT1/cmr/m/n/12 = 113$\T1/phv/m/n/12 ). So
+urce:
+ []
+
+<../python/metrics/output/bert_metrics_boxplot.png, id=600, 1293.633pt x 886.51
+2pt>
+File: ../python/metrics/output/bert_metrics_boxplot.png Graphic file (type png)
+
+<use ../python/metrics/output/bert_metrics_boxplot.png>
+Package pdftex.def Info: ../python/metrics/output/bert_metrics_boxplot.png  use
+d on input line 198.
+(pdftex.def)             Requested size: 606.5pt x 415.61911pt.
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[57]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[58]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[59 <../python/metrics/output/bert_metrics_boxplot.png>]
+Overfull \hbox (6.66214pt too wide) in paragraph at lines 239--240
+[] \T1/phv/b/n/12 SBERT (Mod-ern-BERT) co-sine sim-i-lar-ity.[][] \T1/phv/m/n/1
+2 Sentence-BERT co-sine sim-i-lar-ity ([])
+ []
+
+
+Overfull \hbox (0.75928pt too wide) in paragraph at lines 239--240
+\T1/phv/m/n/12 com-presses each doc-u-ment into a sin-gle em-bed-ding vec-tor a
+nd re-ports how aligned
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[60]
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 297--309
+ [][] 
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[61]
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 317--329
+ [][] 
+ []
+
+
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 337--349
+ [][] 
+ []
+
+
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 357--369
+ [][] 
+ []
+
+
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 377--389
+ [][] 
+ []
+
+<../python/metrics/output/chapter_nlp_metrics_boxplot.png, id=644, 1582.2312pt 
+x 879.7668pt>
+File: ../python/metrics/output/chapter_nlp_metrics_boxplot.png Graphic file (ty
+pe png)
+<use ../python/metrics/output/chapter_nlp_metrics_boxplot.png>
+Package pdftex.def Info: ../python/metrics/output/chapter_nlp_metrics_boxplot.p
+ng  used on input line 393.
+(pdftex.def)             Requested size: 606.5pt x 337.2279pt.
+
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 408--420
+ [][] 
+ []
+
+
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 428--440
+ [][] 
+ []
+
+
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 448--460
+ [][] 
+ []
+
+
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 468--480
+ [][] 
+ []
+
+<../python/metrics/output/chapter_bert_metrics_boxplot.png, id=645, 1582.2312pt
+ x 853.7496pt>
+File: ../python/metrics/output/chapter_bert_metrics_boxplot.png Graphic file (t
+ype png)
+<use ../python/metrics/output/chapter_bert_metrics_boxplot.png>
+Package pdftex.def Info: ../python/metrics/output/chapter_bert_metrics_boxplot.
+png  used on input line 484.
+(pdftex.def)             Requested size: 606.5pt x 327.25511pt.
+
+Overfull \hbox (2.75371pt too wide) in paragraph at lines 495--514
+\T1/phv/m/sl/12 Controller and Con-tact De-tails \T1/phv/m/n/12 con-tains the m
+ost tem-plated con-tent (com-pany name,
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[62]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[63]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[64 <../python/metrics/output/chapter_nlp_metrics_boxplot.png>]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[65 <../python/metrics/output/chapter_bert_metrics_boxplot.png>]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[66]) (./chapters/evaluation/judge.tex
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[67]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[68]
+<../python/judge/output/judge_metrics_boxplot.png, id=694, 1582.713pt x 888.921
+pt>
+File: ../python/judge/output/judge_metrics_boxplot.png Graphic file (type png)
+<use ../python/judge/output/judge_metrics_boxplot.png>
+Package pdftex.def Info: ../python/judge/output/judge_metrics_boxplot.png  used
+ on input line 63.
+(pdftex.def)             Requested size: 606.5pt x 340.62833pt.
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[69]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[70 <../python/judge/output/judge_metrics_boxplot.png>]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[71]) (./chapters/evaluation/summary.tex
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[72]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[73]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[74])) (./chapters/discussion.tex
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[75]
+chapter 5.
+[76
+
+]) (./chapters/conclusion.tex
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[77]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[78]
+chapter 6.
+) (./chapters/sources.tex [79
+
+]
+chapter A.
+
+Overfull \hbox (53.06381pt too wide) in paragraph at lines 52--52
+[]\T1/cmtt/m/n/12 Szenario: Mitarbeiterverwaltung (Arbeitszeit/Urlaub) & Parkpl
+atzberechtigung[] 
+ []
+
+
+Overfull \hbox (22.19635pt too wide) in paragraph at lines 52--52
+[]\T1/cmtt/m/n/12 Sie sind Mitarbeitender namens A.I. und arbeiten für die APOR
+ GmbH, ein[] 
+ []
+
+
+Overfull \hbox (40.71683pt too wide) in paragraph at lines 52--52
+[]\T1/cmtt/m/n/12 Softwareunternehmen mit ca. 50 Mitarbeitenden in Ulm. Sie han
+deln im Namen[] 
+ []
+
+
+Overfull \hbox (28.36984pt too wide) in paragraph at lines 52--52
+[]\T1/cmtt/m/n/12 Das Unternehmen verarbeitet personenbezogene Daten, um Mitarb
+eitende vom[] 
+ []
+
+[80
+
+]
+Overfull \hbox (40.71683pt too wide) in paragraph at lines 52--52
+[]\T1/cmtt/m/n/12 berechtigte Mitarbeitende den Parkplatz nutzen können, wird e
+in geeignetes[] 
+ []
+
+
+Overfull \hbox (46.89032pt too wide) in paragraph at lines 52--52
+[]\T1/cmtt/m/n/12 APOR arbeitet mit intern gehostetem Microsoft Office sowie in
+ternen Servern[] 
+ []
+
+
+Overfull \hbox (46.89032pt too wide) in paragraph at lines 52--52
+[]\T1/cmtt/m/n/12 (keine externe Cloud). Krankentage oder medizinische Angaben 
+sind für diese[] 
+ []
+
+
+Overfull \hbox (9.84937pt too wide) in paragraph at lines 52--52
+[]\T1/cmtt/m/n/12 vorgesehen, wie z.B. Zugriffsbeschränkung nach Rollen (Need-t
+o-know),[] 
+ []
+
+
+Overfull \hbox (3.67587pt too wide) in paragraph at lines 52--52
+[]\T1/cmtt/m/n/12 Passwortschutz (ggf. MFA), regelmäÿige Backups, Zutrittskontr
+olle zu[] 
+ []
+
+
+Overfull \hbox (3.67587pt too wide) in paragraph at lines 52--52
+[]\T1/cmtt/m/n/12 Serverraum/Archiv und Vertraulichkeitsverpflichtung der berec
+htigten[] 
+ []
+
+
+Overfull \hbox (34.54333pt too wide) in paragraph at lines 52--52
+[]\T1/cmtt/m/n/12 Alle in diesem Zusammenhang gespeicherten Informationen werde
+n spätestens[] 
+ []
+
+
+Overfull \hbox (34.54333pt too wide) in paragraph at lines 100--100
+[]\T1/cmtt/m/n/12 You are an employee named A.I., working for APOR GmbH, a soft
+ware company[] 
+ []
+
+
+Overfull \hbox (28.36984pt too wide) in paragraph at lines 100--100
+[]\T1/cmtt/m/n/12 with approximately 50 employees in Ulm. You act on behalf of 
+the company[] 
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[81]
+Overfull \hbox (34.54333pt too wide) in paragraph at lines 100--100
+[]\T1/cmtt/m/n/12 The company processes personal data in order to administer em
+ployees from[] 
+ []
+
+
+Overfull \hbox (28.36984pt too wide) in paragraph at lines 100--100
+[]\T1/cmtt/m/n/12 In addition, APOR manages a parking authorisation for entitle
+d employees[] 
+ []
+
+
+Overfull \hbox (34.54333pt too wide) in paragraph at lines 100--100
+[]\T1/cmtt/m/n/12 for a company car park with a barrier. To allow entitled empl
+oyees to use[] 
+ []
+
+
+Overfull \hbox (9.84937pt too wide) in paragraph at lines 100--100
+[]\T1/cmtt/m/n/12 APOR uses internally hosted Microsoft Office and internal ser
+vers (no[] 
+ []
+
+
+Overfull \hbox (16.02286pt too wide) in paragraph at lines 100--100
+[]\T1/cmtt/m/n/12 external cloud). Sick days or medical information are not req
+uired for[] 
+ []
+
+
+Overfull \hbox (3.67587pt too wide) in paragraph at lines 100--100
+[]\T1/cmtt/m/n/12 For administration, technical and organisational measures (TO
+Ms) are[] 
+ []
+
+
+Overfull \hbox (28.36984pt too wide) in paragraph at lines 100--100
+[]\T1/cmtt/m/n/12 provided, such as role-based access restriction (need-to-know
+), password[] 
+ []
+
+
+Overfull \hbox (9.84937pt too wide) in paragraph at lines 100--100
+[]\T1/cmtt/m/n/12 protection (where appropriate, MFA), regular backups, physica
+l access[] 
+ []
+
+
+Overfull \hbox (40.71683pt too wide) in paragraph at lines 100--100
+[]\T1/cmtt/m/n/12 control to the server room / archive, and a confidentiality o
+bligation for[] 
+ []
+
+
+Overfull \hbox (28.36984pt too wide) in paragraph at lines 100--100
+[]\T1/cmtt/m/n/12 All information stored in this context is deleted no later th
+an 3 months[] 
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[82]
+chapter B.
+[83
+
+]
+Overfull \hbox (2.56206pt too wide) in paragraph at lines 137--138
+[]\T1/phv/m/n/12 How in-se-cure, dis-cour-aged, ir-ri-tated, stressed, and an-n
+oyed were you? 
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[84]
+chapter C.
+
+Overfull \hbox (16.02286pt too wide) in paragraph at lines 161--161
+[]\T1/cmtt/m/n/12 documents are written by novices (non-experts, no prior GDPR 
+training)[] 
+ []
+
+
+Overfull \hbox (22.19635pt too wide) in paragraph at lines 161--161
+[]\T1/cmtt/m/n/12 who described the same processing scenario using different LL
+M-assisted[] 
+ []
+
+
+Overfull \hbox (22.19635pt too wide) in paragraph at lines 161--161
+[]\T1/cmtt/m/n/12 tools. Your job is to judge each ROPA document against (a) th
+e provided[] 
+ []
+
+
+Overfull \hbox (34.54333pt too wide) in paragraph at lines 161--161
+[]\T1/cmtt/m/n/12 scenario and (b) GDPR Article 30 requirements. Be strict but 
+fair. Do not[] 
+ []
+
+
+Overfull \hbox (3.67587pt too wide) in paragraph at lines 161--161
+[]\T1/cmtt/m/n/12 scenario facts. Respond with valid JSON only - no prose, no M
+arkdown[] 
+ []
+
+
+Overfull \hbox (22.19635pt too wide) in paragraph at lines 218--218
+[]\T1/cmtt/m/n/12 You will evaluate one ROPA document against the scenario it i
+s supposed[] 
+ []
+
+[85
+
+]
+Overfull \hbox (3.67587pt too wide) in paragraph at lines 218--218
+[]\T1/cmtt/m/n/12 Score the document on each of the following five metrics usin
+g a 1-5[] 
+ []
+
+
+Overfull \hbox (22.19635pt too wide) in paragraph at lines 218--218
+[]\T1/cmtt/m/n/12 Likert scale, and give a short rationale (max 2 sentences, En
+glish) for[] 
+ []
+
+
+Overfull \hbox (9.84937pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 controller identity and contact, DPO, purposes of processin
+g, legal[] 
+ []
+
+
+Overfull \hbox (9.84937pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 basis, categories of data subjects and personal data, categ
+ories of[] 
+ []
+
+
+Overfull \hbox (16.02286pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 recipients, retention periods, and technical/organisational
+ measures[] 
+ []
+
+
+Overfull \hbox (28.36984pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 concrete facts of THIS scenario - APOR GmbH, Ulm (Mainstras
+se 67), ~50[] 
+ []
+
+
+Overfull \hbox (28.36984pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 employees, internally hosted Microsoft Office and internal 
+servers (NO[] 
+ []
+
+
+Overfull \hbox (16.02286pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 employee departure, parking lot authorisation using a disti
+nguishing[] 
+ []
+
+
+Overfull \hbox (28.36984pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 feature such as a licence plate. Generic ROPA boilerplate t
+hat ignores[] 
+ []
+
+
+Overfull \hbox (34.54333pt too wide) in paragraph at lines 218--218
+[]\T1/cmtt/m/n/12 - legal_correctness: Correct use of GDPR terminology and corr
+ect citation[] 
+ []
+
+
+Overfull \hbox (3.67587pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 of legal basis (typically Art. 6(1)(b) performance of contr
+act for[] 
+ []
+
+
+Overfull \hbox (22.19635pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 employment data, Art. 6(1)(c) legal obligation where applic
+able, Art.[] 
+ []
+
+
+Overfull \hbox (34.54333pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 6(1)(f) legitimate interest for parking authorisation). Wro
+ng articles,[] 
+ []
+
+
+Overfull \hbox (34.54333pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 invented legal bases, or confusing controller/processor/DPO
+ roles lower[] 
+ []
+
+
+Overfull \hbox (22.19635pt too wide) in paragraph at lines 218--218
+[]\T1/cmtt/m/n/12 - hallucination_inverse: Inverse score for invented facts not
+ supported[] 
+ []
+
+
+Overfull \hbox (16.02286pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 by the scenario (e.g. invented third-party processors, inve
+nted data[] 
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[86]
+Overfull \hbox (16.02286pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 categories like medical data, invented addresses, invented 
+retention[] 
+ []
+
+
+Overfull \hbox (22.19635pt too wide) in paragraph at lines 218--218
+[]\T1/cmtt/m/n/12 - overall: Holistic judgement of how useful this document wou
+ld be as a[] 
+ []
+
+
+Overfull \hbox (28.36984pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 real Art. 30 ROPA record for this scenario, taking the four
+ dimensions[] 
+ []
+
+
+Overfull \hbox (40.71683pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 "completeness":           {"score": <int 1-5>, "rationale":
+ "<string>"},[] 
+ []
+
+
+Overfull \hbox (40.71683pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 "scenario_faithfulness":  {"score": <int 1-5>, "rationale":
+ "<string>"},[] 
+ []
+
+
+Overfull \hbox (40.71683pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 "legal_correctness":      {"score": <int 1-5>, "rationale":
+ "<string>"},[] 
+ []
+
+
+Overfull \hbox (40.71683pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 "hallucination_inverse":  {"score": <int 1-5>, "rationale":
+ "<string>"},[] 
+ []
+
+
+Overfull \hbox (34.54333pt too wide) in paragraph at lines 218--218
+[]  \T1/cmtt/m/n/12 "overall":                {"score": <int 1-5>, "rationale":
+ "<string>"}[] 
+ []
+
+
+Overfull \hbox (5.31606pt too wide) in paragraph at lines 223--224
+\T1/phv/m/n/12 ad-e-quate, $\OT1/cmr/m/n/12 4 =$ \T1/phv/m/n/12 good, $\OT1/cmr
+/m/n/12 5 =$ \T1/phv/m/n/12 ex-cel-lent. The fourth di-men-sion, \T1/cmtt/m/n/1
+2 hallucination_inverse\T1/phv/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 1259) in paragraph at lines 242--242
+[]|\T1/phv/m/n/10.95 Correct use of GDPR ter-mi-nol-ogy and cor-rect ci-ta-tion
+ of
+ []
+
+
+Underfull \hbox (badness 4699) in paragraph at lines 242--242
+\T1/phv/m/n/10.95 le-gal ba-sis (typ-i-cally Art. 6(1)(b) for em-ploy-ment data
+,
+ []
+
+
+Overfull \hbox (21.55371pt too wide) in paragraph at lines 250--251
+\T1/phv/m/n/12 The con-fig-u-ra-tion in Ta-ble []C.2[] is taken from the \T1/cm
+tt/m/n/12 judge \T1/phv/m/n/12 block of \T1/cmtt/m/n/12 python/judge/prompt.-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 271--271
+[]|\T1/cmtt/m/n/10.95 completeness\T1/phv/m/n/10.95 , \T1/cmtt/m/n/10.95 scenar
+io_faithfulness\T1/phv/m/n/10.95 ,
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[87]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[88]) (./chapters/appendix_inferential.tex
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[89]
+chapter D.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 88.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 88.
+
+[90
+
+]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[91]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 122.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 122.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 149.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\alpha' on input line 149.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 149.
+
+
+Overfull \hbox (3.45406pt too wide) in paragraph at lines 161--182
+ [][] 
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[92]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[93]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 194.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 194.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 220.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 220.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 246.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 246.
+
+
+Overfull \hbox (88.26161pt too wide) in paragraph at lines 258--291
+ [][] 
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 293.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 293.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 293.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 293.
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[94]
+Underfull \hbox (badness 5817) in paragraph at lines 340--340
+[][][]\T1/phv/m/n/12 Spearman rank cor-re-la-tions: pri-mary con-fi-dence ($\OT
+1/cmr/m/n/12 5[]$\T1/phv/m/n/12 ) ver-sus
+ []
+
+)
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[95]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[96]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[97]
+
+LaTeX Warning: Citation 'Knappen2009' undefined on input line 172.
+
+
+LaTeX Warning: Citation 'Mittelbach2005' undefined on input line 173.
+
+
+LaTeX Warning: Citation 'Schlosser2014' undefined on input line 174.
+
+
+LaTeX Warning: Citation 'Sturm2012' undefined on input line 175.
+
+
+LaTeX Warning: Citation 'Voss2010' undefined on input line 176.
+
+chapter without number
+LaTeX Font Info:    Font shape `T1/phv/m/sc' will be
+(Font)              scaled to size 11.39996pt on input line 178.
+
+Overfull \hbox (4.60133pt too wide) in paragraph at lines 179--179
+[]\T1/phv/m/n/12 Sallam Abual-haija et al. ^^P  LLM-assisted Ex-trac-tion of Re
+g-u-la-tory Re-quire-ments:
+ []
+
+[98
+
+
+
+]
+Overfull \hbox (1.40544pt too wide) in paragraph at lines 179--179
+\T1/phv/m/n/12 Kong, China: As-so-ci-a-tion for Com-pu-ta-tional Lin-guis-tics,
+ 2019, pp. 3982^^U3992.
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[99]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[100] [101
+
+] (./main.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+Package logreq Info: Writing requests to 'main.run.xml'.
+\openout1 = `main.run.xml'.
+
+ ) 
 Here is how much of TeX's memory you used:
- 28197 strings out of 467533
- 564893 string characters out of 5422138
- 1517304 words of memory out of 5000000
- 56859 multiletter control sequences out of 15000+600000
- 630519 words of font info for 43 fonts, out of 8000000 for 9000
+ 29390 strings out of 467533
+ 590654 string characters out of 5422138
+ 1545907 words of memory out of 5000000
+ 57631 multiletter control sequences out of 15000+600000
+ 682238 words of font info for 118 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 108i,1n,107p,11285b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
-./main.tex:108:  ==> Fatal error occurred, no output PDF file produced!
+ 108i,12n,107p,11285b,2930s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+</usr/share/texmf/fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texmf/fo
+nts/type1/public/cm-super/sftt1200.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
+tic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.
+pfb>
+Output written on main.pdf (106 pages, 1971416 bytes).
+PDF statistics:
+ 1279 PDF objects out of 1440 (max. 8388607)
+ 1103 compressed objects within 12 object streams
+ 310 named destinations out of 1000 (max. 500000)
+ 592 words of extra memory for PDF output out of 10000 (max. 10000000)
+
