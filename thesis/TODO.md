@@ -15,8 +15,7 @@ not by chapter — chapter-level reorganisation is the very last step.
       (looks suspiciously perfect — verify it's not a tie-handling artefact).
 
 ### ROPAgen chapter (NEW, sits before Evaluation)
-- [ ] **Dedicated ROPAgen chapter.** Sits between Methodology and
-      Evaluation. Covers: who built the tool (DBIS / Uni Ulm), what
+- [ ] **Dedicated ROPAgen subchapter.** Sits in Methodology. Covers: who built the tool (Emilija Kastratovic, DBIS / Uni Ulm), what
       it does, the LLM (Mistral Large 3) backing it, and a detailed
       walk-through of the three interaction modes
       (Form / Ask / Chat) with screenshots for each. This is where
@@ -27,8 +26,7 @@ not by chapter — chapter-level reorganisation is the very last step.
       chapter above (one per mode, ideally captured on the same
       scenario step for visual comparability).
 - [ ] **Example generated ROPA documents.** One per mode, same
-      participant if possible. Either inside the ROPAgen chapter
-      as illustrative figures, or in an appendix referenced from it.
+      participant if possible as an appendix referenced from it.
 
 ### Methodology
 - [ ] **User-study timeline / BPMN diagram.** A figure showing the

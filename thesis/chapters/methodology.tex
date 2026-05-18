@@ -1,6 +1,54 @@
 \chapter{Methodology}
 \label{ch:methodology}
 
+This chapter has two complementary parts. The first introduces the tool under study, ROPAgen, in enough depth that the reader can picture what each of the three interaction modes does in practice and what is sent to the LLM in each case. The second describes the user study itself --- participants, instruments, sample sizes, and the analysis plan --- through which the tool is evaluated. Together they establish exactly what is being measured and how, before any results are reported.
+
+\section{The ROPAgen Tool}
+\label{sec:ropagen}
+
+The tool evaluated in this study is ROPAgen \cite{KastratovicRopagen}, a web-based application that assists users in drafting GDPR Article~30 Records of Processing Activities through three different levels of LLM involvement. ROPAgen was developed by the author of this thesis at the Institute of Databases and Information Systems (DBIS), University of Ulm, prior to the present evaluation; this section describes the tool as it stood at the time of the study.
+
+ROPAgen exists because creating a ROPA from scratch is tedious work: the document has rigid structural requirements (Art.~30 GDPR) but most of its substance is project-specific prose that has to be written from a blank page. The tool's three interaction modes --- Form, Ask, and Chat --- each offer a different trade-off between structural scaffolding and free-form expression, and it is exactly that trade-off that this thesis evaluates. The remainder of this section describes the internal representation of a ROPA document in the tool, walks through the three modes from the user's perspective, and details the LLM backend that all three modes share.
+
+\subsection*{ROPA Documents in ROPAgen}
+
+Internally, ROPAgen represents a ROPA as a single structured \texttt{DocumentData} object organised around eight thematic groups that together cover the disclosures required under Art.~30(1) GDPR:
+
+\begin{enumerate}
+    \item \textbf{Organisation and controller} --- name, postal address, e-mail, phone number, and the contact details of the data protection officer and any external representative.
+    \item \textbf{Legal basis} --- Boolean flags for each lawful-basis option in Art.~6(1) GDPR (consent, contract, legal obligation, legitimate interest), the German national-law bases relevant to the study scenario (\S~26 BDSG, \S~28b IfSG, \S~257/239 HGB, \S~147 AO), and a free-text fallback for other grounds.
+    \item \textbf{Data categories} --- nine grouped categories (personal master data, employment, finance, health, legal, behavioural, documentation, vehicle, and other) each with predefined Boolean sub-fields such as surname, date of birth, working hours, or holiday entitlement.
+    \item \textbf{Data sources} --- Boolean flags for common upstream systems (Office~365, Azure, Google Workspace, AWS, e-mail, and so on) plus a free-text field for sources not covered by the predefined list.
+    \item \textbf{Person categories} --- affected persons, internal recipients, external recipients within the EU, and authorised personnel, each populated through Boolean role tags with an optional free-text override.
+    \item \textbf{Retention periods} --- Boolean flags for the standard retention triggers (after termination of employment, after termination of contract, upon revocation of consent), a free-text field for the concrete deletion period, and flags for legal-retention exceptions.
+    \item \textbf{Free-text fields} --- three short prose fields covering the purpose of processing, the technical and organisational measures in place, and any additional information that does not fit elsewhere.
+    \item \textbf{Metadata} --- the document identifier, title, and natural language in which the final ROPA should be generated.
+\end{enumerate}
+
+This structured form is the tool's working representation while the user is drafting. The final ROPA itself is rendered as a Markdown document --- with optional PDF export through a server-side rendering route --- that the LLM produces in a single generation step from the assembled \texttt{DocumentData} object. A complete example of the resulting document, the reference baseline against which all participant outputs are scored by the NLP metric pipeline, is reproduced in Appendix~\ref{app:ropagen-reference}.
+
+\subsection*{The Three Interaction Modes}
+
+All three modes act on the same \texttt{DocumentData} schema and, when the user clicks the final \emph{Generate} button, hand that schema to the same prose-generation prompt (referred to internally as \texttt{finalropa}). The output ROPA is therefore produced by an identical generation step in all three conditions. What differs between the modes is the path the user takes to populate \texttt{DocumentData}: in Form mode the user fills the structured fields directly; in Ask mode the user fills the same fields but with section-level dialogue from the LLM as a guide; in Chat mode the structured fields are not exposed to the user at all and are populated invisibly by the LLM from the user's free-form description of their processing activities.
+
+\subsubsection*{Form Mode}
+
+In Form mode, the user navigates the eight thematic groups of the \texttt{DocumentData} schema as a linear questionnaire of checkboxes and short text fields (see the Form mode screenshot in Appendix~\ref{app:ropagen-form-screenshot}). The user is in full control of every field; the LLM is invoked only when explicitly requested. Each section offers an optional \emph{AI Suggest} button that asks the LLM, given the document's current state, to propose values for the fields in that section; the suggestions populate the form but remain freely editable. Once the user is satisfied, clicking \emph{Generate} sends the assembled \texttt{DocumentData} object to the \texttt{finalropa} prompt, which synthesises a complete ROPA document in formal prose. Form mode therefore exposes the entire structure of a ROPA upfront and uses the LLM only at the margins.
+
+\subsubsection*{Ask Mode}
+
+Ask mode presents the same eight-section form layout as Form mode but pairs each section with a dedicated chat panel (see Appendix~\ref{app:ropagen-ask-screenshot}). On the first message in any section, the LLM explains the purpose of the section and asks the user for the relevant information; on subsequent messages it maintains the conversation history for that section and asks follow-up questions. The model is given the current \texttt{DocumentData} state alongside the user's message and may return, in addition to its conversational reply, a structured \texttt{DATA\_UPDATE} block that the front-end uses to auto-populate the corresponding form fields. The user retains the option to edit the form directly at any point. The final \emph{Generate} step is identical to Form mode --- the same \texttt{finalropa} prompt receives the same \texttt{DocumentData} object. Ask mode is therefore a structured-form workflow with a per-section explanatory companion.
+
+\subsubsection*{Chat Mode}
+
+Chat mode departs from the form metaphor most visibly (see Appendix~\ref{app:ropagen-chat-screenshot}). After entering the organisation's metadata --- name, contact information, and title of the processing activity --- the user navigates section by section through a chat interface only; the structured form is hidden from view. The LLM explains what each section requires, asks the user to describe their processing in their own words, and silently extracts the relevant structured data from the user's free-form responses: a mentioned vendor name flips the corresponding data-source flag, a mentioned data category populates the corresponding Boolean, and so on. The user therefore never sees or fills the structured fields directly, although the same \texttt{DocumentData} object is being built up under the hood. The final \emph{Generate} step is once again identical to the other two modes. Chat mode is therefore a conversational-first workflow that reuses the same final generation step while bypassing the structured intake.
+
+\subsection*{LLM Backend}
+
+All three modes are backed by the same model: Mistral Large~3 (model identifier \texttt{mistralai/mistral-large-2512}), accessed through the OpenRouter API gateway via the Vercel AI SDK. Two temperature regimes are used. Conversational and suggestion calls --- per-section AI suggestions in Form mode, dialogue turns in Ask and Chat modes, and the silent data-extraction calls in Chat mode --- use temperature~$0.2$ and top-$p$~$0.5$, which permits variation in phrasing while keeping the responses on-task. The final ROPA generation step, in contrast, uses temperature~$0.05$ and top-$p$~$0.05$, which makes the output close to deterministic given the same \texttt{DocumentData} input. Crucially, the prompt used in the final generation step is fixed across all three modes: the only thing that differs between a Form-mode output and a Chat-mode output is the contents of the \texttt{DocumentData} object that has been built up along the way. The full text of the backend prompts is reproduced in Appendix~\ref{app:ropagen-prompts}, as the counterpart to the LLM-as-a-judge configuration recorded in Appendix~\ref{app:judge}.
+
+Whether the differing paths to \texttt{DocumentData} produce documents of differing quality, and whether those quality differences are visible to the user filling out the form, are the questions taken up by the user study described next.
+
 \section{User Study}
 
 \subsection*{Study Design}
@@ -9,7 +57,7 @@ The study followed a within-subjects experimental design with counterbalanced or
 
 \subsection*{Task Scenario}
 
-A single standardised scenario was used across all participants and modes to ensure consistency. The scenario described a relatable university-based data processing activity covering all GDPR Article~30 fields, ensuring comparability across conditions while remaining accessible to participants without legal expertise. The underlying LLM was Mistral Large~3 (model identifier \texttt{mistralai/mistral-large-2512}), held constant across all modes and routed via OpenRouter.
+A single standardised scenario was used across all participants and modes to ensure consistency. The scenario described a relatable university-based data processing activity covering all GDPR Article~30 fields, ensuring comparability across conditions while remaining accessible to participants without legal expertise. The LLM backing all three modes (\S\ref{sec:ropagen}) was held constant throughout the study.
 
 \subsection*{Participants}
 
@@ -47,7 +95,7 @@ Item~5 is treated as the \textbf{primary confidence measure} throughout the anal
 Following the dual-evaluation template adopted by Su et al.\ \cite{suJuDGEBenchmarkingJudgment2025} and Vayadande et al.\ \cite{vayadandeAIPoweredLegalDocumentation2024}, both surface-form and semantic measures are reported alongside an LLM-as-Judge rubric.
 
 \subsubsection*{NLP Metrics}
-All participant-generated documents (73 participants $\times$ 3 modes = 219 documents) are compared against a single reference document using a suite of automated NLP metrics. The reference document was created by the study author using the Form mode of ropagen, applying the same standardised scenario presented to participants. This document is treated as the authoritative baseline — a root-of-trust representing a careful, complete application of the most structured interaction mode. It should be noted that this introduces an inherent framing effect: NLP metrics measure similarity to Form-style output, which may disadvantage the more conversational outputs of Ask and Chat modes independently of their substantive quality.
+All participant-generated documents (73 participants $\times$ 3 modes = 219 documents) are compared against a single reference document using a suite of automated NLP metrics. The reference document was created by the study author using Form mode (\S\ref{sec:ropagen}), applying the same standardised scenario presented to participants, and is reproduced in full in Appendix~\ref{app:ropagen-reference}. It is treated as the authoritative baseline --- a root-of-trust representing a careful, complete application of the most structured interaction mode. This introduces an inherent framing effect: NLP metrics measure similarity to Form-style output, which may disadvantage the more conversational outputs of Ask and Chat modes independently of their substantive quality.
 \begin{itemize}
     \item \textbf{BLEU} (Bilingual Evaluation Understudy): n-gram precision with brevity penalty
     \item \textbf{ROUGE-1, ROUGE-2, ROUGE-L}: unigram overlap, bigram overlap, and longest common subsequence F1
