@@ -1,12 +1,86 @@
 \chapter{Inferential Statistics in Full}
 \label{app:inferential}
 
-This appendix reproduces the complete inferential test output referenced in
-Chapter~\ref{ch:evaluation}. Sample-size definitions follow
-Chapter~\ref{ch:methodology}: the within-subjects survey tests use $n = 69$,
-the within-subjects document-quality tests use the matched-triple subset of
-$n = 26$, and between-groups sensitivity checks on the unbalanced full
-sample use $n = 113$.
+This appendix reproduces the complete inferential test output
+referenced in Chapter~\ref{ch:evaluation}. The within-subjects
+survey tests use $n = 69$, the within-subjects document-quality
+tests use the matched-triple subset of $n = 26$, and between-groups
+sensitivity checks on the unbalanced full sample use $n = 113$;
+the full sample-size derivation is reproduced first, followed by
+the survey inferential tests, the NLP and judge inferential tests,
+and the confidence--quality correlations.
+
+\section{Sample-Size Derivation}
+\label{app:samplesizes}
+
+All sample sizes used in the thesis are derived from the raw data
+files committed to the repository:
+\texttt{python/survey/docs/data.csv} for the survey (one row per
+participant) and \texttt{python/metrics/output/all\_scores\_combined.csv}
+for the NLP and judge scores (one row per AI-generated document).
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{lr}
+\toprule
+\textbf{Survey subset} & \textbf{n} \\
+\midrule
+Recruited participants (raw) & 73 \\
+Participants with at least one valid session ($p\_0001 \geq 1$) & 70 \\
+Form responses (mode-level) & 69 \\
+Ask responses (mode-level) & 69 \\
+Chat responses (mode-level) & 69 \\
+Matched-triple participants (valid response in all three modes) & 69 \\
+\bottomrule
+\end{tabular}
+\caption{Survey sample sizes after consent and quality filtering.}
+\label{tab:n-survey}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{lr}
+\toprule
+\textbf{NLP / judge subset} & \textbf{n} \\
+\midrule
+Total documents with parseable NLP scores and judge ratings & 113 \\
+Form documents & 37 \\
+Ask documents & 37 \\
+Chat documents & 39 \\
+Unique participants represented & 47 \\
+Participants with at least one document in each mode & 28 \\
+Strict matched triple (exactly one document per mode) & 26 \\
+\bottomrule
+\end{tabular}
+\caption{NLP and judge sample sizes. The strict $n=26$ set is used
+for all within-subjects tests (Friedman, Wilcoxon signed-rank); the
+unbalanced $n=113$ is used for between-groups sensitivity checks.}
+\label{tab:n-nlp}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{lr}
+\toprule
+\textbf{Survey $\times$ NLP join} & \textbf{n} \\
+\midrule
+Joined rows (document with matching survey response) & 106 \\
+Form joined rows & 34 \\
+Ask joined rows & 34 \\
+Chat joined rows & 38 \\
+Unique participants in the joined sample & 44 \\
+Participants with survey $\times$ NLP coverage in all three modes & 27 \\
+\bottomrule
+\end{tabular}
+\caption{Triangulated samples used for confidence--quality analyses.
+The joined $n=106$ is the canonical sample for the rank-inversion
+table; the within-subjects $n=27$ is used for paired
+confidence~$\times$~quality correlations.}
+\label{tab:n-triangulation}
+\end{table}
 
 \section{Survey Inferential Tests}
 \label{app:inf-survey}

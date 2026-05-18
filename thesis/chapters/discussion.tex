@@ -1,8 +1,81 @@
 \chapter{Discussion}
 \label{ch:discussion}
 
-\section{User Study Discussion}
-User Study Discussion
+This chapter interprets the descriptive and inferential patterns
+reported in Chapter~\ref{ch:evaluation} against the two research
+questions of this thesis. The numerical results themselves are not
+restated here; the reader is referred to
+Section~\ref{sec:eval-summary} for the consolidated recap.
 
-\section{Document Discussion}
-Discussion on quality of generated document
+\section{RQ1: User Experience Across Modes}
+\label{sec:disc-rq1}
+
+On the self-report instruments, the structured Form mode is rated
+the most usable, the least demanding, and the most preferred.
+Form receives the largest share of first-place preference votes
+($53.6\,\%$), the highest aggregate SUS-item ratings, and the lowest
+means on every R-TLX demand subscale. The Friedman omnibus tests on
+the SUS and R-TLX measures do not reach the conventional significance
+threshold; the significant sub-effects on the matched-pairs subset
+are confined to Form versus the LLM-driven modes on Temporal Demand,
+Frustration, and re-use intent.
+
+A pattern that recurs across every aggregate user-experience measure
+is that \emph{Ask and Chat are descriptively and inferentially
+indistinguishable} from each other: pairwise tests between the two
+LLM-driven modes are non-significant on every SUS aggregate, every
+R-TLX subscale, every pooled AI-support item, and the rank
+distribution. The user-experience contrast in this study is therefore
+best read as a binary one between the structured questionnaire (Form)
+and the LLM-driven interactions (Ask, Chat together), rather than as
+the three-way ordering implied by the original ``more LLM = better''
+framing.
+
+The Perceived AI Support items do show one monotonic pattern with
+LLM involvement: legal-basis confidence (item~$5_{ai}$) rises from
+Form to Chat. The same items show a counter-pattern on re-use intent
+(item~$6_{ai}$), where Form is rated highest. The free-text comments
+characterise Form as fast and ergonomic, Ask as transparent but
+cumbersome, and Chat as comfortable but opaque, which is consistent
+with the quantitative split.
+
+\section{RQ2: Document Quality and the Confidence Gap}
+\label{sec:disc-rq2}
+
+The document-quality side of the study yields a more nuanced ordering
+than the self-report side. Reference-based NLP metrics place Form
+first on lexical recall (BERTScore Recall, ROUGE-2) and the n-gram-
+based metrics, Chat first on semantic similarity (SBERT) and BLEU,
+and Ask consistently last on every metric. The chapter-level
+breakdown attributes Chat's BLEU and METEOR advantage primarily to
+the Retention Periods and the Technical and Organisational Measures
+chapters.
+
+The LLM-as-Judge inverts the BERTScore Recall ordering. Form leads
+on Completeness ($4.84$) but lags on Scenario Faithfulness ($1.84$)
+and Hallucination (inverse, $1.65$); Chat leads on Faithfulness and
+(inverse) Hallucination but trails on Completeness; Overall scores
+are clustered tightly between $2.41$ and $2.62$. The proximate source
+of this inversion is the joint distribution noted in
+Section~\ref{sec:eval-summary}: $83.8\,\%$ of Form documents combine
+maximum Completeness with moderate-to-significant hallucination, an
+artefact of the checkbox interface that produces structurally
+complete but scenario-detached documents. This mixed picture sits
+uneasily with the implicit ``more LLM equals better quality''
+assumption that motivates the architecturally elaborated pipelines
+of recent legal-document generation work \cite{nigamStructuredLegalDocument2025,linLegalDocumentsDrafting2024,liCaseGenBenchmarkMultiStage2025}.
+
+Reading RQ1 and RQ2 together surfaces an apparent gap between
+\emph{perceived} AI support and \emph{objective} document quality.
+Users rate Form as the most usable and prefer it most, while the
+mode that most often matches the reference at the semantic level
+(Chat) is rated as opaque and ranked second. The mode that scores
+highest on AI-mediated legal-basis confidence (Chat) is also the
+mode that produces the documents the judge rates as least complete.
+This parallels Surya et al.'s evaluation of an interactive legal AI
+assistant \cite{suryaAIPoweredInteractiveLegal2025}, where ease of
+use was the headline finding — a pattern that here translates into
+the structured Form being preferred despite its weaker faithfulness
+profile. The implications of this gap for the design of LLM-supported
+ROPA tooling, and the extent to which the present novice sample
+generalises, are addressed in the remainder of this chapter.
