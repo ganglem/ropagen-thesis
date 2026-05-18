@@ -1,19 +1,26 @@
-\section{Usability — System Usability Scale}
+\subsection{Usability — System Usability Scale}
 \label{sec:eval-sus}
 
-The System Usability Scale is administered after each interaction
-mode. It consists of ten Likert items on a five-point scale, with
-odd-numbered items phrased positively (higher response equals more
-positive evaluation) and even-numbered items phrased negatively
-(lower response equals more positive evaluation). The aggregated
-``All'' column in the tables below pools the three per-mode samples
-into a single per-item descriptive across all $207$ ratings.
+The System Usability Scale captures how usable each interface felt
+to participants immediately after they finished interacting with it.
+It consists of ten Likert items on a five-point scale, alternating in
+polarity: odd-numbered items are phrased positively (higher response
+equals more positive evaluation), and even-numbered items are phrased
+negatively (lower response equals more positive evaluation). This
+alternating keying is why the per-item table that follows must be
+read item by item rather than averaged at a glance. The full item
+text is reproduced in Appendix~\ref{app:sus-rtlx-items}. The
+aggregated ``All'' column in the tables below pools the three
+per-mode samples into a single per-item descriptive across all $207$
+ratings.
 
-\subsection{Per-Item Results}
-
-Table~\ref{tab:sus-per-item} reports the mean response per item per mode and
-the aggregated mean across all three modes. The aggregated column is the
-unweighted mean of the three per-mode means.
+The ten SUS items capture distinct facets of usability — frequency of
+intended use, perceived complexity, ease of use, and so on — and the
+per-mode means therefore have to be read item by item before the
+aggregated test is reported. Table~\ref{tab:sus-per-item} reports
+the mean response per item per mode and the aggregated mean across
+all three modes. The aggregated column is the unweighted mean of the
+three per-mode means.
 
 \begin{table}[htbp]
 \centering
@@ -41,56 +48,84 @@ even items: lower is better.}
 \end{tabularx}
 \end{table}
 
-For \emph{``I think that I would like to use this system frequently''} (item~1),
-Form yields the highest mean (3.52), followed by Ask and Chat at the same level
-(3.22 each); the aggregated mean is 3.32. Frequent-use intent therefore decreases
-from Form to the two LLM-driven modes by approximately 0.30~points.
+Form is the mode participants would most willingly keep using, with
+Ask and Chat trailing by a small but consistent margin. For
+\emph{``I think that I would like to use this system frequently''}
+(item~1), Form yields the highest mean ($3.52$), followed by Ask
+and Chat at the same level ($3.22$ each); aggregated mean $3.32$.
+Frequent-use intent decreases by approximately $0.30$~points from
+Form to the LLM-driven modes.
 
-For \emph{``I found the system unnecessarily complex''} (item~2, lower is
-better), Form is rated lowest (1.64), Chat second (2.12), and Ask highest at
-2.25; the aggregated mean is 2.00. Perceived complexity is approximately
-0.5~points higher in the LLM-driven modes than in Form.
+Form also feels the least complex of the three, with Ask perceived
+as marginally more complex than Chat. For \emph{``I found the
+system unnecessarily complex''} (item~2, lower is better), Form is
+rated lowest ($1.64$), Chat second ($2.12$), and Ask highest at
+$2.25$; aggregated mean $2.00$. Perceived complexity is
+approximately $0.5$~points higher in the LLM-driven modes than in
+Form.
 
-For \emph{``I thought the system was easy to use''} (item~3), Form is rated
-highest (4.38), with Ask and Chat closely matched at 4.01 and 3.99; the
-aggregated mean is 4.13. Ease-of-use ratings decrease by roughly 0.4~points
+Form is also experienced as the easiest mode to use, with Ask and
+Chat almost indistinguishable behind it. For \emph{``I thought the
+system was easy to use''} (item~3), Form is rated highest ($4.38$),
+with Ask and Chat closely matched at $4.01$ and $3.99$; aggregated
+mean $4.13$. Ease-of-use ratings decrease by roughly $0.4$~points
 from Form to the LLM-driven modes.
 
-For \emph{``I think that I would need the support of a technical person to be
-able to use this system''} (item~4, lower is better), the three modes are
-essentially indistinguishable (Form 1.52, Ask 1.49, Chat 1.55), with an
-aggregated mean of 1.52. None of the three modes is perceived to require
-technical support.
+None of the three modes makes participants feel they need technical
+help to operate it — the Form-first ordering levels out here. For
+\emph{``I think that I would need the support of a technical person
+to be able to use this system''} (item~4, lower is better), the
+three modes are essentially indistinguishable (Form $1.52$, Ask
+$1.49$, Chat $1.55$), with an aggregated mean of $1.52$. None of
+the three modes is perceived to require technical support.
 
-For \emph{``I found the various functions in this system were well
-integrated''} (item~5), Form scores highest (4.00), Ask and Chat lower (3.67
-and 3.64); aggregated mean is 3.77. The integration rating drops by
-approximately 0.35~points from Form to the LLM-driven modes.
+Form feels like the most coherent mode, with the LLM-driven modes
+scoring lower on perceived integration. For \emph{``I found the
+various functions in this system were well integrated''} (item~5),
+Form scores highest ($4.00$), Ask and Chat lower ($3.67$ and
+$3.64$); aggregated mean $3.77$. The integration rating drops by
+approximately $0.35$~points from Form to the LLM-driven modes.
 
-For \emph{``I thought there was too much inconsistency in this system''}
-(item~6, lower is better), the three modes are similar (Form 2.16, Ask 2.04,
-Chat 2.01), aggregated mean 2.07. Form is rated marginally higher on this
-negative item than the two LLM-driven modes.
+No mode is perceived as meaningfully more inconsistent than the
+others, mildly inverting the Form-first pattern. For \emph{``I
+thought there was too much inconsistency in this system''} (item~6,
+lower is better), the three modes are similar (Form $2.16$, Ask
+$2.04$, Chat $2.01$), aggregated mean $2.07$. Form is rated
+marginally higher on this negative item than the two LLM-driven
+modes.
 
-For \emph{``I would imagine that most people would learn to use this system
-very quickly''} (item~7), Form scores 4.30, Ask 4.00, Chat 4.03; aggregated
-mean is 4.11. Perceived learnability decreases by approximately 0.30~points
-from Form to the LLM-driven modes.
+Form is judged the most learnable of the three, with Ask and Chat
+trailing again. For \emph{``I would imagine that most people would
+learn to use this system very quickly''} (item~7), Form scores
+$4.30$, Ask $4.00$, Chat $4.03$; aggregated mean $4.11$. Perceived
+learnability decreases by approximately $0.30$~points from Form to
+the LLM-driven modes.
 
-For \emph{``I found the system very cumbersome to use''} (item~8, lower is
-better), the largest spread is observed: Form 1.65, Ask 2.16, Chat 2.29;
-aggregated mean 2.03. Cumbersomeness is rated approximately 0.5–0.65~points
-higher in the LLM-driven modes than in Form.
+The biggest experiential gap of the ten items lands here:
+participants find Form noticeably less cumbersome than the
+LLM-driven modes, with Chat the most cumbersome of the three. For
+\emph{``I found the system very cumbersome to use''} (item~8,
+lower is better), the largest spread is observed: Form $1.65$, Ask
+$2.16$, Chat $2.29$; aggregated mean $2.03$. Cumbersomeness is
+rated approximately $0.5$--$0.65$~points higher in the LLM-driven
+modes than in Form.
 
-For \emph{``I felt very confident using the system''} (item~9), all three modes
-are rated similarly and slightly higher in the LLM-driven modes (Form 3.83,
-Ask 3.84, Chat 3.90); aggregated mean 3.86. Within-system confidence is
-broadly comparable across modes, with a small upward trend from Form to Chat.
+Participants feel about equally confident operating any of the
+three modes, with a small uptick toward Chat — the only item where
+the LLM-driven modes nudge ahead of Form. For \emph{``I felt very
+confident using the system''} (item~9), all three modes are rated
+similarly and slightly higher in the LLM-driven modes (Form $3.83$,
+Ask $3.84$, Chat $3.90$); aggregated mean $3.86$. Within-system
+confidence is broadly comparable across modes, with a small upward
+trend from Form to Chat.
 
-For \emph{``I needed to learn a lot of things before I could get going with
-this system''} (item~10, lower is better), the three modes are virtually
-identical (Form 1.61, Ask 1.61, Chat 1.62), aggregated mean 1.61. The amount
-of prior learning required is perceived as low and equal across all modes.
+All three modes feel equally approachable to a first-time user — no
+prior learning is perceived as required for any of them. For
+\emph{``I needed to learn a lot of things before I could get going
+with this system''} (item~10, lower is better), the three modes are
+virtually identical (Form $1.61$, Ask $1.61$, Chat $1.62$),
+aggregated mean $1.61$. The amount of prior learning required is
+perceived as low and equal across all modes.
 
 Table~\ref{tab:sus-per-item-distribution} reports the full
 descriptive distribution per item per mode (mean, standard deviation,
@@ -172,7 +207,7 @@ marks the mean.}
 \label{fig:sus-subquestions}
 \end{sidewaysfigure}
 
-A Friedman omnibus test on the per-mode aggregate yields
+A Friedman test on the per-mode aggregate yields
 $\chi^2(2) = 5.51$, $p = 0.064$, $W = 0.040$, which does not reach
 the $\alpha = 0.05$ threshold. Pairwise Wilcoxon signed-rank post-hoc
 tests with Bonferroni correction ($\alpha = 0.0167$) indicate a
@@ -181,3 +216,10 @@ rank-biserial $r = +0.368$, medium effect), a non-significant
 Form-vs-Chat difference ($p = 0.018$, just above the Bonferroni
 threshold), and no Ask-vs-Chat difference ($p = 0.666$). Full test
 statistics are reproduced in Appendix~\ref{app:inferential}.
+
+Taken together, the SUS data establish a Form-first ordering on the
+items most directly tied to perceived ease of use, complexity, and
+cumbersomeness, while items relating to within-system confidence,
+required prior learning, and need for technical support flatten
+across modes. Whether this same ordering recurs on perceived
+workload is examined next in \S\ref{sec:eval-rtlx}.

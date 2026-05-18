@@ -1,24 +1,44 @@
-\section{Document Quality — Reference-Based NLP Metrics}
-\label{sec:eval-nlp}
+\section{Document Quality — Document-Level NLP Metrics}
+\label{sec:eval-nlp-doc}
 
-Document-quality results are reported on the full retained set of $113$
-documents (Form $n = 37$, Ask $n = 37$, Chat $n = 39$) for descriptive
-statistics, and on the strict matched-triple subset of $n = 26$ for
-within-subjects significance tests. All metrics are computed against
-the single expert-authored Form-mode reference document described in
-Chapter~\ref{ch:methodology}. For each metric, the per-mode results
-are reported in the order Form, Ask, Chat, followed by the aggregated
-value across all three modes. The descriptive tables in this section
-report — per metric and per mode — the full empirical distribution
-($n$, min, Q1, median, Q3, max, mean, SD) computed from the raw
-per-document scores in the pipeline outputs
-\texttt{document\_results.csv} and \texttt{chapter\_results.csv}.
+The User Study (\S\ref{sec:eval-userstudy}) showed a stable
+Form-first ordering on usability, workload, and overall preference,
+with Chat second and Ask third. This section opens the
+document-quality half by asking whether the same ordering holds when
+the output text itself is compared against a reference document.
+Document-quality results are reported on the full retained set of
+$113$ documents (Form $n = 37$, Ask $n = 37$, Chat $n = 39$) for
+descriptive statistics, and on the strict matched-triple subset of
+$n = 26$ for within-subjects significance tests. The metric suite
+mirrors the one applied by von Schwerin et
+al.\ \cite{schwerinSystematicComparisonOpen2024} in their evaluation
+of LLM-generated ROPA data categories. All metrics are computed
+against the single expert-authored Form-mode reference document
+described in Chapter~\ref{ch:methodology}. For each metric, the
+per-mode results are reported in the order Form, Ask, Chat, followed
+by the aggregated value across all three modes. The descriptive
+tables in this section report — per metric and per mode — the full
+empirical distribution ($n$, min, Q1, median, Q3, max, mean, SD)
+computed from the raw per-document scores in the pipeline output
+\texttt{document\_results.csv}; the corresponding chapter-level
+breakdown is reported in \S\ref{sec:eval-nlp-chapter}.
 
-\subsection{Document-Level Results}
-\label{ssec:nlp-doc}
+The metrics are reported in two groups: lexical metrics, which count
+surface-form token overlap, and BERT-based and sentence-embedding
+metrics, which compare semantic representations. Each metric is
+reported over the full participant document, treating the ROPA as a
+single block of text.
 
-\subsubsection{Lexical Metrics}
+\subsection{Lexical Metrics}
+\label{ssec:nlp-doc-lexical}
 
+Lexical metrics — BLEU, ROUGE, and METEOR — count surface-form
+token overlap with the reference document; they reward word-level
+fidelity but are blind to paraphrase, and are therefore reported
+first because they make the strictest demands on surface form.
+An LLM-generated document that covers the same content with
+different wording will score lower here than under the
+embedding-based metrics that follow.
 Table~\ref{tab:nlp-doc-distrib-lexical} reports the full
 distribution of the five lexical metrics (BLEU, ROUGE-1/2/L, METEOR)
 per mode, plus the aggregated row across all $113$ documents.
@@ -73,102 +93,71 @@ range; the diamond marks the mean.}
 \label{fig:nlp-doc-boxplot}
 \end{sidewaysfigure}
 
-\paragraph{BLEU.} BLEU \emph{(Bilingual Evaluation Understudy)}
-\cite{Papineni2002} measures the geometric mean of $n$-gram
-precisions between a candidate and one or more reference texts,
-multiplied by a brevity penalty that discourages outputs much shorter
-than the reference. With $p_n$ the modified $n$-gram precision,
-$w_n = 1/N$ uniform weights, $c$ the candidate length, and $r$ the
-closest reference length,
-\begin{equation}
-\mathrm{BLEU} = \mathrm{BP} \cdot \exp\!\left( \sum_{n=1}^{N} w_n \log p_n \right),
-\quad
-\mathrm{BP} =
-\begin{cases}
-1 & \text{if } c > r \\
-e^{1 - r/c} & \text{if } c \leq r.
-\end{cases}
-\end{equation}
-This work uses $N = 4$ (matching unigrams through 4-grams). BLEU is
-a precision-oriented surface-form metric: it rewards exact $n$-gram
-overlap and is therefore harsh on paraphrase.
+\paragraph{BLEU.} BLEU \emph{(Bilingual Evaluation Understudy)} (\eqref{eq:bleu}) counts exact $n$-gram overlap with the reference and is therefore harsh on paraphrase: a document that says the same thing in different words scores low. It is precision-oriented (how much of what the candidate said also appears in the reference) with a brevity penalty, and the values reported here use $N = 4$ (matching unigrams through 4-grams).
 
-For \emph{BLEU}, Form yields a mean of $0.129$, Ask $0.127$, Chat
-$0.143$; the aggregated mean is $0.133$. Chat scores marginally
-higher than Form and Ask, which are essentially indistinguishable.
-The Friedman omnibus on the matched subset is significant
-($\chi^2(2) = 6.23$, $p = 0.044$); the significant pairwise
-difference is Chat $>$ Ask ($r = -0.578$, large effect).
+Chat documents share slightly more exact phrasing with the
+expert reference than Form or Ask documents do — a small
+reversal of the Form-first ordering, but not at a magnitude
+participants would notice on the page. For \emph{BLEU}, Form
+yields a mean of $0.129$, Ask $0.127$, Chat $0.143$; aggregated
+$0.133$. Chat scores marginally higher than Form and Ask, which
+are essentially indistinguishable. The aggregated Friedman test
+on the matched subset is significant ($\chi^2(2) = 6.23$, $p =
+0.044$); the significant pairwise difference is Chat $>$ Ask
+($r = -0.578$, large effect).
 
-\paragraph{ROUGE-1, ROUGE-2, ROUGE-L.} ROUGE \emph{(Recall-Oriented
-Understudy for Gisting Evaluation)} \cite{Lin2004} reports the F1
-score of $n$-gram overlap between candidate and reference. ROUGE-1
-counts unigrams, ROUGE-2 counts bigrams, and ROUGE-L counts the
-length of the longest common subsequence (LCS). Let $X$ be the
-candidate, $Y$ the reference, and $\mathrm{LCS}(X, Y)$ their longest
-common subsequence; then for ROUGE-N
-\begin{equation}
-P_N = \frac{|\mathrm{ngrams}(X) \cap \mathrm{ngrams}(Y)|}{|\mathrm{ngrams}(X)|},
-\quad
-R_N = \frac{|\mathrm{ngrams}(X) \cap \mathrm{ngrams}(Y)|}{|\mathrm{ngrams}(Y)|},
-\end{equation}
-and for ROUGE-L
-\begin{equation}
-P_L = \frac{|\mathrm{LCS}(X, Y)|}{|X|},
-\quad
-R_L = \frac{|\mathrm{LCS}(X, Y)|}{|Y|}.
-\end{equation}
-The reported value in both cases is the harmonic mean (F1) of
-precision and recall. ROUGE rewards lexical overlap with the
-reference and is more permissive than BLEU in word order.
+\paragraph{ROUGE-1, ROUGE-2, ROUGE-L.} ROUGE \emph{(Recall-Oriented Understudy for Gisting Evaluation)} (\eqref{eq:rouge1}--\eqref{eq:rougeL}) measures how much of the reference's wording the candidate recovers, in three flavours: unigrams (single words), bigrams (adjacent word pairs), and the longest common subsequence. Each is reported as F1 — the harmonic mean of precision (how much of what the candidate said belongs) and recall (how much of what should have been said is there) — so it is more permissive than BLEU in word order but still surface-form.
 
-For \emph{ROUGE-1}, Form yields $0.488$, Ask $0.465$, Chat $0.511$;
-aggregated $0.488$. ROUGE-1 increases from Ask to Form to Chat. The
-Friedman omnibus is significant ($\chi^2(2) = 10.69$, $p = 0.005$);
-Form $>$ Ask and Chat $>$ Ask are significant pairwise differences
-with large effects, while Form versus Chat is not significant.
+Looking at single-word overlap, Chat and Form documents recover the
+reference's vocabulary at a similar rate, with Ask documents
+trailing. For \emph{ROUGE-1}, Form yields $0.488$, Ask $0.465$,
+Chat $0.511$; aggregated $0.488$. ROUGE-1 increases from Ask to
+Form to Chat. The aggregated Friedman test is significant
+($\chi^2(2) = 10.69$, $p = 0.005$); Form $>$ Ask and Chat $>$ Ask
+are significant pairwise differences with large effects, while
+Form versus Chat is not significant.
 
-For \emph{ROUGE-2}, Form yields the highest mean ($0.306$), Chat
-second ($0.291$), Ask lowest ($0.257$); aggregated $0.285$. ROUGE-2
-follows the Form $>$ Chat $>$ Ask ordering. The Friedman omnibus is
-significant ($\chi^2(2) = 13.46$, $p = 0.001$); Form $>$ Ask is
-significant ($r = +0.829$, large effect), as is Chat $>$ Ask.
+When two-word phrases are compared, Form documents reproduce the
+reference's exact wording most often, with Chat second and Ask
+last. For \emph{ROUGE-2}, Form yields the highest mean ($0.306$),
+Chat second ($0.291$), Ask lowest ($0.257$); aggregated $0.285$.
+ROUGE-2 follows the Form $>$ Chat $>$ Ask ordering. The aggregated
+Friedman test is significant ($\chi^2(2) = 13.46$, $p = 0.001$);
+Form $>$ Ask is significant ($r = +0.829$, large effect), as is
+Chat $>$ Ask.
 
-For \emph{ROUGE-L}, Form ($0.388$) and Chat ($0.389$) are essentially
-tied, with Ask trailing ($0.347$); aggregated $0.375$. The Friedman
-omnibus is significant ($\chi^2(2) = 11.31$, $p = 0.004$); Form $>$
-Ask and Chat $>$ Ask are significant pairwise differences with large
-effects.
+When the longest shared word sequence is what matters, Form and
+Chat documents track the reference equally well, and Ask trails
+both. For \emph{ROUGE-L}, Form ($0.388$) and Chat ($0.389$) are
+essentially tied, with Ask trailing ($0.347$); aggregated $0.375$.
+The aggregated Friedman test is significant
+($\chi^2(2) = 11.31$, $p = 0.004$); Form $>$ Ask and Chat $>$ Ask
+are significant pairwise differences with large effects.
 
-\paragraph{METEOR.} METEOR \emph{(Metric for Evaluation of
-Translation with Explicit ORdering)} \cite{Banerjee2005} is the
-weighted harmonic mean of unigram precision $P$ and recall $R$, with
-recall up-weighted by a factor $\alpha$, multiplied by a fragmentation
-penalty that grows with the number of disjoint matching chunks
-$\mathrm{ch}$ relative to the number of matched unigrams $m$:
-\begin{equation}
-\mathrm{METEOR} = \underbrace{\frac{P \cdot R}{\alpha P + (1 - \alpha) R}}_{F_{\mathrm{mean}}}
-\cdot
-\underbrace{\Bigl(1 - \gamma \bigl(\tfrac{\mathrm{ch}}{m}\bigr)^{\beta}\Bigr)}_{\text{penalty}}.
-\end{equation}
-Standard values $\alpha = 0.9$, $\beta = 3$, $\gamma = 0.5$ are used;
-matching is performed against exact, stemmed, and synonym/paraphrase
-matches via WordNet. METEOR therefore rewards both lexical recall and
-contiguous matching.
+\paragraph{METEOR.} METEOR \emph{(Metric for Evaluation of Translation with Explicit ORdering)} (\eqref{eq:meteor}) softens BLEU by allowing matches not just on identical tokens but also on stems and WordNet synonyms, so a document that paraphrases with related words is no longer punished as if it had said something unrelated. It is a fragmentation-penalised harmonic mean of unigram precision and recall, sitting between BLEU and ROUGE in strictness.
 
-For \emph{METEOR}, Form yields the highest mean ($0.412$), Chat
-second ($0.390$), Ask lowest ($0.365$); aggregated $0.389$. The
-Friedman omnibus is significant ($\chi^2(2) = 9.92$, $p = 0.007$);
+Form documents use the most reference-like terminology even when
+synonyms are credited, with Chat second and Ask last. For
+\emph{METEOR}, Form yields the highest mean ($0.412$), Chat second
+($0.390$), Ask lowest ($0.365$); aggregated $0.389$. The aggregated
+Friedman test is significant ($\chi^2(2) = 9.92$, $p = 0.007$);
 Form $>$ Ask is significant ($r = +0.812$, large effect), and the
-remaining pairwise differences do not reach the Bonferroni threshold.
+remaining pairwise differences do not reach the Bonferroni
+threshold.
 
-\subsubsection{BERT-Based and Sentence-Embedding Metrics}
+\subsection{BERT-Based and Sentence-Embedding Metrics}
+\label{ssec:nlp-doc-bert}
 
-Table~\ref{tab:nlp-doc-distrib-bert} reports the same full
-distribution for the BERT-based metrics (BERTScore Precision /
-Recall / F1) and the document-level SBERT cosine similarity computed
-with ModernBERT embeddings. Figure~\ref{fig:bert-doc-boxplot} shows
-the corresponding box-plot distributions.
+BERT-based metrics measure semantic rather than lexical similarity,
+comparing contextual embeddings rather than literal tokens. Where
+the lexical metrics penalise paraphrase, the embedding-based metrics
+credit semantic overlap and therefore offer a complementary view of
+the same documents. Table~\ref{tab:nlp-doc-distrib-bert}
+reports the same full distribution for the BERT-based metrics
+(BERTScore Precision / Recall / F1) and the document-level SBERT
+cosine similarity computed with ModernBERT embeddings.
+Figure~\ref{fig:bert-doc-boxplot} shows the corresponding box-plot
+distributions.
 
 \begin{sidewaystable}
 \centering
@@ -213,71 +202,50 @@ sample $n = 113$).}
 \label{fig:bert-doc-boxplot}
 \end{sidewaysfigure}
 
-\paragraph{BERTScore Precision, Recall, F1.} BERTScore
-\cite{Zhang2020} replaces surface-form $n$-gram matching with
-contextual token embeddings. Each token in the candidate $\hat{x}$
-and the reference $x$ is encoded with a pretrained transformer
-(here, ModernBERT \cite{Warner2024} via the
-\texttt{bert\_score} library). For each candidate token, the
-maximum cosine similarity with any reference token is taken, and
-vice versa for recall. With L2-normalised embeddings $\mathbf{x}_i$
-and $\hat{\mathbf{x}}_j$,
-\begin{equation}
-P_{\text{BERT}} = \frac{1}{|\hat{x}|} \sum_{\hat{x}_j \in \hat{x}} \max_{x_i \in x} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j,
-\quad
-R_{\text{BERT}} = \frac{1}{|x|} \sum_{x_i \in x} \max_{\hat{x}_j \in \hat{x}} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j,
-\end{equation}
-\begin{equation}
-F1_{\text{BERT}} = \frac{2 \cdot P_{\text{BERT}} \cdot R_{\text{BERT}}}{P_{\text{BERT}} + R_{\text{BERT}}}.
-\end{equation}
-\emph{Precision} measures how many candidate tokens have a close
-match in the reference (penalising spurious content), \emph{recall}
-measures how many reference tokens have a close match in the
-candidate (penalising omission), and \emph{F1} is their harmonic
-mean. Because the comparison is at the embedding level, BERTScore
-credits paraphrase that shares meaning even without surface-form
-overlap.
+\paragraph{BERTScore Precision, Recall, F1.} BERTScore (\eqref{eq:bertscore-p}--\eqref{eq:bertscore-f1}) replaces $n$-gram matching with cosine similarities between contextual token embeddings, so paraphrase that shares meaning is credited even without surface-form overlap. \emph{Precision} measures how much of what the candidate said belongs (penalising spurious content), \emph{recall} measures how much of what should have been said is there (penalising omission), and \emph{F1} is their harmonic mean — both must be reasonable for F1 to be high, since the harmonic mean is dragged down by the smaller of the two.
 
-For \emph{BERTScore Precision}, Chat yields the highest mean
-($0.895$), Form second ($0.889$), Ask lowest ($0.886$); aggregated
-$0.890$. The Friedman omnibus is significant
-($\chi^2(2) = 18.54$, $p < 0.001$); Form $>$ Ask and Chat $>$ Ask
-are significant.
+When the question shifts from \emph{exact wording} to \emph{related
+meaning}, Chat documents become the most on-topic — what they say
+is most closely aligned with the reference, with very little
+extraneous content. For \emph{BERTScore Precision}, Chat yields the
+highest mean ($0.895$), Form second ($0.889$), Ask lowest
+($0.886$); aggregated $0.890$. The aggregated Friedman test is
+significant ($\chi^2(2) = 18.54$, $p < 0.001$); Form $>$ Ask and
+Chat $>$ Ask are significant.
 
-For \emph{BERTScore Recall}, Form yields the highest mean ($0.923$),
-with Chat ($0.913$) and Ask ($0.908$) trailing; aggregated $0.915$.
-The Friedman omnibus is significant
-($\chi^2(2) = 30.77$, $p < 0.001$, $W = 0.410$, the largest effect
-observed in the metric pipeline); Form $>$ Ask is significant with
-the maximum possible matched-pairs effect ($r = +1.000$), and
-Form $>$ Chat is also significant ($r = +0.687$, large effect). Ask
-versus Chat is non-significant.
+Form documents recover the most of what the reference says — the
+clearest finding of the entire metric pipeline. Where Chat trims to
+what is on-topic, Form reproduces the reference's content
+near-completely, while Ask leaves the most out. For \emph{BERTScore
+Recall}, Form yields the highest mean ($0.923$), with Chat
+($0.913$) and Ask ($0.908$) trailing; aggregated $0.915$. The
+aggregated Friedman test is significant ($\chi^2(2) = 30.77$,
+$p < 0.001$, $W = 0.410$, the largest effect observed in the metric
+pipeline); Form $>$ Ask is significant with the maximum possible
+matched-pairs effect ($r = +1.000$), and Form $>$ Chat is also
+significant ($r = +0.687$, large effect). Ask versus Chat is
+non-significant.
 
-For \emph{BERTScore F1}, Form yields the highest mean ($0.905$), Chat
-second ($0.904$), Ask lowest ($0.897$); aggregated $0.902$. The
-Friedman omnibus is significant ($\chi^2(2) = 13.00$, $p = 0.002$);
-Form $>$ Ask and Chat $>$ Ask are significant with large effects.
-Form versus Chat is non-significant on F1, reflecting the trade-off
-between Form's higher Recall and Chat's higher Precision.
+Form's content coverage and Chat's tighter focus balance out when
+the two are combined: the two modes are effectively tied on overall
+semantic similarity, with Ask trailing. For \emph{BERTScore F1},
+Form yields the highest mean ($0.905$), Chat second ($0.904$), Ask
+lowest ($0.897$); aggregated $0.902$. The aggregated Friedman test
+is significant ($\chi^2(2) = 13.00$, $p = 0.002$); Form $>$ Ask and
+Chat $>$ Ask are significant with large effects. Form versus Chat
+is non-significant on F1, reflecting the trade-off between Form's
+higher Recall and Chat's higher Precision.
 
-\paragraph{SBERT (ModernBERT) cosine similarity.} Sentence-BERT
-\cite{Reimers2019} produces a single fixed-length embedding per
-document by mean-pooling token embeddings from a transformer
-(here, ModernBERT). Document similarity is the cosine of the angle
-between the two document embeddings:
-\begin{equation}
-\mathrm{SBERT}(d_1, d_2) = \frac{\mathbf{e}(d_1)^{\top} \mathbf{e}(d_2)}{\| \mathbf{e}(d_1) \| \, \| \mathbf{e}(d_2) \|}.
-\end{equation}
-Because the comparison is at the document-embedding level rather
-than the token level, SBERT is the most lenient of the metrics
-reported here: two documents that cover the same topics with
-different wording typically obtain values close to $1$.
+\paragraph{SBERT (ModernBERT) cosine similarity.} Sentence-BERT cosine similarity (\eqref{eq:sbert}) compresses each document into a single embedding vector and reports how aligned the two vectors are, on a scale where $1$ is identical meaning and $0$ is unrelated. It is the most lenient of the metrics reported here: because the comparison is at the document level rather than the token level, two documents that cover the same topics with different wording typically obtain values close to $1$.
 
-For \emph{SBERT cosine similarity (ModernBERT)}, Chat yields the
-highest mean ($0.990$), with Form and Ask tied at $0.986$; aggregated
-$0.987$. The Friedman omnibus is significant
-($\chi^2(2) = 16.69$, $p < 0.001$); Chat $>$ Form and Chat $>$ Ask
-are both significant with large effects.
+When the document is read as a whole, Chat reads the closest to the
+reference — Chat documents cover the same overall ground in a way
+no other mode quite matches. For \emph{SBERT cosine similarity
+(ModernBERT)}, Chat yields the highest mean ($0.990$), with Form
+and Ask tied at $0.986$; aggregated $0.987$. The aggregated
+Friedman test is significant ($\chi^2(2) = 16.69$, $p < 0.001$);
+Chat $>$ Form and Chat $>$ Ask are both significant with large
+effects.
 
 In summary, on the document level the three modes split into the
 patterns \emph{Form $\approx$ Chat $>$ Ask} (BLEU, ROUGE-1, ROUGE-L,
@@ -290,22 +258,35 @@ leads) or semantic-document-level fluency (Chat leads). The full
 within-subjects test results are reproduced in
 Appendix~\ref{app:inferential}.
 
-\subsection{Chapter-Level Results}
-\label{ssec:nlp-chapter}
+\section{Document Quality — Chapter-Level NLP Metrics}
+\label{sec:eval-nlp-chapter}
 
-The same nine metrics are recomputed at the level of the six
-Article 30(1) ROPA sections — \emph{Verantwortliche Stelle und
-Kontaktdaten} (Controller and Contact Details), \emph{Zwecke und
-Rechtsgrundlagen der Verarbeitung} (Purposes and Legal Bases of
-Processing), \emph{Kategorien personenbezogener Daten und
-Datenquellen} (Categories of Personal Data and Sources),
-\emph{Betroffene Personen und Empfänger} (Data Subjects and
-Recipients), \emph{Aufbewahrungsfristen und Löschung} (Retention
-Periods and Deletion), and \emph{Technische und organisatorische
-Maßnahmen} (Technical and Organisational Measures). Chapter-level
-results characterise where in the document each mode performs best.
-Tables~\ref{tab:nlp-chapter-bleu}--\ref{tab:nlp-chapter-sbert}
-report mean (SD) per chapter per mode for each of the nine metrics.
+The document-level scores reported in \S\ref{sec:eval-nlp-doc}
+collapse the entire ROPA into a single number per metric, which is
+convenient for ranking modes but obscures where in the document the
+differences originate. This section recomputes the same nine metrics
+at the level of the six Article 30(1) ROPA sections —
+\emph{Verantwortliche Stelle und Kontaktdaten} (Controller and
+Contact Details), \emph{Zwecke und Rechtsgrundlagen der Verarbeitung}
+(Purposes and Legal Bases of Processing), \emph{Kategorien
+personenbezogener Daten und Datenquellen} (Categories of Personal
+Data and Sources), \emph{Betroffene Personen und Empfänger} (Data
+Subjects and Recipients), \emph{Aufbewahrungsfristen und Löschung}
+(Retention Periods and Deletion), and \emph{Technische und
+organisatorische Maßnahmen} (Technical and Organisational Measures).
+Chapter-level results characterise where in the document each mode
+performs best. Following the same two-part presentation as the
+document-level section, lexical metrics are reported first
+(Tables~\ref{tab:nlp-chapter-bleu}--\ref{tab:nlp-chapter-meteor},
+Figure~\ref{fig:chapter-nlp-boxplot}), followed by the BERT-based
+and sentence-embedding metrics
+(Tables~\ref{tab:nlp-chapter-bertp}--\ref{tab:nlp-chapter-sbert},
+Figure~\ref{fig:chapter-bert-boxplot}). The descriptive source for
+all chapter-level tables is the pipeline output
+\texttt{chapter\_results.csv}.
+
+\subsection{Lexical Metrics}
+\label{ssec:nlp-chapter-lexical}
 
 \begin{table}[htbp]
 \centering
@@ -407,6 +388,17 @@ Technical \& Org. Measures    & 0.295 (0.108) & 0.280 (0.145) & 0.305 (0.079) & 
 \end{tabular}
 \end{table}
 
+\begin{sidewaysfigure}
+\centering
+\includegraphics[width=\linewidth]{chapter_nlp_metrics_boxplot.png}
+\caption{Chapter-level distributions of BLEU, ROUGE-1/2/L, and
+METEOR by mode (full sample $n = 113$).}
+\label{fig:chapter-nlp-boxplot}
+\end{sidewaysfigure}
+
+\subsection{BERT-Based and Sentence-Embedding Metrics}
+\label{ssec:nlp-chapter-bert}
+
 \begin{table}[htbp]
 \centering
 \caption{Chapter-level BERTScore Precision mean (SD) by mode (full
@@ -489,14 +481,6 @@ Technical \& Org. Measures    & 0.967 (0.012) & 0.972 (0.010) & 0.975 (0.007) & 
 
 \begin{sidewaysfigure}
 \centering
-\includegraphics[width=\linewidth]{chapter_nlp_metrics_boxplot.png}
-\caption{Chapter-level distributions of BLEU, ROUGE-1/2/L, and
-METEOR by mode (full sample $n = 113$).}
-\label{fig:chapter-nlp-boxplot}
-\end{sidewaysfigure}
-
-\begin{sidewaysfigure}
-\centering
 \includegraphics[width=\linewidth]{chapter_bert_metrics_boxplot.png}
 \caption{Chapter-level distributions of BERTScore Precision /
 Recall / F1 and SBERT cosine similarity (ModernBERT) by mode (full
@@ -504,7 +488,10 @@ sample $n = 113$).}
 \label{fig:chapter-bert-boxplot}
 \end{sidewaysfigure}
 
-\paragraph{Patterns across chapters.} \emph{Controller and Contact
+\subsection{Patterns Across Chapters}
+\label{ssec:nlp-chapter-patterns}
+
+\emph{Controller and Contact
 Details} contains the most templated content (company name, address,
 DPO contact); the per-mode spread is correspondingly small on every
 metric, and the absolute scores are the highest of the six chapters
@@ -525,8 +512,11 @@ clearest advantage: on Retention, Chat leads on every metric
 Measures, Chat leads on BLEU ($0.091$), ROUGE-1 ($0.350$), BERTScore
 F1 ($0.878$), and SBERT ($0.975$).
 
-\subsection{Document-Level versus Chapter-Level Comparison}
+\section{Document-Level versus Chapter-Level Comparison}
+\label{sec:eval-nlp-comparison}
 
+This section compares the two granularities and identifies where
+chapter-level scoring tells a different story than document-level.
 A direct comparison of the document-level and chapter-level means is
 provided by Table~\ref{tab:doc-vs-chapter}. Document-level means are
 substantially higher than the cross-chapter means for every metric:
@@ -538,6 +528,14 @@ consistent with the document-level calculation pooling token overlap
 across all six chapters, which dilutes chapter-specific zero-overlap
 regions (notably the Purposes and Legal Bases chapter) and pushes
 the aggregate scores upward.
+
+The reference-based metrics therefore neither confirm nor cleanly
+contradict the Form-first ordering of the user-experience chapters
+(\S\ref{sec:eval-sus}--\S\ref{sec:eval-freeform}): Form leads on
+recall-oriented and bigram-sensitive measures, Chat leads on
+embedding-based ones, and Ask trails throughout. Whether a
+reference-free, GDPR-specific quality signal sees the same split is
+the question taken up next in \S\ref{sec:eval-judge}.
 
 \begin{sidewaystable}
 \centering

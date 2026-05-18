@@ -1,52 +1,138 @@
 \section{Summary of Findings}
 \label{sec:eval-summary}
 
-The empirical findings can be summarised as follows. On the
-user-experience instruments (RQ1), Form is rated more positively
-than Ask and Chat on the SUS items (notably items~3 ``easy to use''
-and~7 ``learn quickly''), reports lower workload than the LLM-driven
-modes on the R-TLX subscales (especially Temporal Demand and
-Frustration), and receives the largest share of first-place
-preference votes ($53.6\,\%$). The Friedman omnibus tests on the
-SUS and R-TLX measures do not reach the conventional significance
-threshold; the significant sub-effects on the matched-pairs subset
-are confined to Form versus the LLM-driven modes on Temporal Demand,
-Frustration, and re-use intent. Ask and Chat are descriptively and
-inferentially indistinguishable from each other on all aggregate
-user-experience measures.
-
-On the Perceived AI Support items, the legal-basis confidence item ($5_{ai}$)
-increases monotonically with LLM involvement (Form $3.58$, Ask $3.74$, Chat
-$3.81$; aggregated $3.71$), while Form simultaneously yields the highest
-re-use intent ($6_{ai}$) at $3.99$ versus Ask $3.55$ and Chat $3.42$;
-the six AI items pooled together are essentially flat across modes. Free-text comments
-characterise Form as fast and ergonomic, Ask as transparent but cumbersome,
-and Chat as comfortable but opaque.
-
-On the document-quality side (RQ2), the reference-based NLP metrics place
-Form first on lexical recall (BERTScore Recall $0.923$ versus Ask $0.908$
-and Chat $0.913$) and on the n-gram-based metrics, Chat first on semantic
-similarity (SBERT $0.990$ versus $0.986$ for both other modes) and BLEU,
-and Ask consistently last on every metric. The chapter-level breakdown
-attributes Chat's BLEU and METEOR advantage primarily to the Retention
-Periods and the Technical and Organisational Measures chapters. The
-LLM-as-Judge inverts the BERTScore Recall ordering: Form leads on
-Completeness ($4.84$) but lags on Scenario Faithfulness ($1.84$) and
-Hallucination ($1.65$, inverse-coded), while Chat leads on the latter two
-dimensions but trails on Completeness; Overall scores are clustered tightly
-between $2.41$ and $2.62$ on the $1$--$5$ scale.
-
-Taken together, the descriptive findings show that on the
-self-report instruments (RQ1) the structured Form mode is rated
-most usable, least demanding, and most preferred, while the two
-LLM-driven modes (Ask and Chat) are descriptively
-indistinguishable from each other on every aggregate user-experience
-measure. On the document-quality side (RQ2) the LLM-driven Chat
-mode achieves the highest semantic similarity to the reference and
-the highest Faithfulness and (inverse) Hallucination ratings under
-the LLM-as-Judge, while the structured Form mode achieves the
-highest lexical recall and the highest Completeness rating. The
-interpretation of these patterns against the research questions —
-in particular the apparent gap between perceived AI support and
-objective document quality — is taken up in
+This section consolidates what the user-study and document-quality
+results say about how the three modes actually behaved in
+participants' hands. Three orderings recur across the chapter, and
+they are not all the same ordering. Form leads on how the system
+\emph{felt} (usability, workload, the mode participants would pick
+again) and on how much of the expert reference's wording the
+documents \emph{recovered} (lexical NLP metrics, BERTScore Recall,
+judge-rated Completeness). Chat leads on how on-topic and
+scenario-faithful the documents \emph{were} (BERTScore F1, SBERT
+cosine, judge-rated Faithfulness, judge-rated low Hallucination).
+Ask sits in the middle on most measures and is descriptively last
+on every reference-based NLP metric. The sections below summarise
+each measurement family in turn; the interpretation is taken up in
 Chapter~\ref{ch:discussion}.
+
+\paragraph{Usability (SUS).}
+Form felt easier, less complex, and less cumbersome than the
+LLM-driven modes; the items participants treat as raw operability
+(ease of use, learnability, cumbersomeness) all favour Form, while
+the items that level out across modes (technical-support need,
+inconsistency, prior learning) suggest none of the three is
+fundamentally hard to operate. Within-system confidence (item~9) is
+also flat. Concretely: ease-of-use item~3 Form $4.38$ vs.\ Ask
+$4.01$ vs.\ Chat $3.99$; learnability item~7 Form $4.30$ vs.\
+$4.00$/$4.03$; cumbersomeness item~8 Form $1.65$ vs.\ Ask $2.16$
+vs.\ Chat $2.29$; confidence item~9 essentially flat
+($3.83$/$3.84$/$3.90$). The aggregated Friedman test on the
+per-mode SUS aggregate is non-significant
+($\chi^2(2) = 5.51$, $p = 0.064$, $W = 0.040$);
+Bonferroni-corrected Wilcoxon post-hoc tests yield a significant
+Form-versus-Ask difference
+($W = 578.5$, $p = 0.013$, $r = +0.368$), a Form-versus-Chat
+difference at the threshold ($p = 0.018$), and no Ask-versus-Chat
+difference ($p = 0.666$).
+
+\paragraph{Workload (NASA R-TLX).}
+Form felt the lightest on every demand axis the participants were
+asked about — least mentally demanding, least frustrating, least
+hurried — and the gap is widest on Frustration and Temporal
+Demand. Self-rated Performance is the one axis where the modes are
+indistinguishable: participants do not feel they did better in one
+mode than in another. Concretely: Mental Demand $5.77$ vs.\
+$6.80$/$6.36$, Physical Demand $2.77$ vs.\ $3.54$/$3.26$, Temporal
+Demand $4.16$ vs.\ $4.97$/$5.54$, Effort $5.68$ vs.\ $6.39$/$6.32$,
+Frustration $5.88$ vs.\ $7.58$/$7.13$, Performance essentially flat
+($8.71$/$8.68$/$9.39$). The aggregated Friedman test across the six
+subscales is non-significant ($\chi^2(2) = 5.24$, $p = 0.073$,
+$W = 0.038$); Temporal Demand
+($\chi^2(2) = 12.77$, $p = 0.002$) and Frustration
+($\chi^2(2) = 8.93$, $p = 0.012$) reach significance individually,
+with significant pairwise contrasts confined to Form versus the
+LLM-driven modes (medium-to-large effects, $|r| = 0.36$ to $0.57$);
+Ask versus Chat is non-significant on every subscale.
+
+\paragraph{Perceived AI Support.}
+Asked specifically about the AI's contribution, participants split
+their answers into two camps. They credit the LLM-driven modes for
+\emph{understanding why} suggestions were made (transparency, trust,
+legal-basis confidence) — and they credit Form for \emph{getting
+the job done} (efficiency, willingness to use again). Confidence
+that the legal basis is correct rises monotonically with LLM
+involvement (Form $3.58$, Ask $3.74$, Chat $3.81$), while
+willingness to use the mode again falls in the same direction
+(Form $3.99$, Ask $3.55$, Chat $3.42$). Transparency item~3 is
+where Ask leads ($4.16$ vs.\ Form $3.51$ vs.\ Chat $3.75$) — it is
+the only mode that explicitly explains each suggestion. The
+six-item aggregate is flat across modes (Friedman $\chi^2(2) =
+1.05$, $p = 0.592$); legal-basis confidence is non-significant on
+its own ($\chi^2(2) = 3.76$, $p = 0.152$); the re-use item is
+significant ($\chi^2(2) = 11.12$, $p = 0.004$, $W = 0.081$;
+Form-vs-Chat $r = +0.543$, large effect).
+
+\paragraph{Mode Preference.}
+When asked to commit to one mode at the end of the session, more
+than half of participants put Form first; Chat is the next-most
+common first choice; Ask is rarely picked first. Concretely, on
+$n = 69$: Form $53.6\,\%$ of first-place votes ($37$), Chat
+$29.0\,\%$ ($20$), Ask $17.4\,\%$ ($12$); mean ranks $1.78$ /
+$2.07$ / $2.14$. The chi-square goodness-of-fit against a uniform
+distribution is significant
+($\chi^2(2, N = 69) = 14.17$, $p < 0.001$, Cramér's $V = 0.320$,
+medium effect); the Friedman test on the full rank distribution is
+non-significant
+($\chi^2(2) = 5.07$, $p = 0.079$).
+
+\paragraph{NLP Metrics (document level, $n = 113$).}
+The reference-based picture is genuinely split. Form documents
+\emph{recover} the most of the reference's content (highest Recall,
+highest bigram and phrase overlap, highest synonym-aware overlap),
+Chat documents \emph{stay closest} to what the reference is about
+when meaning is what counts (highest Precision, highest SBERT,
+highest BLEU), and Ask documents trail on every reference-based
+metric. Means by mode (Form / Ask / Chat / aggregate): BLEU
+$0.129$ / $0.127$ / $0.143$ / $0.133$; ROUGE-1
+$0.488$ / $0.465$ / $0.511$ / $0.488$; ROUGE-2
+$0.306$ / $0.257$ / $0.291$ / $0.285$; ROUGE-L
+$0.388$ / $0.347$ / $0.389$ / $0.375$; METEOR
+$0.412$ / $0.365$ / $0.390$ / $0.389$; BERTScore Precision
+$0.889$ / $0.886$ / $0.895$ / $0.890$; BERTScore Recall
+$0.923$ / $0.908$ / $0.913$ / $0.915$; BERTScore F1
+$0.905$ / $0.897$ / $0.904$ / $0.902$; SBERT
+$0.986$ / $0.986$ / $0.990$ / $0.987$. Aggregated Friedman tests are
+significant for every metric (largest effect: BERTScore Recall,
+$\chi^2(2) = 30.77$, $p < 0.001$, $W = 0.410$); pairwise post-hoc
+results back the same split — Form dominates BERTScore Recall (Form
+vs.\ Ask $r = +1.000$; Form vs.\ Chat $r = +0.687$) and ROUGE-2
+(Form vs.\ Ask $r = +0.829$); Chat dominates SBERT (Chat vs.\ Form
+and Chat vs.\ Ask significant, large effects); Ask is last on every
+metric.
+
+\paragraph{LLM-as-a-Judge ($1$--$5$ scale).}
+The judge tells the same story the metrics do — and a sharper
+version of it. Form documents are the most complete (they hit the
+Article 30(1) checklist) but also the most prone to fabrication
+(they invent facts the scenario does not support). Chat documents
+are the most faithful to the actual scenario but the least complete.
+Ask sits between the two extremes on every dimension. The Overall
+verdict collapses these contrasts into a tight cluster, with Chat
+edging ahead. Means by mode (Form / Ask / Chat / aggregate):
+Completeness $4.84$ / $3.84$ / $3.18$ / $3.94$; Scenario
+Faithfulness $1.84$ / $2.30$ / $2.49$ / $2.21$; Legal Correctness
+$3.59$ / $3.43$ / $3.15$ / $3.39$; Hallucination (inverse)
+$1.65$ / $2.40$ / $2.54$ / $2.20$; Overall
+$2.41$ / $2.49$ / $2.62$ / $2.50$. Form has the lowest standard
+deviation on Completeness ($0.55$ vs.\ $1.54$/$1.59$), Legal
+Correctness ($0.55$), and Overall ($0.69$), reflecting how uniformly
+Form documents land. Most strikingly, $31$ of $37$ Form documents
+($83.8\,\%$) score Completeness $= 5$ together with Hallucination
+(inverse) $\leq 2$, and $17$ Form documents combine the maximum
+Completeness score of $5$ with the minimum Hallucination (inverse)
+score of $1$ — Form documents are simultaneously the most
+checklist-complete and the most fabricated.
+
+The interpretation of these patterns against the research questions
+is taken up in Chapter~\ref{ch:discussion}.
