@@ -57,57 +57,56 @@
 \contentsline {subsection}{\numberline {4.2.3}Summary of Document-Level and Chapter-Level NLP Metrics}{73}{subsection.4.2.3}%
 \contentsline {section}{\numberline {4.3}Document Quality — LLM-as-a-Judge}{74}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Per-Metric Results}{77}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Synthesis}{79}{subsection.4.3.2}%
 \contentsline {section}{\numberline {4.4}Participant Demographics}{80}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Numeric and Ordinal Variables}{81}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.1}Numeric and Ordinal Variables}{80}{subsection.4.4.1}%
 \contentsline {subsection}{\numberline {4.4.2}Categorical Variables}{81}{subsection.4.4.2}%
-\contentsline {chapter}{\numberline {5}Discussion}{85}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Conclusion}{86}{chapter.6}%
+\contentsline {chapter}{\numberline {5}Discussion}{84}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Conclusion}{85}{chapter.6}%
 \def \@chapapp {\appendixname }
-\contentsline {chapter}{\numberline {A}ROPAgen and Judge Model Configuration}{87}{appendix.A}%
-\contentsline {section}{\numberline {A.1}ROPAgen Backend Prompts}{87}{section.A.1}%
-\contentsline {subsection}{\numberline {A.1.1}Final ROPA Generation Prompt (\texttt {finalropa})}{88}{subsection.A.1.1}%
-\contentsline {subsection}{\numberline {A.1.2}Form Mode --- AI-Suggest Prompts}{90}{subsection.A.1.2}%
-\contentsline {subsection}{\numberline {A.1.3}Ask Mode --- Explanation Prompts}{98}{subsection.A.1.3}%
-\contentsline {subsection}{\numberline {A.1.4}Chat Mode --- Conversational Prompts}{104}{subsection.A.1.4}%
-\contentsline {section}{\numberline {A.2}ROPAgen Mode Screenshots}{112}{section.A.2}%
-\contentsline {subsection}{\numberline {A.2.1}Form Mode}{114}{subsection.A.2.1}%
-\contentsline {subsection}{\numberline {A.2.2}Ask Mode}{114}{subsection.A.2.2}%
-\contentsline {subsection}{\numberline {A.2.3}Chat Mode}{114}{subsection.A.2.3}%
-\contentsline {section}{\numberline {A.3}ROPAgen Reference Document}{114}{section.A.3}%
-\contentsline {section}{\numberline {A.4}LLM-as-a-Judge Configuration}{117}{section.A.4}%
-\contentsline {subsection}{\numberline {A.4.1}System and User Prompt}{118}{subsection.A.4.1}%
-\contentsline {subsection}{\numberline {A.4.2}Rubric --- Five Metrics}{119}{subsection.A.4.2}%
-\contentsline {subsection}{\numberline {A.4.3}Model Configuration and Limitations}{121}{subsection.A.4.3}%
-\contentsline {paragraph}{\nonumberline Known limitations.}{121}{paragraph*.32}%
-\contentsline {chapter}{\numberline {B}Study Materials}{123}{appendix.B}%
-\contentsline {section}{\numberline {B.1}Study Scenario}{123}{section.B.1}%
-\contentsline {subsection}{\numberline {B.1.1}Original (German)}{123}{subsection.B.1.1}%
-\contentsline {subsection}{\numberline {B.1.2}English Translation}{125}{subsection.B.1.2}%
-\contentsline {section}{\numberline {B.2}Survey Instruments}{126}{section.B.2}%
-\contentsline {subsection}{\numberline {B.2.1}System Usability Scale (SUS)}{126}{subsection.B.2.1}%
-\contentsline {subsection}{\numberline {B.2.2}NASA Raw Task Load Index Subscales}{127}{subsection.B.2.2}%
-\contentsline {chapter}{\numberline {C}Inferential Statistics in Full}{128}{appendix.C}%
-\contentsline {section}{\numberline {C.1}Sample-Size Derivation}{128}{section.C.1}%
-\contentsline {section}{\numberline {C.2}Survey Inferential Tests}{130}{section.C.2}%
-\contentsline {subsection}{\numberline {C.2.1}Normality (Shapiro--Wilk, $n = 69$)}{130}{subsection.C.2.1}%
-\contentsline {subsection}{\numberline {C.2.2}Friedman Omnibus ($n = 69$ matched triple)}{130}{subsection.C.2.2}%
-\contentsline {subsection}{\numberline {C.2.3}Pairwise Wilcoxon Signed-Rank Post-hoc (Bonferroni $\alpha = 0.0167$)}{130}{subsection.C.2.3}%
-\contentsline {subsection}{\numberline {C.2.4}Mode Preference Ranking}{132}{subsection.C.2.4}%
-\contentsline {section}{\numberline {C.3}NLP Metric Inferential Tests}{132}{section.C.3}%
-\contentsline {subsection}{\numberline {C.3.1}Kruskal--Wallis Sensitivity Check ($n = 113$, unbalanced)}{132}{subsection.C.3.1}%
-\contentsline {subsection}{\numberline {C.3.2}Friedman Omnibus ($n = 26$ matched triple)}{132}{subsection.C.3.2}%
-\contentsline {subsection}{\numberline {C.3.3}Pairwise Wilcoxon Signed-Rank Post-hoc ($n = 26$, primary)}{132}{subsection.C.3.3}%
-\contentsline {subsection}{\numberline {C.3.4}Mann--Whitney $U$ Sensitivity Check ($n = 113$, unbalanced)}{133}{subsection.C.3.4}%
-\contentsline {subsection}{\numberline {C.3.5}Chapter-Level Kruskal--Wallis Sensitivity Check ($n = 113$, unbalanced)}{133}{subsection.C.3.5}%
-\contentsline {subsection}{\numberline {C.3.6}Chapter-Level Friedman Omnibus (matched $n = 26$)}{137}{subsection.C.3.6}%
-\contentsline {subsection}{\numberline {C.3.7}Chapter-Level Pairwise Wilcoxon Signed-Rank Post-hoc (matched $n = 26$)}{139}{subsection.C.3.7}%
-\contentsline {subsection}{\numberline {C.3.8}Chapter-Level Pairwise Mann--Whitney $U$ Sensitivity Check ($n = 113$, unbalanced)}{145}{subsection.C.3.8}%
-\contentsline {section}{\numberline {C.4}Confidence--Quality Correlations}{147}{section.C.4}%
-\contentsline {section}{\numberline {C.5}Timing Inferential Tests}{148}{section.C.5}%
-\contentsline {subsection}{\numberline {C.5.1}Kruskal--Wallis Sensitivity Check ($n = 113$, unbalanced)}{148}{subsection.C.5.1}%
-\contentsline {subsection}{\numberline {C.5.2}Friedman Omnibus ($n = 26$ matched triple)}{149}{subsection.C.5.2}%
-\contentsline {subsection}{\numberline {C.5.3}Pairwise Wilcoxon Signed-Rank Post-hoc ($n = 26$, primary)}{149}{subsection.C.5.3}%
-\contentsline {subsection}{\numberline {C.5.4}Mann--Whitney $U$ Sensitivity Check ($n = 113$, unbalanced)}{149}{subsection.C.5.4}%
-\contentsline {chapter}{\nonumberline Bibliography}{151}{chapter*.33}%
+\contentsline {chapter}{\numberline {A}ROPAgen and Judge Model Configuration}{86}{appendix.A}%
+\contentsline {section}{\numberline {A.1}ROPAgen Backend Prompts}{86}{section.A.1}%
+\contentsline {subsection}{\numberline {A.1.1}Final ROPA Generation Prompt (\texttt {finalropa})}{87}{subsection.A.1.1}%
+\contentsline {subsection}{\numberline {A.1.2}Form Mode --- AI-Suggest Prompts}{89}{subsection.A.1.2}%
+\contentsline {subsection}{\numberline {A.1.3}Ask Mode --- Explanation Prompts}{97}{subsection.A.1.3}%
+\contentsline {subsection}{\numberline {A.1.4}Chat Mode --- Conversational Prompts}{103}{subsection.A.1.4}%
+\contentsline {section}{\numberline {A.2}ROPAgen Mode Screenshots}{111}{section.A.2}%
+\contentsline {subsection}{\numberline {A.2.1}Form Mode}{113}{subsection.A.2.1}%
+\contentsline {subsection}{\numberline {A.2.2}Ask Mode}{113}{subsection.A.2.2}%
+\contentsline {subsection}{\numberline {A.2.3}Chat Mode}{113}{subsection.A.2.3}%
+\contentsline {section}{\numberline {A.3}ROPAgen Reference Document}{113}{section.A.3}%
+\contentsline {section}{\numberline {A.4}LLM-as-a-Judge Configuration}{116}{section.A.4}%
+\contentsline {subsection}{\numberline {A.4.1}System and User Prompt}{117}{subsection.A.4.1}%
+\contentsline {subsection}{\numberline {A.4.2}Rubric --- Five Metrics}{118}{subsection.A.4.2}%
+\contentsline {subsection}{\numberline {A.4.3}Model Configuration and Limitations}{120}{subsection.A.4.3}%
+\contentsline {paragraph}{\nonumberline Known limitations.}{120}{paragraph*.32}%
+\contentsline {chapter}{\numberline {B}Study Materials}{122}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Study Scenario}{122}{section.B.1}%
+\contentsline {subsection}{\numberline {B.1.1}Original (German)}{122}{subsection.B.1.1}%
+\contentsline {subsection}{\numberline {B.1.2}English Translation}{124}{subsection.B.1.2}%
+\contentsline {section}{\numberline {B.2}Survey Instruments}{125}{section.B.2}%
+\contentsline {subsection}{\numberline {B.2.1}System Usability Scale (SUS)}{125}{subsection.B.2.1}%
+\contentsline {subsection}{\numberline {B.2.2}NASA Raw Task Load Index Subscales}{126}{subsection.B.2.2}%
+\contentsline {chapter}{\numberline {C}Inferential Statistics in Full}{127}{appendix.C}%
+\contentsline {section}{\numberline {C.1}Sample-Size Derivation}{127}{section.C.1}%
+\contentsline {section}{\numberline {C.2}Survey Inferential Tests}{129}{section.C.2}%
+\contentsline {subsection}{\numberline {C.2.1}Normality (Shapiro--Wilk, $n = 69$)}{129}{subsection.C.2.1}%
+\contentsline {subsection}{\numberline {C.2.2}Friedman Omnibus ($n = 69$ matched triple)}{129}{subsection.C.2.2}%
+\contentsline {subsection}{\numberline {C.2.3}Pairwise Wilcoxon Signed-Rank Post-hoc (Bonferroni $\alpha = 0.0167$)}{129}{subsection.C.2.3}%
+\contentsline {subsection}{\numberline {C.2.4}Mode Preference Ranking}{131}{subsection.C.2.4}%
+\contentsline {section}{\numberline {C.3}NLP Metric Inferential Tests}{131}{section.C.3}%
+\contentsline {subsection}{\numberline {C.3.1}Kruskal--Wallis Sensitivity Check ($n = 113$, unbalanced)}{131}{subsection.C.3.1}%
+\contentsline {subsection}{\numberline {C.3.2}Friedman Omnibus ($n = 26$ matched triple)}{131}{subsection.C.3.2}%
+\contentsline {subsection}{\numberline {C.3.3}Pairwise Wilcoxon Signed-Rank Post-hoc ($n = 26$, primary)}{131}{subsection.C.3.3}%
+\contentsline {subsection}{\numberline {C.3.4}Mann--Whitney $U$ Sensitivity Check ($n = 113$, unbalanced)}{132}{subsection.C.3.4}%
+\contentsline {subsection}{\numberline {C.3.5}Chapter-Level Kruskal--Wallis Sensitivity Check ($n = 113$, unbalanced)}{132}{subsection.C.3.5}%
+\contentsline {subsection}{\numberline {C.3.6}Chapter-Level Friedman Omnibus (matched $n = 26$)}{136}{subsection.C.3.6}%
+\contentsline {subsection}{\numberline {C.3.7}Chapter-Level Pairwise Wilcoxon Signed-Rank Post-hoc (matched $n = 26$)}{138}{subsection.C.3.7}%
+\contentsline {subsection}{\numberline {C.3.8}Chapter-Level Pairwise Mann--Whitney $U$ Sensitivity Check ($n = 113$, unbalanced)}{144}{subsection.C.3.8}%
+\contentsline {section}{\numberline {C.4}Confidence--Quality Correlations}{146}{section.C.4}%
+\contentsline {section}{\numberline {C.5}Timing Inferential Tests}{147}{section.C.5}%
+\contentsline {subsection}{\numberline {C.5.1}Kruskal--Wallis Sensitivity Check ($n = 113$, unbalanced)}{147}{subsection.C.5.1}%
+\contentsline {subsection}{\numberline {C.5.2}Friedman Omnibus ($n = 26$ matched triple)}{148}{subsection.C.5.2}%
+\contentsline {subsection}{\numberline {C.5.3}Pairwise Wilcoxon Signed-Rank Post-hoc ($n = 26$, primary)}{148}{subsection.C.5.3}%
+\contentsline {subsection}{\numberline {C.5.4}Mann--Whitney $U$ Sensitivity Check ($n = 113$, unbalanced)}{148}{subsection.C.5.4}%
+\contentsline {chapter}{\nonumberline Bibliography}{150}{chapter*.33}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
