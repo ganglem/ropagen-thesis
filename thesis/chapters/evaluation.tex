@@ -20,12 +20,16 @@ the running text are reproduced in full in
 Appendix~\ref{app:inferential}.
 
 The survey analyses use the matched within-subjects sample of
-$n = 69$ participants. The document-quality analyses use the full
-set of $113$ retained documents (Form $n = 37$, Ask $n = 37$,
-Chat $n = 39$) throughout, with Kruskal--Wallis and Bonferroni-
-corrected Mann--Whitney $U$ as the between-groups inferential
-family for NLP metric scores and per-mode completion time. The
-LLM-as-a-judge scores are reported descriptively only.
+$n = 69$ participants, with Friedman as the omnibus and
+Bonferroni-corrected Wilcoxon signed-rank as the pairwise
+post-hoc; the mode-preference ranking is additionally tested with a
+chi-square goodness-of-fit against a uniform null. The
+document-quality analyses use the full set of $113$ retained
+documents (Form $n = 37$, Ask $n = 37$, Chat $n = 39$) throughout,
+with Kruskal--Wallis and Bonferroni-corrected Mann--Whitney $U$ as
+the between-groups inferential family for NLP metric scores and
+per-mode completion time. The LLM-as-a-judge scores are reported
+descriptively only.
 
 \input{chapters/evaluation/demographics}
 

@@ -24,3 +24,68 @@ The goal of this thesis is to conduct a comprehensive evaluation of the existing
     \item[\textbf{RQ2.2}] As a supplementary, reference-free signal, what additional GDPR-specific quality properties (completeness, scenario faithfulness, legal correctness, hallucination) does an LLM-as-a-judge surface across the three modes?
     \item[\textbf{RQ2.3}] Is there a discrepancy between user confidence (RQ1.3) and the document quality actually achieved (RQ2.1, RQ2.2)?
 \end{itemize}
+
+\paragraph{Prior expectation.} Going into the study, the implicit
+prediction was that more LLM support would translate into a better
+user experience and a more preferred mode: the ordering Chat
+$\succ$ Form $\succ$ Ask was anticipated, with Chat --- the
+free-form conversational mode where the LLM does the most work
+--- expected to be the overall favorite among novice users. The
+evaluation that follows tests this prediction against the
+experience and outputs of $73$ novice participants.
+
+\section{Thesis Structure}
+\label{sec:thesis-structure}
+
+The remainder of this thesis is organized into five further
+chapters and three appendices.
+
+\textbf{Chapter~\ref{ch:background}} (Background) defines GDPR
+and the Article~30 ROPA obligation, then reviews related work on
+legal-AI document generation through four lenses: GDPR-specific
+compliance automation, structured legal-document generation,
+evaluation methodologies for legal AI, and user-facing legal AI
+systems. The chapter closes by identifying the gap this thesis
+fills: no prior work simultaneously targets GDPR ROPA generation,
+exposes the system to novice users, and measures the
+confidence--quality calibration that results.
+
+\textbf{Chapter~\ref{ch:methodology}} (Methodology) introduces
+ROPAgen in detail --- its three interaction modes, the internal
+\texttt{DocumentData} schema they share, and the LLM backend that
+generates the final ROPA document --- and then describes the user
+study itself: design, scenario, participants, instruments
+(SUS, R-TLX, Perceived AI Support, mode-preference ranking),
+NLP metric definitions, the LLM-as-a-judge configuration, and the
+statistical analysis plan.
+
+\textbf{Chapter~\ref{ch:evaluation}} (Evaluation and Results)
+reports the empirical findings: participant demographics,
+per-mode results on the four user-study instruments and the
+post-experiment ranking, NLP metrics at the document and
+chapter levels, and the supplementary LLM-as-a-judge scores. Each
+result is reported descriptively first and then tested
+inferentially.
+
+\textbf{Chapter~\ref{ch:discussion}} (Discussion) interprets the
+two central findings of the Evaluation: the
+completeness--hallucination tradeoff under Form's checkbox
+scaffolding, and the confidence--quality gap between what novices
+believe they have produced and what they have actually produced.
+Two triangulated case studies, drawn from the participant pool
+and using survey, NLP, and judge data side-by-side, illustrate
+the gap in concrete form. The chapter also positions the findings
+against the related-work landscape and names the limitations of
+the study.
+
+\textbf{Chapter~\ref{ch:conclusion}} (Conclusion) answers RQ1 and
+RQ2 in plain English and draws out the design implications for
+LLM-assisted compliance tooling that follow from the calibration
+results.
+
+\textbf{Appendices A--C} reproduce the ROPAgen backend prompts,
+the three mode screenshots, the expert-authored reference
+document and the LLM-as-a-judge configuration (Appendix~A); the
+study scenario and the verbatim survey instruments (Appendix~B);
+and the full inferential statistics referenced from the
+Evaluation chapter (Appendix~C).
