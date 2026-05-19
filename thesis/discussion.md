@@ -1,39 +1,24 @@
 # Discussion — Working Notes
 
-Scratchpad for the Discussion chapter. Numbers, candidates, structure, open
-questions. Not prose yet — we'll write the chapter from this.
+Scratchpad for the Discussion chapter: argumentative spine, section
+outline, case-study data with quotes, related-work hooks, limitations.
+TODOs and drafting decisions live in `TODO.md`. Not prose yet — we'll
+write the chapter from this.
 
 ---
 
-## Cross-chapter TODOs (touch other chapters, not just Discussion)
+## Hypothesis pay-off in Discussion (deferred)
 
-These are things that need to be added elsewhere in the thesis but are
-load-bearing for the Discussion's framing. Capturing them here so we don't
-lose them.
+The original Chat $\succ$ Form $\succ$ Ask prediction now lives in the
+Introduction. Whether to open the Discussion with the reversal —
 
-### 2. Add the original hypothesis: Chat > Form > Ask
-- **Where it belongs**: Introduction, immediately after the RQs.
-  Framed as the prediction the study set out to test.
-- **Wording sketch** (to be polished):
-  > Going into the study, the implicit prediction was that more LLM
-  > support would translate into a better user experience and a more
-  > preferred mode: the ordering Chat $\succ$ Form $\succ$ Ask was
-  > anticipated, with Chat — the freeform conversational mode where the
-  > LLM does the most work — expected to be the overall favourite. The
-  > evaluation that follows tests this prediction against the
-  > experience and outputs of $73$ novice users.
-- **Pay-off in Discussion**: the chapter-level finding (Form 53.6 % of
-  rank-1 votes; $\chi^2 = 14.17$, $p < 0.001$, $V = 0.32$) is the
-  opposite of the prediction. Opening sentence of the Discussion can
-  lean on this:
-  > Contrary to the prior expectation that increasing LLM involvement
-  > would produce a correspondingly more preferred and more confident
-  > experience, the study found the opposite ordering on preference and
-  > a *miscalibrated* ordering on confidence. The remainder of this
-  > chapter interprets that double reversal.
-- Why this matters: makes the Form paradox land as a *finding*, not a
-  description. A reversed prediction has more rhetorical force than an
-  unframed result.
+> Contrary to the prior expectation that increasing LLM involvement
+> would produce a correspondingly more preferred and more confident
+> experience, the study found the opposite ordering on preference and
+> a *miscalibrated* ordering on confidence.
+
+— or to leave the reversal implicit and lead with the human-side
+finding, is a drafting decision listed in `TODO.md`.
 
 ---
 
@@ -415,50 +400,3 @@ The story:
 - The **completion-time finding** (Form 7 minutes faster): worth mentioning
   in §2 to ground "Form is preferred" in something measurable.
 
----
-
-## Open questions for us to decide
-
-1. **Do we include both case studies, or just PVV2109?** PVV2109 alone is
-   stronger as the central confidence-gap exemplar. IAR1116 risks reading
-   as "but also some people get it right" and diluting the main claim.
-   Recommendation: keep both, but PVV2109 is the headliner. IAR1116 is the
-   ~5-line counter-case at the end of §4.
-
-2. **Where do the case studies live structurally?** Inside §4 as
-   subsections, or as their own §6 (as currently sketched)? Either works.
-   Inline is more readable, but standalone §6 keeps §4 short and
-   argumentative.
-
-3. **How much numerical detail in the case studies?** The tables above are
-   thesis-ready; we could also use prose only and put the tables in an
-   appendix. Recommendation: keep the per-mode table in the chapter — it's
-   the most efficient way to show the discrepancy at a glance.
-
-4. **Length of the chapter?** Estimate based on this outline:
-   ~8–10 pages: tight opening, 3–4 finding sections, two case studies (one
-   substantial, one short), related work, limitations, close.
-   This is ~the right size for the Evaluation chapter's weight (~40 pages
-   of results need 8–10 pages of discussion, not 4 and not 15).
-
-5. **Design implications: inline or as a §7?** Recommendation: inline.
-   Each finding section ends with one sentence that names the design
-   implication. Conclusion picks them up as a list.
-
-6. **Do we want to draft a hybrid-mode sketch?** Several free-text comments
-   suggested a Form-structure + Chat-context hybrid. Worth a paragraph in
-   §5, or possibly a short standalone subsection. Pragmatically useful for
-   future work even if it's not "in" the empirical contribution.
-
----
-
-## To-do for the chapter draft
-
-- [ ] Decide on case-study placement (inline vs §6)
-- [ ] Decide on the order: confidence-gap-first vs Form-paradox-first
-- [ ] Pull the per-chapter NLP boxplot numbers we want for §3 (Retention /
-      T\&O lead)
-- [ ] Check whether to cite the chapter-level Friedman/Mann-Whitney
-      results explicitly or just appeal to the descriptive direction
-- [ ] Run the German free-text translations through one more pass for
-      quality — the IAR1116 quote in §6 is currently raw German

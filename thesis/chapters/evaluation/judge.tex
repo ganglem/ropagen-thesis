@@ -2,7 +2,7 @@
 \label{sec:eval-judge}
 
 Building on the reference-based NLP metrics reported in
-\S\ref{sec:eval-nlp-doc}, this section turns to a reference-free
+Section~\ref{sec:eval-nlp-doc}, this section turns to a reference-free
 quality signal. The previous section measured similarity to a
 single expert-authored Form-mode reference; here, the judge
 evaluates each document against a rubric rather than a target,
@@ -97,7 +97,7 @@ sample $n = 113$, scale $1$--$5$).}
 Form documents cover the Article 30(1) requirements most thoroughly
 and most uniformly, while Chat documents leave the most gaps —
 echoing the BERTScore Recall pattern from
-\S\ref{sec:eval-nlp-doc}. For \emph{Completeness}, the aggregated
+Section~\ref{sec:eval-nlp-doc}. For \emph{Completeness}, the aggregated
 mean is $3.94$, with Form scoring highest by a substantial margin
 ($4.84$, median $5.0$), Ask second ($3.84$, median $5.0$), and
 Chat lowest ($3.18$, median $3.0$). Completeness decreases by
@@ -178,10 +178,10 @@ Form's high Completeness is partially offset by its low Faithfulness and
 high Hallucination, and the net result is a slight Chat advantage. The
 interpretation of the Form Completeness--Hallucination co-occurrence
 reported above in terms of the checkbox-based interface of Form mode
-(\S\ref{sec:ropagen}) is reserved for the Discussion chapter.
+(Section~\ref{sec:ropagen}) is reserved for the Discussion chapter.
 
 The judge data thus complete the document-quality picture begun in
-\S\ref{sec:eval-nlp-doc}: Form leads on Completeness and Legal
+Section~\ref{sec:eval-nlp-doc}: Form leads on Completeness and Legal
 Correctness, Chat leads on Faithfulness and Hallucination, and the
 holistic Overall score collapses these tensions into a narrow
 range.

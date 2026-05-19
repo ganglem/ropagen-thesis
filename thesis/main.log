@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.3.25)  19 MAY 2026 18:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.3.25)  19 MAY 2026 19:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1204,22 +1204,22 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 
 ]
 Overfull \hbox (1.34494pt too wide) detected at line 79
- []\T1/phv/m/n/12 100
+ []\T1/phv/m/n/12 101
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 80
- []\T1/phv/m/n/12 106
+ []\T1/phv/m/n/12 107
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 81
- []\T1/phv/m/n/12 114
+ []\T1/phv/m/n/12 115
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 82
- []\T1/phv/m/n/12 116
+ []\T1/phv/m/n/12 117
  []
 
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
@@ -1230,102 +1230,102 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 [4{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
 Overfull \hbox (1.34494pt too wide) detected at line 83
- []\T1/phv/m/n/12 116
+ []\T1/phv/m/n/12 117
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 84
- []\T1/phv/m/n/12 116
+ []\T1/phv/m/n/12 117
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 85
- []\T1/phv/m/n/12 116
+ []\T1/phv/m/n/12 117
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 86
- []\T1/phv/m/n/12 119
- []
-
-
-Overfull \hbox (1.34494pt too wide) detected at line 87
  []\T1/phv/m/n/12 120
  []
 
 
-Overfull \hbox (1.34494pt too wide) detected at line 88
+Overfull \hbox (1.34494pt too wide) detected at line 87
  []\T1/phv/m/n/12 121
  []
 
 
+Overfull \hbox (1.34494pt too wide) detected at line 88
+ []\T1/phv/m/n/12 122
+ []
+
+
 Overfull \hbox (1.34494pt too wide) detected at line 89
- []\T1/phv/m/n/12 123
+ []\T1/phv/m/n/12 124
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 91
- []\T1/phv/b/n/12 125
+ []\T1/phv/b/n/12 126
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 92
- []\T1/phv/m/n/12 125
+ []\T1/phv/m/n/12 126
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 93
- []\T1/phv/m/n/12 125
+ []\T1/phv/m/n/12 126
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 94
- []\T1/phv/m/n/12 127
+ []\T1/phv/m/n/12 128
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 95
- []\T1/phv/m/n/12 128
- []
-
-
-Overfull \hbox (1.34494pt too wide) detected at line 96
- []\T1/phv/m/n/12 128
- []
-
-
-Overfull \hbox (1.34494pt too wide) detected at line 97
  []\T1/phv/m/n/12 129
  []
 
 
-Overfull \hbox (1.34494pt too wide) detected at line 98
- []\T1/phv/b/n/12 130
+Overfull \hbox (1.34494pt too wide) detected at line 96
+ []\T1/phv/m/n/12 129
  []
 
 
-Overfull \hbox (1.34494pt too wide) detected at line 99
+Overfull \hbox (1.34494pt too wide) detected at line 97
  []\T1/phv/m/n/12 130
  []
 
 
+Overfull \hbox (1.34494pt too wide) detected at line 98
+ []\T1/phv/b/n/12 131
+ []
+
+
+Overfull \hbox (1.34494pt too wide) detected at line 99
+ []\T1/phv/m/n/12 131
+ []
+
+
 Overfull \hbox (1.34494pt too wide) detected at line 100
- []\T1/phv/m/n/12 132
+ []\T1/phv/m/n/12 133
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 101
- []\T1/phv/m/n/12 132
+ []\T1/phv/m/n/12 133
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 102
- []\T1/phv/m/n/12 132
+ []\T1/phv/m/n/12 133
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 103
- []\T1/phv/m/n/12 132
+ []\T1/phv/m/n/12 133
  []
 
 
@@ -1337,47 +1337,47 @@ Overfull \hbox (8.07697pt too wide) in paragraph at lines 103--103
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 104
- []\T1/phv/m/n/12 134
- []
-
-
-Overfull \hbox (1.34494pt too wide) detected at line 105
- []\T1/phv/m/n/12 134
- []
-
-
-Overfull \hbox (1.34494pt too wide) detected at line 106
- []\T1/phv/m/n/12 134
- []
-
-
-Overfull \hbox (1.34494pt too wide) detected at line 107
- []\T1/phv/m/n/12 134
- []
-
-
-Overfull \hbox (1.34494pt too wide) detected at line 108
  []\T1/phv/m/n/12 135
  []
 
 
-Overfull \hbox (1.34494pt too wide) detected at line 109
+Overfull \hbox (1.34494pt too wide) detected at line 105
+ []\T1/phv/m/n/12 135
+ []
+
+
+Overfull \hbox (1.34494pt too wide) detected at line 106
+ []\T1/phv/m/n/12 135
+ []
+
+
+Overfull \hbox (1.34494pt too wide) detected at line 107
+ []\T1/phv/m/n/12 135
+ []
+
+
+Overfull \hbox (1.34494pt too wide) detected at line 108
  []\T1/phv/m/n/12 136
+ []
+
+
+Overfull \hbox (1.34494pt too wide) detected at line 109
+ []\T1/phv/m/n/12 137
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 110
- []\T1/phv/m/n/12 136
+ []\T1/phv/m/n/12 137
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 111
- []\T1/phv/m/n/12 136
+ []\T1/phv/m/n/12 137
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 112
- []\T1/phv/b/n/12 138
+ []\T1/phv/b/n/12 139
  []
 
 )
@@ -1854,12 +1854,6 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [58]) (./chapters/evaluation/nlp_metrics.tex
-Overfull \hbox (4.68008pt too wide) in paragraph at lines 4--30
-\T1/phv/m/n/12 when the out-put text it-self is com-pared against a ref-er-ence
- doc-u-ment. The reference-
- []
-
-
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
@@ -1959,7 +1953,7 @@ Overfull \hbox (5.40399pt too wide) in paragraph at lines 410--422
  [][] 
  []
 
-<../python/metrics/output/chapter_nlp_metrics_boxplot.png, id=777, 1582.2312pt 
+<../python/metrics/output/chapter_nlp_metrics_boxplot.png, id=774, 1582.2312pt 
 x 879.7668pt>
 File: ../python/metrics/output/chapter_nlp_metrics_boxplot.png Graphic file (ty
 pe png)
@@ -1975,11 +1969,11 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[70 <../python/metrics/output/chapter_nlp_metrics_boxplot.png>]
+[70]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[71]
+[71 <../python/metrics/output/chapter_nlp_metrics_boxplot.png>]
 Overfull \hbox (1.13603pt too wide) in paragraph at lines 485--498
 [] \T1/phv/b/n/12 ME-TEOR.[][] \T1/phv/m/n/12 Once stems and syn-onyms are cred
 -ited the chap-ter range com-presses.
@@ -2042,15 +2036,17 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[77]) (./chapters/evaluation/judge.tex
+[77]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [78]
-Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+Overfull \hbox (2.5711pt too wide) in paragraph at lines 767--775
+\T1/phv/m/n/12 the Form-first or-der-ing re-ported by the user-experience in-st
+ru-ments (Sec-tions []4.2.1[]--
+ []
 
-
-[79]
+) (./chapters/evaluation/judge.tex
 Underfull \hbox (badness 1400) in paragraph at lines 53--53
 \T1/phv/m/n/10.95 gal ba-sis un-der Art. 6(1); wrong ar-ti-cles or con-fused co
 n-
@@ -2062,7 +2058,20 @@ Overfull \hbox (1.7757pt too wide) in paragraph at lines 58--68
 port-ing per-mode means,
  []
 
-<../python/judge/output/judge_metrics_boxplot.png, id=853, 1582.713pt x 888.921
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[79]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[80]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[81]
+<../python/judge/output/judge_metrics_boxplot.png, id=863, 1582.713pt x 888.921
 pt>
 File: ../python/judge/output/judge_metrics_boxplot.png Graphic file (type png)
 <use ../python/judge/output/judge_metrics_boxplot.png>
@@ -2073,29 +2082,15 @@ Package pdftex.def Info: ../python/judge/output/judge_metrics_boxplot.png  used
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[80]
+[82]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[81]
+[83 <../python/judge/output/judge_metrics_boxplot.png>]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[82 <../python/judge/output/judge_metrics_boxplot.png>]
-Overfull \vbox (1.17493pt too high) has occurred while \output is active []
-
-
-[83]) (./chapters/evaluation/summary.tex
-Overfull \hbox (22.52269pt too wide) in paragraph at lines 4--11
-\T1/phv/m/n/12 The chap-ter has re-ported the four user-study in-stru-ments (Ÿ[
-]4.2.1[]--Ÿ[]4.2.4[]), the reference-
- []
-
-
-Overfull \vbox (1.17493pt too high) has occurred while \output is active []
-
-
-[84]
+[84]) (./chapters/evaluation/summary.tex
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
@@ -2110,35 +2105,35 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [86]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[87]
 chapter 5.
-) (./chapters/conclusion.tex [87
+) (./chapters/conclusion.tex [88
 
 ]
 chapter 6.
-) (./chapters/appendix_ropagen.tex [88
+) (./chapters/appendix_ropagen.tex [89
 
 ]
 chapter A.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 39.
-[89
+[90
 
 ]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[90{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-Overfull \vbox (1.17493pt too high) has occurred while \output is active []
-
-
-[91]
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 101.
-
+[91{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [92]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 101.
+
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
@@ -2251,6 +2246,10 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [120]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[121]
 Underfull \hbox (badness 1259) in paragraph at lines 1036--1036
 []|\T1/phv/m/n/10.95 Correct use of GDPR ter-mi-nol-ogy and cor-rect ci-ta-tion
  of
@@ -2272,11 +2271,11 @@ tt/m/n/12 judge \T1/phv/m/n/12 block of \T1/cmtt/m/n/12 python/judge/prompt.-
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[121]
+[122]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[122]
+[123]
 Underfull \hbox (badness 10000) in paragraph at lines 1065--1065
 []|\T1/cmtt/m/n/10.95 completeness\T1/phv/m/n/10.95 , \T1/cmtt/m/n/10.95 scenar
 io_faithfulness\T1/phv/m/n/10.95 ,
@@ -2292,11 +2291,11 @@ Overfull \hbox (0.83624pt too wide) in paragraph at lines 1074--1075
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[123]) (./chapters/sources.tex
+[124]) (./chapters/sources.tex
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[124]
+[125]
 chapter B.
 
 Overfull \hbox (53.06381pt too wide) in paragraph at lines 57--57
@@ -2316,7 +2315,7 @@ Overfull \hbox (40.71683pt too wide) in paragraph at lines 57--57
 deln im Namen[] 
  []
 
-[125
+[126
 
 ]
 Overfull \hbox (28.36984pt too wide) in paragraph at lines 57--57
@@ -2370,7 +2369,7 @@ n spätestens[]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[126]
+[127]
 Overfull \hbox (34.54333pt too wide) in paragraph at lines 105--105
 []\T1/cmtt/m/n/12 You are an employee named A.I., working for APOR GmbH, a soft
 ware company[] 
@@ -2416,7 +2415,7 @@ uired for[]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[127]
+[128]
 Overfull \hbox (3.67587pt too wide) in paragraph at lines 105--105
 []\T1/cmtt/m/n/12 For administration, technical and organizational measures (TO
 Ms) are[] 
@@ -2450,7 +2449,7 @@ an 3 months[]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[128]
+[129]
 Overfull \hbox (2.56206pt too wide) in paragraph at lines 142--143
 []\T1/phv/m/n/12 How in-se-cure, dis-cour-aged, ir-ri-tated, stressed, and an-n
 oyed were you? 
@@ -2460,7 +2459,7 @@ oyed were you?
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[129]
+[130]
 chapter C.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -2470,13 +2469,13 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 89.
 
-[130
+[131
 
 ]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[131]
+[132]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 123.
@@ -2506,44 +2505,44 @@ Overfull \hbox (3.45406pt too wide) in paragraph at lines 162--183
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[132]
-Overfull \vbox (1.17493pt too high) has occurred while \output is active []
-
-
 [133]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 195.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 195.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 221.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 221.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 221.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 221.
-
-
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [134]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 195.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 195.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 221.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 221.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 221.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 221.
+
+
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [135]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[136]
 Overfull \hbox (10.86255pt too wide) in paragraph at lines 295--306
 \T1/cmtt/m/n/12 python/metrics/output/statistical_tests.md \T1/phv/m/n/12 (\T1/
 phv/m/sl/12 Per-Mode Com-ple-tion Time \T1/phv/m/n/12 sec-
@@ -2582,11 +2581,11 @@ Overfull \hbox (25.02818pt too wide) in paragraph at lines 338--347
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[136]
+[137]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[137]
+[138]
 chapter without number
 LaTeX Font Info:    Font shape `T1/phv/m/sc' will be
 (Font)              scaled to size 11.39996pt on input line 175.
@@ -2596,7 +2595,7 @@ Overfull \hbox (4.60133pt too wide) in paragraph at lines 176--176
 g-u-la-tory Re-quire-ments:
  []
 
-[138
+[139
 
 
 
@@ -2610,11 +2609,11 @@ Overfull \hbox (1.40544pt too wide) in paragraph at lines 176--176
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[139]
+[140]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[140] [141
+[141] [142
 
 ] (./main.aux)
  ***********
@@ -2626,9 +2625,9 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32061 strings out of 467533
- 626463 string characters out of 5422138
- 2026780 words of memory out of 5000000
+ 32062 strings out of 467533
+ 626471 string characters out of 5422138
+ 2026798 words of memory out of 5000000
  59431 multiletter control sequences out of 15000+600000
  683158 words of font info for 121 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
@@ -2650,10 +2649,10 @@ super/sftt1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1440.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on main.pdf (146 pages, 2295132 bytes).
+Output written on main.pdf (147 pages, 2295860 bytes).
 PDF statistics:
- 2616 PDF objects out of 2984 (max. 8388607)
- 2369 compressed objects within 24 object streams
- 1172 named destinations out of 1200 (max. 500000)
+ 2620 PDF objects out of 2984 (max. 8388607)
+ 2372 compressed objects within 24 object streams
+ 1173 named destinations out of 1200 (max. 500000)
  772 words of extra memory for PDF output out of 10000 (max. 10000000)
 
