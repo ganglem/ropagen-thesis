@@ -10,7 +10,7 @@ The tool evaluated in this study is ROPAgen \cite{KastratovicRopagen}, a web-bas
 
 ROPAgen exists because creating a ROPA from scratch is tedious work: the document has rigid structural requirements (Art.~30 GDPR) but most of its substance is project-specific prose that has to be written from a blank page. The tool offers three interaction modes --- Form, Ask, and Chat --- which together form a gradient of LLM support. Form mode places the user in full control and uses the LLM only on demand; Ask mode adds the LLM as a per-section explainer alongside the same structured form; Chat mode hands control to the LLM, which decides which structured fields to populate from the user's free-form description. This thesis evaluates the three modes along that gradient: how the level of LLM support shapes user experience and how it shapes the documents that are actually produced. The remainder of this section describes the internal representation of a ROPA document in the tool, walks through the three modes from the user's perspective, and details the LLM backend that all three modes share.
 
-\subsection*{ROPA Documents in ROPAgen}
+\subsection{ROPA Documents in ROPAgen}
 
 Internally, ROPAgen represents a ROPA as a single structured \texttt{DocumentData} object organized around eight thematic groups that together cover the disclosures required under Art.~30(1) GDPR:
 
@@ -27,7 +27,7 @@ Internally, ROPAgen represents a ROPA as a single structured \texttt{DocumentDat
 
 This structured form is the tool's working representation while the user is drafting. The final ROPA itself is rendered as a Markdown document --- with optional PDF export through a server-side rendering route --- that the LLM produces in a single generation step from the assembled \texttt{DocumentData} object. A complete example of the resulting document, the reference baseline against which all participant outputs are scored by the NLP metric pipeline, is reproduced in Appendix~\ref{app:ropagen-reference}.
 
-\subsection*{The Three Interaction Modes}
+\subsection{The Three Interaction Modes}
 
 The three modes are best read as positions on a single axis of increasing LLM support. Form mode sits at the low-support end: the user does everything, and the LLM is invoked only when asked. Ask mode sits in the middle: the user still enters every value themselves, but can request per-section explanation and guidance from the LLM at any point. Chat mode sits at the high-support end: the user does not see or fill the structured fields directly, and the LLM decides which fields to populate from the user's free-form description of their processing activity. Underneath, all three modes act on the same \texttt{DocumentData} schema and, when the user clicks the final \emph{Generate} button, hand that schema to the same prose-generation prompt (referred to internally as \texttt{finalropa}); the output ROPA is therefore produced by an identical generation step in all three conditions. What changes between the modes is the path the user takes to populate \texttt{DocumentData}.
 
@@ -43,7 +43,7 @@ Ask mode adds an AI explainer alongside the same structured form. The user still
 
 Chat mode hands control to the AI. The user does not see or fill the structured fields at all; instead, after entering the organization's metadata --- name, contact information, and title of the processing activity --- the user describes their processing in their own words, and the LLM decides which structured fields to populate from those descriptions (see Appendix~\ref{app:ropagen-chat-screenshot}). The user navigates section by section through a chat interface only; the structured form is hidden from view. The LLM explains what each section requires, asks the user to describe their processing, and silently extracts the relevant structured data: a mentioned vendor name flips the corresponding data-source flag, a mentioned data category populates the corresponding Boolean, and so on. The user therefore never directly interacts with the underlying \texttt{DocumentData} object, although the same object is being built up under the hood. The final \emph{Generate} step is once again identical to the other two modes. Chat mode is therefore a conversational-first workflow in which field-level decisions are delegated to the LLM and only the final generation step is shared with the other modes.
 
-\subsection*{LLM Backend}
+\subsection{LLM Backend}
 
 All three modes are backed by the same model: Mistral Large~3 (model identifier \texttt{mistralai/mistral-large-2512}), accessed through the OpenRouter API gateway via the Vercel AI SDK. Mistral was chosen because it is an EU-based model, an important consideration given the legal and GDPR-compliance context of the documents being drafted: keeping the generation workload with a European model provider keeps the tool aligned, in spirit, with the data-protection regime it is helping users to document. Two temperature regimes are used. Conversational and suggestion calls --- per-section AI suggestions in Form mode, dialogue turns in Ask and Chat modes, and the silent data-extraction calls in Chat mode --- use temperature~$0.2$ and top-$p$~$0.5$, which permits variation in phrasing while keeping the responses on-task. The final ROPA generation step, in contrast, uses temperature~$0.05$ and top-$p$~$0.05$, which makes the output close to deterministic given the same \texttt{DocumentData} input. Crucially, the prompt used in the final generation step is fixed across all three modes: the only thing that differs between a Form-mode output and a Chat-mode output is the contents of the \texttt{DocumentData} object that has been built up along the way. The full text of the backend prompts is reproduced in Appendix~\ref{app:ropagen-prompts}, as the counterpart to the LLM-as-a-judge configuration recorded in Appendix~\ref{app:judge}.
 
@@ -51,11 +51,11 @@ Whether the differing paths to \texttt{DocumentData} produce documents of differ
 
 \section{User Study}
 
-\subsection*{Study Design}
+\subsection{Study Design}
 
 The study followed a within-subjects experimental design with counterbalanced ordering. The recruited sample consisted of $N=73$ university students, all novice users with no prior GDPR experience, and each session lasted approximately 90 minutes per participant. Counterbalancing was implemented through a Balanced Latin Square: the three modes (Form, Ask, Chat) were arranged into six ordered sequences, and participants were randomly assigned to one of the six groups, with each participant completing all three modes in their group's predetermined order. This design controls for order effects, learning effects, and fatigue. Demographic information was collected at the end of the session, after the three modes and the final ranking, so that the demographics block could not prime mode-evaluation responses. Figure~\ref{fig:project-timeline} situates the per-session flow within the broader project arc, from the development of ROPAgen through data collection to the analysis pipeline reported in the chapters that follow.
 
-\begin{figure}[htbp]
+\begin{sidewaysfigure}
 \centering
 \includegraphics[width=\linewidth]{project_timeline.pdf}
 \caption{Project timeline. Five phases run left-to-right: ROPAgen
@@ -66,17 +66,17 @@ filter, NLP metric pipeline, LLM-as-Judge, statistical layer); and
 thesis writing. Demographics were administered at the end of each
 session rather than at the start.}
 \label{fig:project-timeline}
-\end{figure}
+\end{sidewaysfigure}
 
-\subsection*{Task Scenario}
+\subsection{Task Scenario}
 
 A single standardized scenario was used across all participants and modes to ensure consistency. The scenario described a relatable workplace data processing activity at \emph{APOR GmbH}, a fictional small software company in Ulm with approximately 50 employees: the two processing activities under consideration were the administration of employee working time and leave, and the management of parking authorizations for the company car park. The scenario covers all GDPR Article~30 fields and is accessible to participants without legal expertise; it is reproduced verbatim in both German (the version actually shown to participants) and English in Appendix~\ref{app:scenario}. The LLM backing all three modes (\S\ref{sec:ropagen}) was held constant throughout the study.
 
-\subsection*{Participants}
+\subsection{Participants}
 
 Recruitment yielded $N=73$ university students. Participants were screened for minimal to no GDPR knowledge (expected and required), prior AI tool usage experience (documented), general technology comfort level (assessed), and the absence of any professional legal or compliance background. As part of onboarding, participants received a brief standardized introduction to GDPR and ROPA concepts before beginning the tasks, and were shown an example of a high-quality ROPA document as reference material prior to starting.
 
-\subsection*{Data Availability and Sample Sizes}
+\subsection{Data Availability and Sample Sizes}
 Due to technical data loss and incomplete submissions during data collection, the effective sample sizes differ across analysis streams. The canonical sample sizes used throughout this thesis are summarized below; all counts are derived from the raw data files committed to the repository and documented in full in \texttt{python/output/sample\_sizes.md}.
 \begin{itemize}
     \item \textbf{Survey, recruited N = 73 / valid N = 69} — 73 participants completed the study; 69 retained after dropping four records with invalid consent (\texttt{p\_0001 = -1}). All 69 valid participants completed all three modes, so per-mode sample size, matched-triple survey subset, and valid N are all \textbf{n = 69}. The matched-triple n = 69 is used for within-subjects Friedman and Wilcoxon signed-rank tests on SUS, R-TLX, confidence items, and the perceived AI support composite.
@@ -86,7 +86,7 @@ The canonical figures used in the inferential analyses are \textbf{n = 113} for 
 
 Descriptive statistics (means, medians, standard deviations) are computed on the full available N per mode for each analysis stream. Inferential tests on NLP metric and per-mode completion-time measures operate on the full $n = 113$ sample as a between-groups comparison; inferential tests on survey instruments operate on the matched $n = 69$ within-subjects sample. The LLM-as-a-judge scores are reported descriptively only and are not subjected to inferential testing (see \emph{Statistical Analysis}, below).
 
-\subsection*{Data Collection}
+\subsection{Data Collection}
 
 Quantitative measures were collected after each mode. The System Usability Scale (SUS) was administered as ten standardized questions on a 5-point Likert scale; the Raw Task Load Index (R-TLX) captured six cognitive load dimensions on the standard NASA 21-point scale (1 = lowest demand, 21 = highest), as Raw TLX retains the unweighted subscale ratings on their original NASA scale. The full text of the 10 SUS items and the 6 NASA R-TLX subscale descriptions are reproduced in Appendix~\ref{app:sus-rtlx-items}. In addition, participants completed a six-item Perceived AI Support instrument on a 5-point Likert scale:
 
@@ -101,7 +101,7 @@ Quantitative measures were collected after each mode. The System Usability Scale
 
 Items were administered in German (the parenthetical text above reproduces the verbatim wording shown to participants); the English glosses are provided for the international reader. Item~5 is treated as the \textbf{primary confidence measure} throughout the analysis: it is the only item that asks participants to judge the substantive correctness of the AI's output (the legal basis under Article 6 GDPR), and is therefore directly comparable to the document-quality signals from the NLP and judge pipelines. The remaining five items (usefulness, efficiency, transparency, trust, intention to use) capture distinct facets of \emph{perceived AI support} rather than confidence in output correctness, and are reported as a secondary composite. Free-text qualitative feedback was also collected after each mode. Two timing measurements were retained: total session duration from the survey instrument (one value per participant) and per-mode completion time emitted by ROPAgen at the end of each session and embedded in every generated document (one value per participant per mode, in seconds). After completing all three conditions, participants ranked all three modes by overall preference in a post-experiment ranking task.
 
-\subsection*{Quality Assessment}
+\subsection{Quality Assessment}
 
 Following the dual-evaluation template adopted by Su et al.\ \cite{suJuDGEBenchmarkingJudgment2025} and Vayadande et al.\ \cite{vayadandeAIPoweredLegalDocumentation2024}, both surface-form and semantic measures are reported alongside an LLM-as-Judge rubric.
 
@@ -210,7 +210,7 @@ Documents are additionally evaluated using an LLM-as-a-judge approach, in which 
 \end{enumerate}
 The judge evaluation is applied to all 113 retained documents. The full evaluation rubric, system prompt, and model configuration used for the judge are provided in Appendix~\ref{app:judge}. The interpretation reported in this thesis is authored directly from the raw per-document judge scores; a working summary of those scores generated separately by a different model is referenced only as an aid and is not the source of any claims in the thesis.
 
-\subsection*{Statistical Analysis}
+\subsection{Statistical Analysis}
 A significance threshold of $\alpha = 0.05$ is applied to all tests. The choice of test family follows the structure of each dataset, with one test family applied per analysis rather than running parallel matched-pairs and between-groups tests on the same data. \textbf{Survey instruments} (SUS, R-TLX, perceived AI support, confidence items) are analyzed within-subjects on the matched $n = 69$ sample: a Friedman test as the omnibus, followed by pairwise Wilcoxon signed-rank tests with Bonferroni correction for post-hoc analysis. Every participant gives one response per mode, so the survey data is genuinely matched-pairs and the within-subjects test is the appropriate choice. \textbf{NLP metric scores and per-mode completion time} are analyzed between-groups on the full unbalanced $n = 113$ sample: a Kruskal--Wallis test as the omnibus, followed by pairwise Mann--Whitney $U$ tests with Bonferroni correction for post-hoc analysis. Only $26$ of the $113$ retained documents form strict matched triples, so a within-subjects analysis would discard the majority of the available data; the between-groups family preserves the full sample. The LLM-as-a-judge scores are reported descriptively (means, medians, dispersion) as a supplementary signal and are not subjected to inferential testing. Effect sizes are reported as $\varepsilon^2$ for the omnibus tests, Kendall's~$W$ as the coefficient of concordance for Friedman, and rank-biserial correlation~$r$ for the pairwise tests.
 
 For RQ1 (User Experience and Preference), the Friedman test is applied to SUS scores, the R-TLX composite, and the confidence question composites across modes; post-hoc pairwise Wilcoxon signed-rank tests with Bonferroni correction identify which mode pairs differ significantly; and mode preference distributions are reported as frequencies and rankings. For RQ2 (Document Quality), the Kruskal--Wallis test is applied to NLP metric scores across modes, with Bonferroni-corrected pairwise Mann--Whitney $U$ tests as post-hoc analysis where the omnibus is significant. The LLM-as-a-judge scores are reported descriptively only and are not subjected to inferential testing.
