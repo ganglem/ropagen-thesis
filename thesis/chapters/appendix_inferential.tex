@@ -3,12 +3,13 @@
 
 This appendix reproduces the complete inferential test output
 referenced in Chapter~\ref{ch:evaluation}. The within-subjects
-survey tests use $n = 69$, the within-subjects document-quality
-tests use the matched-triple subset of $n = 26$, and between-groups
-sensitivity checks on the unbalanced full sample use $n = 113$;
-the full sample-size derivation is reproduced first, followed by
-the survey inferential tests, the NLP and judge inferential tests,
-and the confidence--quality correlations.
+survey tests use $n = 69$ (matched within-subjects, Friedman +
+Wilcoxon); the document-quality, timing, and confidence--quality
+analyses use $n = 113$ (between-groups, Kruskal--Wallis +
+Mann--Whitney $U$). The full sample-size derivation is reproduced
+first, followed by the survey inferential tests, the NLP
+inferential tests, the confidence--quality correlations, and the
+timing inferential tests.
 
 \section{Sample-Size Derivation}
 \label{app:samplesizes}
@@ -54,9 +55,9 @@ Participants with at least one document in each mode & 28 \\
 Strict matched triple (exactly one document per mode) & 26 \\
 \bottomrule
 \end{tabular}
-\caption{NLP and judge sample sizes. The strict $n=26$ set is used
-for all within-subjects tests (Friedman, Wilcoxon signed-rank); the
-unbalanced $n=113$ is used for between-groups sensitivity checks.}
+\caption{NLP and judge sample sizes. The full $n = 113$ sample is
+used for the document-quality inferential tests (Kruskal--Wallis,
+Mann--Whitney $U$).}
 \label{tab:n-nlp}
 \end{table}
 
@@ -191,13 +192,13 @@ $V = 0.320$ (medium effect). The Friedman test on the full rank scores
 \section{NLP Metric Inferential Tests}
 \label{app:inf-nlp}
 
-\subsection{Kruskal--Wallis Sensitivity Check ($n = 113$, unbalanced)}
+\subsection{Kruskal--Wallis Omnibus ($n = 113$)}
 
 \begin{table}[htbp]
 \centering
-\caption{Kruskal--Wallis $H$ tests on the unbalanced full document set.
-Reported as a between-groups sensitivity check, not the primary post-hoc
-family.}
+\caption{Kruskal--Wallis $H$ tests on the unbalanced full document
+set ($n = 113$). Primary omnibus for document-quality inferential
+testing.}
 \label{tab:app-nlp-kw}
 \small
 \begin{tabular}{@{}l r r l l@{}}
@@ -217,89 +218,17 @@ SBERT (ModernBERT)    & 17.43 & $<0.001$ & Yes & 0.140 (large) \\
 \end{tabular}
 \end{table}
 
-\subsection{Friedman Omnibus ($n = 26$ matched triple)}
+\subsection{Pairwise Mann--Whitney $U$ ($n = 113$)}
 
-\begin{table}[htbp]
-\centering
-\caption{Friedman omnibus tests on the matched-triple subset of $n = 26$
-participants. Kendall's $W$ approximate where the metric required tie
-correction.}
-\label{tab:app-nlp-friedman}
-\small
-\begin{tabular}{@{}l r r l l@{}}
-\toprule
-Metric & $\chi^2$ & $p$ & Sig & $W$ \\
-\midrule
-BLEU                  & 6.23  & 0.044    & Yes & 0.083 (weak)        \\
-ROUGE-1               & 10.69 & 0.005    & Yes & $\sim$0.18 (moderate) \\
-ROUGE-2               & 13.46 & 0.001    & Yes & $\sim$0.22 (moderate) \\
-ROUGE-L               & 11.31 & 0.004    & Yes & $\sim$0.19 (moderate) \\
-METEOR                & 9.92  & 0.007    & Yes & $\sim$0.17 (moderate) \\
-BERTScore Precision   & 18.54 & $<0.001$ & Yes & $\sim$0.30 (strong)  \\
-BERTScore Recall      & 30.77 & $<0.001$ & Yes & 0.410 (strong)       \\
-BERTScore F1          & 13.00 & 0.002    & Yes & $\sim$0.21 (moderate) \\
-SBERT (ModernBERT)    & 16.69 & $<0.001$ & Yes & $\sim$0.27 (moderate) \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Pairwise Wilcoxon Signed-Rank Post-hoc ($n = 26$, primary)}
-
-Bonferroni-corrected $\alpha = 0.0167$. Effect size: matched-pairs
-rank-biserial $r$ (positive when the first-named mode in the pair scores
-higher).
-
-\begin{table}[htbp]
-\centering
-\caption{Pairwise Wilcoxon signed-rank post-hoc tests for document-level NLP
-metrics on the matched-triple subset.}
-\label{tab:app-nlp-posthoc}
-\small
-\begin{tabular}{@{}l l r r r l l@{}}
-\toprule
-Metric & Pair & $W$ & $p$ & $r$ & Direction & Sig (Bonf) \\
-\midrule
-BLEU                & Form vs Ask  & 108 & 0.089    & $+0.385$ medium     & Form $>$ Ask  & No \\
-BLEU                & Form vs Chat & 133 & 0.291    & $-0.242$ small      & Chat $>$ Form & No \\
-BLEU                & Ask vs Chat  &  74 & 0.009    & $-0.578$ large      & Chat $>$ Ask  & \textbf{Yes} \\
-ROUGE-1             & Form vs Ask  &  77 & 0.011    & $+0.561$ large      & Form $>$ Ask  & \textbf{Yes} \\
-ROUGE-1             & Form vs Chat & 147 & 0.483    & $-0.162$ small      & Chat $>$ Form & No \\
-ROUGE-1             & Ask vs Chat  &  63 & 0.003    & $-0.641$ large      & Chat $>$ Ask  & \textbf{Yes} \\
-ROUGE-2             & Form vs Ask  &  30 & $<0.001$ & $+0.829$ large      & Form $>$ Ask  & \textbf{Yes} \\
-ROUGE-2             & Form vs Chat & 136 & 0.328    & $+0.225$ small      & Form $>$ Chat & No \\
-ROUGE-2             & Ask vs Chat  &  71 & 0.007    & $-0.595$ large      & Chat $>$ Ask  & \textbf{Yes} \\
-ROUGE-L             & Form vs Ask  &  44 & $<0.001$ & $+0.749$ large      & Form $>$ Ask  & \textbf{Yes} \\
-ROUGE-L             & Form vs Chat & 161 & 0.727    & $+0.083$ negligible & Form $>$ Chat & No \\
-ROUGE-L             & Ask vs Chat  &  66 & 0.004    & $-0.624$ large      & Chat $>$ Ask  & \textbf{Yes} \\
-METEOR              & Form vs Ask  &  33 & $<0.001$ & $+0.812$ large      & Form $>$ Ask  & \textbf{Yes} \\
-METEOR              & Form vs Chat & 137 & 0.340    & $+0.219$ small      & Form $>$ Chat & No \\
-METEOR              & Ask vs Chat  &  84 & 0.019    & $-0.521$ large      & Chat $>$ Ask  & No (above Bonf) \\
-BERTScore Precision & Form vs Ask  &  63 & 0.003    & $+0.641$ large      & Form $>$ Ask  & \textbf{Yes} \\
-BERTScore Precision & Form vs Chat & 106 & 0.080    & $-0.396$ medium     & Chat $>$ Form & No \\
-BERTScore Precision & Ask vs Chat  &  40 & $<0.001$ & $-0.772$ large      & Chat $>$ Ask  & \textbf{Yes} \\
-BERTScore Recall    & Form vs Ask  &   0 & $<0.001$ & $+1.000$ large      & Form $>$ Ask  & \textbf{Yes} \\
-BERTScore Recall    & Form vs Chat &  55 & 0.001    & $+0.687$ large      & Form $>$ Chat & \textbf{Yes} \\
-BERTScore Recall    & Ask vs Chat  &  99 & 0.053    & $-0.436$ medium     & Chat $>$ Ask  & No \\
-BERTScore F1        & Form vs Ask  &  24 & $<0.001$ & $+0.863$ large      & Form $>$ Ask  & \textbf{Yes} \\
-BERTScore F1        & Form vs Chat & 172 & 0.940    & $+0.020$ negligible & Form $>$ Chat & No \\
-BERTScore F1        & Ask vs Chat  &  59 & 0.002    & $-0.664$ large      & Chat $>$ Ask  & \textbf{Yes} \\
-SBERT               & Form vs Ask  & 110 & 0.099    & $+0.373$ medium     & Form $>$ Ask  & No \\
-SBERT               & Form vs Chat &  56 & 0.002    & $-0.681$ large      & Chat $>$ Form & \textbf{Yes} \\
-SBERT               & Ask vs Chat  &  26 & $<0.001$ & $-0.852$ large      & Chat $>$ Ask  & \textbf{Yes} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Mann--Whitney $U$ Sensitivity Check ($n = 113$, unbalanced)}
-
-The Mann--Whitney $U$ test is reported as a between-groups sensitivity check
-on the unbalanced full sample. Bonferroni-corrected $\alpha = 0.0167$. Only
-significant comparisons are listed; non-significant comparisons are omitted
+Pairwise Mann--Whitney $U$ tests on the unbalanced full sample,
+serving as the post-hoc family where the Kruskal--Wallis omnibus is
+significant. Bonferroni-corrected $\alpha = 0.0167$. Only significant
+comparisons are listed; non-significant comparisons are omitted
 for brevity.
 
 \begin{table}[htbp]
 \centering
-\caption{Mann--Whitney $U$ between-groups sensitivity check on the
+\caption{Pairwise Mann--Whitney $U$ post-hoc tests on the
 unbalanced full sample of $n = 113$ documents.}
 \label{tab:app-nlp-mwu}
 \small
@@ -320,461 +249,11 @@ METEOR           & Form $>$ Ask  & 0.003    & 0.407 (medium) & Yes \\
 \end{tabular}
 \end{table}
 
-The sensitivity check broadly agrees with the matched-pairs result on
-direction (Ask $<$ Form, Ask $<$ Chat on most metrics), with the matched
-analysis producing larger and more consistent effect sizes — as expected for
-a within-subjects design.
-
-\subsection{Chapter-Level Kruskal--Wallis Sensitivity Check ($n = 113$, unbalanced)}
-\label{app:inf-nlp-chapter-kw}
-
-Kruskal--Wallis $H$ tests per (metric, chapter) cell on the unbalanced full sample. Between-groups sensitivity check; the primary chapter-level analysis is the matched-pairs Friedman family in \S\ref{app:inf-nlp-chapter-friedman}. Cells marked ``—'' are degenerate (BLEU on Purposes and Categories: every document scores zero).
-
-\small
-\begin{longtable}{@{}l l r r r l l@{}}
-\caption{Chapter-level Kruskal--Wallis $H$ tests per (metric, chapter) cell, unbalanced full sample of $n = 113$ documents.}
-\label{tab:app-nlp-chapter-kw} \\
-\toprule
-Metric & Chapter & $H$ & $p$ & $\varepsilon^2$ & label & Sig ($\alpha = 0.05$) \\
-\midrule
-\endfirsthead
-\multicolumn{7}{l}{\textit{Table \thetable{} continued from previous page.}} \\
-\toprule
-Metric & Chapter & $H$ & $p$ & $\varepsilon^2$ & label & Sig ($\alpha = 0.05$) \\
-\midrule
-\endhead
-\midrule
-\multicolumn{7}{r}{\textit{Continued on next page.}} \\
-\endfoot
-\bottomrule
-\endlastfoot
-BLEU & Controller & 5.20 & 0.074 & 0.046 & small & No \\
-BLEU & Purposes & — & — & — & — & — \\
-BLEU & Categories & — & — & — & — & — \\
-BLEU & Data Subj. & 6.05 & 0.048 & 0.054 & small & \textbf{Yes} \\
-BLEU & Retention & 19.80 & $<$0.001 & 0.177 & large & \textbf{Yes} \\
-BLEU & T\&O & 7.67 & 0.022 & 0.069 & moderate & \textbf{Yes} \\
-ROUGE-1 & Controller & 9.69 & 0.008 & 0.087 & moderate & \textbf{Yes} \\
-ROUGE-1 & Purposes & 1.22 & 0.543 & 0.011 & small & No \\
-ROUGE-1 & Categories & 4.51 & 0.105 & 0.040 & small & No \\
-ROUGE-1 & Data Subj. & 10.48 & 0.005 & 0.094 & moderate & \textbf{Yes} \\
-ROUGE-1 & Retention & 15.64 & $<$0.001 & 0.140 & moderate & \textbf{Yes} \\
-ROUGE-1 & T\&O & 4.29 & 0.117 & 0.038 & small & No \\
-ROUGE-2 & Controller & 6.44 & 0.040 & 0.058 & small & \textbf{Yes} \\
-ROUGE-2 & Purposes & 5.04 & 0.081 & 0.045 & small & No \\
-ROUGE-2 & Categories & 3.16 & 0.206 & 0.028 & small & No \\
-ROUGE-2 & Data Subj. & 8.42 & 0.015 & 0.075 & moderate & \textbf{Yes} \\
-ROUGE-2 & Retention & 15.04 & $<$0.001 & 0.134 & moderate & \textbf{Yes} \\
-ROUGE-2 & T\&O & 6.84 & 0.033 & 0.061 & moderate & \textbf{Yes} \\
-ROUGE-L & Controller & 8.83 & 0.012 & 0.079 & moderate & \textbf{Yes} \\
-ROUGE-L & Purposes & 0.92 & 0.631 & 0.008 & negligible & No \\
-ROUGE-L & Categories & 4.51 & 0.105 & 0.040 & small & No \\
-ROUGE-L & Data Subj. & 10.48 & 0.005 & 0.094 & moderate & \textbf{Yes} \\
-ROUGE-L & Retention & 14.44 & $<$0.001 & 0.129 & moderate & \textbf{Yes} \\
-ROUGE-L & T\&O & 7.49 & 0.024 & 0.067 & moderate & \textbf{Yes} \\
-METEOR & Controller & 4.43 & 0.109 & 0.040 & small & No \\
-METEOR & Purposes & 5.49 & 0.064 & 0.049 & small & No \\
-METEOR & Categories & 4.44 & 0.108 & 0.040 & small & No \\
-METEOR & Data Subj. & 9.43 & 0.009 & 0.084 & moderate & \textbf{Yes} \\
-METEOR & Retention & 15.07 & $<$0.001 & 0.135 & moderate & \textbf{Yes} \\
-METEOR & T\&O & 3.89 & 0.143 & 0.035 & small & No \\
-BERTScore Precision & Controller & 4.36 & 0.113 & 0.039 & small & No \\
-BERTScore Precision & Purposes & 5.11 & 0.078 & 0.046 & small & No \\
-BERTScore Precision & Categories & 13.62 & 0.001 & 0.122 & moderate & \textbf{Yes} \\
-BERTScore Precision & Data Subj. & 12.21 & 0.002 & 0.109 & moderate & \textbf{Yes} \\
-BERTScore Precision & Retention & 10.44 & 0.005 & 0.093 & moderate & \textbf{Yes} \\
-BERTScore Precision & T\&O & 11.07 & 0.004 & 0.099 & moderate & \textbf{Yes} \\
-BERTScore Recall & Controller & 4.66 & 0.097 & 0.042 & small & No \\
-BERTScore Recall & Purposes & 5.35 & 0.069 & 0.048 & small & No \\
-BERTScore Recall & Categories & 0.20 & 0.906 & 0.002 & negligible & No \\
-BERTScore Recall & Data Subj. & 14.42 & $<$0.001 & 0.129 & moderate & \textbf{Yes} \\
-BERTScore Recall & Retention & 10.23 & 0.006 & 0.091 & moderate & \textbf{Yes} \\
-BERTScore Recall & T\&O & 4.37 & 0.112 & 0.039 & small & No \\
-BERTScore F1 & Controller & 6.15 & 0.046 & 0.055 & small & \textbf{Yes} \\
-BERTScore F1 & Purposes & 0.41 & 0.817 & 0.004 & negligible & No \\
-BERTScore F1 & Categories & 10.39 & 0.006 & 0.093 & moderate & \textbf{Yes} \\
-BERTScore F1 & Data Subj. & 3.07 & 0.216 & 0.027 & small & No \\
-BERTScore F1 & Retention & 10.73 & 0.005 & 0.096 & moderate & \textbf{Yes} \\
-BERTScore F1 & T\&O & 8.41 & 0.015 & 0.075 & moderate & \textbf{Yes} \\
-SBERT ModernBERT & Controller & 4.48 & 0.107 & 0.040 & small & No \\
-SBERT ModernBERT & Purposes & 6.19 & 0.045 & 0.055 & small & \textbf{Yes} \\
-SBERT ModernBERT & Categories & 9.21 & 0.010 & 0.082 & moderate & \textbf{Yes} \\
-SBERT ModernBERT & Data Subj. & 0.99 & 0.611 & 0.009 & negligible & No \\
-SBERT ModernBERT & Retention & 8.98 & 0.011 & 0.080 & moderate & \textbf{Yes} \\
-SBERT ModernBERT & T\&O & 9.60 & 0.008 & 0.086 & moderate & \textbf{Yes} \\
-SBERT MiniLM & Controller & 8.01 & 0.018 & 0.072 & moderate & \textbf{Yes} \\
-SBERT MiniLM & Purposes & 4.43 & 0.109 & 0.040 & small & No \\
-SBERT MiniLM & Categories & 12.00 & 0.002 & 0.107 & moderate & \textbf{Yes} \\
-SBERT MiniLM & Data Subj. & 24.65 & $<$0.001 & 0.220 & large & \textbf{Yes} \\
-SBERT MiniLM & Retention & 9.28 & 0.010 & 0.083 & moderate & \textbf{Yes} \\
-SBERT MiniLM & T\&O & 1.31 & 0.518 & 0.012 & small & No \\
-\end{longtable}
-\normalsize
-
-\subsection{Chapter-Level Friedman Omnibus (matched $n = 26$)}
-\label{app:inf-nlp-chapter-friedman}
-
-Friedman $\chi^2$ omnibus tests per (metric, chapter) cell on the matched-triple subset. This is the primary inferential family at chapter level. Cells marked ``—'' are degenerate (BLEU on Purposes and Categories: every matched-triple score is zero, so the within-subjects rank statistic is undefined).
-
-\small
-\begin{longtable}{@{}l l r r r l l@{}}
-\caption{Chapter-level Friedman omnibus tests per (metric, chapter) cell, matched-triple subset of $n = 26$ participants. Kendall's $W$ is the coefficient of concordance.}
-\label{tab:app-nlp-chapter-friedman} \\
-\toprule
-Metric & Chapter & $\chi^2$ & $p$ & $W$ & label & Sig ($\alpha = 0.05$) \\
-\midrule
-\endfirsthead
-\multicolumn{7}{l}{\textit{Table \thetable{} continued from previous page.}} \\
-\toprule
-Metric & Chapter & $\chi^2$ & $p$ & $W$ & label & Sig ($\alpha = 0.05$) \\
-\midrule
-\endhead
-\midrule
-\multicolumn{7}{r}{\textit{Continued on next page.}} \\
-\endfoot
-\bottomrule
-\endlastfoot
-BLEU & Controller & 9.92 & 0.007 & 0.183 & moderate & \textbf{Yes} \\
-BLEU & Purposes & — & — & — & — & — \\
-BLEU & Categories & — & — & — & — & — \\
-BLEU & Data Subj. & 4.80 & 0.091 & 0.078 & weak & No \\
-BLEU & Retention & 14.52 & $<$0.001 & 0.207 & moderate & \textbf{Yes} \\
-BLEU & T\&O & 18.93 & $<$0.001 & 0.361 & strong & \textbf{Yes} \\
-ROUGE-1 & Controller & 9.96 & 0.007 & 0.188 & moderate & \textbf{Yes} \\
-ROUGE-1 & Purposes & 2.15 & 0.341 & 0.041 & weak & No \\
-ROUGE-1 & Categories & 2.85 & 0.240 & 0.054 & weak & No \\
-ROUGE-1 & Data Subj. & 9.00 & 0.011 & 0.173 & moderate & \textbf{Yes} \\
-ROUGE-1 & Retention & 13.00 & 0.002 & 0.250 & moderate & \textbf{Yes} \\
-ROUGE-1 & T\&O & 5.62 & 0.060 & 0.108 & moderate & No \\
-ROUGE-2 & Controller & 5.85 & 0.054 & 0.112 & moderate & No \\
-ROUGE-2 & Purposes & 2.16 & 0.340 & 0.036 & weak & No \\
-ROUGE-2 & Categories & 4.10 & 0.129 & 0.078 & weak & No \\
-ROUGE-2 & Data Subj. & 8.08 & 0.018 & 0.152 & moderate & \textbf{Yes} \\
-ROUGE-2 & Retention & 11.62 & 0.003 & 0.223 & moderate & \textbf{Yes} \\
-ROUGE-2 & T\&O & 14.08 & $<$0.001 & 0.271 & moderate & \textbf{Yes} \\
-ROUGE-L & Controller & 8.17 & 0.017 & 0.156 & moderate & \textbf{Yes} \\
-ROUGE-L & Purposes & 1.62 & 0.446 & 0.031 & weak & No \\
-ROUGE-L & Categories & 2.85 & 0.240 & 0.054 & weak & No \\
-ROUGE-L & Data Subj. & 9.00 & 0.011 & 0.173 & moderate & \textbf{Yes} \\
-ROUGE-L & Retention & 13.46 & 0.001 & 0.259 & moderate & \textbf{Yes} \\
-ROUGE-L & T\&O & 10.23 & 0.006 & 0.197 & moderate & \textbf{Yes} \\
-METEOR & Controller & 4.38 & 0.112 & 0.084 & weak & No \\
-METEOR & Purposes & 1.24 & 0.538 & 0.021 & weak & No \\
-METEOR & Categories & 1.92 & 0.382 & 0.037 & weak & No \\
-METEOR & Data Subj. & 9.77 & 0.008 & 0.188 & moderate & \textbf{Yes} \\
-METEOR & Retention & 16.69 & $<$0.001 & 0.321 & strong & \textbf{Yes} \\
-METEOR & T\&O & 6.46 & 0.040 & 0.124 & moderate & \textbf{Yes} \\
-BERTScore Precision & Controller & 2.15 & 0.341 & 0.041 & weak & No \\
-BERTScore Precision & Purposes & 1.46 & 0.482 & 0.028 & weak & No \\
-BERTScore Precision & Categories & 15.46 & $<$0.001 & 0.297 & moderate & \textbf{Yes} \\
-BERTScore Precision & Data Subj. & 12.00 & 0.002 & 0.231 & moderate & \textbf{Yes} \\
-BERTScore Precision & Retention & 9.54 & 0.008 & 0.183 & moderate & \textbf{Yes} \\
-BERTScore Precision & T\&O & 9.31 & 0.010 & 0.179 & moderate & \textbf{Yes} \\
-BERTScore Recall & Controller & 4.92 & 0.085 & 0.095 & weak & No \\
-BERTScore Recall & Purposes & 1.92 & 0.382 & 0.037 & weak & No \\
-BERTScore Recall & Categories & 2.15 & 0.341 & 0.041 & weak & No \\
-BERTScore Recall & Data Subj. & 1.46 & 0.482 & 0.028 & weak & No \\
-BERTScore Recall & Retention & 18.77 & $<$0.001 & 0.361 & strong & \textbf{Yes} \\
-BERTScore Recall & T\&O & 5.62 & 0.060 & 0.108 & moderate & No \\
-BERTScore F1 & Controller & 6.23 & 0.044 & 0.120 & moderate & \textbf{Yes} \\
-BERTScore F1 & Purposes & 0.08 & 0.962 & 0.001 & weak & No \\
-BERTScore F1 & Categories & 19.38 & $<$0.001 & 0.373 & strong & \textbf{Yes} \\
-BERTScore F1 & Data Subj. & 5.85 & 0.054 & 0.112 & moderate & No \\
-BERTScore F1 & Retention & 12.08 & 0.002 & 0.232 & moderate & \textbf{Yes} \\
-BERTScore F1 & T\&O & 5.77 & 0.056 & 0.111 & moderate & No \\
-SBERT ModernBERT & Controller & 4.00 & 0.135 & 0.077 & weak & No \\
-SBERT ModernBERT & Purposes & 7.15 & 0.028 & 0.138 & moderate & \textbf{Yes} \\
-SBERT ModernBERT & Categories & 14.08 & $<$0.001 & 0.271 & moderate & \textbf{Yes} \\
-SBERT ModernBERT & Data Subj. & 1.92 & 0.382 & 0.037 & weak & No \\
-SBERT ModernBERT & Retention & 6.23 & 0.044 & 0.120 & moderate & \textbf{Yes} \\
-SBERT ModernBERT & T\&O & 7.00 & 0.030 & 0.135 & moderate & \textbf{Yes} \\
-SBERT MiniLM & Controller & 3.77 & 0.152 & 0.072 & weak & No \\
-SBERT MiniLM & Purposes & 2.85 & 0.241 & 0.055 & weak & No \\
-SBERT MiniLM & Categories & 5.62 & 0.060 & 0.108 & moderate & No \\
-SBERT MiniLM & Data Subj. & 23.15 & $<$0.001 & 0.445 & strong & \textbf{Yes} \\
-SBERT MiniLM & Retention & 9.31 & 0.010 & 0.179 & moderate & \textbf{Yes} \\
-SBERT MiniLM & T\&O & 1.46 & 0.482 & 0.028 & weak & No \\
-\end{longtable}
-\normalsize
-
-Across the $60$-cell family, $30$ Friedman tests reach uncorrected $\alpha = 0.05$; $7$ survive a family-wise Bonferroni correction at $\alpha = 0.05 / 60 \approx 0.000833$. The body prose in \S\ref{sec:eval-nlp-chapter} reports the uncorrected count as the headline, matching the doc-level convention of not applying family-wise correction across the metric family.
-
-\subsection{Chapter-Level Pairwise Wilcoxon Signed-Rank Post-hoc (matched $n = 26$)}
-\label{app:inf-nlp-chapter-posthoc}
-
-Bonferroni-corrected $\alpha = 0.0167$. Effect size: matched-pairs rank-biserial $r$ (positive when the first-named mode in the pair scores higher).
-
-\small
-\begin{longtable}{@{}l l l r r r l l l@{}}
-\caption{Chapter-level pairwise Wilcoxon signed-rank post-hoc tests per (metric, chapter, pair) cell, matched-triple subset of $n = 26$ participants.}
-\label{tab:app-nlp-chapter-wilcoxon} \\
-\toprule
-Metric & Chapter & Pair & $W$ & $p$ & $r$ & label & Direction & Sig (Bonf) \\
-\midrule
-\endfirsthead
-\multicolumn{9}{l}{\textit{Table \thetable{} continued from previous page.}} \\
-\toprule
-Metric & Chapter & Pair & $W$ & $p$ & $r$ & label & Direction & Sig (Bonf) \\
-\midrule
-\endhead
-\midrule
-\multicolumn{9}{r}{\textit{Continued on next page.}} \\
-\endfoot
-\bottomrule
-\endlastfoot
-BLEU & Controller & Form vs Ask & 110.0 & 0.158 & $-0.323$ & medium & Ask > Form & No \\
-BLEU & Controller & Form vs Chat & 101.0 & 0.098 & $+0.378$ & medium & Form > Chat & No \\
-BLEU & Controller & Ask vs Chat & 60.0 & 0.006 & $+0.631$ & large & Ask > Chat & \textbf{Yes} \\
-BLEU & Purposes & form vs ask & — & — & — & — & — & — \\
-BLEU & Purposes & form vs chat & — & — & — & — & — & — \\
-BLEU & Purposes & ask vs chat & — & — & — & — & — & — \\
-BLEU & Categories & form vs ask & — & — & — & — & — & — \\
-BLEU & Categories & form vs chat & — & — & — & — & — & — \\
-BLEU & Categories & ask vs chat & — & — & — & — & — & — \\
-BLEU & Data Subj. & Form vs Ask & 71.5 & 0.074 & $+0.435$ & medium & Form > Ask & No \\
-BLEU & Data Subj. & Form vs Chat & 103.0 & 0.287 & $-0.254$ & small & Chat > Form & No \\
-BLEU & Data Subj. & Ask vs Chat & 39.0 & 0.024 & $-0.589$ & large & Chat > Ask & No \\
-BLEU & Retention & Form vs Ask & 16.0 & 0.002 & $+0.813$ & large & Form > Ask & \textbf{Yes} \\
-BLEU & Retention & Form vs Chat & 125.0 & 0.693 & $-0.094$ & negligible & Chat > Form & No \\
-BLEU & Retention & Ask vs Chat & 11.0 & 0.016 & $-0.758$ & large & Chat > Ask & \textbf{Yes} \\
-BLEU & T\&O & Form vs Ask & 68.0 & 0.005 & $+0.613$ & large & Form > Ask & \textbf{Yes} \\
-BLEU & T\&O & Form vs Chat & 149.0 & 0.515 & $-0.151$ & small & Chat > Form & No \\
-BLEU & T\&O & Ask vs Chat & 48.0 & 0.002 & $-0.705$ & large & Chat > Ask & \textbf{Yes} \\
-ROUGE-1 & Controller & Form vs Ask & 102.0 & 0.063 & $-0.419$ & medium & Ask > Form & No \\
-ROUGE-1 & Controller & Form vs Chat & 149.0 & 0.515 & $+0.151$ & small & Form > Chat & No \\
-ROUGE-1 & Controller & Ask vs Chat & 72.0 & 0.026 & $+0.520$ & large & Ask > Chat & No \\
-ROUGE-1 & Purposes & Form vs Ask & 175.0 & 1.000 & $-0.003$ & negligible & Ask > Form & No \\
-ROUGE-1 & Purposes & Form vs Chat & 135.0 & 0.315 & $+0.231$ & small & Form > Chat & No \\
-ROUGE-1 & Purposes & Ask vs Chat & 147.0 & 0.483 & $+0.162$ & small & Ask > Chat & No \\
-ROUGE-1 & Categories & Form vs Ask & 143.0 & 0.423 & $-0.185$ & small & Ask > Form & No \\
-ROUGE-1 & Categories & Form vs Chat & 104.0 & 0.115 & $-0.360$ & medium & Chat > Form & No \\
-ROUGE-1 & Categories & Ask vs Chat & 140.0 & 0.380 & $-0.202$ & small & Chat > Ask & No \\
-ROUGE-1 & Data Subj. & Form vs Ask & 124.0 & 0.199 & $+0.293$ & small & Form > Ask & No \\
-ROUGE-1 & Data Subj. & Form vs Chat & 72.0 & 0.007 & $-0.590$ & large & Chat > Form & \textbf{Yes} \\
-ROUGE-1 & Data Subj. & Ask vs Chat & 59.0 & 0.002 & $-0.664$ & large & Chat > Ask & \textbf{Yes} \\
-ROUGE-1 & Retention & Form vs Ask & 27.0 & $<$0.001 & $+0.846$ & large & Form > Ask & \textbf{Yes} \\
-ROUGE-1 & Retention & Form vs Chat & 120.0 & 0.165 & $-0.316$ & medium & Chat > Form & No \\
-ROUGE-1 & Retention & Ask vs Chat & 51.0 & $<$0.001 & $-0.709$ & large & Chat > Ask & \textbf{Yes} \\
-ROUGE-1 & T\&O & Form vs Ask & 145.0 & 0.452 & $+0.174$ & small & Form > Ask & No \\
-ROUGE-1 & T\&O & Form vs Chat & 114.0 & 0.123 & $-0.350$ & medium & Chat > Form & No \\
-ROUGE-1 & T\&O & Ask vs Chat & 103.0 & 0.067 & $-0.413$ & medium & Chat > Ask & No \\
-ROUGE-2 & Controller & Form vs Ask & 108.0 & 0.089 & $-0.385$ & medium & Ask > Form & No \\
-ROUGE-2 & Controller & Form vs Chat & 136.0 & 0.328 & $+0.225$ & small & Form > Chat & No \\
-ROUGE-2 & Controller & Ask vs Chat & 85.0 & 0.020 & $+0.516$ & large & Ask > Chat & No \\
-ROUGE-2 & Purposes & Form vs Ask & 126.5 & 0.726 & $+0.083$ & negligible & Form > Ask & No \\
-ROUGE-2 & Purposes & Form vs Chat & 107.0 & 0.346 & $+0.225$ & small & Form > Chat & No \\
-ROUGE-2 & Purposes & Ask vs Chat & 74.0 & 0.247 & $+0.295$ & small & Ask > Chat & No \\
-ROUGE-2 & Categories & Form vs Ask & 137.0 & 0.340 & $-0.219$ & small & Ask > Form & No \\
-ROUGE-2 & Categories & Form vs Chat & 125.0 & 0.313 & $+0.231$ & small & Form > Chat & No \\
-ROUGE-2 & Categories & Ask vs Chat & 133.0 & 0.291 & $+0.242$ & small & Ask > Chat & No \\
-ROUGE-2 & Data Subj. & Form vs Ask & 98.0 & 0.049 & $+0.442$ & medium & Form > Ask & No \\
-ROUGE-2 & Data Subj. & Form vs Chat & 104.0 & 0.071 & $-0.407$ & medium & Chat > Form & No \\
-ROUGE-2 & Data Subj. & Ask vs Chat & 57.0 & 0.008 & $-0.620$ & large & Chat > Ask & \textbf{Yes} \\
-ROUGE-2 & Retention & Form vs Ask & 50.0 & $<$0.001 & $+0.715$ & large & Form > Ask & \textbf{Yes} \\
-ROUGE-2 & Retention & Form vs Chat & 174.0 & 0.980 & $+0.009$ & negligible & Form > Chat & No \\
-ROUGE-2 & Retention & Ask vs Chat & 67.0 & 0.005 & $-0.618$ & large & Chat > Ask & \textbf{Yes} \\
-ROUGE-2 & T\&O & Form vs Ask & 84.0 & 0.019 & $+0.521$ & large & Form > Ask & No \\
-ROUGE-2 & T\&O & Form vs Chat & 123.0 & 0.190 & $-0.299$ & small & Chat > Form & No \\
-ROUGE-2 & T\&O & Ask vs Chat & 62.0 & 0.003 & $-0.647$ & large & Chat > Ask & \textbf{Yes} \\
-ROUGE-L & Controller & Form vs Ask & 106.0 & 0.128 & $-0.348$ & medium & Ask > Form & No \\
-ROUGE-L & Controller & Form vs Chat & 103.0 & 0.067 & $+0.413$ & medium & Form > Chat & No \\
-ROUGE-L & Controller & Ask vs Chat & 76.0 & 0.010 & $+0.567$ & large & Ask > Chat & \textbf{Yes} \\
-ROUGE-L & Purposes & Form vs Ask & 170.0 & 0.901 & $+0.031$ & negligible & Form > Ask & No \\
-ROUGE-L & Purposes & Form vs Chat & 135.0 & 0.315 & $+0.231$ & small & Form > Chat & No \\
-ROUGE-L & Purposes & Ask vs Chat & 156.0 & 0.635 & $+0.111$ & small & Ask > Chat & No \\
-ROUGE-L & Categories & Form vs Ask & 143.0 & 0.423 & $-0.185$ & small & Ask > Form & No \\
-ROUGE-L & Categories & Form vs Chat & 104.0 & 0.115 & $-0.360$ & medium & Chat > Form & No \\
-ROUGE-L & Categories & Ask vs Chat & 140.0 & 0.380 & $-0.202$ & small & Chat > Ask & No \\
-ROUGE-L & Data Subj. & Form vs Ask & 124.0 & 0.199 & $+0.293$ & small & Form > Ask & No \\
-ROUGE-L & Data Subj. & Form vs Chat & 72.0 & 0.007 & $-0.590$ & large & Chat > Form & \textbf{Yes} \\
-ROUGE-L & Data Subj. & Ask vs Chat & 59.0 & 0.002 & $-0.664$ & large & Chat > Ask & \textbf{Yes} \\
-ROUGE-L & Retention & Form vs Ask & 33.0 & $<$0.001 & $+0.812$ & large & Form > Ask & \textbf{Yes} \\
-ROUGE-L & Retention & Form vs Chat & 123.0 & 0.190 & $-0.299$ & small & Chat > Form & No \\
-ROUGE-L & Retention & Ask vs Chat & 55.0 & 0.001 & $-0.687$ & large & Chat > Ask & \textbf{Yes} \\
-ROUGE-L & T\&O & Form vs Ask & 127.0 & 0.227 & $+0.276$ & small & Form > Ask & No \\
-ROUGE-L & T\&O & Form vs Chat & 114.0 & 0.123 & $-0.350$ & medium & Chat > Form & No \\
-ROUGE-L & T\&O & Ask vs Chat & 66.0 & 0.004 & $-0.624$ & large & Chat > Ask & \textbf{Yes} \\
-METEOR & Controller & Form vs Ask & 121.0 & 0.173 & $-0.311$ & medium & Ask > Form & No \\
-METEOR & Controller & Form vs Chat & 131.0 & 0.269 & $+0.254$ & small & Form > Chat & No \\
-METEOR & Controller & Ask vs Chat & 89.0 & 0.027 & $+0.493$ & medium & Ask > Chat & No \\
-METEOR & Purposes & Form vs Ask & 138.0 & 0.732 & $-0.080$ & negligible & Ask > Form & No \\
-METEOR & Purposes & Form vs Chat & 118.0 & 0.543 & $+0.145$ & small & Form > Chat & No \\
-METEOR & Purposes & Ask vs Chat & 72.0 & 0.131 & $+0.377$ & medium & Ask > Chat & No \\
-METEOR & Categories & Form vs Ask & 114.0 & 0.123 & $-0.350$ & medium & Ask > Form & No \\
-METEOR & Categories & Form vs Chat & 156.0 & 0.635 & $-0.111$ & small & Chat > Form & No \\
-METEOR & Categories & Ask vs Chat & 151.0 & 0.548 & $+0.140$ & small & Ask > Chat & No \\
-METEOR & Data Subj. & Form vs Ask & 131.0 & 0.269 & $+0.254$ & small & Form > Ask & No \\
-METEOR & Data Subj. & Form vs Chat & 70.0 & 0.006 & $-0.601$ & large & Chat > Form & \textbf{Yes} \\
-METEOR & Data Subj. & Ask vs Chat & 68.0 & 0.005 & $-0.613$ & large & Chat > Ask & \textbf{Yes} \\
-METEOR & Retention & Form vs Ask & 34.0 & $<$0.001 & $+0.806$ & large & Form > Ask & \textbf{Yes} \\
-METEOR & Retention & Form vs Chat & 157.0 & 0.653 & $-0.105$ & small & Chat > Form & No \\
-METEOR & Retention & Ask vs Chat & 55.0 & 0.001 & $-0.687$ & large & Chat > Ask & \textbf{Yes} \\
-METEOR & T\&O & Form vs Ask & 76.0 & 0.010 & $+0.567$ & large & Form > Ask & \textbf{Yes} \\
-METEOR & T\&O & Form vs Chat & 131.0 & 0.269 & $-0.254$ & small & Chat > Form & No \\
-METEOR & T\&O & Ask vs Chat & 88.0 & 0.025 & $-0.499$ & medium & Chat > Ask & No \\
-BERTScore Precision & Controller & Form vs Ask & 132.0 & 0.280 & $-0.248$ & small & Ask > Form & No \\
-BERTScore Precision & Controller & Form vs Chat & 110.0 & 0.099 & $+0.373$ & medium & Form > Chat & No \\
-BERTScore Precision & Controller & Ask vs Chat & 93.0 & 0.036 & $+0.470$ & medium & Ask > Chat & No \\
-BERTScore Precision & Purposes & Form vs Ask & 143.0 & 0.423 & $+0.185$ & small & Form > Ask & No \\
-BERTScore Precision & Purposes & Form vs Chat & 160.0 & 0.708 & $-0.088$ & negligible & Chat > Form & No \\
-BERTScore Precision & Purposes & Ask vs Chat & 150.0 & 0.532 & $-0.145$ & small & Chat > Ask & No \\
-BERTScore Precision & Categories & Form vs Ask & 123.0 & 0.190 & $-0.299$ & small & Ask > Form & No \\
-BERTScore Precision & Categories & Form vs Chat & 38.0 & $<$0.001 & $-0.783$ & large & Chat > Form & \textbf{Yes} \\
-BERTScore Precision & Categories & Ask vs Chat & 76.0 & 0.010 & $-0.567$ & large & Chat > Ask & \textbf{Yes} \\
-BERTScore Precision & Data Subj. & Form vs Ask & 169.0 & 0.881 & $-0.037$ & negligible & Ask > Form & No \\
-BERTScore Precision & Data Subj. & Form vs Chat & 43.0 & $<$0.001 & $-0.755$ & large & Chat > Form & \textbf{Yes} \\
-BERTScore Precision & Data Subj. & Ask vs Chat & 61.0 & 0.003 & $-0.652$ & large & Chat > Ask & \textbf{Yes} \\
-BERTScore Precision & Retention & Form vs Ask & 128.0 & 0.237 & $+0.271$ & small & Form > Ask & No \\
-BERTScore Precision & Retention & Form vs Chat & 88.0 & 0.025 & $-0.499$ & medium & Chat > Form & No \\
-BERTScore Precision & Retention & Ask vs Chat & 73.0 & 0.008 & $-0.584$ & large & Chat > Ask & \textbf{Yes} \\
-BERTScore Precision & T\&O & Form vs Ask & 123.0 & 0.190 & $-0.299$ & small & Ask > Form & No \\
-BERTScore Precision & T\&O & Form vs Chat & 101.0 & 0.059 & $-0.425$ & medium & Chat > Form & No \\
-BERTScore Precision & T\&O & Ask vs Chat & 112.0 & 0.111 & $-0.362$ & medium & Chat > Ask & No \\
-BERTScore Recall & Controller & Form vs Ask & 114.0 & 0.123 & $-0.350$ & medium & Ask > Form & No \\
-BERTScore Recall & Controller & Form vs Chat & 114.0 & 0.123 & $+0.350$ & medium & Form > Chat & No \\
-BERTScore Recall & Controller & Ask vs Chat & 89.0 & 0.027 & $+0.493$ & medium & Ask > Chat & No \\
-BERTScore Recall & Purposes & Form vs Ask & 165.0 & 0.803 & $+0.060$ & negligible & Form > Ask & No \\
-BERTScore Recall & Purposes & Form vs Chat & 149.0 & 0.515 & $+0.151$ & small & Form > Chat & No \\
-BERTScore Recall & Purposes & Ask vs Chat & 139.0 & 0.367 & $+0.208$ & small & Ask > Chat & No \\
-BERTScore Recall & Categories & Form vs Ask & 162.0 & 0.745 & $+0.077$ & negligible & Form > Ask & No \\
-BERTScore Recall & Categories & Form vs Chat & 131.0 & 0.269 & $+0.254$ & small & Form > Chat & No \\
-BERTScore Recall & Categories & Ask vs Chat & 169.0 & 0.881 & $+0.037$ & negligible & Ask > Chat & No \\
-BERTScore Recall & Data Subj. & Form vs Ask & 96.0 & 0.043 & $+0.453$ & medium & Form > Ask & No \\
-BERTScore Recall & Data Subj. & Form vs Chat & 112.0 & 0.111 & $+0.362$ & medium & Form > Chat & No \\
-BERTScore Recall & Data Subj. & Ask vs Chat & 156.0 & 0.635 & $-0.111$ & small & Chat > Ask & No \\
-BERTScore Recall & Retention & Form vs Ask & 36.0 & $<$0.001 & $+0.795$ & large & Form > Ask & \textbf{Yes} \\
-BERTScore Recall & Retention & Form vs Chat & 142.0 & 0.408 & $-0.191$ & small & Chat > Form & No \\
-BERTScore Recall & Retention & Ask vs Chat & 51.0 & $<$0.001 & $-0.709$ & large & Chat > Ask & \textbf{Yes} \\
-BERTScore Recall & T\&O & Form vs Ask & 123.0 & 0.190 & $+0.299$ & small & Form > Ask & No \\
-BERTScore Recall & T\&O & Form vs Chat & 119.0 & 0.157 & $-0.322$ & medium & Chat > Form & No \\
-BERTScore Recall & T\&O & Ask vs Chat & 85.0 & 0.020 & $-0.516$ & large & Chat > Ask & No \\
-BERTScore F1 & Controller & Form vs Ask & 117.0 & 0.143 & $-0.333$ & medium & Ask > Form & No \\
-BERTScore F1 & Controller & Form vs Chat & 104.0 & 0.071 & $+0.407$ & medium & Form > Chat & No \\
-BERTScore F1 & Controller & Ask vs Chat & 87.0 & 0.024 & $+0.504$ & large & Ask > Chat & No \\
-BERTScore F1 & Purposes & Form vs Ask & 169.0 & 0.881 & $+0.037$ & negligible & Form > Ask & No \\
-BERTScore F1 & Purposes & Form vs Chat & 175.0 & 1.000 & $+0.003$ & negligible & Form > Chat & No \\
-BERTScore F1 & Purposes & Ask vs Chat & 173.0 & 0.960 & $+0.014$ & negligible & Ask > Chat & No \\
-BERTScore F1 & Categories & Form vs Ask & 138.0 & 0.353 & $-0.214$ & small & Ask > Form & No \\
-BERTScore F1 & Categories & Form vs Chat & 48.0 & $<$0.001 & $-0.726$ & large & Chat > Form & \textbf{Yes} \\
-BERTScore F1 & Categories & Ask vs Chat & 74.0 & 0.009 & $-0.578$ & large & Chat > Ask & \textbf{Yes} \\
-BERTScore F1 & Data Subj. & Form vs Ask & 147.0 & 0.483 & $+0.162$ & small & Form > Ask & No \\
-BERTScore F1 & Data Subj. & Form vs Chat & 88.0 & 0.025 & $-0.499$ & medium & Chat > Form & No \\
-BERTScore F1 & Data Subj. & Ask vs Chat & 71.0 & 0.007 & $-0.595$ & large & Chat > Ask & \textbf{Yes} \\
-BERTScore F1 & Retention & Form vs Ask & 93.0 & 0.036 & $+0.470$ & medium & Form > Ask & No \\
-BERTScore F1 & Retention & Form vs Chat & 98.0 & 0.049 & $-0.442$ & medium & Chat > Form & No \\
-BERTScore F1 & Retention & Ask vs Chat & 65.0 & 0.004 & $-0.630$ & large & Chat > Ask & \textbf{Yes} \\
-BERTScore F1 & T\&O & Form vs Ask & 170.0 & 0.901 & $-0.031$ & negligible & Ask > Form & No \\
-BERTScore F1 & T\&O & Form vs Chat & 94.0 & 0.038 & $-0.464$ & medium & Chat > Form & No \\
-BERTScore F1 & T\&O & Ask vs Chat & 84.0 & 0.019 & $-0.521$ & large & Chat > Ask & No \\
-SBERT ModernBERT & Controller & Form vs Ask & 109.0 & 0.094 & $-0.379$ & medium & Ask > Form & No \\
-SBERT ModernBERT & Controller & Form vs Chat & 115.0 & 0.129 & $+0.345$ & medium & Form > Chat & No \\
-SBERT ModernBERT & Controller & Ask vs Chat & 85.0 & 0.020 & $+0.516$ & large & Ask > Chat & No \\
-SBERT ModernBERT & Purposes & Form vs Ask & 146.0 & 0.468 & $+0.168$ & small & Form > Ask & No \\
-SBERT ModernBERT & Purposes & Form vs Chat & 83.0 & 0.018 & $+0.527$ & large & Form > Chat & No \\
-SBERT ModernBERT & Purposes & Ask vs Chat & 126.0 & 0.217 & $+0.282$ & small & Ask > Chat & No \\
-SBERT ModernBERT & Categories & Form vs Ask & 118.0 & 0.150 & $-0.328$ & medium & Ask > Form & No \\
-SBERT ModernBERT & Categories & Form vs Chat & 59.0 & 0.002 & $-0.664$ & large & Chat > Form & \textbf{Yes} \\
-SBERT ModernBERT & Categories & Ask vs Chat & 106.0 & 0.080 & $-0.396$ & medium & Chat > Ask & No \\
-SBERT ModernBERT & Data Subj. & Form vs Ask & 165.0 & 0.803 & $+0.060$ & negligible & Form > Ask & No \\
-SBERT ModernBERT & Data Subj. & Form vs Chat & 131.0 & 0.269 & $-0.254$ & small & Chat > Form & No \\
-SBERT ModernBERT & Data Subj. & Ask vs Chat & 112.0 & 0.111 & $-0.362$ & medium & Chat > Ask & No \\
-SBERT ModernBERT & Retention & Form vs Ask & 114.0 & 0.123 & $+0.350$ & medium & Form > Ask & No \\
-SBERT ModernBERT & Retention & Form vs Chat & 92.0 & 0.033 & $-0.476$ & medium & Chat > Form & No \\
-SBERT ModernBERT & Retention & Ask vs Chat & 66.0 & 0.004 & $-0.624$ & large & Chat > Ask & \textbf{Yes} \\
-SBERT ModernBERT & T\&O & Form vs Ask & 128.0 & 0.237 & $-0.271$ & small & Ask > Form & No \\
-SBERT ModernBERT & T\&O & Form vs Chat & 67.0 & 0.005 & $-0.618$ & large & Chat > Form & \textbf{Yes} \\
-SBERT ModernBERT & T\&O & Ask vs Chat & 93.0 & 0.036 & $-0.470$ & medium & Chat > Ask & No \\
-SBERT MiniLM & Controller & Form vs Ask & 98.0 & 0.049 & $-0.442$ & medium & Ask > Form & No \\
-SBERT MiniLM & Controller & Form vs Chat & 175.0 & 1.000 & $+0.003$ & negligible & Form > Chat & No \\
-SBERT MiniLM & Controller & Ask vs Chat & 85.0 & 0.020 & $+0.516$ & large & Ask > Chat & No \\
-SBERT MiniLM & Purposes & Form vs Ask & 104.0 & 0.071 & $-0.407$ & medium & Ask > Form & No \\
-SBERT MiniLM & Purposes & Form vs Chat & 158.0 & 0.671 & $+0.100$ & negligible & Form > Chat & No \\
-SBERT MiniLM & Purposes & Ask vs Chat & 111.0 & 0.105 & $+0.368$ & medium & Ask > Chat & No \\
-SBERT MiniLM & Categories & Form vs Ask & 92.0 & 0.033 & $-0.476$ & medium & Ask > Form & No \\
-SBERT MiniLM & Categories & Form vs Chat & 59.0 & 0.002 & $-0.664$ & large & Chat > Form & \textbf{Yes} \\
-SBERT MiniLM & Categories & Ask vs Chat & 149.0 & 0.515 & $-0.151$ & small & Chat > Ask & No \\
-SBERT MiniLM & Data Subj. & Form vs Ask & 116.0 & 0.136 & $+0.339$ & medium & Form > Ask & No \\
-SBERT MiniLM & Data Subj. & Form vs Chat & 36.0 & $<$0.001 & $-0.795$ & large & Chat > Form & \textbf{Yes} \\
-SBERT MiniLM & Data Subj. & Ask vs Chat & 28.0 & $<$0.001 & $-0.840$ & large & Chat > Ask & \textbf{Yes} \\
-SBERT MiniLM & Retention & Form vs Ask & 85.0 & 0.020 & $+0.516$ & large & Form > Ask & No \\
-SBERT MiniLM & Retention & Form vs Chat & 123.0 & 0.190 & $-0.299$ & small & Chat > Form & No \\
-SBERT MiniLM & Retention & Ask vs Chat & 57.0 & 0.002 & $-0.675$ & large & Chat > Ask & \textbf{Yes} \\
-SBERT MiniLM & T\&O & Form vs Ask & 143.0 & 0.423 & $+0.185$ & small & Form > Ask & No \\
-SBERT MiniLM & T\&O & Form vs Chat & 153.0 & 0.582 & $-0.128$ & small & Chat > Form & No \\
-SBERT MiniLM & T\&O & Ask vs Chat & 142.0 & 0.408 & $-0.191$ & small & Chat > Ask & No \\
-\end{longtable}
-\normalsize
-
-\subsection{Chapter-Level Pairwise Mann--Whitney $U$ Sensitivity Check ($n = 113$, unbalanced)}
-\label{app:inf-nlp-chapter-mwu}
-
-Between-groups sensitivity check on the unbalanced full sample. Only Bonferroni-significant comparisons are listed; non-significant comparisons are omitted for brevity (matching the doc-level convention in \S\ref{app:inf-nlp}, Table~\ref{tab:app-nlp-mwu}). Bonferroni-corrected $\alpha = 0.0167$. Effect size: rank-biserial $r$ (positive when the first-named mode is higher; sign corrected at appendix generation to match the doc-level convention).
-
-\small
-\begin{longtable}{@{}l l l r r r l l@{}}
-\caption{Chapter-level Bonferroni-significant pairwise Mann--Whitney $U$ tests on the unbalanced full sample of $n = 113$ documents.}
-\label{tab:app-nlp-chapter-mwu} \\
-\toprule
-Metric & Chapter & Pair & $U$ & $p$ & $r$ & Direction & Sig (Bonf) \\
-\midrule
-\endfirsthead
-\multicolumn{8}{l}{\textit{Table \thetable{} continued from previous page.}} \\
-\toprule
-Metric & Chapter & Pair & $U$ & $p$ & $r$ & Direction & Sig (Bonf) \\
-\midrule
-\endhead
-\midrule
-\multicolumn{8}{r}{\textit{Continued on next page.}} \\
-\endfoot
-\bottomrule
-\endlastfoot
-BLEU & Data Subj. & Form vs Ask & 914.5 & 0.009 & $+0.336$ & Form > Ask & \textbf{Yes} \\
-BLEU & Retention & Form vs Ask & 1027.0 & $<$0.001 & $+0.500$ & Form > Ask & \textbf{Yes} \\
-BLEU & Retention & Ask vs Chat & 398.0 & $<$0.001 & $-0.448$ & Chat > Ask & \textbf{Yes} \\
-ROUGE-1 & Controller & Form vs Ask & 431.0 & 0.006 & $-0.370$ & Ask > Form & \textbf{Yes} \\
-ROUGE-1 & Controller & Ask vs Chat & 962.5 & 0.012 & $+0.334$ & Ask > Chat & \textbf{Yes} \\
-ROUGE-1 & Data Subj. & Form vs Chat & 430.5 & 0.003 & $-0.403$ & Chat > Form & \textbf{Yes} \\
-ROUGE-1 & Data Subj. & Ask vs Chat & 480.0 & 0.012 & $-0.335$ & Chat > Ask & \textbf{Yes} \\
-ROUGE-1 & Retention & Form vs Ask & 931.0 & 0.008 & $+0.360$ & Form > Ask & \textbf{Yes} \\
-ROUGE-1 & Retention & Ask vs Chat & 376.5 & $<$0.001 & $-0.478$ & Chat > Ask & \textbf{Yes} \\
-ROUGE-2 & Retention & Form vs Ask & 1004.0 & $<$0.001 & $+0.467$ & Form > Ask & \textbf{Yes} \\
-ROUGE-2 & Retention & Ask vs Chat & 409.0 & 0.001 & $-0.433$ & Chat > Ask & \textbf{Yes} \\
-ROUGE-L & Controller & Ask vs Chat & 986.0 & 0.006 & $+0.367$ & Ask > Chat & \textbf{Yes} \\
-ROUGE-L & Data Subj. & Form vs Chat & 430.5 & 0.003 & $-0.403$ & Chat > Form & \textbf{Yes} \\
-ROUGE-L & Data Subj. & Ask vs Chat & 480.0 & 0.012 & $-0.335$ & Chat > Ask & \textbf{Yes} \\
-ROUGE-L & Retention & Form vs Ask & 933.5 & 0.007 & $+0.364$ & Form > Ask & \textbf{Yes} \\
-ROUGE-L & Retention & Ask vs Chat & 397.0 & $<$0.001 & $-0.450$ & Chat > Ask & \textbf{Yes} \\
-ROUGE-L & T\&O & Form vs Chat & 471.5 & 0.010 & $-0.347$ & Chat > Form & \textbf{Yes} \\
-METEOR & Purposes & Form vs Chat & 948.5 & 0.016 & $+0.315$ & Form > Chat & \textbf{Yes} \\
-METEOR & Data Subj. & Form vs Chat & 441.5 & 0.004 & $-0.388$ & Chat > Form & \textbf{Yes} \\
-METEOR & Retention & Form vs Ask & 998.0 & $<$0.001 & $+0.458$ & Form > Ask & \textbf{Yes} \\
-METEOR & Retention & Ask vs Chat & 400.5 & $<$0.001 & $-0.445$ & Chat > Ask & \textbf{Yes} \\
-BERTScore Precision & Purposes & Form vs Chat & 483.0 & 0.013 & $-0.331$ & Chat > Form & \textbf{Yes} \\
-BERTScore Precision & Categories & Form vs Chat & 351.0 & $<$0.001 & $-0.514$ & Chat > Form & \textbf{Yes} \\
-BERTScore Precision & Data Subj. & Form vs Chat & 364.0 & $<$0.001 & $-0.495$ & Chat > Form & \textbf{Yes} \\
-BERTScore Precision & Retention & Form vs Chat & 403.0 & $<$0.001 & $-0.441$ & Chat > Form & \textbf{Yes} \\
-BERTScore Precision & T\&O & Form vs Ask & 460.0 & 0.015 & $-0.328$ & Ask > Form & \textbf{Yes} \\
-BERTScore Precision & T\&O & Form vs Chat & 415.0 & 0.001 & $-0.425$ & Chat > Form & \textbf{Yes} \\
-BERTScore Recall & Data Subj. & Form vs Ask & 981.0 & 0.001 & $+0.433$ & Form > Ask & \textbf{Yes} \\
-BERTScore Recall & Data Subj. & Form vs Chat & 1044.0 & $<$0.001 & $+0.447$ & Form > Chat & \textbf{Yes} \\
-BERTScore Recall & Retention & Ask vs Chat & 438.0 & 0.003 & $-0.393$ & Chat > Ask & \textbf{Yes} \\
-BERTScore F1 & Categories & Form vs Chat & 399.0 & $<$0.001 & $-0.447$ & Chat > Form & \textbf{Yes} \\
-BERTScore F1 & Retention & Form vs Chat & 465.0 & 0.008 & $-0.356$ & Chat > Form & \textbf{Yes} \\
-BERTScore F1 & Retention & Ask vs Chat & 444.0 & 0.004 & $-0.385$ & Chat > Ask & \textbf{Yes} \\
-BERTScore F1 & T\&O & Form vs Chat & 440.0 & 0.003 & $-0.390$ & Chat > Form & \textbf{Yes} \\
-SBERT ModernBERT & Categories & Form vs Chat & 437.0 & 0.003 & $-0.394$ & Chat > Form & \textbf{Yes} \\
-SBERT ModernBERT & Retention & Form vs Chat & 437.0 & 0.003 & $-0.394$ & Chat > Form & \textbf{Yes} \\
-SBERT ModernBERT & T\&O & Form vs Chat & 434.0 & 0.003 & $-0.398$ & Chat > Form & \textbf{Yes} \\
-SBERT MiniLM & Controller & Form vs Ask & 454.0 & 0.013 & $-0.337$ & Ask > Form & \textbf{Yes} \\
-SBERT MiniLM & Categories & Form vs Ask & 433.0 & 0.007 & $-0.367$ & Ask > Form & \textbf{Yes} \\
-SBERT MiniLM & Categories & Form vs Chat & 410.0 & 0.001 & $-0.432$ & Chat > Form & \textbf{Yes} \\
-SBERT MiniLM & Data Subj. & Form vs Chat & 225.0 & $<$0.001 & $-0.688$ & Chat > Form & \textbf{Yes} \\
-SBERT MiniLM & Data Subj. & Ask vs Chat & 412.0 & 0.001 & $-0.429$ & Chat > Ask & \textbf{Yes} \\
-SBERT MiniLM & Retention & Ask vs Chat & 451.0 & 0.005 & $-0.375$ & Chat > Ask & \textbf{Yes} \\
-\end{longtable}
-\normalsize
-
-The chapter-level sensitivity check broadly agrees with the matched-pairs Wilcoxon family on direction: the chapters where the matched analysis reports significant mode differences are the same chapters where the between-groups MWU also reaches Bonferroni significance, with the matched analysis producing larger effect sizes (as expected for a within-subjects design). Degenerate BLEU cells on Purposes and Categories are omitted in both families.
+Ask is the significantly lowest-scoring mode (Ask $<$ Form, Ask
+$<$ Chat) on the metrics that reach significance — most clearly
+on BERTScore Recall, F1, ROUGE-2, and METEOR — while Form and
+Chat trade leadership depending on whether the metric emphasises
+lexical recall or document-level semantic alignment.
 
 \section{Confidence--Quality Correlations}
 \label{app:inf-corr}
@@ -825,13 +304,12 @@ Chat $W = 0.601$, $p < 0.001$). Source:
 \texttt{python/metrics/output/statistical\_tests.md} (\emph{Per-Mode
 Completion Time} section).
 
-\subsection{Kruskal--Wallis Sensitivity Check ($n = 113$, unbalanced)}
+\subsection{Kruskal--Wallis Omnibus ($n = 113$)}
 
 \begin{table}[htbp]
 \centering
-\caption{Kruskal--Wallis $H$ test on per-mode completion time across
-the unbalanced full sample. Reported as a between-groups sensitivity
-check, not the primary post-hoc family.}
+\caption{Kruskal--Wallis $H$ test on per-mode completion time
+across the unbalanced full sample of $n = 113$ documents.}
 \label{tab:app-timing-kw}
 \small
 \begin{tabular}{@{}l r r l l@{}}
@@ -843,59 +321,18 @@ Completion time (s) & 16.455 & $<0.001$ & Yes & 0.147 (large) \\
 \end{tabular}
 \end{table}
 
-\subsection{Friedman Omnibus ($n = 26$ matched triple)}
+\subsection{Pairwise Mann--Whitney $U$ ($n = 113$)}
+
+Pairwise Mann--Whitney $U$ tests on the unbalanced full sample,
+serving as the post-hoc family where the Kruskal--Wallis omnibus
+is significant. Bonferroni-corrected $\alpha = 0.0167$.
 
 \begin{table}[htbp]
 \centering
-\caption{Friedman omnibus test on per-mode completion time on the
-matched-triple subset of $n = 26$ participants.}
-\label{tab:app-timing-friedman}
-\small
-\begin{tabular}{@{}l r r l l@{}}
-\toprule
-Measure & $\chi^2$ & $p$ & Sig & $W$ \\
-\midrule
-Completion time (s) & 18.692 & $<0.001$ & Yes & 0.359 (strong) \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Pairwise Wilcoxon Signed-Rank Post-hoc ($n = 26$, primary)}
-
-Bonferroni-corrected $\alpha = 0.0167$. Effect size: matched-pairs
-rank-biserial $r$ (negative when the first-named mode in the pair is
-\emph{faster}, since the test ranks the absolute differences of
-positive minus negative paired contrasts).
-
-\begin{table}[htbp]
-\centering
-\caption{Pairwise Wilcoxon signed-rank post-hoc tests for per-mode
-completion time on the matched-triple subset.}
-\label{tab:app-timing-posthoc}
-\small
-\begin{tabular}{@{}l r r l r l@{}}
-\toprule
-Pair & $W$ & $p$ & $r$ & Median $\Delta$ (s) & Sig (Bonf) \\
-\midrule
-Form vs Ask  & 19.0  & $<0.001$ & $-0.892$ large       & $-400$  & \textbf{Yes} \\
-Form vs Chat & 34.0  & $<0.001$ & $-0.806$ large       & $-274$  & \textbf{Yes} \\
-Ask vs Chat  & 162.0 & 0.745    & $-0.077$ negligible  & $+68.5$ & No \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsection{Mann--Whitney $U$ Sensitivity Check ($n = 113$, unbalanced)}
-
-The Mann--Whitney $U$ test is reported as a between-groups
-sensitivity check on the unbalanced full sample. Bonferroni-corrected
-$\alpha = 0.0167$.
-
-\begin{table}[htbp]
-\centering
-\caption{Mann--Whitney $U$ between-groups sensitivity check on
-per-mode completion time on the unbalanced full sample of $n = 113$
-documents. Effect-size $r$ is positive when the first-named mode is
-\emph{slower}.}
+\caption{Pairwise Mann--Whitney $U$ post-hoc tests on per-mode
+completion time on the unbalanced full sample of $n = 113$
+documents. Effect-size $r$ is positive when the first-named mode
+is \emph{slower}.}
 \label{tab:app-timing-mwu}
 \small
 \begin{tabular}{@{}l r r l r r l@{}}
@@ -909,7 +346,6 @@ Ask vs Chat  & 793.5 & 0.457    & $-0.100$ negligible  & 858.0 & 717.0 & No \\
 \end{tabular}
 \end{table}
 
-The sensitivity check agrees with the matched-pairs primary analysis
-on direction (Form $<$ Ask, Form $<$ Chat; Ask $\approx$ Chat), with
-similar effect-size ordering — as expected for a within-subjects
-design.
+Form is significantly faster than both Ask and Chat (large and
+medium effects); Ask and Chat are statistically indistinguishable
+from one another.
