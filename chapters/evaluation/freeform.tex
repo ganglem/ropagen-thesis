@@ -1,17 +1,25 @@
-\section{Mode Preference and Free-Text Feedback}
+\subsection{Mode Preference and Free-Text Feedback}
 \label{sec:eval-freeform}
 
-After all three interaction modes had been completed, participants
-provided two final inputs: an overall ranking of the three modes from
-most to least preferred, and an open-ended summary comment on the
-study experience. In addition, after each individual mode, an
-optional per-mode comment was collected. This section reports the
-ranking distribution, the inferential test on the rank-1 votes, and
-a thematic summary of all $88$ free-text comments contributed by $46$
-unique participants.
+The per-instrument data so far have shown a consistent Form-first
+ordering on usability (\S\ref{sec:eval-sus}) and workload
+(\S\ref{sec:eval-rtlx}), with a partial inversion on perceived
+transparency, trust, and confidence
+(\S\ref{sec:eval-ai-support}). This section asks how the three
+patterns combine when participants are forced to commit to a single
+overall preference. After all three interaction modes had been
+completed, participants provided two final inputs: an overall
+ranking of the three modes from most to least preferred, and an
+open-ended summary comment on the study experience. In addition,
+after each individual mode, an optional per-mode comment was
+collected. This section reports the ranking distribution, the
+inferential test on the rank-1 votes, and a thematic summary of all
+$88$ free-text comments contributed by $44$ unique participants.
 
-\subsection{Mode Preference Ranking}
+\subsubsection{Mode Preference Ranking}
 
+The ranking offers the cleanest test of which mode participants
+actually preferred once they had used all three.
 Table~\ref{tab:mode-preference} summarises the post-experiment
 ranking. Participants assigned each of the three modes a rank from
 $1$ (most preferred) to $3$ (least preferred); ``Rank-1 votes''
@@ -37,14 +45,15 @@ Ask  & 12 & 17.4\,\% & 2.14 \\
 
 Form receives the plurality of first-place votes ($53.6\,\%$),
 followed by Chat ($29.0\,\%$) and Ask ($17.4\,\%$). The mean ranks
-follow the same ordering. A chi-square goodness-of-fit test against a
-uniform null rejects the null hypothesis
-($\chi^2(2, N = 69) = 14.17$, $p < 0.001$, Cramér's $V = 0.320$,
-medium effect). The complementary Friedman test on the full rank
-distribution is non-significant ($\chi^2(2) = 5.07$, $p = 0.079$),
-reflecting that the strong Form plurality at rank~$1$ is partially
-balanced by variance at ranks~$2$ and~$3$. Full statistics are
-reproduced in Appendix~\ref{app:inferential}.
+follow the same ordering, mirroring the Form-first pattern of the
+SUS and R-TLX. A chi-square goodness-of-fit test against a uniform
+null rejects the null hypothesis ($\chi^2(2, N = 69) = 14.17$,
+$p < 0.001$, Cramér's $V = 0.320$, medium effect). The complementary
+Friedman test on the full rank distribution is non-significant
+($\chi^2(2) = 5.07$, $p = 0.079$), reflecting that the strong Form
+plurality at rank~$1$ is partially balanced by variance at ranks~$2$
+and~$3$. Full statistics are reproduced in
+Appendix~\ref{app:inferential}.
 
 The complete distribution of all three rank positions across the
 three modes is visualised in Figure~\ref{fig:ranking-distribution}.
@@ -57,15 +66,17 @@ three modes is visualised in Figure~\ref{fig:ranking-distribution}.
 \label{fig:ranking-distribution}
 \end{figure}
 
-\subsection{Free-Text Comments}
+\subsubsection{Free-Text Comments}
 
-Each mode collected an optional per-mode open-ended comment, and
-after all three modes participants wrote an overall summary comment.
-A total of $88$ comments were recorded across $46$ unique
-participants. Comments are written in German with a small minority in
-English; they are summarised thematically below. The presentation
-preserves the order Form, Ask, Chat, and concludes with the
-across-modes overall comments.
+The free-text comments contextualise the ranking by surfacing the
+reasons participants gave for their preferences. Each mode collected
+an optional per-mode open-ended comment, and after all three modes
+participants wrote an overall summary comment. A total of $88$
+comments were recorded across $44$ unique participants. Comments are
+written in German with a small minority in English; they are
+summarised thematically below. The presentation preserves the order
+Form, Ask, Chat, and concludes with the across-modes overall
+comments.
 
 \paragraph{Form.} Comments on Form cluster around speed, clarity,
 and control. Recurring observations describe the mode as the fastest
@@ -87,10 +98,10 @@ scenario-specific input.
 \paragraph{Ask.} Comments on Ask are the most polarised of the
 three modes. A consistent theme is that Ask is the most cumbersome
 mode in terms of workflow: the requirement to manually copy the AI's
-suggested text into the form field is repeatedly described as
-redundant work, particularly because participants reported that the
-model often produced suggestions in a free-text style that did not
-match the structured form fields. Several participants observed that
+suggested text into the form field (cf.\ \S\ref{sec:ropagen}) is
+repeatedly described as redundant work, particularly because
+participants reported that the model often produced suggestions in a
+free-text style that did not match the structured form fields. Several participants observed that
 the lack of a persistent context across fields forced them to
 re-enter the same information repeatedly. Conversely, explanatory
 text generated by Ask is consistently described as the most
@@ -103,8 +114,8 @@ field layout.
 comfort and opacity. On the comfort side, several participants
 describe Chat as the most intuitive of the three modes, especially
 because the AI takes over the work of mapping the conversation onto
-the structured ROPA fields, leaving the participant only with the
-task of describing the processing scenario. On the opacity side, an
+the structured ROPA fields (cf.\ \S\ref{sec:ropagen}), leaving the
+participant only with the task of describing the processing scenario. On the opacity side, an
 equally large group of participants reports uncertainty about what is
 actually being written into the document — whether the entire chat
 history is used for generation, whether each individual message must
@@ -129,3 +140,11 @@ Form with the conversational, context-aware behaviour of Chat or
 Ask. Several participants explicitly add a caveat that they are
 novices in the legal domain and that their preference ordering might
 shift if they had prior GDPR knowledge.
+
+The ranking and comment data therefore close the user-experience
+half of the chapter on the same Form-first ordering established by
+the SUS and R-TLX, with Chat slotting in second on raw votes and Ask
+trailing largely because of its copy-paste workflow. Whether the
+documents produced under each mode mirror this ordering — or invert
+it — is the question taken up next, beginning with the
+reference-based NLP metrics in \S\ref{sec:eval-nlp-doc}.

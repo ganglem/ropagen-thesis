@@ -1,0 +1,66 @@
+---
+title: Project Timeline
+---
+flowchart LR
+    %% ─── Phase 1: Tool Development ─────────────────────────
+    subgraph P1["1 · ROPAgen Development"]
+        direction TB
+        A1["Tool designed and built<br/>at DBIS, Univ. Ulm"]
+        A2["Three interaction modes:<br/>Form &middot; Ask &middot; Chat"]
+        A3["Mistral Large 3 backend<br/>via OpenRouter"]
+        A1 --> A2 --> A3
+    end
+
+    %% ─── Phase 2: Study Preparation ───────────────────────
+    subgraph P2["2 · Study Preparation"]
+        direction TB
+        B1["APOR GmbH scenario<br/>authored (German)"]
+        B2["Expert reference ROPA<br/>produced (Form mode)"]
+        B3["Instruments selected:<br/>SUS &middot; R-TLX &middot; AI Q'naire<br/>ranking &middot; free-text"]
+        B4["Latin Square:<br/>6 mode orderings"]
+        B1 --> B2 --> B3 --> B4
+    end
+
+    %% ─── Phase 3: Data Collection ─────────────────────────
+    subgraph P3["3 · Data Collection · n = 73 · ~90 min/session"]
+        direction TB
+        C1["Consent + GDPR/ROPA briefing<br/>+ scenario reading"]
+        C2["3 mode blocks in Latin Square order<br/>(each: interact + SUS + R-TLX<br/>+ AI Q'naire + per-mode freeform)"]
+        C3["Final preference ranking<br/>+ overall freeform comment"]
+        C4["Demographics<br/>(end of session)"]
+        C1 --> C2 --> C3 --> C4
+    end
+
+    %% ─── Phase 4: Analysis ────────────────────────────────
+    subgraph P4["4 · Analysis"]
+        direction TB
+        D1["Quality filter:<br/>survey 73 &rarr; 69<br/>documents &rarr; 113 retained"]
+        D2["NLP metrics:<br/>BLEU &middot; ROUGE-1/2/L<br/>METEOR &middot; BERTScore &middot; SBERT"]
+        D3["LLM-as-Judge:<br/>Gemini 3.1 Pro<br/>5 rubric dimensions"]
+        D4["Statistics:<br/>Friedman &middot; Wilcoxon<br/>Kruskal-Wallis &middot; Mann-Whitney<br/>Spearman"]
+        D1 --> D2 --> D3 --> D4
+    end
+
+    %% ─── Phase 5: Thesis ──────────────────────────────────
+    subgraph P5["5 · Thesis Writing"]
+        direction TB
+        E1["Chapters drafted"]
+        E2["Polish pass<br/>and submission"]
+        E1 --> E2
+    end
+
+    %% ─── Top-level flow ───────────────────────────────────
+    P1 --> P2 --> P3 --> P4 --> P5
+
+    %% ─── Styling ──────────────────────────────────────────
+    classDef phase1 fill:#FFD59A,stroke:#000,stroke-width:1px,color:#000
+    classDef phase2 fill:#A7C7E7,stroke:#000,stroke-width:1px,color:#000
+    classDef phase3 fill:#FFF9AE,stroke:#000,stroke-width:1px,color:#000
+    classDef phase4 fill:#E0BBE4,stroke:#000,stroke-width:1px,color:#000
+    classDef phase5 fill:#E8E8E8,stroke:#000,stroke-width:1px,color:#000
+
+    class A1,A2,A3 phase1
+    class B1,B2,B3,B4 phase2
+    class C1,C2,C3,C4 phase3
+    class D1,D2,D3,D4 phase4
+    class E1,E2 phase5

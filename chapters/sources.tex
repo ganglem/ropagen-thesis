@@ -1,9 +1,14 @@
-\chapter{Study Scenario}
+\chapter{Study Materials}
+\label{app:materials}
+
+This appendix groups the two reproducible artefacts of the user study: the standardised scenario presented to all participants, and the verbatim items of the two standardised survey instruments (SUS and Raw NASA-TLX). Both are referenced repeatedly from the Methodology chapter and are reproduced here in their canonical form.
+
+\section{Study Scenario}
 \label{app:scenario}
 
 The scenario reproduced below was presented to all participants in German, regardless of interaction mode (Form, Ask, Chat). The English translation is provided for the international reader; the German original is the version actually shown.
 
-\section{Original (German)}
+\subsection{Original (German)}
 \label{app:scenario-de}
 
 \begin{verbatim}
@@ -51,7 +56,7 @@ Alle in diesem Zusammenhang gespeicherten Informationen werden spätestens
 3 Monate nach Austritt der jeweiligen Person gelöscht.
 \end{verbatim}
 
-\section{English Translation}
+\subsection{English Translation}
 \label{app:scenario-en}
 
 \begin{verbatim}
@@ -100,365 +105,40 @@ after the person's departure.
 \end{verbatim}
 
 
-\chapter{LLM-as-a-Judge Configuration}
-\label{app:judge}
+\section{Survey Instruments}
+\label{app:sus-rtlx-items}
 
-This appendix documents the inputs to the LLM-as-a-judge evaluation layer that scored the 113 retained ROPA documents. It contains the verbatim system and user prompts, the five-dimension rubric, and the model configuration needed to reproduce the evaluation.
+This section reproduces the verbatim items of the two standardised survey instruments referenced from the Methodology chapter: the System Usability Scale (SUS) and the Raw NASA Task Load Index (R-TLX). The six-item Perceived AI Support instrument is bespoke to this study and is listed in full in the Methodology chapter; it is not reproduced here.
 
-\section{System and User Prompt}
-\label{app:judge-prompt}
+\subsection{System Usability Scale (SUS)}
+\label{app:sus-items}
 
-The system prompt below is sent verbatim as the \texttt{system} role on every evaluation call. It is taken from \texttt{python/judge/prompt.json} (key \texttt{judge.system}).
+Five-point Likert scale, $1 = $ Strongly Disagree, $5 = $ Strongly Agree. Odd-numbered items are positively keyed; even-numbered items are negatively keyed. The canonical wording reproduced below is taken from Brooke~\cite{Brooke1996}.
 
-\begin{verbatim}
-You are an expert GDPR compliance reviewer evaluating Records of
-Processing Activities (ROPA) documents under Article 30 GDPR. The
-documents are written by novices (non-experts, no prior GDPR training)
-who described the same processing scenario using different LLM-assisted
-tools. Your job is to judge each ROPA document against (a) the provided
-scenario and (b) GDPR Article 30 requirements. Be strict but fair. Do not
-reward verbosity. Do not penalise a document for merely restating
-scenario facts. Respond with valid JSON only - no prose, no Markdown
-fences, no commentary before or after the JSON object.
-\end{verbatim}
+\begin{enumerate}
+    \item I think that I would like to use this system frequently.
+    \item I found the system unnecessarily complex.
+    \item I thought the system was easy to use.
+    \item I think that I would need the support of a technical person to be able to use this system.
+    \item I found the various functions in this system were well integrated.
+    \item I thought there was too much inconsistency in this system.
+    \item I would imagine that most people would learn to use this system very quickly.
+    \item I found the system very cumbersome to use.
+    \item I felt very confident using the system.
+    \item I needed to learn a lot of things before I could get going with this system.
+\end{enumerate}
 
-The accompanying user-message template is sent on every call with \texttt{\{scenario\}} (the German original from Appendix~\ref{app:scenario-de}) and \texttt{\{document\}} (the participant ROPA document) substituted in:
+\subsection{NASA Raw Task Load Index Subscales}
+\label{app:rtlx-items}
 
-\begin{verbatim}
-You will evaluate one ROPA document against the scenario it is supposed
-to cover.
+Six subscales, each rated on the standard NASA TLX 21-point scale. The Raw TLX variant used in this study takes the unweighted mean across the six subscales rather than applying the pairwise-comparison weighting of the original NASA TLX. The subscale definitions reproduced below follow Hart~\cite{Hart2006}.
 
-=== SCENARIO (verbatim, German) ===
-{scenario}
-=== END SCENARIO ===
+\begin{description}
+    \item[Mental Demand] How mentally demanding was the task?
+    \item[Physical Demand] How physically demanding was the task?
+    \item[Temporal Demand] How hurried or rushed was the pace of the task?
+    \item[Performance] How successful were you in accomplishing what you were asked to do?
+    \item[Effort] How hard did you have to work to accomplish your level of performance?
+    \item[Frustration] How insecure, discouraged, irritated, stressed, and annoyed were you?
+\end{description}
 
-=== ROPA DOCUMENT TO EVALUATE ===
-{document}
-=== END DOCUMENT ===
-
-Score the document on each of the following five metrics using a 1-5
-Likert scale, and give a short rationale (max 2 sentences, English) for
-each score. The scale for all metrics is:
-1 = very poor, 2 = poor, 3 = adequate, 4 = good, 5 = excellent.
-
-Metrics and what to assess:
-- completeness: Coverage of Art. 30(1) GDPR required elements -
-  controller identity and contact, DPO, purposes of processing, legal
-  basis, categories of data subjects and personal data, categories of
-  recipients, retention periods, and technical/organisational measures
-  (TOMs). Missing elements lower the score.
-- scenario_faithfulness: How accurately the document reflects the
-  concrete facts of THIS scenario - APOR GmbH, Ulm (Mainstrasse 67), ~50
-  employees, internally hosted Microsoft Office and internal servers (NO
-  external cloud), no medical/sickness data, 3-month deletion after
-  employee departure, parking lot authorisation using a distinguishing
-  feature such as a licence plate. Generic ROPA boilerplate that ignores
-  these specifics lowers the score.
-- legal_correctness: Correct use of GDPR terminology and correct citation
-  of legal basis (typically Art. 6(1)(b) performance of contract for
-  employment data, Art. 6(1)(c) legal obligation where applicable, Art.
-  6(1)(f) legitimate interest for parking authorisation). Wrong articles,
-  invented legal bases, or confusing controller/processor/DPO roles lower
-  the score.
-- hallucination_inverse: Inverse score for invented facts not supported
-  by the scenario (e.g. invented third-party processors, invented data
-  categories like medical data, invented addresses, invented retention
-  periods different from 3 months). 5 = no hallucinations, 1 = many
-  invented facts.
-- overall: Holistic judgement of how useful this document would be as a
-  real Art. 30 ROPA record for this scenario, taking the four dimensions
-  above into account.
-
-Return a single JSON object with exactly this shape:
-{
-  "completeness":           {"score": <int 1-5>, "rationale": "<string>"},
-  "scenario_faithfulness":  {"score": <int 1-5>, "rationale": "<string>"},
-  "legal_correctness":      {"score": <int 1-5>, "rationale": "<string>"},
-  "hallucination_inverse":  {"score": <int 1-5>, "rationale": "<string>"},
-  "overall":                {"score": <int 1-5>, "rationale": "<string>"}
-}
-\end{verbatim}
-
-\section{Rubric --- Five Dimensions}
-\label{app:judge-rubric}
-
-All five dimensions share the same 1--5 Likert anchor: $1 = $ very poor, $2 = $ poor, $3 = $ adequate, $4 = $ good, $5 = $ excellent. The fourth dimension, \texttt{hallucination\_inverse}, is inverted internally so that for all five dimensions higher equals better. For each dimension the judge returns both an integer score and a short English rationale (maximum two sentences).
-
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabularx}{\textwidth}{lX}
-\toprule
-\textbf{Dimension} & \textbf{What is assessed} \\
-\midrule
-Completeness & Coverage of Art.~30(1) GDPR required elements: controller identity and contact, DPO, purposes of processing, legal basis, categories of data subjects and personal data, categories of recipients, retention periods, and technical/organisational measures (TOMs). Missing elements lower the score. \\
-\addlinespace
-Scenario Faithfulness & Accuracy with respect to the concrete facts of this scenario: APOR GmbH, Ulm (Mainstraße~67), $\sim$50 employees, internally hosted Microsoft Office and internal servers (no external cloud), no medical/sickness data, 3-month deletion after employee departure, parking authorisation using a distinguishing feature such as a licence plate. Generic ROPA boilerplate lowers the score. \\
-\addlinespace
-Legal Correctness & Correct use of GDPR terminology and correct citation of legal basis (typically Art.~6(1)(b) for employment data, Art.~6(1)(c) where applicable, Art.~6(1)(f) for parking authorisation). Wrong articles, invented legal bases, or confused controller/processor/DPO roles lower the score. \\
-\addlinespace
-Hallucination (inverse) & Inverse score for invented facts not supported by the scenario (e.g. invented third-party processors, invented categories such as medical data, invented addresses, retention periods other than 3~months). 5~=~no hallucinations, 1~=~many invented facts. \\
-\addlinespace
-Overall & Holistic judgement of how useful the document would be as a real Art.~30 ROPA record for this scenario, taking the four dimensions above into account. \\
-\bottomrule
-\end{tabularx}
-\caption{The five judge dimensions. All share the 1--5 Likert anchor; higher is better for every dimension after the hallucination inversion.}
-\label{tab:judge-rubric}
-\end{table}
-
-\section{Model Configuration and Limitations}
-\label{app:judge-config}
-
-The configuration in Table~\ref{tab:judge-config} is taken from the \texttt{judge} block of \texttt{python/judge/prompt.\-json} and the corresponding cells of \texttt{ROPAgen\_JUDGE.ipynb}. It is the minimal information required to reproduce the evaluation layer.
-
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabularx}{\textwidth}{lX}
-\toprule
-\textbf{Setting} & \textbf{Value} \\
-\midrule
-Model & \texttt{google/gemini-3.1-pro-preview} (via OpenRouter) \\
-Temperature & \texttt{0.0} (deterministic decoding) \\
-Output format & JSON object, enforced via OpenRouter \texttt{response\_format = json\_schema} with \texttt{strict: true} \\
-Schema name & \texttt{ropa\_judge\_result} \\
-Required keys & \texttt{completeness}, \texttt{scenario\_faithfulness}, \texttt{legal\_correctness}, \texttt{hallucination\_inverse}, \texttt{overall} \\
-Per-key shape & \texttt{\{"score": int in [1,5], "rationale": string\}} \\
-Additional properties & Disallowed at every object level \\
-Documents evaluated & 113 ROPA documents (Form~37, Ask~37, Chat~39) \\
-Caching & Per-document JSON result cached on disk; reused on re-runs \\
-Retry behaviour & Schema-validation or transient API failures retried; persistent failures logged and skipped \\
-Logging & Each call logs model, latency, prompt and completion token counts, and raw response payload \\
-\bottomrule
-\end{tabularx}
-\caption{LLM-as-a-judge model configuration.}
-\label{tab:judge-config}
-\end{table}
-
-\paragraph{Known limitations.} The following limitations of the judge layer are stated for full transparency and discussed further in the Discussion chapter:
-
-\begin{itemize}
-\item \textbf{Single-judge bias.} Only one judge model (Gemini~3.1 Pro Preview) operationalises the rubric; inter-rater agreement with a human GDPR expert is not established.
-\item \textbf{Model-family bias.} Documents are produced by Mistral Large~3 inside ropagen, while the judge belongs to a different model family (Google). This reduces but does not eliminate stylistic-preference bias.
-\item \textbf{Single-scenario bias.} All scores are conditional on the one APOR GmbH scenario; generalisation to other ROPA contexts is not claimed.
-\item \textbf{Reference-free.} Unlike the NLP metric layer, the judge does not compare against an expert reference document; it scores against the scenario and Art.~30 directly.
-\end{itemize}
-
-
-\chapter{Full Inferential Tables}
-\label{app:stats}
-
-This appendix consolidates the canonical sample-size derivation and the full inferential statistics for both the survey and the NLP/judge layer. The tables in the Evaluation chapter draw selectively from these; the appendix is reproduced for completeness and reproducibility.
-
-\section{Sample-Size Derivation}
-\label{app:samplesizes}
-
-All sample sizes used in the thesis are derived from the raw data files committed to the repository: \texttt{python/survey/docs/data.csv} for the survey (one row per participant) and \texttt{python/metrics/output/all\_scores\_combined.csv} for the NLP and judge scores (one row per AI-generated document).
-
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabular}{lr}
-\toprule
-\textbf{Survey subset} & \textbf{n} \\
-\midrule
-Recruited participants (raw) & 73 \\
-Participants with at least one valid session ($p\_0001 \geq 1$) & 70 \\
-Form responses (mode-level) & 69 \\
-Ask responses (mode-level) & 69 \\
-Chat responses (mode-level) & 69 \\
-Matched-triple participants (valid response in all three modes) & 69 \\
-\bottomrule
-\end{tabular}
-\caption{Survey sample sizes after consent and quality filtering.}
-\label{tab:n-survey}
-\end{table}
-
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabular}{lr}
-\toprule
-\textbf{NLP / judge subset} & \textbf{n} \\
-\midrule
-Total documents with parseable NLP scores and judge ratings & 113 \\
-Form documents & 37 \\
-Ask documents & 37 \\
-Chat documents & 39 \\
-Unique participants represented & 47 \\
-Participants with at least one document in each mode & 28 \\
-Strict matched triple (exactly one document per mode) & 26 \\
-\bottomrule
-\end{tabular}
-\caption{NLP and judge sample sizes. The strict $n=26$ set is used for all within-subjects tests (Friedman, Wilcoxon signed-rank); the unbalanced $n=113$ is used for between-groups sensitivity checks.}
-\label{tab:n-nlp}
-\end{table}
-
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabular}{lr}
-\toprule
-\textbf{Survey $\times$ NLP join} & \textbf{n} \\
-\midrule
-Joined rows (document with matching survey response) & 106 \\
-Form joined rows & 34 \\
-Ask joined rows & 34 \\
-Chat joined rows & 38 \\
-Unique participants in the joined sample & 44 \\
-Participants with survey $\times$ NLP coverage in all three modes & 27 \\
-\bottomrule
-\end{tabular}
-\caption{Triangulated samples used for confidence--quality analyses. The joined $n=106$ is the canonical sample for the rank-inversion table; the within-subjects $n=27$ is used for paired confidence~$\times$~quality correlations.}
-\label{tab:n-triangulation}
-\end{table}
-
-\section{Survey Inferential Tables}
-\label{app:stats-survey}
-
-All survey tests use the matched-triple $n=69$ within-subjects subset. Omnibus is the Friedman test (non-parametric repeated-measures); post-hoc is pairwise Wilcoxon signed-rank with Bonferroni-corrected $\alpha = 0.0167$. Effect-size labels: $|r| < 0.1$ negligible, $0.1$--$0.3$ small, $0.3$--$0.5$ medium, $\geq 0.5$ large. For Kendall's~$W$: $0$--$0.1$ weak, $0.1$--$0.3$ moderate, $0.3$--$0.5$ strong.
-
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabular}{lrrrrrl}
-\toprule
-\textbf{Measure} & \textbf{n} & $\boldsymbol{\chi^2}$ & \textbf{df} & \textbf{p} & $\boldsymbol{W}$ & \textbf{Sig.} \\
-\midrule
-SUS (0--100, higher = better)        & 69 & 5.51  & 2 & 0.0636 & 0.040 & No \\
-R-TLX composite (1--21)              & 69 & 5.24  & 2 & 0.0728 & 0.038 & No \\
-R-TLX Mental Demand                  & 69 & 3.13  & 2 & 0.2086 & 0.023 & No \\
-R-TLX Physical Demand                & 69 & 2.08  & 2 & 0.3535 & 0.015 & No \\
-R-TLX Temporal Demand                & 69 & 12.77 & 2 & 0.0017 & 0.093 & \textbf{Yes} \\
-R-TLX Effort                         & 69 & 3.78  & 2 & 0.1511 & 0.027 & No \\
-R-TLX Frustration                    & 69 & 8.93  & 2 & 0.0115 & 0.065 & \textbf{Yes} \\
-R-TLX Performance (positive-coded)   & 69 & 2.33  & 2 & 0.3114 & 0.017 & No \\
-AI Confidence (item \texttt{5\_ai})  & 69 & 3.76  & 2 & 0.1524 & 0.027 & No \\
-AI Support (6-item composite)        & 69 & 1.05  & 2 & 0.5919 & 0.008 & No \\
-AI Reuse intention (item \texttt{6\_ai}) & 69 & 11.12 & 2 & 0.0039 & 0.081 & \textbf{Yes} \\
-\bottomrule
-\end{tabular}
-\caption{Friedman omnibus across all survey measures ($n = 69$ matched triple).}
-\label{tab:survey-friedman}
-\end{table}
-
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabular}{llrrrrl}
-\toprule
-\textbf{Measure} & \textbf{Pair} & \textbf{n} & \textbf{W} & \textbf{p} & \textbf{r} & \textbf{Sig.\ (Bonf.)} \\
-\midrule
-SUS              & Form vs Ask  & 60 & 578.5 & 0.0131  & $+0.368$ & \textbf{Yes} \\
-SUS              & Form vs Chat & 58 & 549.5 & 0.0177  & $+0.358$ & No \\
-SUS              & Ask vs Chat  & 61 & 885.5 & 0.6660  & $-0.063$ & No \\
-R-TLX comp.\     & Form vs Ask  & 65 & 684.0 & 0.0111  & $-0.362$ & \textbf{Yes} \\
-R-TLX comp.\     & Form vs Chat & 65 & 636.0 & 0.0043  & $-0.407$ & \textbf{Yes} \\
-R-TLX comp.\     & Ask vs Chat  & 63 & 995.5 & 0.9318  & $+0.012$ & No \\
-Temporal Demand  & Form vs Ask  & 43 & 237.0 & 0.0038  & $-0.499$ & \textbf{Yes} \\
-Temporal Demand  & Form vs Chat & 46 & 233.0 & $<$0.001 & $-0.569$ & \textbf{Yes} \\
-Temporal Demand  & Ask vs Chat  & 46 & 427.0 & 0.2111  & $-0.210$ & No \\
-Frustration      & Form vs Ask  & 52 & 403.5 & 0.0091  & $-0.414$ & \textbf{Yes} \\
-Frustration      & Form vs Chat & 57 & 519.5 & 0.0144  & $-0.371$ & \textbf{Yes} \\
-Frustration      & Ask vs Chat  & 52 & 629.0 & 0.5838  & $+0.087$ & No \\
-AI Reuse         & Form vs Ask  & 49 & 402.5 & 0.0339  & $+0.343$ & No \\
-AI Reuse         & Form vs Chat & 43 & 216.0 & 0.0015  & $+0.543$ & \textbf{Yes} \\
-AI Reuse         & Ask vs Chat  & 45 & 454.5 & 0.4684  & $+0.122$ & No \\
-\bottomrule
-\end{tabular}
-\caption{Pairwise Wilcoxon signed-rank tests for the survey measures with at least one significant pairwise effect. Sign convention: positive $r$ means the first-named mode scores higher on the measure. Bonferroni-corrected $\alpha = 0.0167$.}
-\label{tab:survey-wilcoxon}
-\end{table}
-
-\paragraph{Mode preference ranking ($n = 69$).} The chi-square goodness-of-fit on first-rank votes against a uniform null gives $\chi^2(2, N{=}69) = 14.17$, $p < 0.001$, Cram\'er's $V = 0.320$. The Friedman test on the full rank scores (1--3) gives $\chi^2(2) = 5.07$, $p = 0.0792$, $W = 0.037$. Per-mode rank-1 vote counts: Form~37, Ask~12, Chat~20; mean ranks (lower~=~better): Form~1.78, Chat~2.07, Ask~2.14.
-
-\section{NLP and Judge Inferential Tables}
-\label{app:stats-nlp}
-
-NLP and judge tests follow the same family: Friedman omnibus on the strict matched-triple $n=26$, Wilcoxon signed-rank pairwise post-hoc with Bonferroni-corrected $\alpha = 0.0167$, plus a Kruskal--Wallis sensitivity check on the full unbalanced $n = 113$. Shapiro--Wilk testing identified non-normal distributions in BLEU, BERTScore Recall (Ask, Chat), and SBERT (Form, Ask); non-parametric tests are used throughout.
-
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabular}{lrrll}
-\toprule
-\textbf{Metric} & \textbf{H} & \textbf{p} & \textbf{Sig.} & $\boldsymbol{\varepsilon^2}$ \\
-\midrule
-BLEU                  & 4.48  & 0.107   & No  & --- \\
-ROUGE-1               & 5.57  & 0.062   & No  & --- \\
-ROUGE-2               & 9.56  & 0.008   & Yes & 0.069 (mod.) \\
-ROUGE-L               & 7.79  & 0.020   & Yes & --- \\
-METEOR                & 9.80  & 0.007   & Yes & 0.071 (mod.) \\
-BERTScore Precision   & 9.11  & 0.011   & Yes & --- \\
-BERTScore Recall      & 32.38 & $<$0.001 & Yes & 0.276 (large) \\
-BERTScore F1          & 9.75  & 0.008   & Yes & 0.071 (mod.) \\
-SBERT                 & 17.43 & $<$0.001 & Yes & 0.140 (large) \\
-\bottomrule
-\end{tabular}
-\caption{Kruskal--Wallis sensitivity check on the full unbalanced sample ($n = 113$).}
-\label{tab:nlp-kruskal}
-\end{table}
-
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabular}{lrrll}
-\toprule
-\textbf{Metric} & $\boldsymbol{\chi^2}$ & \textbf{p} & \textbf{Sig.} & $\boldsymbol{W}$ \\
-\midrule
-BLEU                  & 6.23  & 0.044   & Yes & 0.083 (weak) \\
-ROUGE-1               & 10.69 & 0.005   & Yes & $\sim$0.18 (mod.) \\
-ROUGE-2               & 13.46 & 0.001   & Yes & $\sim$0.22 (mod.) \\
-ROUGE-L               & 11.31 & 0.004   & Yes & $\sim$0.19 (mod.) \\
-METEOR                & 9.92  & 0.007   & Yes & $\sim$0.17 (mod.) \\
-BERTScore Precision   & 18.54 & $<$0.001 & Yes & $\sim$0.30 (strong) \\
-BERTScore Recall      & 30.77 & $<$0.001 & Yes & 0.410 (strong) \\
-BERTScore F1          & 13.00 & 0.002   & Yes & $\sim$0.21 (mod.) \\
-SBERT                 & 16.69 & $<$0.001 & Yes & $\sim$0.27 (mod.) \\
-\bottomrule
-\end{tabular}
-\caption{Friedman omnibus on the strict within-subjects sample ($n = 26$).}
-\label{tab:nlp-friedman}
-\end{table}
-
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabular}{llrrrl}
-\toprule
-\textbf{Metric} & \textbf{Pair} & \textbf{W} & \textbf{p} & \textbf{r} & \textbf{Sig.\ (Bonf.)} \\
-\midrule
-BLEU                & Form vs Ask  & 108 & 0.089   & $+0.385$ & No \\
-BLEU                & Form vs Chat & 133 & 0.291   & $-0.242$ & No \\
-BLEU                & Ask vs Chat  & 74  & 0.009   & $-0.578$ & \textbf{Yes} \\
-ROUGE-1             & Form vs Ask  & 77  & 0.011   & $+0.561$ & \textbf{Yes} \\
-ROUGE-1             & Form vs Chat & 147 & 0.483   & $-0.162$ & No \\
-ROUGE-1             & Ask vs Chat  & 63  & 0.003   & $-0.641$ & \textbf{Yes} \\
-ROUGE-2             & Form vs Ask  & 30  & $<$0.001 & $+0.829$ & \textbf{Yes} \\
-ROUGE-2             & Form vs Chat & 136 & 0.328   & $+0.225$ & No \\
-ROUGE-2             & Ask vs Chat  & 71  & 0.007   & $-0.595$ & \textbf{Yes} \\
-ROUGE-L             & Form vs Ask  & 44  & $<$0.001 & $+0.749$ & \textbf{Yes} \\
-ROUGE-L             & Form vs Chat & 161 & 0.727   & $+0.083$ & No \\
-ROUGE-L             & Ask vs Chat  & 66  & 0.004   & $-0.624$ & \textbf{Yes} \\
-METEOR              & Form vs Ask  & 33  & $<$0.001 & $+0.812$ & \textbf{Yes} \\
-METEOR              & Form vs Chat & 137 & 0.340   & $+0.219$ & No \\
-METEOR              & Ask vs Chat  & 84  & 0.019   & $-0.521$ & No \\
-BERTScore Precision & Form vs Ask  & 63  & 0.003   & $+0.641$ & \textbf{Yes} \\
-BERTScore Precision & Form vs Chat & 106 & 0.080   & $-0.396$ & No \\
-BERTScore Precision & Ask vs Chat  & 40  & $<$0.001 & $-0.772$ & \textbf{Yes} \\
-BERTScore Recall    & Form vs Ask  & 0   & $<$0.001 & $+1.000$ & \textbf{Yes} \\
-BERTScore Recall    & Form vs Chat & 55  & 0.001   & $+0.687$ & \textbf{Yes} \\
-BERTScore Recall    & Ask vs Chat  & 99  & 0.053   & $-0.436$ & No \\
-BERTScore F1        & Form vs Ask  & 24  & $<$0.001 & $+0.863$ & \textbf{Yes} \\
-BERTScore F1        & Form vs Chat & 172 & 0.940   & $+0.020$ & No \\
-BERTScore F1        & Ask vs Chat  & 59  & 0.002   & $-0.664$ & \textbf{Yes} \\
-SBERT               & Form vs Ask  & 110 & 0.099   & $+0.373$ & No \\
-SBERT               & Form vs Chat & 56  & 0.002   & $-0.681$ & \textbf{Yes} \\
-SBERT               & Ask vs Chat  & 26  & $<$0.001 & $-0.852$ & \textbf{Yes} \\
-\bottomrule
-\end{tabular}
-\caption{Pairwise Wilcoxon signed-rank tests on the strict within-subjects sample ($n = 26$). Sign convention: positive $r$ means the first-named mode scores higher on the metric. Bonferroni-corrected $\alpha = 0.0167$.}
-\label{tab:nlp-wilcoxon}
-\end{table}
-
-\paragraph{Confidence--quality correlations.} Spearman $\rho$ between item \texttt{5\_ai} (AI legal-basis confidence) and document quality, computed within each mode on the joined survey~$\times$~NLP sample. Form ($n = 34$): $\rho = -0.22$ ($p = 0.22$) vs.\ BERTScore F1; $\rho = +0.07$ ($p = 0.70$) vs.\ Judge Overall. Ask ($n = 34$): $\rho = -0.23$ ($p = 0.19$) vs.\ BERTScore F1; $\rho = -0.21$ ($p = 0.24$) vs.\ Judge Overall. Chat ($n = 38$): $\rho = +0.28$ ($p = 0.09$) vs.\ BERTScore F1; $\rho = +0.41$ ($p = 0.012$) vs.\ Judge Overall. Pooled ($n = 106$): $\rho = -0.02$ ($p = 0.88$) vs.\ BERTScore F1; $\rho = +0.14$ ($p = 0.14$) vs.\ Judge Overall.

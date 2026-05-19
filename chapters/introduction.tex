@@ -1,86 +1,29 @@
 \chapter{Introduction}
 
-\section{Kontext}
+\section{Context}
 The General Data Protection Regulation (GDPR) requires organizations to maintain a Record of Processing Activities (ROPA), a formal document that outlines how personal data is collected, processed, stored, and shared. Creating and maintaining these ROPA documents is often a resource-intensive process, especially for small and medium-sized organizations that lack specialized legal or data-protection expertise.
-Previous research developed an application that leverages Large Language Models (LLMs) to support users in generating GDPR-compliant ROPA documentation. The application provides three distinct interaction modes, each offering different degrees of assistance from the LLM, from basic text suggestions to highly automated drafting of ROPA entries. This system aims to reduce the effort needed to create legally compliant documentation while maintaining transparency and user control.
+In response to this challenge, ROPAgen --- the tool evaluated in this thesis --- is a web-based application that uses Large Language Models (LLMs) to assist users in drafting GDPR-compliant ROPA documentation. ROPAgen was developed by the author at the Institute of Databases and Information Systems (DBIS), University of Ulm, prior to this evaluation; it provides three interaction modes (Form, Ask, and Chat) that together offer increasing levels of LLM support, described in detail in \S\ref{sec:ropagen}. The system aims to reduce the effort needed to create legally compliant documentation while maintaining transparency and user control.
 Although the application provides a functional framework for assisted ROPA generation, its effectiveness, usability, and impact on documentation quality have not yet been systematically evaluated. To ensure that such a system can be confidently integrated into practical compliance workflows, both qualitative and quantitative assessments are needed. These evaluations must determine whether users can efficiently and correctly create ROPA documents, how the varying levels of LLM support influence performance and trust, and whether the system produces outputs aligned with GDPR requirements.
 
  
 \section{Research Problem and Research Questions}
-The goal of this thesis is to conduct a comprehensive evaluation of the existing LLM-supported ROPA generation application. The work will focus on assessing how the different interaction modes affect user experience, efficiency, output quality, and perceived reliability.
+The goal of this thesis is to conduct a comprehensive evaluation of the existing LLM-supported ROPA generation application. The evaluation asks how the three interaction modes shape the experience of novice users, how they shape the documents those users produce, and whether the two are aligned. Each overarching research question is broken into three more specific sub-questions tied to the instruments used to answer them.
 
-\paragraph{RQ1:}
+\paragraph{RQ1 --- User experience.}
+\emph{How do varying degrees of LLM support influence novice users during ROPA document creation?}
 \begin{itemize}
-    \item How do varying degrees of LLM support influence Novice users during ROPA document creation?
-    \item How do novice users perceive the usability, efficiency, and satisfaction of the three interaction modes (Form, Ask, Chat)?
-    \item How does cognitive load differ across the three modes for users with no prior GDPR knowledge?
-    \item Which mode do novice users find most intuitive and prefer, and why?
-    \item How confident do users feel about the quality of their generated documents in each mode? (This is now crucial - perception vs. reality)
+    \item[\textbf{RQ1.1}] How do novice users perceive the \emph{usability} of the three interaction modes (Form, Ask, Chat)?
+    \item[\textbf{RQ1.2}] How does \emph{cognitive load} differ across the three modes for users with no prior GDPR knowledge?
+    \item[\textbf{RQ1.3}] How do novice users subjectively evaluate each mode --- in their perception of the AI's support, in their confidence about the documents they produce, and in the mode they ultimately prefer?
 \end{itemize}
 
-\paragraph{RQ2:}
+\paragraph{RQ2 --- Document quality.}
+\emph{How do varying degrees of LLM support influence the quality of ROPA documents produced by novice users?}
 \begin{itemize}
-    \item How do varying degrees of LLM support influence Document quality when used by novice users?
-    \item How does document quality differ across the three generation modes based on semantic similarity to an expert-created reference (BERTScore)?
-    \item Compare documents using an LLM
-    \item Are all fields present? (Does my pipeline work)
-    \item Is there a discrepancy between user confidence (RQ1) and document quality (RQ2)?
+    \item[\textbf{RQ2.1}] How does document quality differ across the three modes when measured by reference-based NLP similarity to an expert-authored ROPA (BLEU, ROUGE, METEOR, BERTScore, SBERT)?
+    \item[\textbf{RQ2.2}] How does document quality differ across the three modes when assessed by an LLM-as-a-judge against an Article~30 rubric?
+    \item[\textbf{RQ2.3}] Is there a discrepancy between user confidence (RQ1.3) and the document quality actually achieved (RQ2.1, RQ2.2)?
 \end{itemize}
 
 
-\section{3. Teil: Objectives und Contributions }
-
-
-\section*{Thesis Organization}
-
-\begin{itemize}
-    \item \textbf{Chapter 1: Introduction}
-    \begin{itemize}
-        \item Motivation, research questions, and contributions
-    \end{itemize}
-
-    \item \textbf{Chapter 2: Background and Related Work}
-    \begin{itemize}
-        \item GDPR and ROPA
-        \item Related work in AI-assisted legal document generation
-    \end{itemize}
-
-    \item \textbf{Chapter 3: Methodology}
-    \begin{itemize}
-        \item Brief overview of ROPAgen
-        \item User study design (within-subjects, balanced Latin Square)
-        \item Participant recruitment and demographic profile
-        \item Data collection instruments (System Usability Scale, NASA Raw Task Load Index, six-item Perceived AI Support questionnaire, mode-preference ranking, open-ended free-text comments)
-        \item Document quality assessment (reference-based NLP metrics, LLM-as-a-judge)
-    \end{itemize}
-
-    \item \textbf{Chapter 4: Evaluation and Results}
-    \begin{itemize}
-        \item Usability (SUS)
-        \item Cognitive Load (NASA R-TLX)
-        \item Perceived AI Support (six-item AI questionnaire)
-        \item Mode Preference and Free-Text Feedback (post-experiment ranking and open-ended comments)
-        \item Document Similarity (NLP Metrics, document- and chapter-level)
-        \item GDPR-Specific Quality (LLM-as-a-Judge)
-        \item Summary of Findings
-        \item Participant Demographics
-    \end{itemize}
-
-    \item \textbf{Chapter 5: Discussion}
-    \begin{itemize}
-        \item Interpretation of findings against the research questions
-        \item Confidence--quality gap and implications
-        \item Limitations and comparison with related work
-    \end{itemize}
-
-    \item \textbf{Chapter 6: Conclusion}
-    \begin{itemize}
-        \item Summary of contributions and future work
-    \end{itemize}
-
-    \item \textbf{Appendix}
-    \begin{itemize}
-        \item Appendix A: Study Scenario (German original and English translation)
-        \item Appendix B: LLM-as-a-Judge Configuration (system/user prompt, rubric, model settings)
-    \end{itemize}
-\end{itemize}
+\section{Objectives and Contributions}

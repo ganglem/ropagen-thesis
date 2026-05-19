@@ -3,20 +3,21 @@
 
 This chapter reports the empirical findings of the user study and
 the subsequent document-quality analysis. The presentation follows
-the analysis plan laid out in Chapter~\ref{ch:methodology}: results
-are organised first around the per-mode self-report instruments
-(System Usability Scale, NASA Raw Task Load Index, Perceived AI
-Support), then the post-experiment mode preference ranking together
-with the open-ended free-text comments, and then the document-level
-quality measures (reference-based NLP metrics computed at the
-document level and the chapter level, followed by the LLM-as-a-judge
-evaluation). The chapter closes with a short overall summary and a
+the analysis plan laid out in Chapter~\ref{ch:methodology}: the User
+Study section reports the per-mode self-report instruments (System
+Usability Scale, NASA Raw Task Load Index, Perceived AI Support)
+together with the post-experiment mode preference ranking and
+open-ended free-text comments; the document-quality sections report
+the reference-based NLP metrics at the document level and the
+chapter level, a summary comparing the two granularities, and
+finally the LLM-as-a-judge evaluation. The chapter closes with a
 descriptive Demographics section that profiles the participant
-sample. For every quantitative measure the per-mode results are
-reported in the order Form, Ask, Chat, followed by the aggregated
-value across all three modes; relative direction (increase, decrease,
-or comparable level) is stated explicitly. All inferential test
-statistics referenced in the running text are reproduced in full in
+sample. For every
+quantitative measure the per-mode results are reported in the order
+Form, Ask, Chat, followed by the aggregated value across all three
+modes; relative direction (increase, decrease, or comparable level)
+is stated explicitly. All inferential test statistics referenced in
+the running text are reproduced in full in
 Appendix~\ref{app:inferential}.
 
 The survey analyses use the matched within-subjects sample of
@@ -26,11 +27,23 @@ $n = 39$) for descriptive statistics, and the strict matched-triple
 subset of $n = 26$ participants for within-subjects significance
 testing.
 
+\section{User Study}
+\label{sec:eval-userstudy}
+
+This section consolidates the four user-study instruments. The
+three per-mode self-report questionnaires (SUS, R-TLX, Perceived AI
+Support) are reported in the order in which they were administered
+after each interaction mode; the post-experiment mode preference
+ranking and the open-ended comments close the section by asking how
+the three per-instrument patterns combine when participants commit
+to a single overall preference and explain it in their own words.
+
 \input{chapters/evaluation/sus}
 \input{chapters/evaluation/rtlx}
 \input{chapters/evaluation/ai_questions}
 \input{chapters/evaluation/freeform}
+
 \input{chapters/evaluation/nlp_metrics}
 \input{chapters/evaluation/judge}
-\input{chapters/evaluation/summary}
+
 \input{chapters/evaluation/demographics}

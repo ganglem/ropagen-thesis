@@ -1,15 +1,76 @@
 \chapter{Methodology}
 \label{ch:methodology}
 
+This chapter has two complementary parts. The first introduces the tool under study, ROPAgen, in enough depth that the reader can picture what each of the three interaction modes does in practice and what is sent to the LLM in each case. The second describes the user study itself --- participants, instruments, sample sizes, and the analysis plan --- through which the tool is evaluated. Together they establish exactly what is being measured and how, before any results are reported.
+
+\section{ROPAgen}
+\label{sec:ropagen}
+
+The tool evaluated in this study is ROPAgen \cite{KastratovicRopagen}, a web-based application that assists users in drafting GDPR Article~30 Records of Processing Activities through three different levels of LLM support. ROPAgen was developed by the author of this thesis at the Institute of Databases and Information Systems (DBIS), University of Ulm, prior to the present evaluation; this section describes the tool as it stood at the time of the study.
+
+ROPAgen exists because creating a ROPA from scratch is tedious work: the document has rigid structural requirements (Art.~30 GDPR) but most of its substance is project-specific prose that has to be written from a blank page. The tool offers three interaction modes --- Form, Ask, and Chat --- which together form a gradient of LLM support. Form mode places the user in full control and uses the LLM only on demand; Ask mode adds the LLM as a per-section explainer alongside the same structured form; Chat mode hands control to the LLM, which decides which structured fields to populate from the user's free-form description. This thesis evaluates the three modes along that gradient: how the level of LLM support shapes user experience and how it shapes the documents that are actually produced. The remainder of this section describes the internal representation of a ROPA document in the tool, walks through the three modes from the user's perspective, and details the LLM backend that all three modes share.
+
+\subsection*{ROPA Documents in ROPAgen}
+
+Internally, ROPAgen represents a ROPA as a single structured \texttt{DocumentData} object organised around eight thematic groups that together cover the disclosures required under Art.~30(1) GDPR:
+
+\begin{enumerate}
+    \item \textbf{Organisation and controller} --- name, postal address, e-mail, phone number, and the contact details of the data protection officer and any external representative.
+    \item \textbf{Legal basis} --- Boolean flags for each lawful-basis option in Art.~6(1) GDPR (consent, contract, legal obligation, legitimate interest), the German national-law bases relevant to the study scenario (\S~26 BDSG, \S~28b IfSG, \S~257/239 HGB, \S~147 AO), and a free-text fallback for other grounds.
+    \item \textbf{Data categories} --- nine grouped categories (personal master data, employment, finance, health, legal, behavioural, documentation, vehicle, and other) each with predefined Boolean sub-fields such as surname, date of birth, working hours, or holiday entitlement.
+    \item \textbf{Data sources} --- Boolean flags for common upstream systems (Office~365, Azure, Google Workspace, AWS, e-mail, and so on) plus a free-text field for sources not covered by the predefined list.
+    \item \textbf{Person categories} --- affected persons, internal recipients, external recipients within the EU, and authorised personnel, each populated through Boolean role tags with an optional free-text override.
+    \item \textbf{Retention periods} --- Boolean flags for the standard retention triggers (after termination of employment, after termination of contract, upon revocation of consent), a free-text field for the concrete deletion period, and flags for legal-retention exceptions.
+    \item \textbf{Free-text fields} --- three short prose fields covering the purpose of processing, the technical and organisational measures in place, and any additional information that does not fit elsewhere.
+    \item \textbf{Metadata} --- the document identifier, title, and natural language in which the final ROPA should be generated.
+\end{enumerate}
+
+This structured form is the tool's working representation while the user is drafting. The final ROPA itself is rendered as a Markdown document --- with optional PDF export through a server-side rendering route --- that the LLM produces in a single generation step from the assembled \texttt{DocumentData} object. A complete example of the resulting document, the reference baseline against which all participant outputs are scored by the NLP metric pipeline, is reproduced in Appendix~\ref{app:ropagen-reference}.
+
+\subsection*{The Three Interaction Modes}
+
+The three modes are best read as positions on a single axis of increasing LLM support. Form mode sits at the low-support end: the user does everything, and the LLM is invoked only when asked. Ask mode sits in the middle: the user still enters every value themselves, but can request per-section explanation and guidance from the LLM at any point. Chat mode sits at the high-support end: the user does not see or fill the structured fields directly, and the LLM decides which fields to populate from the user's free-form description of their processing activity. Underneath, all three modes act on the same \texttt{DocumentData} schema and, when the user clicks the final \emph{Generate} button, hand that schema to the same prose-generation prompt (referred to internally as \texttt{finalropa}); the output ROPA is therefore produced by an identical generation step in all three conditions. What changes between the modes is the path the user takes to populate \texttt{DocumentData}.
+
+\subsubsection*{Form Mode}
+
+Form mode offers the lightest LLM support: the user sees and does everything. Every field of the \texttt{DocumentData} schema is visible and edited by hand, laid out as a linear questionnaire of checkboxes and short text fields across the eight thematic groups (see the Form mode screenshot in Appendix~\ref{app:ropagen-form-screenshot}). The LLM is invoked only when the user explicitly asks for it: each section offers an optional \emph{AI Suggest} button that asks the LLM, given the document's current state, to propose values for that section's fields; the suggestions populate the form but remain freely editable, and the user is under no obligation to use them. Once the user is satisfied with the form, clicking \emph{Generate} sends the assembled \texttt{DocumentData} object to the \texttt{finalropa} prompt, which synthesises a complete ROPA document in formal prose. Form mode therefore exposes the entire structure of a ROPA upfront and uses the LLM only at the margins.
+
+\subsubsection*{Ask Mode}
+
+Ask mode adds an AI explainer alongside the same structured form. The user still enters every value themselves, but at any point can ask the LLM, section by section, to explain what the section requires and to suggest how to fill it. Each section is paired with a dedicated chat panel (see Appendix~\ref{app:ropagen-ask-screenshot}): on the first message, the LLM explains the purpose of the section and asks the user for the relevant information; on subsequent messages it maintains the conversation history for that section and asks follow-up questions. The model is given the current \texttt{DocumentData} state alongside the user's message and may return, in addition to its conversational reply, a structured \texttt{DATA\_UPDATE} block that the front-end uses to auto-populate the corresponding form fields. The user retains the option to edit the form directly at any point. The final \emph{Generate} step is identical to Form mode --- the same \texttt{finalropa} prompt receives the same \texttt{DocumentData} object. Ask mode is therefore a structured-form workflow with a per-section explanatory companion.
+
+\subsubsection*{Chat Mode}
+
+Chat mode hands control to the AI. The user does not see or fill the structured fields at all; instead, after entering the organisation's metadata --- name, contact information, and title of the processing activity --- the user describes their processing in their own words, and the LLM decides which structured fields to populate from those descriptions (see Appendix~\ref{app:ropagen-chat-screenshot}). The user navigates section by section through a chat interface only; the structured form is hidden from view. The LLM explains what each section requires, asks the user to describe their processing, and silently extracts the relevant structured data: a mentioned vendor name flips the corresponding data-source flag, a mentioned data category populates the corresponding Boolean, and so on. The user therefore never directly interacts with the underlying \texttt{DocumentData} object, although the same object is being built up under the hood. The final \emph{Generate} step is once again identical to the other two modes. Chat mode is therefore a conversational-first workflow in which field-level decisions are delegated to the LLM and only the final generation step is shared with the other modes.
+
+\subsection*{LLM Backend}
+
+All three modes are backed by the same model: Mistral Large~3 (model identifier \texttt{mistralai/mistral-large-2512}), accessed through the OpenRouter API gateway via the Vercel AI SDK. Mistral was chosen because it is an EU-based model, an important consideration given the legal and GDPR-compliance context of the documents being drafted: keeping the generation workload with a European model provider keeps the tool aligned, in spirit, with the data-protection regime it is helping users to document. Two temperature regimes are used. Conversational and suggestion calls --- per-section AI suggestions in Form mode, dialogue turns in Ask and Chat modes, and the silent data-extraction calls in Chat mode --- use temperature~$0.2$ and top-$p$~$0.5$, which permits variation in phrasing while keeping the responses on-task. The final ROPA generation step, in contrast, uses temperature~$0.05$ and top-$p$~$0.05$, which makes the output close to deterministic given the same \texttt{DocumentData} input. Crucially, the prompt used in the final generation step is fixed across all three modes: the only thing that differs between a Form-mode output and a Chat-mode output is the contents of the \texttt{DocumentData} object that has been built up along the way. The full text of the backend prompts is reproduced in Appendix~\ref{app:ropagen-prompts}, as the counterpart to the LLM-as-a-judge configuration recorded in Appendix~\ref{app:judge}.
+
+Whether the differing paths to \texttt{DocumentData} produce documents of differing quality, and whether those quality differences are visible to the user filling out the form, are the questions taken up by the user study described next.
+
 \section{User Study}
 
 \subsection*{Study Design}
 
-The study followed a within-subjects experimental design with counterbalanced ordering, using a Balanced Latin Square. The recruited sample consisted of $N=73$ university students, all novice users with no prior GDPR experience, and each session lasted approximately 90 minutes per participant. Counterbalancing was implemented through a Balanced Latin Square with six groups, reflecting the three AI modes tested in randomised sequences; participants were randomly assigned to one of the six groups, and each completed all three modes in a predetermined counterbalanced order. This design controls for order effects, learning effects, and fatigue.
+The study followed a within-subjects experimental design with counterbalanced ordering. The recruited sample consisted of $N=73$ university students, all novice users with no prior GDPR experience, and each session lasted approximately 90 minutes per participant. Counterbalancing was implemented through a Balanced Latin Square: the three modes (Form, Ask, Chat) were arranged into six ordered sequences, and participants were randomly assigned to one of the six groups, with each participant completing all three modes in their group's predetermined order. This design controls for order effects, learning effects, and fatigue. Demographic information was collected at the end of the session, after the three modes and the final ranking, so that the demographics block could not prime mode-evaluation responses. Figure~\ref{fig:project-timeline} situates the per-session flow within the broader project arc, from the development of ROPAgen through data collection to the analysis pipeline reported in the chapters that follow.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{project_timeline.pdf}
+\caption{Project timeline. Five phases run left-to-right: ROPAgen
+development at DBIS; study preparation (scenario authoring, reference
+ROPA, instrument selection, Latin-Square construction); per-participant
+data collection in 90-minute sessions ($n = 73$); analysis (quality
+filter, NLP metric pipeline, LLM-as-Judge, statistical layer); and
+thesis writing. Demographics were administered at the end of each
+session rather than at the start.}
+\label{fig:project-timeline}
+\end{figure}
 
 \subsection*{Task Scenario}
 
-A single standardised scenario was used across all participants and modes to ensure consistency. The scenario described a relatable university-based data processing activity covering all GDPR Article~30 fields, ensuring comparability across conditions while remaining accessible to participants without legal expertise. The underlying LLM was Mistral Large~3 (model identifier \texttt{mistralai/mistral-large-2512}), held constant across all modes and routed via OpenRouter.
+A single standardised scenario was used across all participants and modes to ensure consistency. The scenario described a relatable workplace data processing activity at \emph{APOR GmbH}, a fictional small software company in Ulm with approximately 50 employees: the two processing activities under consideration were the administration of employee working time and leave, and the management of parking authorisations for the company car park. The scenario covers all GDPR Article~30 fields and is accessible to participants without legal expertise; it is reproduced verbatim in both German (the version actually shown to participants) and English in Appendix~\ref{app:scenario}. The LLM backing all three modes (\S\ref{sec:ropagen}) was held constant throughout the study.
 
 \subsection*{Participants}
 
@@ -18,7 +79,7 @@ Recruitment yielded $N=73$ university students. Participants were screened for m
 \subsection*{Data Availability and Sample Sizes}
 Due to technical data loss and incomplete submissions during data collection, the effective sample sizes differ across analysis streams. The canonical sample sizes used throughout this thesis are summarised below; all counts are derived from the raw data files committed to the repository and documented in full in \texttt{python/output/sample\_sizes.md}.
 \begin{itemize}
-    \item \textbf{Survey, recruited N = 73 / valid N = 70} — 73 participants completed the study; 70 retained after dropping cases with invalid consent or quality flags. Per-mode sample size: \textbf{n = 69} for each of Form, Ask, and Chat (one participant has a valid Form response but no Ask/Chat). The matched-triple survey subset (participants with valid responses for all three modes) is \textbf{n = 69}; this is used for within-subjects Friedman and Wilcoxon signed-rank tests on SUS, R-TLX, confidence items, and the perceived AI support composite.
+    \item \textbf{Survey, recruited N = 73 / valid N = 69} — 73 participants completed the study; 69 retained after dropping four records with invalid consent (\texttt{p\_0001 = -1}). All 69 valid participants completed all three modes, so per-mode sample size, matched-triple survey subset, and valid N are all \textbf{n = 69}. The matched-triple n = 69 is used for within-subjects Friedman and Wilcoxon signed-rank tests on SUS, R-TLX, confidence items, and the perceived AI support composite.
     \item \textbf{Documents, 113 generated ROPAs} — distributed across modes as 37 (Form), 37 (Ask), and 39 (Chat); used for all NLP metric and LLM-as-a-judge analyses at the document level. The 113 documents represent \textbf{47 unique participants}; \textbf{28 participants} have at least one document in each of the three modes (loose match), and \textbf{26 participants} have exactly one document per mode (strict matched triple). The strict \textbf{n = 26} set is used for all within-subjects tests on document-quality measures (Friedman, Wilcoxon signed-rank); the unbalanced full sample (n = 113) is used only for between-groups sensitivity checks (Kruskal--Wallis, Mann--Whitney U).
     \item \textbf{Survey × NLP join, 106 rows} — inner join on participant and mode yields 106 rows (Form 34, Ask 34, Chat 38) across \textbf{44 unique participants}. Per-mode joined samples (n = 34 / 34 / 38) are used for per-mode Spearman correlations between confidence and quality, which do not require complete triples.
     \item \textbf{Triangulated sample, n = 27} — participants with survey × NLP coverage in all three modes. This is the canonical N for confidence--quality correlation analyses that require within-subjects matching across all three modes simultaneously.
@@ -29,23 +90,25 @@ Descriptive statistics (means, medians, standard deviations) are computed on the
 
 \subsection*{Data Collection}
 
-Quantitative measures were collected after each mode. The System Usability Scale (SUS) was administered as ten standardised questions on a 5-point Likert scale, and the Raw Task Load Index (R-TLX) captured six cognitive load dimensions, also on a 5-point Likert scale. In addition, participants completed a six-item Perceived AI Support instrument on a 5-point Likert scale:
+Quantitative measures were collected after each mode. The System Usability Scale (SUS) was administered as ten standardised questions on a 5-point Likert scale; the Raw Task Load Index (R-TLX) captured six cognitive load dimensions on the standard NASA 21-point scale (1 = lowest demand, 21 = highest), as Raw TLX retains the unweighted subscale ratings on their original NASA scale. The full text of the 10 SUS items and the 6 NASA R-TLX subscale descriptions are reproduced in Appendix~\ref{app:sus-rtlx-items}. In addition, participants completed a six-item Perceived AI Support instrument on a 5-point Likert scale:
 
 \begin{enumerate}
-    \item \textit{Perceived Usefulness:} ``The LLM was helpful in creating this document.''
-    \item \textit{Efficiency:} ``This mode let me complete the ROPA faster than I could on my own.''
-    \item \textit{Transparency:} ``I understood why the AI suggested certain GDPR fields.''
-    \item \textit{Reliance Comfort:} ``I felt comfortable relying on the AI's suggested categories.''
-    \item \textit{Task-Specific Confidence (primary confidence measure):} ``I am confident the AI identified the appropriate legal basis.''
-    \item \textit{Intention to Use:} ``I would use this mode again for similar work.''
+    \item \textit{Perceived Usefulness:} ``The AI was helpful in creating this document.'' (\textit{``Die KI war bei der Erstellung dieses Dokuments hilfreich.''})
+    \item \textit{Efficiency:} ``The AI helped me to complete the document faster.'' (\textit{``Die KI hat mir geholfen, das Dokument schneller fertigzustellen.''})
+    \item \textit{Transparency:} ``I understood why the AI suggested specific GDPR fields.'' (\textit{``Ich habe verstanden, warum die KI bestimmte DSGVO-Felder vorgeschlagen hat.''})
+    \item \textit{Trust:} ``I trust that the AI made correct suggestions.'' (\textit{``Ich vertraue der KI, dass sie korrekte Vorschläge gemacht hat.''})
+    \item \textit{Task-Specific Confidence (primary confidence measure):} ``I am confident that the AI identified the correct legal basis.'' (\textit{``Ich bin zuversichtlich, dass die KI die richtige Rechtsgrundlage identifiziert hat.''})
+    \item \textit{Intention to Use:} ``I would use this mode again.'' (\textit{``Ich würde diesen Modus wieder verwenden.''})
 \end{enumerate}
 
-Item~5 is treated as the \textbf{primary confidence measure} throughout the analysis: it is the only item that asks participants to judge the substantive correctness of the AI's output (the legal basis under Article 6 GDPR), and is therefore directly comparable to the document-quality signals from the NLP and judge pipelines. The remaining five items (usefulness, efficiency, transparency, reliance comfort, intention to use) capture distinct facets of \emph{perceived AI support} rather than confidence in output correctness, and are reported as a secondary composite. Free-text qualitative feedback was also collected after each mode, and total session duration was recorded as a single value per participant; per-mode timing was not recorded. After completing all three conditions, participants ranked all three modes by overall preference in a post-experiment ranking task.
+Items were administered in German (the parenthetical text above reproduces the verbatim wording shown to participants); the English glosses are provided for the international reader. Item~5 is treated as the \textbf{primary confidence measure} throughout the analysis: it is the only item that asks participants to judge the substantive correctness of the AI's output (the legal basis under Article 6 GDPR), and is therefore directly comparable to the document-quality signals from the NLP and judge pipelines. The remaining five items (usefulness, efficiency, transparency, trust, intention to use) capture distinct facets of \emph{perceived AI support} rather than confidence in output correctness, and are reported as a secondary composite. Free-text qualitative feedback was also collected after each mode. Two timing measurements were retained: total session duration from the survey instrument (one value per participant) and per-mode completion time emitted by ROPAgen at the end of each session and embedded in every generated document (one value per participant per mode, in seconds). After completing all three conditions, participants ranked all three modes by overall preference in a post-experiment ranking task.
 
 \subsection*{Quality Assessment}
 
+Following the dual-evaluation template adopted by Su et al.\ \cite{suJuDGEBenchmarkingJudgment2025} and Vayadande et al.\ \cite{vayadandeAIPoweredLegalDocumentation2024}, both surface-form and semantic measures are reported alongside an LLM-as-Judge rubric.
+
 \subsubsection*{NLP Metrics}
-All participant-generated documents (73 participants $\times$ 3 modes = 219 documents) are compared against a single reference document using a suite of automated NLP metrics. The reference document was created by the study author using the Form mode of ropagen, applying the same standardised scenario presented to participants. This document is treated as the authoritative baseline — a root-of-trust representing a careful, complete application of the most structured interaction mode. It should be noted that this introduces an inherent framing effect: NLP metrics measure similarity to Form-style output, which may disadvantage the more conversational outputs of Ask and Chat modes independently of their substantive quality.
+All participant-generated documents (73 participants $\times$ 3 modes = 219 theoretical maximum, 113 retained after dropping incomplete submissions; the gap is dominated by 26 participants who submitted no documents at all, with the remaining 21 missing one or two of their three modes) are compared against a single reference document using a suite of automated NLP metrics. The reference document was created by the study author using Form mode (\S\ref{sec:ropagen}), applying the same standardised scenario presented to participants, and is reproduced in full in Appendix~\ref{app:ropagen-reference}. It is treated as the authoritative baseline --- a root-of-trust representing a careful, complete application of the most structured interaction mode. This introduces an inherent framing effect: NLP metrics measure similarity to Form-style output, which may disadvantage the more conversational outputs of Ask and Chat modes independently of their substantive quality.
 \begin{itemize}
     \item \textbf{BLEU} (Bilingual Evaluation Understudy): n-gram precision with brevity penalty
     \item \textbf{ROUGE-1, ROUGE-2, ROUGE-L}: unigram overlap, bigram overlap, and longest common subsequence F1
@@ -55,8 +118,91 @@ All participant-generated documents (73 participants $\times$ 3 modes = 219 docu
 \end{itemize}
 Metrics are computed at both the document level (aggregated across all Article 30 sections) and the chapter level (per individual GDPR section). Results are aggregated by mode to establish comparative quality baselines.
 
+\subsubsection*{Metric Definitions}
+
+The five NLP metrics summarised above are defined formally below. Each is computed against the single expert-authored reference document; interpretive framing of the resulting values is deferred to the Evaluation chapter.
+
+BLEU rewards exact word-sequence overlap with the reference: a high BLEU score means the candidate reuses the reference's wording almost verbatim, while a low BLEU score can equally indicate a legitimate paraphrase or genuinely missing content -- the metric does not distinguish the two. It is therefore most informative when read alongside a recall-aware or semantic measure.
+
+BLEU \cite{Papineni2002} computes the geometric mean of $n$-gram precisions $p_n$ between candidate and reference, multiplied by a brevity penalty (BP) that discourages outputs much shorter than the reference. With uniform weights $w_n = 1/N$, candidate length $c$, and closest reference length $r$:
+\begin{equation}
+\label{eq:bleu}
+\mathrm{BLEU} = \mathrm{BP} \cdot \exp\!\left( \sum_{n=1}^{N} w_n \log p_n \right),
+\quad
+\mathrm{BP} =
+\begin{cases}
+1 & \text{if } c > r \\
+e^{1 - r/c} & \text{if } c \leq r.
+\end{cases}
+\end{equation}
+This work uses $N = 4$ (matching unigrams through 4-grams).
+
+ROUGE measures how much of the reference's vocabulary, bigrams, or longest common subsequence the candidate covers. A high ROUGE score signals strong lexical recall against the reference and tolerates word re-ordering more readily than BLEU; a low score indicates that key reference content is absent from the candidate.
+
+ROUGE \cite{Lin2004} reports the F1 of $n$-gram or longest-common-subsequence (LCS) overlap between candidate $X$ and reference $Y$. ROUGE-1 counts unigrams, ROUGE-2 counts bigrams, and ROUGE-L counts the LCS. For ROUGE-N:
+\begin{equation}
+\label{eq:rouge1}
+P_N = \frac{|\mathrm{ngrams}(X) \cap \mathrm{ngrams}(Y)|}{|\mathrm{ngrams}(X)|},
+\quad
+R_N = \frac{|\mathrm{ngrams}(X) \cap \mathrm{ngrams}(Y)|}{|\mathrm{ngrams}(Y)|},
+\quad
+F1_N = \frac{2 P_N R_N}{P_N + R_N}.
+\end{equation}
+The same precision–recall–F1 form applies to ROUGE-2:
+\begin{equation}
+\label{eq:rouge2}
+F1_{\text{ROUGE-2}} = \frac{2 P_2 R_2}{P_2 + R_2}.
+\end{equation}
+For ROUGE-L, $n$-gram counts are replaced by the length of $\mathrm{LCS}(X, Y)$:
+\begin{equation}
+\label{eq:rougeL}
+P_L = \frac{|\mathrm{LCS}(X, Y)|}{|X|},
+\quad
+R_L = \frac{|\mathrm{LCS}(X, Y)|}{|Y|},
+\quad
+F1_L = \frac{2 P_L R_L}{P_L + R_L}.
+\end{equation}
+The reported ROUGE values are the F1 scores in each case.
+
+METEOR balances precision and recall, credits synonym and stem matches, and penalises fragmented overlap where shared words appear in scattered positions. It is stricter on recall than ROUGE but more permissive than BLEU when the candidate paraphrases the reference using related vocabulary.
+
+METEOR \cite{Banerjee2005} is the weighted harmonic mean of unigram precision $P$ and recall $R$ (with recall up-weighted by $\alpha$), multiplied by a fragmentation penalty that grows with the number of disjoint matching chunks $\mathrm{ch}$ relative to the number of matched unigrams $m$:
+\begin{equation}
+\label{eq:meteor}
+\mathrm{METEOR} = \underbrace{\frac{P \cdot R}{\alpha P + (1 - \alpha) R}}_{F_{\mathrm{mean}}}
+\cdot
+\underbrace{\Bigl(1 - \gamma \bigl(\tfrac{\mathrm{ch}}{m}\bigr)^{\beta}\Bigr)}_{\text{penalty}}.
+\end{equation}
+Standard values $\alpha = 0.9$, $\beta = 3$, $\gamma = 0.5$ are used; matching is performed against exact, stemmed, and synonym/paraphrase matches via WordNet.
+
+BERTScore measures similarity between the contextual embeddings of candidate and reference tokens rather than their surface forms. \emph{Precision} captures how many candidate tokens find a close meaning-match in the reference and therefore penalises spurious or invented content; \emph{recall} captures how many reference tokens are covered and therefore penalises omission; \emph{F1} is the harmonic mean and requires both to be reasonably high. A high F1 paired with a low BLEU typically indicates a successful paraphrase that preserves meaning without reproducing wording.
+
+BERTScore \cite{Zhang2020} replaces surface-form $n$-gram matching with cosine similarities between contextual token embeddings produced by a pretrained transformer (here, ModernBERT \cite{Warner2024} via the \texttt{bert\_score} library). With L2-normalised embeddings $\mathbf{x}_i$ for reference tokens and $\hat{\mathbf{x}}_j$ for candidate tokens:
+\begin{equation}
+\label{eq:bertscore-p}
+P_{\text{BERT}} = \frac{1}{|\hat{x}|} \sum_{\hat{x}_j \in \hat{x}} \max_{x_i \in x} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j,
+\end{equation}
+\begin{equation}
+\label{eq:bertscore-r}
+R_{\text{BERT}} = \frac{1}{|x|} \sum_{x_i \in x} \max_{\hat{x}_j \in \hat{x}} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j,
+\end{equation}
+\begin{equation}
+\label{eq:bertscore-f1}
+F1_{\text{BERT}} = \frac{2 \cdot P_{\text{BERT}} \cdot R_{\text{BERT}}}{P_{\text{BERT}} + R_{\text{BERT}}}.
+\end{equation}
+
+SBERT compares two documents through a single whole-document embedding, so two ROPAs that cover the same topics with very different wording will still score close to~$1$. It is the most lenient of the metrics reported here and is used as a coarse topical-coverage signal rather than a fine-grained quality measure.
+
+SBERT \cite{Reimers2019} produces a single fixed-length embedding per document by mean-pooling token embeddings from a transformer (here, ModernBERT). Document similarity is the cosine of the angle between two document embeddings $\mathbf{e}(d_1)$ and $\mathbf{e}(d_2)$:
+\begin{equation}
+\label{eq:sbert}
+\mathrm{SBERT}(d_1, d_2) = \frac{\mathbf{e}(d_1)^{\top} \mathbf{e}(d_2)}{\| \mathbf{e}(d_1) \| \, \| \mathbf{e}(d_2) \|}.
+\end{equation}
+
+The precision/recall asymmetry of these metrics maps onto distinct failure modes of the generated documents. Low precision combined with high recall typically reflects a verbose candidate that covers the reference but adds material not present in it; high precision combined with low recall reflects a conservative candidate that omits required content but does not invent. A high BERTScore F1 paired with a low BLEU is the signature of a successful paraphrase -- the document expresses the same content in different words -- whereas the rare opposite pattern of a high BLEU paired with a low BERTScore F1 indicates mechanical surface copying without a corresponding semantic match. SBERT, operating at the document level, mostly responds to whether the ROPA addresses the same broad topics as the reference and is used as a sanity check rather than a discriminating metric. These interpretive heuristics are applied throughout the Evaluation chapter.
+
 \subsubsection*{LLM-as-a-Judge Evaluation}
-Documents are additionally evaluated using an LLM-as-a-judge approach, in which \textbf{Gemini~3.1 Pro Preview} (model identifier \texttt{google/gemini-3.1-pro-preview}, accessed via OpenRouter at temperature~0) serves as an automated evaluator assessing GDPR-specific quality. The judge is positioned as a \emph{supplementary} evaluator: it is a single-pass, single-model assessment without inter-rater replication or legal-expert validation, and its scores are reported alongside, not in place of, the NLP metrics. The reference-based NLP metrics remain the primary RQ2 evidence; the judge complements them by providing a reference-free signal that captures GDPR-specific quality properties (legal correctness, hallucination, scenario faithfulness) which similarity-based metrics cannot directly observe. The judge evaluates each document across five dimensions on a 1--5 scale:
+Documents are additionally evaluated using an LLM-as-a-judge approach, in which \textbf{Gemini~3.1 Pro Preview} (model identifier \texttt{google/gemini-3.1-pro-preview}, accessed via OpenRouter at temperature~0) serves as an automated evaluator assessing GDPR-specific quality. The judge is positioned as a \emph{supplementary} evaluator: it is a single-pass, single-model assessment without inter-rater replication or legal-expert validation, and its scores are reported alongside, not in place of, the NLP metrics. The reference-based NLP metrics remain the primary RQ2 evidence; the judge complements them by providing a reference-free signal that captures GDPR-specific quality properties (legal correctness, hallucination, scenario faithfulness) which similarity-based metrics cannot directly observe. The judge evaluates each document across five metrics on a 1--5 scale:
 \begin{enumerate}
     \item \textbf{Completeness:} Coverage of all required Article 30(1) fields (controller identity, DPO contact, purposes, legal basis, data categories, recipients, retention periods, technical and organisational measures)
     \item \textbf{Scenario Faithfulness:} Adherence to the specific details of the study scenario rather than generic or hallucinated content
@@ -64,10 +210,10 @@ Documents are additionally evaluated using an LLM-as-a-judge approach, in which 
     \item \textbf{Hallucination (inverse):} Absence of invented facts not present in the scenario (scored inversely: 5 = no hallucinations)
     \item \textbf{Overall:} Holistic assessment of the document's usability as a real-world ROPA record
 \end{enumerate}
-The judge evaluation is applied to all 113 retained documents. The full evaluation rubric and system prompt used for the judge are provided in Appendix~\ref{app:judge-prompt}. The interpretive narrative summarising judge scores in the accompanying analysis artefact (\texttt{judge\_interpretation.md}) was drafted by Claude Sonnet~4.6 from the raw per-document scores and rationales as a working aid; the interpretation reported in this thesis is authored by the researcher directly from the same raw judge scores.
+The judge evaluation is applied to all 113 retained documents. The full evaluation rubric and system prompt used for the judge are provided in Appendix~\ref{app:judge-prompt}. The interpretation reported in this thesis is authored directly from the raw per-document judge scores; a working summary of those scores generated separately by a different model is referenced only as an aid and is not the source of any claims in the thesis.
 
 \subsubsection*{Confidence--Quality Gap Analysis}
-To investigate whether perceived confidence in the AI-generated output corresponds to actual document quality, self-reported confidence is correlated with both NLP metric scores and LLM-as-a-judge scores. The \textbf{primary confidence measure} is the single Likert item on legal-basis confidence (item~5 of the perceived AI support instrument: ``I am confident the AI identified the appropriate legal basis''), chosen because it is the only survey item that asks participants to judge the substantive correctness of the AI's output. The 6-item Perceived AI Support composite is reported as a \textbf{secondary} analysis to capture broader attitudinal facets (usefulness, efficiency, transparency, reliance comfort, intention to use). Both measures are correlated against three signals: confidence against NLP metrics (reference-based lexical and semantic similarity); confidence against LLM judge scores (GDPR-specific holistic quality); and NLP metrics against LLM judge scores (agreement between the two automated assessment systems). Analyses are restricted to participants for whom data from all three sources (survey, NLP pipeline, judge evaluation) are available; the exact triangulated~N is reported in the \emph{Data Availability and Sample Sizes} subsection.
+To investigate whether perceived confidence in the AI-generated output corresponds to actual document quality, self-reported confidence is correlated with both NLP metric scores and LLM-as-a-judge scores. The \textbf{primary confidence measure} is the single Likert item on legal-basis confidence (item~5 of the perceived AI support instrument: ``I am confident that the AI identified the correct legal basis''), chosen because it is the only survey item that asks participants to judge the substantive correctness of the AI's output. The 6-item Perceived AI Support composite is reported as a \textbf{secondary} analysis to capture broader attitudinal facets (usefulness, efficiency, transparency, trust, intention to use). Both measures are correlated against three signals: confidence against NLP metrics (reference-based lexical and semantic similarity); confidence against LLM judge scores (GDPR-specific holistic quality); and NLP metrics against LLM judge scores (agreement between the two automated assessment systems). Analyses are restricted to participants for whom data from all three sources (survey, NLP pipeline, judge evaluation) are available; the exact triangulated~N is reported in the \emph{Data Availability and Sample Sizes} subsection.
 
 \subsection*{Statistical Analysis}
 A significance threshold of $\alpha = 0.05$ is applied to all tests. All within-subjects comparisons across the three modes follow a two-step procedure: a Friedman test as the omnibus test, followed by pairwise Wilcoxon signed-rank tests with Bonferroni correction for post-hoc analysis. Where the unbalanced full sample makes within-subjects matching impossible (e.g.\ when only one or two documents are available per participant), Mann--Whitney U tests are reported as a between-groups sensitivity check on the corresponding mode pair. Effect sizes are reported as $\varepsilon^2$ for the Friedman / Kruskal--Wallis omnibus tests, Kendall's~$W$ as the coefficient of concordance for Friedman, and rank-biserial correlation~$r$ for pairwise Wilcoxon signed-rank tests.
