@@ -153,72 +153,81 @@ perceived as low and equal across all modes.
 
 Table~\ref{tab:sus-per-item-distribution} reports the full
 descriptive distribution per item per mode (mean, standard deviation,
-median, Q1, Q3). The minimum and maximum are $1$ and $5$ for every
-item~$\times$~mode combination and are omitted for compactness.
+Q1, median, Q3, min, max).
 
-\begin{table}[htbp]
+\begin{sidewaystable}
 \centering
 \caption{System Usability Scale, full per-item descriptive
 distribution by mode ($n = 69$ per mode). Source:
 \texttt{sus\_per\_item\_summary.csv}.}
 \label{tab:sus-per-item-distribution}
 \small
-\begin{tabular}{@{}c l r r r r r@{}}
+\begin{tabularx}{\linewidth}{@{}c X l r r r r r r r@{}}
 \toprule
-\# & Mode & Mean & SD & Median & Q1 & Q3 \\
+\# & Item & Mode & Mean & SD & Q1 & Median & Q3 & Min & Max \\
 \midrule
-\multirow{4}{*}{1}  & All  & 3.32 & 1.14 & 3 & 3 & 4 \\
-                    & Form & 3.52 & 1.09 & 4 & 3 & 4 \\
-                    & Ask  & 3.22 & 1.08 & 3 & 3 & 4 \\
-                    & Chat & 3.22 & 1.24 & 3 & 2 & 4 \\
+\multirow{4}{*}{1}  & \multirow{4}{*}{I think that I would like to use this system frequently.}
+                    & All  & 3.32 & 1.14 & 3 & 3 & 4 & 1 & 5 \\
+                    & & Form & 3.52 & 1.09 & 3 & 4 & 4 & 1 & 5 \\
+                    & & Ask  & 3.22 & 1.08 & 3 & 3 & 4 & 1 & 5 \\
+                    & & Chat & 3.22 & 1.24 & 2 & 3 & 4 & 1 & 5 \\
 \midrule
-\multirow{4}{*}{2}  & All  & 2.00 & 1.12 & 2 & 1 & 3 \\
-                    & Form & 1.64 & 0.92 & 1 & 1 & 2 \\
-                    & Ask  & 2.25 & 1.22 & 2 & 1 & 3 \\
-                    & Chat & 2.12 & 1.12 & 2 & 1 & 3 \\
+\multirow{4}{*}{2}  & \multirow{4}{*}{I found the system unnecessarily complex.}
+                    & All  & 2.00 & 1.12 & 1 & 2 & 3 & 1 & 5 \\
+                    & & Form & 1.64 & 0.92 & 1 & 1 & 2 & 1 & 5 \\
+                    & & Ask  & 2.25 & 1.22 & 1 & 2 & 3 & 1 & 5 \\
+                    & & Chat & 2.12 & 1.12 & 1 & 2 & 3 & 1 & 5 \\
 \midrule
-\multirow{4}{*}{3}  & All  & 4.13 & 0.97 & 4 & 4 & 5 \\
-                    & Form & 4.38 & 0.91 & 5 & 4 & 5 \\
-                    & Ask  & 4.01 & 0.81 & 4 & 4 & 5 \\
-                    & Chat & 3.99 & 1.13 & 4 & 3 & 5 \\
+\multirow{4}{*}{3}  & \multirow{4}{*}{I thought the system was easy to use.}
+                    & All  & 4.13 & 0.97 & 4 & 4 & 5 & 1 & 5 \\
+                    & & Form & 4.38 & 0.91 & 4 & 5 & 5 & 1 & 5 \\
+                    & & Ask  & 4.01 & 0.81 & 4 & 4 & 5 & 1 & 5 \\
+                    & & Chat & 3.99 & 1.13 & 3 & 4 & 5 & 1 & 5 \\
 \midrule
-\multirow{4}{*}{4}  & All  & 1.52 & 0.89 & 1 & 1 & 2 \\
-                    & Form & 1.52 & 0.85 & 1 & 1 & 2 \\
-                    & Ask  & 1.49 & 0.80 & 1 & 1 & 2 \\
-                    & Chat & 1.55 & 1.01 & 1 & 1 & 2 \\
+\multirow{4}{*}{4}  & \multirow{4}{*}{I think that I would need the support of a technical person to be able to use this system.}
+                    & All  & 1.52 & 0.89 & 1 & 1 & 2 & 1 & 5 \\
+                    & & Form & 1.52 & 0.85 & 1 & 1 & 2 & 1 & 5 \\
+                    & & Ask  & 1.49 & 0.80 & 1 & 1 & 2 & 1 & 5 \\
+                    & & Chat & 1.55 & 1.01 & 1 & 1 & 2 & 1 & 5 \\
 \midrule
-\multirow{4}{*}{5}  & All  & 3.77 & 1.05 & 4 & 3 & 5 \\
-                    & Form & 4.00 & 0.92 & 4 & 4 & 5 \\
-                    & Ask  & 3.67 & 1.02 & 4 & 3 & 4 \\
-                    & Chat & 3.64 & 1.16 & 4 & 3 & 5 \\
+\multirow{4}{*}{5}  & \multirow{4}{*}{I found the various functions in this system were well integrated.}
+                    & All  & 3.77 & 1.05 & 3 & 4 & 5 & 1 & 5 \\
+                    & & Form & 4.00 & 0.92 & 4 & 4 & 5 & 1 & 5 \\
+                    & & Ask  & 3.67 & 1.02 & 3 & 4 & 4 & 1 & 5 \\
+                    & & Chat & 3.64 & 1.16 & 3 & 4 & 5 & 1 & 5 \\
 \midrule
-\multirow{4}{*}{6}  & All  & 2.07 & 1.00 & 2 & 1 & 3 \\
-                    & Form & 2.16 & 0.96 & 2 & 1 & 3 \\
-                    & Ask  & 2.04 & 1.06 & 2 & 1 & 3 \\
-                    & Chat & 2.01 & 0.98 & 2 & 1 & 3 \\
+\multirow{4}{*}{6}  & \multirow{4}{*}{I thought there was too much inconsistency in this system.}
+                    & All  & 2.07 & 1.00 & 1 & 2 & 3 & 1 & 5 \\
+                    & & Form & 2.16 & 0.96 & 1 & 2 & 3 & 1 & 5 \\
+                    & & Ask  & 2.04 & 1.06 & 1 & 2 & 3 & 1 & 5 \\
+                    & & Chat & 2.01 & 0.98 & 1 & 2 & 3 & 1 & 5 \\
 \midrule
-\multirow{4}{*}{7}  & All  & 4.11 & 0.98 & 4 & 4 & 5 \\
-                    & Form & 4.30 & 0.96 & 5 & 4 & 5 \\
-                    & Ask  & 4.00 & 0.95 & 4 & 4 & 5 \\
-                    & Chat & 4.03 & 1.01 & 4 & 4 & 5 \\
+\multirow{4}{*}{7}  & \multirow{4}{*}{I would imagine that most people would learn to use this system very quickly.}
+                    & All  & 4.11 & 0.98 & 4 & 4 & 5 & 1 & 5 \\
+                    & & Form & 4.30 & 0.96 & 4 & 5 & 5 & 1 & 5 \\
+                    & & Ask  & 4.00 & 0.95 & 4 & 4 & 5 & 1 & 5 \\
+                    & & Chat & 4.03 & 1.01 & 4 & 4 & 5 & 1 & 5 \\
 \midrule
-\multirow{4}{*}{8}  & All  & 2.03 & 1.13 & 2 & 1 & 3 \\
-                    & Form & 1.65 & 0.94 & 1 & 1 & 2 \\
-                    & Ask  & 2.16 & 1.12 & 2 & 1 & 3 \\
-                    & Chat & 2.29 & 1.23 & 2 & 1 & 3 \\
+\multirow{4}{*}{8}  & \multirow{4}{*}{I found the system very cumbersome to use.}
+                    & All  & 2.03 & 1.13 & 1 & 2 & 3 & 1 & 5 \\
+                    & & Form & 1.65 & 0.94 & 1 & 1 & 2 & 1 & 5 \\
+                    & & Ask  & 2.16 & 1.12 & 1 & 2 & 3 & 1 & 5 \\
+                    & & Chat & 2.29 & 1.23 & 1 & 2 & 3 & 1 & 5 \\
 \midrule
-\multirow{4}{*}{9}  & All  & 3.86 & 1.04 & 4 & 3 & 5 \\
-                    & Form & 3.83 & 1.04 & 4 & 3 & 5 \\
-                    & Ask  & 3.84 & 0.93 & 4 & 3 & 4 \\
-                    & Chat & 3.90 & 1.15 & 4 & 4 & 5 \\
+\multirow{4}{*}{9}  & \multirow{4}{*}{I felt very confident using the system.}
+                    & All  & 3.86 & 1.04 & 3 & 4 & 5 & 1 & 5 \\
+                    & & Form & 3.83 & 1.04 & 3 & 4 & 5 & 1 & 5 \\
+                    & & Ask  & 3.84 & 0.93 & 3 & 4 & 4 & 1 & 5 \\
+                    & & Chat & 3.90 & 1.15 & 4 & 4 & 5 & 1 & 5 \\
 \midrule
-\multirow{4}{*}{10} & All  & 1.61 & 0.90 & 1 & 1 & 2 \\
-                    & Form & 1.61 & 0.86 & 1 & 1 & 2 \\
-                    & Ask  & 1.61 & 0.81 & 1 & 1 & 2 \\
-                    & Chat & 1.62 & 1.03 & 1 & 1 & 2 \\
+\multirow{4}{*}{10} & \multirow{4}{*}{I needed to learn a lot of things before I could get going with this system.}
+                    & All  & 1.61 & 0.90 & 1 & 1 & 2 & 1 & 5 \\
+                    & & Form & 1.61 & 0.86 & 1 & 1 & 2 & 1 & 5 \\
+                    & & Ask  & 1.61 & 0.81 & 1 & 1 & 2 & 1 & 5 \\
+                    & & Chat & 1.62 & 1.03 & 1 & 1 & 2 & 1 & 5 \\
 \bottomrule
-\end{tabular}
-\end{table}
+\end{tabularx}
+\end{sidewaystable}
 
 The per-item distributions are visualised in Figure~\ref{fig:sus-subquestions}.
 
