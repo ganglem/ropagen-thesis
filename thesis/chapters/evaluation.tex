@@ -2,20 +2,19 @@
 \label{ch:evaluation}
 
 This chapter reports the empirical findings of the user study and
-the subsequent document-quality analysis. The presentation follows
-the analysis plan laid out in Chapter~\ref{ch:methodology}: the User
-Study section reports the per-mode self-report instruments (System
+the subsequent document-quality analysis. It opens with a
+descriptive Demographics section that profiles the participant
+sample on which every result that follows rests. The User Study
+section then reports the per-mode self-report instruments (System
 Usability Scale, NASA Raw Task Load Index, Perceived AI Support)
 together with the post-experiment mode preference ranking and
-open-ended free-text comments; the document-quality sections report
-the reference-based NLP metrics at the document level and the
-chapter level, a summary comparing the two granularities, and
-finally the LLM-as-a-judge evaluation. The chapter closes with a
-descriptive Demographics section that profiles the participant
-sample. For every
-quantitative measure the per-mode results are reported in the order
-Form, Ask, Chat, followed by the aggregated value across all three
-modes; relative direction (increase, decrease, or comparable level)
+open-ended free-text comments. The document-quality sections close
+the chapter by reporting the reference-based NLP metrics at the
+document and chapter levels and, finally, the LLM-as-a-judge
+evaluation as a supplementary signal. For every quantitative
+measure the aggregated value across all three modes is reported
+first, followed by the per-mode results in the order Form, Ask,
+Chat; relative direction (increase, decrease, or comparable level)
 is stated explicitly. All inferential test statistics referenced in
 the running text are reproduced in full in
 Appendix~\ref{app:inferential}.
@@ -25,7 +24,10 @@ $n = 69$ participants. The document-quality analyses use the full
 set of $113$ retained documents (Form $n = 37$, Ask $n = 37$,
 Chat $n = 39$) throughout, with Kruskal--Wallis and Bonferroni-
 corrected Mann--Whitney $U$ as the between-groups inferential
-family.
+family for NLP metric scores and per-mode completion time. The
+LLM-as-a-judge scores are reported descriptively only.
+
+\input{chapters/evaluation/demographics}
 
 \section{User Study}
 \label{sec:eval-userstudy}
@@ -46,4 +48,4 @@ to a single overall preference and explain it in their own words.
 \input{chapters/evaluation/nlp_metrics}
 \input{chapters/evaluation/judge}
 
-\input{chapters/evaluation/demographics}
+\input{chapters/evaluation/summary}

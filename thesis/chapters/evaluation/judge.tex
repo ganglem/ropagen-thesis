@@ -8,7 +8,7 @@ single expert-authored Form-mode reference; here, the judge
 evaluates each document against a rubric rather than a target,
 which lifts the implicit advantage that the reference document
 conferred on Form-style outputs. The LLM-as-a-Judge evaluation
-produces five metrics per document, summarised in
+produces five metrics per document, summarized in
 Table~\ref{tab:judge-metrics}: \emph{Completeness},
 \emph{Scenario Faithfulness}, \emph{Legal Correctness},
 \emph{Hallucination} (inverse-coded; higher equals less
@@ -23,9 +23,9 @@ are reported as a supplementary, single-pass single-model signal
 alongside the survey instruments and reference-based NLP metrics,
 and without inter-rater replication or legal-expert validation
 they should be read as indicative rather than definitive. All
-$113$ retained documents are scored. Per-mode results are
-reported in the order Form, Ask, Chat, followed by the aggregated
-mean across all documents.
+$113$ retained documents are scored. The aggregated mean across
+all documents is reported first, followed by the per-mode results
+in the order Form, Ask, Chat.
 
 \begin{table}[htbp]
 \centering
@@ -40,7 +40,7 @@ reproduced in Appendix~\ref{app:judge-rubric}.}
 \toprule
 Metric & What is assessed \\
 \midrule
-Completeness            & Coverage of the Art.~30(1) GDPR required elements (controller, DPO, purposes, legal basis, data and recipient categories, retention, technical and organisational measures); missing elements lower the score. \\
+Completeness            & Coverage of the Art.~30(1) GDPR required elements (controller, DPO, purposes, legal basis, data and recipient categories, retention, technical and organizational measures); missing elements lower the score. \\
 \addlinespace
 Scenario Faithfulness   & Accuracy with respect to the concrete facts of the study scenario (APOR GmbH, $\sim$50 employees, internal hosting, 3-month deletion, etc.); generic ROPA boilerplate lowers the score. \\
 \addlinespace
@@ -48,7 +48,7 @@ Legal Correctness       & Correct use of GDPR terminology and correct citation o
 \addlinespace
 Hallucination (inverse) & Absence of invented facts not supported by the scenario; $5 =$ no hallucinations, $1 =$ many. \\
 \addlinespace
-Overall                 & Holistic judgement of how useful the document would be as a real Art.~30 ROPA record, weighing the four metrics above. \\
+Overall                 & Holistic judgment of how useful the document would be as a real Art.~30 ROPA record, weighing the four metrics above. \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -75,13 +75,13 @@ across all $113$ documents.}
 \label{tab:judge-summary}
 \begin{tabular}{@{}l r r r r@{}}
 \toprule
-Metric & Form & Ask & Chat & All \\
+Metric & All & Form & Ask & Chat \\
 \midrule
-Completeness            & $4.84 \pm 0.55$ & $3.84 \pm 1.54$ & $3.18 \pm 1.59$ & $3.94 \pm 1.43$ \\
-Scenario Faithfulness   & $1.84 \pm 0.76$ & $2.30 \pm 1.20$ & $2.49 \pm 1.19$ & $2.21 \pm 1.10$ \\
-Legal Correctness       & $3.59 \pm 0.55$ & $3.43 \pm 1.34$ & $3.15 \pm 1.42$ & $3.39 \pm 1.18$ \\
-Hallucination (inverse) & $1.65 \pm 0.72$ & $2.40 \pm 1.12$ & $2.54 \pm 0.91$ & $2.20 \pm 1.02$ \\
-Overall                 & $2.41 \pm 0.69$ & $2.49 \pm 1.04$ & $2.62 \pm 1.31$ & $2.50 \pm 1.04$ \\
+Completeness            & $3.94 \pm 1.43$ & $4.84 \pm 0.55$ & $3.84 \pm 1.54$ & $3.18 \pm 1.59$ \\
+Scenario Faithfulness   & $2.21 \pm 1.10$ & $1.84 \pm 0.76$ & $2.30 \pm 1.20$ & $2.49 \pm 1.19$ \\
+Legal Correctness       & $3.39 \pm 1.18$ & $3.59 \pm 0.55$ & $3.43 \pm 1.34$ & $3.15 \pm 1.42$ \\
+Hallucination (inverse) & $2.20 \pm 1.02$ & $1.65 \pm 0.72$ & $2.40 \pm 1.12$ & $2.54 \pm 0.91$ \\
+Overall                 & $2.50 \pm 1.04$ & $2.41 \pm 0.69$ & $2.49 \pm 1.04$ & $2.62 \pm 1.31$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -97,10 +97,10 @@ sample $n = 113$, scale $1$--$5$).}
 Form documents cover the Article 30(1) requirements most thoroughly
 and most uniformly, while Chat documents leave the most gaps —
 echoing the BERTScore Recall pattern from
-\S\ref{sec:eval-nlp-doc}. For \emph{Completeness}, Form scores
-highest by a substantial margin (mean $4.84$, median $5.0$), with
-Ask second ($3.84$, median $5.0$) and Chat lowest ($3.18$, median
-$3.0$); aggregated mean $3.94$. Completeness decreases by
+\S\ref{sec:eval-nlp-doc}. For \emph{Completeness}, the aggregated
+mean is $3.94$, with Form scoring highest by a substantial margin
+($4.84$, median $5.0$), Ask second ($3.84$, median $5.0$), and
+Chat lowest ($3.18$, median $3.0$). Completeness decreases by
 approximately $1.66$~points from Form to Chat. Form's standard
 deviation is also the lowest of the three modes ($0.55$ versus Ask
 $1.54$ and Chat $1.59$), indicating that Form yields uniformly
@@ -110,28 +110,29 @@ The Form advantage flips when the question becomes whether the
 document actually reflects the APOR scenario participants were
 given: Chat documents stay closest to that scenario, while Form
 documents drift toward generic ROPA boilerplate. For
-\emph{Scenario Faithfulness}, the ordering inverts: Form scores
-lowest ($1.84$, median $2.0$), Ask second ($2.30$, median $2.0$),
-Chat highest ($2.49$, median $2.0$); aggregated mean $2.21$.
-Faithfulness to the specific study scenario increases by
-approximately $0.65$~points from Form to Chat.
+\emph{Scenario Faithfulness}, the ordering inverts: the aggregated
+mean is $2.21$, with Form scoring lowest ($1.84$, median $2.0$),
+Ask second ($2.30$, median $2.0$), and Chat highest ($2.49$,
+median $2.0$). Faithfulness to the specific study scenario
+increases by approximately $0.65$~points from Form to Chat.
 
 Form documents use GDPR terminology most correctly, with Chat
 documents the least so — but the gap is much smaller than on
-Completeness. For \emph{Legal Correctness}, Form scores highest
-($3.59$, median $4.0$), Ask second ($3.43$, median $4.0$), Chat
-lowest ($3.15$, median $3.0$); aggregated mean $3.39$. The spread
-is approximately $0.45$~points across modes; Form's standard
-deviation ($0.55$) is again the lowest, reflecting a narrow
-concentration of Legal Correctness scores around the value $4.0$.
+Completeness. For \emph{Legal Correctness}, the aggregated mean
+is $3.39$, with Form scoring highest ($3.59$, median $4.0$), Ask
+second ($3.43$, median $4.0$), and Chat lowest ($3.15$, median
+$3.0$). The spread is approximately $0.45$~points across modes;
+Form's standard deviation ($0.55$) is again the lowest, reflecting
+a narrow concentration of Legal Correctness scores around the
+value $4.0$.
 
 Form documents contain the most fabricated content and Chat
 documents the least — closely tracking the Faithfulness ordering
 above. For \emph{Hallucination (inverse)}, the ordering matches
-Scenario Faithfulness: Form scores lowest ($1.65$, median $2.0$),
-Ask second ($2.40$, median $2.0$), Chat highest ($2.54$, median
-$3.0$); aggregated mean $2.20$. Because the metric is
-inverse-coded, low scores mean more hallucination. The
+Scenario Faithfulness: the aggregated mean is $2.20$, with Form
+scoring lowest ($1.65$, median $2.0$), Ask second ($2.40$, median
+$2.0$), and Chat highest ($2.54$, median $3.0$). Because the
+metric is inverse-coded, low scores mean more hallucination. The
 co-occurrence with Completeness is striking: $31$ of the $37$ Form
 documents ($83.8\,\%$) achieve Completeness $= 5$ while
 simultaneously scoring Hallucination (inverse) $\leq 2$
@@ -146,13 +147,13 @@ When the four contrasting orderings are compressed into a single
 holistic verdict, no mode comes out as a clear winner — Chat edges
 ahead, Form trails by a small margin, and the average document is
 judged below the midpoint of the rubric scale. For \emph{Overall},
-the three modes are clustered closely together: Form $2.41$, Ask
-$2.49$, Chat $2.62$; aggregated $2.50$. The aggregate Overall score
-thus sits below the midpoint of the $1$--$5$ scale across all
-modes. Form's standard deviation ($0.69$) is again the lowest,
-while Chat's is the highest ($1.31$), indicating that Chat
-produces both the highest- and lowest-rated documents in the
-sample.
+the aggregated mean is $2.50$, with the three modes clustered
+closely together: Form $2.41$, Ask $2.49$, Chat $2.62$. The
+aggregate Overall score thus sits below the midpoint of the
+$1$--$5$ scale across all modes. Form's standard deviation
+($0.69$) is again the lowest, while Chat's is the highest
+($1.31$), indicating that Chat produces both the highest- and
+lowest-rated documents in the sample.
 
 Three patterns emerge from the per-metric means. First, the Completeness ordering
 (Form $>$ Ask $>$ Chat) is the inverse of the Scenario Faithfulness
@@ -172,7 +173,7 @@ appropriate.
 Third, the Overall scores compress the per-metric spread into a narrow
 range (Form $2.41$ to Chat $2.62$, $\Delta = 0.21$), with the ordering Form
 $<$ Ask $<$ Chat. This is consistent with Overall reflecting a holistic
-judgement that weighs Faithfulness and Hallucination against Completeness;
+judgment that weighs Faithfulness and Hallucination against Completeness;
 Form's high Completeness is partially offset by its low Faithfulness and
 high Hallucination, and the net result is a slight Chat advantage. The
 interpretation of the Form Completeness--Hallucination co-occurrence

@@ -102,7 +102,7 @@ Adhere to the patterns already established in the completed chapters
   next?"*.
 - **Item / metric walk-throughs.** Hold to a consistent template per
   paragraph: italicised verbatim item text first, then the per-mode
-  reading in fixed order (Form, Ask, Chat, All), then a one-sentence
+  reading in fixed order (All, Form, Ask, Chat), then a one-sentence
   take-away naming the direction and approximate magnitude. Repeat
   for every item in the instrument.
 - **Numbers serve the argument; they do not carry it.** Lead each
