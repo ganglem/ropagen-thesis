@@ -1,7 +1,7 @@
 \chapter{ROPAgen and Judge Model Configuration}
 \label{app:ropagen}
 
-This appendix collects the static configuration of both LLMs that the study relies on. The first three sections cover ROPAgen --- the tool under study --- and reproduce its backend prompts, its three mode screenshots, and the expert-authored reference ROPA document that the NLP metric pipeline scores every participant document against. The fourth section covers the supplementary LLM-as-a-Judge evaluation layer --- its system and user prompts, its five-metric rubric, and the deterministic-decoding model configuration. All four sections are referenced from the Methodology chapter (\S\ref{sec:ropagen} for the tool, \S\ref{ch:methodology} for the judge).
+This appendix collects the static configuration of both LLMs that the study relies on. The first three sections cover ROPAgen --- the tool under study --- and reproduce its backend prompts, its three mode screenshots, and the expert-authored reference ROPA document that the NLP metric pipeline scores every participant document against. The fourth section covers the supplementary LLM-as-a-Judge evaluation layer --- its system and user prompts, its five-metric rubric, and the deterministic-decoding model configuration. All four sections are referenced from the Methodology chapter (Section~\ref{sec:ropagen} for the tool, Chapter~\ref{ch:methodology} for the judge).
 
 \lstset{
   basicstyle=\ttfamily\footnotesize,
@@ -791,7 +791,7 @@ DATA_UPDATE:
 
 \section{ROPAgen Mode Screenshots}
 
-The three figures below show the ROPAgen user interface as it appeared to participants in each of the three interaction modes, captured on a comparable step of the standardized study scenario (\S\ref{app:scenario}). They illustrate the user-facing surface of each mode rather than the backend behavior reproduced in \S\ref{app:ropagen-prompts}.
+The three figures below show the ROPAgen user interface as it appeared to participants in each of the three interaction modes, captured on a comparable step of the standardized study scenario (Section~\ref{app:scenario}). They illustrate the user-facing surface of each mode rather than the backend behavior reproduced in Section~\ref{app:ropagen-prompts}.
 
 \subsection{Form Mode}
 \label{app:ropagen-form-screenshot}
@@ -800,7 +800,7 @@ The three figures below show the ROPAgen user interface as it appeared to partic
 \centering
 % TODO: insert screenshot PNG (Emilija to supply)
 \fbox{\parbox[c][6cm][c]{0.85\linewidth}{\centering\itshape Screenshot placeholder --- to be inserted.}}
-\caption{Form mode. The eight thematic groups of the \texttt{DocumentData} schema are exposed as a linear questionnaire of checkboxes and short text fields. Each section offers an optional \emph{AI~Suggest} button that calls the LLM with the section-specific Form-mode prompt (\S\ref{app:ropagen-prompts-form}).}
+\caption{Form mode. The eight thematic groups of the \texttt{DocumentData} schema are exposed as a linear questionnaire of checkboxes and short text fields. Each section offers an optional \emph{AI~Suggest} button that calls the LLM with the section-specific Form-mode prompt (Section~\ref{app:ropagen-prompts-form}).}
 \end{figure}
 
 \subsection{Ask Mode}
@@ -826,7 +826,7 @@ The three figures below show the ROPAgen user interface as it appeared to partic
 \section{ROPAgen Reference Document}
 \label{app:ropagen-reference}
 
-Reproduced below is the expert-authored ROPA reference document. It was created by the study author using Form mode (\S\ref{sec:ropagen}), applying the standardized study scenario reproduced in Appendix~\ref{app:scenario}. The document is the comparison target used by every reference-based NLP metric in \S\ref{sec:eval-nlp-doc} and \S\ref{sec:eval-nlp-chapter}: every participant document is scored for similarity against this single ROPA. It is reproduced here in its original German (the language in which participants worked); the run-metadata footer emitted by ROPAgen (user identifier, mode, elapsed-time stamp, generation date) is omitted as it is administrative rather than substantive content.
+Reproduced below is the expert-authored ROPA reference document. It was created by the study author using Form mode (Section~\ref{sec:ropagen}), applying the standardized study scenario reproduced in Appendix~\ref{app:scenario}. The document is the comparison target used by every reference-based NLP metric in Section~\ref{sec:eval-nlp-doc} and Section~\ref{sec:eval-nlp-chapter}: every participant document is scored for similarity against this single ROPA. It is reproduced here in its original German (the language in which participants worked); the run-metadata footer emitted by ROPAgen (user identifier, mode, elapsed-time stamp, generation date) is omitted as it is administrative rather than substantive content.
 
 \begin{lstlisting}
 Verzeichnis von Verarbeitungstätigkeiten (VVT)
@@ -935,7 +935,7 @@ Dieses Verzeichnis wird regelmäßig überprüft und bei Bedarf aktualisiert.
 \section{LLM-as-a-Judge Configuration}
 \label{app:judge}
 
-This section documents the inputs to the LLM-as-a-Judge evaluation layer that scored the 113 retained ROPA documents (\S\ref{sec:eval-judge}). It contains the verbatim system and user prompts, the five-metric rubric, and the model configuration needed to reproduce the evaluation. The prompts below mirror the formatting of the ROPAgen backend prompts above in \S\ref{app:ropagen-prompts}: each prompt is reproduced as a single listing block so the reader sees exactly what the model received.
+This section documents the inputs to the LLM-as-a-Judge evaluation layer that scored the 113 retained ROPA documents (Section~\ref{sec:eval-judge}). It contains the verbatim system and user prompts, the five-metric rubric, and the model configuration needed to reproduce the evaluation. The prompts below mirror the formatting of the ROPAgen backend prompts above in Section~\ref{app:ropagen-prompts}: each prompt is reproduced as a single listing block so the reader sees exactly what the model received.
 
 \subsection{System and User Prompt}
 \label{app:judge-prompt}
