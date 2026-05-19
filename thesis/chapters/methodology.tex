@@ -217,102 +217,141 @@ For RQ1 (User Experience and Preference), the Friedman test is applied to SUS sc
 
 \subsubsection*{Definitions of Statistical Tests and Effect Sizes}
 
-The following definitions apply to every measurement reported in
-the Evaluation chapter. They are listed once here rather than
-re-introduced for every instrument.
+The tests and effect sizes used in this thesis are grouped below
+by where they appear in the Evaluation chapter. Each block names
+the analysis stream first (sample, design), then defines the
+omnibus and post-hoc tests applied to that stream together with
+their effect sizes. A short plain-language reading of each
+statistic is given alongside its formula so that the Evaluation
+chapter can refer back to a single canonical definition.
 
-\paragraph{Shapiro--Wilk normality test.} Tests the null hypothesis
-that a sample is drawn from a normal distribution. The statistic is
+\paragraph{Two ingredients used throughout.}
+Two procedures are shared across every analysis stream and are
+defined once here.
+
+The \emph{Shapiro--Wilk normality test} screens whether a sample
+plausibly comes from a normal distribution. With order statistics
+$x_{(i)}$ and tabulated constants $a_i$,
 \begin{equation}
-W = \frac{\bigl( \sum_{i=1}^{n} a_i x_{(i)} \bigr)^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2},
+W = \frac{\bigl( \sum_{i=1}^{n} a_i x_{(i)} \bigr)^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2}.
 \end{equation}
-where $x_{(i)}$ are the order statistics and $a_i$ are tabulated
-constants. $W$ close to $1$ indicates normality; small $p$-values
-reject normality. In this study, normality is rejected for nearly
-every survey measure, motivating the non-parametric tests below.
+In plain terms: $W$ close to $1$ means the data look normal; a
+small $p$-value rejects normality and motivates a non-parametric
+test. Normality was rejected for nearly every survey, NLP, and
+timing measure in this study, which is why every test below is
+non-parametric.
 
-\paragraph{Friedman test.} Non-parametric repeated-measures omnibus
-test for $k \geq 3$ related samples. Each participant's $k$ values
-are ranked within-subject; the test statistic on $n$ participants
-across $k$ conditions is
+The \emph{Bonferroni correction} divides the per-test significance
+threshold by the number of comparisons in a family so that the
+family-wise false-positive rate stays at the chosen $\alpha$. With
+$m$ comparisons,
+\begin{equation}
+\alpha' = \alpha / m.
+\end{equation}
+Every post-hoc family in this thesis has $m = 3$ pairwise mode
+comparisons, so $\alpha' = 0.05 / 3 = 0.0167$ throughout.
+
+\paragraph{Survey instruments (matched within-subjects, $n = 69$).}
+Applied to SUS, R-TLX, the perceived AI support items, the primary
+confidence item, and the re-use intent item. Each participant
+gives one rating per mode, so the data are matched-pairs.
+
+The \emph{Friedman test} is the within-subjects omnibus for
+$k \geq 3$ related samples. Each participant's $k$ values are
+ranked within-subject; with $n$ participants across $k$ conditions
+and $R_j$ the rank sum for condition $j$,
 \begin{equation}
 \chi^2_F = \frac{12}{n k (k+1)} \sum_{j=1}^{k} R_j^2 - 3 n (k+1),
 \end{equation}
-where $R_j$ is the sum of ranks for condition $j$. Under $H_0$ (no
-difference among conditions), $\chi^2_F$ is asymptotically $\chi^2$
-distributed with $k - 1$ degrees of freedom. A significant Friedman
-statistic motivates pairwise post-hoc comparisons.
+asymptotically $\chi^2$ distributed with $k - 1$ degrees of
+freedom. In plain terms: a large $\chi^2_F$ (small $p$) means at
+least one mode differs from the others on this measure;
+non-significant means no mode-level difference can be claimed on
+this instrument as a whole.
 
-\paragraph{Wilcoxon signed-rank test (post-hoc).} Non-parametric
-test for two related samples, applied as a pairwise post-hoc to a
-significant Friedman omnibus. Differences $d_i = x_i - y_i$ are
-ranked by absolute value; the statistic
+When the Friedman omnibus is significant, the \emph{Wilcoxon
+signed-rank test} is applied to each pair of modes as a
+matched-pairs post-hoc. Differences $d_i = x_i - y_i$ are ranked
+by absolute value; the statistic is
 \begin{equation}
 W = \min(W_+, W_-),
 \quad W_+ = \!\!\!\sum_{d_i > 0}\!\! \mathrm{rank}(|d_i|), \quad
 W_- = \!\!\!\sum_{d_i < 0}\!\! \mathrm{rank}(|d_i|).
 \end{equation}
-With three modes there are three pairwise comparisons; the
-Bonferroni-corrected significance threshold is therefore
-$\alpha' = 0.05 / 3 = 0.0167$.
+In plain terms: a small $p$ (below $\alpha' = 0.0167$) means the
+two modes differ in their within-subjects ranks. The associated
+effect size, the rank-biserial correlation,
+\begin{equation}
+r = (W_+ - W_-) / (W_+ + W_-),
+\end{equation}
+runs from $-1$ to $+1$; positive $r$ means the first-named mode
+ranks higher. Conventional bands: $|r| < 0.1$ negligible,
+$0.1$--$0.3$ small, $0.3$--$0.5$ medium, $\geq 0.5$ large.
 
-\paragraph{Kruskal--Wallis $H$ test.} Non-parametric one-way ANOVA
-analogue for $k$ independent groups, used in the Evaluation chapter
-as the between-groups omnibus for NLP metric scores and per-mode
-completion time on the unbalanced full document sample. With $N$
-total observations, $n_j$ observations in group $j$, and $R_j$ the
-sum of ranks in group $j$,
+The Friedman test's own effect size is \emph{Kendall's~$W$}
+(coefficient of concordance):
+\begin{equation}
+W_{\mathrm{Kendall}} = \chi^2_F / (n (k - 1)),
+\end{equation}
+on the $[0, 1]$ scale, larger meaning stronger agreement among
+participants on the ordering of conditions. Conventional bands:
+$0$--$0.1$ weak, $0.1$--$0.3$ moderate, $0.3$--$0.5$ strong.
+
+\paragraph{Document-quality metrics and completion time (between-groups, $n = 113$).}
+Applied to BLEU, ROUGE-1/2/L, METEOR, BERTScore Precision /
+Recall / F1, SBERT cosine similarity, and per-mode completion
+time. Only $26$ of the $113$ retained documents form matched
+triples, so a between-groups family is used to preserve the full
+sample.
+
+The \emph{Kruskal--Wallis $H$ test} is the non-parametric one-way
+ANOVA analogue applied as the between-groups omnibus. With $N$
+total observations, $n_j$ in group $j$, and $R_j$ the rank sum in
+group $j$,
 \begin{equation}
 H = \frac{12}{N (N+1)} \sum_{j=1}^{k} \frac{R_j^2}{n_j} - 3 (N + 1).
 \end{equation}
-A significant Kruskal--Wallis statistic motivates pairwise
-post-hoc comparisons.
+In plain terms: a large $H$ (small $p$) means at least one mode's
+distribution of scores differs from the others on this metric.
 
-\paragraph{Mann--Whitney $U$ test (post-hoc).}
-Non-parametric two-sample test on independent groups, applied as
-the pairwise post-hoc to a significant Kruskal--Wallis omnibus.
-With $n_1$ and $n_2$ the two group sizes and $R_1$ the sum of
-ranks in group $1$,
+When the Kruskal--Wallis omnibus is significant, the
+\emph{Mann--Whitney~$U$ test} is applied to each pair of modes as
+a between-groups post-hoc. With group sizes $n_1$, $n_2$ and rank
+sum $R_1$,
 \begin{equation}
 U = R_1 - \frac{n_1 (n_1 + 1)}{2}.
 \end{equation}
-With three modes there are three pairwise comparisons; the
-Bonferroni-corrected significance threshold is therefore
-$\alpha' = 0.05 / 3 = 0.0167$.
+In plain terms: a small $p$ (below $\alpha' = 0.0167$) means the
+two modes produced different distributions of scores on this
+metric. The associated rank-biserial effect size $r$ is reported
+in the same $-1$ to $+1$ range and with the same conventional
+bands as for the Wilcoxon test above.
 
-\paragraph{Chi-square goodness-of-fit test.} Used here on the
-distribution of rank-1 votes in the mode-preference data, against a
-uniform null. With $O_i$ observed and $E_i$ expected counts in $k$
-categories,
+The Kruskal--Wallis test's own effect size is
+\emph{$\varepsilon^2$ (epsilon-squared)}:
+\begin{equation}
+\varepsilon^2 = (H - k + 1) / (N - k),
+\end{equation}
+on the $[0, 1]$ scale, larger meaning more of the total variance
+in scores is explained by mode membership. Conventional bands
+match Kendall's~$W$.
+
+\paragraph{Mode preference ranking ($n = 69$).}
+Applied to the post-experiment rank-1 vote distribution across
+the three modes.
+
+The \emph{chi-square goodness-of-fit test} compares observed
+counts $O_i$ to expected counts $E_i$ under a uniform null:
 \begin{equation}
 \chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}.
 \end{equation}
-
-\paragraph{Effect sizes.} Effect sizes complement $p$-values by
-quantifying the magnitude of the difference, independent of sample
-size.
-\begin{itemize}
-  \item Kendall's $W$ (coefficient of concordance) is the Friedman
-        test's effect size on $[0, 1]$:
-        $W = \chi^2_F / (n (k - 1))$. Conventional bands: $0$--$0.1$
-        weak, $0.1$--$0.3$ moderate, $0.3$--$0.5$ strong.
-  \item Rank-biserial correlation $r$ is the matched-pairs effect
-        size for the Wilcoxon signed-rank test, given by
-        $r = (W_+ - W_-) / (W_+ + W_-)$. Conventional bands:
-        $|r| < 0.1$ negligible, $0.1$--$0.3$ small, $0.3$--$0.5$
-        medium, $\geq 0.5$ large.
-  \item Cramér's $V$ is the chi-square effect size on $[0, 1]$:
-        $V = \sqrt{\chi^2 / (N (k - 1))}$. Conventional bands match
-        Kendall's $W$.
-  \item $\varepsilon^2$ (epsilon squared) is the Kruskal--Wallis
-        effect size on $[0, 1]$:
-        $\varepsilon^2 = (H - k + 1) / (N - k)$.
-\end{itemize}
-
-\paragraph{Bonferroni correction.} A simple family-wise
-error-rate adjustment that divides the per-test significance
-threshold by the number of comparisons in the family. With $m$
-comparisons and a desired family-wise $\alpha = 0.05$, each
-individual test is evaluated against $\alpha' = \alpha / m$. With
-the three pairwise mode comparisons used throughout this work,
-$\alpha' = 0.0167$.
+In plain terms: a large $\chi^2$ (small $p$) means the
+distribution of first-place votes is more uneven than would be
+expected if participants chose at random. The associated effect
+size is \emph{Cram\'{e}r's~$V$}:
+\begin{equation}
+V = \sqrt{\chi^2 / (N (k - 1))},
+\end{equation}
+on the $[0, 1]$ scale, larger meaning the observed distribution
+deviates more strongly from uniform. Conventional bands match
+Kendall's~$W$.
