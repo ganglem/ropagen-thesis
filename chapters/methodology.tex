@@ -12,16 +12,16 @@ ROPAgen exists because creating a ROPA from scratch is tedious work: the documen
 
 \subsection*{ROPA Documents in ROPAgen}
 
-Internally, ROPAgen represents a ROPA as a single structured \texttt{DocumentData} object organised around eight thematic groups that together cover the disclosures required under Art.~30(1) GDPR:
+Internally, ROPAgen represents a ROPA as a single structured \texttt{DocumentData} object organized around eight thematic groups that together cover the disclosures required under Art.~30(1) GDPR:
 
 \begin{enumerate}
     \item \textbf{Organisation and controller} --- name, postal address, e-mail, phone number, and the contact details of the data protection officer and any external representative.
     \item \textbf{Legal basis} --- Boolean flags for each lawful-basis option in Art.~6(1) GDPR (consent, contract, legal obligation, legitimate interest), the German national-law bases relevant to the study scenario (\S~26 BDSG, \S~28b IfSG, \S~257/239 HGB, \S~147 AO), and a free-text fallback for other grounds.
-    \item \textbf{Data categories} --- nine grouped categories (personal master data, employment, finance, health, legal, behavioural, documentation, vehicle, and other) each with predefined Boolean sub-fields such as surname, date of birth, working hours, or holiday entitlement.
+    \item \textbf{Data categories} --- nine grouped categories (personal master data, employment, finance, health, legal, behavioral, documentation, vehicle, and other) each with predefined Boolean sub-fields such as surname, date of birth, working hours, or holiday entitlement.
     \item \textbf{Data sources} --- Boolean flags for common upstream systems (Office~365, Azure, Google Workspace, AWS, e-mail, and so on) plus a free-text field for sources not covered by the predefined list.
-    \item \textbf{Person categories} --- affected persons, internal recipients, external recipients within the EU, and authorised personnel, each populated through Boolean role tags with an optional free-text override.
+    \item \textbf{Person categories} --- affected persons, internal recipients, external recipients within the EU, and authorized personnel, each populated through Boolean role tags with an optional free-text override.
     \item \textbf{Retention periods} --- Boolean flags for the standard retention triggers (after termination of employment, after termination of contract, upon revocation of consent), a free-text field for the concrete deletion period, and flags for legal-retention exceptions.
-    \item \textbf{Free-text fields} --- three short prose fields covering the purpose of processing, the technical and organisational measures in place, and any additional information that does not fit elsewhere.
+    \item \textbf{Free-text fields} --- three short prose fields covering the purpose of processing, the technical and organizational measures in place, and any additional information that does not fit elsewhere.
     \item \textbf{Metadata} --- the document identifier, title, and natural language in which the final ROPA should be generated.
 \end{enumerate}
 
@@ -33,7 +33,7 @@ The three modes are best read as positions on a single axis of increasing LLM su
 
 \subsubsection*{Form Mode}
 
-Form mode offers the lightest LLM support: the user sees and does everything. Every field of the \texttt{DocumentData} schema is visible and edited by hand, laid out as a linear questionnaire of checkboxes and short text fields across the eight thematic groups (see the Form mode screenshot in Appendix~\ref{app:ropagen-form-screenshot}). The LLM is invoked only when the user explicitly asks for it: each section offers an optional \emph{AI Suggest} button that asks the LLM, given the document's current state, to propose values for that section's fields; the suggestions populate the form but remain freely editable, and the user is under no obligation to use them. Once the user is satisfied with the form, clicking \emph{Generate} sends the assembled \texttt{DocumentData} object to the \texttt{finalropa} prompt, which synthesises a complete ROPA document in formal prose. Form mode therefore exposes the entire structure of a ROPA upfront and uses the LLM only at the margins.
+Form mode offers the lightest LLM support: the user sees and does everything. Every field of the \texttt{DocumentData} schema is visible and edited by hand, laid out as a linear questionnaire of checkboxes and short text fields across the eight thematic groups (see the Form mode screenshot in Appendix~\ref{app:ropagen-form-screenshot}). The LLM is invoked only when the user explicitly asks for it: each section offers an optional \emph{AI Suggest} button that asks the LLM, given the document's current state, to propose values for that section's fields; the suggestions populate the form but remain freely editable, and the user is under no obligation to use them. Once the user is satisfied with the form, clicking \emph{Generate} sends the assembled \texttt{DocumentData} object to the \texttt{finalropa} prompt, which synthesizes a complete ROPA document in formal prose. Form mode therefore exposes the entire structure of a ROPA upfront and uses the LLM only at the margins.
 
 \subsubsection*{Ask Mode}
 
@@ -41,7 +41,7 @@ Ask mode adds an AI explainer alongside the same structured form. The user still
 
 \subsubsection*{Chat Mode}
 
-Chat mode hands control to the AI. The user does not see or fill the structured fields at all; instead, after entering the organisation's metadata --- name, contact information, and title of the processing activity --- the user describes their processing in their own words, and the LLM decides which structured fields to populate from those descriptions (see Appendix~\ref{app:ropagen-chat-screenshot}). The user navigates section by section through a chat interface only; the structured form is hidden from view. The LLM explains what each section requires, asks the user to describe their processing, and silently extracts the relevant structured data: a mentioned vendor name flips the corresponding data-source flag, a mentioned data category populates the corresponding Boolean, and so on. The user therefore never directly interacts with the underlying \texttt{DocumentData} object, although the same object is being built up under the hood. The final \emph{Generate} step is once again identical to the other two modes. Chat mode is therefore a conversational-first workflow in which field-level decisions are delegated to the LLM and only the final generation step is shared with the other modes.
+Chat mode hands control to the AI. The user does not see or fill the structured fields at all; instead, after entering the organization's metadata --- name, contact information, and title of the processing activity --- the user describes their processing in their own words, and the LLM decides which structured fields to populate from those descriptions (see Appendix~\ref{app:ropagen-chat-screenshot}). The user navigates section by section through a chat interface only; the structured form is hidden from view. The LLM explains what each section requires, asks the user to describe their processing, and silently extracts the relevant structured data: a mentioned vendor name flips the corresponding data-source flag, a mentioned data category populates the corresponding Boolean, and so on. The user therefore never directly interacts with the underlying \texttt{DocumentData} object, although the same object is being built up under the hood. The final \emph{Generate} step is once again identical to the other two modes. Chat mode is therefore a conversational-first workflow in which field-level decisions are delegated to the LLM and only the final generation step is shared with the other modes.
 
 \subsection*{LLM Backend}
 
@@ -70,27 +70,25 @@ session rather than at the start.}
 
 \subsection*{Task Scenario}
 
-A single standardised scenario was used across all participants and modes to ensure consistency. The scenario described a relatable workplace data processing activity at \emph{APOR GmbH}, a fictional small software company in Ulm with approximately 50 employees: the two processing activities under consideration were the administration of employee working time and leave, and the management of parking authorisations for the company car park. The scenario covers all GDPR Article~30 fields and is accessible to participants without legal expertise; it is reproduced verbatim in both German (the version actually shown to participants) and English in Appendix~\ref{app:scenario}. The LLM backing all three modes (\S\ref{sec:ropagen}) was held constant throughout the study.
+A single standardized scenario was used across all participants and modes to ensure consistency. The scenario described a relatable workplace data processing activity at \emph{APOR GmbH}, a fictional small software company in Ulm with approximately 50 employees: the two processing activities under consideration were the administration of employee working time and leave, and the management of parking authorizations for the company car park. The scenario covers all GDPR Article~30 fields and is accessible to participants without legal expertise; it is reproduced verbatim in both German (the version actually shown to participants) and English in Appendix~\ref{app:scenario}. The LLM backing all three modes (\S\ref{sec:ropagen}) was held constant throughout the study.
 
 \subsection*{Participants}
 
-Recruitment yielded $N=73$ university students. Participants were screened for minimal to no GDPR knowledge (expected and required), prior AI tool usage experience (documented), general technology comfort level (assessed), and the absence of any professional legal or compliance background. As part of onboarding, participants received a brief standardised introduction to GDPR and ROPA concepts before beginning the tasks, and were shown an example of a high-quality ROPA document as reference material prior to starting.
+Recruitment yielded $N=73$ university students. Participants were screened for minimal to no GDPR knowledge (expected and required), prior AI tool usage experience (documented), general technology comfort level (assessed), and the absence of any professional legal or compliance background. As part of onboarding, participants received a brief standardized introduction to GDPR and ROPA concepts before beginning the tasks, and were shown an example of a high-quality ROPA document as reference material prior to starting.
 
 \subsection*{Data Availability and Sample Sizes}
-Due to technical data loss and incomplete submissions during data collection, the effective sample sizes differ across analysis streams. The canonical sample sizes used throughout this thesis are summarised below; all counts are derived from the raw data files committed to the repository and documented in full in \texttt{python/output/sample\_sizes.md}.
+Due to technical data loss and incomplete submissions during data collection, the effective sample sizes differ across analysis streams. The canonical sample sizes used throughout this thesis are summarized below; all counts are derived from the raw data files committed to the repository and documented in full in \texttt{python/output/sample\_sizes.md}.
 \begin{itemize}
     \item \textbf{Survey, recruited N = 73 / valid N = 69} — 73 participants completed the study; 69 retained after dropping four records with invalid consent (\texttt{p\_0001 = -1}). All 69 valid participants completed all three modes, so per-mode sample size, matched-triple survey subset, and valid N are all \textbf{n = 69}. The matched-triple n = 69 is used for within-subjects Friedman and Wilcoxon signed-rank tests on SUS, R-TLX, confidence items, and the perceived AI support composite.
-    \item \textbf{Documents, 113 generated ROPAs} — distributed across modes as 37 (Form), 37 (Ask), and 39 (Chat); used for all NLP metric and LLM-as-a-judge analyses at the document level. The full $n = 113$ sample is used throughout, with Kruskal--Wallis and Bonferroni-corrected Mann--Whitney $U$ as the between-groups inferential family. The 113 documents represent \textbf{47 unique participants}.
-    \item \textbf{Survey × NLP join, 106 rows} — inner join on participant and mode yields 106 rows (Form 34, Ask 34, Chat 38) across \textbf{44 unique participants}. Per-mode joined samples (n = 34 / 34 / 38) are used for per-mode Spearman correlations between confidence and quality, which do not require complete triples.
-    \item \textbf{Triangulated sample, n = 27} — participants with survey × NLP coverage in all three modes. This is the canonical N for confidence--quality correlation analyses that require within-subjects matching across all three modes simultaneously.
+    \item \textbf{Documents, 113 generated ROPAs} — distributed across modes as 37 (Form), 37 (Ask), and 39 (Chat). The full $n = 113$ sample is used throughout: NLP metric scores and per-mode completion time are analyzed inferentially with Kruskal--Wallis and Bonferroni-corrected Mann--Whitney $U$ as the between-groups family; LLM-as-a-judge scores are reported descriptively on the same sample. The 113 documents represent \textbf{47 unique participants}.
 \end{itemize}
-The reconciliation between these canonical Ns and earlier reporting is as follows: 47 corresponds to unique participants with at least one judge-evaluated document and 44 to unique participants in the survey × NLP join. The canonical figures used in the inferential analyses are \textbf{n = 113} for document-quality and timing comparisons, \textbf{n = 69} for survey instruments, and \textbf{n = 27} for triangulated confidence--quality correlations across all three modes.
+The canonical figures used in the inferential analyses are \textbf{n = 113} for NLP metric and completion-time comparisons and \textbf{n = 69} for survey instruments. Of the 113 documents, 47 unique participants contributed at least one document.
 
-Descriptive statistics (means, medians, standard deviations) are computed on the full available N per mode for each analysis stream. Inferential tests on document-quality and timing measures operate on the full $n = 113$ sample as a between-groups comparison; inferential tests on survey instruments operate on the matched $n = 69$ within-subjects sample (see \emph{Statistical Analysis}, below).
+Descriptive statistics (means, medians, standard deviations) are computed on the full available N per mode for each analysis stream. Inferential tests on NLP metric and per-mode completion-time measures operate on the full $n = 113$ sample as a between-groups comparison; inferential tests on survey instruments operate on the matched $n = 69$ within-subjects sample. The LLM-as-a-judge scores are reported descriptively only and are not subjected to inferential testing (see \emph{Statistical Analysis}, below).
 
 \subsection*{Data Collection}
 
-Quantitative measures were collected after each mode. The System Usability Scale (SUS) was administered as ten standardised questions on a 5-point Likert scale; the Raw Task Load Index (R-TLX) captured six cognitive load dimensions on the standard NASA 21-point scale (1 = lowest demand, 21 = highest), as Raw TLX retains the unweighted subscale ratings on their original NASA scale. The full text of the 10 SUS items and the 6 NASA R-TLX subscale descriptions are reproduced in Appendix~\ref{app:sus-rtlx-items}. In addition, participants completed a six-item Perceived AI Support instrument on a 5-point Likert scale:
+Quantitative measures were collected after each mode. The System Usability Scale (SUS) was administered as ten standardized questions on a 5-point Likert scale; the Raw Task Load Index (R-TLX) captured six cognitive load dimensions on the standard NASA 21-point scale (1 = lowest demand, 21 = highest), as Raw TLX retains the unweighted subscale ratings on their original NASA scale. The full text of the 10 SUS items and the 6 NASA R-TLX subscale descriptions are reproduced in Appendix~\ref{app:sus-rtlx-items}. In addition, participants completed a six-item Perceived AI Support instrument on a 5-point Likert scale:
 
 \begin{enumerate}
     \item \textit{Perceived Usefulness:} ``The AI was helpful in creating this document.'' (\textit{``Die KI war bei der Erstellung dieses Dokuments hilfreich.''})
@@ -108,7 +106,7 @@ Items were administered in German (the parenthetical text above reproduces the v
 Following the dual-evaluation template adopted by Su et al.\ \cite{suJuDGEBenchmarkingJudgment2025} and Vayadande et al.\ \cite{vayadandeAIPoweredLegalDocumentation2024}, both surface-form and semantic measures are reported alongside an LLM-as-Judge rubric.
 
 \subsubsection*{NLP Metrics}
-All participant-generated documents (73 participants $\times$ 3 modes = 219 theoretical maximum, 113 retained after dropping incomplete submissions; the gap is dominated by 26 participants who submitted no documents at all, with the remaining 21 missing one or two of their three modes) are compared against a single reference document using a suite of automated NLP metrics. The reference document was created by the study author using Form mode (\S\ref{sec:ropagen}), applying the same standardised scenario presented to participants, and is reproduced in full in Appendix~\ref{app:ropagen-reference}. It is treated as the authoritative baseline --- a root-of-trust representing a careful, complete application of the most structured interaction mode. This introduces an inherent framing effect: NLP metrics measure similarity to Form-style output, which may disadvantage the more conversational outputs of Ask and Chat modes independently of their substantive quality.
+All participant-generated documents (73 participants $\times$ 3 modes = 219 theoretical maximum, 113 retained after dropping incomplete submissions; the gap is dominated by 26 participants who submitted no documents at all, with the remaining 21 missing one or two of their three modes) are compared against a single reference document using a suite of automated NLP metrics. The reference document was created by the study author using Form mode (\S\ref{sec:ropagen}), applying the same standardized scenario presented to participants, and is reproduced in full in Appendix~\ref{app:ropagen-reference}. It is treated as the authoritative baseline --- a root-of-trust representing a careful, complete application of the most structured interaction mode. This introduces an inherent framing effect: NLP metrics measure similarity to Form-style output, which may disadvantage the more conversational outputs of Ask and Chat modes independently of their substantive quality.
 \begin{itemize}
     \item \textbf{BLEU} (Bilingual Evaluation Understudy): n-gram precision with brevity penalty
     \item \textbf{ROUGE-1, ROUGE-2, ROUGE-L}: unigram overlap, bigram overlap, and longest common subsequence F1
@@ -120,7 +118,7 @@ Metrics are computed at both the document level (aggregated across all Article 3
 
 \subsubsection*{Metric Definitions}
 
-The five NLP metrics summarised above are defined formally below. Each is computed against the single expert-authored reference document; interpretive framing of the resulting values is deferred to the Evaluation chapter.
+The five NLP metrics summarized above are defined formally below. Each is computed against the single expert-authored reference document; interpretive framing of the resulting values is deferred to the Evaluation chapter.
 
 BLEU rewards exact word-sequence overlap with the reference: a high BLEU score means the candidate reuses the reference's wording almost verbatim, while a low BLEU score can equally indicate a legitimate paraphrase or genuinely missing content -- the metric does not distinguish the two. It is therefore most informative when read alongside a recall-aware or semantic measure.
 
@@ -204,21 +202,18 @@ The precision/recall asymmetry of these metrics maps onto distinct failure modes
 \subsubsection*{LLM-as-a-Judge Evaluation}
 Documents are additionally evaluated using an LLM-as-a-judge approach, in which \textbf{Gemini~3.1 Pro Preview} (model identifier \texttt{google/gemini-3.1-pro-preview}, accessed via OpenRouter at temperature~0) serves as an automated evaluator assessing GDPR-specific quality. The judge is positioned as a \emph{supplementary} evaluator: it is a single-pass, single-model assessment without inter-rater replication or legal-expert validation, and its scores are reported alongside, not in place of, the NLP metrics. The reference-based NLP metrics remain the primary RQ2 evidence; the judge complements them by providing a reference-free signal that captures GDPR-specific quality properties (legal correctness, hallucination, scenario faithfulness) which similarity-based metrics cannot directly observe. The judge evaluates each document across five metrics on a 1--5 scale:
 \begin{enumerate}
-    \item \textbf{Completeness:} Coverage of all required Article 30(1) fields (controller identity, DPO contact, purposes, legal basis, data categories, recipients, retention periods, technical and organisational measures)
+    \item \textbf{Completeness:} Coverage of all required Article 30(1) fields (controller identity, DPO contact, purposes, legal basis, data categories, recipients, retention periods, technical and organizational measures)
     \item \textbf{Scenario Faithfulness:} Adherence to the specific details of the study scenario rather than generic or hallucinated content
     \item \textbf{Legal Correctness:} Appropriate use of GDPR terminology and accurate citation of relevant articles
     \item \textbf{Hallucination (inverse):} Absence of invented facts not present in the scenario (scored inversely: 5 = no hallucinations)
     \item \textbf{Overall:} Holistic assessment of the document's usability as a real-world ROPA record
 \end{enumerate}
-The judge evaluation is applied to all 113 retained documents. The full evaluation rubric and system prompt used for the judge are provided in Appendix~\ref{app:judge-prompt}. The interpretation reported in this thesis is authored directly from the raw per-document judge scores; a working summary of those scores generated separately by a different model is referenced only as an aid and is not the source of any claims in the thesis.
-
-\subsubsection*{Confidence--Quality Gap Analysis}
-To investigate whether perceived confidence in the AI-generated output corresponds to actual document quality, self-reported confidence is correlated with both NLP metric scores and LLM-as-a-judge scores. The \textbf{primary confidence measure} is the single Likert item on legal-basis confidence (item~5 of the perceived AI support instrument: ``I am confident that the AI identified the correct legal basis''), chosen because it is the only survey item that asks participants to judge the substantive correctness of the AI's output. The 6-item Perceived AI Support composite is reported as a \textbf{secondary} analysis to capture broader attitudinal facets (usefulness, efficiency, transparency, trust, intention to use). Both measures are correlated against three signals: confidence against NLP metrics (reference-based lexical and semantic similarity); confidence against LLM judge scores (GDPR-specific holistic quality); and NLP metrics against LLM judge scores (agreement between the two automated assessment systems). Analyses are restricted to participants for whom data from all three sources (survey, NLP pipeline, judge evaluation) are available; the exact triangulated~N is reported in the \emph{Data Availability and Sample Sizes} subsection.
+The judge evaluation is applied to all 113 retained documents. The full evaluation rubric, system prompt, and model configuration used for the judge are provided in Appendix~\ref{app:judge}. The interpretation reported in this thesis is authored directly from the raw per-document judge scores; a working summary of those scores generated separately by a different model is referenced only as an aid and is not the source of any claims in the thesis.
 
 \subsection*{Statistical Analysis}
-A significance threshold of $\alpha = 0.05$ is applied to all tests. The choice of test family follows the structure of each dataset, with one test family applied per analysis rather than running parallel matched-pairs and between-groups tests on the same data. \textbf{Survey instruments} (SUS, R-TLX, perceived AI support, confidence items) are analysed within-subjects on the matched $n = 69$ sample: a Friedman test as the omnibus, followed by pairwise Wilcoxon signed-rank tests with Bonferroni correction for post-hoc analysis. Every participant gives one response per mode, so the survey data is genuinely matched-pairs and the within-subjects test is the appropriate choice. \textbf{Document-quality measures and per-mode completion time} are analysed between-groups on the full unbalanced $n = 113$ sample: a Kruskal--Wallis test as the omnibus, followed by pairwise Mann--Whitney $U$ tests with Bonferroni correction for post-hoc analysis. Only $26$ of the $113$ retained documents form strict matched triples, so a within-subjects analysis would discard the majority of the available data; the between-groups family preserves the full sample. Effect sizes are reported as $\varepsilon^2$ for the omnibus tests, Kendall's~$W$ as the coefficient of concordance for Friedman, and rank-biserial correlation~$r$ for the pairwise tests.
+A significance threshold of $\alpha = 0.05$ is applied to all tests. The choice of test family follows the structure of each dataset, with one test family applied per analysis rather than running parallel matched-pairs and between-groups tests on the same data. \textbf{Survey instruments} (SUS, R-TLX, perceived AI support, confidence items) are analyzed within-subjects on the matched $n = 69$ sample: a Friedman test as the omnibus, followed by pairwise Wilcoxon signed-rank tests with Bonferroni correction for post-hoc analysis. Every participant gives one response per mode, so the survey data is genuinely matched-pairs and the within-subjects test is the appropriate choice. \textbf{NLP metric scores and per-mode completion time} are analyzed between-groups on the full unbalanced $n = 113$ sample: a Kruskal--Wallis test as the omnibus, followed by pairwise Mann--Whitney $U$ tests with Bonferroni correction for post-hoc analysis. Only $26$ of the $113$ retained documents form strict matched triples, so a within-subjects analysis would discard the majority of the available data; the between-groups family preserves the full sample. The LLM-as-a-judge scores are reported descriptively (means, medians, dispersion) as a supplementary signal and are not subjected to inferential testing. Effect sizes are reported as $\varepsilon^2$ for the omnibus tests, Kendall's~$W$ as the coefficient of concordance for Friedman, and rank-biserial correlation~$r$ for the pairwise tests.
 
-For RQ1 (User Experience and Preference), the Friedman test is applied to SUS scores, the R-TLX composite, and the confidence question composites across modes; post-hoc pairwise Wilcoxon signed-rank tests with Bonferroni correction identify which mode pairs differ significantly; and mode preference distributions are reported as frequencies and rankings. For RQ2 (Document Quality and Confidence Calibration), the Kruskal--Wallis test is applied to NLP metric scores and LLM-as-a-judge scores across modes, with Bonferroni-corrected pairwise Mann--Whitney $U$ tests as post-hoc analysis where the omnibus is significant. Spearman rank correlation ($\rho$) is used for the confidence--quality gap analysis (non-parametric; appropriate for ordinal-to-continuous relationships).
+For RQ1 (User Experience and Preference), the Friedman test is applied to SUS scores, the R-TLX composite, and the confidence question composites across modes; post-hoc pairwise Wilcoxon signed-rank tests with Bonferroni correction identify which mode pairs differ significantly; and mode preference distributions are reported as frequencies and rankings. For RQ2 (Document Quality), the Kruskal--Wallis test is applied to NLP metric scores across modes, with Bonferroni-corrected pairwise Mann--Whitney $U$ tests as post-hoc analysis where the omnibus is significant. The LLM-as-a-judge scores are reported descriptively only and are not subjected to inferential testing.
 
 \subsubsection*{Definitions of Statistical Tests and Effect Sizes}
 
@@ -261,23 +256,29 @@ With three modes there are three pairwise comparisons; the
 Bonferroni-corrected significance threshold is therefore
 $\alpha' = 0.05 / 3 = 0.0167$.
 
-\paragraph{Mann--Whitney $U$ test (between-groups sensitivity check).}
-Non-parametric two-sample test on independent groups, used here as
-a sensitivity check on the unbalanced full sample where
-matched-pair tests are not applicable. With $n_1$ and $n_2$ the two
-group sizes and $R_1$ the sum of ranks in group $1$,
-\begin{equation}
-U = R_1 - \frac{n_1 (n_1 + 1)}{2}.
-\end{equation}
-
 \paragraph{Kruskal--Wallis $H$ test.} Non-parametric one-way ANOVA
 analogue for $k$ independent groups, used in the Evaluation chapter
-as a between-groups sensitivity check on the unbalanced full
-document sample. With $N$ total observations, $n_j$ observations in
-group $j$, and $R_j$ the sum of ranks in group $j$,
+as the between-groups omnibus for NLP metric scores and per-mode
+completion time on the unbalanced full document sample. With $N$
+total observations, $n_j$ observations in group $j$, and $R_j$ the
+sum of ranks in group $j$,
 \begin{equation}
 H = \frac{12}{N (N+1)} \sum_{j=1}^{k} \frac{R_j^2}{n_j} - 3 (N + 1).
 \end{equation}
+A significant Kruskal--Wallis statistic motivates pairwise
+post-hoc comparisons.
+
+\paragraph{Mann--Whitney $U$ test (post-hoc).}
+Non-parametric two-sample test on independent groups, applied as
+the pairwise post-hoc to a significant Kruskal--Wallis omnibus.
+With $n_1$ and $n_2$ the two group sizes and $R_1$ the sum of
+ranks in group $1$,
+\begin{equation}
+U = R_1 - \frac{n_1 (n_1 + 1)}{2}.
+\end{equation}
+With three modes there are three pairwise comparisons; the
+Bonferroni-corrected significance threshold is therefore
+$\alpha' = 0.05 / 3 = 0.0167$.
 
 \paragraph{Chi-square goodness-of-fit test.} Used here on the
 distribution of rank-1 votes in the mode-preference data, against a
@@ -306,11 +307,6 @@ size.
   \item $\varepsilon^2$ (epsilon squared) is the Kruskal--Wallis
         effect size on $[0, 1]$:
         $\varepsilon^2 = (H - k + 1) / (N - k)$.
-  \item Spearman's $\rho$ is the rank correlation coefficient on
-        $[-1, +1]$, used for the confidence--quality analyses;
-        magnitudes follow the standard correlation conventions
-        (small $|\rho| \approx 0.1$, medium $\approx 0.3$, large
-        $\geq 0.5$).
 \end{itemize}
 
 \paragraph{Bonferroni correction.} A simple family-wise

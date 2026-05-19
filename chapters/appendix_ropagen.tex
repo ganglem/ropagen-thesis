@@ -34,7 +34,7 @@ This appendix collects the static configuration of both LLMs that the study reli
 \section{ROPAgen Backend Prompts}
 \label{app:ropagen-prompts}
 
-ROPAgen sends one of \textbf{27 system prompts} to Mistral~Large~3 on every user turn, depending on the active mode and the current section of the ROPA being edited. All prompts are stored as static templates in the project's \texttt{data/prompt.json} and assembled at runtime in \texttt{src/actions/actions.ts}: the chosen template is concatenated with a context block listing the document title, the organisation metadata, and the current state of the \texttt{DocumentData} object before the call is issued. The texts below reproduce the template strings only; the runtime context block (which contains organisation- and user-specific information) is not reproduced, as its content varies per call. Conversational and per-section suggestion calls use temperature $0.2$ and top-$p$ $0.5$; the single \texttt{finalropa} call that produces the final ROPA document uses temperature $0.05$ and top-$p$ $0.05$.
+ROPAgen sends one of \textbf{27 system prompts} to Mistral~Large~3 on every user turn, depending on the active mode and the current section of the ROPA being edited. All prompts are stored as static templates in the project's \texttt{data/prompt.json} and assembled at runtime in \texttt{src/actions/actions.ts}: the chosen template is concatenated with a context block listing the document title, the organization metadata, and the current state of the \texttt{DocumentData} object before the call is issued. The texts below reproduce the template strings only; the runtime context block (which contains organization- and user-specific information) is not reproduced, as its content varies per call. Conversational and per-section suggestion calls use temperature $0.2$ and top-$p$ $0.5$; the single \texttt{finalropa} call that produces the final ROPA document uses temperature $0.05$ and top-$p$ $0.05$.
 
 \subsection{Final ROPA Generation Prompt (\texttt{finalropa})}
 \label{app:ropagen-prompt-finalropa}
@@ -791,7 +791,7 @@ DATA_UPDATE:
 
 \section{ROPAgen Mode Screenshots}
 
-The three figures below show the ROPAgen user interface as it appeared to participants in each of the three interaction modes, captured on a comparable step of the standardised study scenario (\S\ref{app:scenario}). They illustrate the user-facing surface of each mode rather than the backend behaviour reproduced in \S\ref{app:ropagen-prompts}.
+The three figures below show the ROPAgen user interface as it appeared to participants in each of the three interaction modes, captured on a comparable step of the standardized study scenario (\S\ref{app:scenario}). They illustrate the user-facing surface of each mode rather than the backend behavior reproduced in \S\ref{app:ropagen-prompts}.
 
 \subsection{Form Mode}
 \label{app:ropagen-form-screenshot}
@@ -826,7 +826,7 @@ The three figures below show the ROPAgen user interface as it appeared to partic
 \section{ROPAgen Reference Document}
 \label{app:ropagen-reference}
 
-Reproduced below is the expert-authored ROPA reference document. It was created by the study author using Form mode (\S\ref{sec:ropagen}), applying the standardised study scenario reproduced in Appendix~\ref{app:scenario}. The document is the comparison target used by every reference-based NLP metric in \S\ref{sec:eval-nlp-doc} and \S\ref{sec:eval-nlp-chapter}: every participant document is scored for similarity against this single ROPA. It is reproduced here in its original German (the language in which participants worked); the run-metadata footer emitted by ROPAgen (user identifier, mode, elapsed-time stamp, generation date) is omitted as it is administrative rather than substantive content.
+Reproduced below is the expert-authored ROPA reference document. It was created by the study author using Form mode (\S\ref{sec:ropagen}), applying the standardized study scenario reproduced in Appendix~\ref{app:scenario}. The document is the comparison target used by every reference-based NLP metric in \S\ref{sec:eval-nlp-doc} and \S\ref{sec:eval-nlp-chapter}: every participant document is scored for similarity against this single ROPA. It is reproduced here in its original German (the language in which participants worked); the run-metadata footer emitted by ROPAgen (user identifier, mode, elapsed-time stamp, generation date) is omitted as it is administrative rather than substantive content.
 
 \begin{lstlisting}
 Verzeichnis von Verarbeitungstätigkeiten (VVT)
@@ -1023,15 +1023,15 @@ All five metrics share the same 1--5 Likert anchor: $1 = $ very poor, $2 = $ poo
 \toprule
 \textbf{Metric} & \textbf{What is assessed} \\
 \midrule
-Completeness & Coverage of Art.~30(1) GDPR required elements: controller identity and contact, DPO, purposes of processing, legal basis, categories of data subjects and personal data, categories of recipients, retention periods, and technical/organisational measures (TOMs). Missing elements lower the score. \\
+Completeness & Coverage of Art.~30(1) GDPR required elements: controller identity and contact, DPO, purposes of processing, legal basis, categories of data subjects and personal data, categories of recipients, retention periods, and technical/organizational measures (TOMs). Missing elements lower the score. \\
 \addlinespace
-Scenario Faithfulness & Accuracy with respect to the concrete facts of this scenario: APOR GmbH, Ulm (Mainstraße~67), $\sim$50 employees, internally hosted Microsoft Office and internal servers (no external cloud), no medical/sickness data, 3-month deletion after employee departure, parking authorisation using a distinguishing feature such as a licence plate. Generic ROPA boilerplate lowers the score. \\
+Scenario Faithfulness & Accuracy with respect to the concrete facts of this scenario: APOR GmbH, Ulm (Mainstraße~67), $\sim$50 employees, internally hosted Microsoft Office and internal servers (no external cloud), no medical/sickness data, 3-month deletion after employee departure, parking authorization using a distinguishing feature such as a license plate. Generic ROPA boilerplate lowers the score. \\
 \addlinespace
-Legal Correctness & Correct use of GDPR terminology and correct citation of legal basis (typically Art.~6(1)(b) for employment data, Art.~6(1)(c) where applicable, Art.~6(1)(f) for parking authorisation). Wrong articles, invented legal bases, or confused controller/processor/DPO roles lower the score. \\
+Legal Correctness & Correct use of GDPR terminology and correct citation of legal basis (typically Art.~6(1)(b) for employment data, Art.~6(1)(c) where applicable, Art.~6(1)(f) for parking authorization). Wrong articles, invented legal bases, or confused controller/processor/DPO roles lower the score. \\
 \addlinespace
 Hallucination (inverse) & Inverse score for invented facts not supported by the scenario (e.g. invented third-party processors, invented categories such as medical data, invented addresses, retention periods other than 3~months). 5~=~no hallucinations, 1~=~many invented facts. \\
 \addlinespace
-Overall & Holistic judgement of how useful the document would be as a real Art.~30 ROPA record for this scenario, taking the four metrics above into account. \\
+Overall & Holistic judgment of how useful the document would be as a real Art.~30 ROPA record for this scenario, taking the four metrics above into account. \\
 \bottomrule
 \end{tabularx}
 \caption{The five judge metrics. All share the 1--5 Likert anchor; higher is better for every metric after the hallucination inversion.}
@@ -1059,7 +1059,7 @@ Per-key shape & \texttt{\{"score": int in [1,5], "rationale": string\}} \\
 Additional properties & Disallowed at every object level \\
 Documents evaluated & 113 ROPA documents (Form~37, Ask~37, Chat~39) \\
 Caching & Per-document JSON result cached on disk; reused on re-runs \\
-Retry behaviour & Schema-validation or transient API failures retried; persistent failures logged and skipped \\
+Retry behavior & Schema-validation or transient API failures retried; persistent failures logged and skipped \\
 Logging & Each call logs model, latency, prompt and completion token counts, and raw response payload \\
 \bottomrule
 \end{tabularx}
@@ -1070,8 +1070,8 @@ Logging & Each call logs model, latency, prompt and completion token counts, and
 \paragraph{Known limitations.} The following limitations of the judge layer are stated for full transparency and discussed further in the Discussion chapter:
 
 \begin{itemize}
-\item \textbf{Single-judge bias.} Only one judge model (Gemini~3.1 Pro Preview) operationalises the rubric; inter-rater agreement with a human GDPR expert is not established.
+\item \textbf{Single-judge bias.} Only one judge model (Gemini~3.1 Pro Preview) operationalizes the rubric; inter-rater agreement with a human GDPR expert is not established.
 \item \textbf{Model-family bias.} Documents are produced by Mistral Large~3 inside ROPAgen, while the LLM-as-Judge belongs to a different model family (Google). This reduces but does not eliminate stylistic-preference bias.
-\item \textbf{Single-scenario bias.} All scores are conditional on the one APOR GmbH scenario; generalisation to other ROPA contexts is not claimed.
+\item \textbf{Single-scenario bias.} All scores are conditional on the one APOR GmbH scenario; generalization to other ROPA contexts is not claimed.
 \item \textbf{Reference-free.} Unlike the NLP metric layer, the judge does not compare against an expert reference document; it scores against the scenario and Art.~30 directly.
 \end{itemize}

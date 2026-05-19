@@ -2414,11 +2414,6 @@
     <bcf:citekey order="35" intorder="1">suJuDGEBenchmarkingJudgment2025</bcf:citekey>
     <bcf:citekey order="36" intorder="1">Brooke1996</bcf:citekey>
     <bcf:citekey order="37" intorder="1">Hart2006</bcf:citekey>
-    <bcf:citekey order="38" intorder="1" nocite="1">Knappen2009</bcf:citekey>
-    <bcf:citekey order="39" intorder="2" nocite="1">Mittelbach2005</bcf:citekey>
-    <bcf:citekey order="40" intorder="3" nocite="1">Schlosser2014</bcf:citekey>
-    <bcf:citekey order="41" intorder="4" nocite="1">Sturm2012</bcf:citekey>
-    <bcf:citekey order="42" intorder="5" nocite="1">Voss2010</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
