@@ -85,8 +85,14 @@ def rank_biserial_wilcoxon(x: np.ndarray, y: np.ndarray) -> float:
 
 
 def mannwhitney_r(u: float, n1: int, n2: int) -> float:
-    """Rank-biserial r for Mann-Whitney U (Wendt 1972). Positive: x > y."""
-    return float(1 - (2 * u) / (n1 * n2))
+    """Rank-biserial r for Mann-Whitney U (Wendt 1972). Positive: x > y.
+
+    scipy.stats.mannwhitneyu(x, y) returns U for the first sample (x), which
+    grows when x ranks higher than y. The convention used elsewhere in this
+    project is that positive r means the first-named mode is higher, so r =
+    2U/(n1*n2) - 1 (NOT 1 - 2U/(n1*n2)).
+    """
+    return float((2 * u) / (n1 * n2) - 1)
 
 
 def kendalls_w(arr: np.ndarray) -> float:
