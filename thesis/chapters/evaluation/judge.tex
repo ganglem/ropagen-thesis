@@ -2,52 +2,80 @@
 \label{sec:eval-judge}
 
 Building on the reference-based NLP metrics reported in
-\S\ref{sec:eval-nlp-doc}, this section turns to a reference-free quality
-signal. The previous section measured similarity to a single
-expert-authored Form-mode reference; here, the judge evaluates each
-document against a rubric rather than a target, which lifts the
-implicit advantage that the reference document conferred on
-Form-style outputs. The LLM-as-a-Judge evaluation provides a
-reference-free, GDPR-specific quality signal across five dimensions:
-\emph{Completeness}, \emph{Scenario Faithfulness}, \emph{Legal
-Correctness}, \emph{Hallucination} (inverse-coded; higher equals
-less hallucination), and \emph{Overall}. The dimension-wise rubric
-design follows the precedent established by Su et al.'s JuDGE
-benchmark for LLM-evaluated legal-document generation
+\S\ref{sec:eval-nlp-doc}, this section turns to a reference-free
+quality signal. The previous section measured similarity to a
+single expert-authored Form-mode reference; here, the judge
+evaluates each document against a rubric rather than a target,
+which lifts the implicit advantage that the reference document
+conferred on Form-style outputs. The LLM-as-a-Judge evaluation
+produces five metrics per document, summarised in
+Table~\ref{tab:judge-metrics}: \emph{Completeness},
+\emph{Scenario Faithfulness}, \emph{Legal Correctness},
+\emph{Hallucination} (inverse-coded; higher equals less
+hallucination), and \emph{Overall}. The full rubric, prompt, and
+model configuration are reproduced in
+Appendix~\ref{app:judge-rubric}. The rubric design follows the
+precedent established by Su et al.'s JuDGE benchmark for
+LLM-evaluated legal-document generation
 \cite{suJuDGEBenchmarkingJudgment2025}. The judge is a single LLM
-(Gemini~3.1 Pro Preview, temperature $0$) prompted with the rubric
-documented in Appendix~\ref{app:judge-prompt}; the resulting scores
+(Gemini~3.1 Pro Preview, temperature $0$); the resulting scores
 are reported as a supplementary, single-pass single-model signal
-alongside the survey instruments and reference-based NLP metrics, and
-without inter-rater replication or legal-expert validation they should
-be read as indicative rather than definitive. All $113$ retained
-documents are scored. Per-mode results are reported in the order
-Form, Ask, Chat, followed by the aggregated mean across all
-documents.
+alongside the survey instruments and reference-based NLP metrics,
+and without inter-rater replication or legal-expert validation
+they should be read as indicative rather than definitive. All
+$113$ retained documents are scored. Per-mode results are
+reported in the order Form, Ask, Chat, followed by the aggregated
+mean across all documents.
 
-\subsection{Per-Dimension Results}
+\begin{table}[htbp]
+\centering
+\small
+\caption{The five LLM-as-Judge metrics. All share a $1$--$5$
+Likert anchor; higher is better, including for
+\emph{Hallucination (inverse)}, which is inverted internally so
+that fewer fabrications score higher. The full rubric is
+reproduced in Appendix~\ref{app:judge-rubric}.}
+\label{tab:judge-metrics}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Metric & What is assessed \\
+\midrule
+Completeness            & Coverage of the Art.~30(1) GDPR required elements (controller, DPO, purposes, legal basis, data and recipient categories, retention, technical and organisational measures); missing elements lower the score. \\
+\addlinespace
+Scenario Faithfulness   & Accuracy with respect to the concrete facts of the study scenario (APOR GmbH, $\sim$50 employees, internal hosting, 3-month deletion, etc.); generic ROPA boilerplate lowers the score. \\
+\addlinespace
+Legal Correctness       & Correct use of GDPR terminology and correct citation of legal basis under Art.~6(1); wrong articles or confused controller/processor/DPO roles lower the score. \\
+\addlinespace
+Hallucination (inverse) & Absence of invented facts not supported by the scenario; $5 =$ no hallucinations, $1 =$ many. \\
+\addlinespace
+Overall                 & Holistic judgement of how useful the document would be as a real Art.~30 ROPA record, weighing the four metrics above. \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
-This subsection walks through each rubric dimension in turn,
+\subsection{Per-Metric Results}
+
+This subsection walks through each rubric metric in turn,
 reporting per-mode means, medians, and dispersion before the
-holistic Overall score. The five rubric dimensions are reported in
+holistic Overall score. The five rubric metrics are reported in
 the order Completeness $\rightarrow$ Faithfulness $\rightarrow$ Legal
 Correctness $\rightarrow$ Hallucination $\rightarrow$ Overall to
 allow the picture to build cumulatively before the holistic Overall
 score is read. Table~\ref{tab:judge-summary} reports the
-per-dimension mean and standard deviation per mode and the
+per-metric mean and standard deviation per mode and the
 aggregated mean. Figure~\ref{fig:judge-boxplot} shows the
 corresponding distributions.
 
 \begin{table}[htbp]
 \centering
-\caption{LLM-as-Judge dimension means $\pm$ standard deviation by mode (full
+\caption{LLM-as-Judge metric means $\pm$ standard deviation by mode (full
 sample $n = 113$, scale $1$--$5$, higher is better including for
 \emph{Hallucination (inverse)}). The aggregated ``All'' column is the mean
 across all $113$ documents.}
 \label{tab:judge-summary}
 \begin{tabular}{@{}l r r r r@{}}
 \toprule
-Dimension & Form & Ask & Chat & All \\
+Metric & Form & Ask & Chat & All \\
 \midrule
 Completeness            & $4.84 \pm 0.55$ & $3.84 \pm 1.54$ & $3.18 \pm 1.59$ & $3.94 \pm 1.43$ \\
 Scenario Faithfulness   & $1.84 \pm 0.76$ & $2.30 \pm 1.20$ & $2.49 \pm 1.19$ & $2.21 \pm 1.10$ \\
@@ -61,7 +89,7 @@ Overall                 & $2.41 \pm 0.69$ & $2.49 \pm 1.04$ & $2.62 \pm 1.31$ & 
 \begin{sidewaysfigure}
 \centering
 \includegraphics[width=\linewidth]{judge_metrics_boxplot.png}
-\caption{Distributions of the five LLM-as-Judge dimensions by mode (full
+\caption{Distributions of the five LLM-as-Judge metrics by mode (full
 sample $n = 113$, scale $1$--$5$).}
 \label{fig:judge-boxplot}
 \end{sidewaysfigure}
@@ -102,7 +130,7 @@ documents the least — closely tracking the Faithfulness ordering
 above. For \emph{Hallucination (inverse)}, the ordering matches
 Scenario Faithfulness: Form scores lowest ($1.65$, median $2.0$),
 Ask second ($2.40$, median $2.0$), Chat highest ($2.54$, median
-$3.0$); aggregated mean $2.20$. Because the dimension is
+$3.0$); aggregated mean $2.20$. Because the metric is
 inverse-coded, low scores mean more hallucination. The
 co-occurrence with Completeness is striking: $31$ of the $37$ Form
 documents ($83.8\,\%$) achieve Completeness $= 5$ while
@@ -127,18 +155,18 @@ while Chat's is the highest ($1.31$), indicating that Chat
 produces both the highest- and lowest-rated documents in the
 sample.
 
-\subsection{Patterns Across the Five Dimensions}
+\subsection{Synthesis}
 \label{ssec:judge-patterns}
 
-This subsection steps back from the individual rubric dimensions and
+This subsection steps back from the individual rubric metrics and
 draws out the contrasts between them across modes. Three patterns
-emerge from the per-dimension means. First, the Completeness ordering
+emerge from the per-metric means. First, the Completeness ordering
 (Form $>$ Ask $>$ Chat) is the inverse of the Scenario Faithfulness
 and Hallucination orderings (Form $<$ Ask $<$ Chat). Form documents
 are judged to be the most structurally complete but also the most
 prone to fabricated content, while Chat documents are judged to be
 the most faithful to the specific scenario but the least structurally
-complete. Ask sits between the two extremes on every dimension.
+complete. Ask sits between the two extremes on every metric.
 
 Second, the Legal Correctness scores are flat relative to the Completeness
 spread: the gap between modes is approximately $0.45$~points on Legal
@@ -147,15 +175,15 @@ distinguishes between modes more sharply on whether the document covers
 all required Article 30(1) fields than on whether the legal terminology is
 appropriate.
 
-Third, the Overall scores compress the per-dimension spread into a narrow
+Third, the Overall scores compress the per-metric spread into a narrow
 range (Form $2.41$ to Chat $2.62$, $\Delta = 0.21$), with the ordering Form
 $<$ Ask $<$ Chat. This is consistent with Overall reflecting a holistic
 judgement that weighs Faithfulness and Hallucination against Completeness;
 Form's high Completeness is partially offset by its low Faithfulness and
 high Hallucination, and the net result is a slight Chat advantage. The
 interpretation of the Form Completeness--Hallucination co-occurrence
-reported above in terms of the checkbox interface design is reserved for
-the Discussion chapter.
+reported above in terms of the checkbox-based interface of Form mode
+(\S\ref{sec:ropagen}) is reserved for the Discussion chapter.
 
 The judge data thus complete the document-quality picture begun in
 \S\ref{sec:eval-nlp-doc}: Form leads on Completeness and Legal

@@ -2,7 +2,7 @@
 
 \section{Context}
 The General Data Protection Regulation (GDPR) requires organizations to maintain a Record of Processing Activities (ROPA), a formal document that outlines how personal data is collected, processed, stored, and shared. Creating and maintaining these ROPA documents is often a resource-intensive process, especially for small and medium-sized organizations that lack specialized legal or data-protection expertise.
-Previous research developed an application that leverages Large Language Models (LLMs) to support users in generating GDPR-compliant ROPA documentation. The application provides three distinct interaction modes, each offering different degrees of assistance from the LLM, from basic text suggestions to highly automated drafting of ROPA entries. This system aims to reduce the effort needed to create legally compliant documentation while maintaining transparency and user control.
+In response to this challenge, ROPAgen --- the tool evaluated in this thesis --- is a web-based application that uses Large Language Models (LLMs) to assist users in drafting GDPR-compliant ROPA documentation. ROPAgen was developed by the author at the Institute of Databases and Information Systems (DBIS), University of Ulm, prior to this evaluation; it provides three interaction modes (Form, Ask, and Chat) that together offer increasing levels of LLM support, described in detail in \S\ref{sec:ropagen}. The system aims to reduce the effort needed to create legally compliant documentation while maintaining transparency and user control.
 Although the application provides a functional framework for assisted ROPA generation, its effectiveness, usability, and impact on documentation quality have not yet been systematically evaluated. To ensure that such a system can be confidently integrated into practical compliance workflows, both qualitative and quantitative assessments are needed. These evaluations must determine whether users can efficiently and correctly create ROPA documents, how the varying levels of LLM support influence performance and trust, and whether the system produces outputs aligned with GDPR requirements.
 
  
@@ -26,59 +26,4 @@ The goal of this thesis is to conduct a comprehensive evaluation of the existing
 \end{itemize}
 
 
-\section{3. Teil: Objectives und Contributions }
-
-
-\section*{Thesis Organization}
-
-\begin{itemize}
-    \item \textbf{Chapter 1: Introduction}
-    \begin{itemize}
-        \item Motivation, research questions, and contributions
-    \end{itemize}
-
-    \item \textbf{Chapter 2: Background and Related Work}
-    \begin{itemize}
-        \item GDPR and ROPA
-        \item Related work in AI-assisted legal document generation
-    \end{itemize}
-
-    \item \textbf{Chapter 3: Methodology}
-    \begin{itemize}
-        \item Brief overview of ROPAgen
-        \item User study design (within-subjects, balanced Latin Square)
-        \item Participant recruitment and demographic profile
-        \item Data collection instruments (System Usability Scale, NASA Raw Task Load Index, six-item Perceived AI Support questionnaire, mode-preference ranking, open-ended free-text comments)
-        \item Document quality assessment (reference-based NLP metrics, LLM-as-a-judge)
-    \end{itemize}
-
-    \item \textbf{Chapter 4: Evaluation and Results}
-    \begin{itemize}
-        \item Usability (SUS)
-        \item Cognitive Load (NASA R-TLX)
-        \item Perceived AI Support (six-item AI questionnaire)
-        \item Mode Preference and Free-Text Feedback (post-experiment ranking and open-ended comments)
-        \item Document Similarity (NLP Metrics, document- and chapter-level)
-        \item GDPR-Specific Quality (LLM-as-a-Judge)
-        \item Summary of Findings
-        \item Participant Demographics
-    \end{itemize}
-
-    \item \textbf{Chapter 5: Discussion}
-    \begin{itemize}
-        \item Interpretation of findings against the research questions
-        \item Confidence--quality gap and implications
-        \item Limitations and comparison with related work
-    \end{itemize}
-
-    \item \textbf{Chapter 6: Conclusion}
-    \begin{itemize}
-        \item Summary of contributions and future work
-    \end{itemize}
-
-    \item \textbf{Appendix}
-    \begin{itemize}
-        \item Appendix A: Study Scenario (German original and English translation)
-        \item Appendix B: LLM-as-a-Judge Configuration (system/user prompt, rubric, model settings)
-    \end{itemize}
-\end{itemize}
+\section{Objectives and Contributions}

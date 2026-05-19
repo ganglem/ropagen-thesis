@@ -40,6 +40,7 @@ BCOR15mm               % Bindekorrektur
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{rotating}
+\usepackage{longtable}
 
 % Besondere Schriftauszeichnungen
 \usepackage{url}              % \url{http://...} in Schreibmaschinenschrift
@@ -165,8 +166,9 @@ pdfborder=0 0 0	% keine Box um die Links!
 
 \appendix
 % hier Anhänge einbinden
-\input{chapters/sources}
-\input{chapters/appendix_inferential}
+\input{chapters/appendix_ropagen}     % A: ROPAgen + LLM-as-a-Judge Configuration
+\input{chapters/sources}              % B: Study Materials (Scenario + Survey Instruments)
+\input{chapters/appendix_inferential} % C: Inferential Statistics
 
 \backmatter
 \nocite{Knappen2009}

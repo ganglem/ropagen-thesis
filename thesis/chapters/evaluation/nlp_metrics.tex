@@ -1,35 +1,50 @@
-\section{Document Quality — Document-Level NLP Metrics}
-\label{sec:eval-nlp-doc}
+\section{Document Quality — NLP Metrics}
+\label{sec:eval-docquality}
 
 The User Study (\S\ref{sec:eval-userstudy}) showed a stable
 Form-first ordering on usability, workload, and overall preference,
 with Chat second and Ask third. This section opens the
-document-quality half by asking whether the same ordering holds when
-the output text itself is compared against a reference document.
+document-quality half of the evaluation by asking whether the same
+ordering holds when the output text itself is compared against a
+reference document. The reference-based metric suite mirrors the
+one applied by von Schwerin et
+al.\ \cite{schwerinSystematicComparisonOpen2024} in their
+evaluation of LLM-generated ROPA data categories: five lexical
+metrics (BLEU, ROUGE-1/2/L, METEOR) that count surface-form token
+overlap, and three BERT-based metrics (BERTScore Precision /
+Recall / F1) together with document-level SBERT cosine similarity
+that compare semantic representations. All metrics are computed
+against the single expert-authored Form-mode reference document
+described in Chapter~\ref{ch:methodology}. For every measure the
+per-mode results are reported in the order Form, Ask, Chat,
+followed by the aggregated value across all three modes. The
+presentation proceeds in three steps:
+\S\ref{sec:eval-nlp-doc} reports each metric at the document
+level, treating the ROPA as a single block of text;
+\S\ref{sec:eval-nlp-chapter} recomputes the same metrics at the
+level of the six Article 30(1) ROPA chapters to identify where in
+the document the per-mode differences originate; and
+\S\ref{sec:eval-nlp-comparison} summarises the document-level and
+chapter-level findings together, highlighting the similarities
+between the two views as well as the gap in absolute scores.
+
+\subsection{Document-Level NLP Metrics}
+\label{sec:eval-nlp-doc}
+
 Document-quality results are reported on the full retained set of
 $113$ documents (Form $n = 37$, Ask $n = 37$, Chat $n = 39$) for
 descriptive statistics, and on the strict matched-triple subset of
-$n = 26$ for within-subjects significance tests. The metric suite
-mirrors the one applied by von Schwerin et
-al.\ \cite{schwerinSystematicComparisonOpen2024} in their evaluation
-of LLM-generated ROPA data categories. All metrics are computed
-against the single expert-authored Form-mode reference document
-described in Chapter~\ref{ch:methodology}. For each metric, the
-per-mode results are reported in the order Form, Ask, Chat, followed
-by the aggregated value across all three modes. The descriptive
-tables in this section report — per metric and per mode — the full
-empirical distribution ($n$, min, Q1, median, Q3, max, mean, SD)
-computed from the raw per-document scores in the pipeline output
-\texttt{document\_results.csv}; the corresponding chapter-level
-breakdown is reported in \S\ref{sec:eval-nlp-chapter}.
+$n = 26$ for within-subjects significance tests. The descriptive
+tables in this subsection report — per metric and per mode — the
+full empirical distribution ($n$, min, Q1, median, Q3, max, mean,
+SD) computed from the raw per-document scores in the pipeline
+output \texttt{document\_results.csv}. The metrics are reported in
+two groups: lexical metrics first, since they make the strictest
+demands on surface form, followed by the BERT-based and
+sentence-embedding metrics. Each metric is reported over the full
+participant document, treating the ROPA as a single block of text.
 
-The metrics are reported in two groups: lexical metrics, which count
-surface-form token overlap, and BERT-based and sentence-embedding
-metrics, which compare semantic representations. Each metric is
-reported over the full participant document, treating the ROPA as a
-single block of text.
-
-\subsection{Lexical Metrics}
+\subsubsection{Lexical Metrics}
 \label{ssec:nlp-doc-lexical}
 
 Lexical metrics — BLEU, ROUGE, and METEOR — count surface-form
@@ -101,10 +116,9 @@ reversal of the Form-first ordering, but not at a magnitude
 participants would notice on the page. For \emph{BLEU}, Form
 yields a mean of $0.129$, Ask $0.127$, Chat $0.143$; aggregated
 $0.133$. Chat scores marginally higher than Form and Ask, which
-are essentially indistinguishable. The aggregated Friedman test
-on the matched subset is significant ($\chi^2(2) = 6.23$, $p =
-0.044$); the significant pairwise difference is Chat $>$ Ask
-($r = -0.578$, large effect).
+are essentially indistinguishable. Pairwise tests on the matched
+subset find Chat $>$ Ask significant ($r = -0.578$, large
+effect).
 
 \paragraph{ROUGE-1, ROUGE-2, ROUGE-L.} ROUGE \emph{(Recall-Oriented Understudy for Gisting Evaluation)} (\eqref{eq:rouge1}--\eqref{eq:rougeL}) measures how much of the reference's wording the candidate recovers, in three flavours: unigrams (single words), bigrams (adjacent word pairs), and the longest common subsequence. Each is reported as F1 — the harmonic mean of precision (how much of what the candidate said belongs) and recall (how much of what should have been said is there) — so it is more permissive than BLEU in word order but still surface-form.
 
@@ -112,40 +126,42 @@ Looking at single-word overlap, Chat and Form documents recover the
 reference's vocabulary at a similar rate, with Ask documents
 trailing. For \emph{ROUGE-1}, Form yields $0.488$, Ask $0.465$,
 Chat $0.511$; aggregated $0.488$. ROUGE-1 increases from Ask to
-Form to Chat. The aggregated Friedman test is significant
-($\chi^2(2) = 10.69$, $p = 0.005$); Form $>$ Ask and Chat $>$ Ask
-are significant pairwise differences with large effects, while
-Form versus Chat is not significant.
+Form to Chat. Pairwise tests find Form $>$ Ask and Chat $>$ Ask
+significant with large effects; Form versus Chat is not
+significant.
 
 When two-word phrases are compared, Form documents reproduce the
 reference's exact wording most often, with Chat second and Ask
 last. For \emph{ROUGE-2}, Form yields the highest mean ($0.306$),
 Chat second ($0.291$), Ask lowest ($0.257$); aggregated $0.285$.
-ROUGE-2 follows the Form $>$ Chat $>$ Ask ordering. The aggregated
-Friedman test is significant ($\chi^2(2) = 13.46$, $p = 0.001$);
-Form $>$ Ask is significant ($r = +0.829$, large effect), as is
-Chat $>$ Ask.
+ROUGE-2 follows the Form $>$ Chat $>$ Ask ordering. Pairwise
+tests find Form $>$ Ask significant ($r = +0.829$, large effect),
+as is Chat $>$ Ask.
 
 When the longest shared word sequence is what matters, Form and
 Chat documents track the reference equally well, and Ask trails
 both. For \emph{ROUGE-L}, Form ($0.388$) and Chat ($0.389$) are
 essentially tied, with Ask trailing ($0.347$); aggregated $0.375$.
-The aggregated Friedman test is significant
-($\chi^2(2) = 11.31$, $p = 0.004$); Form $>$ Ask and Chat $>$ Ask
-are significant pairwise differences with large effects.
+Pairwise tests find Form $>$ Ask and Chat $>$ Ask significant
+with large effects.
 
 \paragraph{METEOR.} METEOR \emph{(Metric for Evaluation of Translation with Explicit ORdering)} (\eqref{eq:meteor}) softens BLEU by allowing matches not just on identical tokens but also on stems and WordNet synonyms, so a document that paraphrases with related words is no longer punished as if it had said something unrelated. It is a fragmentation-penalised harmonic mean of unigram precision and recall, sitting between BLEU and ROUGE in strictness.
 
 Form documents use the most reference-like terminology even when
 synonyms are credited, with Chat second and Ask last. For
 \emph{METEOR}, Form yields the highest mean ($0.412$), Chat second
-($0.390$), Ask lowest ($0.365$); aggregated $0.389$. The aggregated
-Friedman test is significant ($\chi^2(2) = 9.92$, $p = 0.007$);
-Form $>$ Ask is significant ($r = +0.812$, large effect), and the
-remaining pairwise differences do not reach the Bonferroni
+($0.390$), Ask lowest ($0.365$); aggregated $0.389$. Pairwise
+tests find Form $>$ Ask significant ($r = +0.812$, large effect);
+the remaining pairwise differences do not reach the Bonferroni
 threshold.
 
-\subsection{BERT-Based and Sentence-Embedding Metrics}
+All five lexical Friedman tests on the matched $n = 26$ subset
+are significant, with $\chi^2(2)$ values of $6.23$ (BLEU,
+$p = 0.044$), $10.69$ (ROUGE-1, $p = 0.005$), $13.46$ (ROUGE-2,
+$p = 0.001$), $11.31$ (ROUGE-L, $p = 0.004$), and $9.92$ (METEOR,
+$p = 0.007$).
+
+\subsubsection{BERT-Based and Sentence-Embedding Metrics}
 \label{ssec:nlp-doc-bert}
 
 BERT-based metrics measure semantic rather than lexical similarity,
@@ -209,32 +225,31 @@ meaning}, Chat documents become the most on-topic — what they say
 is most closely aligned with the reference, with very little
 extraneous content. For \emph{BERTScore Precision}, Chat yields the
 highest mean ($0.895$), Form second ($0.889$), Ask lowest
-($0.886$); aggregated $0.890$. The aggregated Friedman test is
-significant ($\chi^2(2) = 18.54$, $p < 0.001$); Form $>$ Ask and
-Chat $>$ Ask are significant.
+($0.886$); aggregated $0.890$. Pairwise tests find Form $>$ Ask
+and Chat $>$ Ask significant.
 
 Form documents recover the most of what the reference says — the
 clearest finding of the entire metric pipeline. Where Chat trims to
 what is on-topic, Form reproduces the reference's content
 near-completely, while Ask leaves the most out. For \emph{BERTScore
 Recall}, Form yields the highest mean ($0.923$), with Chat
-($0.913$) and Ask ($0.908$) trailing; aggregated $0.915$. The
-aggregated Friedman test is significant ($\chi^2(2) = 30.77$,
-$p < 0.001$, $W = 0.410$, the largest effect observed in the metric
-pipeline); Form $>$ Ask is significant with the maximum possible
-matched-pairs effect ($r = +1.000$), and Form $>$ Chat is also
-significant ($r = +0.687$, large effect). Ask versus Chat is
-non-significant.
+($0.913$) and Ask ($0.908$) trailing; aggregated $0.915$.
+Pairwise tests find Form $>$ Ask significant with the maximum
+possible matched-pairs effect ($r = +1.000$; every one of the
+$26$ matched pairs has Form $>$ Ask with no ties, which is the
+source of the perfect rank-biserial rather than a tie-handling
+artefact), and Form $>$ Chat also significant ($r = +0.687$,
+large effect); Ask versus Chat is non-significant.
 
 Form's content coverage and Chat's tighter focus balance out when
 the two are combined: the two modes are effectively tied on overall
 semantic similarity, with Ask trailing. For \emph{BERTScore F1},
 Form yields the highest mean ($0.905$), Chat second ($0.904$), Ask
-lowest ($0.897$); aggregated $0.902$. The aggregated Friedman test
-is significant ($\chi^2(2) = 13.00$, $p = 0.002$); Form $>$ Ask and
-Chat $>$ Ask are significant with large effects. Form versus Chat
-is non-significant on F1, reflecting the trade-off between Form's
-higher Recall and Chat's higher Precision.
+lowest ($0.897$); aggregated $0.902$. Pairwise tests find
+Form $>$ Ask and Chat $>$ Ask significant with large effects;
+Form versus Chat is non-significant on F1, reflecting the
+trade-off between Form's higher Recall and Chat's higher
+Precision.
 
 \paragraph{SBERT (ModernBERT) cosine similarity.} Sentence-BERT cosine similarity (\eqref{eq:sbert}) compresses each document into a single embedding vector and reports how aligned the two vectors are, on a scale where $1$ is identical meaning and $0$ is unrelated. It is the most lenient of the metrics reported here: because the comparison is at the document level rather than the token level, two documents that cover the same topics with different wording typically obtain values close to $1$.
 
@@ -242,10 +257,16 @@ When the document is read as a whole, Chat reads the closest to the
 reference — Chat documents cover the same overall ground in a way
 no other mode quite matches. For \emph{SBERT cosine similarity
 (ModernBERT)}, Chat yields the highest mean ($0.990$), with Form
-and Ask tied at $0.986$; aggregated $0.987$. The aggregated
-Friedman test is significant ($\chi^2(2) = 16.69$, $p < 0.001$);
-Chat $>$ Form and Chat $>$ Ask are both significant with large
+and Ask tied at $0.986$; aggregated $0.987$. Pairwise tests find
+Chat $>$ Form and Chat $>$ Ask both significant with large
 effects.
+
+All four BERT-based and sentence-embedding Friedman tests on the
+matched subset are significant, with $\chi^2(2)$ values of
+$18.54$ (BERTScore Precision, $p < 0.001$), $30.77$ (BERTScore
+Recall, $p < 0.001$, $W = 0.410$ — the largest concordance effect
+in the metric pipeline), $13.00$ (BERTScore F1, $p = 0.002$), and
+$16.69$ (SBERT, $p < 0.001$).
 
 In summary, on the document level the three modes split into the
 patterns \emph{Form $\approx$ Chat $>$ Ask} (BLEU, ROUGE-1, ROUGE-L,
@@ -258,14 +279,14 @@ leads) or semantic-document-level fluency (Chat leads). The full
 within-subjects test results are reproduced in
 Appendix~\ref{app:inferential}.
 
-\section{Document Quality — Chapter-Level NLP Metrics}
+\subsection{Chapter-Level NLP Metrics}
 \label{sec:eval-nlp-chapter}
 
 The document-level scores reported in \S\ref{sec:eval-nlp-doc}
 collapse the entire ROPA into a single number per metric, which is
 convenient for ranking modes but obscures where in the document the
-differences originate. This section recomputes the same nine metrics
-at the level of the six Article 30(1) ROPA sections —
+differences originate. This subsection recomputes the same nine
+metrics at the level of the six Article 30(1) ROPA chapters —
 \emph{Verantwortliche Stelle und Kontaktdaten} (Controller and
 Contact Details), \emph{Zwecke und Rechtsgrundlagen der Verarbeitung}
 (Purposes and Legal Bases of Processing), \emph{Kategorien
@@ -276,7 +297,7 @@ Subjects and Recipients), \emph{Aufbewahrungsfristen und Löschung}
 organisatorische Maßnahmen} (Technical and Organisational Measures).
 Chapter-level results characterise where in the document each mode
 performs best. Following the same two-part presentation as the
-document-level section, lexical metrics are reported first
+document-level subsection, lexical metrics are reported first
 (Tables~\ref{tab:nlp-chapter-bleu}--\ref{tab:nlp-chapter-meteor},
 Figure~\ref{fig:chapter-nlp-boxplot}), followed by the BERT-based
 and sentence-embedding metrics
@@ -285,8 +306,16 @@ Figure~\ref{fig:chapter-bert-boxplot}). The descriptive source for
 all chapter-level tables is the pipeline output
 \texttt{chapter\_results.csv}.
 
-\subsection{Lexical Metrics}
+\subsubsection{Lexical Metrics}
 \label{ssec:nlp-chapter-lexical}
+
+Tables~\ref{tab:nlp-chapter-bleu}--\ref{tab:nlp-chapter-meteor}
+report the per-chapter, per-mode means (with SDs in parentheses)
+for the five lexical metrics, and
+Figure~\ref{fig:chapter-nlp-boxplot} shows the corresponding
+distributions. The per-metric paragraphs that follow walk through
+the across-chapter pattern in the same metric order as the
+document-level subsection.
 
 \begin{table}[htbp]
 \centering
@@ -396,8 +425,141 @@ METEOR by mode (full sample $n = 113$).}
 \label{fig:chapter-nlp-boxplot}
 \end{sidewaysfigure}
 
-\subsection{BERT-Based and Sentence-Embedding Metrics}
+\paragraph{BLEU.} The chapter-level BLEU signal is concentrated
+almost entirely in \emph{Controller and Contact Details}, the one
+ROPA chapter whose content is templated enough for exact $4$-gram
+overlap to register: Form $0.179$, Ask $0.200$, Chat $0.166$
+(aggregated $0.181$). \emph{Purposes and Legal Bases} and
+\emph{Categories of Personal Data} collapse to zero across every
+mode — the legal-text and category-list registers share no
+$4$-grams with the reference even where they overlap semantically.
+In the remaining three chapters BLEU sits in low single digits,
+with \emph{Retention and Deletion} producing the clearest
+chapter-level Chat lead in the lexical metric suite (Chat $0.068$
+vs Form $0.038$, Ask $0.023$; aggregated $0.044$) and
+\emph{Technical and Organisational Measures} echoing it on a
+smaller scale (Chat $0.091$ vs Form $0.078$, Ask $0.070$;
+aggregated $0.080$). Friedman tests on the matched $n = 26$
+subset confirm significant mode differences on \emph{Controller
+and Contact} ($\chi^2(2) = 9.92$, $p = 0.007$), \emph{Retention}
+($\chi^2(2) = 14.52$, $p < 0.001$), and \emph{T\&O Measures}
+($\chi^2(2) = 18.93$, $p < 0.001$, $W = 0.361$ strong); ch2 and
+ch3 are degenerate (every BLEU score is zero). Bonferroni-
+corrected pairwise tests confirm Form $>$ Ask and Chat $>$ Ask on
+\emph{Retention} and \emph{T\&O} (large effects), and
+\emph{reverse} the doc-level direction on \emph{Controller}: Ask
+$>$ Chat is significant there ($r = +0.631$, large) — the only
+chapter in the lexical pipeline where Ask outscores Chat under
+Bonferroni.
+
+\paragraph{ROUGE-1, ROUGE-2, ROUGE-L.} Single-word recall
+reproduces the same chapter hierarchy as BLEU but lifts every
+chapter off the floor.
+\emph{Controller and Contact} again leads (Form $0.550$, Ask
+$0.605$, Chat $0.559$; aggregated $0.571$), with Ask edging the
+other two modes because the address-block content offers little
+room for paraphrase. \emph{Purposes and Legal Bases} (aggregated
+$0.028$) and \emph{Categories of Personal Data} (aggregated
+$0.070$) remain very low. \emph{Technical and Organisational
+Measures} is the second-highest chapter (aggregated $0.331$), and
+\emph{Retention and Deletion} is where Chat's chapter-level
+advantage is most visible at the unigram level (Chat $0.314$ vs
+Form $0.252$, Ask $0.212$; aggregated $0.260$). Friedman tests
+find significant ROUGE-1 mode differences on \emph{Controller}
+($\chi^2(2) = 9.96$, $p = 0.007$), \emph{Data Subjects and
+Recipients} ($\chi^2(2) = 9.00$, $p = 0.011$), and
+\emph{Retention} ($\chi^2(2) = 13.00$, $p = 0.002$); pairwise
+tests show Form $>$ Ask on Retention ($r = +0.846$, large), Chat
+$>$ Ask on Data Subjects and Retention (both large), and Chat
+$>$ Form on Data Subjects ($r = -0.590$, large).
+
+The bigram view sharpens the same picture.
+\emph{Controller and Contact} stays at the top (Form $0.363$, Ask
+$0.430$, Chat $0.365$; aggregated $0.386$), and \emph{Purposes
+and Legal Bases} stays at the floor (aggregated $0.011$). Where
+ROUGE-1 left \emph{Retention and Deletion} as a moderate Chat
+lead, ROUGE-2 separates the modes more sharply (Chat $0.168$ vs
+Form $0.134$, Ask $0.087$; aggregated $0.131$) — Chat is the only
+mode that reproduces multi-word retention phrasing from the
+reference at any volume. \emph{Technical and Organisational
+Measures} repeats the pattern on a smaller margin (Chat $0.197$
+vs Form $0.166$, Ask $0.163$; aggregated $0.176$). Friedman tests
+find significant ROUGE-2 mode differences on \emph{Data Subjects}
+($\chi^2(2) = 8.08$, $p = 0.018$), \emph{Retention}
+($\chi^2(2) = 11.62$, $p = 0.003$), and \emph{T\&O Measures}
+($\chi^2(2) = 14.08$, $p < 0.001$); pairwise tests show Form $>$
+Ask on Retention ($r = +0.715$, large) and Chat $>$ Ask on Data
+Subjects, Retention, and T\&O (all large).
+
+The longest-shared-sequence variant tracks ROUGE-1 closely. \emph{Controller and Contact} dominates (Form
+$0.518$, Ask $0.576$, Chat $0.511$; aggregated $0.534$),
+\emph{Purposes} (aggregated $0.027$) and \emph{Categories of
+Personal Data} (aggregated $0.070$) stay near the floor, and
+Chat's chapter-level advantage on \emph{Retention and Deletion}
+persists (Chat $0.283$ vs Form $0.218$, Ask $0.183$; aggregated
+$0.229$). \emph{Technical and Organisational Measures} reinforces
+the same direction on a smaller margin (Chat $0.285$ vs Form
+$0.237$, Ask $0.246$; aggregated $0.257$). Friedman tests find
+significant ROUGE-L mode differences on four chapters —
+\emph{Controller}, \emph{Data Subjects}, \emph{Retention}, and
+\emph{T\&O Measures} ($\chi^2(2) \in [8.18, 13.46]$, all $p \leq
+0.017$). Pairwise tests reproduce the BLEU reversal: Ask $>$ Chat
+on \emph{Controller} ($r = +0.567$, large), and confirm Chat $>$
+Form / Chat $>$ Ask on Data Subjects (both large), Form $>$ Ask
+and Chat $>$ Ask on Retention (both large), and Chat $>$ Ask on
+T\&O.
+
+\paragraph{METEOR.} Once stems and synonyms are credited the
+chapter range compresses. \emph{Controller and Contact} retains
+the top position (Form $0.456$, Ask $0.506$, Chat $0.453$;
+aggregated $0.471$), and \emph{Purposes and Legal Bases} remains
+very low (aggregated $0.027$, with all three modes below $0.04$).
+The mid-table chapters lift the most: \emph{Data Subjects and
+Recipients} climbs to aggregated $0.225$ on the strength of
+synonym credit, and shows the clearest Chat lead on this metric
+(Chat $0.270$ vs Form $0.199$, Ask $0.203$). \emph{Retention and
+Deletion} (Chat $0.362$ vs Form $0.332$, Ask $0.245$; aggregated
+$0.314$) and \emph{Technical and Organisational Measures} (Chat
+$0.305$ vs Form $0.295$, Ask $0.280$; aggregated $0.293$) again
+favour Chat. Friedman tests find significant METEOR mode
+differences on \emph{Data Subjects} ($\chi^2(2) = 9.77$, $p =
+0.008$), \emph{Retention} ($\chi^2(2) = 16.69$, $p < 0.001$,
+$W = 0.321$ strong), and \emph{T\&O Measures}
+($\chi^2(2) = 6.46$, $p = 0.040$). Pairwise tests confirm Chat
+$>$ Form and Chat $>$ Ask on Data Subjects (large), Form $>$ Ask
+and Chat $>$ Ask on Retention (large), and Form $>$ Ask on T\&O.
+
+Across the five lexical metrics the across-chapter signal is
+dominated by two end-points: \emph{Controller and Contact
+Details} at the top — the chapter whose content is templated
+enough for surface overlap to register, and the one chapter
+where the structured Ask dialogue beats Chat — and \emph{Purposes
+and Legal Bases} at the floor, where free-form legal formulation
+pulls every score toward zero. Chat's chapter-level lead, where
+it appears, concentrates on \emph{Retention and Deletion} and
+\emph{Technical and Organisational Measures}; Form's lead on
+\emph{Retention} on the recall-heavy metrics (ROUGE-2, METEOR).
+Of the $28$ testable lexical (metric, chapter) cells (BLEU on
+\emph{Purposes} and \emph{Categories} is degenerate), $16$
+Friedman omnibus tests reach $\alpha = 0.05$, with
+\emph{Retention and Deletion} significant on all five lexical
+metrics, \emph{T\&O Measures} on four of five, and \emph{Purposes
+and Legal Bases} significant on none.
+
+\subsubsection{BERT-Based and Sentence-Embedding Metrics}
 \label{ssec:nlp-chapter-bert}
+
+Tables~\ref{tab:nlp-chapter-bertp}--\ref{tab:nlp-chapter-sbert-minilm}
+report the per-chapter, per-mode means (with SDs in parentheses)
+for the three BERTScore variants and the SBERT cosine similarity
+under two encoder backbones — ModernBERT (primary, matching the
+document-level pass) and the smaller \texttt{all-MiniLM-L6-v2}
+(reported as a robustness check on whether ModernBERT's
+near-saturation masks real differences).
+Figure~\ref{fig:chapter-bert-boxplot} shows the BERTScore and
+SBERT (ModernBERT) distributions; the MiniLM pass is reported in
+tabular form only. The metric walkthrough follows the same order
+as the document-level subsection.
 
 \begin{table}[htbp]
 \centering
@@ -479,6 +641,27 @@ Technical \& Org. Measures    & 0.967 (0.012) & 0.972 (0.010) & 0.975 (0.007) & 
 \end{tabular}
 \end{table}
 
+\begin{table}[htbp]
+\centering
+\caption{Chapter-level SBERT (\texttt{all-MiniLM-L6-v2}) cosine
+similarity mean (SD) by mode (full sample $n = 113$). Reported as
+a robustness check on the ModernBERT pass.}
+\label{tab:nlp-chapter-sbert-minilm}
+\small
+\begin{tabular}{@{}l c c c c@{}}
+\toprule
+Chapter & Form & Ask & Chat & All \\
+\midrule
+Controller \& Contact         & 0.663 (0.119) & 0.736 (0.133) & 0.662 (0.101) & 0.687 (0.122) \\
+Purposes \& Legal Bases       & 0.283 (0.052) & 0.326 (0.086) & 0.287 (0.075) & 0.298 (0.074) \\
+Personal Data Categories      & 0.378 (0.054) & 0.454 (0.110) & 0.455 (0.103) & 0.430 (0.099) \\
+Data Subjects \& Recipients   & 0.399 (0.071) & 0.414 (0.117) & 0.502 (0.074) & 0.440 (0.100) \\
+Retention \& Deletion         & 0.516 (0.129) & 0.474 (0.150) & 0.566 (0.131) & 0.519 (0.141) \\
+Technical \& Org. Measures    & 0.711 (0.073) & 0.701 (0.110) & 0.717 (0.099) & 0.710 (0.095) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \begin{sidewaysfigure}
 \centering
 \includegraphics[width=\linewidth]{chapter_bert_metrics_boxplot.png}
@@ -488,54 +671,188 @@ sample $n = 113$).}
 \label{fig:chapter-bert-boxplot}
 \end{sidewaysfigure}
 
-\subsection{Patterns Across Chapters}
-\label{ssec:nlp-chapter-patterns}
+\paragraph{BERTScore Precision, Recall, F1.} The embedding-based
+view compresses the across-chapter range substantially: no chapter
+sits at zero, and the highest-to-lowest gap shrinks to roughly
+$0.3$. \emph{Controller and Contact Details} (aggregated $0.857$)
+and \emph{Technical and Organisational Measures} (aggregated
+$0.854$) sit at the top; \emph{Purposes and Legal Bases} remains
+the weakest chapter (aggregated $0.566$) but no longer collapses
+to the floor. Chat is the per-mode leader on three of the four
+mid-and-lower-ranked chapters — \emph{Categories of Personal
+Data} ($0.698$ vs Form $0.670$, Ask $0.690$), \emph{Data Subjects
+and Recipients} ($0.712$ vs Form $0.686$, Ask $0.700$), and
+\emph{Retention and Deletion} ($0.840$ vs Form $0.814$, Ask
+$0.817$) — and edges the other two modes on \emph{Technical and
+Organisational Measures} ($0.863$ vs Form $0.841$, Ask $0.858$).
+Friedman tests find significant Precision mode differences on
+\emph{Personal Data Categories} ($\chi^2(2) = 15.46$, $p < 0.001$),
+\emph{Data Subjects} ($\chi^2(2) = 12.00$, $p = 0.002$),
+\emph{Retention} ($\chi^2(2) = 9.54$, $p = 0.008$), and
+\emph{T\&O Measures} ($\chi^2(2) = 9.31$, $p = 0.010$). Pairwise
+tests confirm Chat $>$ Form (large) on Categories and Data
+Subjects, and Chat $>$ Ask (large) on Categories, Data Subjects,
+and Retention.
 
-\emph{Controller and Contact
-Details} contains the most templated content (company name, address,
-DPO contact); the per-mode spread is correspondingly small on every
-metric, and the absolute scores are the highest of the six chapters
-on the lexical metrics (BLEU $\approx 0.18$, ROUGE-1 $\approx 0.57$,
-METEOR $\approx 0.47$). \emph{Purposes and Legal Bases} is the
-weakest chapter across every metric, with BLEU collapsing to zero
-and METEOR below $0.04$ in every mode; this chapter is dominated by
-free-text legal formulation, and the reference document and
-participant documents share almost no surface n-grams even where the
-underlying content overlaps. \emph{Categories of Personal Data} and
-\emph{Data Subjects and Recipients} sit in an intermediate range
-($0.06$--$0.27$ on the lexical metrics) with Chat scoring highest on
-\emph{Data Subjects} (METEOR $0.270$ vs $0.199$/$0.203$ for
-Form/Ask). \emph{Retention Periods} and \emph{Technical and
-Organisational Measures} are the chapters where Chat establishes its
-clearest advantage: on Retention, Chat leads on every metric
-(BERTScore F1 $0.867$, BLEU $0.068$, METEOR $0.362$); on T\&O
-Measures, Chat leads on BLEU ($0.091$), ROUGE-1 ($0.350$), BERTScore
-F1 ($0.878$), and SBERT ($0.975$).
+Form's document-level recall
+advantage carries through to the chapter level on most chapters.
+Form leads on \emph{Categories of Personal Data} ($0.850$ vs Ask
+$0.849$, Chat $0.847$ — narrow but consistent with the
+document-level pattern) and on \emph{Data Subjects and
+Recipients} ($0.851$ vs Ask $0.838$, Chat $0.836$). Chat reclaims
+\emph{Retention and Deletion} ($0.897$ vs Form $0.890$, Ask
+$0.879$; aggregated $0.889$). \emph{Controller and Contact}
+(aggregated $0.882$) and \emph{Technical and Organisational
+Measures} (aggregated $0.888$) are tight three-way ties.
+\emph{Purposes and Legal Bases} is again the floor (aggregated
+$0.666$), and is the only chapter where Form is not at the front
+(Form $0.670$, Ask $0.667$, Chat $0.662$ — all clustered). Of
+the six chapters, only \emph{Retention} reaches Friedman
+significance on Recall ($\chi^2(2) = 18.77$, $p < 0.001$,
+$W = 0.361$ strong); pairwise tests confirm Form $>$ Ask and
+Chat $>$ Ask there, both large.
 
-\section{Document-Level versus Chapter-Level Comparison}
+The harmonic mean restores the
+by-now-familiar chapter ordering — \emph{Controller and Contact}
+(aggregated $0.869$) and \emph{Technical and Organisational
+Measures} (aggregated $0.871$) at the top, \emph{Purposes and
+Legal Bases} at the floor (aggregated $0.612$). Chat's precision
+advantage carries through to a chapter-level F1 lead on
+\emph{Retention and Deletion} (Chat $0.867$ vs Form $0.850$, Ask
+$0.847$; aggregated $0.855$) and \emph{Technical and
+Organisational Measures} (Chat $0.878$ vs Form $0.864$, Ask
+$0.870$; aggregated $0.871$), reproducing in miniature the
+document-level pattern where Chat and Form trade leadership on
+F1. Friedman tests find significant F1 mode differences on
+\emph{Controller} ($\chi^2(2) = 6.23$, $p = 0.044$),
+\emph{Categories} ($\chi^2(2) = 19.39$, $p < 0.001$, $W = 0.373$
+strong), and \emph{Retention} ($\chi^2(2) = 12.08$, $p = 0.002$);
+pairwise tests confirm Chat $>$ Form and Chat $>$ Ask on
+Categories (both large) and Chat $>$ Ask on Retention.
+
+\paragraph{SBERT cosine similarity (ModernBERT and MiniLM).}
+Under the ModernBERT encoder, the most permissive of the metrics
+saturates near the ceiling on the templated chapters:
+\emph{Controller and Contact} (aggregated $0.976$) and
+\emph{Technical and Organisational Measures} (aggregated $0.971$)
+are essentially indistinguishable from the reference at the
+embedding level. \emph{Retention and Deletion} follows close
+behind (aggregated $0.949$) with Chat opening a small
+chapter-level lead (Chat $0.955$ vs Form $0.945$, Ask $0.946$).
+The only chapter where ModernBERT SBERT drops meaningfully is
+\emph{Purposes and Legal Bases} (aggregated $0.735$), echoing the
+lexical collapse at sentence-embedding scale. Friedman tests find
+significant ModernBERT SBERT mode differences on
+\emph{Purposes} ($\chi^2(2) = 7.15$, $p = 0.028$),
+\emph{Categories} ($\chi^2(2) = 14.08$, $p < 0.001$),
+\emph{Retention} ($\chi^2(2) = 6.23$, $p = 0.044$), and
+\emph{T\&O Measures} ($\chi^2(2) = 7.00$, $p = 0.030$); pairwise
+tests confirm Chat $>$ Form on Categories and T\&O (large) and
+Chat $>$ Ask on Retention (large).
+
+The smaller \texttt{all-MiniLM-L6-v2} encoder serves as a
+robustness check: a weaker model with less semantic capacity
+spreads scores across a wider range and is harder to saturate.
+The across-chapter ordering survives the encoder change
+unchanged — \emph{Technical and Organisational Measures}
+(aggregated $0.710$) and \emph{Controller and Contact}
+(aggregated $0.687$) sit at the top, with \emph{Purposes and
+Legal Bases} again at the floor (aggregated $0.298$). The
+chapter-level Chat advantage on \emph{Retention and Deletion}
+(Chat $0.566$ vs Form $0.516$, Ask $0.474$) and on \emph{Data
+Subjects and Recipients} (Chat $0.502$ vs Form $0.399$, Ask
+$0.414$) is preserved and in fact visible at larger absolute
+margins than ModernBERT registered. The one chapter where the
+encoder choice changes the mode ranking is \emph{Controller and
+Contact}, where Ask edges the other two modes under MiniLM
+($0.736$ vs Form $0.663$, Chat $0.662$) — consistent with the
+ROUGE-1/L pattern at the lexical level, where Ask also leads on
+the address-block content. Friedman tests find significant MiniLM
+mode differences on \emph{Data Subjects}
+($\chi^2(2) = 23.15$, $p < 0.001$, $W = 0.445$ strong — the
+largest chapter-level effect observed in the entire NLP metric
+pipeline) and \emph{Retention} ($\chi^2(2) = 9.31$, $p = 0.010$);
+pairwise tests confirm Chat $>$ Form and Chat $>$ Ask on Data
+Subjects (both large) and Chat $>$ Ask on Retention (large).
+
+Under the embedding-based metrics the across-chapter range
+compresses — no zero floor — but the rank-ordering of chapters
+is preserved across all four BERT-based metrics and both SBERT
+encoders: \emph{Controller and Contact} and \emph{Technical and
+Organisational Measures} occupy the top, \emph{Purposes and
+Legal Bases} the bottom. Chat's chapter-level advantage
+continues to concentrate on \emph{Retention and Deletion} and
+\emph{T\&O Measures}, the same two chapters where it led at the
+lexical level; the smaller MiniLM encoder makes that advantage
+easier to see by widening the absolute margins. Of the $30$
+BERT-side (metric, chapter) cells, $14$ Friedman omnibus tests
+reach $\alpha = 0.05$, with \emph{Retention and Deletion}
+significant on every BERT-based metric and \emph{Personal Data
+Categories} significant on BERTScore Precision, BERTScore F1,
+and both SBERT encoders. Across the full $60$-cell (metric,
+chapter) family, $30$ Friedman tests reach uncorrected
+$\alpha = 0.05$ and $7$ survive a family-wise Bonferroni
+correction at $\alpha \approx 0.000833$; the chapter-level
+inferential layer therefore confirms that the doc-level Form-Ask-
+Chat ordering holds in specific chapter cells rather than washing
+out as noise.
+
+\subsection{Summary of Document-Level and Chapter-Level NLP Metrics}
 \label{sec:eval-nlp-comparison}
 
-This section compares the two granularities and identifies where
-chapter-level scoring tells a different story than document-level.
-A direct comparison of the document-level and chapter-level means is
-provided by Table~\ref{tab:doc-vs-chapter}. Document-level means are
-substantially higher than the cross-chapter means for every metric:
-for example, the aggregated document-level BERTScore F1 of $0.902$
-exceeds the average chapter-level F1 of $0.788$ by approximately
-$0.114$. The same gap is observable for the lexical metrics, and
-most pronounced for ROUGE-1 ($\Delta \approx 0.26$). This is
-consistent with the document-level calculation pooling token overlap
-across all six chapters, which dilutes chapter-specific zero-overlap
-regions (notably the Purposes and Legal Bases chapter) and pushes
-the aggregate scores upward.
+Read together, the two granularities mostly reinforce one another
+and disagree only on absolute level. The clearest similarity is
+that the per-mode ordering is preserved at both resolutions: Form
+leads on recall-oriented and bigram-sensitive measures, most
+strikingly on \emph{BERTScore Recall} where the document-level
+matched-pairs effect is the maximum possible ($r = +1.000$, every
+one of the $26$ matched pairs has Form $>$ Ask with no ties);
+Chat leads on embedding-based measures (\emph{BERTScore
+Precision}, \emph{SBERT}); and Ask trails on every metric. The
+chapter-level view shows the same pattern in localised form —
+Chat's chapter-level lead on \emph{Retention and Deletion} and
+\emph{Technical and Organisational Measures} is precisely what
+produces its document-level edge on semantic metrics, and Form's
+chapter-level recall edge on \emph{Categories of Personal Data}
+and \emph{Data Subjects and Recipients} is what produces its
+document-level recall lead. The two views are not in tension;
+they are the same finding seen at different resolutions. The
+chapter-level inferential layer confirms this descriptive
+agreement: $30$ of $60$ Friedman tests on the matched $n = 26$
+subset reach $\alpha = 0.05$, with \emph{Retention and Deletion}
+significant on every metric and the Form $>$ Ask gap localised to
+the operational chapters (Retention, T\&O) while Chat $>$ Form
+concentrates on the people-and-data chapters (Categories, Data
+Subjects). The chapter breakdown also exposes one direction
+reversal hidden at the document level: on \emph{Controller and
+Contact}, Ask outscores Chat on BLEU and ROUGE-L (large effects,
+$r \approx +0.6$ under Bonferroni) — the only chapter in the
+lexical pipeline where Ask beats Chat, consistent with the
+address-block content being templated enough for guided dialogue
+to outperform freeform.
 
-The reference-based metrics therefore neither confirm nor cleanly
-contradict the Form-first ordering of the user-experience chapters
-(\S\ref{sec:eval-sus}--\S\ref{sec:eval-freeform}): Form leads on
-recall-oriented and bigram-sensitive measures, Chat leads on
-embedding-based ones, and Ask trails throughout. Whether a
-reference-free, GDPR-specific quality signal sees the same split is
-the question taken up next in \S\ref{sec:eval-judge}.
+The contrast lies in absolute scores. Document-level means are
+consistently higher than the unweighted average of chapter-level
+means (Table~\ref{tab:doc-vs-chapter}); the largest gap is on
+\emph{ROUGE-1} ($\Delta \approx 0.26$), and even on the
+embedding metrics the gap is non-trivial ($\Delta \approx 0.11$
+on BERTScore F1). The cause is mechanical rather than
+substantive: the document-level calculation pools token overlap
+across all six ROPA chapters and dilutes the chapter-level
+zero-overlap regions, above all \emph{Purposes and Legal Bases},
+the universal floor across every metric. Chapter-level scoring is
+the more honest signal of \emph{where} the modes differ;
+document-level scoring is the cleaner signal for ranking modes
+\emph{overall}.
+
+Taken together, the reference-based metrics neither confirm nor
+cleanly contradict the Form-first ordering reported by the
+user-experience instruments
+(\S\ref{sec:eval-sus}--\S\ref{sec:eval-freeform}). The
+quantitative split is closer to a trade-off: Form documents
+recover more of what the reference \emph{says}, Chat documents
+stay closer to what the reference \emph{means}, and Ask
+documents trail on every front.
 
 \begin{sidewaystable}
 \centering

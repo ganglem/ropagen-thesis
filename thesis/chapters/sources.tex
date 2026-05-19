@@ -1,9 +1,14 @@
-\chapter{Study Scenario}
+\chapter{Study Materials}
+\label{app:materials}
+
+This appendix groups the two reproducible artefacts of the user study: the standardised scenario presented to all participants, and the verbatim items of the two standardised survey instruments (SUS and Raw NASA-TLX). Both are referenced repeatedly from the Methodology chapter and are reproduced here in their canonical form.
+
+\section{Study Scenario}
 \label{app:scenario}
 
 The scenario reproduced below was presented to all participants in German, regardless of interaction mode (Form, Ask, Chat). The English translation is provided for the international reader; the German original is the version actually shown.
 
-\section{Original (German)}
+\subsection{Original (German)}
 \label{app:scenario-de}
 
 \begin{verbatim}
@@ -51,7 +56,7 @@ Alle in diesem Zusammenhang gespeicherten Informationen werden spätestens
 3 Monate nach Austritt der jeweiligen Person gelöscht.
 \end{verbatim}
 
-\section{English Translation}
+\subsection{English Translation}
 \label{app:scenario-en}
 
 \begin{verbatim}
@@ -100,12 +105,12 @@ after the person's departure.
 \end{verbatim}
 
 
-\chapter{Survey Instruments}
+\section{Survey Instruments}
 \label{app:sus-rtlx-items}
 
-This appendix reproduces the verbatim items of the two standardised survey instruments referenced from the Methodology chapter: the System Usability Scale (SUS) and the Raw NASA Task Load Index (R-TLX). The six-item Perceived AI Support instrument is bespoke to this study and is listed in full in the Methodology chapter; it is not reproduced here.
+This section reproduces the verbatim items of the two standardised survey instruments referenced from the Methodology chapter: the System Usability Scale (SUS) and the Raw NASA Task Load Index (R-TLX). The six-item Perceived AI Support instrument is bespoke to this study and is listed in full in the Methodology chapter; it is not reproduced here.
 
-\section{System Usability Scale (SUS)}
+\subsection{System Usability Scale (SUS)}
 \label{app:sus-items}
 
 Five-point Likert scale, $1 = $ Strongly Disagree, $5 = $ Strongly Agree. Odd-numbered items are positively keyed; even-numbered items are negatively keyed. The canonical wording reproduced below is taken from Brooke~\cite{Brooke1996}.
@@ -123,7 +128,7 @@ Five-point Likert scale, $1 = $ Strongly Disagree, $5 = $ Strongly Agree. Odd-nu
     \item I needed to learn a lot of things before I could get going with this system.
 \end{enumerate}
 
-\section{NASA Raw Task Load Index Subscales}
+\subsection{NASA Raw Task Load Index Subscales}
 \label{app:rtlx-items}
 
 Six subscales, each rated on the standard NASA TLX 21-point scale. The Raw TLX variant used in this study takes the unweighted mean across the six subscales rather than applying the pairwise-comparison weighting of the original NASA TLX. The subscale definitions reproduced below follow Hart~\cite{Hart2006}.
@@ -137,147 +142,3 @@ Six subscales, each rated on the standard NASA TLX 21-point scale. The Raw TLX v
     \item[Frustration] How insecure, discouraged, irritated, stressed, and annoyed were you?
 \end{description}
 
-
-\chapter{LLM-as-a-Judge Configuration}
-\label{app:judge}
-
-This appendix documents the inputs to the LLM-as-a-judge evaluation layer that scored the 113 retained ROPA documents. It contains the verbatim system and user prompts, the five-dimension rubric, and the model configuration needed to reproduce the evaluation.
-
-\section{System and User Prompt}
-\label{app:judge-prompt}
-
-The system prompt below is sent verbatim as the \texttt{system} role on every evaluation call. It is taken from \texttt{python/judge/prompt.json} (key \texttt{judge.system}).
-
-\begin{verbatim}
-You are an expert GDPR compliance reviewer evaluating Records of
-Processing Activities (ROPA) documents under Article 30 GDPR. The
-documents are written by novices (non-experts, no prior GDPR training)
-who described the same processing scenario using different LLM-assisted
-tools. Your job is to judge each ROPA document against (a) the provided
-scenario and (b) GDPR Article 30 requirements. Be strict but fair. Do not
-reward verbosity. Do not penalise a document for merely restating
-scenario facts. Respond with valid JSON only - no prose, no Markdown
-fences, no commentary before or after the JSON object.
-\end{verbatim}
-
-The accompanying user-message template is sent on every call with \texttt{\{scenario\}} (the German original from Appendix~\ref{app:scenario-de}) and \texttt{\{document\}} (the participant ROPA document) substituted in:
-
-\begin{verbatim}
-You will evaluate one ROPA document against the scenario it is supposed
-to cover.
-
-=== SCENARIO (verbatim, German) ===
-{scenario}
-=== END SCENARIO ===
-
-=== ROPA DOCUMENT TO EVALUATE ===
-{document}
-=== END DOCUMENT ===
-
-Score the document on each of the following five metrics using a 1-5
-Likert scale, and give a short rationale (max 2 sentences, English) for
-each score. The scale for all metrics is:
-1 = very poor, 2 = poor, 3 = adequate, 4 = good, 5 = excellent.
-
-Metrics and what to assess:
-- completeness: Coverage of Art. 30(1) GDPR required elements -
-  controller identity and contact, DPO, purposes of processing, legal
-  basis, categories of data subjects and personal data, categories of
-  recipients, retention periods, and technical/organisational measures
-  (TOMs). Missing elements lower the score.
-- scenario_faithfulness: How accurately the document reflects the
-  concrete facts of THIS scenario - APOR GmbH, Ulm (Mainstrasse 67), ~50
-  employees, internally hosted Microsoft Office and internal servers (NO
-  external cloud), no medical/sickness data, 3-month deletion after
-  employee departure, parking lot authorisation using a distinguishing
-  feature such as a licence plate. Generic ROPA boilerplate that ignores
-  these specifics lowers the score.
-- legal_correctness: Correct use of GDPR terminology and correct citation
-  of legal basis (typically Art. 6(1)(b) performance of contract for
-  employment data, Art. 6(1)(c) legal obligation where applicable, Art.
-  6(1)(f) legitimate interest for parking authorisation). Wrong articles,
-  invented legal bases, or confusing controller/processor/DPO roles lower
-  the score.
-- hallucination_inverse: Inverse score for invented facts not supported
-  by the scenario (e.g. invented third-party processors, invented data
-  categories like medical data, invented addresses, invented retention
-  periods different from 3 months). 5 = no hallucinations, 1 = many
-  invented facts.
-- overall: Holistic judgement of how useful this document would be as a
-  real Art. 30 ROPA record for this scenario, taking the four dimensions
-  above into account.
-
-Return a single JSON object with exactly this shape:
-{
-  "completeness":           {"score": <int 1-5>, "rationale": "<string>"},
-  "scenario_faithfulness":  {"score": <int 1-5>, "rationale": "<string>"},
-  "legal_correctness":      {"score": <int 1-5>, "rationale": "<string>"},
-  "hallucination_inverse":  {"score": <int 1-5>, "rationale": "<string>"},
-  "overall":                {"score": <int 1-5>, "rationale": "<string>"}
-}
-\end{verbatim}
-
-\section{Rubric --- Five Dimensions}
-\label{app:judge-rubric}
-
-All five dimensions share the same 1--5 Likert anchor: $1 = $ very poor, $2 = $ poor, $3 = $ adequate, $4 = $ good, $5 = $ excellent. The fourth dimension, \texttt{hallucination\_inverse}, is inverted internally so that for all five dimensions higher equals better. For each dimension the judge returns both an integer score and a short English rationale (maximum two sentences).
-
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabularx}{\textwidth}{lX}
-\toprule
-\textbf{Dimension} & \textbf{What is assessed} \\
-\midrule
-Completeness & Coverage of Art.~30(1) GDPR required elements: controller identity and contact, DPO, purposes of processing, legal basis, categories of data subjects and personal data, categories of recipients, retention periods, and technical/organisational measures (TOMs). Missing elements lower the score. \\
-\addlinespace
-Scenario Faithfulness & Accuracy with respect to the concrete facts of this scenario: APOR GmbH, Ulm (Mainstraße~67), $\sim$50 employees, internally hosted Microsoft Office and internal servers (no external cloud), no medical/sickness data, 3-month deletion after employee departure, parking authorisation using a distinguishing feature such as a licence plate. Generic ROPA boilerplate lowers the score. \\
-\addlinespace
-Legal Correctness & Correct use of GDPR terminology and correct citation of legal basis (typically Art.~6(1)(b) for employment data, Art.~6(1)(c) where applicable, Art.~6(1)(f) for parking authorisation). Wrong articles, invented legal bases, or confused controller/processor/DPO roles lower the score. \\
-\addlinespace
-Hallucination (inverse) & Inverse score for invented facts not supported by the scenario (e.g. invented third-party processors, invented categories such as medical data, invented addresses, retention periods other than 3~months). 5~=~no hallucinations, 1~=~many invented facts. \\
-\addlinespace
-Overall & Holistic judgement of how useful the document would be as a real Art.~30 ROPA record for this scenario, taking the four dimensions above into account. \\
-\bottomrule
-\end{tabularx}
-\caption{The five judge dimensions. All share the 1--5 Likert anchor; higher is better for every dimension after the hallucination inversion.}
-\label{tab:judge-rubric}
-\end{table}
-
-\section{Model Configuration and Limitations}
-\label{app:judge-config}
-
-The configuration in Table~\ref{tab:judge-config} is taken from the \texttt{judge} block of \texttt{python/judge/prompt.\-json} and the corresponding cells of \texttt{ROPAgen\_JUDGE.ipynb}. It is the minimal information required to reproduce the evaluation layer.
-
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabularx}{\textwidth}{lX}
-\toprule
-\textbf{Setting} & \textbf{Value} \\
-\midrule
-Model & \texttt{google/gemini-3.1-pro-preview} (via OpenRouter) \\
-Temperature & \texttt{0.0} (deterministic decoding) \\
-Output format & JSON object, enforced via OpenRouter \texttt{response\_format = json\_schema} with \texttt{strict: true} \\
-Schema name & \texttt{ropa\_judge\_result} \\
-Required keys & \texttt{completeness}, \texttt{scenario\_faithfulness}, \texttt{legal\_correctness}, \texttt{hallucination\_inverse}, \texttt{overall} \\
-Per-key shape & \texttt{\{"score": int in [1,5], "rationale": string\}} \\
-Additional properties & Disallowed at every object level \\
-Documents evaluated & 113 ROPA documents (Form~37, Ask~37, Chat~39) \\
-Caching & Per-document JSON result cached on disk; reused on re-runs \\
-Retry behaviour & Schema-validation or transient API failures retried; persistent failures logged and skipped \\
-Logging & Each call logs model, latency, prompt and completion token counts, and raw response payload \\
-\bottomrule
-\end{tabularx}
-\caption{LLM-as-a-judge model configuration.}
-\label{tab:judge-config}
-\end{table}
-
-\paragraph{Known limitations.} The following limitations of the judge layer are stated for full transparency and discussed further in the Discussion chapter:
-
-\begin{itemize}
-\item \textbf{Single-judge bias.} Only one judge model (Gemini~3.1 Pro Preview) operationalises the rubric; inter-rater agreement with a human GDPR expert is not established.
-\item \textbf{Model-family bias.} Documents are produced by Mistral Large~3 inside ropagen, while the judge belongs to a different model family (Google). This reduces but does not eliminate stylistic-preference bias.
-\item \textbf{Single-scenario bias.} All scores are conditional on the one APOR GmbH scenario; generalisation to other ROPA contexts is not claimed.
-\item \textbf{Reference-free.} Unlike the NLP metric layer, the judge does not compare against an expert reference document; it scores against the scenario and Art.~30 directly.
-\end{itemize}
