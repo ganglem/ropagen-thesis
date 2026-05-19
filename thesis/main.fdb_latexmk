@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1779158503.45411 "main.bcf" "main.bbl" "main" 1779158523.14506 0
+["biber main"] 1779158957.33254 "main.bcf" "main.bbl" "main" 1779158976.80694 0
   "bibliography.bib" 1779115779.60051 28538 e4beb24e483827dc92e38d9fe6a8729e ""
-  "main.bcf" 1779158522.7924 112050 91145944a1a91534cb16dd7e2f9b93aa "pdflatex"
+  "main.bcf" 1779158976.40396 112050 91145944a1a91534cb16dd7e2f9b93aa "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1779158516.83341 "main.tex" "main.pdf" "main" 1779158523.14806 0
+["pdflatex"] 1779158970.52209 "main.tex" "main.pdf" "main" 1779158976.81019 0
   "../python/judge/output/judge_metrics_boxplot.png" 1778067908.28232 130756 c3ba53f7ee996da582ba7c58474f95bf ""
   "../python/metrics/output/bert_metrics_boxplot.png" 1774569165.56245 175954 748cc8c38ed814bb6166a7f9497e0556 ""
   "../python/metrics/output/chapter_bert_metrics_boxplot.png" 1774569259.0636 247138 09f5fc9c6295e7dad8e09eebb307574d ""
@@ -206,9 +206,9 @@
   "chapters/evaluation.tex" 1779157524.46404 2236 c097754e2e54bec41fbb0c54bdabfc8d ""
   "chapters/evaluation/ai_questions.tex" 1779139845.735 8817 13f53c22b1b7dfc5e850bdb663fb35f1 ""
   "chapters/evaluation/demographics.tex" 1779148348.13992 5056 e0a7c35c1c6214fe6ec9a47ba085ce74 ""
-  "chapters/evaluation/freeform.tex" 1779143771.62391 7765 f636d0e3baa4a91983f9ea86348ded6d ""
+  "chapters/evaluation/freeform.tex" 1779158950.27326 7702 8253fe3cb644972b0f762597c3d20204 ""
   "chapters/evaluation/judge.tex" 1779156153.90372 9826 13622f8228d398de19ec059daf307dcf ""
-  "chapters/evaluation/nlp_metrics.tex" 1779157780.60527 42705 ed38719fb25826ef45aecb644f27a707 ""
+  "chapters/evaluation/nlp_metrics.tex" 1779158938.65233 41508 f6d3ca4f03e7cb0d486023febec4a21b ""
   "chapters/evaluation/rtlx.tex" 1779157507.7805 12685 fd0ce66676b38a3df6546aab6da99c6a ""
   "chapters/evaluation/sus.tex" 1779142491.99911 12190 ec39d91013a680dd1595eadcc8944a84 ""
   "chapters/introduction.tex" 1779148077.50015 3515 ada69334634de0478926ea5442b1ebef ""
@@ -216,11 +216,11 @@
   "chapters/sources.tex" 1779148568.67074 6413 705685deeb971acb015a7d33b34af451 ""
   "images/logo_uulm_sw.png" 1774389830.6469 39184 ce8bf74eb48ff3d937d31d79f9817f21 ""
   "images/project_timeline.pdf" 1779147559.98977 48863 adb54e7b3a9622164d2db3f2e2aa0117 ""
-  "main.aux" 1779158522.77237 77867 f9f17c379adb94249bae0ef6cb4ac130 "pdflatex"
-  "main.bbl" 1779158504.15307 59943 60f923c49a929604ac79a30b047237ff "biber main"
-  "main.run.xml" 1779158522.7954 2307 fa280d158a7733084a6a66e2106e4193 "pdflatex"
+  "main.aux" 1779158976.37884 77867 2fa3c1151a6b342066355b1557266577 "pdflatex"
+  "main.bbl" 1779158958.03847 59943 60f923c49a929604ac79a30b047237ff "biber main"
+  "main.run.xml" 1779158976.40696 2307 fa280d158a7733084a6a66e2106e4193 "pdflatex"
   "main.tex" 1779158497.48072 6415 1e3c4498e9769e2745c1e2030abbf781 ""
-  "main.toc" 1779158522.7994 9263 107b2f54cecc8fcd70709a8ce8a2f10b "pdflatex"
+  "main.toc" 1779158976.40696 9263 cababf7175e07a32adc6135c660f5d26 "pdflatex"
   "setspace.sty" 1774389830.60716 21972 cc53f66d4e62f6e032b3f45042648ee8 ""
   (generated)
   "main.aux"

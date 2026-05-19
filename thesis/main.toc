@@ -47,12 +47,12 @@
 \contentsline {paragraph}{\nonumberline BERTScore Precision, Recall, F1.}{58}{paragraph*.23}%
 \contentsline {paragraph}{\nonumberline SBERT (ModernBERT) cosine similarity.}{61}{paragraph*.24}%
 \contentsline {subsection}{\numberline {4.2.2}Chapter-Level NLP Metrics}{62}{subsection.4.2.2}%
-\contentsline {subsubsection}{\nonumberline Lexical Metrics}{63}{subsubsection*.25}%
-\contentsline {paragraph}{\nonumberline BLEU.}{63}{paragraph*.26}%
+\contentsline {subsubsection}{\nonumberline Lexical Metrics}{62}{subsubsection*.25}%
+\contentsline {paragraph}{\nonumberline BLEU.}{62}{paragraph*.26}%
 \contentsline {paragraph}{\nonumberline ROUGE-1, ROUGE-2, ROUGE-L.}{65}{paragraph*.27}%
 \contentsline {paragraph}{\nonumberline METEOR.}{66}{paragraph*.28}%
-\contentsline {subsubsection}{\nonumberline BERT-Based and Sentence-Embedding Metrics}{67}{subsubsection*.29}%
-\contentsline {paragraph}{\nonumberline BERTScore Precision, Recall, F1.}{67}{paragraph*.30}%
+\contentsline {subsubsection}{\nonumberline BERT-Based and Sentence-Embedding Metrics}{66}{subsubsection*.29}%
+\contentsline {paragraph}{\nonumberline BERTScore Precision, Recall, F1.}{70}{paragraph*.30}%
 \contentsline {paragraph}{\nonumberline SBERT cosine similarity (ModernBERT and MiniLM).}{70}{paragraph*.31}%
 \contentsline {subsection}{\numberline {4.2.3}Summary of Document-Level and Chapter-Level NLP Metrics}{72}{subsection.4.2.3}%
 \contentsline {section}{\numberline {4.3}Document Quality — LLM-as-a-Judge}{74}{section.4.3}%

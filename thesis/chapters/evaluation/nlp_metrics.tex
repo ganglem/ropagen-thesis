@@ -118,9 +118,8 @@ reversal of the Form-first ordering, but not at a magnitude
 participants would notice on the page. For \emph{BLEU}, Form
 yields a mean of $0.129$, Ask $0.127$, Chat $0.143$; aggregated
 $0.133$. Chat scores marginally higher than Form and Ask, which
-are essentially indistinguishable. On the full $n = 113$ sample,
-the difference is not statistically significant under
-Kruskal--Wallis ($H = 4.48$, $p = 0.107$).
+are essentially indistinguishable — a separation too small to
+reach statistical significance on the full sample.
 
 \paragraph{ROUGE-1, ROUGE-2, ROUGE-L.} ROUGE \emph{(Recall-Oriented Understudy for Gisting Evaluation)} (\eqref{eq:rouge1}--\eqref{eq:rougeL}) measures how much of the reference's wording the candidate recovers, in three flavours: unigrams (single words), bigrams (adjacent word pairs), and the longest common subsequence. Each is reported as F1 — the harmonic mean of precision (how much of what the candidate said belongs) and recall (how much of what should have been said is there) — so it is more permissive than BLEU in word order but still surface-form.
 
@@ -128,45 +127,37 @@ Looking at single-word overlap, Chat and Form documents recover the
 reference's vocabulary at a similar rate, with Ask documents
 trailing. For \emph{ROUGE-1}, Form yields $0.488$, Ask $0.465$,
 Chat $0.511$; aggregated $0.488$. ROUGE-1 increases from Ask to
-Form to Chat. On the full sample, the difference does not reach
-statistical significance under Kruskal--Wallis ($H = 5.57$,
-$p = 0.062$).
+Form to Chat, but the spread is narrow and does not reach
+statistical significance on the full sample.
 
 When two-word phrases are compared, Form documents reproduce the
 reference's exact wording most often, with Chat second and Ask
 last. For \emph{ROUGE-2}, Form yields the highest mean ($0.306$),
 Chat second ($0.291$), Ask lowest ($0.257$); aggregated $0.285$.
-ROUGE-2 follows the Form $>$ Chat $>$ Ask ordering. On the full
-sample, Kruskal--Wallis confirms a significant mode difference
-($H = 9.56$, $p = 0.008$, $\varepsilon^2 = 0.069$ moderate);
-Mann--Whitney $U$ identifies Form $>$ Ask and Chat $>$ Ask as
-the significant pairwise contrasts.
+ROUGE-2 follows the Form $>$ Chat $>$ Ask ordering, with the
+Ask trough wide enough to register as statistically significant
+against both Form and Chat on the full sample.
 
 When the longest shared word sequence is what matters, Form and
 Chat documents track the reference equally well, and Ask trails
 both. For \emph{ROUGE-L}, Form ($0.388$) and Chat ($0.389$) are
 essentially tied, with Ask trailing ($0.347$); aggregated $0.375$.
-On the full sample, Kruskal--Wallis confirms a significant mode
-difference ($H = 7.79$, $p = 0.020$); no individual pairwise
-contrast survives Bonferroni correction under Mann--Whitney $U$.
+The mode difference reaches significance overall, though no
+individual pair survives Bonferroni-corrected post-hoc testing.
 
 \paragraph{METEOR.} METEOR \emph{(Metric for Evaluation of Translation with Explicit ORdering)} (\eqref{eq:meteor}) softens BLEU by allowing matches not just on identical tokens but also on stems and WordNet synonyms, so a document that paraphrases with related words is no longer punished as if it had said something unrelated. It is a fragmentation-penalised harmonic mean of unigram precision and recall, sitting between BLEU and ROUGE in strictness.
 
 Form documents use the most reference-like terminology even when
 synonyms are credited, with Chat second and Ask last. For
 \emph{METEOR}, Form yields the highest mean ($0.412$), Chat second
-($0.390$), Ask lowest ($0.365$); aggregated $0.389$. On the full
-sample, Kruskal--Wallis confirms a significant mode difference
-($H = 9.80$, $p = 0.007$, $\varepsilon^2 = 0.071$ moderate);
-Mann--Whitney $U$ identifies Form $>$ Ask as the significant
-pairwise contrast.
+($0.390$), Ask lowest ($0.365$); aggregated $0.389$. Form is
+significantly higher than Ask on the full sample, while the
+Form-versus-Chat and Chat-versus-Ask comparisons fall short.
 
-On the full $n = 113$ sample, Kruskal--Wallis reaches
-significance on three of the five lexical metrics — ROUGE-2
-($H = 9.56$, $p = 0.008$), ROUGE-L ($H = 7.79$, $p = 0.020$), and
-METEOR ($H = 9.80$, $p = 0.007$); BLEU ($p = 0.107$) and ROUGE-1
-($p = 0.062$) do not reach the conventional $\alpha = 0.05$
-threshold.
+Three of the five lexical metrics — ROUGE-2, ROUGE-L, METEOR —
+reach statistical significance on the full sample; BLEU and
+ROUGE-1 do not. Full test statistics are reproduced in
+Appendix~\ref{app:inferential}.
 
 \subsubsection{BERT-Based and Sentence-Embedding Metrics}
 \label{ssec:nlp-doc-bert}
@@ -232,35 +223,28 @@ meaning}, Chat documents become the most on-topic — what they say
 is most closely aligned with the reference, with very little
 extraneous content. For \emph{BERTScore Precision}, Chat yields the
 highest mean ($0.895$), Form second ($0.889$), Ask lowest
-($0.886$); aggregated $0.890$. On the full sample, Kruskal--Wallis
-confirms a significant mode difference ($H = 9.11$, $p = 0.011$);
-no individual pairwise contrast survives Bonferroni correction
-under Mann--Whitney $U$.
+($0.886$); aggregated $0.890$. The mode difference is
+statistically significant overall, though no individual pair
+survives Bonferroni correction.
 
 Form documents recover the most of what the reference says — the
 clearest finding of the entire metric pipeline. Where Chat trims to
 what is on-topic, Form reproduces the reference's content
 near-completely, while Ask leaves the most out. For \emph{BERTScore
 Recall}, Form yields the highest mean ($0.923$), with Chat
-($0.913$) and Ask ($0.908$) trailing; aggregated $0.915$. On the
-full sample, Kruskal--Wallis confirms a strongly significant mode
-difference ($H = 32.38$, $p < 0.001$, $\varepsilon^2 = 0.276$
-large — the largest omnibus effect in the metric pipeline);
-Mann--Whitney $U$ identifies Form $>$ Ask ($r = 0.756$, large)
-and Form $>$ Chat ($r = 0.512$, large) as the significant
-pairwise contrasts.
+($0.913$) and Ask ($0.908$) trailing; aggregated $0.915$. This
+is the strongest and most statistically robust finding in the
+entire metric pipeline — Form is significantly higher than both
+Ask and Chat, with large effect sizes.
 
 Form's content coverage and Chat's tighter focus balance out when
 the two are combined: the two modes are effectively tied on overall
 semantic similarity, with Ask trailing. For \emph{BERTScore F1},
 Form yields the highest mean ($0.905$), Chat second ($0.904$), Ask
-lowest ($0.897$); aggregated $0.902$. On the full sample,
-Kruskal--Wallis confirms a significant mode difference
-($H = 9.75$, $p = 0.008$, $\varepsilon^2 = 0.071$ moderate);
-Mann--Whitney $U$ identifies Form $>$ Ask and Chat $>$ Ask as
-the significant pairwise contrasts, while Form versus Chat is
-non-significant — reflecting the trade-off between Form's higher
-Recall and Chat's higher Precision.
+lowest ($0.897$); aggregated $0.902$. The Ask trough is
+statistically significant against both Form and Chat, but Form
+and Chat are indistinguishable — reflecting the trade-off
+between Form's higher Recall and Chat's higher Precision.
 
 \paragraph{SBERT (ModernBERT) cosine similarity.} Sentence-BERT cosine similarity (\eqref{eq:sbert}) compresses each document into a single embedding vector and reports how aligned the two vectors are, on a scale where $1$ is identical meaning and $0$ is unrelated. It is the most lenient of the metrics reported here: because the comparison is at the document level rather than the token level, two documents that cover the same topics with different wording typically obtain values close to $1$.
 
@@ -268,19 +252,13 @@ When the document is read as a whole, Chat reads the closest to the
 reference — Chat documents cover the same overall ground in a way
 no other mode quite matches. For \emph{SBERT cosine similarity
 (ModernBERT)}, Chat yields the highest mean ($0.990$), with Form
-and Ask tied at $0.986$; aggregated $0.987$. On the full sample,
-Kruskal--Wallis confirms a significant mode difference
-($H = 17.43$, $p < 0.001$, $\varepsilon^2 = 0.140$ large);
-Mann--Whitney $U$ identifies Chat $>$ Form ($r = 0.505$, large)
-and Chat $>$ Ask ($r = 0.453$, large) as the significant
-pairwise contrasts.
+and Ask tied at $0.986$; aggregated $0.987$. Chat is
+statistically significantly higher than both other modes, with
+large effect sizes.
 
-On the full $n = 113$ sample, all four BERT-based and
-sentence-embedding metrics reach Kruskal--Wallis significance,
-with $H$ values of $9.11$ (BERTScore Precision, $p = 0.011$),
-$32.38$ (BERTScore Recall, $p < 0.001$, the strongest effect),
-$9.75$ (BERTScore F1, $p = 0.008$), and $17.43$ (SBERT,
-$p < 0.001$).
+All four BERT-based and sentence-embedding metrics reach
+statistical significance on the full sample, with BERTScore
+Recall producing the strongest effect.
 
 In summary, on the document level the three modes split into the
 patterns \emph{Form $\approx$ Chat $>$ Ask} (BLEU, ROUGE-1, ROUGE-L,

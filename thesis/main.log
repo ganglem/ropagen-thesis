@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.3.25)  19 MAY 2026 04:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.3.25)  19 MAY 2026 04:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1806,7 +1806,7 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 File: ../python/survey/output/ranking_distribution.png Graphic file (type png)
 <use ../python/survey/output/ranking_distribution.png>
 Package pdftex.def Info: ../python/survey/output/ranking_distribution.png  used
- on input line 63.
+ on input line 62.
 (pdftex.def)             Requested size: 353.7059pt x 223.59723pt.
 
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
@@ -1855,19 +1855,19 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [57]
-Underfull \hbox (badness 2042) in paragraph at lines 189--189
+Underfull \hbox (badness 2042) in paragraph at lines 180--180
 [][][]\T1/phv/m/n/12 Document-level BERT-based and SBERT dis-tri-bu-tions by mo
 de (full sam-ple $\OML/cmm/m/it/12 n \OT1/cmr/m/n/12 = 113$\T1/phv/m/n/12 ). So
 urce:
  []
 
-<../python/metrics/output/bert_metrics_boxplot.png, id=659, 1293.633pt x 886.51
+<../python/metrics/output/bert_metrics_boxplot.png, id=660, 1293.633pt x 886.51
 2pt>
 File: ../python/metrics/output/bert_metrics_boxplot.png Graphic file (type png)
 
 <use ../python/metrics/output/bert_metrics_boxplot.png>
 Package pdftex.def Info: ../python/metrics/output/bert_metrics_boxplot.png  use
-d on input line 221.
+d on input line 212.
 (pdftex.def)             Requested size: 606.5pt x 415.61911pt.
 
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
@@ -1882,13 +1882,13 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [60 <../python/metrics/output/bert_metrics_boxplot.png>]
-Overfull \hbox (6.66214pt too wide) in paragraph at lines 265--266
+Overfull \hbox (6.66214pt too wide) in paragraph at lines 249--250
 [] \T1/phv/b/n/12 SBERT (Mod-ern-BERT) co-sine sim-i-lar-ity.[][] \T1/phv/m/n/1
 2 Sentence-BERT co-sine sim-i-lar-ity ([])
  []
 
 
-Overfull \hbox (0.75928pt too wide) in paragraph at lines 265--266
+Overfull \hbox (0.75928pt too wide) in paragraph at lines 249--250
 \T1/phv/m/n/12 com-presses each doc-u-ment into a sin-gle em-bed-ding vec-tor a
 nd re-ports how aligned
  []
@@ -1898,55 +1898,55 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [61]
-Overfull \hbox (1.46027pt too wide) in paragraph at lines 299--322
+Overfull \hbox (1.46027pt too wide) in paragraph at lines 277--300
 \T1/phv/m/sl/12 nis-che und or-gan-isatorische Maÿ-nah-men \T1/phv/m/n/12 (Tech
 -ni-cal and Or-gan-i-sa-tional Mea-sures).
  []
 
 
-Overfull \hbox (18.63705pt too wide) in paragraph at lines 299--322
+Overfull \hbox (18.63705pt too wide) in paragraph at lines 277--300
 \T1/phv/m/n/12 scrip-tive source for all chapter-level ta-bles is the pipeline 
 out-put \T1/cmtt/m/n/12 chapter_results.csv\T1/phv/m/n/12 . 
  []
 
 
-Overfull \vbox (1.17493pt too high) has occurred while \output is active []
-
-
-[62]
-Overfull \hbox (5.40399pt too wide) in paragraph at lines 340--352
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 318--330
  [][] 
  []
 
 
-Overfull \hbox (5.40399pt too wide) in paragraph at lines 360--372
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 338--350
  [][] 
  []
 
 
-Overfull \hbox (5.40399pt too wide) in paragraph at lines 380--392
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 358--370
  [][] 
  []
 
 
-Overfull \hbox (5.40399pt too wide) in paragraph at lines 400--412
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 378--390
  [][] 
  []
 
 
-Overfull \hbox (5.40399pt too wide) in paragraph at lines 420--432
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 398--410
  [][] 
  []
 
-<../python/metrics/output/chapter_nlp_metrics_boxplot.png, id=707, 1582.2312pt 
+<../python/metrics/output/chapter_nlp_metrics_boxplot.png, id=696, 1582.2312pt 
 x 879.7668pt>
 File: ../python/metrics/output/chapter_nlp_metrics_boxplot.png Graphic file (ty
 pe png)
 <use ../python/metrics/output/chapter_nlp_metrics_boxplot.png>
 Package pdftex.def Info: ../python/metrics/output/chapter_nlp_metrics_boxplot.p
-ng  used on input line 436.
+ng  used on input line 414.
 (pdftex.def)             Requested size: 606.5pt x 337.2279pt.
 
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[62]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
@@ -1959,49 +1959,49 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [65]
-Overfull \hbox (1.13603pt too wide) in paragraph at lines 494--507
+Overfull \hbox (1.13603pt too wide) in paragraph at lines 472--485
 [] \T1/phv/b/n/12 ME-TEOR.[][] \T1/phv/m/n/12 Once stems and syn-onyms are cred
 -ited the chap-ter range com-presses.
  []
 
 
-Overfull \vbox (1.17493pt too high) has occurred while \output is active []
-
-
-[66]
-Overfull \hbox (5.40399pt too wide) in paragraph at lines 540--552
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 518--530
  [][] 
  []
 
 
-Overfull \hbox (5.40399pt too wide) in paragraph at lines 560--572
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 538--550
  [][] 
  []
 
 
-Overfull \hbox (5.40399pt too wide) in paragraph at lines 580--592
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 558--570
  [][] 
  []
 
 
-Overfull \hbox (5.40399pt too wide) in paragraph at lines 600--612
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 578--590
  [][] 
  []
 
 
-Overfull \hbox (5.40399pt too wide) in paragraph at lines 621--633
+Overfull \hbox (5.40399pt too wide) in paragraph at lines 599--611
  [][] 
  []
 
-<../python/metrics/output/chapter_bert_metrics_boxplot.png, id=734, 1582.2312pt
+<../python/metrics/output/chapter_bert_metrics_boxplot.png, id=730, 1582.2312pt
  x 853.7496pt>
 File: ../python/metrics/output/chapter_bert_metrics_boxplot.png Graphic file (t
 ype png)
 <use ../python/metrics/output/chapter_bert_metrics_boxplot.png>
 Package pdftex.def Info: ../python/metrics/output/chapter_bert_metrics_boxplot.
-png  used on input line 637.
+png  used on input line 615.
 (pdftex.def)             Requested size: 606.5pt x 327.25511pt.
 
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[66]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
@@ -2041,7 +2041,7 @@ Overfull \hbox (1.7757pt too wide) in paragraph at lines 58--68
 port-ing per-mode means,
  []
 
-<../python/judge/output/judge_metrics_boxplot.png, id=782, 1582.713pt x 888.921
+<../python/judge/output/judge_metrics_boxplot.png, id=783, 1582.713pt x 888.921
 pt>
 File: ../python/judge/output/judge_metrics_boxplot.png Graphic file (type png)
 <use ../python/judge/output/judge_metrics_boxplot.png>
@@ -2073,7 +2073,7 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [79]
-<../python/survey/output/demographics.png, id=824, 1144.275pt x 1723.3986pt>
+<../python/survey/output/demographics.png, id=825, 1144.275pt x 1723.3986pt>
 File: ../python/survey/output/demographics.png Graphic file (type png)
 <use ../python/survey/output/demographics.png>
 Package pdftex.def Info: ../python/survey/output/demographics.png  used on inpu
@@ -2647,10 +2647,10 @@ super/sftt1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1440.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on main.pdf (141 pages, 2281670 bytes).
+Output written on main.pdf (141 pages, 2279764 bytes).
 PDF statistics:
- 2518 PDF objects out of 2984 (max. 8388607)
- 2277 compressed objects within 23 object streams
+ 2519 PDF objects out of 2984 (max. 8388607)
+ 2278 compressed objects within 23 object streams
  1153 named destinations out of 1200 (max. 500000)
  684 words of extra memory for PDF output out of 10000 (max. 10000000)
 
