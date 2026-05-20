@@ -67,6 +67,26 @@ The three interaction modes are **Form** (structured questionnaire), **Ask** (gu
 - Never hardcode values — use `\SI{}{}` (siunitx) for numbers with units where appropriate
 - Avoid orphan/widow lines: prefer `\looseness=-1` or minor rewording over manual `\\`
 - Keep labels consistent: `fig:`, `tab:`, `sec:`, `eq:` prefixes
+- **No em dashes (`---`) in flowing prose** — use commas, parentheses, or semicolons instead. Exceptions: definition-style headers (e.g., `\textbf{BLEU} (Bilingual Evaluation Understudy) --- $n$-gram precision...`) and table captions explicitly using the supervisor's preferred style.
+
+## Acronym and citation rules
+
+**Acronyms.** Three-step pattern across the whole thesis:
+
+1. **First mention (informal).** Full term, then introduce the acronym in parentheses. Cite if the concept is being introduced for the first time: *"Record of Processing Activities (ROPA)~\cite{...}"*.
+2. **First formal definition.** Use the acronym alone if already introduced; otherwise the full term once more.
+3. **All subsequent mentions.** Just the acronym (`ROPA`, `GDPR`, `LLM`, `SUS`, `R-TLX`, etc.).
+
+Every acronym should also appear in the acronyms appendix (`chapters/appendix_acronyms.tex`).
+
+**Clickable acronyms (deferred).** The supervisor has asked that every acronym in the body link to its entry in the acronyms appendix, so a reader can click to see the expansion. This has not yet been implemented. The recommended path when it is done is the `glossaries` package: define all acronyms once in the preamble, then use `\gls{ropa}` everywhere in the body (handles first-vs-subsequent expansion and hyperlinks automatically). Until then, write plain acronyms following the 3-step rule above; do not add `\hyperref` calls one-off.
+
+**Citations.** Cite each reference at most twice in the body:
+
+1. **At first mention** of the concept (intro paragraph of the section that introduces it).
+2. **At the formal definition** (e.g., where the equation, instrument, or test is precisely defined).
+3. **Never inside tables.** Tables are at-a-glance references; citations belong in the prose that introduces or formally defines the entry.
+4. **No further citations** after the formal definition unless the citation is being used in a new substantive way (e.g., to ground a specific empirical claim).
 
 ## Writing standards
 
