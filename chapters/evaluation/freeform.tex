@@ -79,25 +79,25 @@ comments.
 \paragraph{Form.} Comments on Form cluster around speed, clarity,
 and control. Recurring observations describe the mode as the fastest
 of the three, the easiest to obtain an overview of, and the most
-``integrated'' into the document creation workflow because the
+``integrated'' into the document creation workflow, as the
 checkbox interface makes the selection space visible at a glance.
 Several participants emphasize that Form ``takes the most work off
 you'' (\emph{``nimmt einem die meiste Arbeit ab''}) by pre-populating
 the option set, while a smaller subset notes the opposite concern:
-that the absence of an interactive AI commentary makes it unclear on
+that the absence of an interactive LLM commentary makes it unclear on
 what basis the model produces its suggestions, and that participants
 would not feel safe relying on Form output without an additional
 verification step. Several comments describe specific UX issues:
 long text fields rendered as a single narrow line on mobile, the
-inability to provide the AI with additional context for its
-suggestions, and the impression that the AI ``guesses'' without
+inability to provide the LLM with additional context for its
+suggestions, and the impression that the LLM ``guesses'' without
 scenario-specific input.
 
 \paragraph{Ask.} Comments on Ask are the most polarised of the
 three modes. A consistent theme is that Ask is the most cumbersome
-mode in terms of workflow: the requirement to manually copy the AI's
+mode in terms of workflow: the requirement to manually copy the LLM's
 suggested text into the form field (cf.\ Section~\ref{sec:ropagen}) is
-repeatedly described as redundant work, particularly because
+repeatedly described as redundant work, particularly as
 participants reported that the model often produced suggestions in a
 free-text style that did not match the structured form fields. Several participants observed that
 the lack of a persistent context across fields forced them to
@@ -111,14 +111,14 @@ field layout.
 \paragraph{Chat.} Comments on Chat are dominated by two themes:
 comfort and opacity. On the comfort side, several participants
 describe Chat as the most intuitive of the three modes, especially
-because the AI takes over the work of mapping the conversation onto
+as the LLM takes over the work of mapping the conversation onto
 the structured ROPA fields (cf.\ Section~\ref{sec:ropagen}), leaving the
 participant only with the task of describing the processing scenario. On the opacity side, an
 equally large group of participants reports uncertainty about what is
 actually being written into the document — whether the entire chat
 history is used for generation, whether each individual message must
 be confirmed, and what the document looks like during the
-conversation. Specific defects mentioned include the AI occasionally
+conversation. Specific defects mentioned include the LLM occasionally
 switching from German to English mid-response, occasional emission of
 raw \texttt{DATA\_UPDATE} tokens, and a slow ``streaming'' rendering
 style that participants experienced as artificially throttled.
@@ -142,7 +142,7 @@ shift if they had prior GDPR knowledge.
 The ranking and comment data therefore close the user-experience
 half of the chapter on the same Form-first ordering established by
 the SUS and R-TLX, with Chat slotting in second on raw votes and Ask
-trailing largely because of its copy-paste workflow. Whether the
+trailing largely on account of its copy-paste workflow. Whether the
 documents produced under each mode mirror this ordering — or invert
 it — is the question taken up next, beginning with the
 reference-based NLP metrics in Section~\ref{sec:eval-nlp-doc}.
