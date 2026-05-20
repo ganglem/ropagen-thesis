@@ -239,6 +239,66 @@
       \field{pages}{189\bibrangedash 194}
       \range{pages}{6}
     \endentry
+    \entry{Cramer1946}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=8815262f8ce833f8804c25a5afc1996b}{%
+           family={Cramér},
+           familyi={C\bibinitperiod},
+           given={Harald},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Princeton, NJ}%
+      }
+      \list{publisher}{1}{%
+        {Princeton University Press}%
+      }
+      \strng{namehash}{8815262f8ce833f8804c25a5afc1996b}
+      \strng{fullhash}{8815262f8ce833f8804c25a5afc1996b}
+      \strng{fullhashraw}{8815262f8ce833f8804c25a5afc1996b}
+      \strng{bibnamehash}{8815262f8ce833f8804c25a5afc1996b}
+      \strng{authorbibnamehash}{8815262f8ce833f8804c25a5afc1996b}
+      \strng{authornamehash}{8815262f8ce833f8804c25a5afc1996b}
+      \strng{authorfullhash}{8815262f8ce833f8804c25a5afc1996b}
+      \strng{authorfullhashraw}{8815262f8ce833f8804c25a5afc1996b}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Mathematical Methods of Statistics}
+      \field{year}{1946}
+    \endentry
+    \entry{Friedman1937}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=ed599767cda235bc9b7bb0e787374d60}{%
+           family={Friedman},
+           familyi={F\bibinitperiod},
+           given={Milton},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{ed599767cda235bc9b7bb0e787374d60}
+      \strng{fullhash}{ed599767cda235bc9b7bb0e787374d60}
+      \strng{fullhashraw}{ed599767cda235bc9b7bb0e787374d60}
+      \strng{bibnamehash}{ed599767cda235bc9b7bb0e787374d60}
+      \strng{authorbibnamehash}{ed599767cda235bc9b7bb0e787374d60}
+      \strng{authornamehash}{ed599767cda235bc9b7bb0e787374d60}
+      \strng{authorfullhash}{ed599767cda235bc9b7bb0e787374d60}
+      \strng{authorfullhashraw}{ed599767cda235bc9b7bb0e787374d60}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{200}
+      \field{title}{The Use of Ranks to Avoid the Assumption of Normality Implicit in the Analysis of Variance}
+      \field{volume}{32}
+      \field{year}{1937}
+      \field{pages}{675\bibrangedash 701}
+      \range{pages}{27}
+      \verb{doi}
+      \verb 10.2307/2279372
+      \endverb
+    \endentry
     \entry{gdpr-info-art30}{online}{}{}
       \name{author}{1}{}{%
         {{hash=b2105d03ce9faac52d73d37ff4ec7d1e}{%
@@ -328,6 +388,327 @@
       \verb 10.1177/154193120605000909
       \endverb
     \endentry
+    \entry{Hart1988}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=3c980fec4ba43d342b9a70395a28e428}{%
+           family={Hart},
+           familyi={H\bibinitperiod},
+           given={Sandra\bibnamedelima G.},
+           giveni={S\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=a6046a8b39af8e784bfee58f91b7c89e}{%
+           family={Staveland},
+           familyi={S\bibinitperiod},
+           given={Lowell\bibnamedelima E.},
+           giveni={L\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{469efa314baa32a3f4d461e0dce2d6ea}
+      \strng{fullhash}{469efa314baa32a3f4d461e0dce2d6ea}
+      \strng{fullhashraw}{469efa314baa32a3f4d461e0dce2d6ea}
+      \strng{bibnamehash}{469efa314baa32a3f4d461e0dce2d6ea}
+      \strng{authorbibnamehash}{469efa314baa32a3f4d461e0dce2d6ea}
+      \strng{authornamehash}{469efa314baa32a3f4d461e0dce2d6ea}
+      \strng{authorfullhash}{469efa314baa32a3f4d461e0dce2d6ea}
+      \strng{authorfullhashraw}{469efa314baa32a3f4d461e0dce2d6ea}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in Psychology}
+      \field{title}{Development of {NASA-TLX} (Task Load Index): Results of Empirical and Theoretical Research}
+      \field{volume}{52}
+      \field{year}{1988}
+      \field{pages}{139\bibrangedash 183}
+      \range{pages}{45}
+      \verb{doi}
+      \verb 10.1016/S0166-4115(08)62386-9
+      \endverb
+    \endentry
+    \entry{Jiang2023Mistral}{misc}{}{}
+      \name{author}{18}{}{%
+        {{hash=a91e014a59af240c37c0fc26432a125b}{%
+           family={Jiang},
+           familyi={J\bibinitperiod},
+           given={Albert\bibnamedelima Q.},
+           giveni={A\bibinitperiod\bibinitdelim Q\bibinitperiod}}}%
+        {{hash=2b9ab922e693d9237ad952a8030eee9d}{%
+           family={Sablayrolles},
+           familyi={S\bibinitperiod},
+           given={Alexandre},
+           giveni={A\bibinitperiod}}}%
+        {{hash=e9a587c57b1dcb4834850800386d8aca}{%
+           family={Mensch},
+           familyi={M\bibinitperiod},
+           given={Arthur},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5d11905f79ca61f62a93a43574139850}{%
+           family={Bamford},
+           familyi={B\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod}}}%
+        {{hash=d61a282b0086c5c4d52c371e7c748278}{%
+           family={Chaplot},
+           familyi={C\bibinitperiod},
+           given={Devendra\bibnamedelima Singh},
+           giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=af4c75452e1c1c77b8727f6dace64a42}{%
+           family={Casas},
+           familyi={C\bibinitperiod},
+           given={Diego\bibnamedelimb de\bibnamedelima las},
+           giveni={D\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim l\bibinitperiod}}}%
+        {{hash=dafbd4ebc73fd986f482b5cb24ed701d}{%
+           family={Bressand},
+           familyi={B\bibinitperiod},
+           given={Florian},
+           giveni={F\bibinitperiod}}}%
+        {{hash=a9285c2c0cdc863e02225039176bb017}{%
+           family={Lengyel},
+           familyi={L\bibinitperiod},
+           given={Gianna},
+           giveni={G\bibinitperiod}}}%
+        {{hash=56509a94ba6cdaf0c71304d6cf806cee}{%
+           family={Lample},
+           familyi={L\bibinitperiod},
+           given={Guillaume},
+           giveni={G\bibinitperiod}}}%
+        {{hash=1c3686dfd5bade81bcfe2f5c89d70465}{%
+           family={Saulnier},
+           familyi={S\bibinitperiod},
+           given={Lucile},
+           giveni={L\bibinitperiod}}}%
+        {{hash=f7808ab68c1e6e06aee1eb1c723ff6eb}{%
+           family={Lavaud},
+           familyi={L\bibinitperiod},
+           given={Lélio\bibnamedelima Renard},
+           giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=08284515d256b832e9dba10a88af84f4}{%
+           family={Lachaux},
+           familyi={L\bibinitperiod},
+           given={Marie-Anne},
+           giveni={M\bibinithyphendelim A\bibinitperiod}}}%
+        {{hash=0af14ac84bf3a9d753c1ece79a50a55e}{%
+           family={Stock},
+           familyi={S\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod}}}%
+        {{hash=7cfeecd888d1cb971a1711b99011122e}{%
+           family={Le\bibnamedelima Scao},
+           familyi={L\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Teven},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c641a91d616b6eda08cbbdca7b7eb186}{%
+           family={Lavril},
+           familyi={L\bibinitperiod},
+           given={Thibaut},
+           giveni={T\bibinitperiod}}}%
+        {{hash=7d3b9bf09e1fd7987770a8954ff63f3c}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=1d29ae55d8d993d9f195b3c97bd34f7c}{%
+           family={Lacroix},
+           familyi={L\bibinitperiod},
+           given={Timothée},
+           giveni={T\bibinitperiod}}}%
+        {{hash=42fdc62bb0e47670698a88ae2d31a450}{%
+           family={El\bibnamedelima Sayed},
+           familyi={E\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={William},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{066da2bf78c9b2e3d4c5f5a2cc6c4bff}
+      \strng{fullhash}{cf24fc475ab897f45909dd29dbaaa871}
+      \strng{fullhashraw}{cf24fc475ab897f45909dd29dbaaa871}
+      \strng{bibnamehash}{066da2bf78c9b2e3d4c5f5a2cc6c4bff}
+      \strng{authorbibnamehash}{066da2bf78c9b2e3d4c5f5a2cc6c4bff}
+      \strng{authornamehash}{066da2bf78c9b2e3d4c5f5a2cc6c4bff}
+      \strng{authorfullhash}{cf24fc475ab897f45909dd29dbaaa871}
+      \strng{authorfullhashraw}{cf24fc475ab897f45909dd29dbaaa871}
+      \field{extraname}{1}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CL}
+      \field{eprinttype}{arXiv}
+      \field{title}{Mistral 7{B}}
+      \field{year}{2023}
+      \verb{doi}
+      \verb 10.48550/arXiv.2310.06825
+      \endverb
+      \verb{eprint}
+      \verb 2310.06825
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2310.06825
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2310.06825
+      \endverb
+    \endentry
+    \entry{Jiang2024Mixtral}{misc}{}{}
+      \name{author}{26}{}{%
+        {{hash=a91e014a59af240c37c0fc26432a125b}{%
+           family={Jiang},
+           familyi={J\bibinitperiod},
+           given={Albert\bibnamedelima Q.},
+           giveni={A\bibinitperiod\bibinitdelim Q\bibinitperiod}}}%
+        {{hash=2b9ab922e693d9237ad952a8030eee9d}{%
+           family={Sablayrolles},
+           familyi={S\bibinitperiod},
+           given={Alexandre},
+           giveni={A\bibinitperiod}}}%
+        {{hash=68e595df4e0c87236640e9c73afb008f}{%
+           family={Roux},
+           familyi={R\bibinitperiod},
+           given={Antoine},
+           giveni={A\bibinitperiod}}}%
+        {{hash=e9a587c57b1dcb4834850800386d8aca}{%
+           family={Mensch},
+           familyi={M\bibinitperiod},
+           given={Arthur},
+           giveni={A\bibinitperiod}}}%
+        {{hash=29b66431b799bff473261d61c1739960}{%
+           family={Savary},
+           familyi={S\bibinitperiod},
+           given={Blanche},
+           giveni={B\bibinitperiod}}}%
+        {{hash=5d11905f79ca61f62a93a43574139850}{%
+           family={Bamford},
+           familyi={B\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod}}}%
+        {{hash=d61a282b0086c5c4d52c371e7c748278}{%
+           family={Chaplot},
+           familyi={C\bibinitperiod},
+           given={Devendra\bibnamedelima Singh},
+           giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=af4c75452e1c1c77b8727f6dace64a42}{%
+           family={Casas},
+           familyi={C\bibinitperiod},
+           given={Diego\bibnamedelimb de\bibnamedelima las},
+           giveni={D\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim l\bibinitperiod}}}%
+        {{hash=bb80e68474ca9c8acad404867013c8a5}{%
+           family={Hanna},
+           familyi={H\bibinitperiod},
+           given={Emma\bibnamedelima Bou},
+           giveni={E\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=dafbd4ebc73fd986f482b5cb24ed701d}{%
+           family={Bressand},
+           familyi={B\bibinitperiod},
+           given={Florian},
+           giveni={F\bibinitperiod}}}%
+        {{hash=a9285c2c0cdc863e02225039176bb017}{%
+           family={Lengyel},
+           familyi={L\bibinitperiod},
+           given={Gianna},
+           giveni={G\bibinitperiod}}}%
+        {{hash=c6bedbe30e4fea139ddae348fc15ed93}{%
+           family={Bour},
+           familyi={B\bibinitperiod},
+           given={Guillaume},
+           giveni={G\bibinitperiod}}}%
+        {{hash=56509a94ba6cdaf0c71304d6cf806cee}{%
+           family={Lample},
+           familyi={L\bibinitperiod},
+           given={Guillaume},
+           giveni={G\bibinitperiod}}}%
+        {{hash=f7808ab68c1e6e06aee1eb1c723ff6eb}{%
+           family={Lavaud},
+           familyi={L\bibinitperiod},
+           given={Lélio\bibnamedelima Renard},
+           giveni={L\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=1c3686dfd5bade81bcfe2f5c89d70465}{%
+           family={Saulnier},
+           familyi={S\bibinitperiod},
+           given={Lucile},
+           giveni={L\bibinitperiod}}}%
+        {{hash=08284515d256b832e9dba10a88af84f4}{%
+           family={Lachaux},
+           familyi={L\bibinitperiod},
+           given={Marie-Anne},
+           giveni={M\bibinithyphendelim A\bibinitperiod}}}%
+        {{hash=0af14ac84bf3a9d753c1ece79a50a55e}{%
+           family={Stock},
+           familyi={S\bibinitperiod},
+           given={Pierre},
+           giveni={P\bibinitperiod}}}%
+        {{hash=a74063219474ad33f9d0580979ea5ab6}{%
+           family={Subramanian},
+           familyi={S\bibinitperiod},
+           given={Sandeep},
+           giveni={S\bibinitperiod}}}%
+        {{hash=fea7f6955b0ef21c63fb83f9a959780b}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Sophia},
+           giveni={S\bibinitperiod}}}%
+        {{hash=adf6131d2f44f7ec486f055e0f705572}{%
+           family={Antoniak},
+           familyi={A\bibinitperiod},
+           given={Szymon},
+           giveni={S\bibinitperiod}}}%
+        {{hash=7cfeecd888d1cb971a1711b99011122e}{%
+           family={Le\bibnamedelima Scao},
+           familyi={L\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Teven},
+           giveni={T\bibinitperiod}}}%
+        {{hash=429eaf3778dc2c96b539e81af28b0e34}{%
+           family={Gervet},
+           familyi={G\bibinitperiod},
+           given={Théophile},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c641a91d616b6eda08cbbdca7b7eb186}{%
+           family={Lavril},
+           familyi={L\bibinitperiod},
+           given={Thibaut},
+           giveni={T\bibinitperiod}}}%
+        {{hash=7d3b9bf09e1fd7987770a8954ff63f3c}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=1d29ae55d8d993d9f195b3c97bd34f7c}{%
+           family={Lacroix},
+           familyi={L\bibinitperiod},
+           given={Timothée},
+           giveni={T\bibinitperiod}}}%
+        {{hash=42fdc62bb0e47670698a88ae2d31a450}{%
+           family={El\bibnamedelima Sayed},
+           familyi={E\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={William},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{066da2bf78c9b2e3d4c5f5a2cc6c4bff}
+      \strng{fullhash}{ef8202c359d67441dffd495cc62ec55a}
+      \strng{fullhashraw}{ef8202c359d67441dffd495cc62ec55a}
+      \strng{bibnamehash}{066da2bf78c9b2e3d4c5f5a2cc6c4bff}
+      \strng{authorbibnamehash}{066da2bf78c9b2e3d4c5f5a2cc6c4bff}
+      \strng{authornamehash}{066da2bf78c9b2e3d4c5f5a2cc6c4bff}
+      \strng{authorfullhash}{ef8202c359d67441dffd495cc62ec55a}
+      \strng{authorfullhashraw}{ef8202c359d67441dffd495cc62ec55a}
+      \field{extraname}{2}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{Mixtral of Experts}
+      \field{year}{2024}
+      \verb{doi}
+      \verb 10.48550/arXiv.2401.04088
+      \endverb
+      \verb{eprint}
+      \verb 2401.04088
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2401.04088
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2401.04088
+      \endverb
+    \endentry
     \entry{KastratovicRopagen}{online}{}{}
       \name{author}{1}{}{%
         {{hash=5c26682289b95e3090241228e3056d3c}{%
@@ -357,6 +738,109 @@
       \endverb
       \verb{url}
       \verb https://ropagen.eu
+      \endverb
+    \endentry
+    \entry{Kelley1935}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=22538984c79848abff84b8a2745b0cb8}{%
+           family={Kelley},
+           familyi={K\bibinitperiod},
+           given={Truman\bibnamedelima L.},
+           giveni={T\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{22538984c79848abff84b8a2745b0cb8}
+      \strng{fullhash}{22538984c79848abff84b8a2745b0cb8}
+      \strng{fullhashraw}{22538984c79848abff84b8a2745b0cb8}
+      \strng{bibnamehash}{22538984c79848abff84b8a2745b0cb8}
+      \strng{authorbibnamehash}{22538984c79848abff84b8a2745b0cb8}
+      \strng{authornamehash}{22538984c79848abff84b8a2745b0cb8}
+      \strng{authorfullhash}{22538984c79848abff84b8a2745b0cb8}
+      \strng{authorfullhashraw}{22538984c79848abff84b8a2745b0cb8}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the National Academy of Sciences}
+      \field{number}{9}
+      \field{title}{An Unbiased Correlation Ratio Measure}
+      \field{volume}{21}
+      \field{year}{1935}
+      \field{pages}{554\bibrangedash 559}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1073/pnas.21.9.554
+      \endverb
+    \endentry
+    \entry{Kendall1939}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=3e3f1b33a435412f1db707ec82b8ed41}{%
+           family={Kendall},
+           familyi={K\bibinitperiod},
+           given={Maurice\bibnamedelima G.},
+           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=cde20fcc32e2ad9650ec15d6a22b2150}{%
+           family={Babington\bibnamedelima Smith},
+           familyi={B\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Bernard},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{83ee2b2c33b71116b519251161553c1b}
+      \strng{fullhash}{83ee2b2c33b71116b519251161553c1b}
+      \strng{fullhashraw}{83ee2b2c33b71116b519251161553c1b}
+      \strng{bibnamehash}{83ee2b2c33b71116b519251161553c1b}
+      \strng{authorbibnamehash}{83ee2b2c33b71116b519251161553c1b}
+      \strng{authornamehash}{83ee2b2c33b71116b519251161553c1b}
+      \strng{authorfullhash}{83ee2b2c33b71116b519251161553c1b}
+      \strng{authorfullhashraw}{83ee2b2c33b71116b519251161553c1b}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annals of Mathematical Statistics}
+      \field{number}{3}
+      \field{title}{The Problem of $m$ Rankings}
+      \field{volume}{10}
+      \field{year}{1939}
+      \field{pages}{275\bibrangedash 287}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1214/aoms/1177732186
+      \endverb
+    \endentry
+    \entry{KruskalWallis1952}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=49b1ece05687c8424e7c15e58852c184}{%
+           family={Kruskal},
+           familyi={K\bibinitperiod},
+           given={William\bibnamedelima H.},
+           giveni={W\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=f73acb9c445d0e6ec3182ccb60c3592e}{%
+           family={Wallis},
+           familyi={W\bibinitperiod},
+           given={W.\bibnamedelimi Allen},
+           giveni={W\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{618ba9f5d95e8f064809e81cfd117bf4}
+      \strng{fullhash}{618ba9f5d95e8f064809e81cfd117bf4}
+      \strng{fullhashraw}{618ba9f5d95e8f064809e81cfd117bf4}
+      \strng{bibnamehash}{618ba9f5d95e8f064809e81cfd117bf4}
+      \strng{authorbibnamehash}{618ba9f5d95e8f064809e81cfd117bf4}
+      \strng{authornamehash}{618ba9f5d95e8f064809e81cfd117bf4}
+      \strng{authorfullhash}{618ba9f5d95e8f064809e81cfd117bf4}
+      \strng{authorfullhashraw}{618ba9f5d95e8f064809e81cfd117bf4}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{260}
+      \field{title}{Use of Ranks in One-Criterion Variance Analysis}
+      \field{volume}{47}
+      \field{year}{1952}
+      \field{pages}{583\bibrangedash 621}
+      \range{pages}{39}
+      \verb{doi}
+      \verb 10.2307/2280779
       \endverb
     \endentry
     \entry{liCaseGenBenchmarkMultiStage2025}{online}{}{}
@@ -547,6 +1031,71 @@
       \endverb
       \keyw{Computer Science - Artificial Intelligence,Computer Science - Computation and Language,high}
     \endentry
+    \entry{MannWhitney1947}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=5cf19aa5110d49e31bafd83ce394b092}{%
+           family={Mann},
+           familyi={M\bibinitperiod},
+           given={Henry\bibnamedelima B.},
+           giveni={H\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=c28a32eaa7f3921fc42ff47698be3a36}{%
+           family={Whitney},
+           familyi={W\bibinitperiod},
+           given={Donald\bibnamedelima R.},
+           giveni={D\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{faa025e01f364e80ee2e1076e0bc30ac}
+      \strng{fullhash}{faa025e01f364e80ee2e1076e0bc30ac}
+      \strng{fullhashraw}{faa025e01f364e80ee2e1076e0bc30ac}
+      \strng{bibnamehash}{faa025e01f364e80ee2e1076e0bc30ac}
+      \strng{authorbibnamehash}{faa025e01f364e80ee2e1076e0bc30ac}
+      \strng{authornamehash}{faa025e01f364e80ee2e1076e0bc30ac}
+      \strng{authorfullhash}{faa025e01f364e80ee2e1076e0bc30ac}
+      \strng{authorfullhashraw}{faa025e01f364e80ee2e1076e0bc30ac}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annals of Mathematical Statistics}
+      \field{number}{1}
+      \field{title}{On a Test of Whether One of Two Random Variables is Stochastically Larger than the Other}
+      \field{volume}{18}
+      \field{year}{1947}
+      \field{pages}{50\bibrangedash 60}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1214/aoms/1177730491
+      \endverb
+    \endentry
+    \entry{mistralAI}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=5f46782611de55f109003b4dac1b83e0}{%
+           family={{Mistral AI}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{5f46782611de55f109003b4dac1b83e0}
+      \strng{fullhash}{5f46782611de55f109003b4dac1b83e0}
+      \strng{fullhashraw}{5f46782611de55f109003b4dac1b83e0}
+      \strng{bibnamehash}{5f46782611de55f109003b4dac1b83e0}
+      \strng{authorbibnamehash}{5f46782611de55f109003b4dac1b83e0}
+      \strng{authornamehash}{5f46782611de55f109003b4dac1b83e0}
+      \strng{authorfullhash}{5f46782611de55f109003b4dac1b83e0}
+      \strng{authorfullhashraw}{5f46782611de55f109003b4dac1b83e0}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://mistral.ai/}}
+      \field{note}{Accessed: 2026-05-20}
+      \field{title}{Mistral {AI}: Frontier {AI} in your hands}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://mistral.ai/
+      \endverb
+      \verb{url}
+      \verb https://mistral.ai/
+      \endverb
+    \endentry
     \entry{nigamStructuredLegalDocument2025}{online}{}{}
       \name{author}{6}{}{%
         {{hash=25cba2c37b4edfae0c93425a00f399ee}{%
@@ -697,6 +1246,37 @@
       \range{pages}{8}
       \verb{doi}
       \verb 10.3115/1073083.1073135
+      \endverb
+    \endentry
+    \entry{Pearson1900}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=b69135425e9c9d6adc927b94c33421d4}{%
+           family={Pearson},
+           familyi={P\bibinitperiod},
+           given={Karl},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{b69135425e9c9d6adc927b94c33421d4}
+      \strng{fullhash}{b69135425e9c9d6adc927b94c33421d4}
+      \strng{fullhashraw}{b69135425e9c9d6adc927b94c33421d4}
+      \strng{bibnamehash}{b69135425e9c9d6adc927b94c33421d4}
+      \strng{authorbibnamehash}{b69135425e9c9d6adc927b94c33421d4}
+      \strng{authornamehash}{b69135425e9c9d6adc927b94c33421d4}
+      \strng{authorfullhash}{b69135425e9c9d6adc927b94c33421d4}
+      \strng{authorfullhashraw}{b69135425e9c9d6adc927b94c33421d4}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Philosophical Magazine Series 5}
+      \field{number}{302}
+      \field{title}{On the Criterion that a Given System of Deviations from the Probable in the Case of a Correlated System of Variables is Such That It Can Be Reasonably Supposed to Have Arisen from Random Sampling}
+      \field{volume}{50}
+      \field{year}{1900}
+      \field{pages}{157\bibrangedash 175}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1080/14786440009463897
       \endverb
     \endentry
     \entry{Reimers2019}{inproceedings}{}{}
@@ -1136,6 +1716,37 @@
       \endverb
       \verb{url}
       \verb https://arxiv.org/abs/2412.13663
+      \endverb
+    \endentry
+    \entry{Wilcoxon1945}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=405b308b1e8e33ef3275bf6cb9c9b281}{%
+           family={Wilcoxon},
+           familyi={W\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{405b308b1e8e33ef3275bf6cb9c9b281}
+      \strng{fullhash}{405b308b1e8e33ef3275bf6cb9c9b281}
+      \strng{fullhashraw}{405b308b1e8e33ef3275bf6cb9c9b281}
+      \strng{bibnamehash}{405b308b1e8e33ef3275bf6cb9c9b281}
+      \strng{authorbibnamehash}{405b308b1e8e33ef3275bf6cb9c9b281}
+      \strng{authornamehash}{405b308b1e8e33ef3275bf6cb9c9b281}
+      \strng{authorfullhash}{405b308b1e8e33ef3275bf6cb9c9b281}
+      \strng{authorfullhashraw}{405b308b1e8e33ef3275bf6cb9c9b281}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Biometrics Bulletin}
+      \field{number}{6}
+      \field{title}{Individual Comparisons by Ranking Methods}
+      \field{volume}{1}
+      \field{year}{1945}
+      \field{pages}{80\bibrangedash 83}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.2307/3001968
       \endverb
     \endentry
     \entry{Zhang2020}{inproceedings}{}{}
