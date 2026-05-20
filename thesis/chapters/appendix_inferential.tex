@@ -18,7 +18,7 @@ All sample sizes used in the thesis are derived from the raw data
 files committed to the repository:
 \texttt{python/survey/docs/data.csv} for the survey (one row per
 participant) and \texttt{python/metrics/output/all\_scores\_combined.csv}
-for the NLP and judge scores (one row per AI-generated document).
+for the NLP and judge scores (one row per LLM-generated document).
 
 \begin{table}[htbp]
 \centering
@@ -298,7 +298,7 @@ Inferential tests on the per-mode completion time recorded in the
 document-level analysis: full $n = 113$ (Form $37$, Ask $37$, Chat
 $39$); matched-triple within-subjects subset $n = 26$ participants.
 Non-parametric tests are used throughout, consistent with the NLP and
-survey pipelines, because Shapiro--Wilk rejects normality on every
+survey pipelines, as Shapiro--Wilk rejects normality on every
 mode (Form $W = 0.780$, $p < 0.001$; Ask $W = 0.912$, $p = 0.030$;
 Chat $W = 0.601$, $p < 0.001$). Source:
 \texttt{python/metrics/output/statistical\_tests.md} (\emph{Per-Mode

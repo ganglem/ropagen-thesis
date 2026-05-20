@@ -1,91 +1,62 @@
 \chapter{Introduction}
 
 \section{Context}
-The General Data Protection Regulation (GDPR) requires organizations to maintain a Record of Processing Activities (ROPA), a formal document that outlines how personal data is collected, processed, stored, and shared. Creating and maintaining these ROPA documents is often a resource-intensive process, especially for small and medium-sized organizations that lack specialized legal or data-protection expertise.
-In response to this challenge, ROPAgen --- the tool evaluated in this thesis --- is a web-based application that uses Large Language Models (LLMs) to assist users in drafting GDPR-compliant ROPA documentation. ROPAgen was developed by the author at the Institute of Databases and Information Systems (DBIS), University of Ulm, prior to this evaluation; it provides three interaction modes (Form, Ask, and Chat) that together offer increasing levels of LLM support, described in detail in Section~\ref{sec:ropagen}. The system aims to reduce the effort needed to create legally compliant documentation while maintaining transparency and user control.
-Although the application provides a functional framework for assisted ROPA generation, its effectiveness, usability, and impact on documentation quality have not yet been systematically evaluated. To ensure that such a system can be confidently integrated into practical compliance workflows, both qualitative and quantitative assessments are needed. These evaluations must determine whether users can efficiently and correctly create ROPA documents, how the varying levels of LLM support influence performance and trust, and whether the system produces outputs aligned with GDPR requirements.
+The General Data Protection Regulation (GDPR) requires organisations to maintain a Record of Processing Activities (ROPA), a formal document under Article~30 GDPR that records how personal data is collected, processed, stored, and shared. The content of a ROPA is rigidly specified (controller details, purposes, lawful bases, categories of data and recipients, retention periods, and technical and organisational measures), yet its substance is project-specific prose that has to be written from a blank page and kept current as processing activities change. Maintaining a ROPA is therefore a sustained cost rather than a one-off task; it requires legal and data-protection expertise that small and medium-sized organisations rarely have, and falls disproportionately on those least equipped to bear it~\cite{schwerinSystematicComparisonOpen2024}.
+
+ROPAgen, the tool evaluated in this thesis, is a web-based application developed at the Institute of Databases and Information Systems (DBIS) at the University of Ulm to address exactly this gap.
+It uses Large Language Models (LLMs) to assist novice users in drafting GDPR-compliant ROPA documentation, offering three interaction modes, each with a different level of LLM support:
+
+\textbf{Form} mode, in which the user fills structured fields directly, with LLM suggestions available on demand.
+
+\textbf{Ask} mode, in which the user works through a structured form while a chatbot answers questions and explains each section.
+
+\textbf{Chat} mode, in which the user describes their requirements conversationally, and the LLM autonomously drafts and populates the ROPA.
+The three modes are described in detail in Section~\ref{sec:ropagen}; by comparing them, the thesis evaluates how different levels of LLM support affect user performance and trust.
+
+Although the application provides a functional framework for assisted ROPA generation, its effectiveness, usability, and impact on documentation quality have not yet been systematically evaluated. To ensure that such a system can be confidently integrated into practical compliance workflows, both qualitative and quantitative assessments are needed. These evaluations determine whether users can efficiently and correctly create ROPA documents, how the varying levels of LLM support influence performance and trust, and whether the system produces outputs aligned with GDPR requirements.
 
  
 \section{Research Problem and Research Questions}
 The goal of this thesis is to conduct a comprehensive evaluation of the existing LLM-supported ROPA generation application. The evaluation asks how the three interaction modes shape the experience of novice users, how they shape the documents those users produce, and whether the two are aligned. Each overarching research question is broken into three more specific sub-questions tied to the instruments used to answer them.
 
-\paragraph{RQ1 --- User experience.}
-\emph{How do varying degrees of LLM support influence novice users during ROPA document creation?}
+\paragraph{RQ1 (User experience).} \emph{How do varying degrees of LLM support influence novice users during ROPA document creation?}
 \begin{itemize}
     \item[\textbf{RQ1.1}] How do novice users perceive the \emph{usability} of the three interaction modes (Form, Ask, Chat)?
     \item[\textbf{RQ1.2}] How does \emph{cognitive load} differ across the three modes for users with no prior GDPR knowledge?
-    \item[\textbf{RQ1.3}] How do novice users subjectively evaluate each mode --- in their perception of the AI's support, in their confidence about the documents they produce, and in the mode they ultimately prefer?
+    \item[\textbf{RQ1.3}] How do novice users subjectively evaluate each mode: in their perception of the LLM's support, in their confidence about the documents they produce, and in the mode they ultimately prefer?
 \end{itemize}
-
-\paragraph{RQ2 --- Document quality.}
-\emph{How do varying degrees of LLM support influence the quality of ROPA documents produced by novice users?}
+\paragraph{RQ2 (Document quality).} \emph{How do varying degrees of LLM support influence the quality of ROPA documents produced by novice users?}
 \begin{itemize}
     \item[\textbf{RQ2.1}] How does document quality differ across the three modes when measured by reference-based NLP similarity to an expert-authored ROPA (BLEU, ROUGE, METEOR, BERTScore, SBERT)?
     \item[\textbf{RQ2.2}] As a supplementary, reference-free signal, what additional GDPR-specific quality properties (completeness, scenario faithfulness, legal correctness, hallucination) does an LLM-as-a-judge surface across the three modes?
     \item[\textbf{RQ2.3}] Is there a discrepancy between user confidence (RQ1.3) and the document quality actually achieved (RQ2.1, RQ2.2)?
 \end{itemize}
-
-\paragraph{Prior expectation.} Going into the study, the implicit
-prediction was that more LLM support would translate into a better
-user experience and a more preferred mode: the ordering Chat
-$\succ$ Form $\succ$ Ask was anticipated, with Chat --- the
-free-form conversational mode where the LLM does the most work
---- expected to be the overall favorite among novice users. The
-evaluation that follows tests this prediction against the
-experience and outputs of $73$ novice participants.
+Going into the study, the implicit prediction was that more LLM support would translate into a better user experience and a more preferred mode: the ordering Chat $\succ$ Form $\succ$ Ask was anticipated, with Chat (the free-form conversational mode where the LLM does the most work) expected to be the overall favourite among novice users. The evaluation that follows tests this prediction against the experience and outputs of $73$ novice participants.
 
 \section{Thesis Structure}
 \label{sec:thesis-structure}
 
-The remainder of this thesis is organized into five further
+The remainder of this thesis is organised into five further
 chapters and three appendices.
 
-\textbf{Chapter~\ref{ch:background}} (Background) defines GDPR
-and the Article~30 ROPA obligation, then reviews related work on
-legal-AI document generation through four lenses: GDPR-specific
-compliance automation, structured legal-document generation,
-evaluation methodologies for legal AI, and user-facing legal AI
-systems. The chapter closes by identifying the gap this thesis
-fills: no prior work simultaneously targets GDPR ROPA generation,
-exposes the system to novice users, and measures the
-confidence--quality calibration that results.
-
+\textbf{Chapter~\ref{ch:background}} (Background) defines the GDPR
+and the Article~30 ROPA obligation and locates this thesis in the
+related work on LLM-supported legal-document generation.
 \textbf{Chapter~\ref{ch:methodology}} (Methodology) introduces
-ROPAgen in detail --- its three interaction modes, the internal
-\texttt{DocumentData} schema they share, and the LLM backend that
-generates the final ROPA document --- and then describes the user
-study itself: design, scenario, participants, instruments
-(SUS, R-TLX, Perceived AI Support, mode-preference ranking),
-NLP metric definitions, the LLM-as-a-judge configuration, and the
-statistical analysis plan.
-
+ROPAgen and its three interaction modes, then describes the user
+study: design, instruments, sample sizes, and the analytical
+approach through which the tool is evaluated.
 \textbf{Chapter~\ref{ch:evaluation}} (Evaluation and Results)
-reports the empirical findings: participant demographics,
-per-mode results on the four user-study instruments and the
-post-experiment ranking, NLP metrics at the document and
-chapter levels, and the supplementary LLM-as-a-judge scores. Each
-result is reported descriptively first and then tested
-inferentially.
-
+reports the empirical findings from the four user-study
+instruments and from the document-quality analyses, descriptively
+first and then inferentially.
 \textbf{Chapter~\ref{ch:discussion}} (Discussion) interprets the
-two central findings of the Evaluation: the
-completeness--hallucination tradeoff under Form's checkbox
-scaffolding, and the confidence--quality gap between what novices
-believe they have produced and what they have actually produced.
-Two triangulated case studies, drawn from the participant pool
-and using survey, NLP, and judge data side-by-side, illustrate
-the gap in concrete form. The chapter also positions the findings
-against the related-work landscape and names the limitations of
-the study.
-
-\textbf{Chapter~\ref{ch:conclusion}} (Conclusion) answers RQ1 and
-RQ2 in plain English and draws out the design implications for
-LLM-assisted compliance tooling that follow from the calibration
-results.
-
-\textbf{Appendices A--C} reproduce the ROPAgen backend prompts,
-the three mode screenshots, the expert-authored reference
-document and the LLM-as-a-judge configuration (Appendix~A); the
-study scenario and the verbatim survey instruments (Appendix~B);
-and the full inferential statistics referenced from the
-Evaluation chapter (Appendix~C).
+central findings (the completeness--hallucination tradeoff and
+the confidence--quality gap) against the related work and names
+the study's limitations.
+\textbf{Chapter~\ref{ch:conclusion}} (Conclusion) answers RQ1
+and RQ2 in plain English and draws the design implications for
+LLM-assisted compliance tooling that follow.
+\textbf{Appendices A--C} contain the ROPAgen backend prompts and
+judge configuration, the verbatim study materials, and the full
+inferential statistics referenced from the Evaluation chapter.
