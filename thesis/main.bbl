@@ -268,6 +268,37 @@
       \field{title}{Mathematical Methods of Statistics}
       \field{year}{1946}
     \endentry
+    \entry{Field2018}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=e455d44d4062027b5d79a7bf3817371e}{%
+           family={Field},
+           familyi={F\bibinitperiod},
+           given={Andy},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {London}%
+      }
+      \list{publisher}{1}{%
+        {SAGE Publications}%
+      }
+      \strng{namehash}{e455d44d4062027b5d79a7bf3817371e}
+      \strng{fullhash}{e455d44d4062027b5d79a7bf3817371e}
+      \strng{fullhashraw}{e455d44d4062027b5d79a7bf3817371e}
+      \strng{bibnamehash}{e455d44d4062027b5d79a7bf3817371e}
+      \strng{authorbibnamehash}{e455d44d4062027b5d79a7bf3817371e}
+      \strng{authornamehash}{e455d44d4062027b5d79a7bf3817371e}
+      \strng{authorfullhash}{e455d44d4062027b5d79a7bf3817371e}
+      \strng{authorfullhashraw}{e455d44d4062027b5d79a7bf3817371e}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{5}
+      \field{isbn}{978-1-5264-1951-4}
+      \field{title}{Discovering Statistics Using {IBM SPSS Statistics}}
+      \field{year}{2018}
+    \endentry
     \entry{Friedman1937}{article}{}{}
       \name{author}{1}{}{%
         {{hash=ed599767cda235bc9b7bb0e787374d60}{%
@@ -1318,6 +1349,42 @@
       \verb{doi}
       \verb 10.18653/v1/D19-1410
       \endverb
+    \endentry
+    \entry{SauroLewis2016}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=f24e1723133e0393dfd185716f640bed}{%
+           family={Sauro},
+           familyi={S\bibinitperiod},
+           given={Jeff},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f106a761a58d4041d103c16ce4f11cf1}{%
+           family={Lewis},
+           familyi={L\bibinitperiod},
+           given={James\bibnamedelima R.},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cambridge, MA}%
+      }
+      \list{publisher}{1}{%
+        {Morgan Kaufmann}%
+      }
+      \strng{namehash}{2bd800a0c0f35e9bdff73ae39f24dbb0}
+      \strng{fullhash}{2bd800a0c0f35e9bdff73ae39f24dbb0}
+      \strng{fullhashraw}{2bd800a0c0f35e9bdff73ae39f24dbb0}
+      \strng{bibnamehash}{2bd800a0c0f35e9bdff73ae39f24dbb0}
+      \strng{authorbibnamehash}{2bd800a0c0f35e9bdff73ae39f24dbb0}
+      \strng{authornamehash}{2bd800a0c0f35e9bdff73ae39f24dbb0}
+      \strng{authorfullhash}{2bd800a0c0f35e9bdff73ae39f24dbb0}
+      \strng{authorfullhashraw}{2bd800a0c0f35e9bdff73ae39f24dbb0}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{isbn}{978-0-12-802308-2}
+      \field{title}{Quantifying the User Experience: Practical Statistics for User Research}
+      \field{year}{2016}
     \endentry
     \entry{schwerinSystematicComparisonOpen2024}{article}{}{}
       \name{author}{2}{}{%
