@@ -1,4 +1,3 @@
-\clearpage
 \subsection{ROPAgen Usability — System Usability Scale}
 \label{sec:eval-sus}
 
@@ -16,13 +15,17 @@ procedure of Brooke~\cite{Brooke1996}. A score of $68$ is widely
 used as the threshold above which a system is judged to have
 above-average usability~\cite{Bangor2008}.
 Figure~\ref{fig:sus-aggregate} reports the per-mode composite
-scores against this reference line. All three modes clear the
-threshold: Form scores highest at a mean of $78.62$ (median
-$80.0$, SD $16.09$), while Ask and Chat sit closely together at
-$72.97$ and $72.93$ respectively (medians $72.5$ and $75.0$, SDs
-$15.36$ and $19.03$). Form leads the SUS evaluation, with Chat
-and Ask following closely behind; this pattern will become
-clearer across the user-study sections that follow.
+scores against this reference line. All three modes sit
+numerically above the threshold: Form scores highest at a mean of
+$78.62$ (median $80.0$, SD $16.09$), while Ask and Chat sit
+closely together at $72.97$ and $72.93$ respectively (medians
+$72.5$ and $75.0$, SDs $15.36$ and $19.03$). A one-sample
+Wilcoxon signed-rank test confirms that Form's composite is
+significantly above the $68$ threshold ($n = 69$, $W = 449$,
+$p < 0.001$, matched-pairs $r = +0.63$, large); Ask and Chat are
+not tested against the threshold. Form leads the SUS evaluation,
+with Chat and Ask following closely behind; this pattern will
+become clearer across the user-study sections that follow.
 
 \begin{figure}[htbp]
 \centering
@@ -91,7 +94,6 @@ would learn the system, the pattern held again (Form $4.30$, Ask
 $4.00$, Chat $4.03$). Across these four items the gap sits at
 roughly $0.30$--$0.40$ Likert points: small, but Form is ahead
 every time.
-
 The biggest gaps appear on the two items that asked whether the
 system felt unnecessarily complex or cumbersome. On complexity,
 Form drew the most favorable rating ($1.64$), with Ask
@@ -102,7 +104,6 @@ largest spread of any SUS item: Chat was rated most cumbersome
 easiest to operate ($1.65$), a $0.64$-point spread between the
 extremes. These are the items where the cost of
 LLM-driven interaction lands most directly on the user.
-
 Four items show essentially no difference between modes. None of
 the three felt to participants like it required prior learning
 to get going (item 10: Form $1.61$, Ask $1.61$, Chat $1.62$) or
@@ -116,17 +117,22 @@ Within-system confidence is broadly comparable across modes
 slight uptick toward Chat. On these dimensions the choice of
 interaction style simply does not move the rating.
 
-A Friedman test on the per-mode SUS composite is not significant
-($\chi^2(2) = 5.51$, $p = 0.064$, $W = 0.040$); pairwise
-comparisons between modes are therefore not pursued. The Form
-lead visible in the descriptive means does not reach statistical
-significance. Full statistics are in
-Appendix~\ref{app:inferential}.
+A Friedman test on the per-mode SUS composite narrowly misses
+significance ($\chi^2(2) = 5.51$, $p = 0.064$, $W = 0.040$). Two
+Form-focused pairwise Wilcoxon signed-rank tests
+(Bonferroni $\alpha = 0.025$ for two comparisons) show Form
+significantly higher than both Ask ($W = 578.5$, $p = 0.013$,
+$r = +0.37$, medium) and Chat ($W = 549.5$, $p = 0.018$,
+$r = +0.36$, medium); Ask versus Chat is not tested. The
+descriptive Form lead therefore holds inferentially against each
+LLM-driven mode even though the three-way omnibus narrowly
+misses. Full statistics are in Appendix~\ref{app:inferential}.
 
-The SUS picture is a directionally consistent but statistically
-null Form lead: Form is rated highest on six of ten items, the
-modes flatten on the other four, and the omnibus test narrowly
-misses the significance threshold ($p = 0.064$). The lead
+The SUS picture is a Form lead supported on three independent
+counts: Form is rated highest on six of ten items; Form's
+composite is significantly above the $68$ acceptability
+threshold; and Form is significantly higher than both Ask and
+Chat on the Form-focused pairwise comparisons. The lead
 concentrates on items that capture the moment-to-moment feel of
-using the system; whether it carries to perceived workload is the
-question for Section~\ref{sec:eval-rtlx}.
+using the system; whether it carries to perceived workload is
+the question for Section~\ref{sec:eval-rtlx}.

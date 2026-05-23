@@ -118,19 +118,21 @@ statistical significance on the full sample.
 On single-word overlap the three modes are evenly spread (Chat
 $0.511$, Form $0.488$, Ask $0.465$); the omnibus does not reach
 significance.
-
 For two-word phrases, Form reproduces the reference's wording most
 often (Form $0.306$, Chat $0.291$, Ask $0.257$). The Ask trough is
 wide enough to register as statistically significant against both
 Form and Chat.
-
 For longest-shared-sequences, Form ($0.388$) and Chat ($0.389$)
 track the reference equally well, with Ask trailing ($0.347$). The
 mode effect reaches significance overall, though no pairwise
 comparison survives Bonferroni correction.
 
-\paragraph{METEOR.} METEOR \emph{(Metric for Evaluation of Translation with Explicit ORdering)} (\eqref{eq:meteor}) softens BLEU by crediting matches on stems and WordNet synonyms in addition to identical tokens, so paraphrase with related words is no longer punished as if it had said something unrelated. It is a fragmentation-penalized harmonic mean of unigram precision and recall, sitting between BLEU and ROUGE in strictness.
-
+\paragraph{METEOR.}
+METEOR \emph{(Metric for Evaluation of Translation with Explicit ORdering)} (\eqref{eq:meteor})
+softens BLEU by crediting matches on stems and WordNet synonyms in addition to identical tokens,
+so paraphrase with related words is no longer punished as if it had said something unrelated.
+It is a fragmentation-penalized harmonic mean of unigram precision and recall,
+sitting between BLEU and ROUGE in strictness.
 With stems and synonyms credited, Form still uses the most
 reference-like terminology (Form $0.412$, Chat $0.390$, Ask
 $0.365$). Form is significantly higher than Ask on the full
@@ -176,7 +178,6 @@ On Recall (how much of what the reference says is recovered by
 the candidate), Form documents lead clearly, reproducing most of
 the reference's content (Form $0.923$, Ask $0.908$, Chat $0.913$).
 Form is significantly higher than both LLM-driven modes.
-
 Two features of Recall stand out. Form's standard deviation is
 the smallest of the three modes (SD $0.005$): every Form document
 scores within a narrow band. Ask has the widest spread (SD
@@ -184,7 +185,6 @@ $0.017$) with a long lower tail; Figure~\ref{fig:bert-doc-boxplot}
 shows several Ask outliers well below the rest of the
 distribution. Some Ask participants produced documents as
 complete as Form; others left noticeable gaps.
-
 F1 is the harmonic mean of Precision and Recall, and shows the
 trade-off the two metrics imply. Form ($0.905$) and Chat ($0.904$)
 are effectively tied, with Ask trailing ($0.897$). The Ask trough
@@ -201,10 +201,8 @@ F1, and Ask underperforms on both.
 Read at document level as a whole, Chat sits closest to the
 reference (Chat $0.990$, Form $0.986$, Ask $0.986$). Chat is
 significantly higher than both other modes.
-
 All four embedding-based metrics reach statistical significance on
 the full sample.
-
 At the document level the user-study Form-leading verdict breaks
 into a trade-off. Form documents recover more of what the
 reference \emph{says} (the recall-oriented and bigram-sensitive
@@ -286,38 +284,27 @@ Chat wins Chapters 5 and 6. Across chapters, Chapter 1 sits at
 the head of every metric and Chapter 5 carries the widest
 standard deviations.
 
-\textbf{Controller and Contact Details} scores highest on every
-lexical metric (BLEU $0.181$; ROUGE-1 $0.571$; METEOR $0.471$).
-Ask leads (ROUGE-1 Ask $0.605$ vs Form $0.550$, Chat $0.559$),
-with the same pattern across BLEU, ROUGE-2, ROUGE-L, and METEOR.
-
-\textbf{Purposes and Legal Bases} sits in the mid-range overall
-(BLEU $0.121$, ROUGE-1 $0.414$, METEOR $0.400$), with Form ahead
-on every lexical metric. The Form-vs-Ask gap on ROUGE-1 is the
-clearest single comparison ($0.457$ vs $0.373$); Chat sits closer
-to Form ($0.410$).
-
-\textbf{Categories of Personal Data} shows one of the widest mode
-gaps in the chapter-level lexical results, with Form sweeping
-every metric: ROUGE-1 Form $0.600$ vs Ask $0.366$, Chat $0.437$;
-BLEU $0.110$ vs Ask $0.077$, Chat $0.058$; METEOR $0.415$ vs Ask
-$0.275$, Chat $0.258$.
-
-\textbf{Data Subjects and Recipients} follows the same shape on a
-smaller scale (BLEU $0.097$, ROUGE-1 $0.437$, METEOR $0.355$).
-Form leads across the lexical suite (ROUGE-1 $0.491$ vs Ask
-$0.393$, Chat $0.426$; METEOR $0.440$ vs $0.312$ and $0.314$).
-
-\textbf{Retention and Deletion} has the lowest absolute scores and
-some of the widest variance of the six chapters. Chat leads on
-every lexical metric (ROUGE-1 $0.314$ vs Form $0.252$, Ask
-$0.212$; BLEU $0.068$ vs $0.038$, $0.023$; METEOR $0.362$ vs
-$0.332$, $0.245$), and METEOR carries the largest standard
-deviation of any chapter ($0.160$).
-
-\textbf{Technical and Organizational Measures} sits in the
-mid-range again (BLEU $0.080$, ROUGE-1 $0.331$, METEOR $0.293$).
-Chat holds a modest lead across the lexical suite (ROUGE-1
+Chapter 1 (Controller and Contact Details) scores highest in
+absolute terms (BLEU $0.181$, ROUGE-1 $0.571$, METEOR $0.471$)
+and is the one chapter where Ask edges the other two modes
+(ROUGE-1 Ask $0.605$ vs Form $0.550$, Chat $0.559$); the lead is
+modest but consistent across every lexical metric.
+The three middle chapters (Purposes and Legal Bases, Categories
+of Personal Data, Data Subjects and Recipients) all favor Form,
+with the gap widest on Chapter 3. There Form's ROUGE-1 of
+$0.600$ leads Ask ($0.366$) by the largest within-chapter gap of
+the lexical results, and Form also takes BLEU ($0.110$ vs Ask
+$0.077$, Chat $0.058$) and METEOR ($0.415$ vs Ask $0.275$, Chat
+$0.258$). Chapters 2 and 4 follow the same Form-leading pattern
+on a smaller scale (Ch2 ROUGE-1 $0.457$ vs Ask $0.373$, Chat
+$0.410$; Ch4 ROUGE-1 $0.491$ vs Ask $0.393$, Chat $0.426$).
+The last two chapters flip to Chat. Chapter 5 (Retention and
+Deletion) has the lowest absolute scores and the widest variance
+of the six, with Chat ahead on every lexical metric (ROUGE-1
+$0.314$ vs Form $0.252$, Ask $0.212$; METEOR $0.362$ vs $0.332$,
+$0.245$) and METEOR's standard deviation of $0.160$ the largest
+of any chapter. Chapter 6 (Technical and Organizational
+Measures) shows the same Chat lead at a smaller scale (ROUGE-1
 $0.350$ vs Form $0.313$, Ask $0.330$; METEOR $0.305$ vs $0.295$,
 $0.280$).
 
@@ -335,14 +322,13 @@ appendix tables only.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.45\linewidth]{chapter_nlp_bertscore_p.png}\hfill
-\includegraphics[width=0.45\linewidth]{chapter_nlp_bertscore_r.png}\\[1ex]
-\includegraphics[width=0.45\linewidth]{chapter_nlp_bertscore_f1.png}\hfill
-\includegraphics[width=0.45\linewidth]{chapter_nlp_sbert.png}
+\includegraphics[width=0.7\linewidth]{chapter_nlp_bertscore_p.png}\\
+\includegraphics[width=0.7\linewidth]{chapter_nlp_bertscore_r.png}\\
+\includegraphics[width=0.7\linewidth]{chapter_nlp_bertscore_f1.png}\\
+\includegraphics[width=0.7\linewidth]{chapter_nlp_sbert.png}
 \caption{Chapter-level distributions of BERTScore Precision,
 Recall, F1, and SBERT cosine similarity (ModernBERT) by mode
-(full sample $n = 113$), one plot per metric showing all six
-ROPA chapters side by side.}
+(full sample $n = 113$).}
 \label{fig:chapter-bert-boxplot}
 \end{figure}
 
@@ -353,49 +339,35 @@ Chapters 5 and 6. The document-level Form-leads-Recall /
 Chat-leads-Precision trade-off shows up here too, but localized
 to Chapters 2 and 4 rather than running across all metrics; on
 the other chapters one mode sweeps the BERT family.
+Chapter 1 stays at the top of the BERT range (F1 $0.869$, SBERT
+ModernBERT $0.976$) with Ask still ahead; the smaller MiniLM
+encoder makes the Ask lead easier to see (SBERT MiniLM Ask
+$0.736$ vs Form $0.663$, Chat $0.662$).
+The middle chapters favor Form, but with a per-metric trade-off
+appearing on Chapters 2 and 4 specifically. On Chapter 2, Form
+leads Recall (Form $0.911$ vs Ask $0.892$, Chat $0.904$), Form
+and Chat are effectively tied on F1 ($0.891$ vs $0.890$), and
+Chat takes a narrow Precision lead ($0.877$ vs Form $0.872$).
+Chapter 4 shows the same shape more clearly: Form leads Recall
+($0.904$ vs Ask $0.873$, Chat $0.864$) and F1 ($0.879$ vs Ask
+$0.862$, Chat $0.863$), while Chat leads Precision ($0.864$ vs
+Form $0.856$, Ask $0.853$) and SBERT MiniLM ($0.733$ vs Form
+$0.691$, Ask $0.692$). Chapter 3 is the cleanest sweep: Form is
+highest on every BERT-based metric (F1 $0.903$ vs Ask $0.865$,
+Chat $0.872$; Recall $0.910$ vs Ask $0.862$, Chat $0.861$).
 
-\textbf{Controller and Contact Details} sits at the top of the
-BERT range (BERTScore F1 $0.869$; SBERT ModernBERT $0.976$). Ask
-holds the lead across the BERT family, and the smaller MiniLM
-encoder makes the gap easier to see (SBERT MiniLM $0.736$ vs Form
-$0.663$, Chat $0.662$).
-
-\textbf{Purposes and Legal Bases} clusters tightly at the top of
-the BERT range across all three modes (F1 $0.887$; SBERT
-ModernBERT $0.979$). Form leads on Recall (Form $0.911$ vs Ask
-$0.892$, Chat $0.904$); Form and Chat are effectively tied on F1
-(Form $0.891$, Chat $0.890$); Chat takes a narrow Precision lead
-($0.877$ vs Form $0.872$, Ask $0.869$).
-
-\textbf{Categories of Personal Data} reproduces the dramatic Form
-sweep from the lexical view. Form is highest on every BERT-based
-metric, with the clearest gaps on F1 (Form $0.903$ vs Ask
-$0.865$, Chat $0.872$) and Recall (Form $0.910$ vs Ask $0.862$,
-Chat $0.861$).
-
-\textbf{Data Subjects and Recipients} shows the
-coverage-vs-discipline trade-off in its cleanest chapter-level
-form. Form holds the top of Recall and F1 (Recall $0.904$ vs Ask
-$0.873$, Chat $0.864$; F1 $0.879$ vs Ask $0.862$, Chat $0.863$),
-while Chat holds the top of Precision ($0.864$ vs Form $0.856$,
-Ask $0.853$) and of SBERT MiniLM ($0.733$ vs Form $0.691$, Ask
-$0.692$).
-
-\textbf{Retention and Deletion} sits at the lower end of the BERT
-range (F1 $0.855$; SBERT ModernBERT $0.949$). Chat leads across
-every BERT-based metric, and the MiniLM SBERT pass widens the gap
-visibly (F1 Chat $0.867$ vs Form $0.850$, Ask $0.847$; SBERT
-MiniLM $0.566$ vs Form $0.516$, Ask $0.474$).
-
-\textbf{Technical and Organizational Measures} sits back in the
-top tier (F1 $0.871$; SBERT ModernBERT $0.971$). Chat is narrowly
-ahead on every BERT-based metric (F1 $0.878$ vs Form $0.864$, Ask
-$0.870$).
+The last two chapters belong to Chat. Chapter 5 sits at the lower
+end of the BERT range (F1 $0.855$, SBERT ModernBERT $0.949$) with
+Chat ahead on every BERT-based metric, and the MiniLM SBERT pass
+widens the gap visibly (Chat MiniLM $0.566$ vs Form $0.516$, Ask
+$0.474$). Chapter 6 stays back in the top tier (F1 $0.871$, SBERT
+ModernBERT $0.971$) with Chat narrowly ahead on every BERT-based
+metric (F1 $0.878$ vs Form $0.864$, Ask $0.870$).
 
 Cell-wise Kruskal--Wallis tests on the full $n = 113$ sample
 confirm the descriptive picture: most chapter-level mode
-differences are significant. The largest single gap is Form's
-ROUGE-1 lead over Ask on \emph{Categories of Personal Data},
+differences are significant.
+The largest single gap is Form's ROUGE-1 lead over Ask on \emph{Categories of Personal Data},
 with a rank-biserial $r$ near $0.95$. Per-cell test statistics
 are kept in the pipeline output files; the appendix focuses on
 the document-level inferential layer.
@@ -413,14 +385,12 @@ chapter level the same trade-off runs across chapters: Ask wins
 Chapter 1, Form wins Chapters 2--4, Chat wins Chapters 5 and 6,
 and the Form-leads-Recall / Chat-leads-Precision split
 re-emerges specifically on Chapters 2 and 4.
-
 Document-level means are higher than the average of chapter-level
 means (Table~\ref{tab:doc-vs-chapter}) because the document-level
 calculation pools tokens across all six chapters and smooths out
 the per-chapter dips. The chapter-level view shows \emph{where}
 the modes differ; the document-level view ranks them
 \emph{overall}.
-
 The reference-based metrics neither confirm nor contradict the
 Form-leading verdict from the user study
 (Sections~\ref{sec:eval-sus}--\ref{sec:eval-freeform}). They
