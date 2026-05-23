@@ -1,43 +1,32 @@
+\clearpage
 \subsection{Cognitive Load — NASA Raw Task Load Index}
 \label{sec:eval-rtlx}
 
-Building on the SUS results reported in Section~\ref{sec:eval-sus}, this
-section turns to perceived workload. Where SUS measured how usable
-the interfaces felt, the Raw Task Load Index decomposes the
-participant's effort along six interpretable axes — Mental Demand,
-Physical Demand, Temporal Demand, Performance, Effort, and
-Frustration — each rated on the standard NASA 21-point scale
-($1$ = lowest demand, $21$ = highest). Performance is
-reported in the positive-coded direction (higher equals worse
-perceived performance) for internal consistency with the other
-subscales. The overall R-TLX in this study is the unweighted mean of
-the six subscales on the same $1$--$21$ scale (no rescaling is
-applied). The expectation
-from the methodology framing is that subscales tied to interface
-mechanics (Mental Demand, Effort) will track the SUS ordering, while
-content-driven subscales (Temporal Demand, Frustration) may diverge
-where the LLM modes introduce additional variability. The full
-subscale descriptions are reproduced in
-Appendix~\ref{app:sus-rtlx-items}. A short supplementary
-paragraph at the end of this section reports the objective
-per-mode \emph{completion time} alongside the perceptual
-subscales --- not as a separate workload instrument, but as a
-behavioral counterpart to Temporal Demand that the rest of the
-chapter occasionally refers back to.
+Where SUS measured how usable the interfaces felt, the Raw Task
+Load Index decomposes the participant's effort along six
+interpretable axes (Mental Demand, Physical Demand, Temporal
+Demand, Performance, Effort, and Frustration), each rated on the
+standard NASA 21-point scale ($1$ = lowest demand, $21$ =
+highest). Performance is reported in the positive-coded direction
+(higher equals worse perceived performance) for internal
+consistency with the other subscales. The overall R-TLX in this
+study is the unweighted mean of the six subscales on the same
+$1$--$21$ scale (no rescaling is applied). Full subscale
+descriptions are in Appendix~\ref{app:sus-rtlx-items};
+per-subscale distributions and box plots are in
+Appendix~\ref{app:items-rtlx}. A short supplementary paragraph at
+the end of this section reports the objective per-mode completion
+time alongside the perceptual subscales, as a behavioral
+counterpart to Temporal Demand.
 
 Figure~\ref{fig:rtlx-aggregate} reports the composite R-TLX score
-per mode against the scale midpoint of $10.5$, which marks
-the boundary between the lower and upper halves of the $1$--$21$
-range and serves as a visual reference for whether reported
-workload trends toward the light or heavy end of the scale. All
-three modes sit comfortably in the lower half: Form scores
-lowest with a composite of $5.50$, while Ask and Chat are
-closely tied at $6.33$ and $6.33$ respectively. Perceived
-workload across all three modes is therefore well below the
-midpoint, with Form approximately $0.8$ scale points lighter
-than the LLM-driven modes at the aggregate level. The
-contribution of each subscale to that overall score is
-decomposed in the remainder of this section.
+per mode against the scale midpoint of $10.5$, which marks the
+boundary between the lower and upper halves of the $1$--$21$
+range. All three modes sit comfortably in the lower half: Form
+scores lowest with a composite of $5.50$, while Ask and Chat are
+closely tied at $6.33$ each. As with SUS, Form is the lightest of
+the three at the aggregate level, with Ask and Chat following
+close behind by roughly $0.8$ scale points.
 
 \begin{figure}[htbp]
 \centering
@@ -49,19 +38,12 @@ midpoint ($10.5$), shown for visual reference.}
 \label{fig:rtlx-aggregate}
 \end{figure}
 
-The six R-TLX subscales are reported individually before the
-aggregated test, so that the contribution of each axis to the overall
-workload score is visible. Table~\ref{tab:rtlx-per-subscale} reports the
-per-subscale mean and standard deviation per mode and the aggregated
-mean across modes. Figure~\ref{fig:rtlx-subquestions} shows the
-corresponding distributions.
-
 \begin{table}[htbp]
 \centering
 \caption{NASA R-TLX subscale mean (SD) by mode ($n = 69$ per mode),
-$1$--$21$ scale. The Aggregated column pools the three
-per-mode samples into a single per-subscale descriptive across all
-$207$ ratings. All subscales are coded so that lower equals less
+$1$--$21$ scale. The Aggregated column pools the three per-mode
+samples into a single per-subscale descriptive across all $207$
+ratings. All subscales are coded so that lower equals less
 workload.}
 \label{tab:rtlx-per-subscale}
 \begin{tabular}{@{}l c c c c@{}}
@@ -78,149 +60,89 @@ Performance (pos.) & 8.93 (5.82) & 8.71 (5.48) & 8.68 (5.64) & 9.39 (6.36) \\
 \end{tabular}
 \end{table}
 
-\begin{sidewaysfigure}
+\begin{figure}[htbp]
 \centering
-\includegraphics[width=\linewidth]{tlx_subquestions_boxplot.png}
-\caption{Box plots of the six R-TLX subscales by mode ($n = 69$ per mode).}
+\includegraphics[width=0.45\linewidth]{rtlx_mental_demand.png}\hfill
+\includegraphics[width=0.45\linewidth]{rtlx_physical_demand.png}\\[1ex]
+\includegraphics[width=0.45\linewidth]{rtlx_temporal_demand.png}\hfill
+\includegraphics[width=0.45\linewidth]{rtlx_effort.png}\\[1ex]
+\includegraphics[width=0.45\linewidth]{rtlx_frustration.png}\hfill
+\includegraphics[width=0.45\linewidth]{rtlx_performance.png}
+\caption{Box plots of the six R-TLX subscales by mode
+($n = 69$ per mode), one plot per subscale.}
 \label{fig:rtlx-subquestions}
-\end{sidewaysfigure}
+\end{figure}
 
-Table~\ref{tab:rtlx-per-subscale-distribution} reports the full
-descriptive distribution per subscale per mode (mean, standard
-deviation, median, Q1, Q3, min, max). All subscales use the
-$1$--$21$ scale where lower equals less workload (Performance is
-positive-coded for internal consistency).
+Subscale by subscale, Table~\ref{tab:rtlx-per-subscale} reveals
+three patterns in how participants rated workload.
 
-\begin{table}[htbp]
-\centering
-\caption{NASA R-TLX, full per-subscale descriptive distribution by
-mode ($n = 69$ per mode), $1$--$21$ scale. Source:
-\texttt{tlx\_per\_item\_summary.csv}.}
-\label{tab:rtlx-per-subscale-distribution}
-\small
-\begin{tabular}{@{}l l r r r r r r r@{}}
-\toprule
-Subscale & Mode & Mean & SD & Q1 & Median & Q3 & Min & Max \\
-\midrule
-\multirow{4}{*}{Mental Demand}     & Aggregated  & 6.31 & 4.75 & 2.0 & 5.0  & 9.5  & 1 & 21 \\
-                                   & Form & 5.77 & 4.26 & 2.0 & 5.0  & 9.0  & 1 & 17 \\
-                                   & Ask  & 6.80 & 4.63 & 3.0 & 6.0  & 10.0 & 1 & 21 \\
-                                   & Chat & 6.36 & 5.31 & 2.0 & 5.0  & 10.0 & 1 & 21 \\
-\midrule
-\multirow{4}{*}{Physical Demand}   & Aggregated  & 3.19 & 3.40 & 1.0 & 2.0  & 4.0  & 1 & 21 \\
-                                   & Form & 2.77 & 2.71 & 1.0 & 1.0  & 4.0  & 1 & 14 \\
-                                   & Ask  & 3.54 & 3.92 & 1.0 & 2.0  & 5.0  & 1 & 21 \\
-                                   & Chat & 3.26 & 3.46 & 1.0 & 2.0  & 4.0  & 1 & 20 \\
-\midrule
-\multirow{4}{*}{Temporal Demand}   & Aggregated  & 4.89 & 4.28 & 1.0 & 4.0  & 7.0  & 1 & 19 \\
-                                   & Form & 4.16 & 3.82 & 1.0 & 3.0  & 6.0  & 1 & 15 \\
-                                   & Ask  & 4.97 & 4.15 & 1.0 & 4.0  & 7.0  & 1 & 18 \\
-                                   & Chat & 5.54 & 4.78 & 2.0 & 4.0  & 8.0  & 1 & 19 \\
-\midrule
-\multirow{4}{*}{Effort}            & Aggregated  & 6.13 & 4.57 & 3.0 & 5.0  & 10.0 & 1 & 20 \\
-                                   & Form & 5.68 & 4.56 & 2.0 & 4.0  & 9.0  & 1 & 17 \\
-                                   & Ask  & 6.39 & 4.41 & 3.0 & 5.0  & 10.0 & 1 & 19 \\
-                                   & Chat & 6.32 & 4.77 & 3.0 & 5.0  & 10.0 & 1 & 20 \\
-\midrule
-\multirow{4}{*}{Frustration}       & Aggregated  & 6.86 & 5.24 & 2.5 & 5.0  & 11.0 & 1 & 21 \\
-                                   & Form & 5.88 & 4.84 & 2.0 & 5.0  & 8.0  & 1 & 18 \\
-                                   & Ask  & 7.58 & 5.34 & 3.0 & 6.0  & 12.0 & 1 & 21 \\
-                                   & Chat & 7.13 & 5.44 & 3.0 & 5.0  & 11.0 & 1 & 19 \\
-\midrule
-\multirow{4}{*}{Performance (pos.)} & Aggregated  & 8.93 & 5.82 & 4.0 & 9.0  & 13.0 & 1 & 21 \\
-                                    & Form & 8.71 & 5.48 & 4.0 & 8.0  & 12.0 & 1 & 21 \\
-                                    & Ask  & 8.68 & 5.64 & 4.0 & 8.0  & 12.0 & 1 & 19 \\
-                                    & Chat & 9.39 & 6.36 & 3.0 & 10.0 & 14.0 & 1 & 21 \\
-\bottomrule
-\end{tabular}
-\end{table}
+Participants found Form somewhat less mentally demanding than Ask
+or Chat (Form $5.77$, Ask $6.80$, Chat $6.36$), a gap of about
+$0.6$ to $1.0$ points. The same small lead reappears on Effort
+(Form $5.68$ vs Ask $6.39$, Chat $6.32$) and on Physical Demand
+(Form $2.77$, Ask $3.54$, Chat $3.26$); the Physical Demand
+ratings sit near the floor of the scale in all three modes, since
+the ROPA task is not physically taxing in any of them. None of
+these three subscales reaches statistical significance.
 
-Form is the least mentally demanding mode, with Ask perceived as
-the most demanding and Chat sitting between the two. For
-\emph{Mental Demand}, the aggregated mean is $6.31$, with Form
-scoring lowest ($5.77$), Ask highest ($6.80$), and Chat in between
-($6.36$). Mental Demand increases by approximately $0.6$--$1.0$~points
-when moving from Form to the LLM-driven modes.
+The two subscales where Form's lead is sharpest are also the two
+that reach statistical significance. Participants felt under
+noticeably more time pressure in Chat than in Form (Form $4.16$,
+Ask $4.97$, Chat $5.54$); the gap widens monotonically as LLM
+support increases, the largest such increase across the six
+subscales. Frustration shows the widest gap of any subscale: Ask
+was rated the most frustrating ($7.58$), Chat close behind
+($7.13$), and Form clearly the least ($5.88$). These are the
+workload dimensions where LLM-driven interaction measurably costs
+the user.
 
-None of the three modes feels physically taxing, though Form is
-again the lightest of the three. For \emph{Physical Demand}, the
-aggregated mean is $3.19$, with Form scoring lowest ($2.77$), Ask
-highest ($3.54$), and Chat in between ($3.26$). The absolute spread
-is small ($\approx 0.8$~points). Physical Demand is the lowest-rated
-subscale in all three modes.
+Performance is the one subscale where the Form lead disappears.
+Participants rated their own success at the task as essentially
+identical between Form ($8.71$) and Ask ($8.68$), with Chat
+marginally worse ($9.39$, higher equals worse perceived
+performance). Mode does not move how successfully participants
+think they completed the task, with the slight self-doubt blip in
+Chat being the only deviation.
 
-Chat feels the most time-pressured of the three modes, and Form the
-least — the gap widens monotonically with LLM support, breaking
-from the Form-$<$-Chat-$<$-Ask shape seen above. For \emph{Temporal
-Demand}, the aggregated mean is $4.89$, with the per-mode values
-increasing monotonically from Form ($4.16$) to Ask ($4.97$) to
-Chat ($5.54$). Temporal Demand is approximately $1.4$~points
-higher in Chat than in Form, the largest monotonic increase
-observed across the six subscales.
+An aggregated Friedman test across the six subscales is not
+significant ($\chi^2(2) = 5.24$, $p = 0.073$, $W = 0.038$), so the
+composite workload score does not differ significantly between
+modes. Two subscales reach significance individually: Temporal
+Demand ($\chi^2(2) = 12.77$, $p = 0.002$, $W = 0.093$) and
+Frustration ($\chi^2(2) = 8.93$, $p = 0.012$, $W = 0.065$).
+Pairwise Wilcoxon signed-rank tests with Bonferroni correction
+confirm Form differs significantly from both Ask and Chat on
+these subscales, with medium-to-large rank-biserial effects
+($|r| = 0.37$ to $0.57$); Ask versus Chat is not significant on
+any measure. Full statistics are in Appendix~\ref{app:inferential}.
 
-Form is also the least effortful overall, with Ask and Chat
-perceived as similarly more demanding. For \emph{Effort}, the
-aggregated mean is $6.13$, with Form scoring lowest ($5.68$) and
-Ask ($6.39$) and Chat ($6.32$) sitting at a closely comparable
-level. Effort increases by approximately $0.65$~points from Form
-to the LLM-driven modes.
-
-Form is the least frustrating mode by a clear margin, with Ask the
-most frustrating — the widest experiential gap of the six
-subscales. For \emph{Frustration}, the aggregated mean is $6.86$,
-with Form scoring lowest ($5.88$), Ask highest ($7.58$), and Chat
-in between ($7.13$). Frustration shows the largest absolute gap
-between Form and the LLM-driven modes ($+1.25$ to $+1.70$~points).
-
-Participants feel about equally successful at the task across all
-three modes — the only subscale where the Form advantage disappears,
-with a marginal sense of worse self-performance in Chat. For
-\emph{Performance} (positive-coded, higher equals worse perceived
-performance), the aggregated mean is $8.93$, with Form and Ask
-essentially identical ($8.71$ and $8.68$) and Chat slightly
-higher at $9.39$. Perceived self-performance is comparable across
-modes, with a marginal degradation in Chat.
-
-An aggregated Friedman test across the six subscales is non-significant
-($\chi^2(2) = 5.24$, $p = 0.073$, $W = 0.038$). Among the six
-subscales, two reach significance: Temporal Demand
-($\chi^2(2) = 12.77$, $p = 0.002$, $W = 0.093$) and Frustration
-($\chi^2(2) = 8.93$, $p = 0.012$, $W = 0.065$). Pairwise post-hoc
-Wilcoxon signed-rank tests with Bonferroni correction identify
-Form-vs-Ask and Form-vs-Chat as significant on these two subscales,
-with medium-to-large rank-biserial effect sizes ($|r| = 0.36$ to
-$0.57$); Ask versus Chat is non-significant on every measure. Full
-test statistics are reproduced in Appendix~\ref{app:inferential}.
-
-The workload data therefore reinforce the Form-first ordering of the
-SUS, with the qualification that the gap is sharpest on Temporal
-Demand and Frustration and effectively absent on Performance.
+Overall, the R-TLX reinforces the SUS Form lead: Form sits below
+the LLM-driven modes on every workload dimension except
+Performance, with two subscales (Temporal Demand and Frustration)
+reaching inferential significance individually even when the
+composite test does not. The user-study side's strongest single
+inferential signal therefore lands on perceived workload, not
+usability. Whether perception of time pressure matches actual
+time taken is the question for the supplementary completion-time
+analysis below.
 
 \paragraph{Supplementary: per-mode completion time.}
-The workload picture above is entirely perceptual: every value
-reported so far comes from the participant's self-report after each
-session. The R-TLX has a behavioral counterpart that sits one step
-away from the subscales and is reported here, as flagged at the top
-of this section, before the chapter turns to perceived AI support.
-Each document generated by ROPAgen carries a
-\texttt{Time elapsed: $N$ seconds} line emitted at submission,
-which yields one objective completion-time measurement per
-participant--mode pairing on the same $n = 113$ document sample as
-the document-quality analyses. The question this supplementary
-paragraph asks is whether the perceived Temporal Demand ordering
---- Form lowest, Chat highest --- is mirrored by the elapsed time
-itself.
+The workload data above is entirely perceptual. As a behavioral
+counterpart to Temporal Demand, every ROPA document generated by
+ROPAgen carries a \texttt{Time elapsed: $N$ seconds} line at
+submission, giving one objective completion-time measurement per
+participant per mode on the $n = 113$ document sample. The
+question is whether the perceived time pressure (Form lowest,
+Chat highest) is mirrored by the actual time spent.
 
-Form takes roughly half the wall-clock time of either LLM-driven
-mode, while Ask and Chat are statistically indistinguishable from
-each other. Across the $n = 113$ retained documents (Form $37$, Ask
-$37$, Chat $39$), the median per-mode completion times are Form
-$420$~s ($\sim 7$ min), Ask $858$~s ($\sim 14$ min), and Chat
-$717$~s ($\sim 12$ min); the corresponding means are Form
-$564.2$~s, Ask $989.8$~s, and Chat $979.1$~s, with substantial
-right-skewed spread in the LLM-driven modes (Chat SD $\approx
-1015$~s, with one outlier at $6199$~s). The full distributions are
-shown in Figure~\ref{fig:per-mode-timing}.
+Form takes about half the wall-clock time of either LLM-driven
+mode. Median completion time was $7$ minutes for Form ($420$~s),
+$14$ minutes for Ask ($858$~s), and $12$ minutes for Chat
+($717$~s); the means tell the same story (Form $564.2$~s, Ask
+$989.8$~s, Chat $979.1$~s), with substantial right-skewed spread
+in the LLM-driven modes (Chat SD $\approx 1015$~s, one extreme
+session at $6199$~s). The full distributions are in
+Figure~\ref{fig:per-mode-timing}.
 
 \begin{figure}[htbp]
 \centering
@@ -235,21 +157,18 @@ median, and the diamond marks the mean.}
 
 A Kruskal--Wallis test on the full $n = 113$ sample confirms that
 completion time varies by mode ($H = 16.46$, $p < 0.001$,
-$\varepsilon^2 = 0.15$, large). Pairwise Mann--Whitney $U$ tests
-with Bonferroni correction ($\alpha = 0.0167$) identify Form as
-significantly faster than both Ask ($r = 0.512$, large; median
-$420$~s vs $858$~s) and Chat ($r = 0.418$, medium; median
-$420$~s vs $717$~s), while Ask and Chat are statistically
-indistinguishable from each other.
+$\varepsilon^2 = 0.15$, large). Form is significantly faster than
+both Ask (median $420$~s vs $858$~s; $r = 0.512$, large) and Chat
+(median $420$~s vs $717$~s; $r = 0.418$, medium); Ask and Chat
+are statistically indistinguishable from each other.
 
-The behavioral data therefore add a sharper edge to the perceived
-workload picture: Form is not merely \emph{felt} as the least
-time-pressured mode (Temporal Demand $4.16$ vs. Ask $4.97$ and
-Chat $5.54$), it is also \emph{measurably} the fastest by a margin
-of roughly seven minutes per document over either LLM-driven mode.
-Ask and Chat, despite their different interaction styles --- per-section
-explainer versus freeform conversation --- take essentially the
-same amount of time to complete on average.
+The behavioral data sharpens the perceived workload picture: Form
+is not merely felt as the least time-pressured mode, it is also
+measurably the fastest by a margin of roughly seven minutes per
+document over either LLM-driven mode. The two LLM-driven modes,
+despite their very different interaction styles (per-section
+explainer versus freeform conversation), take essentially the
+same amount of time on average.
 
 Whether participants nevertheless ascribe more value to the
 LLM-driven modes when asked specifically about AI support is the

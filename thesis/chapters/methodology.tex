@@ -37,7 +37,7 @@ The remainder of this section describes the internal representation of a ROPA do
 Internally, ROPAgen represents a ROPA as a single structured \texttt{DocumentData} object organized around eight thematic groups that together cover the disclosures required under Art.~30(1) GDPR:
 
 \begin{enumerate}
-    \item \textbf{Organisation and controller} --- name, postal address, e-mail, phone number, and the contact details of the data protection officer and any external representative.
+    \item \textbf{Organization and controller} --- name, postal address, e-mail, phone number, and the contact details of the data protection officer and any external representative.
     \item \textbf{Legal basis} --- Boolean flags for each lawful-basis option in Art.~6(1) GDPR (consent, contract, legal obligation, legitimate interest), the German national-law bases relevant to the study scenario (\S~26 BDSG, \S~28b IfSG, \S~257/239 HGB, \S~147 AO), and a free-text fallback for other grounds.
     \item \textbf{Data categories} --- nine grouped categories (personal master data, employment, finance, health, legal, behavioral, documentation, vehicle, and other) each with predefined Boolean sub-fields such as surname, date of birth, working hours, or holiday entitlement.
     \item \textbf{Data sources} --- Boolean flags for common upstream systems (Office~365, Azure, Google Workspace, AWS, e-mail, etc.) plus a free-text field for sources not covered by the predefined list.
@@ -51,7 +51,7 @@ This structured form is the tool's working representation while the user is draf
 
 \subsection{The Three Interaction Modes}
 
-ROPAgen offers three generation modes, each with a different level of LLM support: Form has the least LLM support, Chat is fully autonomous, and Ask is a hybrid mode that sits in the middle. The subsections that follow describe each mode in detail; Table~\ref{tab:modes-overview} summarises them at a glance. All three act on the same internal \texttt{DocumentData} schema and, when the user clicks the final \emph{Generate} button, hand that schema to the same prose-generation prompt (\texttt{finalropa}); the output ROPA is therefore produced by an identical generation step in all three conditions, and only the path the user takes to populate \texttt{DocumentData} differs between modes.
+ROPAgen offers three generation modes, each with a different level of LLM support: Form has the least LLM support, Chat is fully autonomous, and Ask is a hybrid mode that sits in the middle. The subsections that follow describe each mode in detail; Table~\ref{tab:modes-overview} summarizes them at a glance. All three act on the same internal \texttt{DocumentData} schema and, when the user clicks the final \emph{Generate} button, hand that schema to the same prose-generation prompt (\texttt{finalropa}); the output ROPA is therefore produced by an identical generation step in all three conditions, and only the path the user takes to populate \texttt{DocumentData} differs between modes.
 
 \subsubsection*{Form Mode}
 
@@ -63,7 +63,7 @@ Ask mode pairs each section with an LLM chat panel and a free-form text field; t
 
 \subsubsection*{Chat Mode}
 
-Chat mode hands control to the LLM. The user does not see or fill the structured fields at all; instead, after entering the organisation's metadata (name, contact information, and title of the processing activity), the user describes their processing in their own words, and the LLM decides which structured fields to populate from those descriptions (see Appendix~\ref{app:ropagen-chat-screenshot}). The user navigates section by section through a chat interface only; the structured form is hidden from view. The LLM explains what each section requires, asks the user to describe their processing, and silently extracts the relevant structured data: a mentioned vendor name flips the corresponding data-source flag, and a mentioned data category populates the corresponding Boolean. The user therefore never directly interacts with the underlying \texttt{DocumentData} object, although the same object is being built up under the hood. The final \emph{Generate} step is once again identical to the other two modes. Chat mode is therefore a conversational-first workflow in which field-level decisions are delegated to the LLM and only the final generation step is shared with the other modes.
+Chat mode hands control to the LLM. The user does not see or fill the structured fields at all; instead, after entering the organization's metadata (name, contact information, and title of the processing activity), the user describes their processing in their own words, and the LLM decides which structured fields to populate from those descriptions (see Appendix~\ref{app:ropagen-chat-screenshot}). The user navigates section by section through a chat interface only; the structured form is hidden from view. The LLM explains what each section requires, asks the user to describe their processing, and silently extracts the relevant structured data: a mentioned vendor name flips the corresponding data-source flag, and a mentioned data category populates the corresponding Boolean. The user therefore never directly interacts with the underlying \texttt{DocumentData} object, although the same object is being built up under the hood. The final \emph{Generate} step is once again identical to the other two modes. Chat mode is therefore a conversational-first workflow in which field-level decisions are delegated to the LLM and only the final generation step is shared with the other modes.
 
 \subsection{LLM Backend}
 
@@ -87,6 +87,13 @@ Final ROPA generation       & $0.05$ & $0.05$ \\
 Whether the differing paths to \texttt{DocumentData} produce documents of differing quality, and whether those quality differences are visible to the user filling out the form, are the questions taken up by the user study described next.
 
 \section{User Study}
+
+The user study is a structured survey: after each interaction mode,
+participants completed a fixed battery of questionnaire items, and
+after all three modes they completed a final ranking task and a
+demographics block. For consistency, the remainder of this thesis
+refers to the data collection as the \emph{user study} rather than
+the survey.
 
 \subsection{Study Design}
 
@@ -114,18 +121,18 @@ A single standardized scenario was used across all participants and modes to ens
 Recruitment yielded $N=73$ university students. Participants were screened for minimal to no GDPR knowledge (expected and required), prior AI tool usage experience (documented), general technology comfort level (assessed), and the absence of any professional legal or compliance background. As part of onboarding, participants received a brief standardized introduction to GDPR and ROPA concepts before beginning the tasks.
 
 \subsection{Data Availability and Sample Sizes}
-Due to technical data loss and incomplete submissions during data collection, the effective sample sizes differ across analysis streams. The canonical sample sizes used throughout this thesis are summarised below.
+Due to technical data loss and incomplete submissions during data collection, the effective sample sizes differ across analysis streams. The canonical sample sizes used throughout this thesis are summarized below.
 \begin{itemize}
-    \item \textbf{Survey, recruited N = 73 / valid N = 69} — 73 participants completed the study; 69 retained after dropping four records with invalid consent (\texttt{p\_0001 = -1}). All 69 valid participants completed all three modes, so per-mode sample size, matched-triple survey subset, and valid N are all \textbf{n = 69}. The matched-triple n = 69 is used for within-subjects Friedman and Wilcoxon signed-rank tests on SUS, R-TLX, confidence items, and the perceived AI support composite.
+    \item \textbf{User study, recruited N = 73 / valid N = 69} — 73 participants completed the study; 69 retained after dropping four records with invalid consent (\texttt{p\_0001 = -1}). All 69 valid participants completed all three modes, so per-mode sample size, matched-triple user-study subset, and valid N are all \textbf{n = 69}. The matched-triple n = 69 is used for within-subjects Friedman and Wilcoxon signed-rank tests on SUS, R-TLX, confidence items, and the perceived AI support composite.
     \item \textbf{Documents, 113 generated ROPAs} — distributed across modes as 37 (Form), 37 (Ask), and 39 (Chat). The full $n = 113$ sample is used throughout: NLP metric scores and per-mode completion time are analyzed inferentially with Kruskal--Wallis and Bonferroni-corrected Mann--Whitney $U$ as the between-groups family; LLM-as-a-judge scores are reported descriptively on the same sample.
 \end{itemize}
-The canonical figures used in the inferential analyses are \textbf{n = 113} for NLP metric and completion-time comparisons and \textbf{n = 69} for survey instruments.
+The canonical figures used in the inferential analyses are \textbf{n = 113} for NLP metric and completion-time comparisons and \textbf{n = 69} for user-study instruments.
 
-Descriptive statistics (means, medians, standard deviations) are computed on the full available N per mode for each analysis stream. Inferential tests on NLP metric and per-mode completion-time measures operate on the full $n = 113$ sample as a between-groups comparison; inferential tests on survey instruments operate on the matched $n = 69$ within-subjects sample. The LLM-as-a-judge scores are reported descriptively only and are not subjected to inferential testing (Section~\ref{sec:stat-analysis}).
+Descriptive statistics (means, medians, standard deviations) are computed on the full available N per mode for each analysis stream. Inferential tests on NLP metric and per-mode completion-time measures operate on the full $n = 113$ sample as a between-groups comparison; inferential tests on user-study instruments operate on the matched $n = 69$ within-subjects sample. The LLM-as-a-judge scores are reported descriptively only and are not subjected to inferential testing (Section~\ref{sec:stat-analysis}).
 
 \subsection{Data Collection}
 
-Quantitative measures were collected after each mode. Table~\ref{tab:instruments-overview} summarises the four user-study instruments, the post-experiment preference ranking, and the post-session demographics questionnaire.
+Quantitative measures were collected after each mode. Table~\ref{tab:instruments-overview} summarizes the four user-study instruments, the post-experiment preference ranking, and the post-session demographics questionnaire.
 
 \begin{table}[htbp]
 \centering
@@ -156,15 +163,15 @@ The System Usability Scale (SUS)~\cite{Brooke1996} was administered as ten stand
     \item \textit{Intention to Use:} ``I would use this mode again.'' (\textit{``Ich würde diesen Modus wieder verwenden.''})
 \end{enumerate}
 
-Items were administered in German (the parenthetical text above reproduces the verbatim wording shown to participants); the English glosses are provided for the international reader. Item~5 (Task-Specific Confidence) is treated as the \textbf{primary confidence measure} throughout the analysis: it is the only item that asks participants to judge the substantive correctness of the LLM's output (the legal basis under Article 6 GDPR), and is therefore directly comparable to the document-quality signals from the NLP and judge pipelines. The remaining five items --- Item~1 (Perceived Usefulness), Item~2 (Efficiency), Item~3 (Transparency), Item~4 (Trust), and Item~6 (Intention to Use) --- capture distinct facets of \emph{perceived AI support} rather than confidence in output correctness, and are reported as a secondary composite. Free-text qualitative feedback was also collected after each mode. Two timing measurements were retained: total session duration from the survey instrument (one value per participant) and per-mode completion time emitted by ROPAgen at the end of each session and embedded in every generated document (one value per participant per mode, in seconds). After completing all three conditions, participants ranked all three modes by overall preference in a post-experiment ranking task.
+Items were administered in German (the parenthetical text above reproduces the verbatim wording shown to participants); the English glosses are provided for the international reader. Item~5 (Task-Specific Confidence) is treated as the \textbf{primary confidence measure} throughout the analysis: it is the only item that asks participants to judge the substantive correctness of the LLM's output (the legal basis under Article 6 GDPR), and is therefore directly comparable to the document-quality signals from the NLP and judge pipelines. The remaining five items --- Item~1 (Perceived Usefulness), Item~2 (Efficiency), Item~3 (Transparency), Item~4 (Trust), and Item~6 (Intention to Use) --- capture distinct facets of \emph{perceived AI support} rather than confidence in output correctness, and are reported as a secondary composite. Free-text qualitative feedback was also collected after each mode. Two timing measurements were retained: total session duration from the user-study questionnaire (one value per participant) and per-mode completion time emitted by ROPAgen at the end of each session and embedded in every generated document (one value per participant per mode, in seconds). After completing all three conditions, participants ranked all three modes by overall preference in a post-experiment ranking task.
 
 \section{NLP Metrics}
 
-Following the dual-evaluation template adopted by Su et al.\ \cite{suJuDGEBenchmarkingJudgment2025} and Vayadande et al.\ \cite{vayadandeAIPoweredLegalDocumentation2024}, both surface-form and semantic measures are reported alongside an LLM-as-Judge rubric. All participant-generated documents are compared against a single reference document using a suite of automated NLP metrics. After validation for errors and completeness, $113$ documents were retained for analysis out of a theoretical maximum of $219$ ($73$ participants $\times$ $3$ modes). The reference document was created using Form mode (Section~\ref{sec:ropagen}), applying the same standardised scenario presented to participants, and is reproduced in full in Appendix~\ref{app:ropagen-reference}. It is treated as the authoritative baseline, a root-of-trust representing a careful, complete application of the most structured interaction mode. This introduces an inherent framing effect: NLP metrics measure similarity to Form-style output, which may disadvantage the more conversational outputs of Ask and Chat modes independently of their substantive quality.
+Following the dual-evaluation template adopted by Su et al.\ \cite{suJuDGEBenchmarkingJudgment2025} and Vayadande et al.\ \cite{vayadandeAIPoweredLegalDocumentation2024}, both surface-form and semantic measures are reported alongside an LLM-as-Judge rubric. All participant-generated documents are compared against a single reference document using a suite of automated NLP metrics. After validation for errors and completeness, $113$ documents were retained for analysis out of a theoretical maximum of $219$ ($73$ participants $\times$ $3$ modes). The reference document was created using Form mode (Section~\ref{sec:ropagen}), applying the same standardized scenario presented to participants, and is reproduced in full in Appendix~\ref{app:ropagen-reference}. It is treated as the authoritative baseline, a root-of-trust representing a careful, complete application of the most structured interaction mode. This introduces an inherent framing effect: NLP metrics measure similarity to Form-style output, which may disadvantage the more conversational outputs of Ask and Chat modes independently of their substantive quality.
 
-BLEU, ROUGE, METEOR, and BERTScore are computed at both the whole-document level and the per-chapter level. SBERT is computed alongside BERTScore at the chapter level only, due to an input-length limitation of the underlying sentence-embedding model. Results at every available granularity are aggregated by mode.
+BLEU, ROUGE, METEOR, BERTScore, and SBERT are all computed at both the whole-document level and the per-chapter level, with ModernBERT-base as the embedding backbone for BERTScore and SBERT. At the chapter level, SBERT is additionally run with the smaller \texttt{all-MiniLM-L6-v2} sentence-embedding model as a robustness check on the primary ModernBERT pass; the MiniLM pass is chapter-only because its $512$-token input limit excludes whole-document scoring. Results at every available granularity are aggregated by mode.
 
-The five NLP metrics summarised in Table~\ref{tab:nlp-metrics-overview} (BLEU~\cite{Papineni2002}, ROUGE~\cite{Lin2004}, METEOR~\cite{Banerjee2005}, BERTScore~\cite{Zhang2020}, and SBERT~\cite{Reimers2019}) are defined formally below. Each is computed against the single expert-authored reference document; interpretive framing of the resulting values is deferred to the Evaluation chapter.
+The five NLP metrics summarized in Table~\ref{tab:nlp-metrics-overview} (BLEU~\cite{Papineni2002}, ROUGE~\cite{Lin2004}, METEOR~\cite{Banerjee2005}, BERTScore~\cite{Zhang2020}, and SBERT~\cite{Reimers2019}) are defined formally below. Each is computed against the single expert-authored reference document; interpretive framing of the resulting values is deferred to the Evaluation chapter.
 
 \begin{table}[htbp]
     \centering
@@ -178,7 +185,7 @@ The five NLP metrics summarised in Table~\ref{tab:nlp-metrics-overview} (BLEU~\c
         ROUGE-1/2/L               & Unigram / bigram / LCS overlap (F1) \\
         METEOR                    & Precision--recall with synonym and stem matching \\
         BERTScore P/R/F1          & Token-level semantic similarity (ModernBERT) \\
-        SBERT cosine similarity   & Sentence-embedding cosine similarity (per chapter only) \\
+        SBERT cosine similarity   & Sentence-embedding cosine similarity (ModernBERT; chapter-level MiniLM robustness check) \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -231,7 +238,7 @@ The reported ROUGE values are the F1 scores in each case.
 
 \subsection{METEOR}
 
-\emph{Metric for Evaluation of Translation with Explicit ORdering} --- precision--recall balance with synonym matching~\cite{Banerjee2005}. METEOR balances precision and recall, credits synonym and stem matches, and penalises fragmented overlap where shared words appear in scattered positions. A high METEOR score signals that the candidate covers the reference's content with vocabulary that need not match it verbatim; a low score indicates either missing content or surface forms that the synonym and stem matcher could not align.
+\emph{Metric for Evaluation of Translation with Explicit ORdering} --- precision--recall balance with synonym matching~\cite{Banerjee2005}. METEOR balances precision and recall, credits synonym and stem matches, and penalizes fragmented overlap where shared words appear in scattered positions. A high METEOR score signals that the candidate covers the reference's content with vocabulary that need not match it verbatim; a low score indicates either missing content or surface forms that the synonym and stem matcher could not align.
 
 METEOR is the weighted harmonic mean of unigram precision $P$ and recall $R$ (with recall up-weighted by $\alpha$), multiplied by a fragmentation penalty that grows with the number of disjoint matching chunks $\mathrm{ch}$ relative to the number of matched unigrams $m$:
 \begin{equation}
@@ -244,9 +251,9 @@ Standard values $\alpha = 0.9$, $\beta = 3$, $\gamma = 0.5$ are used; matching i
 
 \subsection{BERTScore}
 
-\emph{Precision, Recall, F1} --- token-level semantic similarity using ModernBERT embeddings~\cite{Zhang2020}. BERTScore measures similarity between the contextual embeddings of candidate and reference tokens rather than their surface forms. \emph{Precision} captures how many candidate tokens find a close meaning-match in the reference and therefore penalises spurious or invented content; \emph{recall} captures how many reference tokens are covered and therefore penalises omission; \emph{F1} is the harmonic mean and requires both to be reasonably high.
+\emph{Precision, Recall, F1} --- token-level semantic similarity using ModernBERT embeddings~\cite{Zhang2020}. BERTScore measures similarity between the contextual embeddings of candidate and reference tokens rather than their surface forms. \emph{Precision} captures how many candidate tokens find a close meaning-match in the reference and therefore penalizes spurious or invented content; \emph{recall} captures how many reference tokens are covered and therefore penalizes omission; \emph{F1} is the harmonic mean and requires both to be reasonably high.
 
-BERTScore replaces surface-form $n$-gram matching with cosine similarities between contextual token embeddings produced by a pretrained transformer. The embedding model used here is ModernBERT-base\footnote{\url{https://huggingface.co/answerdotai/ModernBERT-base}}~\cite{Warner2024}, chosen for its long context window of $8192$ tokens, which lets a whole ROPA be embedded without truncation, and for its popularity and positive reception in the Hugging Face community. With L2-normalised embeddings $\mathbf{x}_i$ for reference tokens and $\hat{\mathbf{x}}_j$ for candidate tokens:
+BERTScore replaces surface-form $n$-gram matching with cosine similarities between contextual token embeddings produced by a pretrained transformer. The embedding model used here is ModernBERT-base\footnote{\url{https://huggingface.co/answerdotai/ModernBERT-base}}~\cite{Warner2024}, chosen for its long context window of $8192$ tokens, which lets a whole ROPA be embedded without truncation, and for its popularity and positive reception in the Hugging Face community. With L2-normalized embeddings $\mathbf{x}_i$ for reference tokens and $\hat{\mathbf{x}}_j$ for candidate tokens:
 \begin{equation}
 \label{eq:bertscore-p}
 P_{\text{BERT}} = \frac{1}{|\hat{x}|} \sum_{\hat{x}_j \in \hat{x}} \max_{x_i \in x} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j,
@@ -262,9 +269,9 @@ F1_{\text{BERT}} = \frac{2 \cdot P_{\text{BERT}} \cdot R_{\text{BERT}}}{P_{\text
 
 \subsection{SBERT Cosine Similarity}
 
-\emph{Sentence-BERT} --- chapter-level semantic similarity using sentence embeddings~\cite{Reimers2019}. SBERT compresses a passage into a single fixed-length embedding and reports the cosine similarity between the candidate and reference embeddings. Because a sentence-embedding model is bounded by the maximum input length of the underlying transformer, and a full ROPA exceeds that bound, SBERT is computed at the chapter level only: one score per candidate chapter against the corresponding reference chapter, yielding six scores per document. The primary pass uses ModernBERT-base\footnote{\url{https://huggingface.co/answerdotai/ModernBERT-base}}; a secondary pass with \texttt{all-MiniLM-L6-v2}\footnote{\url{https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2}} is run over the same six chapters as a robustness check on the primary pass. Both models were chosen for their popularity and positive reception in the Hugging Face community.
+\emph{Sentence-BERT} --- document- and chapter-level semantic similarity using sentence embeddings~\cite{Reimers2019}. SBERT compresses a passage into a single fixed-length embedding and reports the cosine similarity between the candidate and reference embeddings. Unlike BERTScore, which decomposes token-level matches into Precision, Recall, and F1, SBERT produces a single symmetric similarity score per comparison: the cosine of the angle between two compressed vectors does not distinguish candidate-into-reference coverage from reference-into-candidate coverage, so no separate precision and recall values are reported. SBERT is computed at both granularities: one whole-document score per ROPA against the full reference, and one chapter score per candidate chapter against the corresponding reference chapter. The primary encoder for both passes is ModernBERT-base\footnote{\url{https://huggingface.co/answerdotai/ModernBERT-base}}, whose $8192$-token context window accommodates a full ROPA without truncation. At the chapter level, a secondary pass with \texttt{all-MiniLM-L6-v2}\footnote{\url{https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2}} is run over the same six chapters as a robustness check on the primary ModernBERT pass; MiniLM has a $512$-token input limit that excludes whole-document use. Both models were chosen for their popularity and positive reception in the Hugging Face community.
 
-SBERT produces a single fixed-length embedding per chapter by mean-pooling token embeddings from a transformer (here, ModernBERT). Chapter similarity is the cosine of the angle between two embeddings $\mathbf{e}(c_1)$ and $\mathbf{e}(c_2)$:
+SBERT produces a single fixed-length embedding per passage by mean-pooling token embeddings from the underlying transformer (here, ModernBERT or MiniLM). Passage similarity is the cosine of the angle between two embeddings $\mathbf{e}(c_1)$ and $\mathbf{e}(c_2)$:
 \begin{equation}
 \label{eq:sbert}
 \mathrm{SBERT}(c_1, c_2) = \frac{\mathbf{e}(c_1)^{\top} \mathbf{e}(c_2)}{\| \mathbf{e}(c_1) \| \, \| \mathbf{e}(c_2) \|}.
@@ -272,7 +279,7 @@ SBERT produces a single fixed-length embedding per chapter by mean-pooling token
 
 \subsection{Score Implications}
 
-The metrics above are read in combination, not in isolation, since each captures a different facet of similarity to the reference. Four pairings recur in the Evaluation chapter. A high lexical score (BLEU, ROUGE, or METEOR) combined with a low semantic score (BERTScore F1 or chapter-level SBERT) indicates mechanical surface copying that does not align in meaning, whereas the reverse pattern (low lexical, high semantic) is the signature of a legitimate paraphrase that preserves content with different wording. Within BERTScore, high recall paired with low precision points to a verbose candidate that covers the reference but adds material the reference does not contain, while low recall paired with high precision points to a conservative candidate that omits required content without fabricating new material. Finally, a high document-level score on the surface-form metrics or BERTScore paired with uneven chapter-level scores under the same metric signals that the aggregate is hiding per-section weakness; this is also why SBERT, which is only available at the chapter level, is read as a per-section diagnostic rather than a whole-document summary. These heuristics are applied throughout the Evaluation chapter.
+The metrics above are read in combination, not in isolation, since each captures a different facet of similarity to the reference. Four pairings recur in the Evaluation chapter. A high lexical score (BLEU, ROUGE, or METEOR) combined with a low semantic score (BERTScore F1 or chapter-level SBERT) indicates mechanical surface copying that does not align in meaning, whereas the reverse pattern (low lexical, high semantic) is the signature of a legitimate paraphrase that preserves content with different wording. Within BERTScore, high recall paired with low precision points to a verbose candidate that covers the reference but adds material the reference does not contain, while low recall paired with high precision points to a conservative candidate that omits required content without fabricating new material. Finally, a high document-level score on the surface-form metrics, BERTScore, or SBERT paired with uneven chapter-level scores under the same metric signals that the aggregate is hiding per-section weakness; the chapter-level SBERT scores in particular serve as a per-section diagnostic alongside the whole-document SBERT summary. These heuristics are applied throughout the Evaluation chapter.
 
 \section{LLM-as-a-Judge Evaluation}
 Documents are additionally evaluated using an LLM-as-a-judge approach, in which \textbf{Gemini~3.1 Pro Preview} (\texttt{google/gemini-3.1-pro-preview}, $T = 0$) serves as an automated evaluator assessing GDPR-specific quality. The judge is positioned as a \emph{supplementary} evaluator: it is a single-pass, single-model assessment without inter-rater replication or legal-expert validation, and its scores are reported alongside, not in place of, the NLP metrics. The reference-based NLP metrics remain the primary RQ2 evidence; the judge complements them by providing a reference-free signal that captures GDPR-specific quality properties (legal correctness, hallucination, scenario faithfulness) which similarity-based metrics cannot directly observe. The judge evaluates each document across five metrics on a 1--5 scale:
@@ -288,7 +295,7 @@ The judge evaluation is applied to all 113 retained documents. The full evaluati
 \section{Statistical Analysis}
 \label{sec:stat-analysis}
 
-Table~\ref{tab:stat-tests-overview} summarises the statistical
+Table~\ref{tab:stat-tests-overview} summarizes the statistical
 machinery applied in this thesis. The omnibus and post-hoc tests
 are non-parametric throughout; Bonferroni correction yields
 $\alpha' = 0.0167$ for the three pairwise mode comparisons in each
@@ -304,7 +311,7 @@ $\alpha' = 0.0167$ for post-hoc families.}
 \toprule
 Analysis stream & Test & Effect size \\
 \midrule
-Survey (within, $n = 69$)   & Friedman              & Kendall's~$W$ \\
+User study (within, $n = 69$)   & Friedman              & Kendall's~$W$ \\
                             & Wilcoxon signed-rank  & Rank-biserial~$r$ \\
 NLP / timing (between, $n = 113$) & Kruskal--Wallis & $\varepsilon^2$ \\
                             & Mann--Whitney~$U$     & Rank-biserial~$r$ \\
@@ -313,7 +320,7 @@ Mode preference ($n = 69$)  & $\chi^2$ goodness-of-fit & Cram\'{e}r's~$V$ \\
 \end{tabular}
 \end{table}
 
-A significance threshold of $\alpha = 0.05$ is applied to all tests. The choice of test family follows the structure of each dataset, with one test family applied per analysis rather than running parallel matched-pairs and between-groups tests on the same data. \textbf{Survey instruments} (SUS, R-TLX, perceived AI support, confidence items) are analysed within-subjects on the matched $n = 69$ sample: a Friedman test as the omnibus, followed by pairwise Wilcoxon signed-rank tests with Bonferroni correction for post-hoc analysis. Every participant gives one response per mode, so the survey data is genuinely matched-pairs; within-subjects analysis with Friedman and pairwise Wilcoxon signed-rank tests is also the standard approach for ordinal Likert and workload data collected in repeated-measures usability studies~\cite{SauroLewis2016}. \textbf{NLP metric scores and per-mode completion time} are analysed between-groups on the full unbalanced $n = 113$ sample: a Kruskal--Wallis test as the omnibus, followed by pairwise Mann--Whitney $U$ tests with Bonferroni correction for post-hoc analysis. The between-groups family is the appropriate match for the document data, which is unbalanced across modes (Form $37$, Ask $37$, Chat $39$); a between-groups analysis preserves all $113$ retained submissions. The LLM-as-a-judge scores are reported descriptively (means, medians, dispersion) as a supplementary signal and are not subjected to inferential testing. Effect sizes are reported as $\varepsilon^2$ for the omnibus tests, Kendall's~$W$ as the coefficient of concordance for Friedman, and rank-biserial correlation~$r$ for the pairwise tests.
+A significance threshold of $\alpha = 0.05$ is applied to all tests. The choice of test family follows the structure of each dataset, with one test family applied per analysis rather than running parallel matched-pairs and between-groups tests on the same data. \textbf{User study instruments} (SUS, R-TLX, perceived AI support, confidence items) are analyzed within-subjects on the matched $n = 69$ sample: a Friedman test as the omnibus, followed by pairwise Wilcoxon signed-rank tests with Bonferroni correction for post-hoc analysis. Every participant gives one response per mode, so the user-study data is genuinely matched-pairs; within-subjects analysis with Friedman and pairwise Wilcoxon signed-rank tests is also the standard approach for ordinal Likert and workload data collected in repeated-measures usability studies~\cite{SauroLewis2016}. \textbf{NLP metric scores and per-mode completion time} are analyzed between-groups on the full unbalanced $n = 113$ sample: a Kruskal--Wallis test as the omnibus, followed by pairwise Mann--Whitney $U$ tests with Bonferroni correction for post-hoc analysis. The between-groups family is the appropriate match for the document data, which is unbalanced across modes (Form $37$, Ask $37$, Chat $39$); a between-groups analysis preserves all $113$ retained submissions. The LLM-as-a-judge scores are reported descriptively (means, medians, dispersion) as a supplementary signal and are not subjected to inferential testing. Effect sizes are reported as $\varepsilon^2$ for the omnibus tests, Kendall's~$W$ as the coefficient of concordance for Friedman, and rank-biserial correlation~$r$ for the pairwise tests.
 
 For RQ1 (User Experience and Preference), the Friedman test is applied to SUS scores, the R-TLX composite, and the confidence question composites across modes; post-hoc pairwise Wilcoxon signed-rank tests with Bonferroni correction identify which mode pairs differ significantly; and mode preference distributions are reported as frequencies and rankings. For RQ2 (Document Quality), the Kruskal--Wallis test is applied to NLP metric scores across modes, with Bonferroni-corrected pairwise Mann--Whitney $U$ tests as post-hoc analysis where the omnibus is significant. The LLM-as-a-judge scores are reported descriptively only and are not subjected to inferential testing.
 
@@ -332,7 +339,7 @@ W = \frac{\bigl( \sum_{i=1}^{n} a_i x_{(i)} \bigr)^2}{\sum_{i=1}^{n} (x_i - \bar
 \end{equation}
 In plain terms: $W$ close to $1$ means the data look normal; a
 small $p$-value rejects normality and motivates a non-parametric
-test. Normality was rejected for nearly every survey, NLP, and
+test. Normality was rejected for nearly every user-study, NLP, and
 timing measure in this study, which is why every test below is
 non-parametric.
 
@@ -346,11 +353,11 @@ $m$ comparisons,
 Every post-hoc family in this thesis has $m = 3$ pairwise mode
 comparisons, so $\alpha' = 0.05 / 3 = 0.0167$ throughout.
 
-\subsection{Survey Instruments (Matched Within-Subjects, $n = 69$)}
+\subsection{User-Study Instruments (Matched Within-Subjects, $n = 69$)}
 
 Applied to SUS, R-TLX, the perceived AI support items, the primary
 confidence item, and the re-use intent item. Each participant
-gives one rating per mode, so the data are matched-pairs. The Friedman omnibus with pairwise Wilcoxon signed-rank post-hoc tests is the standard non-parametric within-subjects analysis for ordinal Likert and workload data in usability studies~\cite{SauroLewis2016}; non-parametric tests are appropriate here because Shapiro--Wilk rejects normality on every survey measure and Likert scales are not strictly continuous.
+gives one rating per mode, so the data are matched-pairs. The Friedman omnibus with pairwise Wilcoxon signed-rank post-hoc tests is the standard non-parametric within-subjects analysis for ordinal Likert and workload data in usability studies~\cite{SauroLewis2016}; non-parametric tests are appropriate here because Shapiro--Wilk rejects normality on every user-study measure and Likert scales are not strictly continuous.
 
 The \emph{Friedman test}~\cite{Friedman1937} is the within-subjects omnibus for
 $k \geq 3$ related samples. Each participant's $k$ values are

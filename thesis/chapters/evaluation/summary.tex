@@ -1,83 +1,87 @@
+\clearpage
 \section{Summary}
 \label{sec:eval-summary}
 
 The chapter has reported the four user-study instruments
-(Sections~\ref{sec:eval-sus}--\ref{sec:eval-freeform}), the reference-based
-NLP metrics at both document and chapter resolutions
-(Sections~\ref{sec:eval-nlp-doc}--\ref{sec:eval-nlp-chapter}), and the
-supplementary LLM-as-a-Judge layer (Section~\ref{sec:eval-judge}). This
-section consolidates the findings into a single picture and names the
-questions Discussion takes up.
+(Sections~\ref{sec:eval-sus}--\ref{sec:eval-freeform}), the
+reference-based NLP metrics at both document and chapter
+resolutions
+(Sections~\ref{sec:eval-nlp-doc}--\ref{sec:eval-nlp-chapter}), and
+the supplementary LLM-as-a-Judge layer
+(Section~\ref{sec:eval-judge}). This section consolidates the
+findings and names the questions Discussion takes up.
 
-On the user-experience side, the four instruments converge on a stable
-Form-first ordering. Form is rated the most usable mode on the System
-Usability Scale, the lightest on R-TLX workload, the most often placed
-first in the post-experiment ranking ($53.6\,\%$ of rank-1 votes,
-$\chi^2(2) = 14.17$, $p < 0.001$, Cram\'{e}r's $V = 0.32$), and the
-mode participants would most willingly use again. The ordering is
-partial: three items break it. Perceived transparency, trust in the
-LLM's suggestions, and the primary self-report confidence measure
-(``I am confident that the AI identified the correct legal basis'')
-all favor the LLM-driven modes, with Ask leading on transparency and
-trust and Chat leading on legal-basis confidence. The behavioral
-counterpart is sharper still: Form is measurably about seven minutes
-per document faster than either LLM-driven mode ($H = 16.46$,
-$p < 0.001$, $\varepsilon^2 = 0.15$ large), and Ask and Chat are
-statistically indistinguishable on completion time. Ask trails most
-clearly on its workflow, where free-text comments single out the
-manual copy-paste step between explanation and form field as the
-principal source of friction, and is most often placed third.
+On the user-experience side, the four instruments converge on a
+stable Form-leading ordering. Form is rated the most usable mode
+on the System Usability Scale, the lightest on R-TLX workload,
+the most often placed first in the post-experiment ranking
+($53.6\,\%$ of rank-1 votes, $\chi^2(2) = 14.17$, $p < 0.001$,
+Cram\'{e}r's $V = 0.32$), and the mode participants would most
+willingly use again. The pattern is partial: three items break
+it. Perceived transparency, trust in the LLM's suggestions, and
+the primary self-report confidence measure (``I am confident that
+the AI identified the correct legal basis'') all favor the
+LLM-driven modes, with Ask leading on transparency and trust and
+Chat leading on legal-basis confidence. The behavioral
+counterpart is sharper still: Form is measurably about seven
+minutes per document faster than either LLM-driven mode
+($H = 16.46$, $p < 0.001$, $\varepsilon^2 = 0.15$, large), and Ask
+and Chat are statistically indistinguishable on completion time.
+Ask trails most clearly on its workflow, where free-text comments
+single out the manual copy-paste step between explanation and
+form field as the principal source of friction, and is most often
+placed third.
 
 The reference-based NLP metrics split the modes into a trade-off
-rather than a single ranking. Form leads on recall-oriented measures,
-most strikingly on BERTScore Recall --- the strongest single effect
-in the entire pipeline (Form $>$ Ask $r = 0.756$, Form $>$ Chat
-$r = 0.512$, both large) --- with ROUGE-2 and METEOR echoing it on
-smaller margins. Chat leads on document-level semantic alignment, most
-clearly on SBERT cosine similarity (Chat $>$ Form $r = 0.505$,
-Chat $>$ Ask $r = 0.453$, both large). Form and Chat trade leadership
-on BERTScore F1, while Ask underperforms both on every metric that
-reaches significance. The substantive reading is that Form documents
-recover more of what the reference \emph{says}, Chat documents stay
-closer to what the reference \emph{means}, and Ask documents do
-neither.
+rather than a single ranking. Form leads on recall-oriented
+measures, most clearly on BERTScore Recall (Form significantly
+higher than both Ask and Chat), with ROUGE-2 and METEOR echoing
+it on smaller margins. Chat leads on document-level semantic
+alignment, most clearly on SBERT cosine similarity (Chat
+significantly higher than both Form and Ask). Form and Chat
+trade leadership on BERTScore F1, while Ask underperforms both on
+every metric that reaches significance.
+The substantive reading is that Form documents recover more of
+what the reference \emph{says}, Chat documents stay closer to
+what the reference \emph{means}, and Ask documents do neither.
 
-The chapter-level view reproduces this doc-level pattern in localised
-form. \emph{Controller and Contact Details} sits at the top of every
-metric across all modes --- the templated address block leaves little
-room for paraphrase --- while \emph{Purposes and Legal Bases} is the
-universal floor across the lexical metrics and remains the weakest
-section even at the embedding level. Chat's chapter-level advantage
-concentrates on \emph{Retention and Deletion} and \emph{Technical
-and Organisational Measures}, the two sections with the most
-free-form prose. Form's recall edge concentrates on \emph{Categories
-of Personal Data} and \emph{Data Subjects and Recipients}, the two
-list-heavy sections where covering the reference's catalogue matters
-most. The chapter-level ordering is therefore the same finding as the
-document-level ordering seen at higher resolution, not a competing one.
+The chapter-level view distributes the document-level trade-off
+across chapters rather than across metrics. \emph{Controller and
+Contact Details} scores highest across all modes and is the one
+chapter where Ask leads. Form sweeps the middle chapters
+(\emph{Purposes and Legal Bases}, \emph{Categories of Personal
+Data}, \emph{Data Subjects and Recipients}) on every lexical
+metric and on BERTScore Recall and F1. Chat takes the last two
+chapters (\emph{Retention and Deletion}, \emph{Technical and
+Organizational Measures}) on every metric. The same trade-off
+that produces Form's document-level recall edge and Chat's
+document-level semantic edge thus appears at the chapter level
+as a clean three-way split by chapter.
 
-The supplementary judge layer adds a GDPR-specific quality reading that
-the reference-based metrics cannot directly provide. Form documents are
-judged the most complete (Completeness mean $4.84$ of $5$) and the most
-legally correct, but the lowest on Scenario Faithfulness ($1.84$) and
-the most hallucinated; $83.8\,\%$ of Form documents combine maximum
-Completeness with ``moderate'' or worse hallucination, and nearly half
-combine maximum Completeness with the floor Hallucination score. Chat
-inverts the pattern: the most faithful to the study scenario, the least
-hallucinated, but the lowest on Completeness. On the holistic Overall
-metric the three modes cluster narrowly ($2.41$ to $2.62$) and all sit
-below the rubric midpoint --- the judge does not declare a winner.
+The supplementary judge layer adds a GDPR-specific quality reading
+that the reference-based metrics cannot directly provide. Form
+documents are judged the most complete (Completeness mean $4.84$
+of $5$) and the most legally correct, but the lowest on Scenario
+Faithfulness ($1.84$) and the most hallucinated; $83.8\,\%$ of
+Form documents combine maximum Completeness with ``moderate'' or
+worse hallucination, and nearly half combine maximum Completeness
+with the floor Hallucination score. Chat inverts the pattern:
+most faithful to the study scenario, least hallucinated, but
+lowest on Completeness. On the holistic Overall metric the three
+modes cluster narrowly ($2.41$ to $2.62$) and all sit below the
+rubric midpoint; the judge does not declare a winner.
 
 Two tensions surface from the consolidated picture. The mode
-participants most often prefer (Form) produces the most structurally
-complete documents, yet also the most fabricated ones --- the
-checkbox scaffolding that pushes Completeness toward the ceiling
-appears not to constrain what the LLM invents during the final
-generation step. And self-report confidence in the legal basis rises
-monotonically from Form ($3.58$) through Ask ($3.74$) to Chat
-($3.81$), while measured document quality follows no such single
-ordering: Form leads on recall, Chat leads on document-level semantic
-fidelity and on scenario faithfulness, and the judge declares no
-clear winner. The calibration gap between what users feel they have
-produced and what they have actually produced is the central question
-taken up in Chapter~\ref{ch:discussion}.
+participants most often prefer (Form) produces the most
+structurally complete documents, yet also the most fabricated
+ones: the checkbox scaffolding that pushes Completeness toward
+the ceiling appears not to constrain what the LLM invents during
+the final generation step. And self-report confidence in the
+legal basis rises monotonically from Form ($3.58$) through Ask
+($3.74$) to Chat ($3.81$), while measured document quality
+follows no such single ordering: Form leads on recall, Chat leads
+on document-level semantic fidelity and on scenario faithfulness,
+and the judge declares no clear winner. The calibration gap
+between what users feel they have produced and what they have
+actually produced is the central question taken up in
+Chapter~\ref{ch:discussion}.
