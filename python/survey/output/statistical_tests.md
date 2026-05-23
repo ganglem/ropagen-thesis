@@ -1,7 +1,13 @@
 # Statistical Test Results — Survey
 
-Source: `python/survey/ROPAgen_SURVEY.ipynb`. Sample sizes: see `thesis/chapters/sources.tex`
+Source: `python/survey/ROPAgen_SURVEY.ipynb` for the main pipeline;
+`python/survey/scripts/sus_threshold_test.py` for the one-sample SUS
+threshold test described below. Sample sizes: see `thesis/chapters/sources.tex`
 (Appendix, Section "Sample-Size Derivation").
+
+**Design note.** Form's clearance of the Bangor (2008) acceptability threshold
+of 68 is now backed inferentially by a one-sample Wilcoxon signed-rank test
+(see "SUS Threshold Test (Form only)" below), not just descriptively.
 
 ---
 
@@ -113,6 +119,34 @@ Participants ranked all three modes after completing the study (1 = most preferr
 on rank scores is non-significant, reflecting that the strong Form preference at rank 1
 is partially balanced by variance at ranks 2 and 3. The chi-square on rank-1 votes
 is the more interpretable test for preference.
+
+---
+
+## SUS Threshold Test (Form only)
+
+One-sample Wilcoxon signed-rank test of Form's SUS composite against the
+Bangor (2008) acceptability threshold of 68. Two-sided alternative,
+`zero_method='wilcox'` (default); no participant scored exactly 68, so no
+zero differences were dropped (n used = n total = 69). Effect size is the
+matched-pairs rank-biserial *r* computed against the constant threshold
+(Kerby 2014): positive *r* means scores tend to sit above 68.
+
+| Test | n | W | p | r (matched-pairs rank-biserial) |
+|---|---|---|---|---|
+| Form SUS vs 68 (two-sided) | 69 | 449.00 | < 0.001 (5.7 × 10⁻⁶) | +0.628 (large) |
+
+Descriptives (Form, n = 69): mean = 78.62, median = 80.00, SD = 16.09,
+min = 40.00, max = 100.00.
+
+**Interpretation.** Form's SUS composite is significantly above the 68
+acceptability threshold (W = 449, p < 0.001, *r* = +0.628). The Form mode
+clears the Bangor (2008) cutoff inferentially, not just descriptively; the
+effect size is large in Cohen-style terms (|r| ≥ 0.5).
+
+Note: this test addresses only the *Form* mode. Ask and Chat cluster very
+close to the threshold descriptively (Ask mean 72.97, Chat mean 72.93) and
+the omnibus Friedman test on SUS is non-significant, so the threshold claim
+for those modes remains descriptive.
 
 ---
 
