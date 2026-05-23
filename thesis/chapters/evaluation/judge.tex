@@ -95,19 +95,16 @@ SD $0.55$), Ask sits at $3.84$, and Chat at $3.18$ (median
 $3.0$); the $1.66$-point spread is the widest of any judge
 metric. The Form lead here mirrors the BERTScore Recall pattern
 from Section~\ref{sec:eval-nlp-doc}.
-
 The Form lead flips on whether the document actually reflects
 the APOR scenario participants were given. Chat documents stay
 closest ($2.49$), Ask second ($2.30$), and Form lowest ($1.84$):
 the scenario-fidelity ordering is the exact inverse of the
 Completeness ordering.
-
 Form documents use GDPR terminology most correctly (Form $3.59$,
 Ask $3.43$, Chat $3.15$), with a much narrower spread than on
 Completeness, around $0.45$ points. Form's standard deviation
 ($0.55$) is again the smallest, the same uniformity pattern as on
 Completeness.
-
 Form documents contain the most fabricated content and Chat the
 least: Form sits at $1.65$ on the inverse-coded scale (lower
 means more hallucination), Ask at $2.40$, Chat at $2.54$. The
@@ -118,7 +115,6 @@ simultaneously scoring Hallucination (inverse) $\leq 2$
 maximum Completeness with the minimum Hallucination (inverse)
 score of $1$. Most Form documents are simultaneously the most
 complete and the most fabricated.
-
 Compressing the four contrasting orderings into a single holistic
 verdict produces no clear winner: Chat edges ahead at $2.62$, Ask
 sits at $2.49$, and Form trails at $2.41$. All three modes sit
@@ -135,13 +131,11 @@ Form documents are the most structurally complete but also the
 most fabricated, Chat documents the most faithful to the
 scenario but the least complete, Ask between the two extremes on
 every metric.
-
 Second, Legal Correctness is flat relative to the Completeness
 spread (roughly $0.45$ versus $1.66$ points). The judge
 distinguishes modes more sharply on whether the required
 Article~30(1) fields are present than on whether the legal
 terminology itself is appropriate.
-
 Third, the holistic Overall scores compress the per-metric spread
 into a narrow $0.21$-point range. Form's high Completeness is
 offset by its low Faithfulness and high Hallucination, leaving
@@ -150,7 +144,6 @@ surfaced a recall-versus-precision trade-off between Form and
 Chat, the judge surfaces a completeness-versus-faithfulness
 trade-off, and the holistic Overall verdict collapses both into
 a narrow range with no decisive winner.
-
 The judge layer therefore adds a second trade-off to the
 document-quality picture begun in
 Section~\ref{sec:eval-nlp-doc}: Form leads on Completeness and

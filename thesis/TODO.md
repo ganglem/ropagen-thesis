@@ -1,64 +1,3 @@
-# Thesis TODO
-
-Single living checklist of remaining work before submission. Merged from
-the former `TODO.md` and the TODO sections of `discussion.md`. Grouped
-by priority, not by chapter. `discussion.md` remains the working
-scratchpad for the Discussion chapter (case studies, section outline,
-prose ideas) — it no longer holds todos.
-
----
-
-## Recently completed (last review passes)
-
-- Citation sanity check — orphan bib entries (`liLegalAgentBenchEvaluatingLLM2025`,
-  `zhouLawGPTKnowledgeGuidedData2025`) deleted; `\nocite` template entries
-  (Sturm2012, Voss2010, Knappen2009, Mittelbach2005, Schlosser2014)
-  removed from `main.tex` backmatter; all remaining `\cite{...}`
-  resolve cleanly.
-- Methodology — Mann--Whitney $U$ + Kruskal--Wallis reframed from
-  "sensitivity check" to primary between-groups test family.
-- Methodology — statistical-test definitions regrouped by usage (survey
-  vs. document-quality vs. ranking) with a plain-language reading of
-  each test value.
-- Methodology — `\subsection*` headers converted to numbered
-  `\subsection` for ROPAgen (3.1.1--3.1.3) and User Study
-  (3.2.1--3.2.7).
-- Methodology — Fig.\ 3.1 (project timeline) rotated to landscape via
-  `sidewaysfigure`.
-- Evaluation — chapter introduction now states the survey inferential
-  family (Friedman + Wilcoxon) alongside the existing NLP/timing
-  statement (Kruskal--Wallis + Mann--Whitney $U$) and the ranking
-  chi-square goodness-of-fit.
-- Evaluation — SUS composite reporting: non-significant Friedman omnibus
-  now stated cleanly; pairwise post-hocs no longer claimed where the
-  omnibus does not clear the threshold.
-- Evaluation — ranking section now reports the chi-square result
-  directly without hedging against a non-significant complementary
-  Friedman.
-- Tables — all full-distribution tables (4.1, 4.4, 4.6, 4.8, 4.10,
-  4.11) standardized to column order Mean | SD | Q1 | Median | Q3 |
-  Min | Max; SUS / AI per-item tables (4.4, 4.8) expanded with full
-  item text and laid out landscape.
-- Tables — `mean (SD)` format standardized across compact mean-by-mode
-  tables (4.5, 4.21) to match the chapter-level NLP tables
-  (4.12--4.18).
-- Introduction — `\section{Thesis Structure}` added at the end of
-  Chapter~1 with one-paragraph blurbs for each subsequent chapter,
-  including the case studies.
-- Introduction — original hypothesis (Chat $\succ$ Form $\succ$ Ask)
-  recorded as a `\paragraph{Prior expectation.}` immediately after the
-  RQs, framed as the prediction the study tests.
-- Introduction — empty `\section{Objectives and Contributions}` stub
-  removed.
-- Appendix C — sample-size discrepancy fixed (was 70, should have been
-  69, matching the canonical `python/output/sample_sizes.md`).
-- Spelling — full thesis converted to American English (narrative
-  text); verbatim prompts and German source artifacts preserved.
-- Labels — `ch:background` and `ch:conclusion` added so all
-  Thesis-Structure cross-references resolve.
-
----
-
 ## P0 — Content gaps (must close before defence)
 
 ### ROPAgen appendix (Appendix D)
@@ -70,117 +9,158 @@ prose ideas) — it no longer holds todos.
 
 ### Discussion (currently a stub — extensive prep in `discussion.md`)
 
-The case-study data, section outline, argumentative spine, related-work
-hooks, and limitations list are all in `discussion.md`. The decisions
-and drafting items below need to happen before/while turning the
-scratchpad into LaTeX.
+**Themes to cover (rough order):**
 
-**Decisions to settle before drafting:**
+- **Why Form won the user-study ranking, Chat second, Ask third.**
+  
+  \textbf{Form (1st).} Control + speed. SUS leads on the
+  feel-of-using items (ease, complexity, integration,
+  learnability, cumbersomeness); R-TLX lowest on every workload
+  dimension except Performance; completion time about half the
+  wall-clock of either LLM mode (median 7 min vs 12--14 min).
+  Free-text quote: \emph{``nimmt dir am meisten Arbeit ab''}
+  (thg1620).
+  
+  \textbf{Chat (2nd).} Subjective safety, not measurable
+  quality. Comments cite \emph{``die KI macht das''} /
+  \emph{``AI takes care of it''} as the reason for placing Chat
+  second. Item 5 (legal-basis confidence) peaks at Chat
+  ($3.81$) -- but item 6 (reuse intent) falls to last ($3.42$):
+  they trust the AI's output in the moment but wouldn't want
+  to come back to it. Save the deeper confidence-vs-quality
+  framing for the next subsection (Point 2); here just note
+  Chat won second because participants felt safe with it.
+  
+  \textbf{Ask (3rd).} Workflow friction sharpened by an
+  architectural finding. Comments converge on copy-paste between
+  the LLM chat panel and the section text field, plus the lack
+  of persistent context across sections. The architectural
+  reason (Point 4 of this Discussion plan) is the cleaner
+  framing: Ask is the only mode where the AI does no
+  labour-saving on the structured side, so the friction
+  participants feel maps onto a real mechanism rather than just
+  a UI complaint.
+  
+  \textbf{Quotes budget.} Two or three strategic German verbatim
+  quotes in this point at most, one per mode. The hybrid-mode
+  suggestion from the comments is deferred to Point 5
+  (implications for tooling).
 
-- [ ] Include both case studies (AEB2451 + IAR1116) or just AEB2451 alone?
-- [ ] Case studies inline in §4 (confidence-gap) or as their own §6?
-- [ ] Lead claim: confidence-gap-first or Form-paradox-first?
-- [ ] Target length — `discussion.md` proposes ~8--10 pages. Confirm.
-- [ ] Design implications: inline per finding section, or collected as
-      a dedicated §7?
-- [ ] Hybrid-mode sketch (Form structure + Chat context, surfaced
-      repeatedly in freeform comments): worth a paragraph in §5, a
-      standalone subsection, or only in Conclusion future-work?
+- **The confidence-vs-correctness gap (central argument).**
+  Self-report confidence rises monotonically Form $\to$ Ask $\to$
+  Chat on item 5 (legal-basis confidence): $3.58 \to 3.74 \to 3.81$.
+  Measured document quality follows no such single ordering — Form
+  leads recall, Chat leads precision and scenario fidelity, the
+  judge declares no winner. Single strongest illustrative number:
+  $83.8\,\%$ of Form documents combine maximum Completeness with
+  ``moderate'' or worse Hallucination, and nearly half pair maximum
+  Completeness with the floor Hallucination score. The checkbox
+  scaffolding pushes Form documents to coverage completeness but
+  doesn't constrain what the LLM invents during the final
+  generation step.
 
-**Content to draft:**
+- **BERT / SBERT picture and the Precision/Recall trade-off.**
+  Form's Recall edge (BERTScore Recall Form-vs-Ask $r = 0.756$,
+  Form-vs-Chat $r = 0.512$) is the largest single effect in the
+  chapter. Chat's Precision and SBERT edge: stays on topic, less
+  extraneous material. Implication: Form casts a wider net (higher
+  recall, more fabrication risk); Chat tighter focus (higher
+  precision, less coverage). At chapter level the trade-off
+  redistributes by chapter (Form sweeps Ch 2--4, Chat sweeps Ch
+  5--6).
 
-- [ ] **RQ1 synthesis** — pull the Form-first ordering across SUS,
-      R-TLX, ranking, and item-6 reuse into one coherent narrative.
-      The interesting tension is item-3 transparency / item-5
-      confidence *favoring* Ask/Chat against the broader Form-first
-      pattern.
-- [ ] **RQ2 + the confidence--quality gap** — heart of the thesis
-      argument. Use the Spearman correlations
-      (`tab:app-corr-primary`) and the Judge
-      Form-Completeness/Hallucination co-occurrence
-      ($83.8\,\%$ of Form documents combine Completeness $= 5$ with
-      Hallucination(inv) $\leq 2$) as the empirical core. Frame:
-      confidence is uncalibrated because input scaffolding does not
-      scaffold output truth.
-- [ ] **Surface the confidence--quality correlations in the body.**
-      They live in Appendix~C.4 but no body chapter references them.
-      Decide whether to surface in the judge synthesis (§4.3.2),
-      only in Discussion, or both. Headline number: Chat-only
-      positive correlation with Judge Overall
-      ($\rho = +0.41$, $p = 0.012$).
-- [ ] **Comparison with von Schwerin et al.** — Methodology cites their
-      metric suite. Discussion should circle back: do the orderings
-      observed here align with theirs? Where do they diverge?
-- [ ] **Judge descriptive-only treatment.** Acknowledge that the judge
-      section is intentionally descriptive (single judge, no
-      inter-rater variance, framed as indicative). Explain why no
-      Friedman/Wilcoxon is reported on the rubric dimensions.
-- [ ] **Limitations** — single scenario, novice-only sample, single
-      reference document for NLP metrics, single judge model. Tie
-      each limitation to a specific affected claim. Full list in
-      `discussion.md`.
-- [ ] **Pull per-chapter NLP numbers** for §3 (Retention / T\&O lead) —
-      both the chapter-level table values and the boxplot direction.
-- [ ] **Decide chapter-level inferential citation style** — explicit
-      Friedman/MW reference for §3 chapter-level points, or descriptive
-      direction only.
-- [ ] **One more pass on German free-text translations** — the IAR1116
-      summary quote in `discussion.md` §6 is raw German with a draft
-      gloss; verify both case studies' quotes for accuracy.
+- **Why Ask underperformed specifically.**
+  The free-text comments converge on workflow: per-section
+  copy-paste is the principal source of friction; the lack of
+  persistent context across fields forces re-entry of the same
+  information. Several participants suggest a hybrid mode
+  (Form structure + Ask/Chat conversation) — this is the closest
+  thing to a design recommendation the data supports.
+  
+  \textbf{Architectural note (verified against the ropagen
+  source).} Ask mode's LLM is an \emph{explainer only}: the
+  system prompt does not request any \texttt{DATA\_UPDATE} block
+  and the front-end has no handler that would apply one. The user
+  writes the free-text \texttt{other} field for each section
+  themselves; the predefined boolean flags are untouched in Ask.
+  This sharpens the three-way comparison:
+  \begin{itemize}
+    \item Form: user clicks the booleans directly; LLM only fires on the optional ``AI Suggest'' button.
+    \item Ask: user types the free-text field themselves; LLM explains but populates nothing.
+    \item Chat: LLM extracts structured data and flips booleans via \texttt{DATA\_UPDATE}; user never sees the schema.
+  \end{itemize}
+  Ask is therefore the only mode where the AI offers \emph{no}
+  labour-saving on the structured side. This matches the
+  free-text complaints (``copy-paste'', ``redundant'') and is a
+  cleaner explanation for Ask's third-place ranking than just
+  ``copy-paste friction''.
 
-### Conclusion (stub)
+- **Implications for ROPA tooling.**
+  The hybrid suggestion from comments is supported by the data,
+  not just by user preference: Form leads on structural completeness,
+  Chat leads on scenario fidelity. A hybrid would in principle
+  capture both. Generation-step hallucination is independent of
+  interface mode and would need a separate guardrail.
 
-- [ ] **Direct, declarative answers to RQ1 and RQ2.** Two short
-      paragraphs. No new data. Just the answer and its consequence.
-- [ ] **Future work** — hybrid mode (Form structure + Chat
-      conversation) surfaced repeatedly in the freeform comments;
-      multi-judge or legal-expert validation of the judge layer;
-      longitudinal study of novice $\rightarrow$ expert transition;
-      replication on a non-employment scenario.
-- [ ] *(Optional)* **Implications for ROPAgen** — a sentence or two on
-      what the team should change about the tool given these findings,
-      since Magdalena is the supervisor. Keep academic.
+- **Limitations.**
+  Single standardized scenario; novice-only sample (university
+  students, no professional GDPR background); single Form-mode
+  reference document for NLP scoring (introduces a Form-style
+  framing effect on the metrics); single-pass single-model LLM
+  judge (Gemini 3.1 Pro Preview, $T = 0$), no inter-rater, no
+  legal-expert validation; German-primary corpus with English
+  glosses; chapter-level MiniLM SBERT pass is a robustness check
+  rather than a primary measure.
 
----
+**Case study (expanded scope):**
 
-## P1 — Polish (after content is settled)
+Two participants already identified:
+- **AEB2451** and **IAR1116** (one good match, one bad match with high
+  self-reported confidence). Confirm which is which when extracting the
+  raw data.
 
-- [ ] **Terminology consistency (continued).** Already applied:
-      ROPA (was RoPA); "LLM support" (was "involvement"); AI
-      questionnaire item wording reconciled. Still to do: Form/Ask/Chat
-      capitalization across all chapters and tables; AI vs LLM where
-      the distinction matters; novice vs non-expert.
-- [ ] **English/German consistency.** Free-text comments are German
-      with English glosses; check every quoted German phrase has its
-      gloss. Check chapter names (Verantwortliche Stelle… vs.
-      Controller and Contact Details) are consistent across body and
-      tables.
-- [ ] **List of figures / list of tables.** Currently not in the
-      front matter. Add via `\listoffigures` / `\listoftables` after
-      `\tableofcontents` if required by the thesis template.
-- [ ] **Abstract / Zusammenfassung.** University of Ulm typically
-      requires both — verify with the DBIS template.
-- [ ] *(Optional)* **Acknowledgements.** Conventional but not
-      required.
-- [ ] **Overfull-hbox cleanup in Appendix D.** ~113 overfull hbox
-      warnings, all inside `lstlisting` blocks where long unbroken
-      tokens (e.g.\ JSON field names, ALL-CAPS keywords) don't break.
-      Cosmetic; can be tightened with a more aggressive breakindent
-      or by switching to `listingsutf8`.
-- [ ] **Typo / orphan / widow pass.** Last-mile read-through, ideally
-      after a 24h cooling period.
-- [ ] **Final formatting check** — page numbers, margins, font size,
-      heading style match University of Ulm / DBIS thesis template.
+The case study triangulates three independent signals for each
+participant:
 
----
+1. **User-study side** — SUS composite + per-item ratings, R-TLX
+   composite + per-subscale, AI Support per-item, mode preference
+   ranking, free-text comments. Goal: the participant's own report
+   of what they experienced and how confident they felt.
+2. **NLP metric side** — every metric, not just BERTScore: BLEU,
+   ROUGE-1/2/L, METEOR, BERTScore P/R/F1, SBERT (ModernBERT, plus
+   MiniLM at chapter level). For each metric, pick a representative
+   passage from the participant's document and the matching
+   reference passage, place them side-by-side, and quote the
+   computed metric value so the number-to-text mapping is concrete.
+3. **LLM-as-Judge side** — all five metrics (Completeness, Scenario
+   Faithfulness, Legal Correctness, Hallucination, Overall).
 
-## P2 — Structure overhaul (last)
+The triangulation shows where the three signals agree (a ``good''
+document where the participant felt confident, the NLP metrics scored
+high, and the judge rated highly) and where they disagree (a ``bad''
+document where the participant felt confident but the NLP metrics
+were mediocre and the judge flagged faithfulness or hallucination
+problems).
 
-- [ ] **Chapter-level structure pass.** Re-evaluate after all content
-      is in. Likely candidates:
-      - Background may need trimming if content drifts toward
-        Methodology.
-      - Discussion may grow large enough to warrant section
-        subdivision (RQ1 / RQ2 / Implications / Limitations) — the
-        current `discussion.md` outline already does this.
-- [ ] **Front matter polish.** Title page, declaration, dedication.
+**Placement:**
+
+- Full case study lives in Discussion as its own subsection. This
+  is where the cross-signal synthesis belongs.
+- One or two short illustrative passages may be quoted inline in
+  the Eval chapter at strategic points (e.g., the BERTScore Recall
+  paragraph or the judge Hallucination paragraph) as
+  ``what does this number look like'' anchors. Keep these short
+  enough that the Eval chapter stays number-driven.
+- Each illustrative excerpt should compute the relevant metric value
+  for the specific passage shown, so the reader can see the
+  number-to-text mapping at the relevant point in the argument.
+
+### Conclusion
+
+- Plain-English answers to RQ1 and RQ2.
+- Bring back the human-side framing: the thesis is about people using
+  AI to make legal documents.
+- Avoid restating Evaluation statistics; reserve statistical detail
+  for Eval, the answer goes here.
+
+
