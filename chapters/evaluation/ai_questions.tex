@@ -1,39 +1,25 @@
+\clearpage
 \subsection{Perceived AI Support — AI Questionnaire}
 \label{sec:eval-ai-support}
 
-The SUS (Section~\ref{sec:eval-sus}) and R-TLX (Section~\ref{sec:eval-rtlx})
-characterize the interface as it was experienced; they say nothing
-directly about whether participants felt the AI itself had been
-useful. The Perceived AI Support questionnaire targets exactly this
-gap. After each interaction mode, in addition to the SUS and R-TLX,
-participants completed a six-item Perceived AI Support questionnaire
-on a five-point Likert scale (1 = strong disagreement, 5 = strong
-agreement). The six items capture distinct facets of how participants
-perceived the AI's contribution to the document they had just
-created: helpfulness (item~1), efficiency (item~2), transparency
-(item~3), trust (item~4), legal-basis confidence (item~5), and
-re-use intent (item~6). Item~5 is the primary self-report confidence
-measure referenced in Chapter~\ref{ch:methodology}. The Aggregated
-column in the tables below pools the three per-mode samples
-into a single per-item descriptive across all $207$ ratings. Given
-the consistent Form-first ordering on usability and workload, the
-question of interest here is whether perceived LLM value follows the
-same pattern or breaks from it.
-
-The six items are reported in their administered order, beginning
-with broad helpfulness and tightening towards specific facets such
-as transparency, trust, and re-use intent. Table~\ref{tab:ai-per-item}
-reports the mean response per item per mode and the aggregated mean
-across the three modes; the full descriptive distribution per item
-is reported in Table~\ref{tab:ai-per-item-distribution}.
-Figure~\ref{fig:ai-subquestions} shows the corresponding box-plot
-distributions.
+The SUS (Section~\ref{sec:eval-sus}) and R-TLX
+(Section~\ref{sec:eval-rtlx}) characterize the interface as it was
+experienced; they say nothing directly about whether participants
+felt the AI itself had been useful. The Perceived AI Support
+questionnaire targets that gap. After each interaction mode,
+participants completed a six-item questionnaire on a five-point
+Likert scale ($1$ = strong disagreement, $5$ = strong agreement):
+helpfulness (item~1), efficiency (item~2), transparency (item~3),
+trust (item~4), legal-basis confidence (item~5), and re-use intent
+(item~6). Item~5 is the primary self-report confidence measure
+referenced in Chapter~\ref{ch:methodology}. The full per-item
+distribution is in Appendix~\ref{app:items-ai}.
 
 \begin{table}[htbp]
 \centering
 \caption{Perceived AI Support, mean response per item by mode
-($n = 69$ per mode), five-point Likert scale (higher is better). The
-Aggregated column is the unweighted mean of the three per-mode
+($n = 69$ per mode), five-point Likert scale (higher is better).
+The Aggregated column is the unweighted mean of the three per-mode
 means.}
 \label{tab:ai-per-item}
 \small
@@ -51,138 +37,78 @@ means.}
 \end{tabularx}
 \end{table}
 
-\begin{sidewaysfigure}
+\begin{figure}[htbp]
 \centering
-\includegraphics[width=\linewidth]{ai_subquestions_boxplot.png}
+\includegraphics[width=0.45\linewidth]{ai_item_1_helpful.png}\hfill
+\includegraphics[width=0.45\linewidth]{ai_item_2_efficiency.png}\\[1ex]
+\includegraphics[width=0.45\linewidth]{ai_item_3_transparency.png}\hfill
+\includegraphics[width=0.45\linewidth]{ai_item_4_trust.png}\\[1ex]
+\includegraphics[width=0.45\linewidth]{ai_item_5_legal.png}\hfill
+\includegraphics[width=0.45\linewidth]{ai_item_6_reuse.png}
 \caption{Box plots of the six Perceived AI Support items by mode
-($n = 69$ per mode). Boxes show the interquartile range; the central
-line marks the median, and the diamond marks the mean.}
+($n = 69$ per mode), one plot per item in administered order.}
 \label{fig:ai-subquestions}
-\end{sidewaysfigure}
+\end{figure}
 
-Participants find the LLM most helpful in Ask, breaking the
-Form-first pattern seen on the usability instruments. For
-\emph{``The AI was helpful in creating this document''} (item~1),
-the aggregated mean is $4.23$, with Form at $4.23$, Ask highest
-($4.32$), and Chat lowest ($4.13$). Helpfulness is rated highest
-in Ask and lowest in Chat, with a small absolute spread of roughly
-$0.20$~points.
+Asked simply whether the AI was helpful in creating the document,
+participants rated all three modes similarly: Ask drew the highest
+rating ($4.32$), Form just behind ($4.23$), and Chat lowest
+($4.13$), a spread of only $0.19$ points. The AI is perceived as
+broadly helpful across all three modes; the differences emerge
+only when participants are asked more specifically what the AI was
+helpful \emph{for}.
 
-When asked specifically about speed, participants give the most
-credit to Form and the least to Chat — the felt speed-up shrinks
-the more conversational the mode becomes. For \emph{``The AI helped
-me to complete the document faster''} (item~2), the aggregated mean
-is $4.22$, with Form rated highest ($4.43$), Ask second ($4.25$),
-and Chat lowest ($3.99$). Perceived speed-up decreases monotonically
-with increasing LLM support, dropping by approximately
-$0.45$~points from Form to Chat.
+On whether the AI helped complete the document faster, Form drew
+the strongest endorsement ($4.43$), Ask second ($4.25$), and Chat
+lowest ($3.99$). The perceived speed-up decreases monotonically as
+LLM involvement grows, dropping by roughly $0.45$ points from Form
+to Chat. Participants felt the AI helped them most when it stayed
+in the background.
 
-Ask makes participants feel they understand \emph{why} the AI
-suggests what it does, by a clear margin — the widest reversal of
-the Form-first ordering across the six items. For \emph{``I
-understood why the AI suggested specific GDPR fields''} (item~3),
-the aggregated mean is $3.81$, with Form scoring lowest ($3.51$),
-Ask highest ($4.16$), and Chat in between ($3.75$). Transparency
-is rated approximately $0.65$~points higher in Ask than in Form,
-the only mode that explicitly explains each suggestion (see
+Participants felt they understood the AI's suggestions best in Ask
+($4.16$), well ahead of Chat ($3.75$) and Form ($3.51$). The Ask
+lead of roughly $0.65$ points is the widest reversal of the
+Form-leading pattern across the six items, and is unsurprising:
+Ask is the only mode that explicitly explains each suggestion (see
 Section~\ref{sec:ropagen}).
 
-Trust in the AI's suggestions tracks transparency: participants
-trust the LLM-driven modes more than Form, with Ask leading. For
-\emph{``I trust that the AI made correct suggestions''} (item~4),
-the aggregated mean is $3.63$, with Form scoring lowest ($3.41$),
-Ask highest ($3.80$), and Chat in between ($3.68$). Trust increases
-by approximately $0.27$--$0.39$~points from Form to the LLM-driven
-modes.
+Trust in the AI's outputs follows the same direction. Asked
+whether they trusted that the AI made correct suggestions,
+participants rated Ask highest ($3.80$), Chat second ($3.68$), and
+Form lowest ($3.41$). The LLM-driven modes earn more trust than
+Form, by roughly $0.27$ to $0.39$ points.
 
-Participants feel most confident that the legal basis is correct in
-Chat, and least confident in Form — confidence rises monotonically
-with LLM support. For \emph{``I am confident that the AI
-identified the correct legal basis''} (item~5, primary confidence
-measure), the aggregated mean is $3.71$, with the three modes
-showing a monotonic increase from Form ($3.58$) to Ask ($3.74$) to
-Chat ($3.81$). Confidence in legal correctness rises by
-approximately $0.23$~points from Form to Chat.
+On confidence that the AI identified the correct legal basis (the
+primary confidence measure, item~$5_{ai}$), the ordering reverses
+completely: Chat drew the highest rating ($3.81$), Ask second
+($3.74$), and Form lowest ($3.58$). Confidence rises monotonically
+with LLM involvement, the only item where Chat leads outright.
+Participants feel most sure of the LLM's legal judgment in the
+mode where they see the LLM least directly.
 
-When asked which mode they would actually use again, participants
-return to the Form-first ordering of the SUS — and the gap is the
-widest of the six AI-support items. For \emph{``I would use this
-mode again''} (item~6), the aggregated mean is $3.65$, with Form
-scoring highest ($3.99$), Ask second ($3.55$), and Chat lowest
-($3.42$). Re-use intent decreases by approximately $0.57$~points
-from Form to Chat, the largest negative gap of the six items.
+Asked which mode they would actually use again, participants
+snapped back to Form ($3.99$) over Ask ($3.55$) and Chat ($3.42$),
+a $0.57$-point lead. This is the widest negative gap of the six
+items and the only one to reach statistical significance
+($\chi^2(2) = 11.12$, $p = 0.004$; Form vs Chat $r = +0.543$,
+large). Even when participants felt better about the LLM's content
+judgment, they still wanted to come back to Form.
 
-Beyond the per-mode means, the full descriptive distribution shows
-how concentrated or spread participants' responses were on each
-item. Table~\ref{tab:ai-per-item-distribution} reports mean,
-standard deviation, Q1, median, Q3, min, and max per item per
-mode.
+The composite Friedman test on the per-mode aggregate is not
+significant ($\chi^2(2) = 1.05$, $p = 0.592$, $W = 0.008$), so
+perceived AI support taken as a whole does not differ across
+modes. The primary legal-basis confidence item ($5_{ai}$) is also
+non-significant ($\chi^2(2) = 3.76$, $p = 0.152$). Full statistics
+in Appendix~\ref{app:inferential}.
 
-\begin{sidewaystable}
-\centering
-\caption{Perceived AI Support, full per-item descriptive distribution
-by mode ($n = 69$ per mode). Source:
-\texttt{ai\_support\_per\_item\_summary.csv}.}
-\label{tab:ai-per-item-distribution}
-\small
-\begin{tabularx}{\linewidth}{@{}c X l r r r r r r r@{}}
-\toprule
-\# & Item & Mode & Mean & SD & Q1 & Median & Q3 & Min & Max \\
-\midrule
-\multirow{4}{*}{1} & \multirow{4}{*}{The AI was helpful in creating this document.}
-                   & Aggregated  & 4.23 & 0.91 & 4 & 4 & 5 & 1 & 5 \\
-                   & & Form & 4.23 & 0.97 & 4 & 5 & 5 & 1 & 5 \\
-                   & & Ask  & 4.32 & 0.76 & 4 & 4 & 5 & 1 & 5 \\
-                   & & Chat & 4.13 & 1.00 & 4 & 4 & 5 & 1 & 5 \\
-\midrule
-\multirow{4}{*}{2} & \multirow{4}{*}{The AI helped me to complete the document faster.}
-                   & Aggregated  & 4.22 & 1.13 & 4 & 5 & 5 & 1 & 5 \\
-                   & & Form & 4.43 & 0.96 & 4 & 5 & 5 & 1 & 5 \\
-                   & & Ask  & 4.25 & 1.03 & 4 & 5 & 5 & 1 & 5 \\
-                   & & Chat & 3.99 & 1.32 & 4 & 4 & 5 & 1 & 5 \\
-\midrule
-\multirow{4}{*}{3} & \multirow{4}{*}{I understood why the AI suggested specific GDPR fields.}
-                   & Aggregated  & 3.81 & 1.06 & 3 & 4 & 5 & 1 & 5 \\
-                   & & Form & 3.51 & 1.17 & 3 & 4 & 4 & 1 & 5 \\
-                   & & Ask  & 4.16 & 0.92 & 4 & 4 & 5 & 1 & 5 \\
-                   & & Chat & 3.75 & 0.98 & 3 & 4 & 5 & 1 & 5 \\
-\midrule
-\multirow{4}{*}{4} & \multirow{4}{*}{I trust that the AI made correct suggestions.}
-                   & Aggregated  & 3.63 & 0.97 & 3 & 4 & 4 & 1 & 5 \\
-                   & & Form & 3.41 & 1.09 & 3 & 4 & 4 & 1 & 5 \\
-                   & & Ask  & 3.80 & 0.87 & 3 & 4 & 4 & 1 & 5 \\
-                   & & Chat & 3.68 & 0.92 & 3 & 4 & 4 & 1 & 5 \\
-\midrule
-\multirow{4}{*}{5} & \multirow{4}{*}{I am confident that the AI identified the correct legal basis.}
-                   & Aggregated  & 3.71 & 0.88 & 3 & 4 & 4 & 1 & 5 \\
-                   & & Form & 3.58 & 0.90 & 3 & 4 & 4 & 1 & 5 \\
-                   & & Ask  & 3.74 & 0.87 & 3 & 4 & 4 & 1 & 5 \\
-                   & & Chat & 3.81 & 0.88 & 3 & 4 & 4 & 1 & 5 \\
-\midrule
-\multirow{4}{*}{6} & \multirow{4}{*}{I would use this mode again.}
-                   & Aggregated  & 3.65 & 1.25 & 3 & 4 & 5 & 1 & 5 \\
-                   & & Form & 3.99 & 1.14 & 4 & 4 & 5 & 1 & 5 \\
-                   & & Ask  & 3.55 & 1.16 & 3 & 4 & 4 & 1 & 5 \\
-                   & & Chat & 3.42 & 1.39 & 2 & 4 & 5 & 1 & 5 \\
-\bottomrule
-\end{tabularx}
-\end{sidewaystable}
-
-An aggregated Friedman test on the per-mode aggregate is non-significant
-($\chi^2(2) = 1.05$, $p = 0.592$, $W = 0.008$), indicating that
-perceived AI support does not differ meaningfully across modes when
-the six items are considered together. The single legal-basis
-confidence item~$5_{ai}$ is also non-significant under Friedman
-($\chi^2(2) = 3.76$, $p = 0.152$). The re-use item~$6_{ai}$ does
-reach significance ($\chi^2(2) = 11.12$, $p = 0.004$, $W = 0.081$),
-with a large rank-biserial effect for Form versus Chat
-($r = +0.543$). Full statistics are reproduced in
-Appendix~\ref{app:inferential}.
-
-Perceived AI support thus splits the six items into two camps: items
-that frame the LLM as an explainer (transparency, trust, legal-basis
-confidence) favor the LLM-driven modes, while items that frame it
-as a productivity aid (efficiency, re-use intent) favor Form. The
-behavioral counterpart of these per-item ratings — which mode
-participants actually choose when asked to rank — is examined next
-in Section~\ref{sec:eval-freeform}.
+Perceived AI support splits the user-study story in two:
+participants credit the LLM-driven modes when asked about content
+judgment (transparency, trust, legal-basis confidence), but credit
+Form when asked about productivity and re-use intent. The single
+item that reaches statistical significance after Bonferroni
+correction (re-use intent, item 6) is the one where the Form lead
+is sharpest: participants are willing to praise the LLM modes'
+content judgment, but still want to come back to Form. The
+behavioural counterpart, which mode they actually choose when
+forced to rank, is taken up next in
+Section~\ref{sec:eval-freeform}.

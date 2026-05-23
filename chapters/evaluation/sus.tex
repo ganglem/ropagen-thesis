@@ -1,31 +1,28 @@
+\clearpage
 \subsection{ROPAgen Usability — System Usability Scale}
 \label{sec:eval-sus}
 
 The System Usability Scale captures how usable each interface felt
 to participants immediately after they finished interacting with it.
-It consists of ten Likert items on a five-point scale, alternating in
-polarity: odd-numbered items are phrased positively (higher response
-equals more positive evaluation), and even-numbered items are phrased
-negatively (lower response equals more positive evaluation). This
-alternating keying means Table~\ref{tab:sus-per-item} must be
-read item by item rather than averaged at a glance. The full item
-text is reproduced in Appendix~\ref{app:sus-rtlx-items}. The
-Aggregated column in the tables below pools the three
-per-mode samples into a single per-item descriptive across all $207$
-ratings.
+It consists of ten Likert items on a five-point scale, with item
+polarity alternating (odd items: higher is better; even items:
+lower is better). The full item text is reproduced in
+Appendix~\ref{app:sus-rtlx-items}; per-item distributions and box
+plots are in Appendix~\ref{app:items-sus}.
 
 The SUS yields a single composite score per mode on a $0$--$100$
 scale, computed from the ten items using the standard scoring
-procedure of Brooke~\cite{Brooke1996}. A score of $68$ is widely used
-as the threshold above which a system is judged to have above-average
-usability~\cite{Bangor2008}.
-Figure~\ref{fig:sus-aggregate} reports the per-mode composite scores
-against this reference line. All three modes clear the threshold:
-Form scores highest at a mean of $78.62$ (median $80.0$, SD $16.09$),
-while Ask and Chat sit closely together at $72.97$ and $72.93$
-respectively (medians $72.5$ and $75.0$, SDs $15.36$ and $19.03$).
-The Form-first ordering already visible at the composite level is
-decomposed item by item in the remainder of this section.
+procedure of Brooke~\cite{Brooke1996}. A score of $68$ is widely
+used as the threshold above which a system is judged to have
+above-average usability~\cite{Bangor2008}.
+Figure~\ref{fig:sus-aggregate} reports the per-mode composite
+scores against this reference line. All three modes clear the
+threshold: Form scores highest at a mean of $78.62$ (median
+$80.0$, SD $16.09$), while Ask and Chat sit closely together at
+$72.97$ and $72.93$ respectively (medians $72.5$ and $75.0$, SDs
+$15.36$ and $19.03$). Form leads the SUS evaluation, with Chat
+and Ask following closely behind; this pattern will become
+clearer across the user-study sections that follow.
 
 \begin{figure}[htbp]
 \centering
@@ -36,20 +33,12 @@ the acceptability threshold of $68$~\cite{Bangor2008}.}
 \label{fig:sus-aggregate}
 \end{figure}
 
-The ten SUS items capture distinct facets of usability, including
-frequency of intended use, perceived complexity, and ease of use;
-the per-mode means therefore have to be read item by item before the
-aggregated test is reported. Table~\ref{tab:sus-per-item} reports
-the mean response per item per mode and the aggregated mean across
-all three modes. The aggregated column is the unweighted mean of the
-three per-mode means.
-
 \begin{table}[htbp]
 \centering
-\caption{System Usability Scale, mean response per item by mode ($n = 69$ per
-mode). Items are reported on the original five-point Likert scale; the
-Aggregated column averages the three per-mode means. Odd items: higher is better;
-even items: lower is better.}
+\caption{System Usability Scale, mean response per item by mode
+($n = 69$ per mode). Items are reported on the original five-point
+Likert scale; the Aggregated column averages the three per-mode
+means. Odd items: higher is better; even items: lower is better.}
 \label{tab:sus-per-item}
 \small
 \begin{tabularx}{\linewidth}{@{}c X r r r r@{}}
@@ -70,188 +59,74 @@ even items: lower is better.}
 \end{tabularx}
 \end{table}
 
-Form is the mode participants would most willingly keep using, with
-Ask and Chat trailing by a small but consistent margin. For
-\emph{``I think that I would like to use this system frequently''}
-(item~1), the aggregated mean is $3.32$, with Form yielding the
-highest mean ($3.52$) and Ask and Chat sitting at the same level
-($3.22$ each). Frequent-use intent decreases by approximately
-$0.30$~points from Form to the LLM-driven modes.
-
-Form also feels the least complex of the three, with Ask perceived
-as marginally more complex than Chat. For \emph{``I found the
-system unnecessarily complex''} (item~2, lower is better), the
-aggregated mean is $2.00$, with Form rated lowest ($1.64$), Ask
-highest ($2.25$), and Chat in between ($2.12$). Perceived
-complexity is approximately $0.5$~points higher in the LLM-driven
-modes than in Form.
-
-Form is also experienced as the easiest mode to use, with Ask and
-Chat almost indistinguishable behind it. For \emph{``I thought the
-system was easy to use''} (item~3), the aggregated mean is $4.13$,
-with Form rated highest ($4.38$) and Ask and Chat closely matched
-at $4.01$ and $3.99$. Ease-of-use ratings decrease by roughly
-$0.4$~points from Form to the LLM-driven modes.
-
-None of the three modes makes participants feel they need technical
-help to operate it — the Form-first ordering levels out here. For
-\emph{``I think that I would need the support of a technical person
-to be able to use this system''} (item~4, lower is better), the
-aggregated mean is $1.52$, with the three modes essentially
-indistinguishable (Form $1.52$, Ask $1.49$, Chat $1.55$). None of
-the three modes is perceived to require technical support.
-
-Form feels like the most coherent mode, with the LLM-driven modes
-scoring lower on perceived integration. For \emph{``I found the
-various functions in this system were well integrated''} (item~5),
-the aggregated mean is $3.77$, with Form scoring highest ($4.00$)
-and Ask and Chat lower ($3.67$ and $3.64$). The integration rating
-drops by approximately $0.35$~points from Form to the LLM-driven
-modes.
-
-No mode is perceived as meaningfully more inconsistent than the
-others, mildly inverting the Form-first pattern. For \emph{``I
-thought there was too much inconsistency in this system''} (item~6,
-lower is better), the aggregated mean is $2.07$, with the three
-modes similar to each other (Form $2.16$, Ask $2.04$, Chat $2.01$).
-Form is rated marginally higher on this negative item than the two
-LLM-driven modes.
-
-Form is judged the most learnable of the three, with Ask and Chat
-trailing again. For \emph{``I would imagine that most people would
-learn to use this system very quickly''} (item~7), the aggregated
-mean is $4.11$, with Form scoring highest ($4.30$) and Ask and
-Chat closely matched behind it ($4.00$ and $4.03$). Perceived
-learnability decreases by approximately $0.30$~points from Form to
-the LLM-driven modes.
-
-The biggest experiential gap of the ten items lands here:
-participants find Form noticeably less cumbersome than the
-LLM-driven modes, with Chat the most cumbersome of the three. For
-\emph{``I found the system very cumbersome to use''} (item~8,
-lower is better), the aggregated mean is $2.03$ and the largest
-spread of any item is observed: Form $1.65$, Ask $2.16$, Chat
-$2.29$. Cumbersomeness is rated approximately $0.5$--$0.65$~points
-higher in the LLM-driven modes than in Form.
-
-Participants feel about equally confident operating any of the
-three modes, with a small uptick toward Chat — the only item where
-the LLM-driven modes nudge ahead of Form. For \emph{``I felt very
-confident using the system''} (item~9), the aggregated mean is
-$3.86$, with the three modes rated closely (Form $3.83$, Ask
-$3.84$, Chat $3.90$). Within-system confidence is broadly
-comparable across modes, with a small upward trend from Form to
-Chat.
-
-All three modes feel equally approachable to a first-time user — no
-prior learning is perceived as required for any of them. For
-\emph{``I needed to learn a lot of things before I could get going
-with this system''} (item~10, lower is better), the aggregated mean
-is $1.61$, with the three modes virtually identical (Form $1.61$,
-Ask $1.61$, Chat $1.62$). The amount of prior learning required is
-perceived as low and equal across all modes.
-
-Table~\ref{tab:sus-per-item-distribution} reports the full
-descriptive distribution per item per mode (mean, standard deviation,
-Q1, median, Q3, min, max).
-
-\begin{sidewaystable}
+\begin{figure}[htbp]
 \centering
-\caption{System Usability Scale, full per-item descriptive
-distribution by mode ($n = 69$ per mode). Source:
-\texttt{sus\_per\_item\_summary.csv}.}
-\label{tab:sus-per-item-distribution}
-\small
-\begin{tabularx}{\linewidth}{@{}c X l r r r r r r r@{}}
-\toprule
-\# & Item & Mode & Mean & SD & Q1 & Median & Q3 & Min & Max \\
-\midrule
-\multirow{4}{*}{1}  & \multirow{4}{*}{I think that I would like to use this system frequently.}
-                    & Aggregated  & 3.32 & 1.14 & 3 & 3 & 4 & 1 & 5 \\
-                    & & Form & 3.52 & 1.09 & 3 & 4 & 4 & 1 & 5 \\
-                    & & Ask  & 3.22 & 1.08 & 3 & 3 & 4 & 1 & 5 \\
-                    & & Chat & 3.22 & 1.24 & 2 & 3 & 4 & 1 & 5 \\
-\midrule
-\multirow{4}{*}{2}  & \multirow{4}{*}{I found the system unnecessarily complex.}
-                    & Aggregated  & 2.00 & 1.12 & 1 & 2 & 3 & 1 & 5 \\
-                    & & Form & 1.64 & 0.92 & 1 & 1 & 2 & 1 & 5 \\
-                    & & Ask  & 2.25 & 1.22 & 1 & 2 & 3 & 1 & 5 \\
-                    & & Chat & 2.12 & 1.12 & 1 & 2 & 3 & 1 & 5 \\
-\midrule
-\multirow{4}{*}{3}  & \multirow{4}{*}{I thought the system was easy to use.}
-                    & Aggregated  & 4.13 & 0.97 & 4 & 4 & 5 & 1 & 5 \\
-                    & & Form & 4.38 & 0.91 & 4 & 5 & 5 & 1 & 5 \\
-                    & & Ask  & 4.01 & 0.81 & 4 & 4 & 5 & 1 & 5 \\
-                    & & Chat & 3.99 & 1.13 & 3 & 4 & 5 & 1 & 5 \\
-\midrule
-\multirow{4}{*}{4}  & \multirow{4}{*}{I think that I would need the support of a technical person to be able to use this system.}
-                    & Aggregated  & 1.52 & 0.89 & 1 & 1 & 2 & 1 & 5 \\
-                    & & Form & 1.52 & 0.85 & 1 & 1 & 2 & 1 & 5 \\
-                    & & Ask  & 1.49 & 0.80 & 1 & 1 & 2 & 1 & 5 \\
-                    & & Chat & 1.55 & 1.01 & 1 & 1 & 2 & 1 & 5 \\
-\midrule
-\multirow{4}{*}{5}  & \multirow{4}{*}{I found the various functions in this system were well integrated.}
-                    & Aggregated  & 3.77 & 1.05 & 3 & 4 & 5 & 1 & 5 \\
-                    & & Form & 4.00 & 0.92 & 4 & 4 & 5 & 1 & 5 \\
-                    & & Ask  & 3.67 & 1.02 & 3 & 4 & 4 & 1 & 5 \\
-                    & & Chat & 3.64 & 1.16 & 3 & 4 & 5 & 1 & 5 \\
-\midrule
-\multirow{4}{*}{6}  & \multirow{4}{*}{I thought there was too much inconsistency in this system.}
-                    & Aggregated  & 2.07 & 1.00 & 1 & 2 & 3 & 1 & 5 \\
-                    & & Form & 2.16 & 0.96 & 1 & 2 & 3 & 1 & 5 \\
-                    & & Ask  & 2.04 & 1.06 & 1 & 2 & 3 & 1 & 5 \\
-                    & & Chat & 2.01 & 0.98 & 1 & 2 & 3 & 1 & 5 \\
-\midrule
-\multirow{4}{*}{7}  & \multirow{4}{*}{I would imagine that most people would learn to use this system very quickly.}
-                    & Aggregated  & 4.11 & 0.98 & 4 & 4 & 5 & 1 & 5 \\
-                    & & Form & 4.30 & 0.96 & 4 & 5 & 5 & 1 & 5 \\
-                    & & Ask  & 4.00 & 0.95 & 4 & 4 & 5 & 1 & 5 \\
-                    & & Chat & 4.03 & 1.01 & 4 & 4 & 5 & 1 & 5 \\
-\midrule
-\multirow{4}{*}{8}  & \multirow{4}{*}{I found the system very cumbersome to use.}
-                    & Aggregated  & 2.03 & 1.13 & 1 & 2 & 3 & 1 & 5 \\
-                    & & Form & 1.65 & 0.94 & 1 & 1 & 2 & 1 & 5 \\
-                    & & Ask  & 2.16 & 1.12 & 1 & 2 & 3 & 1 & 5 \\
-                    & & Chat & 2.29 & 1.23 & 1 & 2 & 3 & 1 & 5 \\
-\midrule
-\multirow{4}{*}{9}  & \multirow{4}{*}{I felt very confident using the system.}
-                    & Aggregated  & 3.86 & 1.04 & 3 & 4 & 5 & 1 & 5 \\
-                    & & Form & 3.83 & 1.04 & 3 & 4 & 5 & 1 & 5 \\
-                    & & Ask  & 3.84 & 0.93 & 3 & 4 & 4 & 1 & 5 \\
-                    & & Chat & 3.90 & 1.15 & 4 & 4 & 5 & 1 & 5 \\
-\midrule
-\multirow{4}{*}{10} & \multirow{4}{*}{I needed to learn a lot of things before I could get going with this system.}
-                    & Aggregated  & 1.61 & 0.90 & 1 & 1 & 2 & 1 & 5 \\
-                    & & Form & 1.61 & 0.86 & 1 & 1 & 2 & 1 & 5 \\
-                    & & Ask  & 1.61 & 0.81 & 1 & 1 & 2 & 1 & 5 \\
-                    & & Chat & 1.62 & 1.03 & 1 & 1 & 2 & 1 & 5 \\
-\bottomrule
-\end{tabularx}
-\end{sidewaystable}
-
-The per-item distributions are visualised in Figure~\ref{fig:sus-subquestions}.
-
-\begin{sidewaysfigure}
-\centering
-\includegraphics[width=\linewidth]{sus_subquestions_boxplot.png}
-\caption{Box plots of the ten SUS items by mode ($n = 69$ per mode). Boxes show
-the interquartile range; the central line marks the median, and the diamond
-marks the mean.}
+\includegraphics[width=0.45\linewidth]{sus_item_01.png}\hfill
+\includegraphics[width=0.45\linewidth]{sus_item_02.png}\\[1ex]
+\includegraphics[width=0.45\linewidth]{sus_item_03.png}\hfill
+\includegraphics[width=0.45\linewidth]{sus_item_04.png}\\[1ex]
+\includegraphics[width=0.45\linewidth]{sus_item_05.png}\hfill
+\includegraphics[width=0.45\linewidth]{sus_item_06.png}\\[1ex]
+\includegraphics[width=0.45\linewidth]{sus_item_07.png}\hfill
+\includegraphics[width=0.45\linewidth]{sus_item_08.png}\\[1ex]
+\includegraphics[width=0.45\linewidth]{sus_item_09.png}\hfill
+\includegraphics[width=0.45\linewidth]{sus_item_10.png}
+\caption{Box plots of the ten SUS items by mode ($n = 69$ per
+mode), one plot per item in administered order. Boxes show the
+interquartile range, the central line marks the median, and the
+diamond marks the mean.}
 \label{fig:sus-subquestions}
-\end{sidewaysfigure}
+\end{figure}
 
-A Friedman test on the per-mode aggregate is not significant
-($\chi^2(2) = 5.51$, $p = 0.064$, $W = 0.040$). The SUS composite
-therefore does not differ significantly across modes at the
-omnibus level, and pairwise post-hoc comparisons are not pursued
-on the composite score. The per-item descriptive ordering reported
-above is consistent with a Form-leaning pattern, but it does not
-clear the inferential bar. Full test statistics are reproduced in
+Item by item, Table~\ref{tab:sus-per-item} reveals three patterns
+in how participants rated the three modes.
+
+Participants said they would willingly keep using Form (mean
+$3.52$) somewhat more than Ask or Chat (both $3.22$), a margin of
+$0.30$ Likert points. The same Form lead reappears on whether the
+system was easy to use (Form $4.38$ vs Ask $4.01$, Chat $3.99$)
+and on whether it felt well integrated (Form $4.00$ vs Ask
+$3.67$, Chat $3.64$). Asked how quickly they thought most people
+would learn the system, the pattern held again (Form $4.30$, Ask
+$4.00$, Chat $4.03$). Across these four items the gap sits at
+roughly $0.30$--$0.40$ Likert points: small, but Form is ahead
+every time.
+
+The biggest gaps appear on the two items that asked whether the
+system felt unnecessarily complex or cumbersome. On complexity,
+Form drew the most favorable rating ($1.64$), with Ask
+noticeably higher at $2.25$ and Chat at $2.12$; the Form lead
+here is roughly half a Likert point. Cumbersomeness produced the
+largest spread of any SUS item: Chat was rated most cumbersome
+($2.29$), Ask close behind ($2.16$), and Form clearly the
+easiest to operate ($1.65$), a roughly $0.65$-point spread
+between the extremes. These are the items where the cost of
+LLM-driven interaction lands most directly on the user.
+
+Four items show essentially no difference between modes. None of
+the three felt to participants like it required prior learning
+to get going (item 10: Form $1.61$, Ask $1.61$, Chat $1.62$) or
+like it would need a technical person's help to use (item 4:
+Form $1.52$, Ask $1.49$, Chat $1.55$). Participants also did not
+perceive any of the three as meaningfully more inconsistent than
+the others (item 6: Form $2.16$, Ask $2.04$, Chat $2.01$); the
+small fractional advantage here goes to the LLM-driven modes.
+Within-system confidence is broadly comparable across modes
+(item 9: Form $3.83$, Ask $3.84$, Chat $3.90$), with a very
+slight uptick toward Chat. On these dimensions the choice of
+interaction style simply does not move the rating.
+
+A Friedman test on the per-mode SUS composite is not significant
+($\chi^2(2) = 5.51$, $p = 0.064$, $W = 0.040$); pairwise
+comparisons between modes are therefore not pursued. The Form
+lead visible in the descriptive means does not reach statistical
+significance. Full statistics are in
 Appendix~\ref{app:inferential}.
 
-Taken together, the SUS data establish a Form-first ordering on the
-items most directly tied to perceived ease of use, complexity, and
-cumbersomeness, while items relating to within-system confidence,
-required prior learning, and need for technical support flatten
-across modes. Whether this same ordering recurs on perceived
-workload is examined next in Section~\ref{sec:eval-rtlx}.
+The SUS picture is a directionally consistent but statistically
+null Form lead: Form is rated highest on six of ten items, the
+modes flatten on the other four, and the omnibus test narrowly
+misses the significance threshold ($p = 0.064$). The lead
+concentrates on items that capture the moment-to-moment feel of
+using the system; whether it carries to perceived workload is the
+question for Section~\ref{sec:eval-rtlx}.

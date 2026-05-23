@@ -1,31 +1,26 @@
+\clearpage
 \section{Document Quality — LLM-as-a-Judge}
 \label{sec:eval-judge}
 
-Building on the reference-based NLP metrics reported in
-Section~\ref{sec:eval-nlp-doc}, this section turns to a reference-free
-quality signal. The previous section measured similarity to a
-single expert-authored Form-mode reference; here, the judge
-evaluates each document against a rubric rather than a target,
-which lifts the implicit advantage that the reference document
-conferred on Form-style outputs. The LLM-as-a-Judge evaluation
-produces five metrics per document, summarized in
-Table~\ref{tab:judge-metrics}: \emph{Completeness},
+The reference-based NLP metrics measured similarity to a single
+expert-authored Form-mode reference. The LLM-as-a-Judge layer
+turns to a reference-free quality signal: each document is
+evaluated against a rubric rather than a target, which lifts the
+implicit advantage that the reference document confers on
+Form-style outputs. The judge produces five metrics per document,
+summarized in Table~\ref{tab:judge-metrics}: \emph{Completeness},
 \emph{Scenario Faithfulness}, \emph{Legal Correctness},
 \emph{Hallucination} (inverse-coded; higher equals less
 hallucination), and \emph{Overall}. The full rubric, prompt, and
-model configuration are reproduced in
-Appendix~\ref{app:judge-rubric}. The rubric design follows the
-precedent established by Su et al.'s JuDGE benchmark for
-LLM-evaluated legal-document generation
-\cite{suJuDGEBenchmarkingJudgment2025}. The judge is a single LLM
-(Gemini~3.1 Pro Preview, temperature $0$); the resulting scores
-are reported as a supplementary, single-pass single-model signal
-alongside the survey instruments and reference-based NLP metrics,
-and without inter-rater replication or legal-expert validation
-they should be read as indicative rather than definitive. All
-$113$ retained documents are scored. The aggregated mean across
-all documents is reported first, followed by the per-mode results
-in the order Form, Ask, Chat.
+model configuration are in Appendix~\ref{app:judge-rubric}; the
+rubric design follows the precedent set by Su et al.'s JuDGE
+benchmark for LLM-evaluated legal-document
+generation~\cite{suJuDGEBenchmarkingJudgment2025}. The judge is a
+single LLM (Gemini~3.1 Pro Preview, temperature $0$); without
+inter-rater replication or legal-expert validation the resulting
+scores are reported as a supplementary, indicative signal
+alongside the user-study instruments and reference-based NLP
+metrics. All $113$ retained documents are scored.
 
 \begin{table}[htbp]
 \centering
@@ -33,8 +28,8 @@ in the order Form, Ask, Chat.
 \caption{The five LLM-as-Judge metrics. All share a $1$--$5$
 Likert anchor; higher is better, including for
 \emph{Hallucination (inverse)}, which is inverted internally so
-that fewer fabrications score higher. The full rubric is
-reproduced in Appendix~\ref{app:judge-rubric}.}
+that fewer fabrications score higher. The full rubric is in
+Appendix~\ref{app:judge-rubric}.}
 \label{tab:judge-metrics}
 \begin{tabularx}{\textwidth}{@{}lX@{}}
 \toprule
@@ -55,23 +50,19 @@ Overall                 & Holistic judgment of how useful the document would be 
 
 \subsection{Per-Metric Results}
 
-This subsection walks through each rubric metric in turn,
-reporting per-mode means, medians, and dispersion before the
-holistic Overall score. The five rubric metrics are reported in
-the order Completeness $\rightarrow$ Faithfulness $\rightarrow$ Legal
-Correctness $\rightarrow$ Hallucination $\rightarrow$ Overall to
-allow the picture to build cumulatively before the holistic Overall
-score is read. Table~\ref{tab:judge-summary} reports the
-per-metric mean and standard deviation per mode and the
-aggregated mean. Figure~\ref{fig:judge-boxplot} shows the
-corresponding distributions.
+Table~\ref{tab:judge-summary} reports the per-metric mean and
+standard deviation per mode; Figure~\ref{fig:judge-boxplot} shows
+the corresponding distributions. The five rubric metrics are
+walked through in the order Completeness, Scenario Faithfulness,
+Legal Correctness, Hallucination, Overall, so that the holistic
+Overall verdict is read after the four contributing metrics.
 
 \begin{table}[htbp]
 \centering
 \caption{LLM-as-Judge metric mean (SD) by mode (full sample
 $n = 113$, scale $1$--$5$, higher is better including for
-\emph{Hallucination (inverse)}). The Aggregated column is
-the mean across all $113$ documents.}
+\emph{Hallucination (inverse)}). The Aggregated column is the
+mean across all $113$ documents.}
 \label{tab:judge-summary}
 \begin{tabular}{@{}l c c c c@{}}
 \toprule
@@ -86,102 +77,87 @@ Overall                 & 2.50 (1.04) & 2.41 (0.69) & 2.49 (1.04) & 2.62 (1.31) 
 \end{tabular}
 \end{table}
 
-\begin{sidewaysfigure}
+\begin{figure}[htbp]
 \centering
-\includegraphics[width=\linewidth]{judge_metrics_boxplot.png}
-\caption{Distributions of the five LLM-as-Judge metrics by mode (full
-sample $n = 113$, scale $1$--$5$).}
+\includegraphics[width=0.45\linewidth]{judge_completeness.png}\hfill
+\includegraphics[width=0.45\linewidth]{judge_faithfulness.png}\\[1ex]
+\includegraphics[width=0.45\linewidth]{judge_legal_correctness.png}\hfill
+\includegraphics[width=0.45\linewidth]{judge_hallucination.png}\\[1ex]
+\includegraphics[width=0.45\linewidth]{judge_overall.png}
+\caption{Distributions of the five LLM-as-Judge metrics by mode
+(full sample $n = 113$, scale $1$--$5$), one plot per metric.}
 \label{fig:judge-boxplot}
-\end{sidewaysfigure}
+\end{figure}
 
-Form documents cover the Article 30(1) requirements most thoroughly
-and most uniformly, while Chat documents leave the most gaps —
-echoing the BERTScore Recall pattern from
-Section~\ref{sec:eval-nlp-doc}. For \emph{Completeness}, the aggregated
-mean is $3.94$, with Form scoring highest by a substantial margin
-($4.84$, median $5.0$), Ask second ($3.84$, median $5.0$), and
-Chat lowest ($3.18$, median $3.0$). Completeness decreases by
-approximately $1.66$~points from Form to Chat. Form's standard
-deviation is also the lowest of the three modes ($0.55$ versus Ask
-$1.54$ and Chat $1.59$), indicating that Form yields uniformly
-complete documents.
+Form documents cover the Article~30(1) requirements most
+thoroughly and most uniformly. Form scores $4.84$ (median $5.0$,
+SD $0.55$), Ask sits at $3.84$, and Chat at $3.18$ (median
+$3.0$); the $1.66$-point spread is the widest of any judge
+metric. The Form lead here mirrors the BERTScore Recall pattern
+from Section~\ref{sec:eval-nlp-doc}.
 
-The Form advantage flips when the question becomes whether the
-document actually reflects the APOR scenario participants were
-given: Chat documents stay closest to that scenario, while Form
-documents drift toward generic ROPA boilerplate. For
-\emph{Scenario Faithfulness}, the ordering inverts: the aggregated
-mean is $2.21$, with Form scoring lowest ($1.84$, median $2.0$),
-Ask second ($2.30$, median $2.0$), and Chat highest ($2.49$,
-median $2.0$). Faithfulness to the specific study scenario
-increases by approximately $0.65$~points from Form to Chat.
+The Form lead flips on whether the document actually reflects
+the APOR scenario participants were given. Chat documents stay
+closest ($2.49$), Ask second ($2.30$), and Form lowest ($1.84$):
+the scenario-fidelity ordering is the exact inverse of the
+Completeness ordering.
 
-Form documents use GDPR terminology most correctly, with Chat
-documents the least so — but the gap is much smaller than on
-Completeness. For \emph{Legal Correctness}, the aggregated mean
-is $3.39$, with Form scoring highest ($3.59$, median $4.0$), Ask
-second ($3.43$, median $4.0$), and Chat lowest ($3.15$, median
-$3.0$). The spread is approximately $0.45$~points across modes;
-Form's standard deviation ($0.55$) is again the lowest, reflecting
-a narrow concentration of Legal Correctness scores around the
-value $4.0$.
+Form documents use GDPR terminology most correctly (Form $3.59$,
+Ask $3.43$, Chat $3.15$), with a much narrower spread than on
+Completeness, around $0.45$ points. Form's standard deviation
+($0.55$) is again the smallest, the same uniformity pattern as on
+Completeness.
 
-Form documents contain the most fabricated content and Chat
-documents the least — closely tracking the Faithfulness ordering
-above. For \emph{Hallucination (inverse)}, the ordering matches
-Scenario Faithfulness: the aggregated mean is $2.20$, with Form
-scoring lowest ($1.65$, median $2.0$), Ask second ($2.40$, median
-$2.0$), and Chat highest ($2.54$, median $3.0$). Because the
-metric is inverse-coded, low scores mean more hallucination. The
-co-occurrence with Completeness is striking: $31$ of the $37$ Form
+Form documents contain the most fabricated content and Chat the
+least: Form sits at $1.65$ on the inverse-coded scale (lower
+means more hallucination), Ask at $2.40$, Chat at $2.54$. The
+co-occurrence with Completeness is striking: $31$ of $37$ Form
 documents ($83.8\,\%$) achieve Completeness $= 5$ while
 simultaneously scoring Hallucination (inverse) $\leq 2$
-(``moderate'' or ``significant'' hallucination per the rubric),
-and $17$ of these combine the maximum Completeness score with the
-minimum Hallucination (inverse) score of $1$. In other words, most
-Form documents are simultaneously the most complete and the most
-fabricated — this is the proximate source of the
-Form-versus-Faithfulness inversion drawn out below.
+(``moderate'' or worse per the rubric), and $17$ of those combine
+maximum Completeness with the minimum Hallucination (inverse)
+score of $1$. Most Form documents are simultaneously the most
+complete and the most fabricated.
 
-When the four contrasting orderings are compressed into a single
-holistic verdict, no mode comes out as a clear winner — Chat edges
-ahead, Form trails by a small margin, and the average document is
-judged below the midpoint of the rubric scale. For \emph{Overall},
-the aggregated mean is $2.50$, with the three modes clustered
-closely together: Form $2.41$, Ask $2.49$, Chat $2.62$. The
-aggregate Overall score thus sits below the midpoint of the
-$1$--$5$ scale across all modes. Form's standard deviation
-($0.69$) is again the lowest, while Chat's is the highest
-($1.31$), indicating that Chat produces both the highest- and
+Compressing the four contrasting orderings into a single holistic
+verdict produces no clear winner: Chat edges ahead at $2.62$, Ask
+sits at $2.49$, and Form trails at $2.41$. All three modes sit
+below the midpoint of the $1$--$5$ rubric scale and the spread
+between best and worst is just $0.21$ points. Form's standard
+deviation ($0.69$) is again the smallest; Chat's ($1.31$) is the
+largest, meaning Chat produces both the highest- and
 lowest-rated documents in the sample.
 
-Three patterns emerge from the per-metric means. First, the Completeness ordering
-(Form $>$ Ask $>$ Chat) is the inverse of the Scenario Faithfulness
-and Hallucination orderings (Form $<$ Ask $<$ Chat). Form documents
-are judged to be the most structurally complete but also the most
-prone to fabricated content, while Chat documents are judged to be
-the most faithful to the specific scenario but the least structurally
-complete. Ask sits between the two extremes on every metric.
+Three patterns emerge. First, the Completeness ordering (Form
+$>$ Ask $>$ Chat) is the exact inverse of the Scenario
+Faithfulness and Hallucination orderings (Form $<$ Ask $<$ Chat):
+Form documents are the most structurally complete but also the
+most fabricated, Chat documents the most faithful to the
+scenario but the least complete, Ask between the two extremes on
+every metric.
 
-Second, the Legal Correctness scores are flat relative to the Completeness
-spread: the gap between modes is approximately $0.45$~points on Legal
-Correctness compared to $1.66$~points on Completeness. The judge therefore
-distinguishes between modes more sharply on whether the document covers
-all required Article 30(1) fields than on whether the legal terminology is
-appropriate.
+Second, Legal Correctness is flat relative to the Completeness
+spread (roughly $0.45$ versus $1.66$ points). The judge
+distinguishes modes more sharply on whether the required
+Article~30(1) fields are present than on whether the legal
+terminology itself is appropriate.
 
-Third, the Overall scores compress the per-metric spread into a narrow
-range (Form $2.41$ to Chat $2.62$, $\Delta = 0.21$), with the ordering Form
-$<$ Ask $<$ Chat. This is consistent with Overall reflecting a holistic
-judgment that weighs Faithfulness and Hallucination against Completeness;
-Form's high Completeness is partially offset by its low Faithfulness and
-high Hallucination, and the net result is a slight Chat advantage. The
-interpretation of the Form Completeness--Hallucination co-occurrence
-reported above in terms of the checkbox-based interface of Form mode
-(Section~\ref{sec:ropagen}) is reserved for the Discussion chapter.
+Third, the holistic Overall scores compress the per-metric spread
+into a narrow $0.21$-point range. Form's high Completeness is
+offset by its low Faithfulness and high Hallucination, leaving
+Chat with the smallest of advantages. Where the NLP metrics
+surfaced a recall-versus-precision trade-off between Form and
+Chat, the judge surfaces a completeness-versus-faithfulness
+trade-off, and the holistic Overall verdict collapses both into
+a narrow range with no decisive winner.
 
-The judge data thus complete the document-quality picture begun in
-Section~\ref{sec:eval-nlp-doc}: Form leads on Completeness and Legal
-Correctness, Chat leads on Faithfulness and Hallucination, and the
-holistic Overall score collapses these tensions into a narrow
-range.
+The judge layer therefore adds a second trade-off to the
+document-quality picture begun in
+Section~\ref{sec:eval-nlp-doc}: Form leads on Completeness and
+Legal Correctness, Chat leads on Faithfulness and Hallucination,
+and Ask sits between the two on every metric. The Form
+Completeness-versus-Hallucination co-occurrence is the
+central judge-side finding; its interpretation in terms of the
+checkbox-only Form interface is reserved for the Discussion
+chapter. The full user-study and document-quality findings are
+consolidated in Section~\ref{sec:eval-summary}.

@@ -3,11 +3,11 @@
 
 This appendix reproduces the complete inferential test output
 referenced in Chapter~\ref{ch:evaluation}. The within-subjects
-survey tests use $n = 69$ (matched within-subjects, Friedman +
+user-study tests use $n = 69$ (matched within-subjects, Friedman +
 Wilcoxon); the document-quality, timing, and confidence--quality
 analyses use $n = 113$ (between-groups, Kruskal--Wallis +
 Mann--Whitney $U$). The full sample-size derivation is reproduced
-first, followed by the survey inferential tests, the NLP
+first, followed by the user-study inferential tests, the NLP
 inferential tests, the confidence--quality correlations, and the
 timing inferential tests.
 
@@ -16,7 +16,7 @@ timing inferential tests.
 
 All sample sizes used in the thesis are derived from the raw data
 files committed to the repository:
-\texttt{python/survey/docs/data.csv} for the survey (one row per
+\texttt{python/survey/docs/data.csv} for the user study (one row per
 participant) and \texttt{python/metrics/output/all\_scores\_combined.csv}
 for the NLP and judge scores (one row per LLM-generated document).
 
@@ -25,7 +25,7 @@ for the NLP and judge scores (one row per LLM-generated document).
 \small
 \begin{tabular}{lr}
 \toprule
-\textbf{Survey subset} & \textbf{n} \\
+\textbf{User-study subset} & \textbf{n} \\
 \midrule
 Recruited participants (raw) & 73 \\
 Participants with at least one valid session ($p\_0001 \geq 1$) & 69 \\
@@ -35,7 +35,7 @@ Chat responses (mode-level) & 69 \\
 Matched-triple participants (valid response in all three modes) & 69 \\
 \bottomrule
 \end{tabular}
-\caption{Survey sample sizes after consent and quality filtering.}
+\caption{User-study sample sizes after consent and quality filtering.}
 \label{tab:n-survey}
 \end{table}
 
@@ -66,14 +66,14 @@ Mann--Whitney $U$).}
 \small
 \begin{tabular}{lr}
 \toprule
-\textbf{Survey $\times$ NLP join} & \textbf{n} \\
+\textbf{User-study $\times$ NLP join} & \textbf{n} \\
 \midrule
-Joined rows (document with matching survey response) & 106 \\
+Joined rows (document with matching user-study response) & 106 \\
 Form joined rows & 34 \\
 Ask joined rows & 34 \\
 Chat joined rows & 38 \\
 Unique participants in the joined sample & 44 \\
-Participants with survey $\times$ NLP coverage in all three modes & 27 \\
+Participants with user-study $\times$ NLP coverage in all three modes & 27 \\
 \bottomrule
 \end{tabular}
 \caption{Triangulated samples used for confidence--quality analyses.
@@ -83,14 +83,14 @@ confidence~$\times$~quality correlations.}
 \label{tab:n-triangulation}
 \end{table}
 
-\section{Survey Inferential Tests}
+\section{User-Study Inferential Tests}
 \label{app:inf-survey}
 
 \subsection{Normality (Shapiro--Wilk, $n = 69$)}
 
 \begin{table}[htbp]
 \centering
-\caption{Shapiro--Wilk normality tests for survey measures by mode.}
+\caption{Shapiro--Wilk normality tests for user-study measures by mode.}
 \label{tab:app-survey-normality}
 \small
 \begin{tabular}{@{}l l r r l@{}}
@@ -124,7 +124,7 @@ throughout.
 
 \begin{table}[htbp]
 \centering
-\caption{Friedman omnibus tests across the three modes for survey measures.
+\caption{Friedman omnibus tests across the three modes for user-study measures.
 Kendall's $W$: 0--0.1 weak, 0.1--0.3 moderate, 0.3--0.5 strong.}
 \label{tab:app-survey-friedman}
 \small
@@ -156,7 +156,7 @@ $|r| < 0.1$ negligible, $0.1$--$0.3$ small, $0.3$--$0.5$ medium, $\geq 0.5$ larg
 
 \begin{table}[htbp]
 \centering
-\caption{Pairwise Wilcoxon signed-rank post-hoc tests for survey measures.}
+\caption{Pairwise Wilcoxon signed-rank post-hoc tests for user-study measures.}
 \label{tab:app-survey-posthoc}
 \small
 \begin{tabular}{@{}l l r r r r l@{}}
@@ -240,8 +240,8 @@ BERTScore Recall & Form $>$ Ask  & $<0.001$ & 0.756 (large)  & Yes \\
 BERTScore Recall & Form $>$ Chat & $<0.001$ & 0.512 (large)  & Yes \\
 BERTScore F1     & Form $>$ Ask  & 0.004    & 0.386 (medium) & Yes \\
 BERTScore F1     & Chat $>$ Ask  & 0.011    & 0.340 (medium) & Yes \\
-SBERT            & Chat $>$ Form & $<0.001$ & 0.505 (large)  & Yes \\
-SBERT            & Chat $>$ Ask  & $<0.001$ & 0.453 (large)  & Yes \\
+SBERT (ModernBERT) & Chat $>$ Form & $<0.001$ & 0.505 (large)  & Yes \\
+SBERT (ModernBERT) & Chat $>$ Ask  & $<0.001$ & 0.453 (large)  & Yes \\
 ROUGE-2          & Form $>$ Ask  & 0.006    & 0.369 (medium) & Yes \\
 ROUGE-2          & Chat $>$ Ask  & 0.011    & 0.342 (medium) & Yes \\
 METEOR           & Form $>$ Ask  & 0.003    & 0.407 (medium) & Yes \\
@@ -250,17 +250,17 @@ METEOR           & Form $>$ Ask  & 0.003    & 0.407 (medium) & Yes \\
 \end{table}
 
 Ask is the significantly lowest-scoring mode (Ask $<$ Form, Ask
-$<$ Chat) on the metrics that reach significance — most clearly
-on BERTScore Recall, F1, ROUGE-2, and METEOR — while Form and
-Chat trade leadership depending on whether the metric emphasizes
-lexical recall or document-level semantic alignment.
+$<$ Chat) on the metrics that reach significance, most clearly on
+BERTScore Recall, F1, ROUGE-2, and METEOR; Form and Chat trade
+leadership depending on whether the metric emphasizes lexical
+recall or document-level semantic alignment.
 
 \section{Confidence--Quality Correlations}
 \label{app:inf-corr}
 
 Spearman rank correlation $\rho$ between the primary confidence measure
 (item~$5_{ai}$, ``I am confident the AI identified the correct legal basis'')
-and document-quality measures, computed on the survey~$\times$~NLP joined
+and document-quality measures, computed on the user-study~$\times$~NLP joined
 sample. Per-mode joined samples: Form $n = 34$, Ask $n = 34$, Chat $n = 38$;
 pooled $n = 106$.
 
@@ -298,7 +298,7 @@ Inferential tests on the per-mode completion time recorded in the
 document-level analysis: full $n = 113$ (Form $37$, Ask $37$, Chat
 $39$); matched-triple within-subjects subset $n = 26$ participants.
 Non-parametric tests are used throughout, consistent with the NLP and
-survey pipelines, as Shapiro--Wilk rejects normality on every
+user-study pipelines, as Shapiro--Wilk rejects normality on every
 mode (Form $W = 0.780$, $p < 0.001$; Ask $W = 0.912$, $p = 0.030$;
 Chat $W = 0.601$, $p < 0.001$). Source:
 \texttt{python/metrics/output/statistical\_tests.md} (\emph{Per-Mode
