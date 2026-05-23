@@ -50,10 +50,10 @@ post-hoc; full test statistics in Appendix~\ref{app:inferential}.
 The full per-document descriptive distributions are in
 Appendix~\ref{app:items-nlp-doc}. Table~\ref{tab:nlp-doc-overview}
 gives a one-glance summary of mean (SD) per mode for every
-document-level metric before the metric-by-metric walkthrough
-below. Metrics are reported in two groups: lexical first
-(strictest demands on surface form), then embedding-based
-(BERTScore Precision / Recall / F1 and SBERT).
+document-level metric. The remainder of this subsection walks
+through each metric in turn, lexical first (strictest demands on
+surface form) and then embedding-based (BERTScore Precision /
+Recall / F1 and SBERT).
 
 \begin{table}[htbp]
 \centering
@@ -297,11 +297,11 @@ on every lexical metric. The Form-vs-Ask gap on ROUGE-1 is the
 clearest single comparison ($0.457$ vs $0.373$); Chat sits closer
 to Form ($0.410$).
 
-\textbf{Categories of Personal Data} shows the widest mode gap
-in the chapter-level lexical results: Form's ROUGE-1 lead over
-Ask is $0.600$ vs $0.366$. Form leads every other lexical metric
-too (BLEU $0.110$ vs Ask $0.077$, Chat $0.058$; METEOR $0.415$
-vs Ask $0.275$, Chat $0.258$).
+\textbf{Categories of Personal Data} shows one of the widest mode
+gaps in the chapter-level lexical results, with Form sweeping
+every metric: ROUGE-1 Form $0.600$ vs Ask $0.366$, Chat $0.437$;
+BLEU $0.110$ vs Ask $0.077$, Chat $0.058$; METEOR $0.415$ vs Ask
+$0.275$, Chat $0.258$.
 
 \textbf{Data Subjects and Recipients} follows the same shape on a
 smaller scale (BLEU $0.097$, ROUGE-1 $0.437$, METEOR $0.355$).
@@ -309,11 +309,11 @@ Form leads across the lexical suite (ROUGE-1 $0.491$ vs Ask
 $0.393$, Chat $0.426$; METEOR $0.440$ vs $0.312$ and $0.314$).
 
 \textbf{Retention and Deletion} has the lowest absolute scores and
-the widest variance of the six chapters. Chat leads on every
-lexical metric (ROUGE-1 $0.314$ vs Form $0.252$, Ask $0.212$;
-BLEU $0.068$ vs $0.038$, $0.023$; METEOR $0.362$ vs $0.332$,
-$0.245$), and BLEU and METEOR carry the largest standard
-deviations of any chapter ($0.076$ and $0.160$).
+some of the widest variance of the six chapters. Chat leads on
+every lexical metric (ROUGE-1 $0.314$ vs Form $0.252$, Ask
+$0.212$; BLEU $0.068$ vs $0.038$, $0.023$; METEOR $0.362$ vs
+$0.332$, $0.245$), and METEOR carries the largest standard
+deviation of any chapter ($0.160$).
 
 \textbf{Technical and Organizational Measures} sits in the
 mid-range again (BLEU $0.080$, ROUGE-1 $0.331$, METEOR $0.293$).
@@ -350,7 +350,7 @@ The embedding-based view keeps the same three-zone pattern as the
 lexical metrics but compresses the absolute range: Ask still wins
 Chapter 1, Form still wins Chapters 2--4, Chat still wins
 Chapters 5 and 6. The document-level Form-leads-Recall /
-Chat-leads-Precision trade-off shows up here too, but localised
+Chat-leads-Precision trade-off shows up here too, but localized
 to Chapters 2 and 4 rather than running across all metrics; on
 the other chapters one mode sweeps the BERT family.
 
@@ -362,9 +362,10 @@ $0.663$, Chat $0.662$).
 
 \textbf{Purposes and Legal Bases} clusters tightly at the top of
 the BERT range across all three modes (F1 $0.887$; SBERT
-ModernBERT $0.979$). Form leads on Recall and F1 (F1 $0.891$ vs
-Ask $0.880$, Chat $0.890$), while Chat takes a narrow Precision
-lead ($0.877$ vs Form $0.872$, Ask $0.869$).
+ModernBERT $0.979$). Form leads on Recall (Form $0.911$ vs Ask
+$0.892$, Chat $0.904$); Form and Chat are effectively tied on F1
+(Form $0.891$, Chat $0.890$); Chat takes a narrow Precision lead
+($0.877$ vs Form $0.872$, Ask $0.869$).
 
 \textbf{Categories of Personal Data} reproduces the dramatic Form
 sweep from the lexical view. Form is highest on every BERT-based
