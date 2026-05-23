@@ -5,13 +5,35 @@ and 33). Sample sizes: see `python/output/sample_sizes.md` (canonical).
 
 ---
 
+## Note (design call) — read before editing
+
+The thesis treats **Kruskal–Wallis (K–W) + Mann–Whitney U (MWU) on the full
+unbalanced n = 113 sample** as the **primary** inferential family for the
+document-quality and per-mode timing analyses. The matched-triple n = 26 subset
+(Friedman + Wilcoxon signed-rank) is preserved below as an **exploratory subset
+analysis** — it is **not** reported in the thesis.
+
+Why: the study is deliberately not a statistics-first paper; the n = 26 subset
+would add a second parallel inferential family for a small fraction of users
+(redundant interpretation, fragile power) without changing the thesis story.
+Fewer different statistics, better.
+
+**Future agents: do not "restore" the matched-triple as primary.** The simpler
+test family on n = 113 is intentional. The Friedman/Wilcoxon sections are
+retained for archival continuity with the analysis pipeline only.
+
+---
+
 ## Dataset
 
-- **N = 113 documents total**: Form n=37, Ask n=37, Chat n=39
-- **Within-subjects subset**: **n = 26** participants with exactly one document
-  per mode — used for Friedman test and Wilcoxon signed-rank post-hoc.
-- 47 unique participants are represented in total; 28 have at least one
-  document in each mode but three of them have duplicates in some mode and
+- **N = 113 documents total**: Form n = 37, Ask n = 37, Chat n = 39. This is the
+  **primary** sample used for all thesis-reported document-quality and per-mode
+  timing inferentials.
+- **Exploratory matched-triple subset, n = 26**: participants with exactly one
+  document per mode. Not used in the thesis; retained here for archival
+  reference only.
+- 47 unique participants are represented in the full sample; 28 have at least
+  one document in each mode but three of them have duplicates in some mode and
   are excluded from the strict matched set.
 
 ---
@@ -27,11 +49,11 @@ Non-parametric tests used throughout.
 
 ---
 
-## Kruskal-Wallis H Test (full dataset, n = 113, unbalanced)
+## Primary: Kruskal–Wallis H Test (full sample, n = 113)
 
-Tests whether at least one mode distribution differs from the others. Reported
-as a **between-groups sensitivity check** on the unbalanced full sample; not the
-primary post-hoc family.
+Tests whether at least one mode distribution differs from the others. **Primary
+between-groups omnibus** for the document-quality analysis on the full
+unbalanced sample.
 
 | Metric | H | p-value | Significant (α=0.05) | ε² (effect size) |
 |---|---|---|---|---|
@@ -49,78 +71,10 @@ primary post-hoc family.
 
 ---
 
-## Friedman Test (within-subjects, n = 26 paired users)
+## Primary: Pairwise Mann–Whitney U Post-hoc (full sample, n = 113)
 
-Non-parametric repeated-measures test — primary omnibus for mode effects.
-
-| Metric | χ² | p-value | Significant | W (Kendall's) |
-|---|---|---|---|---|
-| BLEU | 6.23 | 0.044 | Yes | 0.083 (weak) |
-| ROUGE-1 | 10.69 | 0.005 | Yes | ~0.18 (moderate) |
-| ROUGE-2 | 13.46 | 0.001 | Yes | ~0.22 (moderate) |
-| ROUGE-L | 11.31 | 0.004 | Yes | ~0.19 (moderate) |
-| METEOR | 9.92 | 0.007 | Yes | ~0.17 (moderate) |
-| BERTScore Precision | 18.54 | <0.001 | Yes | ~0.30 (strong) |
-| BERTScore Recall | 30.77 | <0.001 | Yes | 0.410 (strong) |
-| BERTScore F1 | 13.00 | 0.002 | Yes | ~0.21 (moderate) |
-| SBERT | 16.69 | <0.001 | Yes | ~0.27 (moderate) |
-
-**Kendall's W interpretation**: 0–0.1 = weak, 0.1–0.3 = moderate, 0.3–0.5 = strong
-
----
-
-## Post-hoc Pairwise Wilcoxon Signed-Rank Tests (n = 26, primary)
-
-The Friedman test is a **within-subjects** omnibus, so its matched post-hoc is
-the Wilcoxon signed-rank test, not Mann-Whitney U. Bonferroni-corrected
-α = 0.0167 (3 comparisons). Effect size: matched-pairs rank-biserial r
-(positive when the first-named mode in the pair scores higher).
-
-| Metric | Pair | W | p | r (rank-biserial) | Direction | Sig (Bonf) |
-|---|---|---|---|---|---|---|
-| BLEU | Form vs Ask | 108 | 0.089 | +0.385 (medium) | Form > Ask | No |
-| BLEU | Form vs Chat | 133 | 0.291 | −0.242 (small) | Chat > Form | No |
-| BLEU | Ask vs Chat | 74 | 0.009 | −0.578 (large) | Chat > Ask | **Yes** |
-| ROUGE-1 | Form vs Ask | 77 | 0.011 | +0.561 (large) | Form > Ask | **Yes** |
-| ROUGE-1 | Form vs Chat | 147 | 0.483 | −0.162 (small) | Chat > Form | No |
-| ROUGE-1 | Ask vs Chat | 63 | 0.003 | −0.641 (large) | Chat > Ask | **Yes** |
-| ROUGE-2 | Form vs Ask | 30 | <0.001 | +0.829 (large) | Form > Ask | **Yes** |
-| ROUGE-2 | Form vs Chat | 136 | 0.328 | +0.225 (small) | Form > Chat | No |
-| ROUGE-2 | Ask vs Chat | 71 | 0.007 | −0.595 (large) | Chat > Ask | **Yes** |
-| ROUGE-L | Form vs Ask | 44 | <0.001 | +0.749 (large) | Form > Ask | **Yes** |
-| ROUGE-L | Form vs Chat | 161 | 0.727 | +0.083 (negligible) | Form > Chat | No |
-| ROUGE-L | Ask vs Chat | 66 | 0.004 | −0.624 (large) | Chat > Ask | **Yes** |
-| METEOR | Form vs Ask | 33 | <0.001 | +0.812 (large) | Form > Ask | **Yes** |
-| METEOR | Form vs Chat | 137 | 0.340 | +0.219 (small) | Form > Chat | No |
-| METEOR | Ask vs Chat | 84 | 0.019 | −0.521 (large) | Chat > Ask | No (above Bonf) |
-| BERTScore Precision | Form vs Ask | 63 | 0.003 | +0.641 (large) | Form > Ask | **Yes** |
-| BERTScore Precision | Form vs Chat | 106 | 0.080 | −0.396 (medium) | Chat > Form | No |
-| BERTScore Precision | Ask vs Chat | 40 | <0.001 | −0.772 (large) | Chat > Ask | **Yes** |
-| BERTScore Recall | Form vs Ask | 0 | <0.001 | +1.000 (large) | Form > Ask | **Yes** |
-| BERTScore Recall | Form vs Chat | 55 | 0.001 | +0.687 (large) | Form > Chat | **Yes** |
-| BERTScore Recall | Ask vs Chat | 99 | 0.053 | −0.436 (medium) | Chat > Ask | No |
-| BERTScore F1 | Form vs Ask | 24 | <0.001 | +0.863 (large) | Form > Ask | **Yes** |
-| BERTScore F1 | Form vs Chat | 172 | 0.940 | +0.020 (negligible) | Form > Chat | No |
-| BERTScore F1 | Ask vs Chat | 59 | 0.002 | −0.664 (large) | Chat > Ask | **Yes** |
-| SBERT | Form vs Ask | 110 | 0.099 | +0.373 (medium) | Form > Ask | No |
-| SBERT | Form vs Chat | 56 | 0.002 | −0.681 (large) | Chat > Form | **Yes** |
-| SBERT | Ask vs Chat | 26 | <0.001 | −0.852 (large) | Chat > Ask | **Yes** |
-
-**Key pattern (matched n = 26):** Ask consistently underperforms relative to
-both Form and Chat across the board — Ask vs Chat is significant on every
-metric except METEOR (just above Bonferroni) and BERTScore Recall, and Form vs
-Ask is significant on every metric except BLEU and SBERT. Form and Chat are
-not significantly different on most metrics; the two exceptions are BERTScore
-Recall (Form > Chat, large effect) and SBERT (Chat > Form, large effect),
-which is consistent with Form producing more reference-coverage and Chat
-producing more semantic-document-level fluency.
-
----
-
-## Sensitivity Check — Mann-Whitney U (full unbalanced sample, n = 113)
-
-Reported as a between-groups sensitivity check; **not** the primary post-hoc
-family for the within-subjects design. Bonferroni-corrected α = 0.0167.
+**Primary post-hoc family** following a significant K–W omnibus. Bonferroni-
+corrected α = 0.0167 (3 comparisons).
 
 | Metric | Comparison | p-value | r (effect) | Significant |
 |---|---|---|---|---|
@@ -140,10 +94,11 @@ family for the within-subjects design. Bonferroni-corrected α = 0.0167.
 | METEOR | Form vs Chat | ns | — | No |
 | METEOR | Ask vs Chat | 0.043 | — | No (above Bonf) |
 
-The sensitivity check broadly agrees with the matched-pairs result on
-direction (Ask < Form, Ask < Chat on most metrics), with the matched analysis
-producing larger and more consistent effect sizes — as expected for a
-within-subjects design.
+**Primary pattern (n = 113):** Form > Ask on most reference-overlap metrics
+(BERTScore Recall, BERTScore F1, ROUGE-2, METEOR), with Chat > Ask on
+BERTScore F1 and ROUGE-2. SBERT shows Chat > Form and Chat > Ask, consistent
+with Chat producing more document-level semantic fluency. The robust signal is
+Ask underperforming on reference-based scoring.
 
 ---
 
@@ -239,10 +194,9 @@ quality slightly, while *confidence in correctness* does not.
 
 ## Limitations
 
-- Full dataset unbalanced (n=37/37/39) due to parsing failures — between-mode
-  comparisons on the full sample are reported as a sensitivity check only.
-- Within-subjects subset (n = 26) is substantially smaller than full study
-  (N = 73). Effect sizes are reported alongside p-values to mitigate this.
+- Full sample unbalanced (n = 37/37/39) due to parsing failures — K–W and MWU
+  are appropriate for unbalanced groups; effect sizes are reported alongside
+  p-values for transparency.
 - Triangulated confidence–quality analyses (survey × NLP, all three modes per
   participant) are limited to n = 27 participants; per-mode joined n = 34/34/38.
 - Chapter-level metrics macro-averaged across 6 chapters per document.
@@ -252,22 +206,91 @@ quality slightly, while *confidence in correctness* does not.
 ---
 ---
 ---
+
+## Exploratory subset — matched-triple within-subjects (n = 26)
+
+**Not used in the thesis.** Retained for archival continuity with the analysis
+pipeline. Future agents: do not promote this section to "primary" — the
+n = 113 K–W + MWU family above is the deliberate thesis choice.
+
+### Friedman omnibus (matched n = 26)
+
+Non-parametric repeated-measures test on the matched-triple subset.
+
+| Metric | χ² | p-value | Significant | W (Kendall's) |
+|---|---|---|---|---|
+| BLEU | 6.23 | 0.044 | Yes | 0.083 (weak) |
+| ROUGE-1 | 10.69 | 0.005 | Yes | ~0.18 (moderate) |
+| ROUGE-2 | 13.46 | 0.001 | Yes | ~0.22 (moderate) |
+| ROUGE-L | 11.31 | 0.004 | Yes | ~0.19 (moderate) |
+| METEOR | 9.92 | 0.007 | Yes | ~0.17 (moderate) |
+| BERTScore Precision | 18.54 | <0.001 | Yes | ~0.30 (strong) |
+| BERTScore Recall | 30.77 | <0.001 | Yes | 0.410 (strong) |
+| BERTScore F1 | 13.00 | 0.002 | Yes | ~0.21 (moderate) |
+| SBERT | 16.69 | <0.001 | Yes | ~0.27 (moderate) |
+
+**Kendall's W interpretation**: 0–0.1 = weak, 0.1–0.3 = moderate, 0.3–0.5 = strong
+
+### Pairwise Wilcoxon signed-rank post-hoc (matched n = 26)
+
+Bonferroni-corrected α = 0.0167 (3 comparisons). Effect size: matched-pairs
+rank-biserial r (positive when the first-named mode in the pair scores higher).
+
+| Metric | Pair | W | p | r (rank-biserial) | Direction | Sig (Bonf) |
+|---|---|---|---|---|---|---|
+| BLEU | Form vs Ask | 108 | 0.089 | +0.385 (medium) | Form > Ask | No |
+| BLEU | Form vs Chat | 133 | 0.291 | −0.242 (small) | Chat > Form | No |
+| BLEU | Ask vs Chat | 74 | 0.009 | −0.578 (large) | Chat > Ask | **Yes** |
+| ROUGE-1 | Form vs Ask | 77 | 0.011 | +0.561 (large) | Form > Ask | **Yes** |
+| ROUGE-1 | Form vs Chat | 147 | 0.483 | −0.162 (small) | Chat > Form | No |
+| ROUGE-1 | Ask vs Chat | 63 | 0.003 | −0.641 (large) | Chat > Ask | **Yes** |
+| ROUGE-2 | Form vs Ask | 30 | <0.001 | +0.829 (large) | Form > Ask | **Yes** |
+| ROUGE-2 | Form vs Chat | 136 | 0.328 | +0.225 (small) | Form > Chat | No |
+| ROUGE-2 | Ask vs Chat | 71 | 0.007 | −0.595 (large) | Chat > Ask | **Yes** |
+| ROUGE-L | Form vs Ask | 44 | <0.001 | +0.749 (large) | Form > Ask | **Yes** |
+| ROUGE-L | Form vs Chat | 161 | 0.727 | +0.083 (negligible) | Form > Chat | No |
+| ROUGE-L | Ask vs Chat | 66 | 0.004 | −0.624 (large) | Chat > Ask | **Yes** |
+| METEOR | Form vs Ask | 33 | <0.001 | +0.812 (large) | Form > Ask | **Yes** |
+| METEOR | Form vs Chat | 137 | 0.340 | +0.219 (small) | Form > Chat | No |
+| METEOR | Ask vs Chat | 84 | 0.019 | −0.521 (large) | Chat > Ask | No (above Bonf) |
+| BERTScore Precision | Form vs Ask | 63 | 0.003 | +0.641 (large) | Form > Ask | **Yes** |
+| BERTScore Precision | Form vs Chat | 106 | 0.080 | −0.396 (medium) | Chat > Form | No |
+| BERTScore Precision | Ask vs Chat | 40 | <0.001 | −0.772 (large) | Chat > Ask | **Yes** |
+| BERTScore Recall | Form vs Ask | 0 | <0.001 | +1.000 (large) | Form > Ask | **Yes** |
+| BERTScore Recall | Form vs Chat | 55 | 0.001 | +0.687 (large) | Form > Chat | **Yes** |
+| BERTScore Recall | Ask vs Chat | 99 | 0.053 | −0.436 (medium) | Chat > Ask | No |
+| BERTScore F1 | Form vs Ask | 24 | <0.001 | +0.863 (large) | Form > Ask | **Yes** |
+| BERTScore F1 | Form vs Chat | 172 | 0.940 | +0.020 (negligible) | Form > Chat | No |
+| BERTScore F1 | Ask vs Chat | 59 | 0.002 | −0.664 (large) | Chat > Ask | **Yes** |
+| SBERT | Form vs Ask | 110 | 0.099 | +0.373 (medium) | Form > Ask | No |
+| SBERT | Form vs Chat | 56 | 0.002 | −0.681 (large) | Chat > Form | **Yes** |
+| SBERT | Ask vs Chat | 26 | <0.001 | −0.852 (large) | Chat > Ask | **Yes** |
+
+The matched-triple results broadly agree with the primary K–W + MWU pattern on
+direction (Ask < Form, Ask < Chat on most metrics), with larger and more
+consistent effect sizes — as expected for a within-subjects design on a smaller
+subset. They are not reported in the thesis.
+
+---
 ---
 ---
 
 ## Per-Chapter Inferential Tests
 
-Per-(metric, chapter) significance layer for the chapter-level NLP metrics, mirroring the doc-level Kruskal-Wallis → Friedman → Wilcoxon → Mann-Whitney U pipeline. Each cell is one of the 10 metrics applied to one of the six ROPA chapters (ch1–ch6); 60 (metric × chapter) combinations per test family.
+Per-(metric, chapter) significance layer for the chapter-level NLP metrics. The
+same design call applies: **K–W on n = 113 (with MWU post-hoc) is primary**;
+the matched-triple n = 26 Friedman/Wilcoxon tables below are kept for archival
+reference but are not used in the thesis.
 
 Chapter labels: **ch1** = Verantwortliche Stelle und Kontaktdaten · **ch2** = Zwecke und Rechtsgrundlagen der Verarbeitung · **ch3** = Kategorien personenbezogener Daten und Datenquellen · **ch4** = Betroffene Personen und Empfänger · **ch5** = Aufbewahrungsfristen und Löschung · **ch6** = Technische und organisatorische Maßnahmen.
 
-Sample sizes match the doc-level NLP analysis: full unbalanced n = 113 (Form 37 / Ask 37 / Chat 39) for Kruskal-Wallis and Mann-Whitney U; strict matched-triple within-subjects n = 26 for Friedman and Wilcoxon (identical participant list to the doc-level analysis, derived as the 26 users with exactly one document per mode in `chapter_results.csv`).
+Sample sizes match the doc-level NLP analysis: full unbalanced n = 113 (Form 37 / Ask 37 / Chat 39) for K–W and MWU (primary); strict matched-triple within-subjects n = 26 for Friedman and Wilcoxon (exploratory, identical participant list to the doc-level analysis, derived as the 26 users with exactly one document per mode in `chapter_results.csv`).
 
-Significance thresholds and effect-size labels are identical to the doc-level pipeline: Kruskal-Wallis / Friedman use α = 0.05; Wilcoxon and Mann-Whitney are Bonferroni-corrected to α = 0.0167 (3 comparisons within each cell). Effect-size labels for rank-biserial r: |r| < 0.1 negligible, < 0.3 small, < 0.5 medium, ≥ 0.5 large. Kendall's W: < 0.1 weak, < 0.3 moderate, ≥ 0.3 strong. ε² for Kruskal-Wallis: < 0.01 negligible, < 0.06 small, < 0.14 moderate, ≥ 0.14 large.
+Significance thresholds and effect-size labels: K–W and Friedman use α = 0.05; MWU and Wilcoxon are Bonferroni-corrected to α = 0.0167 (3 comparisons within each cell). Effect-size labels for rank-biserial r: |r| < 0.1 negligible, < 0.3 small, < 0.5 medium, ≥ 0.5 large. Kendall's W: < 0.1 weak, < 0.3 moderate, ≥ 0.3 strong. ε² for K–W: < 0.01 negligible, < 0.06 small, < 0.14 moderate, ≥ 0.14 large.
 
 Degenerate cells — typically the lexical metrics (BLEU, ROUGE-2) on Purposes (ch2) and Categories (ch3), where reference-overlap collapses to zero across every document — are reported as NaN with a footnote flag. `scipy.stats.friedmanchisquare` returns NaN χ² and p when every subject's values are tied across all three conditions, and `scipy.stats.kruskal` raises on fully constant input (caught and reported as NaN).
 
-### Kruskal-Wallis Omnibus (full unbalanced n = 113)
+### Primary: Kruskal–Wallis omnibus (full unbalanced n = 113)
 
 | Metric | Chapter | H | p | ε² | ε² label | Significant (α=0.05) |
 |---|---|---|---|---|---|---|
@@ -332,261 +355,9 @@ Degenerate cells — typically the lexical metrics (BLEU, ROUGE-2) on Purposes (
 | SBERT_MiniLM | ch5 | 9.285 | 0.010 | 0.083 | moderate | **Yes** |
 | SBERT_MiniLM | ch6 | 1.314 | 0.518 | 0.012 | small | No |
 
-### Friedman Omnibus (matched within-subjects n = 26)
+### Primary: Pairwise Mann–Whitney U post-hoc (full unbalanced n = 113, Bonferroni α = 0.0167)
 
-| Metric | Chapter | χ² | df | p | Kendall's W | W label | Significant (α=0.05) |
-|---|---|---|---|---|---|---|---|
-| BLEU | ch1 | 9.920 | 2 | 0.007 | 0.183 | moderate | **Yes** |
-| BLEU | ch2 | 15.308 | 2 | <0.001 | 0.294 | moderate | **Yes** |
-| BLEU | ch3 | 10.231 | 2 | 0.006 | 0.197 | moderate | **Yes** |
-| BLEU | ch4 | 9.107 | 2 | 0.011 | 0.173 | moderate | **Yes** |
-| BLEU | ch5 | 14.519 | 2 | <0.001 | 0.207 | moderate | **Yes** |
-| BLEU | ch6 | 18.932 | 2 | <0.001 | 0.361 | strong | **Yes** |
-| ROUGE-1 | ch1 | 9.961 | 2 | 0.007 | 0.188 | moderate | **Yes** |
-| ROUGE-1 | ch2 | 7.923 | 2 | 0.019 | 0.152 | moderate | **Yes** |
-| ROUGE-1 | ch3 | 21.462 | 2 | <0.001 | 0.413 | strong | **Yes** |
-| ROUGE-1 | ch4 | 15.462 | 2 | <0.001 | 0.297 | moderate | **Yes** |
-| ROUGE-1 | ch5 | 13.000 | 2 | 0.002 | 0.250 | moderate | **Yes** |
-| ROUGE-1 | ch6 | 5.615 | 2 | 0.060 | 0.108 | moderate | No |
-| ROUGE-2 | ch1 | 5.846 | 2 | 0.054 | 0.112 | moderate | No |
-| ROUGE-2 | ch2 | 17.308 | 2 | <0.001 | 0.333 | strong | **Yes** |
-| ROUGE-2 | ch3 | 24.077 | 2 | <0.001 | 0.463 | strong | **Yes** |
-| ROUGE-2 | ch4 | 17.154 | 2 | <0.001 | 0.330 | strong | **Yes** |
-| ROUGE-2 | ch5 | 11.615 | 2 | 0.003 | 0.223 | moderate | **Yes** |
-| ROUGE-2 | ch6 | 14.077 | 2 | <0.001 | 0.271 | moderate | **Yes** |
-| ROUGE-L | ch1 | 8.175 | 2 | 0.017 | 0.156 | moderate | **Yes** |
-| ROUGE-L | ch2 | 7.692 | 2 | 0.021 | 0.148 | moderate | **Yes** |
-| ROUGE-L | ch3 | 19.923 | 2 | <0.001 | 0.383 | strong | **Yes** |
-| ROUGE-L | ch4 | 17.615 | 2 | <0.001 | 0.339 | strong | **Yes** |
-| ROUGE-L | ch5 | 13.462 | 2 | 0.001 | 0.259 | moderate | **Yes** |
-| ROUGE-L | ch6 | 10.231 | 2 | 0.006 | 0.197 | moderate | **Yes** |
-| METEOR | ch1 | 4.385 | 2 | 0.112 | 0.084 | weak | No |
-| METEOR | ch2 | 7.000 | 2 | 0.030 | 0.135 | moderate | **Yes** |
-| METEOR | ch3 | 25.923 | 2 | <0.001 | 0.499 | strong | **Yes** |
-| METEOR | ch4 | 23.154 | 2 | <0.001 | 0.445 | strong | **Yes** |
-| METEOR | ch5 | 16.692 | 2 | <0.001 | 0.321 | strong | **Yes** |
-| METEOR | ch6 | 6.462 | 2 | 0.040 | 0.124 | moderate | **Yes** |
-| BERTScore_Precision | ch1 | 2.154 | 2 | 0.341 | 0.041 | weak | No |
-| BERTScore_Precision | ch2 | 3.692 | 2 | 0.158 | 0.071 | weak | No |
-| BERTScore_Precision | ch3 | 17.538 | 2 | <0.001 | 0.337 | strong | **Yes** |
-| BERTScore_Precision | ch4 | 7.000 | 2 | 0.030 | 0.135 | moderate | **Yes** |
-| BERTScore_Precision | ch5 | 9.538 | 2 | 0.008 | 0.183 | moderate | **Yes** |
-| BERTScore_Precision | ch6 | 9.308 | 2 | 0.010 | 0.179 | moderate | **Yes** |
-| BERTScore_Recall | ch1 | 4.923 | 2 | 0.085 | 0.095 | weak | No |
-| BERTScore_Recall | ch2 | 5.615 | 2 | 0.060 | 0.108 | moderate | No |
-| BERTScore_Recall | ch3 | 34.462 | 2 | <0.001 | 0.663 | strong | **Yes** |
-| BERTScore_Recall | ch4 | 29.154 | 2 | <0.001 | 0.561 | strong | **Yes** |
-| BERTScore_Recall | ch5 | 18.769 | 2 | <0.001 | 0.361 | strong | **Yes** |
-| BERTScore_Recall | ch6 | 5.615 | 2 | 0.060 | 0.108 | moderate | No |
-| BERTScore_F1 | ch1 | 6.231 | 2 | 0.044 | 0.120 | moderate | **Yes** |
-| BERTScore_F1 | ch2 | 7.000 | 2 | 0.030 | 0.135 | moderate | **Yes** |
-| BERTScore_F1 | ch3 | 31.000 | 2 | <0.001 | 0.596 | strong | **Yes** |
-| BERTScore_F1 | ch4 | 10.231 | 2 | 0.006 | 0.197 | moderate | **Yes** |
-| BERTScore_F1 | ch5 | 12.077 | 2 | 0.002 | 0.232 | moderate | **Yes** |
-| BERTScore_F1 | ch6 | 5.769 | 2 | 0.056 | 0.111 | moderate | No |
-| SBERT_ModernBERT | ch1 | 4.000 | 2 | 0.135 | 0.077 | weak | No |
-| SBERT_ModernBERT | ch2 | 5.154 | 2 | 0.076 | 0.099 | weak | No |
-| SBERT_ModernBERT | ch3 | 13.154 | 2 | 0.001 | 0.253 | moderate | **Yes** |
-| SBERT_ModernBERT | ch4 | 2.385 | 2 | 0.304 | 0.046 | weak | No |
-| SBERT_ModernBERT | ch5 | 6.231 | 2 | 0.044 | 0.120 | moderate | **Yes** |
-| SBERT_ModernBERT | ch6 | 7.000 | 2 | 0.030 | 0.135 | moderate | **Yes** |
-| SBERT_MiniLM | ch1 | 3.769 | 2 | 0.152 | 0.072 | weak | No |
-| SBERT_MiniLM | ch2 | 5.615 | 2 | 0.060 | 0.108 | moderate | No |
-| SBERT_MiniLM | ch3 | 14.846 | 2 | <0.001 | 0.286 | moderate | **Yes** |
-| SBERT_MiniLM | ch4 | 6.077 | 2 | 0.048 | 0.117 | moderate | **Yes** |
-| SBERT_MiniLM | ch5 | 9.308 | 2 | 0.010 | 0.179 | moderate | **Yes** |
-| SBERT_MiniLM | ch6 | 1.462 | 2 | 0.482 | 0.028 | weak | No |
-
-### Pairwise Wilcoxon Signed-Rank Post-hoc (matched n = 26, Bonferroni α = 0.0167)
-
-Effect size: matched-pairs rank-biserial r (positive when the first-named mode in the pair scores higher).
-
-| Metric | Chapter | Pair | W | p | r | r label | Direction | Sig (Bonf) |
-|---|---|---|---|---|---|---|---|---|
-| BLEU | ch1 | Form vs Ask | 110.0 | 0.158 | -0.323 | medium | Ask > Form | No |
-| BLEU | ch1 | Form vs Chat | 101.0 | 0.098 | 0.378 | medium | Form > Chat | No |
-| BLEU | ch1 | Ask vs Chat | 60.0 | 0.006 | 0.631 | large | Ask > Chat | **Yes** |
-| BLEU | ch2 | Form vs Ask | 37.0 | <0.001 | 0.789 | large | Form > Ask | **Yes** |
-| BLEU | ch2 | Form vs Chat | 74.0 | 0.009 | 0.578 | large | Form > Chat | **Yes** |
-| BLEU | ch2 | Ask vs Chat | 126.0 | 0.217 | -0.282 | small | Chat > Ask | No |
-| BLEU | ch3 | Form vs Ask | 81.0 | 0.015 | 0.538 | large | Form > Ask | **Yes** |
-| BLEU | ch3 | Form vs Chat | 39.0 | <0.001 | 0.778 | large | Form > Chat | **Yes** |
-| BLEU | ch3 | Ask vs Chat | 130.0 | 0.258 | 0.259 | small | Ask > Chat | No |
-| BLEU | ch4 | Form vs Ask | 56.0 | 0.002 | 0.681 | large | Form > Ask | **Yes** |
-| BLEU | ch4 | Form vs Chat | 132.0 | 0.280 | 0.248 | small | Form > Chat | No |
-| BLEU | ch4 | Ask vs Chat | 109.0 | 0.150 | -0.329 | medium | Chat > Ask | No |
-| BLEU | ch5 | Form vs Ask | 16.0 | 0.002 | 0.813 | large | Form > Ask | **Yes** |
-| BLEU | ch5 | Form vs Chat | 125.0 | 0.693 | -0.094 | negligible | Chat > Form | No |
-| BLEU | ch5 | Ask vs Chat | 11.0 | 0.016 | -0.758 | large | Chat > Ask | **Yes** |
-| BLEU | ch6 | Form vs Ask | 68.0 | 0.005 | 0.613 | large | Form > Ask | **Yes** |
-| BLEU | ch6 | Form vs Chat | 149.0 | 0.515 | -0.151 | small | Chat > Form | No |
-| BLEU | ch6 | Ask vs Chat | 48.0 | 0.002 | -0.705 | large | Chat > Ask | **Yes** |
-| ROUGE-1 | ch1 | Form vs Ask | 102.0 | 0.063 | -0.419 | medium | Ask > Form | No |
-| ROUGE-1 | ch1 | Form vs Chat | 149.0 | 0.515 | 0.151 | small | Form > Chat | No |
-| ROUGE-1 | ch1 | Ask vs Chat | 72.0 | 0.026 | 0.520 | large | Ask > Chat | No |
-| ROUGE-1 | ch2 | Form vs Ask | 61.0 | 0.003 | 0.652 | large | Form > Ask | **Yes** |
-| ROUGE-1 | ch2 | Form vs Chat | 89.0 | 0.027 | 0.493 | medium | Form > Chat | No |
-| ROUGE-1 | ch2 | Ask vs Chat | 127.0 | 0.227 | -0.276 | small | Chat > Ask | No |
-| ROUGE-1 | ch3 | Form vs Ask | 3.0 | <0.001 | 0.983 | large | Form > Ask | **Yes** |
-| ROUGE-1 | ch3 | Form vs Chat | 43.0 | <0.001 | 0.755 | large | Form > Chat | **Yes** |
-| ROUGE-1 | ch3 | Ask vs Chat | 100.0 | 0.056 | -0.430 | medium | Chat > Ask | No |
-| ROUGE-1 | ch4 | Form vs Ask | 34.0 | <0.001 | 0.806 | large | Form > Ask | **Yes** |
-| ROUGE-1 | ch4 | Form vs Chat | 64.0 | 0.004 | 0.635 | large | Form > Chat | **Yes** |
-| ROUGE-1 | ch4 | Ask vs Chat | 96.0 | 0.043 | -0.453 | medium | Chat > Ask | No |
-| ROUGE-1 | ch5 | Form vs Ask | 27.0 | <0.001 | 0.846 | large | Form > Ask | **Yes** |
-| ROUGE-1 | ch5 | Form vs Chat | 120.0 | 0.165 | -0.316 | medium | Chat > Form | No |
-| ROUGE-1 | ch5 | Ask vs Chat | 51.0 | <0.001 | -0.709 | large | Chat > Ask | **Yes** |
-| ROUGE-1 | ch6 | Form vs Ask | 145.0 | 0.452 | 0.174 | small | Form > Ask | No |
-| ROUGE-1 | ch6 | Form vs Chat | 114.0 | 0.123 | -0.350 | medium | Chat > Form | No |
-| ROUGE-1 | ch6 | Ask vs Chat | 103.0 | 0.067 | -0.413 | medium | Chat > Ask | No |
-| ROUGE-2 | ch1 | Form vs Ask | 108.0 | 0.089 | -0.385 | medium | Ask > Form | No |
-| ROUGE-2 | ch1 | Form vs Chat | 136.0 | 0.328 | 0.225 | small | Form > Chat | No |
-| ROUGE-2 | ch1 | Ask vs Chat | 85.0 | 0.020 | 0.516 | large | Ask > Chat | No |
-| ROUGE-2 | ch2 | Form vs Ask | 21.0 | <0.001 | 0.880 | large | Form > Ask | **Yes** |
-| ROUGE-2 | ch2 | Form vs Chat | 65.0 | 0.004 | 0.630 | large | Form > Chat | **Yes** |
-| ROUGE-2 | ch2 | Ask vs Chat | 119.0 | 0.157 | -0.322 | medium | Chat > Ask | No |
-| ROUGE-2 | ch3 | Form vs Ask | 0.0 | <0.001 | 1.000 | large | Form > Ask | **Yes** |
-| ROUGE-2 | ch3 | Form vs Chat | 41.0 | <0.001 | 0.766 | large | Form > Chat | **Yes** |
-| ROUGE-2 | ch3 | Ask vs Chat | 90.0 | 0.029 | -0.487 | medium | Chat > Ask | No |
-| ROUGE-2 | ch4 | Form vs Ask | 32.0 | <0.001 | 0.818 | large | Form > Ask | **Yes** |
-| ROUGE-2 | ch4 | Form vs Chat | 33.0 | <0.001 | 0.812 | large | Form > Chat | **Yes** |
-| ROUGE-2 | ch4 | Ask vs Chat | 137.0 | 0.340 | -0.219 | small | Chat > Ask | No |
-| ROUGE-2 | ch5 | Form vs Ask | 50.0 | <0.001 | 0.715 | large | Form > Ask | **Yes** |
-| ROUGE-2 | ch5 | Form vs Chat | 174.0 | 0.980 | 0.009 | negligible | Form > Chat | No |
-| ROUGE-2 | ch5 | Ask vs Chat | 67.0 | 0.005 | -0.618 | large | Chat > Ask | **Yes** |
-| ROUGE-2 | ch6 | Form vs Ask | 84.0 | 0.019 | 0.521 | large | Form > Ask | No |
-| ROUGE-2 | ch6 | Form vs Chat | 123.0 | 0.190 | -0.299 | small | Chat > Form | No |
-| ROUGE-2 | ch6 | Ask vs Chat | 62.0 | 0.003 | -0.647 | large | Chat > Ask | **Yes** |
-| ROUGE-L | ch1 | Form vs Ask | 106.0 | 0.128 | -0.348 | medium | Ask > Form | No |
-| ROUGE-L | ch1 | Form vs Chat | 103.0 | 0.067 | 0.413 | medium | Form > Chat | No |
-| ROUGE-L | ch1 | Ask vs Chat | 76.0 | 0.010 | 0.567 | large | Ask > Chat | **Yes** |
-| ROUGE-L | ch2 | Form vs Ask | 38.0 | <0.001 | 0.783 | large | Form > Ask | **Yes** |
-| ROUGE-L | ch2 | Form vs Chat | 88.0 | 0.025 | 0.499 | medium | Form > Chat | No |
-| ROUGE-L | ch2 | Ask vs Chat | 103.0 | 0.067 | -0.413 | medium | Chat > Ask | No |
-| ROUGE-L | ch3 | Form vs Ask | 1.0 | <0.001 | 0.994 | large | Form > Ask | **Yes** |
-| ROUGE-L | ch3 | Form vs Chat | 50.0 | <0.001 | 0.715 | large | Form > Chat | **Yes** |
-| ROUGE-L | ch3 | Ask vs Chat | 79.0 | 0.013 | -0.550 | large | Chat > Ask | **Yes** |
-| ROUGE-L | ch4 | Form vs Ask | 38.0 | <0.001 | 0.783 | large | Form > Ask | **Yes** |
-| ROUGE-L | ch4 | Form vs Chat | 62.0 | 0.003 | 0.647 | large | Form > Chat | **Yes** |
-| ROUGE-L | ch4 | Ask vs Chat | 122.0 | 0.181 | -0.305 | medium | Chat > Ask | No |
-| ROUGE-L | ch5 | Form vs Ask | 33.0 | <0.001 | 0.812 | large | Form > Ask | **Yes** |
-| ROUGE-L | ch5 | Form vs Chat | 123.0 | 0.190 | -0.299 | small | Chat > Form | No |
-| ROUGE-L | ch5 | Ask vs Chat | 55.0 | 0.001 | -0.687 | large | Chat > Ask | **Yes** |
-| ROUGE-L | ch6 | Form vs Ask | 127.0 | 0.227 | 0.276 | small | Form > Ask | No |
-| ROUGE-L | ch6 | Form vs Chat | 114.0 | 0.123 | -0.350 | medium | Chat > Form | No |
-| ROUGE-L | ch6 | Ask vs Chat | 66.0 | 0.004 | -0.624 | large | Chat > Ask | **Yes** |
-| METEOR | ch1 | Form vs Ask | 121.0 | 0.173 | -0.311 | medium | Ask > Form | No |
-| METEOR | ch1 | Form vs Chat | 131.0 | 0.269 | 0.254 | small | Form > Chat | No |
-| METEOR | ch1 | Ask vs Chat | 89.0 | 0.027 | 0.493 | medium | Ask > Chat | No |
-| METEOR | ch2 | Form vs Ask | 41.0 | <0.001 | 0.766 | large | Form > Ask | **Yes** |
-| METEOR | ch2 | Form vs Chat | 127.0 | 0.227 | 0.276 | small | Form > Chat | No |
-| METEOR | ch2 | Ask vs Chat | 93.0 | 0.036 | -0.470 | medium | Chat > Ask | No |
-| METEOR | ch3 | Form vs Ask | 7.0 | <0.001 | 0.960 | large | Form > Ask | **Yes** |
-| METEOR | ch3 | Form vs Chat | 8.0 | <0.001 | 0.954 | large | Form > Chat | **Yes** |
-| METEOR | ch3 | Ask vs Chat | 133.0 | 0.291 | 0.242 | small | Ask > Chat | No |
-| METEOR | ch4 | Form vs Ask | 14.0 | <0.001 | 0.920 | large | Form > Ask | **Yes** |
-| METEOR | ch4 | Form vs Chat | 31.0 | <0.001 | 0.823 | large | Form > Chat | **Yes** |
-| METEOR | ch4 | Ask vs Chat | 143.0 | 0.423 | -0.185 | small | Chat > Ask | No |
-| METEOR | ch5 | Form vs Ask | 34.0 | <0.001 | 0.806 | large | Form > Ask | **Yes** |
-| METEOR | ch5 | Form vs Chat | 157.0 | 0.653 | -0.105 | small | Chat > Form | No |
-| METEOR | ch5 | Ask vs Chat | 55.0 | 0.001 | -0.687 | large | Chat > Ask | **Yes** |
-| METEOR | ch6 | Form vs Ask | 76.0 | 0.010 | 0.567 | large | Form > Ask | **Yes** |
-| METEOR | ch6 | Form vs Chat | 131.0 | 0.269 | -0.254 | small | Chat > Form | No |
-| METEOR | ch6 | Ask vs Chat | 88.0 | 0.025 | -0.499 | medium | Chat > Ask | No |
-| BERTScore_Precision | ch1 | Form vs Ask | 132.0 | 0.280 | -0.248 | small | Ask > Form | No |
-| BERTScore_Precision | ch1 | Form vs Chat | 110.0 | 0.099 | 0.373 | medium | Form > Chat | No |
-| BERTScore_Precision | ch1 | Ask vs Chat | 93.0 | 0.036 | 0.470 | medium | Ask > Chat | No |
-| BERTScore_Precision | ch2 | Form vs Ask | 119.0 | 0.157 | 0.322 | medium | Form > Ask | No |
-| BERTScore_Precision | ch2 | Form vs Chat | 169.0 | 0.881 | -0.037 | negligible | Chat > Form | No |
-| BERTScore_Precision | ch2 | Ask vs Chat | 92.0 | 0.033 | -0.476 | medium | Chat > Ask | No |
-| BERTScore_Precision | ch3 | Form vs Ask | 8.0 | <0.001 | 0.954 | large | Form > Ask | **Yes** |
-| BERTScore_Precision | ch3 | Form vs Chat | 100.0 | 0.056 | 0.430 | medium | Form > Chat | No |
-| BERTScore_Precision | ch3 | Ask vs Chat | 54.0 | 0.001 | -0.692 | large | Chat > Ask | **Yes** |
-| BERTScore_Precision | ch4 | Form vs Ask | 87.0 | 0.024 | 0.504 | large | Form > Ask | No |
-| BERTScore_Precision | ch4 | Form vs Chat | 133.0 | 0.291 | -0.242 | small | Chat > Form | No |
-| BERTScore_Precision | ch4 | Ask vs Chat | 71.0 | 0.007 | -0.595 | large | Chat > Ask | **Yes** |
-| BERTScore_Precision | ch5 | Form vs Ask | 128.0 | 0.237 | 0.271 | small | Form > Ask | No |
-| BERTScore_Precision | ch5 | Form vs Chat | 88.0 | 0.025 | -0.499 | medium | Chat > Form | No |
-| BERTScore_Precision | ch5 | Ask vs Chat | 73.0 | 0.008 | -0.584 | large | Chat > Ask | **Yes** |
-| BERTScore_Precision | ch6 | Form vs Ask | 123.0 | 0.190 | -0.299 | small | Ask > Form | No |
-| BERTScore_Precision | ch6 | Form vs Chat | 101.0 | 0.059 | -0.425 | medium | Chat > Form | No |
-| BERTScore_Precision | ch6 | Ask vs Chat | 112.0 | 0.111 | -0.362 | medium | Chat > Ask | No |
-| BERTScore_Recall | ch1 | Form vs Ask | 114.0 | 0.123 | -0.350 | medium | Ask > Form | No |
-| BERTScore_Recall | ch1 | Form vs Chat | 114.0 | 0.123 | 0.350 | medium | Form > Chat | No |
-| BERTScore_Recall | ch1 | Ask vs Chat | 89.0 | 0.027 | 0.493 | medium | Ask > Chat | No |
-| BERTScore_Recall | ch2 | Form vs Ask | 96.0 | 0.043 | 0.453 | medium | Form > Ask | No |
-| BERTScore_Recall | ch2 | Form vs Chat | 166.0 | 0.822 | 0.054 | negligible | Form > Chat | No |
-| BERTScore_Recall | ch2 | Ask vs Chat | 103.0 | 0.067 | -0.413 | medium | Chat > Ask | No |
-| BERTScore_Recall | ch3 | Form vs Ask | 9.0 | <0.001 | 0.949 | large | Form > Ask | **Yes** |
-| BERTScore_Recall | ch3 | Form vs Chat | 5.0 | <0.001 | 0.972 | large | Form > Chat | **Yes** |
-| BERTScore_Recall | ch3 | Ask vs Chat | 135.0 | 0.315 | 0.231 | small | Ask > Chat | No |
-| BERTScore_Recall | ch4 | Form vs Ask | 13.0 | <0.001 | 0.926 | large | Form > Ask | **Yes** |
-| BERTScore_Recall | ch4 | Form vs Chat | 2.0 | <0.001 | 0.989 | large | Form > Chat | **Yes** |
-| BERTScore_Recall | ch4 | Ask vs Chat | 109.0 | 0.094 | 0.379 | medium | Ask > Chat | No |
-| BERTScore_Recall | ch5 | Form vs Ask | 36.0 | <0.001 | 0.795 | large | Form > Ask | **Yes** |
-| BERTScore_Recall | ch5 | Form vs Chat | 142.0 | 0.408 | -0.191 | small | Chat > Form | No |
-| BERTScore_Recall | ch5 | Ask vs Chat | 51.0 | <0.001 | -0.709 | large | Chat > Ask | **Yes** |
-| BERTScore_Recall | ch6 | Form vs Ask | 123.0 | 0.190 | 0.299 | small | Form > Ask | No |
-| BERTScore_Recall | ch6 | Form vs Chat | 119.0 | 0.157 | -0.322 | medium | Chat > Form | No |
-| BERTScore_Recall | ch6 | Ask vs Chat | 85.0 | 0.020 | -0.516 | large | Chat > Ask | No |
-| BERTScore_F1 | ch1 | Form vs Ask | 117.0 | 0.143 | -0.333 | medium | Ask > Form | No |
-| BERTScore_F1 | ch1 | Form vs Chat | 104.0 | 0.071 | 0.407 | medium | Form > Chat | No |
-| BERTScore_F1 | ch1 | Ask vs Chat | 87.0 | 0.024 | 0.504 | large | Ask > Chat | No |
-| BERTScore_F1 | ch2 | Form vs Ask | 85.0 | 0.020 | 0.516 | large | Form > Ask | No |
-| BERTScore_F1 | ch2 | Form vs Chat | 172.0 | 0.940 | 0.020 | negligible | Form > Chat | No |
-| BERTScore_F1 | ch2 | Ask vs Chat | 83.0 | 0.018 | -0.527 | large | Chat > Ask | No |
-| BERTScore_F1 | ch3 | Form vs Ask | 2.0 | <0.001 | 0.989 | large | Form > Ask | **Yes** |
-| BERTScore_F1 | ch3 | Form vs Chat | 10.0 | <0.001 | 0.943 | large | Form > Chat | **Yes** |
-| BERTScore_F1 | ch3 | Ask vs Chat | 140.0 | 0.380 | -0.202 | small | Chat > Ask | No |
-| BERTScore_F1 | ch4 | Form vs Ask | 31.0 | <0.001 | 0.823 | large | Form > Ask | **Yes** |
-| BERTScore_F1 | ch4 | Form vs Chat | 68.0 | 0.005 | 0.613 | large | Form > Chat | **Yes** |
-| BERTScore_F1 | ch4 | Ask vs Chat | 117.0 | 0.143 | -0.333 | medium | Chat > Ask | No |
-| BERTScore_F1 | ch5 | Form vs Ask | 93.0 | 0.036 | 0.470 | medium | Form > Ask | No |
-| BERTScore_F1 | ch5 | Form vs Chat | 98.0 | 0.049 | -0.442 | medium | Chat > Form | No |
-| BERTScore_F1 | ch5 | Ask vs Chat | 65.0 | 0.004 | -0.630 | large | Chat > Ask | **Yes** |
-| BERTScore_F1 | ch6 | Form vs Ask | 170.0 | 0.901 | -0.031 | negligible | Ask > Form | No |
-| BERTScore_F1 | ch6 | Form vs Chat | 94.0 | 0.038 | -0.464 | medium | Chat > Form | No |
-| BERTScore_F1 | ch6 | Ask vs Chat | 84.0 | 0.019 | -0.521 | large | Chat > Ask | No |
-| SBERT_ModernBERT | ch1 | Form vs Ask | 109.0 | 0.094 | -0.379 | medium | Ask > Form | No |
-| SBERT_ModernBERT | ch1 | Form vs Chat | 115.0 | 0.129 | 0.345 | medium | Form > Chat | No |
-| SBERT_ModernBERT | ch1 | Ask vs Chat | 85.0 | 0.020 | 0.516 | large | Ask > Chat | No |
-| SBERT_ModernBERT | ch2 | Form vs Ask | 86.0 | 0.022 | 0.510 | large | Form > Ask | No |
-| SBERT_ModernBERT | ch2 | Form vs Chat | 152.0 | 0.565 | -0.134 | small | Chat > Form | No |
-| SBERT_ModernBERT | ch2 | Ask vs Chat | 93.0 | 0.036 | -0.470 | medium | Chat > Ask | No |
-| SBERT_ModernBERT | ch3 | Form vs Ask | 35.0 | <0.001 | 0.801 | large | Form > Ask | **Yes** |
-| SBERT_ModernBERT | ch3 | Form vs Chat | 30.0 | <0.001 | 0.829 | large | Form > Chat | **Yes** |
-| SBERT_ModernBERT | ch3 | Ask vs Chat | 168.0 | 0.861 | 0.043 | negligible | Ask > Chat | No |
-| SBERT_ModernBERT | ch4 | Form vs Ask | 105.0 | 0.075 | 0.402 | medium | Form > Ask | No |
-| SBERT_ModernBERT | ch4 | Form vs Chat | 157.0 | 0.653 | 0.105 | small | Form > Chat | No |
-| SBERT_ModernBERT | ch4 | Ask vs Chat | 133.0 | 0.291 | -0.242 | small | Chat > Ask | No |
-| SBERT_ModernBERT | ch5 | Form vs Ask | 114.0 | 0.123 | 0.350 | medium | Form > Ask | No |
-| SBERT_ModernBERT | ch5 | Form vs Chat | 92.0 | 0.033 | -0.476 | medium | Chat > Form | No |
-| SBERT_ModernBERT | ch5 | Ask vs Chat | 66.0 | 0.004 | -0.624 | large | Chat > Ask | **Yes** |
-| SBERT_ModernBERT | ch6 | Form vs Ask | 128.0 | 0.237 | -0.271 | small | Ask > Form | No |
-| SBERT_ModernBERT | ch6 | Form vs Chat | 67.0 | 0.005 | -0.618 | large | Chat > Form | **Yes** |
-| SBERT_ModernBERT | ch6 | Ask vs Chat | 93.0 | 0.036 | -0.470 | medium | Chat > Ask | No |
-| SBERT_MiniLM | ch1 | Form vs Ask | 98.0 | 0.049 | -0.442 | medium | Ask > Form | No |
-| SBERT_MiniLM | ch1 | Form vs Chat | 175.0 | 1.000 | 0.003 | negligible | Form > Chat | No |
-| SBERT_MiniLM | ch1 | Ask vs Chat | 85.0 | 0.020 | 0.516 | large | Ask > Chat | No |
-| SBERT_MiniLM | ch2 | Form vs Ask | 122.0 | 0.181 | 0.305 | medium | Form > Ask | No |
-| SBERT_MiniLM | ch2 | Form vs Chat | 72.0 | 0.007 | 0.590 | large | Form > Chat | **Yes** |
-| SBERT_MiniLM | ch2 | Ask vs Chat | 114.0 | 0.123 | 0.350 | medium | Ask > Chat | No |
-| SBERT_MiniLM | ch3 | Form vs Ask | 146.0 | 0.468 | 0.168 | small | Form > Ask | No |
-| SBERT_MiniLM | ch3 | Form vs Chat | 49.0 | <0.001 | 0.721 | large | Form > Chat | **Yes** |
-| SBERT_MiniLM | ch3 | Ask vs Chat | 82.0 | 0.016 | 0.533 | large | Ask > Chat | **Yes** |
-| SBERT_MiniLM | ch4 | Form vs Ask | 104.0 | 0.071 | 0.407 | medium | Form > Ask | No |
-| SBERT_MiniLM | ch4 | Form vs Chat | 117.0 | 0.143 | -0.333 | medium | Chat > Form | No |
-| SBERT_MiniLM | ch4 | Ask vs Chat | 57.0 | 0.002 | -0.675 | large | Chat > Ask | **Yes** |
-| SBERT_MiniLM | ch5 | Form vs Ask | 85.0 | 0.020 | 0.516 | large | Form > Ask | No |
-| SBERT_MiniLM | ch5 | Form vs Chat | 123.0 | 0.190 | -0.299 | small | Chat > Form | No |
-| SBERT_MiniLM | ch5 | Ask vs Chat | 57.0 | 0.002 | -0.675 | large | Chat > Ask | **Yes** |
-| SBERT_MiniLM | ch6 | Form vs Ask | 143.0 | 0.423 | 0.185 | small | Form > Ask | No |
-| SBERT_MiniLM | ch6 | Form vs Chat | 153.0 | 0.582 | -0.128 | small | Chat > Form | No |
-| SBERT_MiniLM | ch6 | Ask vs Chat | 142.0 | 0.408 | -0.191 | small | Chat > Ask | No |
-
-### Pairwise Mann-Whitney U Sensitivity (full unbalanced n = 113, Bonferroni α = 0.0167)
-
-Reported as a between-groups sensitivity check on the unbalanced full sample; the matched-pairs Wilcoxon family above is the primary inferential result. Effect size: rank-biserial r (positive when the first-named mode scores higher).
+Effect size: rank-biserial r (positive when the first-named mode scores higher).
 
 | Metric | Chapter | Pair | U | p | r | r label | Direction | Median A | Median B | Sig (Bonf) |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -771,20 +542,275 @@ Reported as a between-groups sensitivity check on the unbalanced full sample; th
 | SBERT_MiniLM | ch6 | Form vs Chat | 606.0 | 0.232 | -0.160 | small | Chat > Form | 0.6836 | 0.7342 | No |
 | SBERT_MiniLM | ch6 | Ask vs Chat | 668.0 | 0.582 | -0.074 | negligible | Chat > Ask | 0.7175 | 0.7342 | No |
 
-### Summary Counts of Significant Cells
+### Exploratory: Friedman omnibus (matched within-subjects n = 26)
+
+Retained for archival reference; not used in the thesis.
+
+| Metric | Chapter | χ² | df | p | Kendall's W | W label | Significant (α=0.05) |
+|---|---|---|---|---|---|---|---|
+| BLEU | ch1 | 9.920 | 2 | 0.007 | 0.183 | moderate | **Yes** |
+| BLEU | ch2 | 15.308 | 2 | <0.001 | 0.294 | moderate | **Yes** |
+| BLEU | ch3 | 10.231 | 2 | 0.006 | 0.197 | moderate | **Yes** |
+| BLEU | ch4 | 9.107 | 2 | 0.011 | 0.173 | moderate | **Yes** |
+| BLEU | ch5 | 14.519 | 2 | <0.001 | 0.207 | moderate | **Yes** |
+| BLEU | ch6 | 18.932 | 2 | <0.001 | 0.361 | strong | **Yes** |
+| ROUGE-1 | ch1 | 9.961 | 2 | 0.007 | 0.188 | moderate | **Yes** |
+| ROUGE-1 | ch2 | 7.923 | 2 | 0.019 | 0.152 | moderate | **Yes** |
+| ROUGE-1 | ch3 | 21.462 | 2 | <0.001 | 0.413 | strong | **Yes** |
+| ROUGE-1 | ch4 | 15.462 | 2 | <0.001 | 0.297 | moderate | **Yes** |
+| ROUGE-1 | ch5 | 13.000 | 2 | 0.002 | 0.250 | moderate | **Yes** |
+| ROUGE-1 | ch6 | 5.615 | 2 | 0.060 | 0.108 | moderate | No |
+| ROUGE-2 | ch1 | 5.846 | 2 | 0.054 | 0.112 | moderate | No |
+| ROUGE-2 | ch2 | 17.308 | 2 | <0.001 | 0.333 | strong | **Yes** |
+| ROUGE-2 | ch3 | 24.077 | 2 | <0.001 | 0.463 | strong | **Yes** |
+| ROUGE-2 | ch4 | 17.154 | 2 | <0.001 | 0.330 | strong | **Yes** |
+| ROUGE-2 | ch5 | 11.615 | 2 | 0.003 | 0.223 | moderate | **Yes** |
+| ROUGE-2 | ch6 | 14.077 | 2 | <0.001 | 0.271 | moderate | **Yes** |
+| ROUGE-L | ch1 | 8.175 | 2 | 0.017 | 0.156 | moderate | **Yes** |
+| ROUGE-L | ch2 | 7.692 | 2 | 0.021 | 0.148 | moderate | **Yes** |
+| ROUGE-L | ch3 | 19.923 | 2 | <0.001 | 0.383 | strong | **Yes** |
+| ROUGE-L | ch4 | 17.615 | 2 | <0.001 | 0.339 | strong | **Yes** |
+| ROUGE-L | ch5 | 13.462 | 2 | 0.001 | 0.259 | moderate | **Yes** |
+| ROUGE-L | ch6 | 10.231 | 2 | 0.006 | 0.197 | moderate | **Yes** |
+| METEOR | ch1 | 4.385 | 2 | 0.112 | 0.084 | weak | No |
+| METEOR | ch2 | 7.000 | 2 | 0.030 | 0.135 | moderate | **Yes** |
+| METEOR | ch3 | 25.923 | 2 | <0.001 | 0.499 | strong | **Yes** |
+| METEOR | ch4 | 23.154 | 2 | <0.001 | 0.445 | strong | **Yes** |
+| METEOR | ch5 | 16.692 | 2 | <0.001 | 0.321 | strong | **Yes** |
+| METEOR | ch6 | 6.462 | 2 | 0.040 | 0.124 | moderate | **Yes** |
+| BERTScore_Precision | ch1 | 2.154 | 2 | 0.341 | 0.041 | weak | No |
+| BERTScore_Precision | ch2 | 3.692 | 2 | 0.158 | 0.071 | weak | No |
+| BERTScore_Precision | ch3 | 17.538 | 2 | <0.001 | 0.337 | strong | **Yes** |
+| BERTScore_Precision | ch4 | 7.000 | 2 | 0.030 | 0.135 | moderate | **Yes** |
+| BERTScore_Precision | ch5 | 9.538 | 2 | 0.008 | 0.183 | moderate | **Yes** |
+| BERTScore_Precision | ch6 | 9.308 | 2 | 0.010 | 0.179 | moderate | **Yes** |
+| BERTScore_Recall | ch1 | 4.923 | 2 | 0.085 | 0.095 | weak | No |
+| BERTScore_Recall | ch2 | 5.615 | 2 | 0.060 | 0.108 | moderate | No |
+| BERTScore_Recall | ch3 | 34.462 | 2 | <0.001 | 0.663 | strong | **Yes** |
+| BERTScore_Recall | ch4 | 29.154 | 2 | <0.001 | 0.561 | strong | **Yes** |
+| BERTScore_Recall | ch5 | 18.769 | 2 | <0.001 | 0.361 | strong | **Yes** |
+| BERTScore_Recall | ch6 | 5.615 | 2 | 0.060 | 0.108 | moderate | No |
+| BERTScore_F1 | ch1 | 6.231 | 2 | 0.044 | 0.120 | moderate | **Yes** |
+| BERTScore_F1 | ch2 | 7.000 | 2 | 0.030 | 0.135 | moderate | **Yes** |
+| BERTScore_F1 | ch3 | 31.000 | 2 | <0.001 | 0.596 | strong | **Yes** |
+| BERTScore_F1 | ch4 | 10.231 | 2 | 0.006 | 0.197 | moderate | **Yes** |
+| BERTScore_F1 | ch5 | 12.077 | 2 | 0.002 | 0.232 | moderate | **Yes** |
+| BERTScore_F1 | ch6 | 5.769 | 2 | 0.056 | 0.111 | moderate | No |
+| SBERT_ModernBERT | ch1 | 4.000 | 2 | 0.135 | 0.077 | weak | No |
+| SBERT_ModernBERT | ch2 | 5.154 | 2 | 0.076 | 0.099 | weak | No |
+| SBERT_ModernBERT | ch3 | 13.154 | 2 | 0.001 | 0.253 | moderate | **Yes** |
+| SBERT_ModernBERT | ch4 | 2.385 | 2 | 0.304 | 0.046 | weak | No |
+| SBERT_ModernBERT | ch5 | 6.231 | 2 | 0.044 | 0.120 | moderate | **Yes** |
+| SBERT_ModernBERT | ch6 | 7.000 | 2 | 0.030 | 0.135 | moderate | **Yes** |
+| SBERT_MiniLM | ch1 | 3.769 | 2 | 0.152 | 0.072 | weak | No |
+| SBERT_MiniLM | ch2 | 5.615 | 2 | 0.060 | 0.108 | moderate | No |
+| SBERT_MiniLM | ch3 | 14.846 | 2 | <0.001 | 0.286 | moderate | **Yes** |
+| SBERT_MiniLM | ch4 | 6.077 | 2 | 0.048 | 0.117 | moderate | **Yes** |
+| SBERT_MiniLM | ch5 | 9.308 | 2 | 0.010 | 0.179 | moderate | **Yes** |
+| SBERT_MiniLM | ch6 | 1.462 | 2 | 0.482 | 0.028 | weak | No |
+
+### Exploratory: Pairwise Wilcoxon signed-rank post-hoc (matched n = 26, Bonferroni α = 0.0167)
+
+Retained for archival reference; not used in the thesis. Effect size: matched-pairs rank-biserial r (positive when the first-named mode in the pair scores higher).
+
+| Metric | Chapter | Pair | W | p | r | r label | Direction | Sig (Bonf) |
+|---|---|---|---|---|---|---|---|---|
+| BLEU | ch1 | Form vs Ask | 110.0 | 0.158 | -0.323 | medium | Ask > Form | No |
+| BLEU | ch1 | Form vs Chat | 101.0 | 0.098 | 0.378 | medium | Form > Chat | No |
+| BLEU | ch1 | Ask vs Chat | 60.0 | 0.006 | 0.631 | large | Ask > Chat | **Yes** |
+| BLEU | ch2 | Form vs Ask | 37.0 | <0.001 | 0.789 | large | Form > Ask | **Yes** |
+| BLEU | ch2 | Form vs Chat | 74.0 | 0.009 | 0.578 | large | Form > Chat | **Yes** |
+| BLEU | ch2 | Ask vs Chat | 126.0 | 0.217 | -0.282 | small | Chat > Ask | No |
+| BLEU | ch3 | Form vs Ask | 81.0 | 0.015 | 0.538 | large | Form > Ask | **Yes** |
+| BLEU | ch3 | Form vs Chat | 39.0 | <0.001 | 0.778 | large | Form > Chat | **Yes** |
+| BLEU | ch3 | Ask vs Chat | 130.0 | 0.258 | 0.259 | small | Ask > Chat | No |
+| BLEU | ch4 | Form vs Ask | 56.0 | 0.002 | 0.681 | large | Form > Ask | **Yes** |
+| BLEU | ch4 | Form vs Chat | 132.0 | 0.280 | 0.248 | small | Form > Chat | No |
+| BLEU | ch4 | Ask vs Chat | 109.0 | 0.150 | -0.329 | medium | Chat > Ask | No |
+| BLEU | ch5 | Form vs Ask | 16.0 | 0.002 | 0.813 | large | Form > Ask | **Yes** |
+| BLEU | ch5 | Form vs Chat | 125.0 | 0.693 | -0.094 | negligible | Chat > Form | No |
+| BLEU | ch5 | Ask vs Chat | 11.0 | 0.016 | -0.758 | large | Chat > Ask | **Yes** |
+| BLEU | ch6 | Form vs Ask | 68.0 | 0.005 | 0.613 | large | Form > Ask | **Yes** |
+| BLEU | ch6 | Form vs Chat | 149.0 | 0.515 | -0.151 | small | Chat > Form | No |
+| BLEU | ch6 | Ask vs Chat | 48.0 | 0.002 | -0.705 | large | Chat > Ask | **Yes** |
+| ROUGE-1 | ch1 | Form vs Ask | 102.0 | 0.063 | -0.419 | medium | Ask > Form | No |
+| ROUGE-1 | ch1 | Form vs Chat | 149.0 | 0.515 | 0.151 | small | Form > Chat | No |
+| ROUGE-1 | ch1 | Ask vs Chat | 72.0 | 0.026 | 0.520 | large | Ask > Chat | No |
+| ROUGE-1 | ch2 | Form vs Ask | 61.0 | 0.003 | 0.652 | large | Form > Ask | **Yes** |
+| ROUGE-1 | ch2 | Form vs Chat | 89.0 | 0.027 | 0.493 | medium | Form > Chat | No |
+| ROUGE-1 | ch2 | Ask vs Chat | 127.0 | 0.227 | -0.276 | small | Chat > Ask | No |
+| ROUGE-1 | ch3 | Form vs Ask | 3.0 | <0.001 | 0.983 | large | Form > Ask | **Yes** |
+| ROUGE-1 | ch3 | Form vs Chat | 43.0 | <0.001 | 0.755 | large | Form > Chat | **Yes** |
+| ROUGE-1 | ch3 | Ask vs Chat | 100.0 | 0.056 | -0.430 | medium | Chat > Ask | No |
+| ROUGE-1 | ch4 | Form vs Ask | 34.0 | <0.001 | 0.806 | large | Form > Ask | **Yes** |
+| ROUGE-1 | ch4 | Form vs Chat | 64.0 | 0.004 | 0.635 | large | Form > Chat | **Yes** |
+| ROUGE-1 | ch4 | Ask vs Chat | 96.0 | 0.043 | -0.453 | medium | Chat > Ask | No |
+| ROUGE-1 | ch5 | Form vs Ask | 27.0 | <0.001 | 0.846 | large | Form > Ask | **Yes** |
+| ROUGE-1 | ch5 | Form vs Chat | 120.0 | 0.165 | -0.316 | medium | Chat > Form | No |
+| ROUGE-1 | ch5 | Ask vs Chat | 51.0 | <0.001 | -0.709 | large | Chat > Ask | **Yes** |
+| ROUGE-1 | ch6 | Form vs Ask | 145.0 | 0.452 | 0.174 | small | Form > Ask | No |
+| ROUGE-1 | ch6 | Form vs Chat | 114.0 | 0.123 | -0.350 | medium | Chat > Form | No |
+| ROUGE-1 | ch6 | Ask vs Chat | 103.0 | 0.067 | -0.413 | medium | Chat > Ask | No |
+| ROUGE-2 | ch1 | Form vs Ask | 108.0 | 0.089 | -0.385 | medium | Ask > Form | No |
+| ROUGE-2 | ch1 | Form vs Chat | 136.0 | 0.328 | 0.225 | small | Form > Chat | No |
+| ROUGE-2 | ch1 | Ask vs Chat | 85.0 | 0.020 | 0.516 | large | Ask > Chat | No |
+| ROUGE-2 | ch2 | Form vs Ask | 21.0 | <0.001 | 0.880 | large | Form > Ask | **Yes** |
+| ROUGE-2 | ch2 | Form vs Chat | 65.0 | 0.004 | 0.630 | large | Form > Chat | **Yes** |
+| ROUGE-2 | ch2 | Ask vs Chat | 119.0 | 0.157 | -0.322 | medium | Chat > Ask | No |
+| ROUGE-2 | ch3 | Form vs Ask | 0.0 | <0.001 | 1.000 | large | Form > Ask | **Yes** |
+| ROUGE-2 | ch3 | Form vs Chat | 41.0 | <0.001 | 0.766 | large | Form > Chat | **Yes** |
+| ROUGE-2 | ch3 | Ask vs Chat | 90.0 | 0.029 | -0.487 | medium | Chat > Ask | No |
+| ROUGE-2 | ch4 | Form vs Ask | 32.0 | <0.001 | 0.818 | large | Form > Ask | **Yes** |
+| ROUGE-2 | ch4 | Form vs Chat | 33.0 | <0.001 | 0.812 | large | Form > Chat | **Yes** |
+| ROUGE-2 | ch4 | Ask vs Chat | 137.0 | 0.340 | -0.219 | small | Chat > Ask | No |
+| ROUGE-2 | ch5 | Form vs Ask | 50.0 | <0.001 | 0.715 | large | Form > Ask | **Yes** |
+| ROUGE-2 | ch5 | Form vs Chat | 174.0 | 0.980 | 0.009 | negligible | Form > Chat | No |
+| ROUGE-2 | ch5 | Ask vs Chat | 67.0 | 0.005 | -0.618 | large | Chat > Ask | **Yes** |
+| ROUGE-2 | ch6 | Form vs Ask | 84.0 | 0.019 | 0.521 | large | Form > Ask | No |
+| ROUGE-2 | ch6 | Form vs Chat | 123.0 | 0.190 | -0.299 | small | Chat > Form | No |
+| ROUGE-2 | ch6 | Ask vs Chat | 62.0 | 0.003 | -0.647 | large | Chat > Ask | **Yes** |
+| ROUGE-L | ch1 | Form vs Ask | 106.0 | 0.128 | -0.348 | medium | Ask > Form | No |
+| ROUGE-L | ch1 | Form vs Chat | 103.0 | 0.067 | 0.413 | medium | Form > Chat | No |
+| ROUGE-L | ch1 | Ask vs Chat | 76.0 | 0.010 | 0.567 | large | Ask > Chat | **Yes** |
+| ROUGE-L | ch2 | Form vs Ask | 38.0 | <0.001 | 0.783 | large | Form > Ask | **Yes** |
+| ROUGE-L | ch2 | Form vs Chat | 88.0 | 0.025 | 0.499 | medium | Form > Chat | No |
+| ROUGE-L | ch2 | Ask vs Chat | 103.0 | 0.067 | -0.413 | medium | Chat > Ask | No |
+| ROUGE-L | ch3 | Form vs Ask | 1.0 | <0.001 | 0.994 | large | Form > Ask | **Yes** |
+| ROUGE-L | ch3 | Form vs Chat | 50.0 | <0.001 | 0.715 | large | Form > Chat | **Yes** |
+| ROUGE-L | ch3 | Ask vs Chat | 79.0 | 0.013 | -0.550 | large | Chat > Ask | **Yes** |
+| ROUGE-L | ch4 | Form vs Ask | 38.0 | <0.001 | 0.783 | large | Form > Ask | **Yes** |
+| ROUGE-L | ch4 | Form vs Chat | 62.0 | 0.003 | 0.647 | large | Form > Chat | **Yes** |
+| ROUGE-L | ch4 | Ask vs Chat | 122.0 | 0.181 | -0.305 | medium | Chat > Ask | No |
+| ROUGE-L | ch5 | Form vs Ask | 33.0 | <0.001 | 0.812 | large | Form > Ask | **Yes** |
+| ROUGE-L | ch5 | Form vs Chat | 123.0 | 0.190 | -0.299 | small | Chat > Form | No |
+| ROUGE-L | ch5 | Ask vs Chat | 55.0 | 0.001 | -0.687 | large | Chat > Ask | **Yes** |
+| ROUGE-L | ch6 | Form vs Ask | 127.0 | 0.227 | 0.276 | small | Form > Ask | No |
+| ROUGE-L | ch6 | Form vs Chat | 114.0 | 0.123 | -0.350 | medium | Chat > Form | No |
+| ROUGE-L | ch6 | Ask vs Chat | 66.0 | 0.004 | -0.624 | large | Chat > Ask | **Yes** |
+| METEOR | ch1 | Form vs Ask | 121.0 | 0.173 | -0.311 | medium | Ask > Form | No |
+| METEOR | ch1 | Form vs Chat | 131.0 | 0.269 | 0.254 | small | Form > Chat | No |
+| METEOR | ch1 | Ask vs Chat | 89.0 | 0.027 | 0.493 | medium | Ask > Chat | No |
+| METEOR | ch2 | Form vs Ask | 41.0 | <0.001 | 0.766 | large | Form > Ask | **Yes** |
+| METEOR | ch2 | Form vs Chat | 127.0 | 0.227 | 0.276 | small | Form > Chat | No |
+| METEOR | ch2 | Ask vs Chat | 93.0 | 0.036 | -0.470 | medium | Chat > Ask | No |
+| METEOR | ch3 | Form vs Ask | 7.0 | <0.001 | 0.960 | large | Form > Ask | **Yes** |
+| METEOR | ch3 | Form vs Chat | 8.0 | <0.001 | 0.954 | large | Form > Chat | **Yes** |
+| METEOR | ch3 | Ask vs Chat | 133.0 | 0.291 | 0.242 | small | Ask > Chat | No |
+| METEOR | ch4 | Form vs Ask | 14.0 | <0.001 | 0.920 | large | Form > Ask | **Yes** |
+| METEOR | ch4 | Form vs Chat | 31.0 | <0.001 | 0.823 | large | Form > Chat | **Yes** |
+| METEOR | ch4 | Ask vs Chat | 143.0 | 0.423 | -0.185 | small | Chat > Ask | No |
+| METEOR | ch5 | Form vs Ask | 34.0 | <0.001 | 0.806 | large | Form > Ask | **Yes** |
+| METEOR | ch5 | Form vs Chat | 157.0 | 0.653 | -0.105 | small | Chat > Form | No |
+| METEOR | ch5 | Ask vs Chat | 55.0 | 0.001 | -0.687 | large | Chat > Ask | **Yes** |
+| METEOR | ch6 | Form vs Ask | 76.0 | 0.010 | 0.567 | large | Form > Ask | **Yes** |
+| METEOR | ch6 | Form vs Chat | 131.0 | 0.269 | -0.254 | small | Chat > Form | No |
+| METEOR | ch6 | Ask vs Chat | 88.0 | 0.025 | -0.499 | medium | Chat > Ask | No |
+| BERTScore_Precision | ch1 | Form vs Ask | 132.0 | 0.280 | -0.248 | small | Ask > Form | No |
+| BERTScore_Precision | ch1 | Form vs Chat | 110.0 | 0.099 | 0.373 | medium | Form > Chat | No |
+| BERTScore_Precision | ch1 | Ask vs Chat | 93.0 | 0.036 | 0.470 | medium | Ask > Chat | No |
+| BERTScore_Precision | ch2 | Form vs Ask | 119.0 | 0.157 | 0.322 | medium | Form > Ask | No |
+| BERTScore_Precision | ch2 | Form vs Chat | 169.0 | 0.881 | -0.037 | negligible | Chat > Form | No |
+| BERTScore_Precision | ch2 | Ask vs Chat | 92.0 | 0.033 | -0.476 | medium | Chat > Ask | No |
+| BERTScore_Precision | ch3 | Form vs Ask | 8.0 | <0.001 | 0.954 | large | Form > Ask | **Yes** |
+| BERTScore_Precision | ch3 | Form vs Chat | 100.0 | 0.056 | 0.430 | medium | Form > Chat | No |
+| BERTScore_Precision | ch3 | Ask vs Chat | 54.0 | 0.001 | -0.692 | large | Chat > Ask | **Yes** |
+| BERTScore_Precision | ch4 | Form vs Ask | 87.0 | 0.024 | 0.504 | large | Form > Ask | No |
+| BERTScore_Precision | ch4 | Form vs Chat | 133.0 | 0.291 | -0.242 | small | Chat > Form | No |
+| BERTScore_Precision | ch4 | Ask vs Chat | 71.0 | 0.007 | -0.595 | large | Chat > Ask | **Yes** |
+| BERTScore_Precision | ch5 | Form vs Ask | 128.0 | 0.237 | 0.271 | small | Form > Ask | No |
+| BERTScore_Precision | ch5 | Form vs Chat | 88.0 | 0.025 | -0.499 | medium | Chat > Form | No |
+| BERTScore_Precision | ch5 | Ask vs Chat | 73.0 | 0.008 | -0.584 | large | Chat > Ask | **Yes** |
+| BERTScore_Precision | ch6 | Form vs Ask | 123.0 | 0.190 | -0.299 | small | Ask > Form | No |
+| BERTScore_Precision | ch6 | Form vs Chat | 101.0 | 0.059 | -0.425 | medium | Chat > Form | No |
+| BERTScore_Precision | ch6 | Ask vs Chat | 112.0 | 0.111 | -0.362 | medium | Chat > Ask | No |
+| BERTScore_Recall | ch1 | Form vs Ask | 114.0 | 0.123 | -0.350 | medium | Ask > Form | No |
+| BERTScore_Recall | ch1 | Form vs Chat | 114.0 | 0.123 | 0.350 | medium | Form > Chat | No |
+| BERTScore_Recall | ch1 | Ask vs Chat | 89.0 | 0.027 | 0.493 | medium | Ask > Chat | No |
+| BERTScore_Recall | ch2 | Form vs Ask | 96.0 | 0.043 | 0.453 | medium | Form > Ask | No |
+| BERTScore_Recall | ch2 | Form vs Chat | 166.0 | 0.822 | 0.054 | negligible | Form > Chat | No |
+| BERTScore_Recall | ch2 | Ask vs Chat | 103.0 | 0.067 | -0.413 | medium | Chat > Ask | No |
+| BERTScore_Recall | ch3 | Form vs Ask | 9.0 | <0.001 | 0.949 | large | Form > Ask | **Yes** |
+| BERTScore_Recall | ch3 | Form vs Chat | 5.0 | <0.001 | 0.972 | large | Form > Chat | **Yes** |
+| BERTScore_Recall | ch3 | Ask vs Chat | 135.0 | 0.315 | 0.231 | small | Ask > Chat | No |
+| BERTScore_Recall | ch4 | Form vs Ask | 13.0 | <0.001 | 0.926 | large | Form > Ask | **Yes** |
+| BERTScore_Recall | ch4 | Form vs Chat | 2.0 | <0.001 | 0.989 | large | Form > Chat | **Yes** |
+| BERTScore_Recall | ch4 | Ask vs Chat | 109.0 | 0.094 | 0.379 | medium | Ask > Chat | No |
+| BERTScore_Recall | ch5 | Form vs Ask | 36.0 | <0.001 | 0.795 | large | Form > Ask | **Yes** |
+| BERTScore_Recall | ch5 | Form vs Chat | 142.0 | 0.408 | -0.191 | small | Chat > Form | No |
+| BERTScore_Recall | ch5 | Ask vs Chat | 51.0 | <0.001 | -0.709 | large | Chat > Ask | **Yes** |
+| BERTScore_Recall | ch6 | Form vs Ask | 123.0 | 0.190 | 0.299 | small | Form > Ask | No |
+| BERTScore_Recall | ch6 | Form vs Chat | 119.0 | 0.157 | -0.322 | medium | Chat > Form | No |
+| BERTScore_Recall | ch6 | Ask vs Chat | 85.0 | 0.020 | -0.516 | large | Chat > Ask | No |
+| BERTScore_F1 | ch1 | Form vs Ask | 117.0 | 0.143 | -0.333 | medium | Ask > Form | No |
+| BERTScore_F1 | ch1 | Form vs Chat | 104.0 | 0.071 | 0.407 | medium | Form > Chat | No |
+| BERTScore_F1 | ch1 | Ask vs Chat | 87.0 | 0.024 | 0.504 | large | Ask > Chat | No |
+| BERTScore_F1 | ch2 | Form vs Ask | 85.0 | 0.020 | 0.516 | large | Form > Ask | No |
+| BERTScore_F1 | ch2 | Form vs Chat | 172.0 | 0.940 | 0.020 | negligible | Form > Chat | No |
+| BERTScore_F1 | ch2 | Ask vs Chat | 83.0 | 0.018 | -0.527 | large | Chat > Ask | No |
+| BERTScore_F1 | ch3 | Form vs Ask | 2.0 | <0.001 | 0.989 | large | Form > Ask | **Yes** |
+| BERTScore_F1 | ch3 | Form vs Chat | 10.0 | <0.001 | 0.943 | large | Form > Chat | **Yes** |
+| BERTScore_F1 | ch3 | Ask vs Chat | 140.0 | 0.380 | -0.202 | small | Chat > Ask | No |
+| BERTScore_F1 | ch4 | Form vs Ask | 31.0 | <0.001 | 0.823 | large | Form > Ask | **Yes** |
+| BERTScore_F1 | ch4 | Form vs Chat | 68.0 | 0.005 | 0.613 | large | Form > Chat | **Yes** |
+| BERTScore_F1 | ch4 | Ask vs Chat | 117.0 | 0.143 | -0.333 | medium | Chat > Ask | No |
+| BERTScore_F1 | ch5 | Form vs Ask | 93.0 | 0.036 | 0.470 | medium | Form > Ask | No |
+| BERTScore_F1 | ch5 | Form vs Chat | 98.0 | 0.049 | -0.442 | medium | Chat > Form | No |
+| BERTScore_F1 | ch5 | Ask vs Chat | 65.0 | 0.004 | -0.630 | large | Chat > Ask | **Yes** |
+| BERTScore_F1 | ch6 | Form vs Ask | 170.0 | 0.901 | -0.031 | negligible | Ask > Form | No |
+| BERTScore_F1 | ch6 | Form vs Chat | 94.0 | 0.038 | -0.464 | medium | Chat > Form | No |
+| BERTScore_F1 | ch6 | Ask vs Chat | 84.0 | 0.019 | -0.521 | large | Chat > Ask | No |
+| SBERT_ModernBERT | ch1 | Form vs Ask | 109.0 | 0.094 | -0.379 | medium | Ask > Form | No |
+| SBERT_ModernBERT | ch1 | Form vs Chat | 115.0 | 0.129 | 0.345 | medium | Form > Chat | No |
+| SBERT_ModernBERT | ch1 | Ask vs Chat | 85.0 | 0.020 | 0.516 | large | Ask > Chat | No |
+| SBERT_ModernBERT | ch2 | Form vs Ask | 86.0 | 0.022 | 0.510 | large | Form > Ask | No |
+| SBERT_ModernBERT | ch2 | Form vs Chat | 152.0 | 0.565 | -0.134 | small | Chat > Form | No |
+| SBERT_ModernBERT | ch2 | Ask vs Chat | 93.0 | 0.036 | -0.470 | medium | Chat > Ask | No |
+| SBERT_ModernBERT | ch3 | Form vs Ask | 35.0 | <0.001 | 0.801 | large | Form > Ask | **Yes** |
+| SBERT_ModernBERT | ch3 | Form vs Chat | 30.0 | <0.001 | 0.829 | large | Form > Chat | **Yes** |
+| SBERT_ModernBERT | ch3 | Ask vs Chat | 168.0 | 0.861 | 0.043 | negligible | Ask > Chat | No |
+| SBERT_ModernBERT | ch4 | Form vs Ask | 105.0 | 0.075 | 0.402 | medium | Form > Ask | No |
+| SBERT_ModernBERT | ch4 | Form vs Chat | 157.0 | 0.653 | 0.105 | small | Form > Chat | No |
+| SBERT_ModernBERT | ch4 | Ask vs Chat | 133.0 | 0.291 | -0.242 | small | Chat > Ask | No |
+| SBERT_ModernBERT | ch5 | Form vs Ask | 114.0 | 0.123 | 0.350 | medium | Form > Ask | No |
+| SBERT_ModernBERT | ch5 | Form vs Chat | 92.0 | 0.033 | -0.476 | medium | Chat > Form | No |
+| SBERT_ModernBERT | ch5 | Ask vs Chat | 66.0 | 0.004 | -0.624 | large | Chat > Ask | **Yes** |
+| SBERT_ModernBERT | ch6 | Form vs Ask | 128.0 | 0.237 | -0.271 | small | Ask > Form | No |
+| SBERT_ModernBERT | ch6 | Form vs Chat | 67.0 | 0.005 | -0.618 | large | Chat > Form | **Yes** |
+| SBERT_ModernBERT | ch6 | Ask vs Chat | 93.0 | 0.036 | -0.470 | medium | Chat > Ask | No |
+| SBERT_MiniLM | ch1 | Form vs Ask | 98.0 | 0.049 | -0.442 | medium | Ask > Form | No |
+| SBERT_MiniLM | ch1 | Form vs Chat | 175.0 | 1.000 | 0.003 | negligible | Form > Chat | No |
+| SBERT_MiniLM | ch1 | Ask vs Chat | 85.0 | 0.020 | 0.516 | large | Ask > Chat | No |
+| SBERT_MiniLM | ch2 | Form vs Ask | 122.0 | 0.181 | 0.305 | medium | Form > Ask | No |
+| SBERT_MiniLM | ch2 | Form vs Chat | 72.0 | 0.007 | 0.590 | large | Form > Chat | **Yes** |
+| SBERT_MiniLM | ch2 | Ask vs Chat | 114.0 | 0.123 | 0.350 | medium | Ask > Chat | No |
+| SBERT_MiniLM | ch3 | Form vs Ask | 146.0 | 0.468 | 0.168 | small | Form > Ask | No |
+| SBERT_MiniLM | ch3 | Form vs Chat | 49.0 | <0.001 | 0.721 | large | Form > Chat | **Yes** |
+| SBERT_MiniLM | ch3 | Ask vs Chat | 82.0 | 0.016 | 0.533 | large | Ask > Chat | **Yes** |
+| SBERT_MiniLM | ch4 | Form vs Ask | 104.0 | 0.071 | 0.407 | medium | Form > Ask | No |
+| SBERT_MiniLM | ch4 | Form vs Chat | 117.0 | 0.143 | -0.333 | medium | Chat > Form | No |
+| SBERT_MiniLM | ch4 | Ask vs Chat | 57.0 | 0.002 | -0.675 | large | Chat > Ask | **Yes** |
+| SBERT_MiniLM | ch5 | Form vs Ask | 85.0 | 0.020 | 0.516 | large | Form > Ask | No |
+| SBERT_MiniLM | ch5 | Form vs Chat | 123.0 | 0.190 | -0.299 | small | Chat > Form | No |
+| SBERT_MiniLM | ch5 | Ask vs Chat | 57.0 | 0.002 | -0.675 | large | Chat > Ask | **Yes** |
+| SBERT_MiniLM | ch6 | Form vs Ask | 143.0 | 0.423 | 0.185 | small | Form > Ask | No |
+| SBERT_MiniLM | ch6 | Form vs Chat | 153.0 | 0.582 | -0.128 | small | Chat > Form | No |
+| SBERT_MiniLM | ch6 | Ask vs Chat | 142.0 | 0.408 | -0.191 | small | Chat > Ask | No |
+
+### Summary counts of significant cells
 
 Family-wise correction across the 60 (metric × chapter) cells yields α = 0.05/60 ≈ 0.000833 for the family-wise-corrected Friedman count.
 
 | Test | Significant cells / total | Threshold |
 |---|---|---|
-| Kruskal-Wallis omnibus           | 45 / 60   | α = 0.05 |
-| Friedman omnibus (uncorrected)   | 45 / 60   | α = 0.05 |
-| Friedman omnibus (Bonferroni-60) | 19 / 60 | α ≈ 0.000833 |
-| Wilcoxon pairwise                | 68 / 180  | α = 0.0167 (per-cell Bonferroni-3) |
-| Mann-Whitney pairwise            | 66 / 180  | α = 0.0167 (per-cell Bonferroni-3) |
+| Kruskal–Wallis omnibus (primary)        | 45 / 60   | α = 0.05 |
+| Mann–Whitney pairwise (primary)         | 66 / 180  | α = 0.0167 (per-cell Bonferroni-3) |
+| Friedman omnibus (exploratory, uncorrected)   | 45 / 60   | α = 0.05 |
+| Friedman omnibus (exploratory, Bonferroni-60) | 19 / 60   | α ≈ 0.000833 |
+| Wilcoxon pairwise (exploratory)         | 68 / 180  | α = 0.0167 (per-cell Bonferroni-3) |
+
 ## Per-Mode Completion Time
 
-Source: timing line `Time elapsed: NNN seconds` emitted by ROPAgen at the end of every generated document (one value per participant × mode). Extracted via `metrics/scripts/per_mode_timing.py`. Sample sizes match the NLP doc-level analysis: full n = 113 (Form 37, Ask 37, Chat 39); matched-triple within-subjects subset n = 26.
+Source: timing line `Time elapsed: NNN seconds` emitted by ROPAgen at the end of every generated document (one value per participant × mode). Extracted via `metrics/scripts/per_mode_timing.py`. Sample sizes match the NLP doc-level analysis: full n = 113 (Form 37, Ask 37, Chat 39, **primary**); matched-triple within-subjects subset n = 26 (**exploratory, not used in the thesis**).
 
 ### Descriptives (full dataset, n = 113)
 
@@ -804,37 +830,41 @@ Source: timing line `Time elapsed: NNN seconds` emitted by ROPAgen at the end of
 
 Distributions deviate from normality on at least one mode; non-parametric tests used throughout (consistent with the NLP and survey pipelines).
 
-### Friedman test (within-subjects, n = 26)
+### Primary: Kruskal–Wallis (full n = 113, unbalanced)
 
-| χ² | df | p | Kendall's W | Significant (α=0.05) |
-|---|---|---|---|---|
-| 18.692 | 2 | <0.001 | 0.359 | Yes |
-
-Friedman is significant → pairwise Wilcoxon signed-rank post-hoc with Bonferroni-corrected α = 0.0167 (3 comparisons). Effect size: matched-pairs rank-biserial r (positive when the first-named mode in the pair is *higher*, i.e. *slower*).
-
-### Pairwise Wilcoxon signed-rank (matched n = 26)
-
-| Pair | W | p | r | Median diff (s) | Sig (Bonf) |
-|---|---|---|---|---|---|
-| form vs ask | 19.0 | <0.001 | -0.892 | -400.0 | **Yes** |
-| form vs chat | 34.0 | <0.001 | -0.806 | -274.0 | **Yes** |
-| ask vs chat | 162.0 | 0.745 | -0.077 | +68.5 | No |
-
-### Kruskal-Wallis sensitivity (full n = 113, unbalanced)
+**Primary** between-groups omnibus for per-mode timing.
 
 | H | p | ε² | Significant (α=0.05) |
 |---|---|---|---|
 | 16.455 | <0.001 | 0.147 | Yes |
 
-Reported as a between-groups sensitivity check on the unbalanced full sample; the matched-triple Wilcoxon family above is the primary inferential result.
+### Primary: Pairwise Mann–Whitney U (full n = 113, Bonferroni α = 0.0167)
 
-### Pairwise Mann-Whitney U (full n = 113)
+**Primary** post-hoc family for per-mode timing.
 
 | Pair | U | p | r | Median A (s) | Median B (s) | Sig (Bonf α=0.0167) |
 |---|---|---|---|---|---|---|
 | form vs ask | 334.0 | <0.001 | +0.512 | 420.0 | 858.0 | **Yes** |
 | form vs chat | 420.0 | 0.002 | +0.418 | 420.0 | 717.0 | **Yes** |
 | ask vs chat | 793.5 | 0.457 | -0.100 | 858.0 | 717.0 | No |
+
+### Exploratory: Friedman test (matched within-subjects, n = 26)
+
+Retained for archival reference; not used in the thesis.
+
+| χ² | df | p | Kendall's W | Significant (α=0.05) |
+|---|---|---|---|---|
+| 18.692 | 2 | <0.001 | 0.359 | Yes |
+
+### Exploratory: Pairwise Wilcoxon signed-rank (matched n = 26)
+
+Retained for archival reference; not used in the thesis. Effect size: matched-pairs rank-biserial r (positive when the first-named mode in the pair is *higher*, i.e. *slower*).
+
+| Pair | W | p | r | Median diff (s) | Sig (Bonf) |
+|---|---|---|---|---|---|
+| form vs ask | 19.0 | <0.001 | -0.892 | -400.0 | **Yes** |
+| form vs chat | 34.0 | <0.001 | -0.806 | -274.0 | **Yes** |
+| ask vs chat | 162.0 | 0.745 | -0.077 | +68.5 | No |
 
 ### Data-quality notes
 
@@ -847,4 +877,3 @@ Cross-check vs. total survey duration:
 -   - AMR2620: Σmodes=3245s > duration=2870s
 - 3 participants in docs but not in survey (no duration available): EII0925, IHB1316, LOT2142
 - 8 participants with survey duration < 0 (encoded missing): EHN0215, IIV2704, IOL1223, Jer1205, RIT1851, UAB0821, UOR0445, thg1620
-
