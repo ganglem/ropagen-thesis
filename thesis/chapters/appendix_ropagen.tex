@@ -338,7 +338,7 @@ The text should be written in the specified language and provide valuable supple
 \subsection{Ask Mode --- Explanation Prompts}
 \label{app:ropagen-prompts-ask}
 
-Ask mode pairs each section of the form with a chat panel. Each dialogue turn sends two system prompts to the LLM: the shared \texttt{ask.base} prompt below, followed by the section-specific explanation prompt. The model's reply is rendered as conversational text and may include a \texttt{DATA\_UPDATE} JSON block (see Chat mode below) that the front-end uses to auto-populate the corresponding form fields. Conversational temperature $0.2$, top-$p$ $0.5$.
+Ask mode pairs each section of the form with a chat panel. Each dialogue turn sends two system prompts to the LLM: the shared \texttt{ask.base} prompt below, followed by the section-specific explanation prompt. The model's reply is rendered as conversational text only; no \texttt{DATA\_UPDATE} block is requested or handled in Ask mode, and no form field is auto-populated by the LLM. The user types the free-form section content manually. Conversational temperature $0.2$, top-$p$ $0.5$.
 
 \subsubsection*{Base Prompt (\texttt{ask.base})}
 

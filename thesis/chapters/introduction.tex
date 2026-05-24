@@ -7,9 +7,7 @@ ROPAgen, the tool evaluated in this thesis, is a web-based application developed
 It uses Large Language Models (LLMs) to assist novice users in drafting GDPR-compliant ROPA documentation, offering three interaction modes, each with a different level of LLM support:
 
 \textbf{Form} mode, in which the user fills structured fields directly, with LLM suggestions available on demand.
-
 \textbf{Ask} mode, in which the user fills a free-form text field per section while a chatbot explains the section and answers questions.
-
 \textbf{Chat} mode, in which the user describes their requirements conversationally, and the LLM autonomously drafts and populates the ROPA.
 The three modes are described in detail in Section~\ref{sec:ropagen}; by comparing them, the thesis evaluates how different levels of LLM support affect user performance and trust.
 
@@ -17,7 +15,7 @@ Although the application provides a functional framework for assisted ROPA gener
 
  
 \section{Research Problem and Research Questions}
-The goal of this thesis is to conduct a comprehensive evaluation of the existing LLM-supported ROPA generation application. The evaluation asks how the three interaction modes shape the experience of novice users, how they shape the documents those users produce, and whether the two are aligned. Each overarching research question is broken into three more specific sub-questions tied to the instruments used to answer them.
+The goal of this thesis is to conduct a comprehensive evaluation of the existing LLM-supported ROPA generation application. The evaluation asks how the three interaction modes shape the experience of novice users, how they shape the documents those users produce, and whether the two are aligned. RQ1 is broken into three sub-questions tied to the user-study instruments; RQ2 is broken into two sub-questions tied to the document-quality streams. RQ3 is a single cross-stream question that reads the two evaluation streams against each other; it is reserved for the Discussion chapter, where the cross-signal interpretation belongs.
 
 \paragraph{RQ1 (User experience).} \emph{How do varying degrees of LLM support influence novice users during ROPA document creation?}
 \begin{itemize}
@@ -29,8 +27,8 @@ The goal of this thesis is to conduct a comprehensive evaluation of the existing
 \begin{itemize}
     \item[\textbf{RQ2.1}] How does document quality differ across the three modes when measured by reference-based NLP similarity to an expert-authored ROPA (BLEU, ROUGE, METEOR, BERTScore, SBERT)?
     \item[\textbf{RQ2.2}] As a supplementary, reference-free signal, what additional GDPR-specific quality properties (completeness, scenario faithfulness, legal correctness, hallucination) does an LLM-as-a-judge surface across the three modes?
-    \item[\textbf{RQ2.3}] Is there a discrepancy between user confidence (RQ1.3) and the document quality actually achieved (RQ2.1, RQ2.2)?
 \end{itemize}
+\paragraph{RQ3 (Confidence--quality alignment).} \emph{Is there a discrepancy between user confidence (RQ1.3) and the document quality actually achieved (RQ2.1, RQ2.2)?} RQ3 is not answered by any single instrument: it requires reading the user-study and document-quality findings against each other, and is therefore taken up only in the Discussion chapter.
 Going into the study, the implicit prediction was that more LLM support would translate into a better user experience and a more preferred mode: the ordering Chat $\succ$ Form $\succ$ Ask was anticipated, with Chat (the free-form conversational mode where the LLM does the most work) expected to be the overall favorite among novice users. The evaluation that follows tests this prediction against the experience and outputs of $73$ novice participants.
 
 \section{Thesis Structure}
@@ -51,12 +49,13 @@ reports the empirical findings from the four user-study
 instruments and from the document-quality analyses, descriptively
 first and then inferentially.
 \textbf{Chapter~\ref{ch:discussion}} (Discussion) interprets the
-central findings (the completeness--hallucination tradeoff and
-the confidence--quality gap) against the related work and names
-the study's limitations.
-\textbf{Chapter~\ref{ch:conclusion}} (Conclusion) answers RQ1
-and RQ2 in plain English and draws the design implications for
-LLM-assisted compliance tooling that follow.
+confidence--quality gap that emerges across the user-study and
+document-quality streams, draws the design implications for
+novice-targeting LLM-assisted tooling, and names the study's
+limitations.
+\textbf{Chapter~\ref{ch:conclusion}} (Conclusion) answers RQ1,
+RQ2, and RQ3 and draws the design implications
+for LLM-assisted compliance tooling that follow.
 \textbf{Appendices A--C} contain the ROPAgen backend prompts and
 judge configuration, the verbatim study materials, and the full
 inferential statistics referenced from the Evaluation chapter.
