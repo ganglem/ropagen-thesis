@@ -11,7 +11,7 @@
 
 **Themes to cover (rough order):**
 
-- **Why Form won the user-study ranking, Chat second, Ask third.**
+- **Why Form won thle user-study ranking, Chat second, Ask third.**
   
   \textbf{Form (1st).} Control + speed. SUS leads on the
   feel-of-using items (ease, complexity, integration,

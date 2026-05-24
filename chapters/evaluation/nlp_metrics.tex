@@ -398,6 +398,19 @@ deliver a trade-off instead: Form documents recover more of what
 the reference \emph{says}, Chat documents stay closer to what it
 \emph{means}, and Ask trails on every front.
 
+A final observation cuts across metric families. The five lexical
+metrics and the four BERT-based metrics measure different things,
+surface-form n-gram overlap on the one hand and contextual
+semantic similarity on the other, but they order the modes the
+same way. Lexical recall (ROUGE-Recall) and semantic recall
+(BERTScore Recall) both place Form ahead; lexical-precision
+oriented BLEU and semantic Precision (BERTScore Precision) both
+align with Chat at the document level; the balanced-similarity
+metrics (METEOR, BERTScore F1, SBERT) sit in between. In sum,
+no single mode produces categorically better documents than the
+others; which mode leads depends on which property of the
+documents the metric focuses on.
+
 \begin{sidewaystable}
 \centering
 \caption{Document-level versus mean chapter-level metric values by
