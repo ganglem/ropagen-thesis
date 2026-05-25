@@ -105,6 +105,99 @@ marks the mean.}
 \label{fig:nlp-doc-boxplot}
 \end{figure}
 
+To attach the lexical metrics to concrete text,
+Figures~\ref{fig:worked-lexical-a} and~\ref{fig:worked-lexical-b}
+show the Retention chapter (Chapter~5,
+\emph{Aufbewahrungsfristen und L\"oschung}) for two case-study
+participants alongside the reference passage and the
+corresponding per-passage metric values.
+
+\begingroup
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  breakatwhitespace=false,
+  breakindent=0pt,
+  postbreak=\mbox{$\hookrightarrow$\space},
+  frame=single,
+  framerule=0.4pt,
+  language=,
+  numbers=none,
+  showstringspaces=false,
+  keepspaces=true,
+  columns=fullflexible,
+  upquote=true,
+  aboveskip=0.4em,
+  belowskip=0.4em,
+  literate=%
+    {ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1
+    {§}{{\S}}1
+    {•}{{\textbullet}}1
+    {–}{{--}}1 {—}{{---}}1
+    {“}{{``}}1 {”}{{''}}1
+    {‘}{{`}}1 {’}{{'}}1
+}
+\begin{figure}[htbp]
+\centering
+\noindent\textit{Reference passage (single-sentence statement of the scenario's 3-month rule).}
+\begin{lstlisting}
+Wir löschen die personenbezogenen Daten drei Monate nach Beendigung des Beschäftigungsverhältnisses, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+\end{lstlisting}
+
+\noindent\textit{IAR1116 (Chat) passage.}
+\begin{lstlisting}
+### 5.1 Löschfristen
+Die personenbezogenen Daten werden gemäß folgender Regelungen gelöscht:
+
+- **Grundsatz:** Die Daten werden spätestens **3 Monate nach Austritt der Mitarbeitenden** gelöscht.
+- **Ausnahmen:** Sofern gesetzliche Aufbewahrungspflichten (z. B. im Rahmen laufender Verfahren) bestehen, erfolgt die Löschung erst nach Ablauf dieser Fristen.
+
+### 5.2 Verfahren zur Löschung
+Die Löschung erfolgt entweder automatisiert durch unsere Systeme oder manuell durch die zuständigen Mitarbeitenden. Die Einhaltung der Löschfristen wird regelmäßig überprüft.
+\end{lstlisting}
+\caption{Worked example for the lexical metrics (1/2): reference
+and IAR1116-chat Retention passages (Chapter~5,
+\emph{Aufbewahrungsfristen und L\"oschung}). Continues in
+Figure~\ref{fig:worked-lexical-b}.}
+\label{fig:worked-lexical-a}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[htbp]
+\centering
+\noindent\textit{AEB2451 (Form) passage.}
+\begin{lstlisting}
+Wir bewahren personenbezogene Daten unserer Mitarbeitenden gemäß den gesetzlichen Vorgaben auf und löschen diese nach Ablauf der festgelegten Fristen. Die Aufbewahrungsfristen richten sich nach den folgenden Grundsätzen:
+
+- **Grundsatz:** 6 Jahre nach Beendigung des Beschäftigungsverhältnisses (gemäß § 257 HGB und § 147 AO für steuerrelevante Unterlagen).
+- **Ausnahmen:**
+  - Sozialversicherungsnummern und Vertragsdaten können bis zu 10 Jahre aufbewahrt werden, sofern dies aufgrund rechtlicher Auseinandersetzungen oder Verdachtsmomenten (z. B. Sozialversicherungsbetrug) erforderlich ist.
+  - Biometrische Daten und Videoüberwachungsdaten werden nur so lange gespeichert, wie dies für den jeweiligen Zweck (z. B. Zutrittskontrolle) notwendig ist.
+
+Nach Ablauf der Aufbewahrungsfristen werden die Daten automatisch gelöscht, sofern keine gesetzlichen oder vertraglichen Gründe für eine längere Speicherung vorliegen.
+\end{lstlisting}
+
+\vspace{0.5ex}
+\begin{tabular}{@{}l c c c@{}}
+\toprule
+Candidate    & BLEU   & ROUGE-2 & METEOR \\
+\midrule
+IAR1116-chat & 0.0000 & 0.0625  & 0.1724 \\
+AEB2451-form & 0.0356 & 0.1185  & 0.3790 \\
+\bottomrule
+\end{tabular}
+\caption{Worked example for the lexical metrics (2/2):
+AEB2451-form Retention passage with per-passage BLEU, ROUGE-2,
+and METEOR values. Per-passage metric values are computed with
+the same pipeline as the chapter-level table; see
+Appendix~\ref{app:items-chapter-nlp-lexical} for the full chapter
+means. Continued from Figure~\ref{fig:worked-lexical-a}.}
+\label{fig:worked-lexical-b}
+\end{figure}
+\endgroup
+
 \paragraph{BLEU.} BLEU \emph{(Bilingual Evaluation Understudy)} (\eqref{eq:bleu}) counts exact $n$-gram overlap with the reference and is therefore harsh on paraphrase: a document that says the same thing in different words scores low. It is precision-oriented (how much of what the candidate said also appears in the reference) with a brevity penalty, and the values reported here use $N = 4$.
 
 On exact phrasing matched against the reference, Chat documents
@@ -112,6 +205,13 @@ share marginally more $4$-gram overlap than Form or Ask (Chat
 $0.143$, Form $0.129$, Ask $0.127$). The gap is small, a slight
 reversal of the Form-leading pattern that does not reach
 statistical significance on the full sample.
+In the worked example of
+Figures~\ref{fig:worked-lexical-a} and~\ref{fig:worked-lexical-b},
+IAR1116's Chat passage scores BLEU $= 0.0000$ against the
+reference's single-sentence Retention statement, the value the
+metric assigns when no candidate $4$-gram appears in the reference;
+AEB2451's Form passage scores BLEU $= 0.0356$, where a handful of
+shared $4$-grams survive.
 
 \paragraph{ROUGE-1, ROUGE-2, ROUGE-L.} ROUGE \emph{(Recall-Oriented Understudy for Gisting Evaluation)} (\eqref{eq:rouge1}--\eqref{eq:rougeL}) measures how much of the reference's wording the candidate recovers, in three flavors: unigrams, bigrams, and the longest common subsequence. Each is reported as F1, the harmonic mean of precision (how much of what the candidate said belongs) and recall (how much of what should have been said is there), so it is more permissive than BLEU in word order but still surface-form.
 
@@ -126,6 +226,11 @@ For longest-shared-sequences, Form ($0.388$) and Chat ($0.389$)
 track the reference equally well, with Ask trailing ($0.347$). The
 mode effect reaches significance overall, though no pairwise
 comparison survives Bonferroni correction.
+In the worked example of
+Figures~\ref{fig:worked-lexical-a} and~\ref{fig:worked-lexical-b},
+IAR1116's Chat passage scores ROUGE-2 $= 0.0625$ against the
+reference, while AEB2451's Form passage scores ROUGE-2 $= 0.1185$
+on the strength of bigrams shared with the reference's wording.
 
 \paragraph{METEOR.}
 METEOR \emph{(Metric for Evaluation of Translation with Explicit ORdering)} (\eqref{eq:meteor})
@@ -138,6 +243,12 @@ reference-like terminology (Form $0.412$, Chat $0.390$, Ask
 $0.365$). Form is significantly higher than Ask on the full
 sample; the Form-versus-Chat and Chat-versus-Ask comparisons fall
 short of significance.
+In the worked example of
+Figures~\ref{fig:worked-lexical-a} and~\ref{fig:worked-lexical-b},
+IAR1116's Chat passage scores METEOR $= 0.1724$ against the
+reference, while AEB2451's Form passage scores METEOR $= 0.3790$
+once stem and synonym matches against the reference's vocabulary
+are credited.
 
 Three of the five lexical metrics (ROUGE-2, ROUGE-L, METEOR) reach
 statistical significance on the full sample; BLEU and ROUGE-1 do
@@ -165,6 +276,134 @@ Recall, F1, and SBERT cosine similarity (ModernBERT) by mode
 (full sample $n = 113$), one plot per metric.}
 \label{fig:bert-doc-boxplot}
 \end{figure}
+
+To attach the embedding-based metrics to concrete text,
+Figures~\ref{fig:worked-semantic-a} and~\ref{fig:worked-semantic-b}
+show the Purpose chapter (Chapter~2, \emph{Zwecke und
+Rechtsgrundlagen der Verarbeitung}) for the same two case-study
+participants alongside the reference passage and the
+corresponding per-passage metric values.
+
+\begingroup
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  breakatwhitespace=false,
+  breakindent=0pt,
+  postbreak=\mbox{$\hookrightarrow$\space},
+  frame=single,
+  framerule=0.4pt,
+  language=,
+  numbers=none,
+  showstringspaces=false,
+  keepspaces=true,
+  columns=fullflexible,
+  upquote=true,
+  aboveskip=0.4em,
+  belowskip=0.4em,
+  literate=%
+    {ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1
+    {§}{{\S}}1
+    {•}{{\textbullet}}1
+    {–}{{--}}1 {—}{{---}}1
+    {“}{{``}}1 {”}{{''}}1
+    {‘}{{`}}1 {’}{{'}}1
+}
+\begin{figure}[htbp]
+\centering
+\noindent\textit{Reference passage (purposes plus the two legal bases for processing).}
+\begin{lstlisting}
+2.1 Verarbeitungszwecke
+Wir verarbeiten personenbezogene Daten für folgende Zwecke:
+• Verwaltung von Mitarbeitenden vom Eintritt bis zum Austritt, einschließlich:
+• Anlegen neuer Mitarbeitender
+• Dokumentation von Arbeitszeiten
+• Verwaltung von Urlaub und Abwesenheiten
+• Verwaltung von Parkplatzberechtigungen für berechtigte Mitarbeitende
+
+2.2 Rechtsgrundlagen der Verarbeitung
+Die Verarbeitung erfolgt auf Grundlage folgender Rechtsnormen:
+• Art. 6 Abs. 1 lit. b DSGVO (Erfüllung eines Vertrags oder vorvertraglicher Maßnahmen)
+• § 26 BDSG (Datenverarbeitung für Zwecke des Beschäftigungsverhältnisses)
+\end{lstlisting}
+
+\noindent\textit{IAR1116 (Chat) passage.}
+\begin{lstlisting}
+### 2.1 Zwecke der Verarbeitung
+Wir verarbeiten personenbezogene Daten unserer Mitarbeitenden zur ganzheitlichen Verwaltung von deren Beschäftigungsverhältnis – vom Eintritt bis zum Austritt aus dem Unternehmen. Die Verarbeitung dient folgenden Zwecken:
+
+- Erfassung und Pflege von Stammdaten neuer und bestehender Mitarbeitender,
+- Dokumentation von Arbeitszeiten sowie Verwaltung von Urlaubs- und Abwesenheitszeiten,
+- Zuweisung und Verwaltung von Parkplatzberechtigungen für den firmeneigenen Parkplatz mit Schranke. Hierfür wird ein eindeutiges Merkmal (Fahrzeugkennzeichen) hinterlegt, um die Nutzung zu ermöglichen.
+
+Die Verarbeitung erfolgt ausschließlich auf internen Systemen (Microsoft Office 365 und eigene Server) ohne Nutzung externer Cloud-Dienste. Medizinische Daten oder Krankentage sind nicht Gegenstand dieser Verarbeitungstätigkeit.
+
+### 2.2 Rechtsgrundlagen der Verarbeitung
+Die Verarbeitung personenbezogener Daten erfolgt auf folgenden Rechtsgrundlagen gemäß Art. 6 Abs. 1 DSGVO sowie ergänzenden nationalen Vorschriften:
+
+- **Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung):**
+  Die Verarbeitung ist für die Durchführung des Beschäftigungsverhältnisses erforderlich, insbesondere zur Verwaltung von Arbeitszeiten, Urlaub und Parkplatzberechtigungen.
+
+- **Art. 6 Abs. 1 lit. f DSGVO (Berechtigtes Interesse):**
+  Die Verarbeitung dient unserem berechtigten Interesse an einer effizienten Verwaltung der Mitarbeiterressourcen sowie der Sicherstellung einer geordneten Nutzung des firmeneigenen Parkplatzes.
+
+- **§ 26 BDSG (Datenverarbeitung für Zwecke des Beschäftigungsverhältnisses):**
+  Die Verarbeitung erfolgt im Rahmen des Beschäftigungsverhältnisses und ist für dessen Durchführung erforderlich.
+\end{lstlisting}
+
+\caption{Worked example for the embedding-based metrics (1/2):
+reference and IAR1116-chat Purpose passages (Chapter~2,
+\emph{Zwecke und Rechtsgrundlagen der Verarbeitung}). Continues
+in Figure~\ref{fig:worked-semantic-b}.}
+\label{fig:worked-semantic-a}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[htbp]
+\centering
+\noindent\textit{AEB2451 (Form) passage.}
+\begin{lstlisting}
+Wir verarbeiten personenbezogene Daten unserer Mitarbeitenden ausschließlich zur Verwaltung des Beschäftigungsverhältnisses von der Einstellung bis zum Austritt. Dies umfasst folgende Zwecke:
+
+- Erfassung und Pflege von Stammdaten der Mitarbeitenden
+- Dokumentation von Arbeitszeiten und Anwesenheiten
+- Verwaltung von Urlaubs- und Abwesenheitszeiten
+- Verwaltung von Parkplatzberechtigungen (z. B. Fahrzeugkennzeichen)
+- Erfüllung gesetzlicher Aufbewahrungs- und Meldepflichten
+- Sicherstellung der betrieblichen Abläufe und Compliance
+
+Die Verarbeitung erfolgt auf Grundlage folgender Rechtsgrundlagen:
+
+- **Art. 6 Abs. 1 lit. b DSGVO** (Erfüllung eines Vertrags oder vorvertraglicher Maßnahmen)
+- **§ 26 BDSG** (Datenverarbeitung für Zwecke des Beschäftigungsverhältnisses)
+- **§ 257 HGB** (Aufbewahrung von Handelsbüchern und Unterlagen)
+- **§ 147 AO** (Aufbewahrung von steuerrelevanten Unterlagen)
+- **§ 239 Abs. 1 HGB** (Führung der Handelsbücher)
+- **§ 2 Abs. 1 Nr. 1 BDSG** (Verarbeitung personenbezogener Daten im Beschäftigungskontext)
+\end{lstlisting}
+
+\vspace{0.5ex}
+\begin{tabular}{@{}l c c c c@{}}
+\toprule
+Candidate    & BERTScore P & BERTScore R & BERTScore F1 & SBERT \\
+\midrule
+IAR1116-chat & 0.8797      & 0.9180      & 0.8984       & 0.9810 \\
+AEB2451-form & 0.8954      & 0.9336      & 0.9141       & 0.9882 \\
+\bottomrule
+\end{tabular}
+\caption{Worked example for the embedding-based metrics (2/2):
+AEB2451-form Purpose passage with per-passage BERTScore P/R/F1
+and SBERT values. SBERT cosine similarity is reported under the
+ModernBERT encoder, matching the document- and chapter-level
+tables. Per-passage metric values are computed with the same
+pipeline as the chapter-level table; see
+Appendix~\ref{app:items-chapter-nlp-bert} for the full chapter
+means. Continued from Figure~\ref{fig:worked-semantic-a}.}
+\label{fig:worked-semantic-b}
+\end{figure}
+\endgroup
 
 \paragraph{BERTScore Precision, Recall, F1.} BERTScore (\eqref{eq:bertscore-p}--\eqref{eq:bertscore-f1}) replaces $n$-gram matching with cosine similarities between contextual token embeddings, so paraphrase that shares meaning is credited even without surface-form overlap. \emph{Precision} measures how much of what the candidate said belongs (penalizing spurious content), \emph{recall} measures how much of what should have been said is there (penalizing omission), and \emph{F1} is their harmonic mean (both must be reasonable for F1 to be high).
 
@@ -195,12 +434,27 @@ reference content, but also includes more material the reference
 does not (lower Precision); Chat stays tightly on topic but
 leaves more out (lower Recall); their strengths balance out on
 F1, and Ask underperforms on both.
+In the worked example of
+Figures~\ref{fig:worked-semantic-a} and~\ref{fig:worked-semantic-b},
+IAR1116's Chat passage scores BERTScore Precision $= 0.8797$,
+Recall $= 0.9180$, and F1 $= 0.8984$ against the reference, while
+AEB2451's Form passage scores Precision $= 0.8954$, Recall
+$= 0.9336$, and F1 $= 0.9141$, with the embedding model crediting
+its broader overlap with the reference's legal vocabulary.
 
+\sloppy
 \paragraph{SBERT (ModernBERT) cosine similarity.} Sentence-BERT cosine similarity (\eqref{eq:sbert}) compresses each document into a single embedding vector and reports how aligned the two vectors are, on a scale where $1$ is identical meaning and $0$ is unrelated. It is the most lenient of the metrics reported here: as the comparison is at the document level rather than the token level, two documents that cover the same topics with different wording typically obtain values close to $1$.
+\fussy
 
 Read at document level as a whole, Chat sits closest to the
 reference (Chat $0.990$, Form $0.986$, Ask $0.986$). Chat is
 significantly higher than both other modes.
+In the worked example of
+Figures~\ref{fig:worked-semantic-a} and~\ref{fig:worked-semantic-b},
+IAR1116's Chat passage scores SBERT $= 0.9810$ against the
+reference, while AEB2451's Form passage scores SBERT $= 0.9882$,
+with the document-level encoder placing both passages near the
+top of the metric's range.
 All four embedding-based metrics reach statistical significance on
 the full sample.
 At the document level the user-study Form-leading verdict breaks
@@ -235,47 +489,62 @@ purpose and T\&O chapters.
 verbatim form participants saw; English glosses are provided for
 the international reader.}
 \label{tab:ropa-chapters}
-\begin{tabular}{@{}c l l@{}}
+\begin{tabularx}{\linewidth}{@{}c X X@{}}
 \toprule
 \# & German title & English gloss \\
 \midrule
-1 & Verantwortliche Stelle und Kontaktdaten            & Controller and Contact Details \\
-2 & Zwecke und Rechtsgrundlagen der Verarbeitung       & Purposes and Legal Bases of Processing \\
+1 & Verantwortliche Stelle und Kontaktdaten             & Controller and Contact Details \\
+2 & Zwecke und Rechtsgrundlagen der Verarbeitung        & Purposes and Legal Bases of Processing \\
 3 & Kategorien personenbezogener Daten und Datenquellen & Categories of Personal Data and Sources \\
-4 & Betroffene Personen und Empfänger                  & Data Subjects and Recipients \\
-5 & Aufbewahrungsfristen und Löschung                  & Retention Periods and Deletion \\
-6 & Technische und organisatorische Maßnahmen          & Technical and Organizational Measures \\
+4 & Betroffene Personen und Empfänger                   & Data Subjects and Recipients \\
+5 & Aufbewahrungsfristen und Löschung                   & Retention Periods and Deletion \\
+6 & Technische und organisatorische Maßnahmen           & Technical and Organizational Measures \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 Per-chapter, per-mode tables are in
 Appendix~\ref{app:items-chapter-nlp} (lexical metrics in
 Appendix~\ref{app:items-chapter-nlp-lexical}, embedding-based
 metrics in Appendix~\ref{app:items-chapter-nlp-bert}). The
-chapter-level box plots are in
-Figures~\ref{fig:chapter-nlp-boxplot}
-and~\ref{fig:chapter-bert-boxplot}.
+chapter-level box plots are split across
+Figures~\ref{fig:chapter-nlp-boxplot-a}--\ref{fig:chapter-nlp-boxplot-b}
+for the lexical metrics and
+Figures~\ref{fig:chapter-bert-boxplot-a}--\ref{fig:chapter-bert-boxplot-b}
+for the BERT-based and SBERT metrics.
 
 \subsubsection{Lexical Metrics}
 \label{ssec:nlp-chapter-lexical}
 
 Per-chapter, per-mode means for the five lexical metrics are
-tabulated in Appendix~\ref{app:items-chapter-nlp-lexical};
-Figure~\ref{fig:chapter-nlp-boxplot} shows the distributions.
+tabulated in Appendix \ref{app:items-chapter-nlp-lexical};
+Figures~\ref{fig:chapter-nlp-boxplot-a}
+and~\ref{fig:chapter-nlp-boxplot-b} show the distributions.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.45\linewidth]{chapter_nlp_bleu.png}\hfill
-\includegraphics[width=0.45\linewidth]{chapter_nlp_rouge1.png}\\[1ex]
-\includegraphics[width=0.45\linewidth]{chapter_nlp_rouge2.png}\hfill
-\includegraphics[width=0.45\linewidth]{chapter_nlp_rougeL.png}\\[1ex]
-\includegraphics[width=0.45\linewidth]{chapter_nlp_meteor.png}
-\caption{Chapter-level distributions of BLEU, ROUGE-1, ROUGE-2,
-ROUGE-L, and METEOR by mode (full sample $n = 113$), one plot
-per metric showing all six ROPA chapters side by side.}
-\label{fig:chapter-nlp-boxplot}
+\includegraphics[width=0.85\linewidth]{chapter_nlp_bleu.png}\\[1ex]
+\includegraphics[width=0.85\linewidth]{chapter_nlp_rouge1.png}\\[1ex]
+\includegraphics[width=0.85\linewidth]{chapter_nlp_rouge2.png}
+\caption{Chapter-level distributions of BLEU, ROUGE-1, and
+ROUGE-2 by mode (full sample $n = 113$), one plot per metric
+showing all six ROPA chapters side by side. Continues in
+Figure~\ref{fig:chapter-nlp-boxplot-b}.}
+\label{fig:chapter-nlp-boxplot-a}
 \end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\linewidth]{chapter_nlp_rougeL.png}\\[1ex]
+\includegraphics[width=0.85\linewidth]{chapter_nlp_meteor.png}
+\caption{Chapter-level distributions of ROUGE-L and METEOR by
+mode (full sample $n = 113$), one plot per metric showing all
+six ROPA chapters side by side. Continued from
+Figure~\ref{fig:chapter-nlp-boxplot-a}.}
+\label{fig:chapter-nlp-boxplot-b}
+\end{figure}
+
+\clearpage
 
 Across modes the chapter-level lead splits cleanly into three
 zones, and at the lexical level the split holds on every metric
@@ -311,26 +580,39 @@ $0.280$).
 \subsubsection{BERT-Based and Sentence-Embedding Metrics}
 \label{ssec:nlp-chapter-bert}
 
+\sloppy
 Per-chapter, per-mode means for the three BERTScore variants and
 the SBERT cosine similarity under both encoder backbones
 (ModernBERT primary, plus a chapter-only \texttt{all-MiniLM-L6-v2}
 robustness check) are tabulated in
 Appendix~\ref{app:items-chapter-nlp-bert};
-Figure~\ref{fig:chapter-bert-boxplot} shows the BERTScore and
+Figures~\ref{fig:chapter-bert-boxplot-a}
+and~\ref{fig:chapter-bert-boxplot-b} show the BERTScore and
 SBERT (ModernBERT) distributions. The MiniLM pass is in the
 appendix tables only.
+\fussy
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.7\linewidth]{chapter_nlp_bertscore_p.png}\\
-\includegraphics[width=0.7\linewidth]{chapter_nlp_bertscore_r.png}\\
-\includegraphics[width=0.7\linewidth]{chapter_nlp_bertscore_f1.png}\\
-\includegraphics[width=0.7\linewidth]{chapter_nlp_sbert.png}
-\caption{Chapter-level distributions of BERTScore Precision,
-Recall, F1, and SBERT cosine similarity (ModernBERT) by mode
-(full sample $n = 113$).}
-\label{fig:chapter-bert-boxplot}
+\includegraphics[width=0.85\linewidth]{chapter_nlp_bertscore_p.png}\\[1ex]
+\includegraphics[width=0.85\linewidth]{chapter_nlp_bertscore_r.png}
+\caption{Chapter-level distributions of BERTScore Precision and
+Recall by mode (full sample $n = 113$). Continues in
+Figure~\ref{fig:chapter-bert-boxplot-b}.}
+\label{fig:chapter-bert-boxplot-a}
 \end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\linewidth]{chapter_nlp_bertscore_f1.png}\\[1ex]
+\includegraphics[width=0.85\linewidth]{chapter_nlp_sbert.png}
+\caption{Chapter-level distributions of BERTScore F1 and SBERT
+cosine similarity (ModernBERT) by mode (full sample $n = 113$).
+Continued from Figure~\ref{fig:chapter-bert-boxplot-a}.}
+\label{fig:chapter-bert-boxplot-b}
+\end{figure}
+
+\clearpage
 
 The embedding-based view keeps the same three-zone pattern as the
 lexical metrics but compresses the absolute range: Ask still wins
@@ -398,6 +680,7 @@ deliver a trade-off instead: Form documents recover more of what
 the reference \emph{says}, Chat documents stay closer to what it
 \emph{means}, and Ask trails on every front.
 
+\sloppy
 A final observation cuts across metric families. The five lexical
 metrics and the four BERT-based metrics measure different things,
 surface-form n-gram overlap on the one hand and contextual
@@ -410,6 +693,7 @@ metrics (METEOR, BERTScore F1, SBERT) sit in between. In sum,
 no single mode produces categorically better documents than the
 others; which mode leads depends on which property of the
 documents the metric focuses on.
+\fussy
 
 \begin{sidewaystable}
 \centering

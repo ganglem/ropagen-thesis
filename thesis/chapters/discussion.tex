@@ -1,17 +1,60 @@
 \chapter{Discussion}
 \label{ch:discussion}
 
-The Evaluation chapter answered RQ1 and RQ2 with the four
-user-study instruments and the two document-quality streams. This
+The study began with a prediction. Section~\ref{sec:thesis-structure}
+of the Introduction set out the expectation that mode preference
+would track LLM involvement: Chat $\succ$ Form $\succ$ Ask, with the
+freeform conversational mode the favorite of a novice user base
+that had nothing to bring to the document but their description of
+the scenario. The data ran the other way. The post-experiment
+ranking placed Form first ($37$ of $69$ rank-1 votes), Chat second
+($20$), and Ask third ($12$); the chi-square goodness-of-fit
+rejected the uniform null ($\chi^2(2) = 14.17$, $p < 0.001$,
+Cram\'{e}r's $V = 0.32$, medium). The reversal is not an
+instrument artifact. Form leads the System Usability Scale, leads
+the R-TLX with Temporal Demand and Frustration reaching
+significance individually, takes about half the wall-clock time of
+either LLM-driven mode ($H = 16.46$, $p < 0.001$,
+$\varepsilon^2 = 0.15$, large), and is the only mode on which the
+Perceived AI Support questionnaire returns a statistically
+significant lead (item~6, re-use intent). The mode that does the
+least for the user, in the sense of doing the least LLM work for
+them, is the mode the user wants the most.
+
+The rest of this chapter is an attempt to make sense of that
+reversal. The Evaluation chapter answered RQ1 and RQ2 with the four
+user-study instruments and the two document-quality streams; this
 chapter takes up RQ3, the cross-stream question of whether
-self-report confidence aligns with measured document quality. It
-opens with the gap itself, turns to the architectural reading of
-Ask as a separate phenomenon that the gap framing does not on its
-own explain, and closes with the design implications and the
-work's limitations.
+self-report confidence aligns with measured document quality, and
+uses it as the lens through which to read the reversal. It opens
+with the gap itself, turns to the architectural reading of Ask as
+a separate phenomenon that the gap framing does not on its own
+explain, returns to the literature to locate the contribution
+this gap represents, and closes with the design implications and
+the work's limitations.
 
 \section{The Confidence--Correctness Gap}
 \label{sec:disc-gap}
+
+The differences across modes do not spread evenly across the
+measurements. They concentrate on a handful of findings, with
+both Form and Chat having their moments to shine. Form clears
+the SUS acceptability threshold, leads BERTScore Recall over
+both LLM-driven modes, is measurably faster than either, and is
+the mode participants most often want to use again. Chat leads
+document-level Sentence-BERT cosine similarity over both other
+modes. On most other measures the three modes are statistically
+separable but practically close, and the composite tests on
+SUS, R-TLX, and Perceived AI Support all fail to reach
+significance even where individual items or pairwise
+comparisons do. The three modes therefore produce broadly
+comparable documents and broadly comparable experiences. Within
+that narrow band, the variation in self-reported confidence
+across modes stands out: users distinguish the modes with sharp
+confidence rankings even though the documents themselves are
+broadly similar. That mismatch, sharp differences in user
+feeling against narrow differences in the documents, is the
+substance of RQ3.
 
 Self-report confidence in the LLM's content choices does not
 match the measured quality of the documents the LLM produces.
@@ -64,6 +107,33 @@ participant's user-study record on the Form session reports the
 typical Form pattern of perceived productivity and high
 preference placement. The judge's verdict on this single
 document is exactly the phenomenon Form produces in aggregate.
+The Retention and Purpose passages reproduced in
+Figures~\ref{fig:worked-lexical-a}--\ref{fig:worked-semantic-b} of
+the Evaluation chapter show the two case-study participants side
+by side at passage scale; the meta-reading of those passages is
+taken up in Section~\ref{sec:disc-ask}.
+
+The gap is not between good documents and great ones. The
+judge's holistic Overall score sits at $2.41$ for Form, $2.49$
+for Ask, and $2.62$ for Chat, all below the midpoint of the
+$1$--$5$ rubric scale and all more than $1.4$ points short of
+the rubric's ``good'' anchor at $4.0$. The inter-mode spread is
+$0.21$ points; the gap to ``good'' is roughly seven times that.
+What this study actually compares are three routes to a moderate
+document; no mode in this sample produces what the judge would
+call a useful real-world Article~30 record. The reading that
+follows, including the tooling implications later in the
+chapter, should therefore be read as a comparison among
+moderate-quality routes, not as an endorsement that any one of
+them is deployment-ready for novices to produce live compliance
+documents. A second illustration of the calibration mismatch
+sits inside the R-TLX itself: Performance is the one workload
+dimension where Form does not lead, with participants rating
+their own task success as essentially identical across modes
+($8.71$, $8.68$, $9.39$ on the inverted $1$--$21$ scale), yet
+the judge's Completeness and Faithfulness verdicts on the same
+documents diverge sharply. Participants cannot tell, from inside
+the interface, which mode produced the better document.
 
 Confidence and correctness are decoupled in this novice
 population. Novices are reasonable calibrators of which mode
@@ -128,6 +198,82 @@ not a technical one. The novice user cannot bear the authorial
 load that this design places on them, and the documents reflect
 that across every metric family.
 
+The same argument extends to the other two modes once the
+shared generation step is taken seriously. All three modes hand
+their \texttt{DocumentData} object to the same
+\texttt{finalropa} prompt at temperature $0.05$ and top-$p$
+$0.05$ (Methodology Table~\ref{tab:ropagen-llm-params}). The
+prompt is identical across modes; only the populated contents
+of \texttt{DocumentData} differ. The generator is asked to
+render plausible-sounding prose for every boolean it finds set,
+and it does. Form sets the most booleans, because the user
+clicks every applicable checkbox; the generator is therefore
+asked to render the most fields, and invents the most detail to
+flesh them out. Chat sets fewer booleans, because only what was
+conversationally extracted reaches the schema; the generator
+renders fewer fields and invents less, though it also leaves
+more out (the Completeness penalty). Ask sets none, and the
+generator works from the user's free-text alone. The Form
+co-occurrence of maximum Completeness with moderate or worse
+Hallucination ($83.8\,\%$ of Form documents) and floor
+Hallucination ($17$ of $37$) is therefore not a property of the
+checkbox interaction style; it is an artifact of the shared
+generation step being handed maximum scaffolding to render.
+The implication is consequential for the design implications
+that follow. Hallucination at this scale cannot be addressed by
+changing the interaction surface alone, because the fabrication
+happens after the interface has handed off. Any mitigation has
+to act on the layer where the invention occurs.
+
+The two worked examples in the Evaluation chapter
+(Figures~\ref{fig:worked-lexical-a}--\ref{fig:worked-semantic-b})
+make this mechanism visible at passage scale. On the Retention
+chapter and on the Purpose chapter alike, AEB2451's Form passages
+outscore IAR1116's Chat passages on every reported metric, even
+though IAR1116's content is faithful to the scenario and
+AEB2451's content is fabricated: the Retention passage cites
+$6$ to $10$ year statutory retention against the scenario's
+$3$-month rule, and the Purpose passage cites legal articles
+(\S~257~HGB, \S~147~AO, \S~239~Abs.~1~HGB, \S~2~Abs.~1~Nr.~1~BDSG)
+none of which appear in the scenario. The faithful passage scores
+lower because IAR1116 paraphrases (\emph{nach Austritt der
+Mitarbeitenden}), while the fabricated passage scores higher
+because AEB2451 draws on the same legal vocabulary as the
+reference (\emph{nach Beendigung des Beschäftigungsverhältnisses,
+gemäß § 257 HGB}) and then extends it with invented citations.
+Form's generation path, asked to render every set boolean in
+formal compliance prose, reaches for the reference's terminology
+even when the content behind it is invented.
+
+Reference-based NLP metrics, lexical and embedding-based alike,
+measure surface and semantic similarity to a target document;
+they are structurally blind to whether the candidate's content is
+true. A document that hallucinates in the reference's vocabulary
+can outscore a faithful document that paraphrases. The judge
+layer is therefore not a supplementary nicety, it is the
+methodological complement that catches what reference-based
+metrics structurally cannot see, and it is the reason the case
+study could read AEB2451's Form document as the case-study floor
+on Scenario Faithfulness and Hallucination-inverse even where the
+NLP pipeline does not flag it. This is the same logic motivating
+the validation gate sketched in
+Section~\ref{sec:disc-implications}: a gate that runs a judge
+against the submitted document is acting on exactly the failure
+mode the reference-based metrics cannot surface on their own.
+
+The case study's document-level claim, that the NLP metrics agree
+IAR1116's Chat is the participant's strongest output, still holds
+when averaged across all six chapters; per-chapter the metrics
+can flip, as
+Figures~\ref{fig:worked-lexical-a}--\ref{fig:worked-semantic-b}
+make concrete. The worked example
+does not overturn the case-study claim, it sharpens the
+triangulation argument the chapter has been making at every other
+level. Reading the NLP metrics, the judge layer, and the
+user-study record as three streams of partial evidence rather
+than as a single verdict is precisely what makes the
+confidence--correctness gap legible at all.
+
 \section{Meta-finding and Implications for ROPA Tooling}
 \label{sec:disc-implications}
 
@@ -161,17 +307,21 @@ Hallucination, which appears across all three modes in the
 judge data, would still need to be addressed separately; the
 checkbox-and-conversation hybrid does not solve it on its own.
 
-\textbf{A validation gate at submission time.} The
-LLM-as-a-judge data show that a single-pass single-model judge
-can already discriminate hallucinated documents from faithful
-ones. A validation gate that runs such a judge against the
-submitted document and surfaces low Scenario Faithfulness or
-low Hallucination-inverse scores before the user clicks submit
-would give novice users the only signal they currently lack:
-whether the LLM has produced content that matches the scenario
-they described. The gate is not a replacement for expert
-review, but it is a plausible inline check on the most
-consequential failure mode.
+\textbf{A validation gate at submission time.} The mechanism
+identified at the close of Section~\ref{sec:disc-ask} pins the
+fabrication on the shared generation step, which is the layer
+the user never sees. A validation gate at submission time can
+act on that layer directly: the LLM-as-a-judge data show that a
+single-pass single-model judge can already discriminate
+hallucinated documents from faithful ones, and a gate that runs
+such a judge against the submitted document and surfaces low
+Scenario Faithfulness or low Hallucination-inverse scores before
+the user clicks submit would give novice users the only signal
+they currently lack: whether the LLM has produced content that
+matches the scenario they described. The gate is not a
+replacement for expert review, but it is a plausible inline
+check on the most consequential failure mode, and it acts at
+the right layer.
 
 \textbf{An education layer for novice calibration.} Self-report
 confidence in this study is not well-calibrated to document
@@ -182,10 +332,110 @@ fields the user did not explicitly describe, would surface the
 calibration mismatch in the interface rather than leave it for
 the user to detect.
 
+\section{In Light of Prior Work}
+\label{sec:disc-related}
+
+The findings reported above sit inside a small but active
+literature. Reading them against the four lenses surveyed in
+the Related Work section of Chapter~\ref{ch:background}
+clarifies what is new here and what merely confirms what the
+prior work has been converging on. The walk through the lenses follows the same
+order: GDPR compliance automation, structured legal-document
+generation, evaluation methodology, and user-facing legal AI.
+
+\textbf{GDPR compliance automation.} von Schwerin et al.\
+\cite{schwerinSystematicComparisonOpen2024} compared open-source
+backbones for ROPA category generation and argued for
+human-in-the-loop necessity on the basis of remaining model
+limitations. This thesis takes the same pipeline they validated
+and extends the question from \emph{which model} to \emph{which
+interaction mode}, holding the model constant. Their
+human-in-the-loop claim is empirically supported here from a
+direction their study could not produce: even Chat, the mode
+that leads the judge's Scenario Faithfulness, sits below the
+rubric midpoint on Overall quality. No interaction mode
+evaluated produces what the judge would call a good document
+for novice authors. Abualhaija et al.\
+\cite{abualhaijaLLMassistedExtractionRegulatory2025} reported,
+in the adjacent problem of GDPR requirement extraction, that
+high BERTScore can coexist with low BLEU when meaning is
+captured but wording diverges. That pattern characterizes Chat
+mode in this study exactly. Chat leads document-level SBERT
+cosine similarity and BERTScore Precision, both semantic
+measures, while sitting in the middle on ROUGE-2 against the
+expert reference; the meaning is captured even where the
+wording diverges from the reference's checkbox-style prose.
+
+\sloppy
+\textbf{Structured legal-document generation.} The hybrid
+recommendation in Section~\ref{sec:disc-implications}, visible
+scaffolding paired with LLM extraction, is architecturally
+consonant with the wrapper-and-iterate design Nigam et al.\
+\cite{nigamStructuredLegalDocument2025} report for Indian
+private legal-document drafting. Their argument that
+orchestration over scale matters, that the structural wrapper
+around a smaller model can match a frontier model, finds an
+empirical counterpart on the user-experience side here. Holding
+the model constant and varying only the interaction surface
+produces sharp preference and quality differences across the
+three modes; the orchestration layer demonstrably carries the
+load that the brief flagged as an open question. The other two
+structured-legal works surveyed in Background sit further from
+the design choices of this study and do not warrant a return
+visit at this point.
+\fussy
+
+\textbf{Evaluation methodology.} Su et al.\
+\cite{suJuDGEBenchmarkingJudgment2025} argued, on the basis of
+Chinese judgment-document generation, that lexical metrics alone
+cannot capture the legal reasoning that distinguishes a sound
+judgment from a plausible-sounding one, and proposed pairing
+those metrics with judgment-specific dimensions. The data here
+partially complicates that argument and partially supports it.
+The complication is that the lexical metrics (BLEU, ROUGE,
+METEOR) and the BERT-based metrics (BERTScore, SBERT) order the
+three modes the same way; on the present sample they appear to
+capture related signals rather than orthogonal ones. The
+support is that the judge layer adds GDPR-specific dimensions
+(Completeness, Scenario Faithfulness, Hallucination) that no
+reference-based metric in this study could surface, and that
+those dimensions reveal the central confidence--correctness gap
+of this thesis. The LLM-as-a-judge is therefore a
+complementary, not a replacement, signal: it does work the
+reference-based metrics cannot do, and it does so in a way
+consistent with the dual-evaluation template prior work has
+converged on.
+
+\textbf{User-facing legal AI.} Surya et al.\
+\cite{suryaAIPoweredInteractiveLegal2025} and Vayadande et al.\
+\cite{vayadandeAIPoweredLegalDocumentation2024} validated
+user-facing legal AI through illustrative use cases without
+controlled novice studies; both works closed by acknowledging
+the absence of empirical user evaluation as a limitation. This
+thesis fills that exact gap. The confidence--correctness
+decoupling reported in Section~\ref{sec:disc-gap}, with novices
+preferring the most fabricated mode and feeling most confident
+about the least complete one, is the kind of empirical finding
+inspection-based evaluations cannot produce. It is also the
+finding most directly relevant to the deployment of
+user-facing legal AI for non-experts, the constituency both
+works targeted.
+
+\sloppy
+The Background closed by naming the unfilled intersection of
+three concerns: GDPR-specific structured output, novice users
+without legal training, and explicit measurement of the
+confidence--quality gap under varying levels of LLM support.
+This study is the first to occupy that intersection. The
+substantive contribution is the gap itself, the architectural
+explanation for why Ask underperforms despite its conceptual
+appeal, and the design hierarchy that follows from both.
+\fussy
+
 \section{Limitations}
 \label{sec:disc-limits}
 
-The study's design choices bound the findings in five concrete
+The study's design choices bound the findings in six concrete
 ways.
 
 \textbf{Single scenario.} Every participant produced ROPAs for
@@ -198,13 +448,34 @@ legal references might shift the chapter-level distribution of
 leadership, even if the direction of the trade-off survives.
 
 \textbf{Novice-only sample.} Participants were university
-students, IT-leaning, chatbot-fluent, and self-reported as
-ROPA-novice. The findings are explicitly novice-applicable.
-Whether the design hierarchy generalizes to experts is an open
-question. A GDPR-trained data protection officer presented with
-the same three modes might prefer Ask, because the
-conceptual-explainer loop is a faster path to a document when
-the user already knows the legal vocabulary.
+students, self-reported as ROPA-novice, with a mean ROPA
+familiarity of $1.45$ on the $1$--$5$ scale. The findings are
+explicitly novice-applicable. Whether the design hierarchy
+generalizes to experts is an open question. A GDPR-trained data
+protection officer presented with the same three modes might
+prefer Ask, because the conceptual-explainer loop is a faster
+path to a document when the user already knows the legal
+vocabulary.
+
+\textbf{IT-leaning, chatbot-fluent demographic.} The novice
+sample is not a generic novice sample. Of those who reported
+gender, $62.1\,\%$ identified as male; the highest completed
+degree was almost uniformly Bachelor-level, with field of study
+or work concentrated in IT and Computer Science; chatbot
+familiarity sat at a mean of $4.36$ on the $1$--$5$ scale
+(Section~\ref{sec:eval-demographics}, Figures~\ref{fig:demographics-gender}--\ref{fig:demographics-field}).
+This profile is more chatbot-fluent than the broader novice
+population GDPR compliance drafters have in mind, the small or
+medium-sized organization staff member with no IT background
+and no prior chatbot exposure. The likely direction of that
+confound is conservative for the present findings rather than
+inflationary: a less tech-comfortable population, less
+practiced at interacting with a freeform chatbot, would
+plausibly show a \emph{wider} Form-over-Chat preference gap and
+a sharper Ask-as-explainer-fails-novices reading, not a
+narrower one. The Form-preference finding and the
+architectural argument about Ask are therefore conservative
+against the broader audience the tool is built for.
 
 \textbf{Single reference document.} The NLP metrics score
 against a single expert-authored Form-style reference. Form
@@ -240,24 +511,36 @@ this study does not perform.
 \section{Summary}
 \label{sec:disc-summary}
 
-The chapter has taken up RQ3 by reading the user-study,
-document-quality, and judge streams against each other.
-Confidence and correctness are decoupled in this novice
-population: the mode users feel most confident about produces
-the least complete documents, and the mode users prefer to
-re-use produces the most fabricated ones. The two-participant
-case study makes the gap concrete at human scale. What links
-the three streams is how each mode populates the document
-object the shared final-generation step receives. Form lets the
-user populate the scaffolding directly; Chat lets the LLM
-populate it from the conversation; Ask leaves the scaffolding
-untouched and the user writes only the per-section free-text
-fields. Ask underperforms because the novice user cannot bear
-sole authorship of a GDPR document. The thesis-level claim that
-follows is that LLM-assisted document tooling for novices
-should position the LLM as a co-author rather than as a
-teacher, and that visible structure with LLM-driven population
-is the most promising hybrid the data supports.
+The chapter set out to make sense of a hypothesis reversal. The
+prior expectation that more LLM involvement would translate
+into more user preference did not survive contact with the
+data; novices preferred Form, the mode that does the least LLM
+work for them. The explanation runs through RQ3. Confidence and
+correctness are decoupled in this novice population: the mode
+users feel most confident about produces the least complete
+documents, and the mode users prefer to re-use produces the
+most fabricated ones. The two-participant case study makes the
+gap concrete at human scale, and the judge's holistic Overall
+scores, all below the rubric midpoint, locate the comparison
+among three routes to a moderate document rather than between
+moderate and good documents. What links the three streams is
+how each mode populates the document object the shared
+final-generation step receives. Form lets the user populate
+the scaffolding directly; Chat lets the LLM populate it from
+the conversation; Ask leaves the scaffolding untouched and the
+user writes only the per-section free-text fields. Ask
+underperforms because the novice user cannot bear sole
+authorship of a GDPR document; Form's Completeness--Hallucination
+co-occurrence is an artifact of the shared generation step
+being handed the most to render. Read against the four lenses
+of the prior literature, the substantive contribution is the
+confidence--quality gap itself, an empirical finding the
+inspection-based prior work on user-facing legal AI was not
+positioned to produce. The thesis-level claim that follows is
+that LLM-assisted document tooling for novices should position
+the LLM as a co-author rather than as a teacher, and that
+visible structure with LLM-driven population is the most
+promising hybrid the data supports.
 
 The Conclusion chapter (Chapter~\ref{ch:conclusion}) returns to
 RQ1, RQ2, and RQ3 in plain English and draws the design lessons
