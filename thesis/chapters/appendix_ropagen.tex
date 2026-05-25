@@ -791,15 +791,33 @@ DATA_UPDATE:
 
 \section{ROPAgen Mode Screenshots}
 
-The three figures below show the ROPAgen user interface as it appeared to participants in each of the three interaction modes, captured on a comparable step of the standardized study scenario (Section~\ref{app:scenario}). They illustrate the user-facing surface of each mode rather than the backend behavior reproduced in Section~\ref{app:ropagen-prompts}.
+The figures in this section show the ROPAgen user interface as it appeared to participants, captured on the standardized study scenario (Section~\ref{app:scenario}). They illustrate the user-facing surface of the tool rather than the backend behavior reproduced in Section~\ref{app:ropagen-prompts}. The first subsection reproduces the two screens common to all three modes; the remaining three subsections show the mode-specific surface that sits between them.
+
+\subsection{Shared Across Modes: Organization Entry and Final Document}
+\label{app:ropagen-shared-screenshots}
+
+The introductory \emph{Organization} entry screen (Figure~\ref{fig:ropagen-intro}) and the final \emph{Generate Document} screen (Figure~\ref{fig:ropagen-generated}) are identical across the three interaction modes. They are reproduced once here to avoid repeating them in each mode's section that follows; the mode-specific interaction described in the subsequent subsections takes place between these two bookends.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{ropagen-intro.jpg}
+\caption{The \emph{Organization} entry screen, shown to participants before the mode-specific interaction begins. Identical across all three modes.}
+\label{fig:ropagen-intro}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{ropagen-generated.jpg}
+\caption{The final \emph{Generate Document} screen, shown to participants after the mode-specific interaction concludes. Identical across all three modes; the \texttt{finalropa} prompt (Section~\ref{app:ropagen-prompt-finalropa}) runs at this point regardless of which mode was used.}
+\label{fig:ropagen-generated}
+\end{figure}
 
 \subsection{Form Mode}
 \label{app:ropagen-form-screenshot}
 
 \begin{figure}[htbp]
 \centering
-% TODO: insert screenshot PNG (Emilija to supply)
-\fbox{\parbox[c][6cm][c]{0.85\linewidth}{\centering\itshape Screenshot placeholder --- to be inserted.}}
+\includegraphics[width=0.95\linewidth]{ropagen-form.jpg}
 \caption{Form mode. The eight thematic groups of the \texttt{DocumentData} schema are exposed as a linear questionnaire of checkboxes and short text fields. Each section offers an optional \emph{AI~Suggest} button that calls the LLM with the section-specific Form-mode prompt (Section~\ref{app:ropagen-prompts-form}).}
 \end{figure}
 
@@ -808,8 +826,7 @@ The three figures below show the ROPAgen user interface as it appeared to partic
 
 \begin{figure}[htbp]
 \centering
-% TODO: insert screenshot PNG (Emilija to supply)
-\fbox{\parbox[c][6cm][c]{0.85\linewidth}{\centering\itshape Screenshot placeholder --- to be inserted.}}
+\includegraphics[width=0.95\linewidth]{ropagen-ask.jpg}
 \caption{Ask mode. Each section presents a free-form text field (no checkboxes) paired with a per-section chat panel that explains the section's purpose and answers follow-up questions. The LLM's reply is conversational only; no field is auto-populated and the user types all section content manually.}
 \end{figure}
 
@@ -818,8 +835,7 @@ The three figures below show the ROPAgen user interface as it appeared to partic
 
 \begin{figure}[htbp]
 \centering
-% TODO: insert screenshot PNG (Emilija to supply)
-\fbox{\parbox[c][6cm][c]{0.85\linewidth}{\centering\itshape Screenshot placeholder --- to be inserted.}}
+\includegraphics[width=0.95\linewidth]{ropagen-chat.jpg}
 \caption{Chat mode. The structured form is hidden; participants describe their processing activity in free-form text and the LLM populates the underlying \texttt{DocumentData} object via silent \texttt{DATA\_UPDATE} blocks emitted on every turn.}
 \end{figure}
 
@@ -1041,7 +1057,7 @@ Overall & Holistic judgment of how useful the document would be as a real Art.~3
 \subsection{Model Configuration and Limitations}
 \label{app:judge-config}
 
-The configuration in Table~\ref{tab:judge-config} is taken from the \texttt{judge} block of \texttt{python/judge/prompt.\-json} and the corresponding cells of \texttt{ROPAgen\_JUDGE.ipynb}. It is the minimal information required to reproduce the evaluation layer.
+The configuration in Table \ref{tab:judge-config} is taken from the \texttt{judge} block of \texttt{python/judge/\allowbreak prompt.json} and the corresponding cells of \texttt{ROPAgen\_JUDGE.ipynb}. It is the minimal information required to reproduce the evaluation layer.
 
 \begin{table}[htbp]
 \centering

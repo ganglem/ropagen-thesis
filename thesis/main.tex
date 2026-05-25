@@ -23,6 +23,7 @@ BCOR15mm               % Bindekorrektur
 
 \usepackage{graphicx}
 \graphicspath{{images/}{../python/survey/output/}{../python/metrics/output/}{../python/judge/output/}}
+\usepackage{subcaption}
 \usepackage{booktabs}
 \usepackage{siunitx}
 \sisetup{detect-all,group-separator={\,},output-decimal-marker={.}}
@@ -100,11 +101,17 @@ pdfauthor=\fullname,
 pdfsubject={Diplomarbeit},
 pdfproducer={pdfeTex 3.14159-1.30.6-2.2},
 colorlinks=false,
+breaklinks=true,
 pdfborder=0 0 0	% keine Box um die Links!
 }
 
 % Trennungsregeln
-\hyphenation{Sil-ben-trenn-ung}
+\hyphenation{Sil-ben-trenn-ung ref-er-ence-based ref-er-ence}
+
+% Allow LaTeX to stretch lines more before falling back to overflow.
+% This eliminates the small overfulls that otherwise appear around
+% non-breakable hyperref boxes and long acronym chains in flowing prose.
+\setlength{\emergencystretch}{6em}
 
 \begin{document}
 \frontmatter

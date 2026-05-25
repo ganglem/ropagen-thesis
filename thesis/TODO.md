@@ -1,12 +1,5 @@
 ## P0 — Content gaps (must close before defence)
 
-### ROPAgen appendix (Appendix D)
-
-- [ ] **Three mode screenshots.** Form/Ask/Chat UI captures on the same
-      scenario step for visual comparability. Section frames and labels
-      already exist in `appendix_ropagen.tex` (\S~D.2.1/2/3); only the
-      PNGs themselves are missing. Emilija is supplying these.
-
 ### Discussion (currently a stub — extensive prep in `discussion.md`)
 
 **Themes to cover (rough order):**

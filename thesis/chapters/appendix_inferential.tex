@@ -159,6 +159,7 @@ $|r| < 0.1$ negligible, $0.1$--$0.3$ small, $0.3$--$0.5$ medium, $\geq 0.5$ larg
 \caption{Pairwise Wilcoxon signed-rank post-hoc tests for user-study measures.}
 \label{tab:app-survey-posthoc}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}l l r r r r l@{}}
 \toprule
 Measure & Pair & $n$ & $W$ & $p$ & $r$ & Sig (Bonf) \\
@@ -301,8 +302,8 @@ Non-parametric tests are used throughout, consistent with the NLP and
 user-study pipelines, as Shapiro--Wilk rejects normality on every
 mode (Form $W = 0.780$, $p < 0.001$; Ask $W = 0.912$, $p = 0.030$;
 Chat $W = 0.601$, $p < 0.001$). Source:
-\texttt{python/metrics/output/statistical\_tests.md} (\emph{Per-Mode
-Completion Time} section).
+\texttt{python/\allowbreak{}metrics/\allowbreak{}output/\allowbreak{}statistical\_tests.md}
+(\emph{Per-Mode Completion Time} section).
 
 \subsection{Kruskal--Wallis Omnibus ($n = 113$)}
 
@@ -335,6 +336,7 @@ documents. Effect-size $r$ is positive when the first-named mode
 is \emph{slower}.}
 \label{tab:app-timing-mwu}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}l r r l r r l@{}}
 \toprule
 Pair & $U$ & $p$ & $r$ & Median A (s) & Median B (s) & Sig (Bonf) \\
