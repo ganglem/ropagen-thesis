@@ -40,7 +40,7 @@ The remainder of this section describes the internal representation of a ROPA do
 
 Internally, ROPAgen represents a ROPA as a single structured \texttt{DocumentData} object organized around eight thematic groups that together cover the disclosures required under Art.~30(1) GDPR:
 
-\begin{enumerate}
+\begin{enumerate}\sloppy
     \item \textbf{Organization and controller} --- name, postal address, e-mail, phone number, and the contact details of the data protection officer and any external representative.
     \item \textbf{Legal basis} --- Boolean flags for each lawful-basis option in Art.~6(1) GDPR (consent, contract, legal obligation, legitimate interest), the German national-law bases relevant to the study scenario (\S~26 BDSG, \S~28b IfSG, \S~257/239 HGB, \S~147 AO), and a free-text fallback for other grounds.
     \item \textbf{Data categories} --- nine grouped categories (personal master data, employment, finance, health, legal, behavioral, documentation, vehicle, and other) each with predefined Boolean sub-fields such as surname, date of birth, working hours, or holiday entitlement.
@@ -55,7 +55,7 @@ This structured form is the tool's working representation while the user is draf
 
 \subsection{The Three Interaction Modes}
 
-ROPAgen offers three generation modes, each with a different level of LLM support: Form has the least LLM support, Chat is fully autonomous, and Ask is a hybrid mode that sits in the middle. The subsections that follow describe each mode in detail; Table~\ref{tab:modes-overview} summarizes them at a glance. All three act on the same internal \texttt{DocumentData} schema and, when the user clicks the final \emph{Generate} button, hand that schema to the same prose-generation prompt (\texttt{finalropa}); the output ROPA is therefore produced by an identical generation step in all three conditions, and only the path the user takes to populate \texttt{DocumentData} differs between modes.
+ROPAgen offers three generation modes, each with a different level of LLM support: Form has the least LLM support, Chat is fully autonomous, and Ask is a hybrid mode that sits in the middle. The subsections that follow describe each mode in detail; Table~\ref{tab:modes-overview} summarizes them at a glance. All three act on the same internal \texttt{DocumentData} schema and, when the user clicks the final \emph{Generate} button, hand that schema to the same prose-generation prompt (\texttt{finalropa}); the output ROPA is therefore produced by an identical generation step in all three conditions, and only the path the user takes to populate \texttt{DocumentData} differs between modes. The \emph{Organization} entry screen and the final \emph{Generate Document} screen that frame this path are also identical across the three modes (Figures~\ref{fig:ropagen-intro} and~\ref{fig:ropagen-generated} in Appendix~\ref{app:ropagen-shared-screenshots}); only the mode-specific interaction between those two screens differs.
 
 \subsubsection*{Form Mode}
 
@@ -129,7 +129,7 @@ Recruitment yielded $N=73$ university students. Participants were screened for m
 
 \subsection{Data Availability and Sample Sizes}
 Due to technical data loss and incomplete submissions during data collection, the effective sample sizes differ across analysis streams. The canonical sample sizes used throughout this thesis are summarized below.
-\begin{itemize}
+\begin{itemize}\sloppy
     \item \textbf{User study, recruited N = 73 / valid N = 69} — 73 participants completed the study; 69 retained after dropping four records with invalid consent (\texttt{p\_0001 = -1}). All 69 valid participants completed all three modes, so per-mode sample size, matched-triple user-study subset, and valid N are all \textbf{n = 69}. The matched-triple n = 69 is used for within-subjects Friedman and Wilcoxon signed-rank tests on SUS, R-TLX, confidence items, and the perceived AI support composite.
     \item \textbf{Documents, 113 generated ROPAs} — distributed across modes as 37 (Form), 37 (Ask), and 39 (Chat). The full $n = 113$ sample is used throughout: NLP metric scores and per-mode completion time are analyzed inferentially with Kruskal--Wallis and Bonferroni-corrected Mann--Whitney $U$ as the between-groups family; LLM-as-a-judge scores are reported descriptively on the same sample.
 \end{itemize}
@@ -145,7 +145,7 @@ Quantitative measures were collected after each mode. Table~\ref{tab:instruments
 \centering
 \caption{Instruments collected during and after the user study.}
 \label{tab:instruments-overview}
-\begin{tabular}{@{}l l@{}}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
 \toprule
 Instrument & What it captures \\
 \midrule
@@ -156,7 +156,7 @@ Free-text feedback        & Qualitative comments per mode \\
 Mode-preference ranking   & Post-experiment overall preference \\
 Demographics              & Age, gender, degree, field, prior GDPR/AI familiarity \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 The System Usability Scale (SUS)~\cite{Brooke1996} was administered as ten standardized questions on a 5-point Likert scale; the Raw Task Load Index (R-TLX)~\cite{Hart1988,Hart2006} captured six cognitive load dimensions on the standard NASA 21-point scale (1 = lowest demand, 21 = highest), as Raw TLX retains the unweighted subscale ratings on their original NASA scale. The full text of the 10 SUS items and the 6 NASA R-TLX subscale descriptions are reproduced in Appendix~\ref{app:sus-rtlx-items}. In addition, participants completed a six-item Perceived AI Support instrument on a 5-point Likert scale:
@@ -184,7 +184,7 @@ The five NLP metrics summarized in Table~\ref{tab:nlp-metrics-overview} (BLEU~\c
     \centering
     \caption{NLP metrics used in the document-quality evaluation. Higher is better on all metrics.}
     \label{tab:nlp-metrics-overview}
-    \begin{tabular}{@{}l l@{}}
+    \begin{tabularx}{\linewidth}{@{}l X@{}}
         \toprule
         Metric & What it measures \\
         \midrule
@@ -194,7 +194,7 @@ The five NLP metrics summarized in Table~\ref{tab:nlp-metrics-overview} (BLEU~\c
         BERTScore P/R/F1          & Token-level semantic similarity (ModernBERT) \\
         SBERT cosine similarity   & Sentence-embedding cosine similarity (ModernBERT; chapter-level MiniLM robustness check) \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
 \end{table}
 
 \subsection{BLEU}
@@ -219,14 +219,12 @@ This work uses $N = 4$ (matching unigrams through 4-grams).
 \emph{Recall-Oriented Understudy for Gisting Evaluation} --- unigram, bigram, and longest-common-subsequence overlap (F1)~\cite{Lin2004}. ROUGE measures how much of the reference's vocabulary, bigrams, or longest common subsequence the candidate covers. A high ROUGE score signals strong lexical recall against the reference; a low score indicates that key reference content is absent from the candidate.
 
 ROUGE reports the F1 of $n$-gram or longest-common-subsequence (LCS) overlap between candidate $X$ and reference $Y$. ROUGE-1 counts unigrams, ROUGE-2 counts bigrams, and ROUGE-L counts the LCS. For ROUGE-N:
-\begin{equation}
+\begin{align}
 \label{eq:rouge1}
-P_N = \frac{|\mathrm{ngrams}(X) \cap \mathrm{ngrams}(Y)|}{|\mathrm{ngrams}(X)|},
-\quad
-R_N = \frac{|\mathrm{ngrams}(X) \cap \mathrm{ngrams}(Y)|}{|\mathrm{ngrams}(Y)|},
-\quad
-F1_N = \frac{2 P_N R_N}{P_N + R_N}.
-\end{equation}
+P_N &= \frac{|\mathrm{ngrams}(X) \cap \mathrm{ngrams}(Y)|}{|\mathrm{ngrams}(X)|}, \quad
+R_N = \frac{|\mathrm{ngrams}(X) \cap \mathrm{ngrams}(Y)|}{|\mathrm{ngrams}(Y)|}, \notag \\
+F1_N &= \frac{2 P_N R_N}{P_N + R_N}.
+\end{align}
 The same precision–recall–F1 form applies to ROUGE-2:
 \begin{equation}
 \label{eq:rouge2}
@@ -327,9 +325,13 @@ Mode preference ($n = 69$)  & $\chi^2$ goodness-of-fit & Cram\'{e}r's~$V$ \\
 \end{tabular}
 \end{table}
 
+\sloppy
 A significance threshold of $\alpha = 0.05$ is applied to all tests. The choice of test family follows the structure of each dataset, with one test family applied per analysis rather than running parallel matched-pairs and between-groups tests on the same data. \textbf{User study instruments} (SUS, R-TLX, perceived AI support, confidence items) are analyzed within-subjects on the matched $n = 69$ sample: a Friedman test as the omnibus, followed by pairwise Wilcoxon signed-rank tests with Bonferroni correction for post-hoc analysis. Every participant gives one response per mode, so the user-study data is genuinely matched-pairs; within-subjects analysis with Friedman and pairwise Wilcoxon signed-rank tests is also the standard approach for ordinal Likert and workload data collected in repeated-measures usability studies~\cite{SauroLewis2016}. \textbf{NLP metric scores and per-mode completion time} are analyzed between-groups on the full unbalanced $n = 113$ sample: a Kruskal--Wallis test as the omnibus, followed by pairwise Mann--Whitney $U$ tests with Bonferroni correction for post-hoc analysis. The between-groups family is the appropriate match for the document data, which is unbalanced across modes (Form $37$, Ask $37$, Chat $39$); a between-groups analysis preserves all $113$ retained submissions. The LLM-as-a-judge scores are reported descriptively (means, medians, dispersion) as a supplementary signal and are not subjected to inferential testing. Effect sizes are reported as $\varepsilon^2$ for the omnibus tests, Kendall's~$W$ as the coefficient of concordance for Friedman, and rank-biserial correlation~$r$ for the pairwise tests.
+\fussy
 
+\sloppy
 For RQ1 (User Experience and Preference), the Friedman test is applied to SUS scores, the R-TLX composite, and the confidence question composites across modes; post-hoc pairwise Wilcoxon signed-rank tests with Bonferroni correction identify which mode pairs differ significantly; and mode preference distributions are reported as frequencies and rankings. For RQ2 (Document Quality), the Kruskal--Wallis test is applied to NLP metric scores across modes, with Bonferroni-corrected pairwise Mann--Whitney $U$ tests as post-hoc analysis where the omnibus is significant. The LLM-as-a-judge scores are reported descriptively only and are not subjected to inferential testing. RQ3 (Confidence--Quality Alignment) is a cross-stream question that reads the RQ1 and RQ2 findings against each other; it is answered in the Discussion chapter through cross-signal interpretation rather than via additional inferential tests.
+\fussy
 
 The tests and effect sizes used in this thesis are grouped below by where they appear in the Evaluation chapter. Each block names the analysis stream first (sample, design), then defines the omnibus and post-hoc tests applied to that stream together with their effect sizes. A short plain-language reading of each statistic is given alongside its formula so that the Evaluation chapter can refer back to a single canonical definition.
 

@@ -18,13 +18,44 @@ German original is the version actually shown.
 \subsection{Original (German)}
 \label{app:scenario-de}
 
-\begin{verbatim}
-Szenario: Mitarbeiterverwaltung (Arbeitszeit/Urlaub) & Parkplatzberechtigung
+\begingroup
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  breakatwhitespace=false,
+  breakindent=0pt,
+  postbreak=\mbox{$\hookrightarrow$\space},
+  frame=single,
+  framerule=0.4pt,
+  language=,
+  numbers=none,
+  showstringspaces=false,
+  keepspaces=true,
+  columns=fullflexible,
+  upquote=true,
+  aboveskip=0.6em,
+  belowskip=0.6em,
+  literate=%
+    {ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1
+    {§}{{\S}}1
+    {•}{{\textbullet}}1
+    {→}{{$\to$}}1
+    {≥}{{$\geq$}}1 {≤}{{$\leq$}}1
+    {–}{{--}}1 {—}{{---}}1
+    {“}{{``}}1 {”}{{''}}1
+    {‘}{{`}}1 {’}{{'}}1
+}
+\begin{lstlisting}
+Szenario: Mitarbeiterverwaltung
+(Arbeitszeit/Urlaub) & Parkplatzberechtigung
 
-Sie sind Mitarbeitender namens A.I. und arbeiten für die APOR GmbH, ein
-Softwareunternehmen mit ca. 50 Mitarbeitenden in Ulm. Sie handeln im Namen
-des Unternehmens und sind im Szenario sowohl Verantwortlicher (Data
-Controller) als auch Datenschutzbeauftragte:r (DPO/DSB).
+Sie sind Mitarbeitender namens A.I. und arbeiten
+für die APOR GmbH, ein Softwareunternehmen mit
+ca. 50 Mitarbeitenden in Ulm. Sie handeln im Namen
+des Unternehmens und sind im Szenario sowohl
+Verantwortlicher (Data Controller) als auch
+Datenschutzbeauftragte:r (DPO/DSB).
 
 Zur Organisation:
 
@@ -36,44 +67,81 @@ Vertreter: (Sie), A. I., ai@apor.eu
 DPO: Das sind auch Sie
 
 Verarbeitung
-Das Unternehmen verarbeitet personenbezogene Daten, um Mitarbeitende vom
-Eintritt bis zum Austritt zu verwalten. Im Fokus stehen:
+Das Unternehmen verarbeitet personenbezogene Daten,
+um Mitarbeitende vom Eintritt bis zum Austritt zu
+verwalten. Im Fokus stehen:
 
 - Anlegen neuer Mitarbeitender
 - Dokumentation von Arbeitszeiten
 - Verwaltung von Urlaub und Abwesenheiten
 
-Zusätzlich verwaltet APOR für berechtigte Mitarbeitende eine
-Parkplatzberechtigung für einen Firmenparkplatz mit Schranke. Damit
-berechtigte Mitarbeitende den Parkplatz nutzen können, wird ein geeignetes
-Merkmal zur Zuordnung der Berechtigung hinterlegt (z. B. ein
+Zusätzlich verwaltet APOR für berechtigte
+Mitarbeitende eine Parkplatzberechtigung für einen
+Firmenparkplatz mit Schranke. Damit berechtigte
+Mitarbeitende den Parkplatz nutzen können, wird
+ein geeignetes Merkmal zur Zuordnung der
+Berechtigung hinterlegt (z. B. ein
 Fahrzeugkennzeichen).
 
-APOR arbeitet mit intern gehostetem Microsoft Office sowie internen Servern
-(keine externe Cloud). Krankentage oder medizinische Angaben sind für diese
-Verarbeitung nicht erforderlich.
+APOR arbeitet mit intern gehostetem Microsoft
+Office sowie internen Servern (keine externe
+Cloud). Krankentage oder medizinische Angaben sind
+für diese Verarbeitung nicht erforderlich.
 
-Für die Verwaltung sind technische und organisatorische Maßnahmen
-vorgesehen, wie z.B. Zugriffsbeschränkung nach Rollen (Need-to-know),
-Passwortschutz (ggf. MFA), regelmäßige Backups, Zutrittskontrolle zu
-Serverraum/Archiv und Vertraulichkeitsverpflichtung der berechtigten
+Für die Verwaltung sind technische und
+organisatorische Maßnahmen vorgesehen, wie z.B.
+Zugriffsbeschränkung nach Rollen (Need-to-know),
+Passwortschutz (ggf. MFA), regelmäßige Backups,
+Zutrittskontrolle zu Serverraum/Archiv und
+Vertraulichkeitsverpflichtung der berechtigten
 Mitarbeitenden.
 
-Alle in diesem Zusammenhang gespeicherten Informationen werden spätestens
-3 Monate nach Austritt der jeweiligen Person gelöscht.
-\end{verbatim}
+Alle in diesem Zusammenhang gespeicherten
+Informationen werden spätestens 3 Monate nach
+Austritt der jeweiligen Person gelöscht.
+\end{lstlisting}
+\endgroup
 
 \subsection{English Translation}
 \label{app:scenario-en}
 
-\begin{verbatim}
-Scenario: Employee Administration (Working Time / Leave) & Parking
-Authorization
+\begingroup
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  breakatwhitespace=false,
+  breakindent=0pt,
+  postbreak=\mbox{$\hookrightarrow$\space},
+  frame=single,
+  framerule=0.4pt,
+  language=,
+  numbers=none,
+  showstringspaces=false,
+  keepspaces=true,
+  columns=fullflexible,
+  upquote=true,
+  aboveskip=0.6em,
+  belowskip=0.6em,
+  literate=%
+    {ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1
+    {§}{{\S}}1
+    {•}{{\textbullet}}1
+    {→}{{$\to$}}1
+    {≥}{{$\geq$}}1 {≤}{{$\leq$}}1
+    {–}{{--}}1 {—}{{---}}1
+    {“}{{``}}1 {”}{{''}}1
+    {‘}{{`}}1 {’}{{'}}1
+}
+\begin{lstlisting}
+Scenario: Employee Administration
+(Working Time / Leave) & Parking Authorization
 
-You are an employee named A.I., working for APOR GmbH, a software company
-with approximately 50 employees in Ulm. You act on behalf of the company
-and, in this scenario, are both the Data Controller and the Data
-Protection Officer (DPO).
+You are an employee named A.I., working for APOR
+GmbH, a software company with approximately 50
+employees in Ulm. You act on behalf of the company
+and, in this scenario, are both the Data Controller
+and the Data Protection Officer (DPO).
 
 Organization details:
 
@@ -85,31 +153,39 @@ Representative: (You), A. I., ai@apor.eu
 DPO: Also you
 
 Processing
-The company processes personal data in order to administer employees from
-onboarding to exit. The focus is on:
+The company processes personal data in order to
+administer employees from onboarding to exit. The
+focus is on:
 
 - Onboarding new employees
 - Documentation of working hours
 - Administration of leave and absences
 
-In addition, APOR manages a parking authorization for entitled employees
-for a company car park with a barrier. To allow entitled employees to use
-the car park, a suitable feature for assigning the authorization is
-recorded (e.g. a vehicle license plate).
+In addition, APOR manages a parking authorization
+for entitled employees for a company car park with
+a barrier. To allow entitled employees to use the
+car park, a suitable feature for assigning the
+authorization is recorded (e.g. a vehicle license
+plate).
 
-APOR uses internally hosted Microsoft Office and internal servers (no
-external cloud). Sick days or medical information are not required for
-this processing.
+APOR uses internally hosted Microsoft Office and
+internal servers (no external cloud). Sick days or
+medical information are not required for this
+processing.
 
-For administration, technical and organizational measures (TOMs) are
-provided, such as role-based access restriction (need-to-know), password
-protection (where appropriate, MFA), regular backups, physical access
-control to the server room / archive, and a confidentiality obligation for
-authorized employees.
+For administration, technical and organizational
+measures (TOMs) are provided, such as role-based
+access restriction (need-to-know), password
+protection (where appropriate, MFA), regular
+backups, physical access control to the server
+room / archive, and a confidentiality obligation
+for authorized employees.
 
-All information stored in this context is deleted no later than 3 months
-after the person's departure.
-\end{verbatim}
+All information stored in this context is deleted
+no later than 3 months after the person's
+departure.
+\end{lstlisting}
+\endgroup
 
 
 \section{User-Study Instruments}
@@ -258,11 +334,12 @@ full per-item descriptive distribution is reproduced here.
 \begin{sidewaystable}
 \centering
 \caption{System Usability Scale, full per-item descriptive
-distribution by mode ($n = 69$ per mode). Source:
-\texttt{sus\_per\_item\_summary.csv}.}
-\label{tab:sus-per-item-distribution}
-\small
-\begin{tabularx}{\linewidth}{@{}c X l r r r r r r r@{}}
+distribution by mode, items 1--5 ($n = 69$ per mode; see
+Table~\ref{tab:sus-per-item-distribution-b} for items 6--10).
+Source: \texttt{sus\_per\_item\_summary.csv}.}
+\label{tab:sus-per-item-distribution-a}
+\footnotesize
+\begin{tabularx}{\textheight}{@{}c X l r r r r r r r@{}}
 \toprule
 \# & Item & Mode & Mean & SD & Q1 & Median & Q3 & Min & Max \\
 \midrule
@@ -284,17 +361,32 @@ distribution by mode ($n = 69$ per mode). Source:
                     & & Ask  & 4.01 & 0.81 & 4 & 4 & 5 & 1 & 5 \\
                     & & Chat & 3.99 & 1.13 & 3 & 4 & 5 & 1 & 5 \\
 \midrule
-\multirow{4}{*}{4}  & \multirow{4}{*}{I think that I would need the support of a technical person to be able to use this system.}
+\multirow{4}{*}{4}  & \multirow{4}{=}{I think that I would need the support of a technical person to be able to use this system.}
                     & Aggregated  & 1.52 & 0.89 & 1 & 1 & 2 & 1 & 5 \\
                     & & Form & 1.52 & 0.85 & 1 & 1 & 2 & 1 & 5 \\
                     & & Ask  & 1.49 & 0.80 & 1 & 1 & 2 & 1 & 5 \\
                     & & Chat & 1.55 & 1.01 & 1 & 1 & 2 & 1 & 5 \\
 \midrule
-\multirow{4}{*}{5}  & \multirow{4}{*}{I found the various functions in this system were well integrated.}
+\multirow{4}{*}{5}  & \multirow{4}{=}{I found the various functions in this system were well integrated.}
                     & Aggregated  & 3.77 & 1.05 & 3 & 4 & 5 & 1 & 5 \\
                     & & Form & 4.00 & 0.92 & 4 & 4 & 5 & 1 & 5 \\
                     & & Ask  & 3.67 & 1.02 & 3 & 4 & 4 & 1 & 5 \\
                     & & Chat & 3.64 & 1.16 & 3 & 4 & 5 & 1 & 5 \\
+\bottomrule
+\end{tabularx}
+\end{sidewaystable}
+
+\begin{sidewaystable}
+\centering
+\caption{System Usability Scale, full per-item descriptive
+distribution by mode, items 6--10 ($n = 69$ per mode; continued
+from Table~\ref{tab:sus-per-item-distribution-a}). Source:
+\texttt{sus\_per\_item\_summary.csv}.}
+\label{tab:sus-per-item-distribution-b}
+\footnotesize
+\begin{tabularx}{\textheight}{@{}c X l r r r r r r r@{}}
+\toprule
+\# & Item & Mode & Mean & SD & Q1 & Median & Q3 & Min & Max \\
 \midrule
 \multirow{4}{*}{6}  & \multirow{4}{*}{I thought there was too much inconsistency in this system.}
                     & Aggregated  & 2.07 & 1.00 & 1 & 2 & 3 & 1 & 5 \\
@@ -302,7 +394,7 @@ distribution by mode ($n = 69$ per mode). Source:
                     & & Ask  & 2.04 & 1.06 & 1 & 2 & 3 & 1 & 5 \\
                     & & Chat & 2.01 & 0.98 & 1 & 2 & 3 & 1 & 5 \\
 \midrule
-\multirow{4}{*}{7}  & \multirow{4}{*}{I would imagine that most people would learn to use this system very quickly.}
+\multirow{4}{*}{7}  & \multirow{4}{=}{I would imagine that most people would learn to use this system very quickly.}
                     & Aggregated  & 4.11 & 0.98 & 4 & 4 & 5 & 1 & 5 \\
                     & & Form & 4.30 & 0.96 & 4 & 5 & 5 & 1 & 5 \\
                     & & Ask  & 4.00 & 0.95 & 4 & 4 & 5 & 1 & 5 \\
@@ -320,7 +412,7 @@ distribution by mode ($n = 69$ per mode). Source:
                     & & Ask  & 3.84 & 0.93 & 3 & 4 & 4 & 1 & 5 \\
                     & & Chat & 3.90 & 1.15 & 4 & 4 & 5 & 1 & 5 \\
 \midrule
-\multirow{4}{*}{10} & \multirow{4}{*}{I needed to learn a lot of things before I could get going with this system.}
+\multirow{4}{*}{10} & \multirow{4}{=}{I needed to learn a lot of things before I could get going with this system.}
                     & Aggregated  & 1.61 & 0.90 & 1 & 1 & 2 & 1 & 5 \\
                     & & Form & 1.61 & 0.86 & 1 & 1 & 2 & 1 & 5 \\
                     & & Ask  & 1.61 & 0.81 & 1 & 1 & 2 & 1 & 5 \\
@@ -396,7 +488,7 @@ distribution by mode ($n = 69$ per mode). Source:
 \texttt{ai\_support\_per\_item\_summary.csv}.}
 \label{tab:ai-per-item-distribution}
 \small
-\begin{tabularx}{\linewidth}{@{}c X l r r r r r r r@{}}
+\begin{tabularx}{\textheight}{@{}c X l r r r r r r r@{}}
 \toprule
 \# & Item & Mode & Mean & SD & Q1 & Median & Q3 & Min & Max \\
 \midrule
@@ -543,6 +635,7 @@ every metric are reproduced here.
 $n = 113$).}
 \label{tab:nlp-chapter-bleu}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}l c c c c@{}}
 \toprule
 Chapter & Aggregated & Form & Ask & Chat \\
@@ -563,6 +656,7 @@ Technical \& Org. Measures    & 0.080 (0.066) & 0.078 (0.068) & 0.070 (0.080) & 
 $n = 113$).}
 \label{tab:nlp-chapter-rouge1}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}l c c c c@{}}
 \toprule
 Chapter & Aggregated & Form & Ask & Chat \\
@@ -583,6 +677,7 @@ Technical \& Org. Measures    & 0.331 (0.130) & 0.313 (0.137) & 0.330 (0.157) & 
 $n = 113$).}
 \label{tab:nlp-chapter-rouge2}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}l c c c c@{}}
 \toprule
 Chapter & Aggregated & Form & Ask & Chat \\
@@ -603,6 +698,7 @@ Technical \& Org. Measures    & 0.176 (0.118) & 0.166 (0.120) & 0.163 (0.141) & 
 $n = 113$).}
 \label{tab:nlp-chapter-rougeL}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}l c c c c@{}}
 \toprule
 Chapter & Aggregated & Form & Ask & Chat \\
@@ -623,6 +719,7 @@ Technical \& Org. Measures    & 0.257 (0.135) & 0.237 (0.140) & 0.246 (0.158) & 
 $n = 113$).}
 \label{tab:nlp-chapter-meteor}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}l c c c c@{}}
 \toprule
 Chapter & Aggregated & Form & Ask & Chat \\
@@ -646,6 +743,7 @@ Technical \& Org. Measures    & 0.293 (0.113) & 0.295 (0.108) & 0.280 (0.145) & 
 sample $n = 113$).}
 \label{tab:nlp-chapter-bertp}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}l c c c c@{}}
 \toprule
 Chapter & Aggregated & Form & Ask & Chat \\
@@ -666,6 +764,7 @@ Technical \& Org. Measures    & 0.854 (0.033) & 0.841 (0.038) & 0.858 (0.031) & 
 sample $n = 113$).}
 \label{tab:nlp-chapter-bertr}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}l c c c c@{}}
 \toprule
 Chapter & Aggregated & Form & Ask & Chat \\
@@ -686,6 +785,7 @@ Technical \& Org. Measures    & 0.888 (0.025) & 0.889 (0.018) & 0.882 (0.032) & 
 $n = 113$).}
 \label{tab:nlp-chapter-bertf1}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}l c c c c@{}}
 \toprule
 Chapter & Aggregated & Form & Ask & Chat \\
@@ -706,6 +806,7 @@ Technical \& Org. Measures    & 0.871 (0.025) & 0.864 (0.027) & 0.870 (0.027) & 
 (SD) by mode (full sample $n = 113$).}
 \label{tab:nlp-chapter-sbert}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}l c c c c@{}}
 \toprule
 Chapter & Aggregated & Form & Ask & Chat \\
@@ -727,6 +828,7 @@ similarity mean (SD) by mode (full sample $n = 113$). Reported as
 a robustness check on the ModernBERT pass.}
 \label{tab:nlp-chapter-sbert-minilm}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}l c c c c@{}}
 \toprule
 Chapter & Aggregated & Form & Ask & Chat \\
