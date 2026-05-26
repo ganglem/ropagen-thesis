@@ -597,10 +597,6 @@ INPUT ../python/metrics/output/nlp_doc_sbert.png
 INPUT ../python/metrics/output/nlp_doc_sbert.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tctt1000.tfm
 INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-INPUT ../python/metrics/output/chapter_nlp_bleu.png
-INPUT ../python/metrics/output/chapter_nlp_bleu.png
-INPUT ../python/metrics/output/chapter_nlp_bleu.png
-INPUT ../python/metrics/output/chapter_nlp_bleu.png
 INPUT ../python/metrics/output/chapter_nlp_rouge1.png
 INPUT ../python/metrics/output/chapter_nlp_rouge1.png
 INPUT ../python/metrics/output/chapter_nlp_rouge1.png
@@ -613,6 +609,10 @@ INPUT ../python/metrics/output/chapter_nlp_rougeL.png
 INPUT ../python/metrics/output/chapter_nlp_rougeL.png
 INPUT ../python/metrics/output/chapter_nlp_rougeL.png
 INPUT ../python/metrics/output/chapter_nlp_rougeL.png
+INPUT ../python/metrics/output/chapter_nlp_bleu.png
+INPUT ../python/metrics/output/chapter_nlp_bleu.png
+INPUT ../python/metrics/output/chapter_nlp_bleu.png
+INPUT ../python/metrics/output/chapter_nlp_bleu.png
 INPUT ../python/metrics/output/chapter_nlp_meteor.png
 INPUT ../python/metrics/output/chapter_nlp_meteor.png
 INPUT ../python/metrics/output/chapter_nlp_meteor.png

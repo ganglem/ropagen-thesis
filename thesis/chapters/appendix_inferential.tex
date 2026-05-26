@@ -2,14 +2,16 @@
 \label{app:inferential}
 
 This appendix reproduces the complete inferential test output
-referenced in Chapter~\ref{ch:evaluation}. The within-subjects
-user-study tests use $n = 69$ (matched within-subjects, Friedman +
-Wilcoxon); the document-quality, timing, and confidence--quality
-analyses use $n = 113$ (between-groups, Kruskal--Wallis +
-Mann--Whitney $U$). The full sample-size derivation is reproduced
-first, followed by the user-study inferential tests, the NLP
-inferential tests, the confidence--quality correlations, and the
-timing inferential tests.
+referenced in Chapter~\ref{ch:evaluation} and
+Chapter~\ref{ch:discussion}. The within-subjects user-study tests
+use $n = 69$ (matched within-subjects, Friedman + Wilcoxon); the
+document-quality and timing analyses use $n = 113$ (between-groups,
+Kruskal--Wallis + Mann--Whitney $U$); the confidence--quality
+correlations supporting the RQ3 discussion use the joined
+document-survey sample $n = 102$. The full sample-size derivation
+is reproduced first, followed by the user-study inferential tests,
+the NLP inferential tests, the confidence--quality correlations,
+and the timing inferential tests.
 
 \section{Sample-Size Derivation}
 \label{app:samplesizes}
@@ -68,18 +70,24 @@ Mann--Whitney $U$).}
 \toprule
 \textbf{User-study $\times$ NLP join} & \textbf{n} \\
 \midrule
-Joined rows (document with matching user-study response) & 106 \\
-Form joined rows & 34 \\
-Ask joined rows & 34 \\
-Chat joined rows & 38 \\
+Raw joined rows (document with matching user-study response) & 106 \\
+Deduplicated joined rows (one row per participant--mode) & 102 \\
+Form joined rows (deduplicated) & 34 \\
+Ask joined rows (deduplicated) & 33 \\
+Chat joined rows (deduplicated) & 35 \\
 Unique participants in the joined sample & 44 \\
 Participants with user-study $\times$ NLP coverage in all three modes & 27 \\
 \bottomrule
 \end{tabular}
-\caption{Triangulated samples used for confidence--quality analyses.
-The joined $n=106$ is the canonical sample for the rank-inversion
-table; the within-subjects $n=27$ is used for paired
-confidence~$\times$~quality correlations.}
+\caption{Triangulated samples used for confidence--quality
+analyses. The canonical RQ3 sample is the deduplicated join
+$n = 102$. Four participants had multiple submissions per mode in
+\texttt{document\_results.csv}; the canonical row per
+participant--mode was selected by highest \texttt{id} (latest
+submission). Three participants in the documents file had no
+matching survey row and were dropped. The within-subjects
+$n = 27$ is used for paired confidence~$\times$~quality
+correlations.}
 \label{tab:n-triangulation}
 \end{table}
 
@@ -259,36 +267,159 @@ recall or document-level semantic alignment.
 \section{Confidence--Quality Correlations}
 \label{app:inf-corr}
 
-Spearman rank correlation $\rho$ between the primary confidence measure
-(item~$5_{ai}$, ``I am confident the AI identified the correct legal basis'')
-and document-quality measures, computed on the user-study~$\times$~NLP joined
-sample. Per-mode joined samples: Form $n = 34$, Ask $n = 34$, Chat $n = 38$;
-pooled $n = 106$.
+This section reproduces the full pooled and per-mode descriptive
+means, Spearman rank correlations, and judge cross-checks used in
+the RQ3 triangulation reported in Chapter~\ref{ch:discussion}.
+
+\subsection{Joined Sample and Deduplication}
+\label{app:inf-corr-sample}
+
+The triangulation is computed on the joined document-survey
+subset: $n = 102$ document-mode rows from $44$ unique participants
+(Form $34$, Ask $33$, Chat $35$). The join required a row in both
+the NLP/judge file
+\texttt{all\_\allowbreak{}scores\_\allowbreak{}combined.csv} (under
+\texttt{python/\allowbreak{}metrics/\allowbreak{}output/}) and the
+user-study file. Four participants had multiple submissions per
+mode in \texttt{document\_results.csv}; the canonical row was
+selected by highest \texttt{id} (latest submission). Three
+participants present in the documents file had no matching survey
+row and were dropped. The resulting $n = 102$ is the source of the
+sample size used throughout the RQ3 discussion and differs from
+the unmatched join ($n = 106$) reported in earlier drafts. The
+underlying tables are available on disk as
+\texttt{rq3\_\allowbreak{}confidence\_\allowbreak{}nlp\_\allowbreak{}corr.csv},
+\texttt{rq3\_\allowbreak{}per\_\allowbreak{}mode\_\allowbreak{}ranks.csv},
+and
+\texttt{rq3\_\allowbreak{}judge\_\allowbreak{}vs\_\allowbreak{}confidence\_\allowbreak{}nlp.csv}
+under \texttt{python/\allowbreak{}metrics/\allowbreak{}output/} and
+\texttt{python/\allowbreak{}judge/\allowbreak{}output/}.
+
+\subsection{Per-Mode Descriptive Means ($n = 102$)}
 
 \begin{table}[htbp]
 \centering
-\caption{Spearman rank correlations: primary confidence ($5_{ai}$) versus
-document-quality measures, by mode.}
-\label{tab:app-corr-primary}
+\caption{Per-mode means for the confidence, NLP, and judge measures
+on the joined RQ3 sample.}
+\label{tab:app-corr-means}
 \small
-\begin{tabular}{@{}l r r r r r r@{}}
+\begin{tabular}{@{}l r r r@{}}
 \toprule
-& \multicolumn{3}{c}{$5_{ai}$ vs BERTScore F1} & \multicolumn{3}{c}{$5_{ai}$ vs Judge Overall} \\
-\cmidrule(lr){2-4}\cmidrule(lr){5-7}
-Mode  & $n$ & $\rho$ & $p$ & $n$ & $\rho$ & $p$ \\
+Measure & Form ($n = 34$) & Ask ($n = 33$) & Chat ($n = 35$) \\
 \midrule
-Form  & 34 & $-0.22$ & 0.22 & 34 & $+0.07$ & 0.70 \\
-Ask   & 34 & $-0.23$ & 0.19 & 34 & $-0.21$ & 0.24 \\
-Chat  & 38 & $+0.28$ & 0.09 & 38 & $+0.41$ & \textbf{0.012} \\
-Pooled & 106 & $-0.02$ & 0.88 & 106 & $+0.14$ & 0.14 \\
+Item $5_{ai}$ (legal-basis confidence, 1--5) & $3.38$ & $3.67$ & $3.77$ \\
+\texttt{AI\_support} mean (items 1--6, 1--5) & $3.93$ & $3.93$ & $3.88$ \\
+BERTScore F1                                 & $0.9059$ & $0.8955$ & $0.9036$ \\
+SBERT (ModernBERT)                           & $0.9866$ & $0.9857$ & $0.9895$ \\
+Judge legal correctness (1--5)               & $3.59$ & $3.58$ & $3.23$ \\
+Judge overall (1--5)                         & $2.38$ & $2.55$ & $2.69$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-For comparison, the secondary 6-item Perceived AI Support composite produces
-weaker mode-specific correlations with BERTScore F1 (Form $\rho = -0.22$,
-Ask $\rho = -0.04$, Chat $\rho = +0.20$) and a small but significant pooled
-correlation with Judge Overall ($\rho = +0.21$, $p = 0.033$, $n = 106$).
+\subsection{Pooled Spearman Correlations ($n = 102$)}
+
+Primary confidence-quality correlations against the two
+reference-based NLP metrics. The pooled correlations are all
+essentially zero and none are significant.
+
+\begin{table}[htbp]
+\centering
+\caption{Pooled Spearman rank correlations between confidence and
+reference-based NLP metrics ($n = 102$).}
+\label{tab:app-corr-pooled}
+\small
+\begin{tabular}{@{}l r r r r@{}}
+\toprule
+& \multicolumn{2}{c}{vs BERTScore F1} & \multicolumn{2}{c}{vs SBERT} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Confidence measure  & $\rho$ & $p$ & $\rho$ & $p$ \\
+\midrule
+Item $5_{ai}$              & $-0.013$ & $0.895$ & $+0.004$ & $0.964$ \\
+\texttt{AI\_support} mean  & $+0.066$ & $0.510$ & $-0.001$ & $0.995$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Per-Mode Spearman Correlations}
+
+Within-mode correlations between item $5_{ai}$ and the two
+reference-based metrics. Only Chat shows a positive within-mode
+trend, and its correlation against BERTScore F1 sits on the edge
+of significance.
+
+\begin{table}[htbp]
+\centering
+\caption{Per-mode Spearman rank correlations: item $5_{ai}$ versus
+reference-based NLP metrics.}
+\label{tab:app-corr-permode}
+\small
+\begin{tabular}{@{}l r r r r r@{}}
+\toprule
+& & \multicolumn{2}{c}{vs BERTScore F1} & \multicolumn{2}{c}{vs SBERT} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+Mode & $n$ & $\rho$ & $p$ & $\rho$ & $p$ \\
+\midrule
+Form & 34 & $-0.217$ & $0.22$  & $-0.112$ & $0.53$ \\
+Ask  & 33 & $-0.263$ & $0.14$  & $-0.226$ & $0.21$ \\
+Chat & 35 & $+0.332$ & $0.051$ & $+0.220$ & $0.20$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Judge Cross-Check ($n = 102$)}
+
+The reference-free LLM judge enters as a third lens. Its overall
+score correlates strongly with BERTScore F1 and moderately with
+SBERT, confirming it tracks the reference-based picture on
+holistic quality. The judge's legal-correctness rubric provides
+a dimension the reference-based metrics structurally cannot
+score; within-mode, Chat is the only mode where confidence and
+the judge's verdicts align significantly.
+
+\begin{table}[htbp]
+\centering
+\caption{Pooled Spearman rank correlations involving the LLM
+judge ($n = 102$).}
+\label{tab:app-corr-judge-pooled}
+\small
+\begin{tabular}{@{}l r r@{}}
+\toprule
+Comparison & $\rho$ & $p$ \\
+\midrule
+BERTScore F1 vs judge overall            & $+0.566$ & $< 10^{-9}$ \\
+SBERT vs judge overall                   & $+0.328$ & $0.0008$ \\
+Item $5_{ai}$ vs judge legal correctness & $+0.163$ & $0.10$ \\
+Item $5_{ai}$ vs judge overall           & $+0.143$ & $0.15$ \\
+\texttt{AI\_support} vs judge overall    & $+0.212$ & $0.03$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Chat-only within-mode Spearman rank correlations
+involving the LLM judge ($n = 35$). Form and Ask show weak
+non-significant trends in the opposite direction.}
+\label{tab:app-corr-judge-chat}
+\small
+\begin{tabular}{@{}l r r@{}}
+\toprule
+Comparison (Chat only) & $\rho$ & $p$ \\
+\midrule
+Item $5_{ai}$ vs judge legal correctness & $+0.450$ & $0.007$ \\
+Item $5_{ai}$ vs judge overall           & $+0.407$ & $0.015$ \\
+\texttt{AI\_support} vs judge overall    & $+0.540$ & $0.0008$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The confidence-correctness inversion identified in
+Chapter~\ref{ch:discussion} survives this triangulation at the
+mode-rank level (Chat highest on item $5_{ai}$, lowest on
+judge legal correctness; Form lowest on item $5_{ai}$, highest on
+judge legal correctness) and is absent at the within-participant
+level outside Chat.
 
 \section{Timing Inferential Tests}
 \label{app:inf-timing}

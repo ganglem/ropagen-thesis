@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.3.25)  25 MAY 2026 04:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025/Debian) (preloaded format=pdflatex 2026.3.25)  26 MAY 2026 17:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1251,13 +1251,13 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [4]
-Overfull \hbox (1.34494pt too wide) detected at line 82
+Overfull \hbox (1.34494pt too wide) detected at line 83
  []\T1/phv/b/n/12 100
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 84
- []\T1/phv/b/n/12 101
+ []\T1/phv/m/n/12 100
  []
 
 
@@ -1267,27 +1267,27 @@ Overfull \hbox (1.34494pt too wide) detected at line 85
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 86
- []\T1/phv/m/n/12 102
+ []\T1/phv/m/n/12 103
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 87
- []\T1/phv/m/n/12 104
+ []\T1/phv/m/n/12 111
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 88
- []\T1/phv/m/n/12 112
+ []\T1/phv/m/n/12 117
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 89
- []\T1/phv/m/n/12 118
+ []\T1/phv/m/n/12 125
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 90
- []\T1/phv/m/n/12 126
+ []\T1/phv/m/n/12 125
  []
 
 
@@ -1297,22 +1297,22 @@ Overfull \hbox (1.34494pt too wide) detected at line 91
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 92
- []\T1/phv/m/n/12 127
+ []\T1/phv/m/n/12 126
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 93
- []\T1/phv/m/n/12 127
+ []\T1/phv/m/n/12 126
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 94
- []\T1/phv/m/n/12 127
+ []\T1/phv/m/n/12 126
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 95
- []\T1/phv/m/n/12 127
+ []\T1/phv/m/n/12 131
  []
 
 
@@ -1322,7 +1322,7 @@ Overfull \hbox (1.34494pt too wide) detected at line 96
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 97
- []\T1/phv/m/n/12 133
+ []\T1/phv/m/n/12 134
  []
 
 
@@ -1331,23 +1331,23 @@ Overfull \hbox (1.34494pt too wide) detected at line 98
  []
 
 
-Overfull \hbox (1.34494pt too wide) detected at line 99
- []\T1/phv/m/n/12 136
+Overfull \hbox (1.34494pt too wide) detected at line 100
+ []\T1/phv/b/n/12 137
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 101
- []\T1/phv/b/n/12 138
+ []\T1/phv/m/n/12 137
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 102
- []\T1/phv/m/n/12 138
+ []\T1/phv/m/n/12 137
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 103
- []\T1/phv/m/n/12 138
+ []\T1/phv/m/n/12 139
  []
 
 
@@ -1357,7 +1357,7 @@ Overfull \hbox (1.34494pt too wide) detected at line 104
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 105
- []\T1/phv/m/n/12 141
+ []\T1/phv/m/n/12 140
  []
 
 
@@ -1371,122 +1371,122 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 [5{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
 Overfull \hbox (1.34494pt too wide) detected at line 107
- []\T1/phv/m/n/12 142
+ []\T1/phv/m/n/12 141
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 108
- []\T1/phv/m/n/12 142
+ []\T1/phv/m/n/12 143
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 109
- []\T1/phv/m/n/12 144
+ []\T1/phv/m/n/12 143
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 110
- []\T1/phv/m/n/12 144
+ []\T1/phv/m/n/12 143
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 111
- []\T1/phv/m/n/12 144
+ []\T1/phv/m/n/12 143
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 112
- []\T1/phv/m/n/12 144
+ []\T1/phv/m/n/12 143
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 113
- []\T1/phv/m/n/12 144
+ []\T1/phv/m/n/12 143
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 114
- []\T1/phv/m/n/12 144
+ []\T1/phv/m/n/12 148
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 115
- []\T1/phv/m/n/12 149
+ []\T1/phv/m/n/12 148
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 116
- []\T1/phv/m/n/12 149
+ []\T1/phv/m/n/12 148
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 117
- []\T1/phv/m/n/12 149
+ []\T1/phv/m/n/12 148
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 118
- []\T1/phv/m/n/12 149
+ []\T1/phv/m/n/12 148
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 119
- []\T1/phv/m/n/12 149
+ []\T1/phv/m/n/12 148
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 120
- []\T1/phv/m/n/12 149
+ []\T1/phv/b/n/12 154
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 121
- []\T1/phv/b/n/12 155
+ []\T1/phv/m/n/12 154
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 122
- []\T1/phv/m/n/12 155
+ []\T1/phv/m/n/12 156
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 123
- []\T1/phv/m/n/12 157
+ []\T1/phv/m/n/12 156
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 124
- []\T1/phv/m/n/12 157
+ []\T1/phv/m/n/12 156
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 125
- []\T1/phv/m/n/12 157
+ []\T1/phv/m/n/12 156
  []
 
 
-Overfull \hbox (1.34494pt too wide) detected at line 126
- []\T1/phv/m/n/12 157
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 126--126
+Underfull \hbox (badness 10000) in paragraph at lines 125--125
  [][] [][]\T1/phv/m/n/12 Pairwise Wilcoxon Signed-Rank Post-hoc (Bon-fer-roni 
  []
 
 
+Overfull \hbox (1.34494pt too wide) detected at line 126
+ []\T1/phv/m/n/12 158
+ []
+
+
 Overfull \hbox (1.34494pt too wide) detected at line 127
- []\T1/phv/m/n/12 159
+ []\T1/phv/m/n/12 158
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 128
- []\T1/phv/m/n/12 159
+ []\T1/phv/m/n/12 158
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 129
- []\T1/phv/m/n/12 159
+ []\T1/phv/m/n/12 158
  []
 
 
@@ -1496,32 +1496,56 @@ Overfull \hbox (1.34494pt too wide) detected at line 130
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 131
- []\T1/phv/m/n/12 160
+ []\T1/phv/m/n/12 159
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 132
- []\T1/phv/m/n/12 161
+ []\T1/phv/m/n/12 160
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 133
- []\T1/phv/m/n/12 161
+ []\T1/phv/m/n/12 160
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 134
- []\T1/phv/m/n/12 161
+ []\T1/phv/m/n/12 160
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 135
- []\T1/phv/b/n/12 163
+ []\T1/phv/m/n/12 161
  []
 
 
 Overfull \hbox (1.34494pt too wide) detected at line 136
+ []\T1/phv/m/n/12 162
+ []
+
+
+Overfull \hbox (1.34494pt too wide) detected at line 137
+ []\T1/phv/m/n/12 162
+ []
+
+
+Overfull \hbox (1.34494pt too wide) detected at line 138
+ []\T1/phv/m/n/12 162
+ []
+
+
+Overfull \hbox (1.34494pt too wide) detected at line 139
  []\T1/phv/b/n/12 164
+ []
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[6]
+Overfull \hbox (1.34494pt too wide) detected at line 140
+ []\T1/phv/b/n/12 165
  []
 
 )
@@ -1532,7 +1556,7 @@ Overfull \hbox (1.34494pt too wide) detected at line 136
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[6] (./chapters/introduction.tex
+[7] (./chapters/introduction.tex
 chapter 1.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 16.41594pt on input line 3.
@@ -1681,7 +1705,7 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [20]
-<images/project_timeline.pdf, id=449, 602.25pt x 300.1614pt>
+<images/project_timeline.pdf, id=461, 602.25pt x 300.1614pt>
 File: images/project_timeline.pdf Graphic file (type pdf)
 <use images/project_timeline.pdf>
 Package pdftex.def Info: images/project_timeline.pdf  used on input line 111.
@@ -1736,7 +1760,7 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 [28]
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 6.64998pt on input line 261.
+(Font)              scaled to size 6.64998pt on input line 257.
 
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
@@ -1746,7 +1770,7 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [30]
-Overfull \hbox (1.97585pt too wide) in paragraph at lines 296--297
+Overfull \hbox (1.97585pt too wide) in paragraph at lines 285--286
 []\T1/phv/b/n/12 Overall: \T1/phv/m/n/12 Holis-tic as-sess-ment of the doc-u-me
 nt's us-abil-ity as a real-world ROPA
  []
@@ -1756,7 +1780,11 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [31]
-Overfull \hbox (10.32791pt too wide) in paragraph at lines 333--335
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[32]
+Overfull \hbox (10.32791pt too wide) in paragraph at lines 322--324
 \T1/phv/m/n/12 scores, the R-TLX com-pos-ite, and the con-fi-dence ques-tion co
 m-pos-ites across modes;
  []
@@ -1765,18 +1793,14 @@ m-pos-ites across modes;
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[32]
-Overfull \vbox (1.17493pt too high) has occurred while \output is active []
-
-
 [33]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 365.
+(hyperref)                removing `math shift' on input line 354.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 365.
+(hyperref)                removing `math shift' on input line 354.
 
 
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
@@ -1785,11 +1809,11 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 [34]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 412.
+(hyperref)                removing `math shift' on input line 401.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 412.
+(hyperref)                removing `math shift' on input line 401.
 
 
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
@@ -1798,11 +1822,11 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 [35]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 459.
+(hyperref)                removing `math shift' on input line 448.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 459.
+(hyperref)                removing `math shift' on input line 448.
 
 
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
@@ -1817,7 +1841,7 @@ chapter 4.
 (./chapters/evaluation/demographics.tex [38
 
 ]
-<../python/survey/output/demographics_duration.png, id=659, 494.3268pt x 314.13
+<../python/survey/output/demographics_duration.png, id=671, 494.3268pt x 314.13
 36pt>
 File: ../python/survey/output/demographics_duration.png Graphic file (type png)
 
@@ -1832,7 +1856,7 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 [39
 
 ]
-<../python/survey/output/demographics_expertise.png, id=667, 567.0786pt x 314.1
+<../python/survey/output/demographics_expertise.png, id=679, 567.0786pt x 314.1
 336pt>
 File: ../python/survey/output/demographics_expertise.png Graphic file (type png
 )
@@ -1846,21 +1870,21 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 [40 <../python/survey/output/demographics_duration.png> <../python/survey/outpu
 t/demographics_expertise.png>]
-<../python/survey/output/demographics_age.png, id=683, 494.8086pt x 314.1336pt>
+<../python/survey/output/demographics_age.png, id=695, 494.8086pt x 314.1336pt>
 
 File: ../python/survey/output/demographics_age.png Graphic file (type png)
 <use ../python/survey/output/demographics_age.png>
 Package pdftex.def Info: ../python/survey/output/demographics_age.png  used on 
 input line 88.
 (pdftex.def)             Requested size: 187.25345pt x 118.8783pt.
-<../python/survey/output/demographics_gender.png, id=684, 494.8086pt x 314.1336
+<../python/survey/output/demographics_gender.png, id=696, 494.8086pt x 314.1336
 pt>
 File: ../python/survey/output/demographics_gender.png Graphic file (type png)
 <use ../python/survey/output/demographics_gender.png>
 Package pdftex.def Info: ../python/survey/output/demographics_gender.png  used 
 on input line 94.
 (pdftex.def)             Requested size: 187.25345pt x 118.8783pt.
-<../python/survey/output/demographics_degree.png, id=685, 494.8086pt x 314.1336
+<../python/survey/output/demographics_degree.png, id=697, 494.8086pt x 314.1336
 pt>
 File: ../python/survey/output/demographics_degree.png Graphic file (type png)
 <use ../python/survey/output/demographics_degree.png>
@@ -1872,7 +1896,7 @@ Underfull \hbox (badness 1281) in paragraph at lines 103--103
 \OT1/cmr/m/n/10.95 68$ \T1/phv/m/n/10.95 par-tic-i-pants who an-swered this
  []
 
-<../python/survey/output/demographics_profession.png, id=686, 567.0786pt x 314.
+<../python/survey/output/demographics_profession.png, id=698, 567.0786pt x 314.
 1336pt>
 File: ../python/survey/output/demographics_profession.png Graphic file (type pn
 g)
@@ -1880,7 +1904,7 @@ g)
 Package pdftex.def Info: ../python/survey/output/demographics_profession.png  u
 sed on input line 108.
 (pdftex.def)             Requested size: 187.25345pt x 103.7315pt.
-<../python/survey/output/demographics_field.png, id=687, 639.3486pt x 314.1336p
+<../python/survey/output/demographics_field.png, id=699, 639.3486pt x 314.1336p
 t>
 File: ../python/survey/output/demographics_field.png Graphic file (type png)
 <use ../python/survey/output/demographics_field.png>
@@ -1899,7 +1923,7 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 ographics_gender.png> <../python/survey/output/demographics_degree.png> <../pyt
 hon/survey/output/demographics_profession.png> <../python/survey/output/demogra
 phics_field.png>] (./chapters/evaluation/sus.tex
-<../python/survey/output/sus_aggregate_barplot.png, id=708, 614.295pt x 393.630
+<../python/survey/output/sus_aggregate_barplot.png, id=721, 614.295pt x 393.630
 6pt>
 File: ../python/survey/output/sus_aggregate_barplot.png Graphic file (type png)
 
@@ -1907,61 +1931,61 @@ File: ../python/survey/output/sus_aggregate_barplot.png Graphic file (type png)
 Package pdftex.def Info: ../python/survey/output/sus_aggregate_barplot.png  use
 d on input line 32.
 (pdftex.def)             Requested size: 353.7059pt x 226.64816pt.
-<../python/survey/output/sus_item_01.png, id=711, 425.4294pt x 317.5062pt>
+<../python/survey/output/sus_item_01.png, id=724, 425.4294pt x 317.5062pt>
 File: ../python/survey/output/sus_item_01.png Graphic file (type png)
 <use ../python/survey/output/sus_item_01.png>
 Package pdftex.def Info: ../python/survey/output/sus_item_01.png  used on input
  line 67.
 (pdftex.def)             Requested size: 187.25345pt x 139.75159pt.
-<../python/survey/output/sus_item_02.png, id=712, 425.4294pt x 317.5062pt>
+<../python/survey/output/sus_item_02.png, id=725, 425.4294pt x 317.5062pt>
 File: ../python/survey/output/sus_item_02.png Graphic file (type png)
 <use ../python/survey/output/sus_item_02.png>
 Package pdftex.def Info: ../python/survey/output/sus_item_02.png  used on input
  line 68.
 (pdftex.def)             Requested size: 187.25345pt x 139.75159pt.
-<../python/survey/output/sus_item_03.png, id=713, 425.4294pt x 317.5062pt>
+<../python/survey/output/sus_item_03.png, id=726, 425.4294pt x 317.5062pt>
 File: ../python/survey/output/sus_item_03.png Graphic file (type png)
 <use ../python/survey/output/sus_item_03.png>
 Package pdftex.def Info: ../python/survey/output/sus_item_03.png  used on input
  line 69.
 (pdftex.def)             Requested size: 187.25345pt x 139.75159pt.
-<../python/survey/output/sus_item_04.png, id=714, 425.4294pt x 317.5062pt>
+<../python/survey/output/sus_item_04.png, id=727, 425.4294pt x 317.5062pt>
 File: ../python/survey/output/sus_item_04.png Graphic file (type png)
 <use ../python/survey/output/sus_item_04.png>
 Package pdftex.def Info: ../python/survey/output/sus_item_04.png  used on input
  line 70.
 (pdftex.def)             Requested size: 187.25345pt x 139.75159pt.
-<../python/survey/output/sus_item_05.png, id=715, 425.4294pt x 317.5062pt>
+<../python/survey/output/sus_item_05.png, id=728, 425.4294pt x 317.5062pt>
 File: ../python/survey/output/sus_item_05.png Graphic file (type png)
 <use ../python/survey/output/sus_item_05.png>
 Package pdftex.def Info: ../python/survey/output/sus_item_05.png  used on input
  line 71.
 (pdftex.def)             Requested size: 187.25345pt x 139.75159pt.
-<../python/survey/output/sus_item_06.png, id=716, 425.4294pt x 317.5062pt>
+<../python/survey/output/sus_item_06.png, id=729, 425.4294pt x 317.5062pt>
 File: ../python/survey/output/sus_item_06.png Graphic file (type png)
 <use ../python/survey/output/sus_item_06.png>
 Package pdftex.def Info: ../python/survey/output/sus_item_06.png  used on input
  line 72.
 (pdftex.def)             Requested size: 187.25345pt x 139.75159pt.
-<../python/survey/output/sus_item_07.png, id=719, 425.4294pt x 317.5062pt>
+<../python/survey/output/sus_item_07.png, id=732, 425.4294pt x 317.5062pt>
 File: ../python/survey/output/sus_item_07.png Graphic file (type png)
 <use ../python/survey/output/sus_item_07.png>
 Package pdftex.def Info: ../python/survey/output/sus_item_07.png  used on input
  line 83.
 (pdftex.def)             Requested size: 187.25345pt x 139.75159pt.
-<../python/survey/output/sus_item_08.png, id=720, 425.4294pt x 317.5062pt>
+<../python/survey/output/sus_item_08.png, id=733, 425.4294pt x 317.5062pt>
 File: ../python/survey/output/sus_item_08.png Graphic file (type png)
 <use ../python/survey/output/sus_item_08.png>
 Package pdftex.def Info: ../python/survey/output/sus_item_08.png  used on input
  line 84.
 (pdftex.def)             Requested size: 187.25345pt x 139.75159pt.
-<../python/survey/output/sus_item_09.png, id=721, 425.4294pt x 317.5062pt>
+<../python/survey/output/sus_item_09.png, id=734, 425.4294pt x 317.5062pt>
 File: ../python/survey/output/sus_item_09.png Graphic file (type png)
 <use ../python/survey/output/sus_item_09.png>
 Package pdftex.def Info: ../python/survey/output/sus_item_09.png  used on input
  line 85.
 (pdftex.def)             Requested size: 187.25345pt x 139.75159pt.
-<../python/survey/output/sus_item_10.png, id=722, 425.4294pt x 317.5062pt>
+<../python/survey/output/sus_item_10.png, id=735, 425.4294pt x 317.5062pt>
 File: ../python/survey/output/sus_item_10.png Graphic file (type png)
 <use ../python/survey/output/sus_item_10.png>
 Package pdftex.def Info: ../python/survey/output/sus_item_10.png  used on input
@@ -1995,7 +2019,7 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [47]
-<../python/survey/output/rtlx_aggregate_barplot.png, id=769, 617.1858pt x 393.6
+<../python/survey/output/rtlx_aggregate_barplot.png, id=781, 617.1858pt x 393.6
 306pt>
 File: ../python/survey/output/rtlx_aggregate_barplot.png Graphic file (type png
 )
@@ -2003,41 +2027,41 @@ File: ../python/survey/output/rtlx_aggregate_barplot.png Graphic file (type png
 Package pdftex.def Info: ../python/survey/output/rtlx_aggregate_barplot.png  us
 ed on input line 33.
 (pdftex.def)             Requested size: 353.7059pt x 225.59706pt.
-<../python/survey/output/rtlx_mental_demand.png, id=770, 425.4294pt x 339.1872p
+<../python/survey/output/rtlx_mental_demand.png, id=782, 425.4294pt x 339.1872p
 t>
 File: ../python/survey/output/rtlx_mental_demand.png Graphic file (type png)
 <use ../python/survey/output/rtlx_mental_demand.png>
 Package pdftex.def Info: ../python/survey/output/rtlx_mental_demand.png  used o
 n input line 62.
 (pdftex.def)             Requested size: 187.25345pt x 149.29459pt.
-<../python/survey/output/rtlx_physical_demand.png, id=771, 425.4294pt x 339.187
+<../python/survey/output/rtlx_physical_demand.png, id=783, 425.4294pt x 339.187
 2pt>
 File: ../python/survey/output/rtlx_physical_demand.png Graphic file (type png)
 <use ../python/survey/output/rtlx_physical_demand.png>
 Package pdftex.def Info: ../python/survey/output/rtlx_physical_demand.png  used
  on input line 63.
 (pdftex.def)             Requested size: 187.25345pt x 149.29459pt.
-<../python/survey/output/rtlx_temporal_demand.png, id=772, 425.4294pt x 339.187
+<../python/survey/output/rtlx_temporal_demand.png, id=784, 425.4294pt x 339.187
 2pt>
 File: ../python/survey/output/rtlx_temporal_demand.png Graphic file (type png)
 <use ../python/survey/output/rtlx_temporal_demand.png>
 Package pdftex.def Info: ../python/survey/output/rtlx_temporal_demand.png  used
  on input line 64.
 (pdftex.def)             Requested size: 187.25345pt x 149.29459pt.
-<../python/survey/output/rtlx_effort.png, id=773, 425.4294pt x 339.1872pt>
+<../python/survey/output/rtlx_effort.png, id=785, 425.4294pt x 339.1872pt>
 File: ../python/survey/output/rtlx_effort.png Graphic file (type png)
 <use ../python/survey/output/rtlx_effort.png>
 Package pdftex.def Info: ../python/survey/output/rtlx_effort.png  used on input
  line 65.
 (pdftex.def)             Requested size: 187.25345pt x 149.29459pt.
-<../python/survey/output/rtlx_frustration.png, id=774, 425.4294pt x 339.1872pt>
+<../python/survey/output/rtlx_frustration.png, id=786, 425.4294pt x 339.1872pt>
 
 File: ../python/survey/output/rtlx_frustration.png Graphic file (type png)
 <use ../python/survey/output/rtlx_frustration.png>
 Package pdftex.def Info: ../python/survey/output/rtlx_frustration.png  used on 
 input line 66.
 (pdftex.def)             Requested size: 187.25345pt x 149.29459pt.
-<../python/survey/output/rtlx_performance.png, id=775, 425.4294pt x 339.1872pt>
+<../python/survey/output/rtlx_performance.png, id=787, 425.4294pt x 339.1872pt>
 
 File: ../python/survey/output/rtlx_performance.png Graphic file (type png)
 <use ../python/survey/output/rtlx_performance.png>
@@ -2068,7 +2092,7 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 tlx_physical_demand.png> <../python/survey/output/rtlx_temporal_demand.png> <..
 /python/survey/output/rtlx_effort.png> <../python/survey/output/rtlx_frustratio
 n.png> <../python/survey/output/rtlx_performance.png>]
-<../python/metrics/output/per_mode_timing_boxplot.png, id=802, 643.203pt x 426.
+<../python/metrics/output/per_mode_timing_boxplot.png, id=814, 643.203pt x 426.
 393pt>
 File: ../python/metrics/output/per_mode_timing_boxplot.png Graphic file (type p
 ng)
@@ -2091,21 +2115,21 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [52 <../python/metrics/output/per_mode_timing_boxplot.png>]
-<../python/survey/output/ai_item_1_helpful.png, id=819, 425.4294pt x 317.5062pt
+<../python/survey/output/ai_item_1_helpful.png, id=831, 425.4294pt x 317.5062pt
 >
 File: ../python/survey/output/ai_item_1_helpful.png Graphic file (type png)
 <use ../python/survey/output/ai_item_1_helpful.png>
 Package pdftex.def Info: ../python/survey/output/ai_item_1_helpful.png  used on
  input line 42.
 (pdftex.def)             Requested size: 187.25345pt x 139.75159pt.
-<../python/survey/output/ai_item_2_efficiency.png, id=820, 425.4294pt x 317.506
+<../python/survey/output/ai_item_2_efficiency.png, id=832, 425.4294pt x 317.506
 2pt>
 File: ../python/survey/output/ai_item_2_efficiency.png Graphic file (type png)
 <use ../python/survey/output/ai_item_2_efficiency.png>
 Package pdftex.def Info: ../python/survey/output/ai_item_2_efficiency.png  used
  on input line 43.
 (pdftex.def)             Requested size: 187.25345pt x 139.75159pt.
-<../python/survey/output/ai_item_3_transparency.png, id=821, 425.4294pt x 317.5
+<../python/survey/output/ai_item_3_transparency.png, id=833, 425.4294pt x 317.5
 062pt>
 File: ../python/survey/output/ai_item_3_transparency.png Graphic file (type png
 )
@@ -2113,19 +2137,19 @@ File: ../python/survey/output/ai_item_3_transparency.png Graphic file (type png
 Package pdftex.def Info: ../python/survey/output/ai_item_3_transparency.png  us
 ed on input line 44.
 (pdftex.def)             Requested size: 187.25345pt x 139.75159pt.
-<../python/survey/output/ai_item_4_trust.png, id=822, 425.4294pt x 317.5062pt>
+<../python/survey/output/ai_item_4_trust.png, id=834, 425.4294pt x 317.5062pt>
 File: ../python/survey/output/ai_item_4_trust.png Graphic file (type png)
 <use ../python/survey/output/ai_item_4_trust.png>
 Package pdftex.def Info: ../python/survey/output/ai_item_4_trust.png  used on i
 nput line 45.
 (pdftex.def)             Requested size: 187.25345pt x 139.75159pt.
-<../python/survey/output/ai_item_5_legal.png, id=823, 425.4294pt x 317.5062pt>
+<../python/survey/output/ai_item_5_legal.png, id=835, 425.4294pt x 317.5062pt>
 File: ../python/survey/output/ai_item_5_legal.png Graphic file (type png)
 <use ../python/survey/output/ai_item_5_legal.png>
 Package pdftex.def Info: ../python/survey/output/ai_item_5_legal.png  used on i
 nput line 46.
 (pdftex.def)             Requested size: 187.25345pt x 139.75159pt.
-<../python/survey/output/ai_item_6_reuse.png, id=824, 425.4294pt x 317.5062pt>
+<../python/survey/output/ai_item_6_reuse.png, id=836, 425.4294pt x 317.5062pt>
 File: ../python/survey/output/ai_item_6_reuse.png Graphic file (type png)
 <use ../python/survey/output/ai_item_6_reuse.png>
 Package pdftex.def Info: ../python/survey/output/ai_item_6_reuse.png  used on i
@@ -2150,7 +2174,7 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [55]
-<../python/survey/output/ranking_distribution.png, id=855, 725.5908pt x 458.673
+<../python/survey/output/ranking_distribution.png, id=867, 725.5908pt x 458.673
 6pt>
 File: ../python/survey/output/ranking_distribution.png Graphic file (type png)
 <use ../python/survey/output/ranking_distribution.png>
@@ -2194,31 +2218,31 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 [61
 
 ]
-<../python/metrics/output/nlp_doc_bleu.png, id=905, 425.4294pt x 339.669pt>
+<../python/metrics/output/nlp_doc_bleu.png, id=917, 425.4294pt x 339.669pt>
 File: ../python/metrics/output/nlp_doc_bleu.png Graphic file (type png)
 <use ../python/metrics/output/nlp_doc_bleu.png>
 Package pdftex.def Info: ../python/metrics/output/nlp_doc_bleu.png  used on inp
 ut line 96.
 (pdftex.def)             Requested size: 187.25345pt x 149.50664pt.
-<../python/metrics/output/nlp_doc_rouge1.png, id=906, 425.4294pt x 339.669pt>
+<../python/metrics/output/nlp_doc_rouge1.png, id=918, 425.4294pt x 339.669pt>
 File: ../python/metrics/output/nlp_doc_rouge1.png Graphic file (type png)
 <use ../python/metrics/output/nlp_doc_rouge1.png>
 Package pdftex.def Info: ../python/metrics/output/nlp_doc_rouge1.png  used on i
 nput line 97.
 (pdftex.def)             Requested size: 187.25345pt x 149.50664pt.
-<../python/metrics/output/nlp_doc_rouge2.png, id=907, 425.4294pt x 339.669pt>
+<../python/metrics/output/nlp_doc_rouge2.png, id=919, 425.4294pt x 339.669pt>
 File: ../python/metrics/output/nlp_doc_rouge2.png Graphic file (type png)
 <use ../python/metrics/output/nlp_doc_rouge2.png>
 Package pdftex.def Info: ../python/metrics/output/nlp_doc_rouge2.png  used on i
 nput line 98.
 (pdftex.def)             Requested size: 187.25345pt x 149.50664pt.
-<../python/metrics/output/nlp_doc_rougeL.png, id=908, 425.4294pt x 339.669pt>
+<../python/metrics/output/nlp_doc_rougeL.png, id=920, 425.4294pt x 339.669pt>
 File: ../python/metrics/output/nlp_doc_rougeL.png Graphic file (type png)
 <use ../python/metrics/output/nlp_doc_rougeL.png>
 Package pdftex.def Info: ../python/metrics/output/nlp_doc_rougeL.png  used on i
 nput line 99.
 (pdftex.def)             Requested size: 187.25345pt x 149.50664pt.
-<../python/metrics/output/nlp_doc_meteor.png, id=909, 425.4294pt x 339.669pt>
+<../python/metrics/output/nlp_doc_meteor.png, id=921, 425.4294pt x 339.669pt>
 File: ../python/metrics/output/nlp_doc_meteor.png Graphic file (type png)
 <use ../python/metrics/output/nlp_doc_meteor.png>
 Package pdftex.def Info: ../python/metrics/output/nlp_doc_meteor.png  used on i
@@ -2261,21 +2285,21 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [66]
-<../python/metrics/output/nlp_doc_bertscore_p.png, id=982, 425.4294pt x 339.669
+<../python/metrics/output/nlp_doc_bertscore_p.png, id=995, 425.4294pt x 339.669
 pt>
 File: ../python/metrics/output/nlp_doc_bertscore_p.png Graphic file (type png)
 <use ../python/metrics/output/nlp_doc_bertscore_p.png>
 Package pdftex.def Info: ../python/metrics/output/nlp_doc_bertscore_p.png  used
  on input line 270.
 (pdftex.def)             Requested size: 187.25345pt x 149.50664pt.
-<../python/metrics/output/nlp_doc_bertscore_r.png, id=983, 425.4294pt x 339.669
+<../python/metrics/output/nlp_doc_bertscore_r.png, id=996, 425.4294pt x 339.669
 pt>
 File: ../python/metrics/output/nlp_doc_bertscore_r.png Graphic file (type png)
 <use ../python/metrics/output/nlp_doc_bertscore_r.png>
 Package pdftex.def Info: ../python/metrics/output/nlp_doc_bertscore_r.png  used
  on input line 271.
 (pdftex.def)             Requested size: 187.25345pt x 149.50664pt.
-<../python/metrics/output/nlp_doc_bertscore_f1.png, id=984, 425.4294pt x 339.66
+<../python/metrics/output/nlp_doc_bertscore_f1.png, id=997, 425.4294pt x 339.66
 9pt>
 File: ../python/metrics/output/nlp_doc_bertscore_f1.png Graphic file (type png)
 
@@ -2283,7 +2307,7 @@ File: ../python/metrics/output/nlp_doc_bertscore_f1.png Graphic file (type png)
 Package pdftex.def Info: ../python/metrics/output/nlp_doc_bertscore_f1.png  use
 d on input line 272.
 (pdftex.def)             Requested size: 187.25345pt x 149.50664pt.
-<../python/metrics/output/nlp_doc_sbert.png, id=985, 425.4294pt x 339.669pt>
+<../python/metrics/output/nlp_doc_sbert.png, id=998, 425.4294pt x 339.669pt>
 File: ../python/metrics/output/nlp_doc_sbert.png Graphic file (type png)
 <use ../python/metrics/output/nlp_doc_sbert.png>
 Package pdftex.def Info: ../python/metrics/output/nlp_doc_sbert.png  used on in
@@ -2354,43 +2378,43 @@ Underfull \hbox (badness 2922) in paragraph at lines 503--503
 []|\T1/phv/m/n/12 Technical and Or-ga-ni-za-tional Mea-
  []
 
-<../python/metrics/output/chapter_nlp_bleu.png, id=1099, 533.8344pt x 339.669pt
->
-File: ../python/metrics/output/chapter_nlp_bleu.png Graphic file (type png)
-<use ../python/metrics/output/chapter_nlp_bleu.png>
-Package pdftex.def Info: ../python/metrics/output/chapter_nlp_bleu.png  used on
- input line 526.
-(pdftex.def)             Requested size: 353.7059pt x 225.06332pt.
-<../python/metrics/output/chapter_nlp_rouge1.png, id=1100, 533.8344pt x 339.669
+<../python/metrics/output/chapter_nlp_rouge1.png, id=1111, 533.8344pt x 339.669
 pt>
 File: ../python/metrics/output/chapter_nlp_rouge1.png Graphic file (type png)
 <use ../python/metrics/output/chapter_nlp_rouge1.png>
 Package pdftex.def Info: ../python/metrics/output/chapter_nlp_rouge1.png  used 
-on input line 527.
-(pdftex.def)             Requested size: 353.7059pt x 225.06332pt.
-<../python/metrics/output/chapter_nlp_rouge2.png, id=1101, 533.8344pt x 339.669
+on input line 526.
+(pdftex.def)             Requested size: 291.28384pt x 185.34138pt.
+<../python/metrics/output/chapter_nlp_rouge2.png, id=1112, 533.8344pt x 339.669
 pt>
 File: ../python/metrics/output/chapter_nlp_rouge2.png Graphic file (type png)
 <use ../python/metrics/output/chapter_nlp_rouge2.png>
 Package pdftex.def Info: ../python/metrics/output/chapter_nlp_rouge2.png  used 
-on input line 528.
-(pdftex.def)             Requested size: 353.7059pt x 225.06332pt.
-
-LaTeX Warning: Float too large for page by 136.11424pt on input line 534.
-
-<../python/metrics/output/chapter_nlp_rougeL.png, id=1104, 533.8344pt x 339.669
+on input line 527.
+(pdftex.def)             Requested size: 291.28384pt x 185.34138pt.
+<../python/metrics/output/chapter_nlp_rougeL.png, id=1113, 533.8344pt x 339.669
 pt>
 File: ../python/metrics/output/chapter_nlp_rougeL.png Graphic file (type png)
 <use ../python/metrics/output/chapter_nlp_rougeL.png>
 Package pdftex.def Info: ../python/metrics/output/chapter_nlp_rougeL.png  used 
-on input line 538.
+on input line 528.
+(pdftex.def)             Requested size: 291.28384pt x 185.34138pt.
+
+LaTeX Warning: Float too large for page by 16.94843pt on input line 533.
+
+<../python/metrics/output/chapter_nlp_bleu.png, id=1114, 533.8344pt x 339.669pt
+>
+File: ../python/metrics/output/chapter_nlp_bleu.png Graphic file (type png)
+<use ../python/metrics/output/chapter_nlp_bleu.png>
+Package pdftex.def Info: ../python/metrics/output/chapter_nlp_bleu.png  used on
+ input line 537.
 (pdftex.def)             Requested size: 353.7059pt x 225.06332pt.
-<../python/metrics/output/chapter_nlp_meteor.png, id=1105, 533.8344pt x 339.669
+<../python/metrics/output/chapter_nlp_meteor.png, id=1115, 533.8344pt x 339.669
 pt>
 File: ../python/metrics/output/chapter_nlp_meteor.png Graphic file (type png)
 <use ../python/metrics/output/chapter_nlp_meteor.png>
 Package pdftex.def Info: ../python/metrics/output/chapter_nlp_meteor.png  used 
-on input line 539.
+on input line 538.
 (pdftex.def)             Requested size: 353.7059pt x 225.06332pt.
 
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
@@ -2400,52 +2424,52 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[73 <../python/metrics/output/chapter_nlp_bleu.png> <../python/metrics/output/c
-hapter_nlp_rouge1.png> <../python/metrics/output/chapter_nlp_rouge2.png>]
+[73 <../python/metrics/output/chapter_nlp_rouge1.png> <../python/metrics/output
+/chapter_nlp_rouge2.png> <../python/metrics/output/chapter_nlp_rougeL.png>]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[74 <../python/metrics/output/chapter_nlp_rougeL.png> <../python/metrics/output
-/chapter_nlp_meteor.png>]
+[74 <../python/metrics/output/chapter_nlp_bleu.png> <../python/metrics/output/c
+hapter_nlp_meteor.png>]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [75]
-Overfull \hbox (3.40538pt too wide) in paragraph at lines 584--594
+Overfull \hbox (3.40538pt too wide) in paragraph at lines 582--592
 \T1/phv/m/n/12 sine sim-i-lar-ity un-der both en-coder back-bones (Mod-ern-BERT
  pri-mary, plus a chapter-
  []
 
-<../python/metrics/output/chapter_nlp_bertscore_p.png, id=1138, 533.8344pt x 33
+<../python/metrics/output/chapter_nlp_bertscore_p.png, id=1146, 533.8344pt x 33
 9.669pt>
 File: ../python/metrics/output/chapter_nlp_bertscore_p.png Graphic file (type p
 ng)
 <use ../python/metrics/output/chapter_nlp_bertscore_p.png>
 Package pdftex.def Info: ../python/metrics/output/chapter_nlp_bertscore_p.png  
-used on input line 597.
+used on input line 595.
 (pdftex.def)             Requested size: 353.7059pt x 225.06332pt.
-<../python/metrics/output/chapter_nlp_bertscore_r.png, id=1139, 533.8344pt x 33
+<../python/metrics/output/chapter_nlp_bertscore_r.png, id=1147, 533.8344pt x 33
 9.669pt>
 File: ../python/metrics/output/chapter_nlp_bertscore_r.png Graphic file (type p
 ng)
 <use ../python/metrics/output/chapter_nlp_bertscore_r.png>
 Package pdftex.def Info: ../python/metrics/output/chapter_nlp_bertscore_r.png  
-used on input line 598.
+used on input line 596.
 (pdftex.def)             Requested size: 353.7059pt x 225.06332pt.
-<../python/metrics/output/chapter_nlp_bertscore_f1.png, id=1142, 533.8344pt x 3
+<../python/metrics/output/chapter_nlp_bertscore_f1.png, id=1150, 533.8344pt x 3
 39.669pt>
 File: ../python/metrics/output/chapter_nlp_bertscore_f1.png Graphic file (type 
 png)
 <use ../python/metrics/output/chapter_nlp_bertscore_f1.png>
 Package pdftex.def Info: ../python/metrics/output/chapter_nlp_bertscore_f1.png 
- used on input line 607.
+ used on input line 605.
 (pdftex.def)             Requested size: 353.7059pt x 225.06332pt.
-<../python/metrics/output/chapter_nlp_sbert.png, id=1143, 533.8344pt x 339.669p
+<../python/metrics/output/chapter_nlp_sbert.png, id=1151, 533.8344pt x 339.669p
 t>
 File: ../python/metrics/output/chapter_nlp_sbert.png Graphic file (type png)
 <use ../python/metrics/output/chapter_nlp_sbert.png>
 Package pdftex.def Info: ../python/metrics/output/chapter_nlp_sbert.png  used o
-n input line 608.
+n input line 606.
 (pdftex.def)             Requested size: 353.7059pt x 225.06332pt.
 
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
@@ -2470,7 +2494,7 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 [79
 
 ]
-Overfull \hbox (6.24216pt too wide) in paragraph at lines 684--697
+Overfull \hbox (6.24216pt too wide) in paragraph at lines 682--695
 \T1/phv/m/n/12 sion (BERTScore Pre-ci-sion) both align with Chat at the doc-u-m
 ent level; the balanced-
  []
@@ -2496,21 +2520,21 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 [82
 
 ]
-<../python/judge/output/judge_completeness.png, id=1192, 426.393pt x 339.669pt>
+<../python/judge/output/judge_completeness.png, id=1200, 426.393pt x 339.669pt>
 
 File: ../python/judge/output/judge_completeness.png Graphic file (type png)
 <use ../python/judge/output/judge_completeness.png>
 Package pdftex.def Info: ../python/judge/output/judge_completeness.png  used on
  input line 82.
 (pdftex.def)             Requested size: 187.25345pt x 149.16457pt.
-<../python/judge/output/judge_faithfulness.png, id=1193, 426.393pt x 339.669pt>
+<../python/judge/output/judge_faithfulness.png, id=1201, 426.393pt x 339.669pt>
 
 File: ../python/judge/output/judge_faithfulness.png Graphic file (type png)
 <use ../python/judge/output/judge_faithfulness.png>
 Package pdftex.def Info: ../python/judge/output/judge_faithfulness.png  used on
  input line 83.
 (pdftex.def)             Requested size: 187.25345pt x 149.16457pt.
-<../python/judge/output/judge_legal_correctness.png, id=1194, 426.393pt x 339.6
+<../python/judge/output/judge_legal_correctness.png, id=1202, 426.393pt x 339.6
 69pt>
 File: ../python/judge/output/judge_legal_correctness.png Graphic file (type png
 )
@@ -2518,14 +2542,14 @@ File: ../python/judge/output/judge_legal_correctness.png Graphic file (type png
 Package pdftex.def Info: ../python/judge/output/judge_legal_correctness.png  us
 ed on input line 84.
 (pdftex.def)             Requested size: 187.25345pt x 149.16457pt.
-<../python/judge/output/judge_hallucination.png, id=1195, 426.393pt x 339.669pt
+<../python/judge/output/judge_hallucination.png, id=1203, 426.393pt x 339.669pt
 >
 File: ../python/judge/output/judge_hallucination.png Graphic file (type png)
 <use ../python/judge/output/judge_hallucination.png>
 Package pdftex.def Info: ../python/judge/output/judge_hallucination.png  used o
 n input line 85.
 (pdftex.def)             Requested size: 187.25345pt x 149.16457pt.
-<../python/judge/output/judge_overall.png, id=1196, 426.393pt x 339.669pt>
+<../python/judge/output/judge_overall.png, id=1204, 426.393pt x 339.669pt>
 File: ../python/judge/output/judge_overall.png Graphic file (type png)
 <use ../python/judge/output/judge_overall.png>
 Package pdftex.def Info: ../python/judge/output/judge_overall.png  used on inpu
@@ -2585,38 +2609,14 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [94]
-Overfull \hbox (9.21745pt too wide) in paragraph at lines 370--387
-[]\T1/phv/b/n/12 Structured legal-document gen-er-a-tion. \T1/phv/m/n/12 The hy
--brid rec-om-men-da-tion in Sec-tion []5.3[],
- []
-
-
-Overfull \hbox (0.63263pt too wide) in paragraph at lines 370--387
-\T1/phv/m/n/12 wrapper-and-iterate de-sign Nigam et al. [[]23[]] re-port for In
--dian pri-vate legal-document
- []
-
-
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [95]
-Overfull \hbox (6.02583pt too wide) in paragraph at lines 425--434
-[]\T1/phv/m/n/12 The Back-ground closed by nam-ing the un-filled in-ter-sec-tio
-n of three con-cerns: GDPR-
- []
-
-
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[96]
-Overfull \hbox (0.58994pt too wide) in paragraph at lines 450--459
-[]\T1/phv/b/n/12 Novice-only sam-ple. \T1/phv/m/n/12 Par-tic-i-pants were uni-v
-er-sity stu-dents, self-reported as ROPA-
- []
-
-
+[96]) (./chapters/conclusion.tex
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
@@ -2624,32 +2624,32 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[98]) (./chapters/conclusion.tex
-Overfull \vbox (1.17493pt too high) has occurred while \output is active []
-
-
-[99]
+[98]
 chapter 6.
-) (./chapters/appendix_ropagen.tex [100
+) (./chapters/appendix_ropagen.tex [99
 
 ]
 chapter A.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 39.
-[101
+[100
 
 ]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
+[101]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
 [102]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 101.
+
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [103]
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 101.
-
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
@@ -2734,11 +2734,7 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [124]
-Overfull \vbox (1.17493pt too high) has occurred while \output is active []
-
-
-[125]
-<images/ropagen-intro.jpg, id=2045, 1576.89125pt x 933.98938pt>
+<images/ropagen-intro.jpg, id=2053, 1576.89125pt x 933.98938pt>
 File: images/ropagen-intro.jpg Graphic file (type jpg)
 <use images/ropagen-intro.jpg>
 Package pdftex.def Info: images/ropagen-intro.jpg  used on input line 803.
@@ -2747,23 +2743,23 @@ Package pdftex.def Info: images/ropagen-intro.jpg  used on input line 803.
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[126]
-<images/ropagen-generated.jpg, id=2063, 1583.9175pt x 794.97pt>
+[125]
+<images/ropagen-generated.jpg, id=2071, 1583.9175pt x 794.97pt>
 File: images/ropagen-generated.jpg Graphic file (type jpg)
 <use images/ropagen-generated.jpg>
 Package pdftex.def Info: images/ropagen-generated.jpg  used on input line 810.
 (pdftex.def)             Requested size: 395.31425pt x 198.40236pt.
-<images/ropagen-form.jpg, id=2066, 1745.52126pt x 962.59625pt>
+<images/ropagen-form.jpg, id=2074, 1745.52126pt x 962.59625pt>
 File: images/ropagen-form.jpg Graphic file (type jpg)
 <use images/ropagen-form.jpg>
 Package pdftex.def Info: images/ropagen-form.jpg  used on input line 820.
 (pdftex.def)             Requested size: 395.31425pt x 217.99954pt.
-<images/ropagen-ask.jpg, id=2069, 1575.38562pt x 774.39313pt>
+<images/ropagen-ask.jpg, id=2077, 1575.38562pt x 774.39313pt>
 File: images/ropagen-ask.jpg Graphic file (type jpg)
 <use images/ropagen-ask.jpg>
 Package pdftex.def Info: images/ropagen-ask.jpg  used on input line 829.
 (pdftex.def)             Requested size: 395.31425pt x 194.31859pt.
-<images/ropagen-chat.jpg, id=2070, 1585.42313pt x 712.16063pt>
+<images/ropagen-chat.jpg, id=2078, 1585.42313pt x 712.16063pt>
 File: images/ropagen-chat.jpg Graphic file (type jpg)
 <use images/ropagen-chat.jpg>
 Package pdftex.def Info: images/ropagen-chat.jpg  used on input line 838.
@@ -2772,15 +2768,19 @@ Package pdftex.def Info: images/ropagen-chat.jpg  used on input line 838.
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[127 <./images/ropagen-intro.jpg>]
+[126 <./images/ropagen-intro.jpg>]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[128 <./images/ropagen-generated.jpg> <./images/ropagen-form.jpg>]
+[127 <./images/ropagen-generated.jpg> <./images/ropagen-form.jpg>]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[129 <./images/ropagen-ask.jpg> <./images/ropagen-chat.jpg>]
+[128 <./images/ropagen-ask.jpg> <./images/ropagen-chat.jpg>]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[129]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
@@ -2797,10 +2797,6 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [133]
-Overfull \vbox (1.17493pt too high) has occurred while \output is active []
-
-
-[134]
 Underfull \hbox (badness 1259) in paragraph at lines 1052--1052
 []|\T1/phv/m/n/10.95 Correct use of GDPR ter-mi-nol-ogy and cor-rect ci-ta-tion
  of
@@ -2816,7 +2812,7 @@ Underfull \hbox (badness 4699) in paragraph at lines 1052--1052
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[135]
+[134]
 Underfull \hbox (badness 10000) in paragraph at lines 1081--1081
 []|\T1/cmtt/m/n/10.95 completeness\T1/phv/m/n/10.95 , \T1/cmtt/m/n/10.95 scenar
 io_faithfulness\T1/phv/m/n/10.95 ,
@@ -2832,15 +2828,19 @@ Overfull \hbox (0.83624pt too wide) in paragraph at lines 1090--1091
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[136]) (./chapters/appendix_materials_descriptives.tex
+[135]) (./chapters/appendix_materials_descriptives.tex
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[137]
+[136]
 chapter B.
-[138
+[137
 
 ]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[138]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
@@ -2849,10 +2849,6 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [140]
-Overfull \vbox (1.17493pt too high) has occurred while \output is active []
-
-
-[141]
 Overfull \hbox (2.56206pt too wide) in paragraph at lines 237--238
 []\T1/phv/m/n/12 How in-se-cure, dis-cour-aged, ir-ri-tated, stressed, and an-n
 oyed were you? 
@@ -2862,11 +2858,11 @@ oyed were you?
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[142]
+[141]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[143]
+[142]
 Underfull \hbox (badness 1087) in paragraph at lines 488--488
 [][][]|\T1/phv/m/n/12 Per-ceived AI Sup-port, full per-item de-scrip-tive dis-t
 ri-bu-tion by mode ($\OML/cmm/m/it/12 n \OT1/cmr/m/n/12 = 69$ \T1/phv/m/n/12 pe
@@ -2874,6 +2870,10 @@ r mode). Source:
  []
 
 
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[143]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
@@ -2890,10 +2890,6 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [147]
-Overfull \vbox (1.17493pt too high) has occurred while \output is active []
-
-
-[148]
 Underfull \hbox (badness 1968) in paragraph at lines 590--590
 [][][]|\T1/phv/m/n/12 Document-level BERT-based and SBERT dis-tri-bu-tions by m
 ode (full sam-ple $\OML/cmm/m/it/12 n \OT1/cmr/m/n/12 = 113$\T1/phv/m/n/12 ). S
@@ -2901,6 +2897,10 @@ ource:
  []
 
 ) (./chapters/appendix_inferential.tex
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[148]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
@@ -2921,114 +2921,156 @@ Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [153]
-Overfull \vbox (1.17493pt too high) has occurred while \output is active []
-
-
-[154]
 chapter C.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 89.
+Overfull \hbox (1.15758pt too wide) in paragraph at lines 4--15
+\T1/phv/m/n/12 use $\OML/cmm/m/it/12 n \OT1/cmr/m/n/12 = 113$ \T1/phv/m/n/12 (b
+etween-groups, Kruskal--Wallis + Mann--Whitney $\OML/cmm/m/it/12 U$\T1/phv/m/n/
+12 ); the confidence--
+ []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 89.
+(hyperref)                removing `math shift' on input line 97.
 
-[155
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 97.
+
+[154
 
 ]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
+[155]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 131.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 131.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 158.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\alpha' on input line 158.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 158.
+
+
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
 [156]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 123.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 123.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 150.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\alpha' on input line 150.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 150.
-
-
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [157]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 204.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 204.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 230.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 230.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 230.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 230.
+
+
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [158]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 196.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 196.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 222.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 222.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 222.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 222.
-
-
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [159]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 298.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 298.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 320.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 320.
+
+
+Overfull \hbox (5.77727pt too wide) in paragraph at lines 346--350
+\T1/phv/m/n/12 Only Chat shows a pos-i-tive within-mode trend, and its cor-re-l
+a-tion against BERTScore
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 370.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 370.
+
+
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
 [160]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[161]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 308.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 308.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 325.
+(hyperref)                removing `math shift' on input line 439.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 325.
+(hyperref)                removing `math shift' on input line 439.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 325.
+(hyperref)                removing `math shift' on input line 456.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 325.
+(hyperref)                removing `math shift' on input line 456.
 
 
-Overfull \hbox (1.02818pt too wide) in paragraph at lines 340--349
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 456.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 456.
+
+
+Overfull \hbox (1.02818pt too wide) in paragraph at lines 471--480
  [][] 
  []
 
@@ -3036,13 +3078,13 @@ Overfull \hbox (1.02818pt too wide) in paragraph at lines 340--349
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[161]
+[162]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[162]
+[163]
 chapter D.
-) [163
+) [164
 
 ]
 chapter without number
@@ -3054,7 +3096,7 @@ Overfull \hbox (4.60133pt too wide) in paragraph at lines 184--184
 g-u-la-tory Re-quire-ments:
  []
 
-[164
+[165
 
 
 
@@ -3062,7 +3104,7 @@ g-u-la-tory Re-quire-ments:
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[165]
+[166]
 Overfull \hbox (20.14038pt too wide) in paragraph at lines 184--184
 \T1/phv/m/sl/12 Math-e-mat-i-cal Statis-tics \T1/phv/m/n/12 18.1 (1947), pp. 50
 ^^U60. \T1/phv/m/sc/12 doi\T1/phv/m/n/12 : []$\T1/cmtt/m/n/12 10 . 1214 / aoms 
@@ -3079,15 +3121,15 @@ Overfull \hbox (1.40544pt too wide) in paragraph at lines 184--184
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[166]
-Overfull \vbox (1.17493pt too high) has occurred while \output is active []
-
-
 [167]
 Overfull \vbox (1.17493pt too high) has occurred while \output is active []
 
 
-[168] [169
+[168]
+Overfull \vbox (1.17493pt too high) has occurred while \output is active []
+
+
+[169] [170
 
 ] (./main.aux)
  ***********
@@ -3099,10 +3141,10 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 34578 strings out of 467533
- 685169 string characters out of 5422138
- 2053496 words of memory out of 5000000
- 61661 multiletter control sequences out of 15000+600000
+ 34596 strings out of 467533
+ 685438 string characters out of 5422138
+ 2054163 words of memory out of 5000000
+ 61669 multiletter control sequences out of 15000+600000
  689064 words of font info for 125 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  108i,13n,107p,11285b,2930s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -3123,10 +3165,10 @@ super/sftt1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1440.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on main.pdf (175 pages, 5450599 bytes).
+Output written on main.pdf (177 pages, 5451924 bytes).
 PDF statistics:
- 3406 PDF objects out of 3580 (max. 8388607)
- 3016 compressed objects within 31 object streams
- 1438 named destinations out of 1440 (max. 500000)
- 1276 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3444 PDF objects out of 3580 (max. 8388607)
+ 3054 compressed objects within 31 object streams
+ 1448 named destinations out of 1728 (max. 500000)
+ 1308 words of extra memory for PDF output out of 10000 (max. 10000000)
 
