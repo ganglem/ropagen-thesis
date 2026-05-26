@@ -220,10 +220,9 @@ This work uses $N = 4$ (matching unigrams through 4-grams).
 
 ROUGE reports the F1 of $n$-gram or longest-common-subsequence (LCS) overlap between candidate $X$ and reference $Y$. ROUGE-1 counts unigrams, ROUGE-2 counts bigrams, and ROUGE-L counts the LCS. For ROUGE-N:
 \begin{align}
-\label{eq:rouge1}
-P_N &= \frac{|\mathrm{ngrams}(X) \cap \mathrm{ngrams}(Y)|}{|\mathrm{ngrams}(X)|}, \quad
-R_N = \frac{|\mathrm{ngrams}(X) \cap \mathrm{ngrams}(Y)|}{|\mathrm{ngrams}(Y)|}, \notag \\
-F1_N &= \frac{2 P_N R_N}{P_N + R_N}.
+P_N &= \frac{|\mathrm{ngrams}(X) \cap \mathrm{ngrams}(Y)|}{|\mathrm{ngrams}(X)|}, \notag \\
+R_N &= \frac{|\mathrm{ngrams}(X) \cap \mathrm{ngrams}(Y)|}{|\mathrm{ngrams}(Y)|}, \notag \\
+F1_N &= \frac{2 P_N R_N}{P_N + R_N}. \label{eq:rouge1}
 \end{align}
 The same precision–recall–F1 form applies to ROUGE-2:
 \begin{equation}
@@ -231,14 +230,11 @@ The same precision–recall–F1 form applies to ROUGE-2:
 F1_{\text{ROUGE-2}} = \frac{2 P_2 R_2}{P_2 + R_2}.
 \end{equation}
 For ROUGE-L, $n$-gram counts are replaced by the length of $\mathrm{LCS}(X, Y)$:
-\begin{equation}
-\label{eq:rougeL}
-P_L = \frac{|\mathrm{LCS}(X, Y)|}{|X|},
-\quad
-R_L = \frac{|\mathrm{LCS}(X, Y)|}{|Y|},
-\quad
-F1_L = \frac{2 P_L R_L}{P_L + R_L}.
-\end{equation}
+\begin{align}
+P_L &= \frac{|\mathrm{LCS}(X, Y)|}{|X|}, \notag \\
+R_L &= \frac{|\mathrm{LCS}(X, Y)|}{|Y|}, \notag \\
+F1_L &= \frac{2 P_L R_L}{P_L + R_L}. \label{eq:rougeL}
+\end{align}
 The reported ROUGE values are the F1 scores in each case.
 
 \subsection{METEOR}
@@ -259,18 +255,11 @@ Standard values $\alpha = 0.9$, $\beta = 3$, $\gamma = 0.5$ are used; matching i
 \emph{Precision, Recall, F1} --- token-level semantic similarity using ModernBERT embeddings~\cite{Zhang2020}. BERTScore measures similarity between the contextual embeddings of candidate and reference tokens rather than their surface forms. \emph{Precision} captures how many candidate tokens find a close meaning-match in the reference and therefore penalizes spurious or invented content; \emph{recall} captures how many reference tokens are covered and therefore penalizes omission; \emph{F1} is the harmonic mean and requires both to be reasonably high.
 
 BERTScore replaces surface-form $n$-gram matching with cosine similarities between contextual token embeddings produced by a pretrained transformer. The embedding model used here is ModernBERT-base\footnote{\url{https://huggingface.co/answerdotai/ModernBERT-base}}~\cite{Warner2024}, chosen for its long context window of $8192$ tokens, which lets a whole ROPA be embedded without truncation, and for its popularity and positive reception in the Hugging Face community. With L2-normalized embeddings $\mathbf{x}_i$ for reference tokens and $\hat{\mathbf{x}}_j$ for candidate tokens:
-\begin{equation}
-\label{eq:bertscore-p}
-P_{\text{BERT}} = \frac{1}{|\hat{x}|} \sum_{\hat{x}_j \in \hat{x}} \max_{x_i \in x} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j,
-\end{equation}
-\begin{equation}
-\label{eq:bertscore-r}
-R_{\text{BERT}} = \frac{1}{|x|} \sum_{x_i \in x} \max_{\hat{x}_j \in \hat{x}} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j,
-\end{equation}
-\begin{equation}
-\label{eq:bertscore-f1}
-F1_{\text{BERT}} = \frac{2 \cdot P_{\text{BERT}} \cdot R_{\text{BERT}}}{P_{\text{BERT}} + R_{\text{BERT}}}.
-\end{equation}
+\begin{align}
+P_{\text{BERT}} &= \frac{1}{|\hat{x}|} \sum_{\hat{x}_j \in \hat{x}} \max_{x_i \in x} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j, \label{eq:bertscore-p} \\
+R_{\text{BERT}} &= \frac{1}{|x|} \sum_{x_i \in x} \max_{\hat{x}_j \in \hat{x}} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j, \label{eq:bertscore-r} \\
+F1_{\text{BERT}} &= \frac{2 \cdot P_{\text{BERT}} \cdot R_{\text{BERT}}}{P_{\text{BERT}} + R_{\text{BERT}}}. \label{eq:bertscore-f1}
+\end{align}
 
 \subsection{SBERT Cosine Similarity}
 
