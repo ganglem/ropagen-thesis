@@ -4,7 +4,7 @@
 The user study (Chapter~\ref{ch:userstudy}) revealed a stable
 Form-leading pattern: Form was rated the most usable, the lightest
 on workload, and the most often ranked first. This section analyzes
-the document-quality half of the evaluation by asking whether the
+the document-quality part of the evaluation by asking whether the
 same ordering holds when the output text itself is compared
 against a reference document. The reference-based metric suite
 mirrors the one applied by von Schwerin et
@@ -41,9 +41,9 @@ At this granularity each participant ROPA is treated as a single
 block of text and scored against the full expert-authored
 reference. Document-quality results are reported on the full
 retained set of $113$ documents (Form $n = 37$, Ask $n = 37$,
-Chat $n = 39$). Table~\ref{tab:nlp-doc-overview} gives a
-one-glance summary of mean (SD) per mode for every document-level
-metric. Inferential mode comparisons use Kruskal--Wallis as the
+Chat $n = 39$). Table~\ref{tab:nlp-doc-overview} gives a one-glance summary of
+mean (SD) per mode for every document-level metric examined in
+the sections that follow. Inferential mode comparisons use Kruskal--Wallis as the
 omnibus test with Bonferroni-corrected Mann--Whitney $U$ as the
 pairwise post-hoc.\footnote{Full test statistics in
 Appendix~\ref{app:inferential}; full per-document distributions
@@ -152,7 +152,7 @@ reference \emph{means}, and Ask documents do neither.
 \subsection{Chapter-Level NLP Metrics}
 \label{sec:eval-nlp-chapter}
 
-At this granularity each participant chapter is scored against
+At this granularity, each participant chapter is scored against
 the matching chapter of the reference document, so the per-mode
 differences can be localized to specific parts of the ROPA. The
 six rendered chapters produced by the \texttt{finalropa} prompt
@@ -184,10 +184,10 @@ the international reader.}
 \end{tabularx}
 \end{table}
 
-Across modes the chapter-level lead splits cleanly into three
+Across modes, the chapter-level lead splits cleanly into three
 zones, and the split holds on every lexical metric without
-exception and is preserved by the BERT-based view: Ask wins
-Chapter 1, Form wins Chapters 2--4, Chat wins Chapters 5 and 6.
+exception and is preserved by the BERT-based view:
+Ask leads on Chapter~1, Form on Chapters~2--4, and Chat on Chapters~5--6.
 Chapter 1 sits at the head of every metric in absolute terms;
 Chapter 5 carries the widest standard
 deviations.\footnote{Per-chapter, per-mode tables in
@@ -245,15 +245,15 @@ a smaller scale.
 
 The embedding-based view keeps the same three-zone pattern as the
 lexical metrics but compresses the absolute range. Chapter 1
-stays at the top of the BERT range with Ask still ahead; the
-smaller MiniLM encoder makes the Ask lead easier to see (SBERT
+stays at the top of the BERT range with Ask still ahead;
+the smaller MiniLM encoder makes the Ask lead more apparent (SBERT
 MiniLM Ask $0.736$ versus Form $0.663$, Chat $0.662$). The middle
 chapters favor Form, with the document-level Recall-versus-Precision
 trade-off appearing locally on Chapters 2 and 4: Form leads
 Recall and F1 while Chat takes a narrow Precision lead on both.
 Chapter 3 is the cleanest sweep, with Form highest on every
 BERT-based metric (F1 $0.903$ versus Ask $0.865$, Chat $0.872$).
-The last two chapters belong to Chat: Chapter 5 has Chat ahead on
+The last two chapters favour Chat: Chapter 5 has Chat ahead on
 every BERT-based metric, and the MiniLM SBERT pass widens the gap
 visibly (Chat $0.566$ versus Form $0.516$, Ask $0.474$); Chapter
 6 has Chat narrowly ahead on every BERT-based metric.
@@ -269,8 +269,9 @@ document-level inferential layer.
 \subsection{Summary of Document-Level and Chapter-Level NLP Metrics}
 \label{sec:eval-nlp-comparison}
 
-The two granularities tell the same story at different
-resolutions. At the document level the trade-off runs across
+The two granularities (document-level and chapter-level analysis)
+tell the same story at different resolutions.
+At the document level the trade-off runs across
 metrics: Form leads the recall-oriented and bigram-sensitive
 metrics (most clearly BERTScore Recall), Chat leads the
 embedding-based ones (BERTScore Precision and SBERT), and Ask is
@@ -280,7 +281,7 @@ Chapter 1, Form wins Chapters 2--4, Chat wins Chapters 5 and 6,
 and the Form-leads-Recall / Chat-leads-Precision split
 re-emerges specifically on Chapters 2 and 4.
 Document-level means are higher than the average of chapter-level
-means (Table~\ref{tab:doc-vs-chapter}) because the document-level
+means (Table~\ref{tab:doc-vs-chapter}) as the document-level
 calculation pools tokens across all six chapters and smooths out
 the per-chapter dips. The chapter-level view shows \emph{where}
 the modes differ; the document-level view ranks them
