@@ -103,6 +103,35 @@
       \endverb
       \keyw{Accuracy,Collaboration,General Data Protection Regulation,General Data Protection Regulation (GDPR),high,Large language models,Large Language Models (LLMs),Law,Natural language processing,Natural Language Processing (NLP),Privacy Requirements,Requirements Generation,Retrieval augmented generation,Retrieval Augmented Generation (RAG),Software systems,Temperature distribution,Training data}
     \endentry
+    \entry{HFModernBERTBase}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=3e0483d56f6258c0e24e28c97c4ee262}{%
+           family={{Answer.AI}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{3e0483d56f6258c0e24e28c97c4ee262}
+      \strng{fullhash}{3e0483d56f6258c0e24e28c97c4ee262}
+      \strng{fullhashraw}{3e0483d56f6258c0e24e28c97c4ee262}
+      \strng{bibnamehash}{3e0483d56f6258c0e24e28c97c4ee262}
+      \strng{authorbibnamehash}{3e0483d56f6258c0e24e28c97c4ee262}
+      \strng{authornamehash}{3e0483d56f6258c0e24e28c97c4ee262}
+      \strng{authorfullhash}{3e0483d56f6258c0e24e28c97c4ee262}
+      \strng{authorfullhashraw}{3e0483d56f6258c0e24e28c97c4ee262}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://huggingface.co/answerdotai/ModernBERT-base}}
+      \field{note}{Hugging Face model repository. Accessed: 2026-05-27.}
+      \field{title}{{ModernBERT-base} model card}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://huggingface.co/answerdotai/ModernBERT-base
+      \endverb
+      \verb{url}
+      \verb https://huggingface.co/answerdotai/ModernBERT-base
+      \endverb
+    \endentry
     \entry{Banerjee2005}{inproceedings}{}{}
       \name{author}{2}{}{%
         {{hash=82e9bc9432281635a52d33d808963314}{%
@@ -1444,6 +1473,35 @@
       \verb https://www.mdpi.com/1999-5903/16/12/459
       \endverb
       \keyw{GDPR documentation,high,large language model,natural language processing}
+    \endentry
+    \entry{HFMiniLML6v2}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=d5ca5046e8e8443da8c419acd2a42105}{%
+           family={{Sentence-Transformers}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{d5ca5046e8e8443da8c419acd2a42105}
+      \strng{fullhash}{d5ca5046e8e8443da8c419acd2a42105}
+      \strng{fullhashraw}{d5ca5046e8e8443da8c419acd2a42105}
+      \strng{bibnamehash}{d5ca5046e8e8443da8c419acd2a42105}
+      \strng{authorbibnamehash}{d5ca5046e8e8443da8c419acd2a42105}
+      \strng{authornamehash}{d5ca5046e8e8443da8c419acd2a42105}
+      \strng{authorfullhash}{d5ca5046e8e8443da8c419acd2a42105}
+      \strng{authorfullhashraw}{d5ca5046e8e8443da8c419acd2a42105}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2}}
+      \field{note}{Hugging Face model repository. Accessed: 2026-05-27.}
+      \field{title}{{all-MiniLM-L6-v2} sentence-embedding model card}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+      \endverb
+      \verb{url}
+      \verb https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+      \endverb
     \endentry
     \entry{suJuDGEBenchmarkingJudgment2025}{inproceedings}{}{}
       \name{author}{9}{}{%
