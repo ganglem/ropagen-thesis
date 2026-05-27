@@ -1,35 +1,12 @@
-\clearpage
 \section{Summary}
 \label{sec:eval-summary}
 
-The chapter has reported the four user-study instruments
-(Sections~\ref{sec:eval-sus}--\ref{sec:eval-freeform}), the
-reference-based NLP metrics at both document and chapter
-resolutions
-(Sections~\ref{sec:eval-nlp-doc}--\ref{sec:eval-nlp-chapter}), and
-the supplementary LLM-as-a-Judge layer
-(Section~\ref{sec:eval-judge}). This section consolidates the
-findings and names the questions Discussion takes up.
-
-On the user-experience side, the four instruments converge on a
-stable Form-leading ordering. Form is rated the most usable mode
-on the System Usability Scale, the lightest on R-TLX workload,
-the most often placed first in the post-experiment ranking
-($53.6\,\%$ of rank-1 votes, $\chi^2(2) = 14.17$, $p < 0.001$,
-Cram\'{e}r's $V = 0.32$), and the mode participants would most
-willingly use again. The pattern is partial: three items break
-it. Perceived transparency, trust in the LLM's suggestions, and
-the primary self-report confidence measure (``I am confident that
-the AI identified the correct legal basis'') all favor the
-LLM-driven modes, with Ask leading on transparency and trust and
-Chat leading on legal-basis confidence. The behavioral
-counterpart is sharper still: Form is measurably about seven
-minutes per document faster than either LLM-driven mode
-($H = 16.46$, $p < 0.001$, $\varepsilon^2 = 0.15$, large), and Ask
-and Chat are statistically indistinguishable on completion time.
-Ask is most often placed third in the ranking, and free-text
-comments single out the manual copy-paste step between
-explanation and form field as the principal source of friction.
+The chapter has reported the reference-based NLP metrics at both
+document and chapter resolutions
+(Sections~\ref{sec:eval-nlp-doc}--\ref{sec:eval-nlp-chapter}) and
+the supplementary LLM-as-a-Judge layer (Section~\ref{sec:eval-judge}).
+This section brings the document-quality findings together and
+frames the questions the Discussion takes up.
 
 The reference-based NLP metrics split the modes into a trade-off
 rather than a single ranking. Form leads on recall-oriented
@@ -74,24 +51,20 @@ not declare a winner.
 \fussy
 
 Two tensions surface from the consolidated picture. The mode
-participants most often prefer (Form) produces the most
-structurally complete documents, yet also the most fabricated
-ones: the checkbox scaffolding that pushes Completeness toward
-the ceiling appears not to constrain what the LLM invents during
-the final generation step. And self-report confidence in the
-legal basis rises monotonically from Form ($3.58$) through Ask
-($3.74$) to Chat ($3.81$), while measured document quality
+participants most often prefer (Form, as reported in
+Chapter~\ref{ch:userstudy}) produces the most structurally
+complete documents, yet also the most fabricated ones: the
+checkbox scaffolding that pushes Completeness toward the ceiling
+appears not to constrain what the LLM invents during the final
+generation step. And self-report confidence in the legal basis
+rises monotonically from Form through Ask to Chat (see
+Chapter~\ref{ch:userstudy}), while measured document quality
 follows no such single ordering: Form leads on recall, Chat leads
 on document-level semantic fidelity and on scenario faithfulness,
 and the judge declares no clear winner.
 
-With the four user-study instruments and the two
-document-quality streams now consolidated, RQ1 and RQ2 are
-answered in full: RQ1 in the user-study findings reported above
-(usability, cognitive load, perceived AI support, mode
-preference, and free-text), and RQ2 across the reference-based
-NLP metrics and the supplementary judge layer. The cross-stream
-question of whether self-report confidence aligns with measured
-document quality (RQ3) is not answered by any single instrument;
-it is taken up in Chapter~\ref{ch:discussion}, which reads the
-two streams against each other.
+With the foundation for RQ1 and RQ2 now set by
+Chapters~\ref{ch:userstudy} and~\ref{ch:docquality},
+Chapter~\ref{ch:discussion} picks them up and answers them
+alongside RQ3 and the further findings that triangulating the
+two streams surfaces.

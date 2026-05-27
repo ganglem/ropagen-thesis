@@ -254,7 +254,7 @@ Standard values $\alpha = 0.9$, $\beta = 3$, $\gamma = 0.5$ are used; matching i
 
 \emph{Precision, Recall, F1} --- token-level semantic similarity using ModernBERT embeddings~\cite{Zhang2020}. BERTScore measures similarity between the contextual embeddings of candidate and reference tokens rather than their surface forms. \emph{Precision} captures how many candidate tokens find a close meaning-match in the reference and therefore penalizes spurious or invented content; \emph{recall} captures how many reference tokens are covered and therefore penalizes omission; \emph{F1} is the harmonic mean and requires both to be reasonably high.
 
-BERTScore replaces surface-form $n$-gram matching with cosine similarities between contextual token embeddings produced by a pretrained transformer. The embedding model used here is ModernBERT-base\footnote{\url{https://huggingface.co/answerdotai/ModernBERT-base}}~\cite{Warner2024}, chosen for its long context window of $8192$ tokens, which lets a whole ROPA be embedded without truncation, and for its popularity and positive reception in the Hugging Face community. With L2-normalized embeddings $\mathbf{x}_i$ for reference tokens and $\hat{\mathbf{x}}_j$ for candidate tokens:
+BERTScore replaces surface-form $n$-gram matching with cosine similarities between contextual token embeddings produced by a pretrained transformer. The embedding model used here is ModernBERT-base~\cite{HFModernBERTBase,Warner2024}, chosen for its long context window of $8192$ tokens, which lets a whole ROPA be embedded without truncation, and for its popularity and positive reception in the Hugging Face community. With L2-normalized embeddings $\mathbf{x}_i$ for reference tokens and $\hat{\mathbf{x}}_j$ for candidate tokens:
 \begin{align}
 P_{\text{BERT}} &= \frac{1}{|\hat{x}|} \sum_{\hat{x}_j \in \hat{x}} \max_{x_i \in x} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j, \label{eq:bertscore-p} \\
 R_{\text{BERT}} &= \frac{1}{|x|} \sum_{x_i \in x} \max_{\hat{x}_j \in \hat{x}} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j, \label{eq:bertscore-r} \\
@@ -263,7 +263,7 @@ F1_{\text{BERT}} &= \frac{2 \cdot P_{\text{BERT}} \cdot R_{\text{BERT}}}{P_{\tex
 
 \subsection{SBERT Cosine Similarity}
 
-\emph{Sentence-BERT} --- document- and chapter-level semantic similarity using sentence embeddings~\cite{Reimers2019}. SBERT compresses a passage into a single fixed-length embedding and reports the cosine similarity between the candidate and reference embeddings. Unlike BERTScore, which decomposes token-level matches into Precision, Recall, and F1, SBERT produces a single symmetric similarity score per comparison: the cosine of the angle between two compressed vectors does not distinguish candidate-into-reference coverage from reference-into-candidate coverage, so no separate precision and recall values are reported. SBERT is computed at both granularities: one whole-document score per ROPA against the full reference, and one chapter score per candidate chapter against the corresponding reference chapter. The primary encoder for both passes is ModernBERT-base\footnote{\url{https://huggingface.co/answerdotai/ModernBERT-base}}, whose $8192$-token context window accommodates a full ROPA without truncation. At the chapter level, a secondary pass with \texttt{all-MiniLM-L6-v2}\footnote{\url{https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2}} is run over the same six chapters as a robustness check on the primary ModernBERT pass; MiniLM has a $512$-token input limit that excludes whole-document use. Both models were chosen for their popularity and positive reception in the Hugging Face community.
+\emph{Sentence-BERT} --- document- and chapter-level semantic similarity using sentence embeddings~\cite{Reimers2019}. SBERT compresses a passage into a single fixed-length embedding and reports the cosine similarity between the candidate and reference embeddings. Unlike BERTScore, which decomposes token-level matches into Precision, Recall, and F1, SBERT produces a single symmetric similarity score per comparison: the cosine of the angle between two compressed vectors does not distinguish candidate-into-reference coverage from reference-into-candidate coverage, so no separate precision and recall values are reported. SBERT is computed at both granularities: one whole-document score per ROPA against the full reference, and one chapter score per candidate chapter against the corresponding reference chapter. The primary encoder for both passes is ModernBERT-base~\cite{HFModernBERTBase}, whose $8192$-token context window accommodates a full ROPA without truncation. At the chapter level, a secondary pass with \texttt{all-MiniLM-L6-v2}~\cite{HFMiniLML6v2} is run over the same six chapters as a robustness check on the primary ModernBERT pass; MiniLM has a $512$-token input limit that excludes whole-document use. Both models were chosen for their popularity and positive reception in the Hugging Face community.
 
 SBERT produces a single fixed-length embedding per passage by mean-pooling token embeddings from the underlying transformer (here, ModernBERT or MiniLM). Passage similarity is the cosine of the angle between two embeddings $\mathbf{e}(c_1)$ and $\mathbf{e}(c_2)$:
 \begin{equation}
@@ -469,8 +469,9 @@ Kendall's~$W$.
 
 With the tool, the study design, the instruments, the sample
 sizes, and the statistical machinery now in place,
-Chapter~\ref{ch:evaluation} reports the empirical findings:
-participant demographics first, then the four user-study
-instruments and the post-experiment ranking, then the
-document-quality analyses (NLP metrics at document and chapter
-levels, followed by the supplementary LLM-as-a-Judge signal).
+Chapter~\ref{ch:userstudy} reports the empirical findings from
+the user study (participant demographics, the four self-report
+instruments, the post-experiment ranking), and
+Chapter~\ref{ch:docquality} reports the document-quality analyses
+(NLP metrics at document and chapter levels, followed by the
+supplementary LLM-as-a-Judge signal).

@@ -1,8 +1,7 @@
-\clearpage
 \section{Participant Demographics}
 \label{sec:eval-demographics}
 
-This section shows the participant demographics.
+This section presents the participant demographics.
 The study, set out in full in Chapter~\ref{ch:methodology}, recruited $N = 73$ participants who self-reported
 as ROPA novices for a within-subjects experiment in which every
 participant used all three ROPAgen interaction modes (Form, Ask, and
@@ -16,107 +15,92 @@ across a six-group Balanced Latin Square so that learning, order, and
 fatigue effects could be distributed evenly across modes rather than
 absorbed into any one of them. The task was designed around a single standardized GDPR scenario, the
 APOR~GmbH employee and parking-management case at a fictional Ulm
-software company. After each mode, participants completed the System
+software company. After interacting with each mode, participants completed the System
 Usability Scale, the NASA Raw Task Load Index, and the Perceived AI
-Support items, which are evaluated in Section~\ref{sec:eval-userstudy};
+Support items, which are evaluated in the remaining sections of this chapter;
 at the end of the session, they ranked the three modes
 by overall preference and supplied the demographic information
 profiled below. The demographic variables are reported descriptively only on the
-matched within-subjects sample of $n = 69$ participants; no
-inferential tests are applied to the demographics block.
-
-\subsection{Numeric and Ordinal Variables}
+matched within-subjects sample of $n = 69$ participants.\footnote{Descriptive
+statistics for session duration and prior expertise, along with
+counts and inferential tests for the categorical demographic
+variables, are reported in Appendix~\ref{app:demographics}.}
 
 The mean session duration was $1866$~s ($\approx 31$~min) per
-participant across the full session (Figure~\ref{fig:demographics-duration}).
-Figure~\ref{fig:demographics-expertise} confirms that most participants were ROPA novices with high chatbot familiarity and moderate GDPR knowledge;
-Participants reported ROPA familiarity with a mean of $1.45$, confirming that the sample qualifies as ROPA-novice in line with the inclusion criteria.
-Chatbot familiarity is correspondingly high, the mean being $4.36$. GDPR knowledge sits near the scale midpoint (mean $2.81$).
+participant across the full session, see Figure~\ref{fig:demographics-duration}.
+Figure~\ref{fig:demographics-expertise} shows the reported ROPA familiarity with a mean of $1.45$.
+Chatbot familiarity is correspondingly high, the mean being $4.36$,
+while GDPR knowledge sits near the scale midpoint (mean $2.81$).
 Figure~\ref{fig:demographics-expertise} makes the contrast vivid:
 chatbot familiarity concentrates at the high end, ROPA familiarity
 at the low end, and GDPR knowledge spreads broadly across the middle.
-
-Table~\ref{tab:demographics-numeric} (Appendix~\ref{app:demographics})
-reports the descriptive statistics for the four numeric or ordinal
-variables collected in the demographics block: total session
-duration in seconds, and three five-point Likert self-reports of
-prior expertise (GDPR knowledge, ROPA familiarity, chatbot
-familiarity).
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.7\linewidth]{demographics_duration.png}
-\caption{Distribution of session duration (in seconds).}
-\label{fig:demographics-duration}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.7\linewidth]{demographics_expertise.png}
-\caption{Smoothed densities of the three five-point Likert
-self-reports of prior expertise (GDPR knowledge, ROPA familiarity,
-chatbot familiarity). The horizontal axis marks the Likert points
-($1$ = no familiarity, $5$ = expert).}
-\label{fig:demographics-expertise}
-\end{figure}
-
-\subsection{Categorical Variables}
-
-Table~\ref{tab:demographics-categorical}
-(Appendix~\ref{app:demographics}) reports counts and shares for the
-five categorical demographic variables: gender, age (binned by
-year), highest completed degree, current professional status, and
-field of study or work.
-The sample is dominated by Bachelor-level students
+In addition, the sample is dominated by Bachelor-level students
 (Figure~\ref{fig:demographics-degree}) studying or working in IT or
-Computer Science (Figure~\ref{fig:demographics-field}). Of the
-participants who reported gender
-(Figure~\ref{fig:demographics-gender}), $62.1\,\%$ identified as
-male. The underlying age distribution
-(Figure~\ref{fig:demographics-age}) clusters tightly around
+Computer Science (Figure~\ref{fig:demographics-field}).
+Of the participants who reported gender (Figure~\ref{fig:demographics-gender}), $62.1\,\%$
+identified as male.
+The underlying age distribution (Figure~\ref{fig:demographics-age}) clusters tightly around
 $24$--$26$ years, with a thin right tail of older participants.
-This profile (IT-leaning, chatbot-fluent, ROPA-novice)
-frames the results reported in
-Sections~\ref{sec:eval-userstudy}--\ref{sec:eval-judge} and is taken
-up again in the Discussion chapter when generalizability is
-addressed.
 
-\begin{figure}[htbp]
+This profile (IT-leaning, chatbot-fluent, ROPA-novice)
+frames the results reported in the remainder of this chapter and
+in Chapter~\ref{ch:docquality}, and is taken up again in the
+Discussion chapter when generalizability is addressed.
+
+\begin{figure}[!htbp]
 \centering
 \begin{subfigure}[t]{0.45\linewidth}
   \centering
+  \includegraphics[width=\linewidth]{demographics_duration.png}
+  \caption{Session duration (seconds).}
+  \label{fig:demographics-duration}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.45\linewidth}
+  \centering
+  \includegraphics[width=\linewidth]{demographics_expertise.png}
+  \caption{Self-reported prior expertise (GDPR knowledge, ROPA
+  familiarity, chatbot familiarity) on a 5-point Likert scale
+  ($1$ = no familiarity, $5$ = expert).}
+  \label{fig:demographics-expertise}
+\end{subfigure}\\[1ex]
+\begin{subfigure}[t]{0.45\linewidth}
+  \centering
   \includegraphics[width=\linewidth]{demographics_age.png}
-  \caption{Age distribution ($n = 69$).}
+  \caption{Age distribution.}
   \label{fig:demographics-age}
 \end{subfigure}\hfill
 \begin{subfigure}[t]{0.45\linewidth}
   \centering
   \includegraphics[width=\linewidth]{demographics_gender.png}
-  \caption{Self-reported gender of the $n = 66$ participants who
-  answered this item.}
+  \caption{Self-reported gender ($n = 66$; not all participants
+  answered this item).}
   \label{fig:demographics-gender}
 \end{subfigure}\\[1ex]
 \begin{subfigure}[t]{0.45\linewidth}
   \centering
   \includegraphics[width=\linewidth]{demographics_degree.png}
-  \caption{Highest completed degree of the $n = 68$ participants
-  who answered this item.}
+  \caption{Highest completed degree ($n = 68$; not all
+  participants answered this item).}
   \label{fig:demographics-degree}
 \end{subfigure}\hfill
 \begin{subfigure}[t]{0.45\linewidth}
   \centering
   \includegraphics[width=\linewidth]{demographics_profession.png}
-  \caption{Current professional status ($n = 69$).}
+  \caption{Current professional status.}
   \label{fig:demographics-profession}
 \end{subfigure}\\[1ex]
 \begin{subfigure}[t]{0.45\linewidth}
   \centering
   \includegraphics[width=\linewidth]{demographics_field.png}
-  \caption{Field of study or work ($n = 69$).}
+  \caption{Field of study or work.}
   \label{fig:demographics-field}
 \end{subfigure}
-\caption{Categorical demographic variables of the $n = 69$
-analysis sample: age, gender, highest completed degree,
-professional status, and field of study or work.}
-\label{fig:demographics-categorical}
+\caption{Participant demographics of the $n = 69$ analysis sample:
+session duration, self-reported prior expertise on a 5-point
+Likert scale, and five categorical variables (age, gender,
+highest completed degree, professional status, and field of study
+or work).}
+\label{fig:demographics-all}
 \end{figure}
+
+\FloatBarrier
