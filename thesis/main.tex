@@ -24,6 +24,9 @@ BCOR15mm               % Bindekorrektur
 \usepackage{graphicx}
 \graphicspath{{images/}{../python/survey/output/}{../python/metrics/output/}{../python/judge/output/}}
 \usepackage{subcaption}
+\captionsetup{font=tiny}
+\captionsetup[sub]{font=tiny}
+\usepackage{placeins}
 \usepackage{booktabs}
 \usepackage{siunitx}
 \sisetup{detect-all,group-separator={\,},output-decimal-marker={.}}
@@ -165,7 +168,8 @@ pdfborder=0 0 0	% keine Box um die Links!
 \input{chapters/introduction}
 \input{chapters/background}
 \input{chapters/methodology}
-\input{chapters/evaluation}
+\input{chapters/userstudy}
+\input{chapters/document_quality}
 \input{chapters/discussion}
 \input{chapters/conclusion}
 
@@ -173,10 +177,10 @@ pdfborder=0 0 0	% keine Box um die Links!
 
 \appendix
 % hier Anhänge einbinden
-\input{chapters/appendix_ropagen}                  % A: ROPAgen + LLM-as-a-Judge Configuration
-\input{chapters/appendix_materials_descriptives}   % B: Study Materials + Demographics + Per-Item Tables
-\input{chapters/appendix_inferential}              % C: Inferential Statistics
-\input{chapters/appendix_acronyms}                 % D: Acronyms
+\input{chapters/appendix/ropagen}                  % A: ROPAgen + LLM-as-a-Judge Configuration
+\input{chapters/appendix/materials_descriptives}   % B: Study Materials + Demographics + Per-Item Tables
+\input{chapters/appendix/inferential}              % C: Inferential Statistics
+\input{chapters/appendix/acronyms}                 % D: Acronyms
 
 \backmatter
 
