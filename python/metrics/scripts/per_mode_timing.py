@@ -343,18 +343,21 @@ def step_figure(df: pd.DataFrame) -> Path:
     group_data = [data[g] for g in GROUPS]
 
     fig, ax = plt.subplots(figsize=(9, 6))
+    # showfliers=False hides individual outlier markers (in particular the
+    # single ~6199 s chat session by UOR0445, which otherwise stretches the
+    # y-axis and renders the IQRs visually unreadable). Whiskers, medians and
+    # all reported statistics are still computed from the full data — only
+    # the flier dots are suppressed.
     bp = ax.boxplot(
         group_data,
         positions=range(len(GROUPS)),
         widths=0.52,
         patch_artist=True,
-        showfliers=True,
+        showfliers=False,
         medianprops=dict(color="black", linewidth=0.9),
         whiskerprops=dict(color="black", linewidth=0.8),
         capprops=dict(color="black", linewidth=0.8),
         boxprops=dict(linewidth=0.8),
-        flierprops=dict(marker="o", markerfacecolor="grey",
-                        markeredgecolor="grey", markersize=4, alpha=0.55),
     )
     for patch, col in zip(bp["boxes"], BOX_COLORS):
         patch.set_facecolor(col)

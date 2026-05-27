@@ -808,9 +808,11 @@ Family-wise correction across the 60 (metric × chapter) cells yields α = 0.05/
 | Friedman omnibus (exploratory, Bonferroni-60) | 19 / 60   | α ≈ 0.000833 |
 | Wilcoxon pairwise (exploratory)         | 68 / 180  | α = 0.0167 (per-cell Bonferroni-3) |
 
+---
+
 ## Per-Mode Completion Time
 
-Source: timing line `Time elapsed: NNN seconds` emitted by ROPAgen at the end of every generated document (one value per participant × mode). Extracted via `metrics/scripts/per_mode_timing.py`. Sample sizes match the NLP doc-level analysis: full n = 113 (Form 37, Ask 37, Chat 39, **primary**); matched-triple within-subjects subset n = 26 (**exploratory, not used in the thesis**).
+Source: timing line `Time elapsed: NNN seconds` emitted by ROPAgen at the end of every generated document (one value per participant × mode). Extracted via `metrics/scripts/per_mode_timing.py`. Sample sizes match the NLP doc-level analysis: full n = 113 (Form 37, Ask 37, Chat 39); matched-triple within-subjects subset n = 26.
 
 ### Descriptives (full dataset, n = 113)
 
@@ -830,41 +832,37 @@ Source: timing line `Time elapsed: NNN seconds` emitted by ROPAgen at the end of
 
 Distributions deviate from normality on at least one mode; non-parametric tests used throughout (consistent with the NLP and survey pipelines).
 
-### Primary: Kruskal–Wallis (full n = 113, unbalanced)
-
-**Primary** between-groups omnibus for per-mode timing.
-
-| H | p | ε² | Significant (α=0.05) |
-|---|---|---|---|
-| 16.455 | <0.001 | 0.147 | Yes |
-
-### Primary: Pairwise Mann–Whitney U (full n = 113, Bonferroni α = 0.0167)
-
-**Primary** post-hoc family for per-mode timing.
-
-| Pair | U | p | r | Median A (s) | Median B (s) | Sig (Bonf α=0.0167) |
-|---|---|---|---|---|---|---|
-| form vs ask | 334.0 | <0.001 | +0.512 | 420.0 | 858.0 | **Yes** |
-| form vs chat | 420.0 | 0.002 | +0.418 | 420.0 | 717.0 | **Yes** |
-| ask vs chat | 793.5 | 0.457 | -0.100 | 858.0 | 717.0 | No |
-
-### Exploratory: Friedman test (matched within-subjects, n = 26)
-
-Retained for archival reference; not used in the thesis.
+### Friedman test (within-subjects, n = 26)
 
 | χ² | df | p | Kendall's W | Significant (α=0.05) |
 |---|---|---|---|---|
 | 18.692 | 2 | <0.001 | 0.359 | Yes |
 
-### Exploratory: Pairwise Wilcoxon signed-rank (matched n = 26)
+Friedman is significant → pairwise Wilcoxon signed-rank post-hoc with Bonferroni-corrected α = 0.0167 (3 comparisons). Effect size: matched-pairs rank-biserial r (positive when the first-named mode in the pair is *higher*, i.e. *slower*).
 
-Retained for archival reference; not used in the thesis. Effect size: matched-pairs rank-biserial r (positive when the first-named mode in the pair is *higher*, i.e. *slower*).
+### Pairwise Wilcoxon signed-rank (matched n = 26)
 
 | Pair | W | p | r | Median diff (s) | Sig (Bonf) |
 |---|---|---|---|---|---|
 | form vs ask | 19.0 | <0.001 | -0.892 | -400.0 | **Yes** |
 | form vs chat | 34.0 | <0.001 | -0.806 | -274.0 | **Yes** |
 | ask vs chat | 162.0 | 0.745 | -0.077 | +68.5 | No |
+
+### Kruskal-Wallis sensitivity (full n = 113, unbalanced)
+
+| H | p | ε² | Significant (α=0.05) |
+|---|---|---|---|
+| 16.455 | <0.001 | 0.147 | Yes |
+
+Reported as a between-groups sensitivity check on the unbalanced full sample; the matched-triple Wilcoxon family above is the primary inferential result.
+
+### Pairwise Mann-Whitney U (full n = 113)
+
+| Pair | U | p | r | Median A (s) | Median B (s) | Sig (Bonf α=0.0167) |
+|---|---|---|---|---|---|---|
+| form vs ask | 334.0 | <0.001 | +0.512 | 420.0 | 858.0 | **Yes** |
+| form vs chat | 420.0 | 0.002 | +0.418 | 420.0 | 717.0 | **Yes** |
+| ask vs chat | 793.5 | 0.457 | -0.100 | 858.0 | 717.0 | No |
 
 ### Data-quality notes
 
@@ -877,3 +875,4 @@ Cross-check vs. total survey duration:
 -   - AMR2620: Σmodes=3245s > duration=2870s
 - 3 participants in docs but not in survey (no duration available): EII0925, IHB1316, LOT2142
 - 8 participants with survey duration < 0 (encoded missing): EHN0215, IIV2704, IOL1223, Jer1205, RIT1851, UAB0821, UOR0445, thg1620
+
