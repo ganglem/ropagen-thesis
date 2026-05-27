@@ -18,3 +18,21 @@ Es gibt noch Verbesserungspotenzial in der Darstellung, da immer noch keine ganz
   -> oft kann ich zwischen einzelnen Absätzen die Verbindung nicht erkennen warum genau diese analyse nach der anderen was zeigt die eine im Gegensatz zur anderen
 
 - Bei der Präsentation der Quantitativen Evaluation tu ich mir immernoch sehr schwer. Granularität passt auch aber die Reihenfolge der Tabellen, dokumentenauszüge und dem Text ist vogelwild und verwirrt mic sehr beim Lesen. Ich erkenne aktuell noch keine Storyline
+
+## Final-pass typographic consistency (added 2026-05-27)
+
+Pre-existing inconsistencies surfaced during the *SUS* / *R-TLX*
+italics pass. Not new findings; address during the final typographic
+sweep.
+
+- `chapters/evaluation/userstudy_summary.tex` uses `RTLX` (no hyphen)
+  while the rest of the thesis uses `R-TLX`. Normalize to `R-TLX`.
+- "perceived AI support" wanders between lowercase and Title Case
+  across `methodology.tex`, `demographics.tex`, and `userstudy.tex`.
+  Pick one form (likely Title Case, as a proper instrument name) and
+  apply consistently.
+- The instrument is referred to as *Perceived AI Support* in some
+  places and *Perceived LLM Support* in others (e.g.
+  `ai_questions.tex` line 7 vs line 69 — same construct, two names).
+  Pick one and apply throughout, including the section title and
+  table captions.
