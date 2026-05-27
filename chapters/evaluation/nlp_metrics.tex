@@ -1,40 +1,38 @@
-\clearpage
-\section{Document Quality — NLP Metrics}
+\section{NLP Metrics}
 \label{sec:eval-docquality}
 
-The user study (Section~\ref{sec:eval-userstudy}) closed on a stable
+The user study (Chapter~\ref{ch:userstudy}) revealed a stable
 Form-leading pattern: Form was rated the most usable, the lightest
-on workload, and the most often ranked first. This section opens
+on workload, and the most often ranked first. This section analyzes
 the document-quality half of the evaluation by asking whether the
 same ordering holds when the output text itself is compared
 against a reference document. The reference-based metric suite
 mirrors the one applied by von Schwerin et
 al.~\cite{schwerinSystematicComparisonOpen2024} in their
 evaluation of LLM-generated ROPA data categories: five lexical
-metrics (BLEU, ROUGE-1/2/L, METEOR) that count surface-form token
-overlap, and three BERT-based metrics (BERTScore Precision /
-Recall / F1) plus document-level SBERT cosine similarity that
-compare semantic representations. All metrics are computed against
+metrics (BLEU~\cite{Papineni2002}, ROUGE-1/2/L~\cite{Lin2004},
+METEOR~\cite{Banerjee2005}) that count surface-form token overlap,
+and three BERT-based metrics (BERTScore Precision / Recall /
+F1)~\cite{Zhang2020} plus document-level SBERT cosine
+similarity~\cite{Reimers2019} that compare semantic
+representations. All metrics are computed against
 the single expert-authored Form-mode reference document described
 in Chapter~\ref{ch:methodology}.
 
-The metrics are computed at two granularities to separate the
-question of overall document similarity from the question of
-where in the document the modes differ. At the \textbf{document
+The metrics are computed at two granularities. At the \textbf{document
 level} (Section~\ref{sec:eval-nlp-doc}), each participant ROPA is
 treated as a single block of text and scored against the full
 reference document. At the \textbf{chapter level}
 (Section~\ref{sec:eval-nlp-chapter}), the same metrics are
 recomputed for each of the six rendered Article~30(1) ROPA
 chapters separately, scoring each participant chapter against the
-matching reference chapter; the six chapter names and the
-underlying \texttt{DocumentData} mapping are listed at the start
-of Section~\ref{sec:eval-nlp-chapter}. SBERT cosine similarity
-uses ModernBERT as the primary encoder at both granularities; at
-the chapter level the smaller \texttt{all-MiniLM-L6-v2} encoder
-is added as a robustness check on whether ModernBERT's
-near-saturation masks real differences.
-Section~\ref{sec:eval-nlp-comparison} compares the two views.
+matching reference chapter. SBERT cosine similarity
+uses ModernBERT~\cite{HFModernBERTBase} as the primary encoder at
+both granularities; at the chapter level the smaller
+\texttt{all-MiniLM-L6-v2}~\cite{HFMiniLML6v2} encoder is added as
+a robustness check on whether ModernBERT's near-saturation masks
+real differences.
+Finally, Section~\ref{sec:eval-nlp-comparison} compares the two views.
 
 \subsection{Document-Level NLP Metrics}
 \label{sec:eval-nlp-doc}
@@ -43,40 +41,35 @@ At this granularity each participant ROPA is treated as a single
 block of text and scored against the full expert-authored
 reference. Document-quality results are reported on the full
 retained set of $113$ documents (Form $n = 37$, Ask $n = 37$,
-Chat $n = 39$).
-Inferential mode comparisons use Kruskal--Wallis as the omnibus
-test with Bonferroni-corrected Mann--Whitney $U$ as the pairwise
-post-hoc; full test statistics in Appendix~\ref{app:inferential}.
-The full per-document descriptive distributions are in
-Appendix~\ref{app:items-nlp-doc}. Table~\ref{tab:nlp-doc-overview}
-gives a one-glance summary of mean (SD) per mode for every
-document-level metric. The remainder of this subsection walks
-through each metric in turn, lexical first (strictest demands on
-surface form) and then embedding-based (BERTScore Precision /
-Recall / F1 and SBERT).
+Chat $n = 39$). Table~\ref{tab:nlp-doc-overview} gives a
+one-glance summary of mean (SD) per mode for every document-level
+metric. Inferential mode comparisons use Kruskal--Wallis as the
+omnibus test with Bonferroni-corrected Mann--Whitney $U$ as the
+pairwise post-hoc.\footnote{Full test statistics in
+Appendix~\ref{app:inferential}; full per-document distributions
+and box plots in Appendix~\ref{app:items-nlp-doc}.}
 
 \begin{table}[htbp]
 \centering
 \caption{Document-level NLP metrics, mean (SD) per mode (full
 sample $n = 113$). Lexical metrics in the upper block,
-embedding-based metrics in the lower. Full per-document
-distributions in Appendix~\ref{app:items-nlp-doc}.}
+embedding-based metrics in the lower.}
 \label{tab:nlp-doc-overview}
 \small
 \begin{tabular}{@{}l c c c c@{}}
 \toprule
 Metric & Aggregated & Form & Ask & Chat \\
 \midrule
-BLEU                & 0.133 (0.048) & 0.129 (0.048) & 0.127 (0.056) & 0.143 (0.039) \\
-ROUGE-1             & 0.488 (0.087) & 0.488 (0.098) & 0.465 (0.088) & 0.511 (0.071) \\
-ROUGE-2             & 0.285 (0.077) & 0.306 (0.076) & 0.257 (0.080) & 0.291 (0.069) \\
-ROUGE-L             & 0.375 (0.087) & 0.388 (0.094) & 0.347 (0.091) & 0.389 (0.072) \\
-METEOR              & 0.389 (0.062) & 0.412 (0.051) & 0.365 (0.068) & 0.390 (0.057) \\
+BLEU                & 0.133 (0.048) & 0.129 (0.048) & 0.127 (0.056) & \textbf{0.143} (0.039) \\
+ROUGE-1             & 0.488 (0.087) & 0.488 (0.098) & 0.465 (0.088) & \textbf{0.511} (0.071) \\
+ROUGE-2             & 0.285 (0.077) & \textbf{0.306} (0.076) & 0.257 (0.080) & 0.291 (0.069) \\
+ROUGE-L             & 0.375 (0.087) & 0.388 (0.094) & 0.347 (0.091) & \textbf{0.389} (0.072) \\
+METEOR              & 0.389 (0.062) & \textbf{0.412} (0.051) & 0.365 (0.068) & 0.390 (0.057) \\
 \midrule
-BERTScore Precision & 0.890 (0.014) & 0.889 (0.014) & 0.886 (0.016) & 0.895 (0.012) \\
-BERTScore Recall    & 0.915 (0.014) & 0.923 (0.005) & 0.908 (0.017) & 0.913 (0.013) \\
-BERTScore F1        & 0.902 (0.011) & 0.905 (0.009) & 0.897 (0.013) & 0.904 (0.010) \\
-SBERT (ModernBERT)  & 0.987 (0.004) & 0.986 (0.004) & 0.986 (0.005) & 0.990 (0.002) \\
+BERTScore Precision & 0.890 (0.014) & 0.889 (0.014) & 0.886 (0.016) & \textbf{0.895} (0.012) \\
+BERTScore Recall    & 0.915 (0.014) & \textbf{0.923} (0.005) & 0.908 (0.017) & 0.913 (0.013) \\
+BERTScore F1        & 0.902 (0.011) & \textbf{0.905} (0.009) & 0.897 (0.013) & 0.904 (0.010) \\
+SBERT (ModernBERT)  & 0.987 (0.004) & 0.986 (0.004) & 0.986 (0.005) & \textbf{0.990} (0.002) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -89,170 +82,30 @@ overlap with the reference; they reward word-level fidelity but
 are blind to paraphrase. A document that covers the same content
 in different wording scores lower here than under the
 embedding-based metrics that follow.
-Figure~\ref{fig:nlp-doc-boxplot} shows the box-plot distributions.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.45\linewidth]{nlp_doc_bleu.png}\hfill
-\includegraphics[width=0.45\linewidth]{nlp_doc_rouge1.png}\\[1ex]
-\includegraphics[width=0.45\linewidth]{nlp_doc_rouge2.png}\hfill
-\includegraphics[width=0.45\linewidth]{nlp_doc_rougeL.png}\\[1ex]
-\includegraphics[width=0.45\linewidth]{nlp_doc_meteor.png}
-\caption{Document-level distributions of BLEU, ROUGE-1, ROUGE-2,
-ROUGE-L, and METEOR by mode (full sample $n = 113$), one plot
-per metric. Boxes show the interquartile range; the diamond
-marks the mean.}
-\label{fig:nlp-doc-boxplot}
-\end{figure}
-
-To attach the lexical metrics to concrete text,
-Figures~\ref{fig:worked-lexical-a} and~\ref{fig:worked-lexical-b}
-show the Retention chapter (Chapter~5,
-\emph{Aufbewahrungsfristen und L\"oschung}) for two case-study
-participants alongside the reference passage and the
-corresponding per-passage metric values.
-
-\begingroup
-\lstset{
-  basicstyle=\ttfamily\footnotesize,
-  breaklines=true,
-  breakatwhitespace=false,
-  breakindent=0pt,
-  postbreak=\mbox{$\hookrightarrow$\space},
-  frame=single,
-  framerule=0.4pt,
-  language=,
-  numbers=none,
-  showstringspaces=false,
-  keepspaces=true,
-  columns=fullflexible,
-  upquote=true,
-  aboveskip=0.4em,
-  belowskip=0.4em,
-  literate=%
-    {ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
-    {Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1
-    {§}{{\S}}1
-    {•}{{\textbullet}}1
-    {–}{{--}}1 {—}{{---}}1
-    {“}{{``}}1 {”}{{''}}1
-    {‘}{{`}}1 {’}{{'}}1
-}
-\begin{figure}[htbp]
-\centering
-\noindent\textit{Reference passage (single-sentence statement of the scenario's 3-month rule).}
-\begin{lstlisting}
-Wir löschen die personenbezogenen Daten drei Monate nach Beendigung des Beschäftigungsverhältnisses, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
-\end{lstlisting}
-
-\noindent\textit{IAR1116 (Chat) passage.}
-\begin{lstlisting}
-### 5.1 Löschfristen
-Die personenbezogenen Daten werden gemäß folgender Regelungen gelöscht:
-
-- **Grundsatz:** Die Daten werden spätestens **3 Monate nach Austritt der Mitarbeitenden** gelöscht.
-- **Ausnahmen:** Sofern gesetzliche Aufbewahrungspflichten (z. B. im Rahmen laufender Verfahren) bestehen, erfolgt die Löschung erst nach Ablauf dieser Fristen.
-
-### 5.2 Verfahren zur Löschung
-Die Löschung erfolgt entweder automatisiert durch unsere Systeme oder manuell durch die zuständigen Mitarbeitenden. Die Einhaltung der Löschfristen wird regelmäßig überprüft.
-\end{lstlisting}
-\caption{Worked example for the lexical metrics (1/2): reference
-and IAR1116-chat Retention passages (Chapter~5,
-\emph{Aufbewahrungsfristen und L\"oschung}). Continues in
-Figure~\ref{fig:worked-lexical-b}.}
-\label{fig:worked-lexical-a}
-\end{figure}
-
-\clearpage
-
-\begin{figure}[htbp]
-\centering
-\noindent\textit{AEB2451 (Form) passage.}
-\begin{lstlisting}
-Wir bewahren personenbezogene Daten unserer Mitarbeitenden gemäß den gesetzlichen Vorgaben auf und löschen diese nach Ablauf der festgelegten Fristen. Die Aufbewahrungsfristen richten sich nach den folgenden Grundsätzen:
-
-- **Grundsatz:** 6 Jahre nach Beendigung des Beschäftigungsverhältnisses (gemäß § 257 HGB und § 147 AO für steuerrelevante Unterlagen).
-- **Ausnahmen:**
-  - Sozialversicherungsnummern und Vertragsdaten können bis zu 10 Jahre aufbewahrt werden, sofern dies aufgrund rechtlicher Auseinandersetzungen oder Verdachtsmomenten (z. B. Sozialversicherungsbetrug) erforderlich ist.
-  - Biometrische Daten und Videoüberwachungsdaten werden nur so lange gespeichert, wie dies für den jeweiligen Zweck (z. B. Zutrittskontrolle) notwendig ist.
-
-Nach Ablauf der Aufbewahrungsfristen werden die Daten automatisch gelöscht, sofern keine gesetzlichen oder vertraglichen Gründe für eine längere Speicherung vorliegen.
-\end{lstlisting}
-
-\vspace{0.5ex}
-\begin{tabular}{@{}l c c c@{}}
-\toprule
-Candidate    & BLEU   & ROUGE-2 & METEOR \\
-\midrule
-IAR1116-chat & 0.0000 & 0.0625  & 0.1724 \\
-AEB2451-form & 0.0356 & 0.1185  & 0.3790 \\
-\bottomrule
-\end{tabular}
-\caption{Worked example for the lexical metrics (2/2):
-AEB2451-form Retention passage with per-passage BLEU, ROUGE-2,
-and METEOR values. Per-passage metric values are computed with
-the same pipeline as the chapter-level table; see
-Appendix~\ref{app:items-chapter-nlp-lexical} for the full chapter
-means. Continued from Figure~\ref{fig:worked-lexical-a}.}
-\label{fig:worked-lexical-b}
-\end{figure}
-\endgroup
-
-\paragraph{BLEU.} BLEU \emph{(Bilingual Evaluation Understudy)} (\eqref{eq:bleu}) counts exact $n$-gram overlap with the reference and is therefore harsh on paraphrase: a document that says the same thing in different words scores low. It is precision-oriented (how much of what the candidate said also appears in the reference) with a brevity penalty, and the values reported here use $N = 4$.
-
-On exact phrasing matched against the reference, Chat documents
-share marginally more $4$-gram overlap than Form or Ask (Chat
-$0.143$, Form $0.129$, Ask $0.127$). The gap is small, a slight
-reversal of the Form-leading pattern that does not reach
-statistical significance on the full sample.
-In the worked example of
-Figures~\ref{fig:worked-lexical-a} and~\ref{fig:worked-lexical-b},
-IAR1116's Chat passage scores BLEU $= 0.0000$ against the
-reference's single-sentence Retention statement, the value the
-metric assigns when no candidate $4$-gram appears in the reference;
-AEB2451's Form passage scores BLEU $= 0.0356$, where a handful of
-shared $4$-grams survive.
-
-\paragraph{ROUGE-1, ROUGE-2, ROUGE-L.} ROUGE \emph{(Recall-Oriented Understudy for Gisting Evaluation)} (\eqref{eq:rouge1}--\eqref{eq:rougeL}) measures how much of the reference's wording the candidate recovers, in three flavors: unigrams, bigrams, and the longest common subsequence. Each is reported as F1, the harmonic mean of precision (how much of what the candidate said belongs) and recall (how much of what should have been said is there), so it is more permissive than BLEU in word order but still surface-form.
-
-On single-word overlap the three modes are evenly spread (Chat
-$0.511$, Form $0.488$, Ask $0.465$); the omnibus does not reach
-significance.
-For two-word phrases, Form reproduces the reference's wording most
-often (Form $0.306$, Chat $0.291$, Ask $0.257$). The Ask trough is
-wide enough to register as statistically significant against both
-Form and Chat.
-For longest-shared-sequences, Form ($0.388$) and Chat ($0.389$)
-track the reference equally well, with Ask trailing ($0.347$). The
-mode effect reaches significance overall, though no pairwise
-comparison survives Bonferroni correction.
-In the worked example of
-Figures~\ref{fig:worked-lexical-a} and~\ref{fig:worked-lexical-b},
-IAR1116's Chat passage scores ROUGE-2 $= 0.0625$ against the
-reference, while AEB2451's Form passage scores ROUGE-2 $= 0.1185$
-on the strength of bigrams shared with the reference's wording.
-
-\paragraph{METEOR.}
-METEOR \emph{(Metric for Evaluation of Translation with Explicit ORdering)} (\eqref{eq:meteor})
-softens BLEU by crediting matches on stems and WordNet synonyms in addition to identical tokens,
-so paraphrase with related words is no longer punished as if it had said something unrelated.
-It is a fragmentation-penalized harmonic mean of unigram precision and recall,
-sitting between BLEU and ROUGE in strictness.
-With stems and synonyms credited, Form still uses the most
-reference-like terminology (Form $0.412$, Chat $0.390$, Ask
-$0.365$). Form is significantly higher than Ask on the full
-sample; the Form-versus-Chat and Chat-versus-Ask comparisons fall
-short of significance.
-In the worked example of
-Figures~\ref{fig:worked-lexical-a} and~\ref{fig:worked-lexical-b},
-IAR1116's Chat passage scores METEOR $= 0.1724$ against the
-reference, while AEB2451's Form passage scores METEOR $= 0.3790$
-once stem and synonym matches against the reference's vocabulary
-are credited.
-
-Three of the five lexical metrics (ROUGE-2, ROUGE-L, METEOR) reach
-statistical significance on the full sample; BLEU and ROUGE-1 do
-not. Full test statistics in Appendix~\ref{app:inferential}.
+Read across Table~\ref{tab:nlp-doc-overview}, the five lexical
+metrics split their winners cleanly between the two
+LLM-assisted-versus-structured ends of the design. Chat takes the
+precision-oriented and longest-subsequence metrics: BLEU
+($0.143$), ROUGE-1 ($0.511$), and ROUGE-L ($0.389$). Form takes
+the two metrics that reward reproducing reference wording most
+faithfully: ROUGE-2 ($0.306$) and METEOR ($0.412$). Ask trails on
+every lexical metric. Three of the five (ROUGE-2, ROUGE-L,
+METEOR) reach statistical significance on the full sample; BLEU
+and ROUGE-1 do not.\footnote{Kruskal--Wallis on the full sample:
+BLEU $H = 4.48$, $p = 0.107$; ROUGE-1 $H = 5.57$, $p = 0.062$;
+ROUGE-2 $H = 9.56$, $p = 0.008$, $\varepsilon^2 = 0.069$
+(moderate); ROUGE-L $H = 7.79$, $p = 0.020$; METEOR $H = 9.80$,
+$p = 0.007$, $\varepsilon^2 = 0.071$ (moderate). Pairwise
+Mann--Whitney post-hoc (Bonferroni-corrected): ROUGE-2 Form $>$
+Ask $p = 0.006$, $r = 0.369$ (medium); ROUGE-2 Chat $>$ Ask
+$p = 0.011$, $r = 0.342$ (medium); METEOR Form $>$ Ask $p =
+0.003$, $r = 0.407$ (medium); no pairwise ROUGE-L comparison
+survives Bonferroni correction. Full table in
+Appendix~\ref{app:inferential}.} BLEU illustrates the limit
+sharpest: lexical metrics measure shape, not truth, so a
+fabrication phrased in the reference's vocabulary outscores an
+accurate paraphrase that does not share its wording.
 
 \subsubsection{BERT-Based and Sentence-Embedding Metrics}
 \label{ssec:nlp-doc-bert}
@@ -262,211 +115,39 @@ by comparing contextual embeddings rather than literal tokens.
 Where the lexical metrics penalize paraphrase, the embedding-based
 metrics credit semantic overlap and therefore offer a
 complementary view of the same documents.
-Figure~\ref{fig:bert-doc-boxplot} shows the corresponding
-distributions.
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.45\linewidth]{nlp_doc_bertscore_p.png}\hfill
-\includegraphics[width=0.45\linewidth]{nlp_doc_bertscore_r.png}\\[1ex]
-\includegraphics[width=0.45\linewidth]{nlp_doc_bertscore_f1.png}\hfill
-\includegraphics[width=0.45\linewidth]{nlp_doc_sbert.png}
-\caption{Document-level distributions of BERTScore Precision,
-Recall, F1, and SBERT cosine similarity (ModernBERT) by mode
-(full sample $n = 113$), one plot per metric.}
-\label{fig:bert-doc-boxplot}
-\end{figure}
+The embedding-based row of Table~\ref{tab:nlp-doc-overview} splits
+the four metrics symmetrically. Form wins the recall-oriented
+pair: BERTScore Recall ($0.923$) and BERTScore F1 ($0.905$), with
+Form's Recall standard deviation the smallest of any mode-metric
+cell in the table (SD $0.005$). Chat wins the precision-oriented
+pair: BERTScore Precision ($0.895$) and SBERT cosine similarity
+($0.990$). Ask trails on every metric and is the lower of every
+significant pairwise comparison. All four embedding-based metrics
+reach statistical significance.\footnote{Kruskal--Wallis on the
+full sample: BERTScore Precision $H = 9.11$, $p = 0.011$;
+BERTScore Recall $H = 32.38$, $p < 0.001$, $\varepsilon^2 =
+0.276$ (large); BERTScore F1 $H = 9.75$, $p = 0.008$,
+$\varepsilon^2 = 0.071$ (moderate); SBERT (ModernBERT) $H =
+17.43$, $p < 0.001$, $\varepsilon^2 = 0.140$ (large). Pairwise
+Mann--Whitney post-hoc (Bonferroni-corrected): BERTScore Recall
+Form $>$ Ask $p < 0.001$, $r = 0.756$ (large); Recall Form $>$
+Chat $p < 0.001$, $r = 0.512$ (large); F1 Form $>$ Ask $p =
+0.004$, $r = 0.386$ (medium); F1 Chat $>$ Ask $p = 0.011$, $r =
+0.340$ (medium); SBERT Chat $>$ Form $p < 0.001$, $r = 0.505$
+(large); SBERT Chat $>$ Ask $p < 0.001$, $r = 0.453$ (large); no
+pairwise BERTScore Precision comparison survives Bonferroni
+correction. Full table in Appendix~\ref{app:inferential}.}
+The reading is a coverage-versus-discipline trade-off: Form casts
+a wide net and reproduces more of the reference content but also
+includes more material the reference does not; Chat stays tightly
+on topic but leaves more out; their strengths balance out on F1,
+and Ask underperforms on both.
 
-To attach the embedding-based metrics to concrete text,
-Figures~\ref{fig:worked-semantic-a} and~\ref{fig:worked-semantic-b}
-show the Purpose chapter (Chapter~2, \emph{Zwecke und
-Rechtsgrundlagen der Verarbeitung}) for the same two case-study
-participants alongside the reference passage and the
-corresponding per-passage metric values.
-
-\begingroup
-\lstset{
-  basicstyle=\ttfamily\footnotesize,
-  breaklines=true,
-  breakatwhitespace=false,
-  breakindent=0pt,
-  postbreak=\mbox{$\hookrightarrow$\space},
-  frame=single,
-  framerule=0.4pt,
-  language=,
-  numbers=none,
-  showstringspaces=false,
-  keepspaces=true,
-  columns=fullflexible,
-  upquote=true,
-  aboveskip=0.4em,
-  belowskip=0.4em,
-  literate=%
-    {ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
-    {Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1
-    {§}{{\S}}1
-    {•}{{\textbullet}}1
-    {–}{{--}}1 {—}{{---}}1
-    {“}{{``}}1 {”}{{''}}1
-    {‘}{{`}}1 {’}{{'}}1
-}
-\begin{figure}[htbp]
-\centering
-\noindent\textit{Reference passage (purposes plus the two legal bases for processing).}
-\begin{lstlisting}
-2.1 Verarbeitungszwecke
-Wir verarbeiten personenbezogene Daten für folgende Zwecke:
-• Verwaltung von Mitarbeitenden vom Eintritt bis zum Austritt, einschließlich:
-• Anlegen neuer Mitarbeitender
-• Dokumentation von Arbeitszeiten
-• Verwaltung von Urlaub und Abwesenheiten
-• Verwaltung von Parkplatzberechtigungen für berechtigte Mitarbeitende
-
-2.2 Rechtsgrundlagen der Verarbeitung
-Die Verarbeitung erfolgt auf Grundlage folgender Rechtsnormen:
-• Art. 6 Abs. 1 lit. b DSGVO (Erfüllung eines Vertrags oder vorvertraglicher Maßnahmen)
-• § 26 BDSG (Datenverarbeitung für Zwecke des Beschäftigungsverhältnisses)
-\end{lstlisting}
-
-\noindent\textit{IAR1116 (Chat) passage.}
-\begin{lstlisting}
-### 2.1 Zwecke der Verarbeitung
-Wir verarbeiten personenbezogene Daten unserer Mitarbeitenden zur ganzheitlichen Verwaltung von deren Beschäftigungsverhältnis – vom Eintritt bis zum Austritt aus dem Unternehmen. Die Verarbeitung dient folgenden Zwecken:
-
-- Erfassung und Pflege von Stammdaten neuer und bestehender Mitarbeitender,
-- Dokumentation von Arbeitszeiten sowie Verwaltung von Urlaubs- und Abwesenheitszeiten,
-- Zuweisung und Verwaltung von Parkplatzberechtigungen für den firmeneigenen Parkplatz mit Schranke. Hierfür wird ein eindeutiges Merkmal (Fahrzeugkennzeichen) hinterlegt, um die Nutzung zu ermöglichen.
-
-Die Verarbeitung erfolgt ausschließlich auf internen Systemen (Microsoft Office 365 und eigene Server) ohne Nutzung externer Cloud-Dienste. Medizinische Daten oder Krankentage sind nicht Gegenstand dieser Verarbeitungstätigkeit.
-
-### 2.2 Rechtsgrundlagen der Verarbeitung
-Die Verarbeitung personenbezogener Daten erfolgt auf folgenden Rechtsgrundlagen gemäß Art. 6 Abs. 1 DSGVO sowie ergänzenden nationalen Vorschriften:
-
-- **Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung):**
-  Die Verarbeitung ist für die Durchführung des Beschäftigungsverhältnisses erforderlich, insbesondere zur Verwaltung von Arbeitszeiten, Urlaub und Parkplatzberechtigungen.
-
-- **Art. 6 Abs. 1 lit. f DSGVO (Berechtigtes Interesse):**
-  Die Verarbeitung dient unserem berechtigten Interesse an einer effizienten Verwaltung der Mitarbeiterressourcen sowie der Sicherstellung einer geordneten Nutzung des firmeneigenen Parkplatzes.
-
-- **§ 26 BDSG (Datenverarbeitung für Zwecke des Beschäftigungsverhältnisses):**
-  Die Verarbeitung erfolgt im Rahmen des Beschäftigungsverhältnisses und ist für dessen Durchführung erforderlich.
-\end{lstlisting}
-
-\caption{Worked example for the embedding-based metrics (1/2):
-reference and IAR1116-chat Purpose passages (Chapter~2,
-\emph{Zwecke und Rechtsgrundlagen der Verarbeitung}). Continues
-in Figure~\ref{fig:worked-semantic-b}.}
-\label{fig:worked-semantic-a}
-\end{figure}
-
-\clearpage
-
-\begin{figure}[htbp]
-\centering
-\noindent\textit{AEB2451 (Form) passage.}
-\begin{lstlisting}
-Wir verarbeiten personenbezogene Daten unserer Mitarbeitenden ausschließlich zur Verwaltung des Beschäftigungsverhältnisses von der Einstellung bis zum Austritt. Dies umfasst folgende Zwecke:
-
-- Erfassung und Pflege von Stammdaten der Mitarbeitenden
-- Dokumentation von Arbeitszeiten und Anwesenheiten
-- Verwaltung von Urlaubs- und Abwesenheitszeiten
-- Verwaltung von Parkplatzberechtigungen (z. B. Fahrzeugkennzeichen)
-- Erfüllung gesetzlicher Aufbewahrungs- und Meldepflichten
-- Sicherstellung der betrieblichen Abläufe und Compliance
-
-Die Verarbeitung erfolgt auf Grundlage folgender Rechtsgrundlagen:
-
-- **Art. 6 Abs. 1 lit. b DSGVO** (Erfüllung eines Vertrags oder vorvertraglicher Maßnahmen)
-- **§ 26 BDSG** (Datenverarbeitung für Zwecke des Beschäftigungsverhältnisses)
-- **§ 257 HGB** (Aufbewahrung von Handelsbüchern und Unterlagen)
-- **§ 147 AO** (Aufbewahrung von steuerrelevanten Unterlagen)
-- **§ 239 Abs. 1 HGB** (Führung der Handelsbücher)
-- **§ 2 Abs. 1 Nr. 1 BDSG** (Verarbeitung personenbezogener Daten im Beschäftigungskontext)
-\end{lstlisting}
-
-\vspace{0.5ex}
-\begin{tabular}{@{}l c c c c@{}}
-\toprule
-Candidate    & BERTScore P & BERTScore R & BERTScore F1 & SBERT \\
-\midrule
-IAR1116-chat & 0.8797      & 0.9180      & 0.8984       & 0.9810 \\
-AEB2451-form & 0.8954      & 0.9336      & 0.9141       & 0.9882 \\
-\bottomrule
-\end{tabular}
-\caption{Worked example for the embedding-based metrics (2/2):
-AEB2451-form Purpose passage with per-passage BERTScore P/R/F1
-and SBERT values. SBERT cosine similarity is reported under the
-ModernBERT encoder, matching the document- and chapter-level
-tables. Per-passage metric values are computed with the same
-pipeline as the chapter-level table; see
-Appendix~\ref{app:items-chapter-nlp-bert} for the full chapter
-means. Continued from Figure~\ref{fig:worked-semantic-a}.}
-\label{fig:worked-semantic-b}
-\end{figure}
-\endgroup
-
-\paragraph{BERTScore Precision, Recall, F1.} BERTScore (\eqref{eq:bertscore-p}--\eqref{eq:bertscore-f1}) replaces $n$-gram matching with cosine similarities between contextual token embeddings, so paraphrase that shares meaning is credited even without surface-form overlap. \emph{Precision} measures how much of what the candidate said belongs (penalizing spurious content), \emph{recall} measures how much of what should have been said is there (penalizing omission), and \emph{F1} is their harmonic mean (both must be reasonable for F1 to be high).
-
-On Precision (how much of what the candidate said also appears in
-the reference), Chat documents stay tightest to the reference
-(Chat $0.895$, Form $0.889$, Ask $0.886$). The mode effect reaches
-significance overall, but no pairwise comparison survives
-Bonferroni correction.
-
-On Recall (how much of what the reference says is recovered by
-the candidate), Form documents lead clearly, reproducing most of
-the reference's content (Form $0.923$, Ask $0.908$, Chat $0.913$).
-Form is significantly higher than both LLM-driven modes.
-Two features of Recall stand out. Form's standard deviation is
-the smallest of the three modes (SD $0.005$): every Form document
-scores within a narrow band. Ask has the widest spread (SD
-$0.017$) with a long lower tail; Figure~\ref{fig:bert-doc-boxplot}
-shows several Ask outliers well below the rest of the
-distribution. Some Ask participants produced documents as
-complete as Form; others left noticeable gaps.
-F1 is the harmonic mean of Precision and Recall, and shows the
-trade-off the two metrics imply. Form ($0.905$) and Chat ($0.904$)
-are effectively tied, with Ask trailing ($0.897$). The Ask trough
-is statistically significant against both other modes; Form and
-Chat are indistinguishable. The reading is the coverage-vs-discipline
-trade-off: Form casts a wide net and reproduces more of the
-reference content, but also includes more material the reference
-does not (lower Precision); Chat stays tightly on topic but
-leaves more out (lower Recall); their strengths balance out on
-F1, and Ask underperforms on both.
-In the worked example of
-Figures~\ref{fig:worked-semantic-a} and~\ref{fig:worked-semantic-b},
-IAR1116's Chat passage scores BERTScore Precision $= 0.8797$,
-Recall $= 0.9180$, and F1 $= 0.8984$ against the reference, while
-AEB2451's Form passage scores Precision $= 0.8954$, Recall
-$= 0.9336$, and F1 $= 0.9141$, with the embedding model crediting
-its broader overlap with the reference's legal vocabulary.
-
-\sloppy
-\paragraph{SBERT (ModernBERT) cosine similarity.} Sentence-BERT cosine similarity (\eqref{eq:sbert}) compresses each document into a single embedding vector and reports how aligned the two vectors are, on a scale where $1$ is identical meaning and $0$ is unrelated. It is the most lenient of the metrics reported here: as the comparison is at the document level rather than the token level, two documents that cover the same topics with different wording typically obtain values close to $1$.
-\fussy
-
-Read at document level as a whole, Chat sits closest to the
-reference (Chat $0.990$, Form $0.986$, Ask $0.986$). Chat is
-significantly higher than both other modes.
-In the worked example of
-Figures~\ref{fig:worked-semantic-a} and~\ref{fig:worked-semantic-b},
-IAR1116's Chat passage scores SBERT $= 0.9810$ against the
-reference, while AEB2451's Form passage scores SBERT $= 0.9882$,
-with the document-level encoder placing both passages near the
-top of the metric's range.
-All four embedding-based metrics reach statistical significance on
-the full sample.
 At the document level the user-study Form-leading verdict breaks
 into a trade-off. Form documents recover more of what the
-reference \emph{says} (the recall-oriented and bigram-sensitive
-metrics), Chat documents stay closer to what it \emph{means} (the
-embedding-based metrics), and Ask is the lower of every
-significant pairwise comparison: significantly below both Form
-and Chat on ROUGE-2 and BERTScore F1, and significantly below at
-least one of them on METEOR, BERTScore Recall, and SBERT. The
-Form-vs-Chat verdict no longer maps onto a single winner; it
-depends on which question the metric is asking.
+reference \emph{says}, Chat documents stay closer to what the
+reference \emph{means}, and Ask documents do neither.
 
 \subsection{Chapter-Level NLP Metrics}
 \label{sec:eval-nlp-chapter}
@@ -503,154 +184,87 @@ the international reader.}
 \end{tabularx}
 \end{table}
 
-Per-chapter, per-mode tables are in
-Appendix~\ref{app:items-chapter-nlp} (lexical metrics in
-Appendix~\ref{app:items-chapter-nlp-lexical}, embedding-based
-metrics in Appendix~\ref{app:items-chapter-nlp-bert}). The
-chapter-level box plots are split across
-Figures~\ref{fig:chapter-nlp-boxplot-a}--\ref{fig:chapter-nlp-boxplot-b}
-for the lexical metrics and
-Figures~\ref{fig:chapter-bert-boxplot-a}--\ref{fig:chapter-bert-boxplot-b}
-for the BERT-based and SBERT metrics.
+Across modes the chapter-level lead splits cleanly into three
+zones, and the split holds on every lexical metric without
+exception and is preserved by the BERT-based view: Ask wins
+Chapter 1, Form wins Chapters 2--4, Chat wins Chapters 5 and 6.
+Chapter 1 sits at the head of every metric in absolute terms;
+Chapter 5 carries the widest standard
+deviations.\footnote{Per-chapter, per-mode tables in
+Appendix~\ref{app:items-chapter-nlp} (lexical in
+Appendix~\ref{app:items-chapter-nlp-lexical}, embedding-based in
+Appendix~\ref{app:items-chapter-nlp-bert}); chapter-level box
+plots are reproduced there as well.}
+Table~\ref{tab:nlp-chapter-winners} summarizes the three-zone
+pattern using one headline metric from each family: METEOR on the
+lexical side and BERTScore F1 on the embedding-based side.
+
+\begin{table}[htbp]
+\centering
+\caption{Per-chapter winning mode on the headline lexical (METEOR)
+and embedding-based (BERTScore F1) metrics, with the winning value.
+Both scales are ``higher is better''. The full per-chapter per-mode
+means for every metric are in Appendix~\ref{app:items-chapter-nlp}.}
+\label{tab:nlp-chapter-winners}
+\begin{tabularx}{\linewidth}{@{}c X l l@{}}
+\toprule
+\# & Chapter & METEOR & BERTScore F1 \\
+\midrule
+1 & Controller and Contact Details              & Ask\hphantom{m}  $0.506$ & Ask\hphantom{m}  $0.875$ \\
+2 & Purposes and Legal Bases                    & Form $0.452$ & Form $0.891$ \\
+3 & Categories of Personal Data                 & Form $0.415$ & Form $0.903$ \\
+4 & Data Subjects and Recipients                & Form $0.440$ & Form $0.879$ \\
+5 & Retention and Deletion                      & Chat $0.362$ & Chat $0.867$ \\
+6 & Technical and Organizational Measures       & Chat $0.305$ & Chat $0.878$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \subsubsection{Lexical Metrics}
 \label{ssec:nlp-chapter-lexical}
 
-Per-chapter, per-mode means for the five lexical metrics are
-tabulated in Appendix \ref{app:items-chapter-nlp-lexical};
-Figures~\ref{fig:chapter-nlp-boxplot-a}
-and~\ref{fig:chapter-nlp-boxplot-b} show the distributions.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.7\linewidth]{chapter_nlp_rouge1.png}\\[1ex]
-\includegraphics[width=0.7\linewidth]{chapter_nlp_rouge2.png}\\[1ex]
-\includegraphics[width=0.7\linewidth]{chapter_nlp_rougeL.png}
-\caption{Chapter-level distributions of ROUGE-1, ROUGE-2, and
-ROUGE-L by mode (full sample $n = 113$), one plot per metric
-showing all six ROPA chapters side by side.}
-\label{fig:chapter-nlp-boxplot-a}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.85\linewidth]{chapter_nlp_bleu.png}\\[1ex]
-\includegraphics[width=0.85\linewidth]{chapter_nlp_meteor.png}
-\caption{Chapter-level distributions of BLEU and METEOR by
-mode (full sample $n = 113$), one plot per metric showing all
-six ROPA chapters side by side.}
-\label{fig:chapter-nlp-boxplot-b}
-\end{figure}
-
-\clearpage
-
-Across modes the chapter-level lead splits cleanly into three
-zones, and at the lexical level the split holds on every metric
-without exception: Ask wins Chapter 1, Form wins Chapters 2--4,
-Chat wins Chapters 5 and 6. Across chapters, Chapter 1 sits at
-the head of every metric and Chapter 5 carries the widest
-standard deviations.
-
-Chapter 1 (Controller and Contact Details) scores highest in
-absolute terms (BLEU $0.181$, ROUGE-1 $0.571$, METEOR $0.471$)
-and is the one chapter where Ask edges the other two modes
-(ROUGE-1 Ask $0.605$ vs Form $0.550$, Chat $0.559$); the lead is
-modest but consistent across every lexical metric.
-The three middle chapters (Purposes and Legal Bases, Categories
-of Personal Data, Data Subjects and Recipients) all favor Form,
-with the gap widest on Chapter 3. There Form's ROUGE-1 of
-$0.600$ leads Ask ($0.366$) by the largest within-chapter gap of
-the lexical results, and Form also takes BLEU ($0.110$ vs Ask
-$0.077$, Chat $0.058$) and METEOR ($0.415$ vs Ask $0.275$, Chat
-$0.258$). Chapters 2 and 4 follow the same Form-leading pattern
-on a smaller scale (Ch2 ROUGE-1 $0.457$ vs Ask $0.373$, Chat
-$0.410$; Ch4 ROUGE-1 $0.491$ vs Ask $0.393$, Chat $0.426$).
-The last two chapters flip to Chat. Chapter 5 (Retention and
-Deletion) has the lowest absolute scores and the widest variance
-of the six, with Chat ahead on every lexical metric (ROUGE-1
-$0.314$ vs Form $0.252$, Ask $0.212$; METEOR $0.362$ vs $0.332$,
-$0.245$) and METEOR's standard deviation of $0.160$ the largest
-of any chapter. Chapter 6 (Technical and Organizational
-Measures) shows the same Chat lead at a smaller scale (ROUGE-1
-$0.350$ vs Form $0.313$, Ask $0.330$; METEOR $0.305$ vs $0.295$,
-$0.280$).
+Chapter 1 (Controller and Contact Details) is the one chapter
+where Ask edges the other two modes, with the lead modest but
+consistent across every lexical metric (ROUGE-1 Ask $0.605$
+versus Form $0.550$, Chat $0.559$). The three middle chapters
+(Purposes and Legal Bases, Categories of Personal Data, Data
+Subjects and Recipients) all favor Form, with the gap widest on
+Chapter 3, where Form's ROUGE-1 of $0.600$ leads Ask ($0.366$) by
+the largest within-chapter gap of the lexical results and Form
+also sweeps BLEU and METEOR. Chapters 2 and 4 follow the same
+Form-leading pattern on a smaller scale. The last two chapters
+flip to Chat: Chapter 5 (Retention and Deletion) sits at the
+lowest absolute scores and the widest variance of the six, with
+Chat ahead on every lexical metric and METEOR's standard
+deviation of $0.160$ the largest of any chapter; Chapter 6
+(Technical and Organizational Measures) repeats the Chat lead at
+a smaller scale.
 
 \subsubsection{BERT-Based and Sentence-Embedding Metrics}
 \label{ssec:nlp-chapter-bert}
 
-\sloppy
-Per-chapter, per-mode means for the three BERTScore variants and
-the SBERT cosine similarity under both encoder backbones
-(ModernBERT primary, plus a chapter-only \texttt{all-MiniLM-L6-v2}
-robustness check) are tabulated in
-Appendix~\ref{app:items-chapter-nlp-bert};
-Figures~\ref{fig:chapter-bert-boxplot-a}
-and~\ref{fig:chapter-bert-boxplot-b} show the BERTScore and
-SBERT (ModernBERT) distributions. The MiniLM pass is in the
-appendix tables only.
-\fussy
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.85\linewidth]{chapter_nlp_bertscore_p.png}\\[1ex]
-\includegraphics[width=0.85\linewidth]{chapter_nlp_bertscore_r.png}
-\caption{Chapter-level distributions of BERTScore Precision and
-Recall by mode (full sample $n = 113$). Continues in
-Figure~\ref{fig:chapter-bert-boxplot-b}.}
-\label{fig:chapter-bert-boxplot-a}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.85\linewidth]{chapter_nlp_bertscore_f1.png}\\[1ex]
-\includegraphics[width=0.85\linewidth]{chapter_nlp_sbert.png}
-\caption{Chapter-level distributions of BERTScore F1 and SBERT
-cosine similarity (ModernBERT) by mode (full sample $n = 113$).
-Continued from Figure~\ref{fig:chapter-bert-boxplot-a}.}
-\label{fig:chapter-bert-boxplot-b}
-\end{figure}
-
-\clearpage
-
 The embedding-based view keeps the same three-zone pattern as the
-lexical metrics but compresses the absolute range: Ask still wins
-Chapter 1, Form still wins Chapters 2--4, Chat still wins
-Chapters 5 and 6. The document-level Form-leads-Recall /
-Chat-leads-Precision trade-off shows up here too, but localized
-to Chapters 2 and 4 rather than running across all metrics; on
-the other chapters one mode sweeps the BERT family.
-Chapter 1 stays at the top of the BERT range (F1 $0.869$, SBERT
-ModernBERT $0.976$) with Ask still ahead; the smaller MiniLM
-encoder makes the Ask lead easier to see (SBERT MiniLM Ask
-$0.736$ vs Form $0.663$, Chat $0.662$).
-The middle chapters favor Form, but with a per-metric trade-off
-appearing on Chapters 2 and 4 specifically. On Chapter 2, Form
-leads Recall (Form $0.911$ vs Ask $0.892$, Chat $0.904$), Form
-and Chat are effectively tied on F1 ($0.891$ vs $0.890$), and
-Chat takes a narrow Precision lead ($0.877$ vs Form $0.872$).
-Chapter 4 shows the same shape more clearly: Form leads Recall
-($0.904$ vs Ask $0.873$, Chat $0.864$) and F1 ($0.879$ vs Ask
-$0.862$, Chat $0.863$), while Chat leads Precision ($0.864$ vs
-Form $0.856$, Ask $0.853$) and SBERT MiniLM ($0.733$ vs Form
-$0.691$, Ask $0.692$). Chapter 3 is the cleanest sweep: Form is
-highest on every BERT-based metric (F1 $0.903$ vs Ask $0.865$,
-Chat $0.872$; Recall $0.910$ vs Ask $0.862$, Chat $0.861$).
-
-The last two chapters belong to Chat. Chapter 5 sits at the lower
-end of the BERT range (F1 $0.855$, SBERT ModernBERT $0.949$) with
-Chat ahead on every BERT-based metric, and the MiniLM SBERT pass
-widens the gap visibly (Chat MiniLM $0.566$ vs Form $0.516$, Ask
-$0.474$). Chapter 6 stays back in the top tier (F1 $0.871$, SBERT
-ModernBERT $0.971$) with Chat narrowly ahead on every BERT-based
-metric (F1 $0.878$ vs Form $0.864$, Ask $0.870$).
+lexical metrics but compresses the absolute range. Chapter 1
+stays at the top of the BERT range with Ask still ahead; the
+smaller MiniLM encoder makes the Ask lead easier to see (SBERT
+MiniLM Ask $0.736$ versus Form $0.663$, Chat $0.662$). The middle
+chapters favor Form, with the document-level Recall-versus-Precision
+trade-off appearing locally on Chapters 2 and 4: Form leads
+Recall and F1 while Chat takes a narrow Precision lead on both.
+Chapter 3 is the cleanest sweep, with Form highest on every
+BERT-based metric (F1 $0.903$ versus Ask $0.865$, Chat $0.872$).
+The last two chapters belong to Chat: Chapter 5 has Chat ahead on
+every BERT-based metric, and the MiniLM SBERT pass widens the gap
+visibly (Chat $0.566$ versus Form $0.516$, Ask $0.474$); Chapter
+6 has Chat narrowly ahead on every BERT-based metric.
 
 Cell-wise Kruskal--Wallis tests on the full $n = 113$ sample
 confirm the descriptive picture: most chapter-level mode
-differences are significant.
-The largest single gap is Form's ROUGE-1 lead over Ask on \emph{Categories of Personal Data},
-with a rank-biserial $r$ near $0.95$. Per-cell test statistics
-are kept in the pipeline output files; the appendix focuses on
-the document-level inferential layer.
+differences are significant. The largest single gap is Form's
+ROUGE-1 lead over Ask on \emph{Categories of Personal Data}, with
+a rank-biserial $r$ near $0.95$. Per-cell test statistics are
+kept in the pipeline output files; the appendix focuses on the
+document-level inferential layer.
 
 \subsection{Summary of Document-Level and Chapter-Level NLP Metrics}
 \label{sec:eval-nlp-comparison}
@@ -693,7 +307,7 @@ others; which mode leads depends on which property of the
 documents the metric focuses on.
 \fussy
 
-\begin{sidewaystable}
+\begin{table}[htbp]
 \centering
 \caption{Document-level versus mean chapter-level metric values by
 mode. The mean chapter-level value is the unweighted average across
@@ -707,15 +321,15 @@ mean. Source: \texttt{doc\_vs\_chapter\_diff.csv}.}
 \cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
 Metric & Doc & Chapter & Doc & Chapter & Doc & Chapter \\
 \midrule
-BLEU                & 0.129 & 0.112 & 0.127 & 0.091 & 0.143 & 0.099 \\
-ROUGE-1             & 0.488 & 0.444 & 0.465 & 0.380 & 0.511 & 0.416 \\
-ROUGE-2             & 0.306 & 0.290 & 0.257 & 0.218 & 0.291 & 0.247 \\
-ROUGE-L             & 0.388 & 0.396 & 0.347 & 0.324 & 0.389 & 0.365 \\
-METEOR              & 0.412 & 0.398 & 0.365 & 0.328 & 0.390 & 0.349 \\
-BERTScore Precision & 0.889 & 0.856 & 0.886 & 0.855 & 0.895 & 0.864 \\
-BERTScore Recall    & 0.923 & 0.897 & 0.908 & 0.879 & 0.913 & 0.883 \\
-BERTScore F1        & 0.905 & 0.876 & 0.897 & 0.866 & 0.904 & 0.873 \\
-SBERT (ModernBERT)  & 0.986 & 0.970 & 0.986 & 0.968 & 0.990 & 0.971 \\
+BLEU                & 0.129 & \textbf{0.112} & 0.127 & 0.091 & \textbf{0.143} & 0.099 \\
+ROUGE-1             & 0.488 & \textbf{0.444} & 0.465 & 0.380 & \textbf{0.511} & 0.416 \\
+ROUGE-2             & \textbf{0.306} & \textbf{0.290} & 0.257 & 0.218 & 0.291 & 0.247 \\
+ROUGE-L             & 0.388 & \textbf{0.396} & 0.347 & 0.324 & \textbf{0.389} & 0.365 \\
+METEOR              & \textbf{0.412} & \textbf{0.398} & 0.365 & 0.328 & 0.390 & 0.349 \\
+BERTScore Precision & 0.889 & 0.856 & 0.886 & 0.855 & \textbf{0.895} & \textbf{0.864} \\
+BERTScore Recall    & \textbf{0.923} & \textbf{0.897} & 0.908 & 0.879 & 0.913 & 0.883 \\
+BERTScore F1        & \textbf{0.905} & \textbf{0.876} & 0.897 & 0.866 & 0.904 & 0.873 \\
+SBERT (ModernBERT)  & 0.986 & 0.970 & 0.986 & 0.968 & \textbf{0.990} & \textbf{0.971} \\
 \bottomrule
 \end{tabular}
-\end{sidewaystable}
+\end{table}
