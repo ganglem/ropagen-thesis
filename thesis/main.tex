@@ -23,6 +23,7 @@ BCOR15mm               % Bindekorrektur
 
 \usepackage{graphicx}
 \graphicspath{{images/}{../python/survey/output/}{../python/metrics/output/}{../python/judge/output/}}
+\usepackage{float} % provides [H] specifier for forcing table placement
 \usepackage{subcaption}
 \captionsetup{font=tiny}
 \captionsetup[sub]{font=tiny}
@@ -176,6 +177,30 @@ pdfborder=0 0 0	% keine Box um die Links!
 % hier weitere Kapitel einbinden
 
 \appendix
+% Appendix-wide compaction: stat-heavy appendices benefit from tighter
+% float spacing, more permissive float fractions, tighter table row
+% stretch, reduced paragraph and section/subsection spacing. Tables in
+% the stat appendices use [H] (force-here) to keep data anchored to
+% its heading; figures continue to float normally.
+\setlength{\textfloatsep}{4pt plus 1pt minus 1pt}
+\setlength{\intextsep}{4pt plus 1pt minus 1pt}
+\setlength{\floatsep}{4pt plus 1pt minus 1pt}
+\setlength{\abovecaptionskip}{2pt}
+\setlength{\belowcaptionskip}{2pt}
+\renewcommand{\topfraction}{0.98}
+\renewcommand{\bottomfraction}{0.98}
+\renewcommand{\textfraction}{0.02}
+\renewcommand{\floatpagefraction}{0.5}
+\renewcommand{\arraystretch}{0.92}
+\setlength{\parskip}{0.8ex plus 0.3ex minus 0.2ex}
+\RedeclareSectionCommand[
+  beforeskip=-1.8ex plus -0.6ex minus -0.2ex,
+  afterskip=0.8ex plus 0.2ex
+]{section}
+\RedeclareSectionCommand[
+  beforeskip=-1.4ex plus -0.4ex minus -0.2ex,
+  afterskip=0.4ex plus 0.1ex
+]{subsection}
 % hier Anhänge einbinden
 \input{chapters/appendix/ropagen}                  % A: ROPAgen + LLM-as-a-Judge Configuration
 \input{chapters/appendix/materials_descriptives}   % B: Study Materials + Demographics + Per-Item Tables
