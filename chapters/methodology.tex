@@ -9,7 +9,7 @@ This chapter is divided into two complementary parts. The first introduces ROPAg
 The tool evaluated in this study is ROPAgen \cite{KastratovicRopagen}, a web-based application that assists users in drafting GDPR Article~30 Records of Processing Activities through three different levels of LLM support. ROPAgen was developed by the author of this thesis at the Institute of Databases and Information Systems (DBIS), University of Ulm, prior to the present evaluation; this section describes the tool as it stood at the time of the study.
 
 ROPAgen exists to ease the burden of ROPA drafting: the document has rigid structural requirements (Art.~30 GDPR) but most of its substance is project-specific prose that has to be written from a blank page.
-The tool offers three interaction modes --- Form, Ask, and Chat --- which offer different levels of LLM support;
+The tool offers three interaction modes (Form, Ask, and Chat), which offer different levels of LLM support;
 
 \textbf{Form} mode places the user in full control: they select pre-defined options and fill in structured fields, with LLM support available only on demand via a suggestion button.
 \textbf{Ask} mode is a hybrid: users fill in free-form text fields, while an LLM chatbot explains the requirements of each section and answers user questions, but does not directly populate any structured fields.
@@ -30,7 +30,7 @@ The remainder of this section describes the internal representation of a ROPA do
         Mode & LLM's role in the section & Predefined booleans set by & Free-text fields written by \\
         \midrule
         Form & On-demand suggestion only (the \emph{AI~Suggest} button) & User (clicks), or LLM if \emph{AI~Suggest} is used & User, or LLM if \emph{AI~Suggest} is used \\
-        Ask  & Explainer only; emits no structured update & Nobody --- left at the default \texttt{false} & User only \\
+        Ask  & Explainer only; emits no structured update & Nobody (left at the default \texttt{false}) & User only \\
         Chat & Conversational extractor; emits \texttt{DATA\_UPDATE} blocks merged into \texttt{DocumentData} & LLM (via \texttt{DATA\_UPDATE}) & LLM (via \texttt{DATA\_UPDATE}) \\
         \bottomrule
     \end{tabularx}
@@ -51,30 +51,67 @@ Internally, ROPAgen represents a ROPA as a single structured \texttt{DocumentDat
     \item \textbf{Metadata} --- the document identifier, title, and natural language in which the final ROPA should be generated.
 \end{enumerate}
 
-This structured form is the tool's working representation while the user is drafting. The final ROPA itself is rendered as a Markdown document --- with optional PDF export through a server-side rendering route --- that the LLM produces in a single generation step from the assembled \texttt{DocumentData} object. A complete example of the resulting document, the reference baseline against which all participant outputs are scored by the NLP metric pipeline, is reproduced in Appendix~\ref{app:ropagen-reference}.
+This structured form is the tool's working representation while the user is drafting. The final ROPA itself is rendered as a Markdown document (with optional PDF export through a server-side rendering route) that the LLM produces in a single generation step from the assembled \texttt{DocumentData} object. A complete example of the resulting document, the reference baseline against which all participant outputs are scored by the NLP metric pipeline, is reproduced in Appendix~\ref{app:ropagen-reference}.
 
 \subsection{The Three Interaction Modes}
 
-ROPAgen offers three generation modes, each with a different level of LLM support: Form has the least LLM support, Chat is fully autonomous, and Ask is a hybrid mode that sits in the middle. The subsections that follow describe each mode in detail; Table~\ref{tab:modes-overview} summarizes them at a glance. All three act on the same internal \texttt{DocumentData} schema and, when the user clicks the final \emph{Generate} button, hand that schema to the same prose-generation prompt (\texttt{finalropa}); the output ROPA is therefore produced by an identical generation step in all three conditions, and only the path the user takes to populate \texttt{DocumentData} differs between modes. The \emph{Organization} entry screen and the final \emph{Generate Document} screen that frame this path are also identical across the three modes (Figures~\ref{fig:ropagen-intro} and~\ref{fig:ropagen-generated} in Appendix~\ref{app:ropagen-shared-screenshots}); only the mode-specific interaction between those two screens differs.
+ROPAgen offers three generation modes, each with a different level of LLM support: Form has the least LLM support, Chat is fully autonomous, and Ask is a hybrid mode that sits in the middle. The subsections that follow describe each mode in detail; Table~\ref{tab:modes-overview} summarizes them at a glance. All three act on the same internal \texttt{DocumentData} schema and, when the user clicks the final \emph{Generate} button, hand that schema to the same prose-generation prompt (\texttt{finalropa}); the output ROPA is therefore produced by an identical generation step in all three conditions, and only the path the user takes to populate \texttt{DocumentData} differs between modes. The \emph{Organization} entry screen and the final \emph{Generate Document} screen that frame this path are also identical across the three modes (Figures~\ref{fig:ropagen-intro} and~\ref{fig:ropagen-generated}); only the mode-specific interaction between those two screens differs.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{ropagen-intro.jpg}
+\caption{The \emph{Organization} entry screen, shown to participants before the mode-specific interaction begins. Identical across all three modes.}
+\label{fig:ropagen-intro}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{ropagen-generated.jpg}
+\caption{The final \emph{Generate Document} screen, shown to participants after the mode-specific interaction concludes. Identical across all three modes; the \texttt{finalropa} prompt (Section~\ref{app:ropagen-prompt-finalropa}) runs at this point regardless of which mode was used.}
+\label{fig:ropagen-generated}
+\end{figure}
 
 \subsubsection*{Form Mode}
 
-Form mode offers the lightest LLM support: the user sees and does everything. Every field of the \texttt{DocumentData} schema is visible and edited by hand, laid out as a linear questionnaire of checkboxes and short text fields across the eight thematic groups (see the Form mode screenshot in Appendix~\ref{app:ropagen-form-screenshot}). The LLM is invoked only when the user explicitly asks for it: each section offers an optional \emph{AI Suggest} button that asks the LLM, given the document's current state, to propose values for that section's fields; the suggestions populate the form but remain freely editable, and the user is under no obligation to use them. Once the user is satisfied with the form, clicking \emph{Generate} sends the assembled \texttt{DocumentData} object to the \texttt{finalropa} prompt, which synthesizes a complete ROPA document in formal prose. Form mode therefore exposes the entire structure of a ROPA upfront and uses the LLM only at the margins.
+Form mode offers the lightest LLM support: the user sees and does everything. Every field of the \texttt{DocumentData} schema is visible and edited by hand, laid out as a linear questionnaire of checkboxes and short text fields across the eight thematic groups (Figure~\ref{fig:ropagen-form}). The LLM is invoked only when the user explicitly asks for it: each section offers an optional \emph{AI Suggest} button that asks the LLM, given the document's current state, to propose values for that section's fields; the suggestions populate the form but remain freely editable, and the user is under no obligation to use them. Once the user is satisfied with the form, clicking \emph{Generate} sends the assembled \texttt{DocumentData} object to the \texttt{finalropa} prompt, which synthesizes a complete ROPA document in formal prose. Form mode therefore exposes the entire structure of a ROPA upfront and uses the LLM only at the margins.
 In short, the user populates the predefined boolean scaffolding and the free-text fields directly, and the LLM is involved only as an optional per-section suggestion engine and at the final prose-synthesis step.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{ropagen-form.jpg}
+\caption{Form mode. The eight thematic groups of the \texttt{DocumentData} schema are exposed as a linear questionnaire of checkboxes and short text fields. Each section offers an optional \emph{AI~Suggest} button that calls the LLM with the section-specific Form-mode prompt (Section~\ref{app:ropagen-prompts-form}).}
+\label{fig:ropagen-form}
+\end{figure}
 
 \subsubsection*{Ask Mode}
 
-Ask mode pairs each section with an LLM chat panel and a free-form text field; there are no checkboxes or pre-defined options. The user can ask the LLM, section by section, to explain what the section requires or to suggest how to fill it, but the user is responsible for the final wording entered into the section's text field. Each chat panel (see Appendix~\ref{app:ropagen-ask-screenshot}) opens with the LLM explaining the section's purpose and asking the user for the relevant information; subsequent turns maintain the conversation history for that section and ask follow-up questions. The model is given the current \texttt{DocumentData} state alongside the user's message so its explanations can be context-aware, but its reply is conversational only: it does not return a structured update block and no field is auto-populated. The predefined boolean flags of the \texttt{DocumentData} schema are not touched by either the user or the LLM in Ask mode. The final \emph{Generate} step is identical to Form mode: the same \texttt{finalropa} prompt receives the same \texttt{DocumentData} object. The \texttt{DocumentData} object that reaches the final-generation step in Ask mode therefore carries only the user's per-section free-text writing; the predefined boolean scaffolding is left at its default. Any section the user does not type into reaches the generator with no scaffolded content to work from.
+Ask mode pairs each section with an LLM chat panel and a free-form text field; there are no checkboxes or pre-defined options. The user can ask the LLM, section by section, to explain what the section requires or to suggest how to fill it, but the user is responsible for the final wording entered into the section's text field. Each chat panel (Figure~\ref{fig:ropagen-ask}) opens with the LLM explaining the section's purpose and asking the user for the relevant information; subsequent turns maintain the conversation history for that section and ask follow-up questions. The model is given the current \texttt{DocumentData} state alongside the user's message so its explanations can be context-aware, but its reply is conversational only: it does not return a structured update block and no field is auto-populated. The predefined boolean flags of the \texttt{DocumentData} schema are not touched by either the user or the LLM in Ask mode. The final \emph{Generate} step is identical to Form mode: the same \texttt{finalropa} prompt receives the same \texttt{DocumentData} object. The \texttt{DocumentData} object that reaches the final-generation step in Ask mode therefore carries only the user's per-section free-text writing; the predefined boolean scaffolding is left at its default. Any section the user does not type into reaches the generator with no scaffolded content to work from.
 In short, the user only chats with the LLM and populates the free-text \texttt{other} field of each section themselves; the predefined boolean scaffolding is never touched, so the final-generation step has no scaffolded content to work from beyond the user's own typing.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{ropagen-ask.jpg}
+\caption{Ask mode. Each section presents a free-form text field (no checkboxes) paired with a per-section chat panel that explains the section's purpose and answers follow-up questions. The LLM's reply is conversational only; no field is auto-populated and the user types all section content manually.}
+\label{fig:ropagen-ask}
+\end{figure}
 
 \subsubsection*{Chat Mode}
 
-Chat mode hands control to the LLM. The user does not see or fill the structured fields at all; instead, after entering the organization's metadata (name, contact information, and title of the processing activity), the user describes their processing in their own words, and the LLM decides which structured fields to populate from those descriptions (see Appendix~\ref{app:ropagen-chat-screenshot}). The user navigates section by section through a chat interface only; the structured form is hidden from view. The LLM is explicitly instructed to extract structured data from the conversation and to emit it as a \texttt{DATA\_UPDATE} block alongside its natural-language reply; the front-end parses that block and merges it into the shared \texttt{DocumentData} object. A mentioned vendor name therefore flips the corresponding data-source boolean, a mentioned data category populates the corresponding boolean, and any specific item that does not match a predefined option lands in the section's \texttt{other} free-text field. The user therefore never directly interacts with the underlying \texttt{DocumentData} object, although the same object is being built up under the hood. The final \emph{Generate} step is once again identical to the other two modes: the same \texttt{finalropa} prompt receives the same \texttt{DocumentData} object. Chat mode is therefore a conversational-first workflow in which both the scaffolded booleans and the free-text fields are populated by the LLM, and only the final generation step is shared with the other modes.
+Chat mode hands control to the LLM. The user does not see or fill the structured fields at all; instead, after entering the organization's metadata (name, contact information, and title of the processing activity), the user describes their processing in their own words, and the LLM decides which structured fields to populate from those descriptions (Figure~\ref{fig:ropagen-chat}). The user navigates section by section through a chat interface only; the structured form is hidden from view. The LLM is explicitly instructed to extract structured data from the conversation and to emit it as a \texttt{DATA\_UPDATE} block alongside its natural-language reply; the front-end parses that block and merges it into the shared \texttt{DocumentData} object. A mentioned vendor name therefore flips the corresponding data-source boolean, a mentioned data category populates the corresponding boolean, and any specific item that does not match a predefined option lands in the section's \texttt{other} free-text field. The user therefore never directly interacts with the underlying \texttt{DocumentData} object, although the same object is being built up under the hood. The final \emph{Generate} step is once again identical to the other two modes: the same \texttt{finalropa} prompt receives the same \texttt{DocumentData} object. Chat mode is therefore a conversational-first workflow in which both the scaffolded booleans and the free-text fields are populated by the LLM, and only the final generation step is shared with the other modes.
 In short, the user describes the processing in their own words and the LLM populates both the predefined boolean scaffolding and the free-text fields on the user's behalf; the user never directly interacts with the structured form.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{ropagen-chat.jpg}
+\caption{Chat mode. The structured form is hidden; participants describe their processing activity in free-form text and the LLM populates the underlying \texttt{DocumentData} object via silent \texttt{DATA\_UPDATE} blocks emitted on every turn.}
+\label{fig:ropagen-chat}
+\end{figure}
+
+\FloatBarrier
 
 \subsection{LLM Backend}
 
-All three modes are backed by the same model: Mistral Large~3 (model identifier \texttt{mistralai/mistral-large-2512}), accessed through the OpenRouter API gateway via the Vercel AI SDK. The choice of Mistral rests on three considerations relevant to a GDPR-compliance tool. First, Mistral AI is a European model provider~\cite{mistralAI}, which keeps the generation workload aligned, in spirit, with the data-protection regime ROPAgen is helping users to document. Second, Mistral AI has a public commitment to open-weight releases such as Mistral~7B~\cite{Jiang2023Mistral} and Mixtral~8x7B~\cite{Jiang2024Mixtral}; although the Mistral Large~3 variant used here is the company's commercial flagship rather than an open release, this lineage offers a credible path to a fully self-hosted deployment. Third, the Mistral family has shown competitive performance on the long-form reasoning and structured-output tasks relevant to legal-document generation~\cite{Jiang2023Mistral}. Two temperature regimes are used (Table~\ref{tab:ropagen-llm-params}). Conversational and suggestion calls --- per-section LLM suggestions in Form mode, dialogue turns in Ask and Chat modes, and the silent data-extraction calls in Chat mode --- use temperature~$0.2$ and top-$p$~$0.5$, which permits variation in phrasing while keeping the responses on-task. The final ROPA generation step, in contrast, uses temperature~$0.05$ and top-$p$~$0.05$, which makes the output close to deterministic given the same \texttt{DocumentData} input.
+All three modes are backed by the same model: Mistral Large~3 (model identifier \texttt{mistralai/mistral-large-2512}), accessed through the OpenRouter API gateway via the Vercel AI SDK. The choice of Mistral rests on three considerations relevant to a GDPR-compliance tool. First, Mistral AI is a European model provider~\cite{mistralAI}, which keeps the generation workload aligned, in spirit, with the data-protection regime ROPAgen is helping users to document. Second, Mistral AI has a public commitment to open-weight releases such as Mistral~7B~\cite{Jiang2023Mistral} and Mixtral~8x7B~\cite{Jiang2024Mixtral}; although the Mistral Large~3 variant used here is the company's commercial flagship rather than an open release, this lineage offers a credible path to a fully self-hosted deployment. Third, the Mistral family has shown competitive performance on the long-form reasoning and structured-output tasks relevant to legal-document generation~\cite{Jiang2023Mistral}. Two temperature regimes are used (Table~\ref{tab:ropagen-llm-params}). Conversational and suggestion calls (per-section LLM suggestions in Form mode, dialogue turns in Ask and Chat modes, and the silent data-extraction calls in Chat mode) use temperature~$0.2$ and top-$p$~$0.5$, which permits variation in phrasing while keeping the responses on-task. The final ROPA generation step, in contrast, uses temperature~$0.05$ and top-$p$~$0.05$, which makes the output close to deterministic given the same \texttt{DocumentData} input.
 
 \begin{table}[htbp]
 \centering
@@ -170,7 +207,7 @@ The \textit{System Usability Scale} (\textit{SUS})~\cite{Brooke1996} was adminis
     \item \textit{Intention to Use:} ``I would use this mode again.'' (\textit{``Ich würde diesen Modus wieder verwenden.''})
 \end{enumerate}
 
-Items were administered in German (the parenthetical text above reproduces the verbatim wording shown to participants); the English glosses are provided for the international reader. Item~5 (Task-Specific Confidence) is treated as the \textbf{primary confidence measure} throughout the analysis: it is the only item that asks participants to judge the substantive correctness of the LLM's output (the legal basis under Article 6 GDPR), and is therefore directly comparable to the document-quality signals from the NLP and judge pipelines. The remaining five items --- Item~1 (Perceived Usefulness), Item~2 (Efficiency), Item~3 (Transparency), Item~4 (Trust), and Item~6 (Intention to Use) --- capture distinct facets of \emph{perceived AI support} rather than confidence in output correctness, and are reported as a secondary composite. Free-text qualitative feedback was also collected after each mode. Two timing measurements were retained: total session duration from the user-study questionnaire (one value per participant) and per-mode completion time emitted by ROPAgen at the end of each session and embedded in every generated document (one value per participant per mode, in seconds). After completing all three conditions, participants ranked all three modes by overall preference in a post-experiment ranking task.
+Items were administered in German (the parenthetical text above reproduces the verbatim wording shown to participants); the English glosses are provided for the international reader. Item~5 (Task-Specific Confidence) is treated as the \textbf{primary confidence measure} throughout the analysis: it is the only item that asks participants to judge the substantive correctness of the LLM's output (the legal basis under Article 6 GDPR), and is therefore directly comparable to the document-quality signals from the NLP and judge pipelines. The remaining five items, Item~1 (Perceived Usefulness), Item~2 (Efficiency), Item~3 (Transparency), Item~4 (Trust), and Item~6 (Intention to Use), capture distinct facets of \emph{perceived AI support} rather than confidence in output correctness, and are reported as a secondary composite. Free-text qualitative feedback was also collected after each mode. Two timing measurements were retained: total session duration from the user-study questionnaire (one value per participant) and per-mode completion time emitted by ROPAgen at the end of each session and embedded in every generated document (one value per participant per mode, in seconds). After completing all three conditions, participants ranked all three modes by overall preference in a post-experiment ranking task.
 
 \section{NLP Metrics}
 
@@ -289,11 +326,7 @@ The judge evaluation is applied to all 113 retained documents. The full evaluati
 \section{Statistical Analysis}
 \label{sec:stat-analysis}
 
-Table~\ref{tab:stat-tests-overview} summarizes the statistical
-machinery applied in this thesis. The omnibus and post-hoc tests
-are non-parametric throughout; Bonferroni correction yields
-$\alpha' = 0.0167$ for the three pairwise mode comparisons in each
-post-hoc family.
+All inferential tests are non-parametric: Shapiro--Wilk rejected normality on essentially every user-study, NLP, and timing measure, and the user-study instruments are ordinal Likert and workload scales for which non-parametric tests are the standard usability-research choice~\cite{SauroLewis2016}. The test family is matched to the structure of each stream (Table~\ref{tab:stat-tests-overview}): within-subjects on the user-study instruments (matched triples, $n = 69$), between-groups on the unbalanced document sample ($n = 113$), and goodness-of-fit on the mode-preference ranking ($n = 69$). The LLM-as-a-Judge scores are reported descriptively only. A significance threshold of $\alpha = 0.05$ is applied throughout; each three-way post-hoc family is Bonferroni-corrected to $\alpha' = 0.0167$. Effect-size magnitudes are read against a common convention for $\varepsilon^2$, Kendall's~$W$, Cram\'{e}r's~$V$, and $|r|$: below $0.1$ negligible, $0.1$--$0.3$ small, $0.3$--$0.5$ medium, $\geq 0.5$ large.
 
 \begin{table}[htbp]
 \centering
@@ -314,156 +347,76 @@ Mode preference ($n = 69$)  & $\chi^2$ goodness-of-fit & Cram\'{e}r's~$V$ \\
 \end{tabular}
 \end{table}
 
-\sloppy
-A significance threshold of $\alpha = 0.05$ is applied to all tests. The choice of test family follows the structure of each dataset, with one test family applied per analysis rather than running parallel matched-pairs and between-groups tests on the same data. \textbf{User study instruments} (\textit{SUS}, \textit{R-TLX}, \textit{perceived AI support}, confidence items) are analyzed within-subjects on the matched $n = 69$ sample: a Friedman test as the omnibus, followed by pairwise Wilcoxon signed-rank tests with Bonferroni correction for post-hoc analysis. Every participant gives one response per mode, so the user-study data is genuinely matched-pairs; within-subjects analysis with Friedman and pairwise Wilcoxon signed-rank tests is also the standard approach for ordinal Likert and workload data collected in repeated-measures usability studies~\cite{SauroLewis2016}. \textbf{NLP metric scores and per-mode completion time} are analyzed between-groups on the full unbalanced $n = 113$ sample: a Kruskal--Wallis test as the omnibus, followed by pairwise Mann--Whitney $U$ tests with Bonferroni correction for post-hoc analysis. The between-groups family is the appropriate match for the document data, which is unbalanced across modes (Form $37$, Ask $37$, Chat $39$); a between-groups analysis preserves all $113$ retained submissions. The LLM-as-a-judge scores are reported descriptively (means, medians, dispersion) as a supplementary signal and are not subjected to inferential testing. Effect sizes are reported as $\varepsilon^2$ for the omnibus tests, Kendall's~$W$ as the coefficient of concordance for Friedman, and rank-biserial correlation~$r$ for the pairwise tests.
-\fussy
+\subsection{Shared Procedures}
 
-\sloppy
-For RQ1 (User Experience and Preference), the Friedman test is applied to SUS scores, the R-TLX composite, and the confidence question composites across modes; post-hoc pairwise Wilcoxon signed-rank tests with Bonferroni correction identify which mode pairs differ significantly; and mode preference distributions are reported as frequencies and rankings. For RQ2 (Document Quality), the Kruskal--Wallis test is applied to NLP metric scores across modes, with Bonferroni-corrected pairwise Mann--Whitney $U$ tests as post-hoc analysis where the omnibus is significant. The LLM-as-a-judge scores are reported descriptively only and are not subjected to inferential testing. RQ3 (Confidence--Quality Alignment) is a cross-stream question that reads the RQ1 and RQ2 findings against each other; it is answered in the Discussion chapter through cross-signal interpretation rather than via additional inferential tests.
-\fussy
-
-The tests and effect sizes used in this thesis are grouped below by where they appear in the Evaluation chapter. Each block names the analysis stream first (sample, design), then defines the omnibus and post-hoc tests applied to that stream together with their effect sizes. A short plain-language reading of each statistic is given alongside its formula so that the Evaluation chapter can refer back to a single canonical definition.
-
-\subsection{Procedures Shared Across Analyses}
-
-Two procedures are shared across every analysis stream and are
-defined once here.
-
-The \emph{Shapiro--Wilk normality test} screens whether a sample
-plausibly comes from a normal distribution. With order statistics
-$x_{(i)}$ and tabulated constants $a_i$,
+The \emph{Shapiro--Wilk test} screens whether a sample is plausibly normal. With order statistics $x_{(i)}$ and tabulated constants $a_i$,
 \begin{equation}
 W = \frac{\bigl( \sum_{i=1}^{n} a_i x_{(i)} \bigr)^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2}.
 \end{equation}
-In plain terms: $W$ close to $1$ means the data look normal; a
-small $p$-value rejects normality and motivates a non-parametric
-test. Normality was rejected for nearly every user-study, NLP, and
-timing measure in this study, which is why every test below is
-non-parametric.
+It is applied as a normality screen to every user-study, NLP, and timing measure; normality is rejected on essentially all of them, which justifies the non-parametric pipeline that follows.
 
-The \emph{Bonferroni correction} divides the per-test significance
-threshold by the number of comparisons in a family so that the
-family-wise false-positive rate stays at the chosen $\alpha$. With
-$m$ comparisons,
+The \emph{Bonferroni correction} divides the per-test threshold by the number of comparisons in a post-hoc family so the family-wise false-positive rate stays at $\alpha$:
 \begin{equation}
 \alpha' = \alpha / m.
 \end{equation}
-Every post-hoc family in this thesis has $m = 3$ pairwise mode
-comparisons, so $\alpha' = 0.05 / 3 = 0.0167$ throughout.
+Every post-hoc family compares three modes pairwise ($m = 3$), so $\alpha' = 0.05 / 3 = 0.0167$ throughout.
 
-\subsection{User-Study Instruments (Matched Within-Subjects, $n = 69$)}
+\subsection{User-Study Instruments (Within-Subjects, $n = 69$)}
 
-Applied to \textit{SUS}, \textit{R-TLX}, the \textit{perceived AI support} items, the primary
-confidence item, and the re-use intent item. Each participant
-gives one rating per mode, so the data are matched-pairs. The Friedman omnibus with pairwise Wilcoxon signed-rank post-hoc tests is the standard non-parametric within-subjects analysis for ordinal Likert and workload data in usability studies~\cite{SauroLewis2016}; non-parametric tests are appropriate here because Shapiro--Wilk rejects normality on every user-study measure and Likert scales are not strictly continuous.
+Applied to \textit{SUS}, \textit{R-TLX}, the \textit{perceived AI support} items, and the primary confidence item. Each participant rates every mode once, so the data are matched-pairs; Friedman with pairwise Wilcoxon signed-rank post-hocs is the standard non-parametric pipeline for ordinal Likert and workload data in repeated-measures usability studies~\cite{SauroLewis2016}.
 
-The \emph{Friedman test}~\cite{Friedman1937} is the within-subjects omnibus for
-$k \geq 3$ related samples. Each participant's $k$ values are
-ranked within-subject; with $n$ participants across $k$ conditions
-and $R_j$ the rank sum for condition $j$,
+The \emph{Friedman test}~\cite{Friedman1937} is the omnibus for $k \geq 3$ related samples. With $n$ participants, $k$ conditions, and rank sums $R_j$,
 \begin{equation}
 \chi^2_F = \frac{12}{n k (k+1)} \sum_{j=1}^{k} R_j^2 - 3 n (k+1),
 \end{equation}
-asymptotically $\chi^2$ distributed with $k - 1$ degrees of
-freedom. In plain terms: a large $\chi^2_F$ (small $p$) means at
-least one mode differs from the others on this measure;
-non-significant means no mode-level difference can be claimed on
-this instrument as a whole.
+asymptotically $\chi^2$ distributed with $k - 1$ degrees of freedom. Its effect size is \emph{Kendall's~$W$} (coefficient of concordance)~\cite{Kendall1939} on $[0, 1]$:
+\begin{equation}
+W_{\mathrm{Kendall}} = \chi^2_F / (n (k - 1)).
+\end{equation}
 
-When the Friedman omnibus is significant, the \emph{Wilcoxon
-signed-rank test}~\cite{Wilcoxon1945} is applied to each pair of modes as a
-matched-pairs post-hoc. Differences $d_i = x_i - y_i$ are ranked
-by absolute value; the statistic is
+When Friedman is significant, the \emph{Wilcoxon signed-rank test}~\cite{Wilcoxon1945} is applied to each mode pair. Differences $d_i = x_i - y_i$ are ranked by absolute value:
 \begin{equation}
 W = \min(W_+, W_-),
 \quad W_+ = \!\!\!\sum_{d_i > 0}\!\! \mathrm{rank}(|d_i|), \quad
-W_- = \!\!\!\sum_{d_i < 0}\!\! \mathrm{rank}(|d_i|).
+W_- = \!\!\!\sum_{d_i < 0}\!\! \mathrm{rank}(|d_i|),
 \end{equation}
-In plain terms: a small $p$ (below $\alpha' = 0.0167$) means the
-two modes differ in their within-subjects ranks. The associated
-effect size, the rank-biserial correlation,
+with the rank-biserial correlation as effect size on $[-1, +1]$:
 \begin{equation}
-r = (W_+ - W_-) / (W_+ + W_-),
+r = (W_+ - W_-) / (W_+ + W_-).
 \end{equation}
-runs from $-1$ to $+1$; positive $r$ means the first-named mode
-ranks higher. Conventional bands: $|r| < 0.1$ negligible,
-$0.1$--$0.3$ small, $0.3$--$0.5$ medium, $\geq 0.5$ large.
-
-The Friedman test's own effect size is \emph{Kendall's~$W$}
-(coefficient of concordance)~\cite{Kendall1939}:
-\begin{equation}
-W_{\mathrm{Kendall}} = \chi^2_F / (n (k - 1)),
-\end{equation}
-on the $[0, 1]$ scale, larger meaning stronger agreement among
-participants on the ordering of conditions. Conventional bands:
-$0$--$0.1$ weak, $0.1$--$0.3$ moderate, $0.3$--$0.5$ strong.
+Positive $r$ means the first-named mode ranks higher.
 
 \subsection{Document-Quality Metrics and Completion Time (Between-Groups, $n = 113$)}
 
-Applied to BLEU, ROUGE-1/2/L, METEOR, BERTScore Precision /
-Recall / F1, SBERT cosine similarity, and per-mode completion
-time. The document sample is unbalanced across modes (Form $37$,
-Ask $37$, Chat $39$); a between-groups family is the appropriate
-match for the data and preserves all $113$ retained submissions. Kruskal--Wallis with pairwise Mann--Whitney $U$ post-hoc tests is the standard non-parametric counterpart to one-way ANOVA for unbalanced independent-groups designs~\cite{Field2018}, and non-parametric throughout is again motivated by non-normal metric distributions.
+Applied to BLEU, ROUGE-1/2/L, METEOR, BERTScore P/R/F1, SBERT, and per-mode completion time. The document sample is unbalanced across modes (Form $37$, Ask $37$, Chat $39$); a between-groups family preserves all $113$ submissions, where restricting to matched triples would discard valid data. Kruskal--Wallis with pairwise Mann--Whitney~$U$ post-hocs is the standard non-parametric counterpart to one-way ANOVA for unbalanced independent-groups designs~\cite{Field2018}.
 
-The \emph{Kruskal--Wallis $H$ test}~\cite{KruskalWallis1952} is the non-parametric one-way
-ANOVA analogue applied as the between-groups omnibus. With $N$
-total observations, $n_j$ in group $j$, and $R_j$ the rank sum in
-group $j$,
+The \emph{Kruskal--Wallis~$H$ test}~\cite{KruskalWallis1952} is the omnibus. With $N$ total observations, $n_j$ in group $j$, and rank sums $R_j$,
 \begin{equation}
 H = \frac{12}{N (N+1)} \sum_{j=1}^{k} \frac{R_j^2}{n_j} - 3 (N + 1).
 \end{equation}
-In plain terms: a large $H$ (small $p$) means at least one mode's
-distribution of scores differs from the others on this metric.
-
-When the Kruskal--Wallis omnibus is significant, the
-\emph{Mann--Whitney~$U$ test}~\cite{MannWhitney1947} is applied to each pair of modes as
-a between-groups post-hoc. With group sizes $n_1$, $n_2$ and rank
-sum $R_1$,
+Its effect size is \emph{$\varepsilon^2$ (epsilon-squared)}~\cite{Kelley1935} on $[0, 1]$, the share of total score variance explained by mode membership:
 \begin{equation}
-U = R_1 - \frac{n_1 (n_1 + 1)}{2}.
+\varepsilon^2 = (H - k + 1) / (N - k).
 \end{equation}
-In plain terms: a small $p$ (below $\alpha' = 0.0167$) means the
-two modes produced different distributions of scores on this
-metric. The associated rank-biserial effect size $r$ is reported
-in the same $-1$ to $+1$ range and with the same conventional
-bands as for the Wilcoxon test above.
 
-The Kruskal--Wallis test's own effect size is
-\emph{$\varepsilon^2$ (epsilon-squared)}~\cite{Kelley1935}:
+When Kruskal--Wallis is significant, the \emph{Mann--Whitney~$U$ test}~\cite{MannWhitney1947} is applied to each mode pair. With group sizes $n_1$, $n_2$ and rank sum $R_1$,
 \begin{equation}
-\varepsilon^2 = (H - k + 1) / (N - k),
+U = R_1 - \frac{n_1 (n_1 + 1)}{2},
 \end{equation}
-on the $[0, 1]$ scale, larger meaning more of the total variance
-in scores is explained by mode membership. Conventional bands
-match Kendall's~$W$.
-
-The same Kruskal--Wallis and Mann--Whitney~$U$ pipeline is applied
-at both whole-document and per-chapter granularity; Bonferroni
-correction continues to apply within each (metric, chapter) family
-of three pairwise comparisons, giving $\alpha' = 0.0167$. The
-per-chapter results are therefore produced by the same machinery
-as the whole-document results, not a separate test family.
+with rank-biserial $r$ as effect size on the same $[-1, +1]$ scale as above. The same pipeline runs at both whole-document and per-chapter granularity, with Bonferroni correction applied within each (metric, chapter) family.
 
 \subsection{Mode Preference Ranking ($n = 69$)}
 
-Each participant ranks the three modes 1st, 2nd, and 3rd at the end of the session, yielding a full ordinal ranking per participant. The inferential analysis collapses this ranking to its first-place column and tests whether the resulting rank-1 vote distribution across the three modes is uneven; this directly answers the headline question of whether there is a clear single most-preferred mode, with the corresponding vote shares readable at a glance. The 2nd- and 3rd-place ranks remain in the descriptive analysis (mean rank, full rank distribution per mode). Reducing a preference ranking to its first-place counts for goodness-of-fit testing is a standard analytic choice when the question is whether a single dominant option emerges from the ranking~\cite{SauroLewis2016}.
+Each participant ranks the three modes 1st, 2nd, and 3rd at the end of the session. The inferential analysis collapses the ranking to its first-place column and tests whether the rank-1 vote distribution is uneven, which directly answers the headline question of whether a single dominant mode emerges. Reducing a preference ranking to its first-place counts for goodness-of-fit testing is a standard analytic choice when the question is whether one option dominates~\cite{SauroLewis2016}; the 2nd- and 3rd-place ranks remain in the descriptive summary.
 
-The \emph{chi-square goodness-of-fit test}~\cite{Pearson1900} compares observed
-counts $O_i$ to expected counts $E_i$ under a uniform null:
+The \emph{chi-square goodness-of-fit test}~\cite{Pearson1900} compares observed counts $O_i$ to expected counts $E_i$ under a uniform null:
 \begin{equation}
 \chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}.
 \end{equation}
-In plain terms: a large $\chi^2$ (small $p$) means the
-distribution of first-place votes is more uneven than would be
-expected if participants chose at random. The associated effect
-size is \emph{Cram\'{e}r's~$V$}~\cite{Cramer1946}:
+Its effect size is \emph{Cram\'{e}r's~$V$}~\cite{Cramer1946} on $[0, 1]$:
 \begin{equation}
-V = \sqrt{\chi^2 / (N (k - 1))},
+V = \sqrt{\chi^2 / (N (k - 1))}.
 \end{equation}
-on the $[0, 1]$ scale, larger meaning the observed distribution
-deviates more strongly from uniform. Conventional bands match
-Kendall's~$W$.
 
 \bigskip
 

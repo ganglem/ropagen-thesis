@@ -250,7 +250,7 @@ categorical variables (gender, age, degree, profession, field).
 \subsection{Numeric and Ordinal Variables}
 \label{app:demographics-numeric}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Descriptive statistics for numeric and ordinal demographic
 variables ($n = 69$). Duration is in seconds and aggregates the full
@@ -273,7 +273,7 @@ Chatbot familiarity  & 69 & 4.36  & 0.73  & 4   & 4    & 5 \\
 \subsection{Categorical Variables}
 \label{app:demographics-categorical}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Categorical demographic variables ($n = 69$ unless noted).
 Shares are computed within variable.}
@@ -375,6 +375,7 @@ Source: \texttt{sus\_per\_item\_summary.csv}.}
 \bottomrule
 \end{tabularx}
 \end{sidewaystable}
+\FloatBarrier
 
 \begin{sidewaystable}
 \centering
@@ -420,8 +421,9 @@ from Table~\ref{tab:sus-per-item-distribution-a}). Source:
 \bottomrule
 \end{tabularx}
 \end{sidewaystable}
+\FloatBarrier
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.45\linewidth]{sus_item_01.png}\hfill
 \includegraphics[width=0.45\linewidth]{sus_item_02.png}\\[1ex]
@@ -437,7 +439,7 @@ Figure~\ref{fig:sus-subquestions-b}.}
 \label{fig:sus-subquestions-a}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.45\linewidth]{sus_item_07.png}\hfill
 \includegraphics[width=0.45\linewidth]{sus_item_08.png}\\[1ex]
@@ -457,7 +459,7 @@ reproduced inline with the R-TLX results in
 Section~\ref{sec:eval-rtlx}; the full per-subscale descriptive
 distribution is reproduced here.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{NASA R-TLX, full per-subscale descriptive distribution by
 mode ($n = 69$ per mode), $1$--$21$ scale. Source:
@@ -501,7 +503,7 @@ Subscale & Mode & Mean & SD & Q1 & Median & Q3 & Min & Max \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.45\linewidth]{rtlx_mental_demand.png}\hfill
 \includegraphics[width=0.45\linewidth]{rtlx_physical_demand.png}\\[1ex]
@@ -514,7 +516,7 @@ Subscale & Mode & Mean & SD & Q1 & Median & Q3 & Min & Max \\
 \label{fig:rtlx-subquestions}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{per_mode_timing_boxplot.png}
 \caption{Per-mode completion time in seconds, extracted from the
@@ -582,8 +584,9 @@ distribution by mode ($n = 69$ per mode). Source:
 \bottomrule
 \end{tabularx}
 \end{sidewaystable}
+\FloatBarrier
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.45\linewidth]{ai_item_1_helpful.png}\hfill
 \includegraphics[width=0.45\linewidth]{ai_item_2_efficiency.png}\\[1ex]
@@ -677,7 +680,7 @@ metrics' blindness to truth easiest to see.
     {“}{{``}}1 {”}{{''}}1
     {‘}{{`}}1 {’}{{'}}1
 }
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \noindent\textit{Reference passage (single-sentence statement of the scenario's 3-month rule).}
 \begin{lstlisting}
@@ -702,7 +705,7 @@ Figure~\ref{fig:worked-lexical-b}.}
 \label{fig:worked-lexical-a}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \noindent\textit{Participant B (Form) passage.}
 \begin{lstlisting}
@@ -786,7 +789,7 @@ embedding-based metrics are designed to credit.
     {“}{{``}}1 {”}{{''}}1
     {‘}{{`}}1 {’}{{'}}1
 }
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \noindent\textit{Reference passage (purposes plus the two legal bases for processing).}
 \begin{lstlisting}
@@ -837,7 +840,7 @@ in Figure~\ref{fig:worked-semantic-b}.}
 
 \clearpage
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \noindent\textit{Participant B (Form) passage.}
 \begin{lstlisting}
@@ -941,8 +944,9 @@ Metric & Mode & $n$ & Mean & SD & Q1 & Median & Q3 & Min & Max \\
 \bottomrule
 \end{tabular}
 \end{sidewaystable}
+\FloatBarrier
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.45\linewidth]{nlp_doc_bleu.png}\hfill
 \includegraphics[width=0.45\linewidth]{nlp_doc_rouge1.png}\\[1ex]
@@ -989,8 +993,9 @@ Metric & Mode & $n$ & Mean & SD & Q1 & Median & Q3 & Min & Max \\
 \bottomrule
 \end{tabular}
 \end{sidewaystable}
+\FloatBarrier
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.45\linewidth]{nlp_doc_bertscore_p.png}\hfill
 \includegraphics[width=0.45\linewidth]{nlp_doc_bertscore_r.png}\\[1ex]
@@ -1014,7 +1019,7 @@ every metric are reproduced here.
 \subsection{Lexical Metrics}
 \label{app:items-chapter-nlp-lexical}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Chapter-level BLEU mean (SD) by mode (full sample
 $n = 113$).}
@@ -1035,7 +1040,7 @@ Technical \& Org. Measures    & 0.080 (0.066) & 0.078 (0.068) & 0.070 (0.080) & 
 \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Chapter-level ROUGE-1 mean (SD) by mode (full sample
 $n = 113$).}
@@ -1056,7 +1061,7 @@ Technical \& Org. Measures    & 0.331 (0.130) & 0.313 (0.137) & 0.330 (0.157) & 
 \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Chapter-level ROUGE-2 mean (SD) by mode (full sample
 $n = 113$).}
@@ -1077,7 +1082,7 @@ Technical \& Org. Measures    & 0.176 (0.118) & 0.166 (0.120) & 0.163 (0.141) & 
 \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Chapter-level ROUGE-L mean (SD) by mode (full sample
 $n = 113$).}
@@ -1098,7 +1103,7 @@ Technical \& Org. Measures    & 0.257 (0.135) & 0.237 (0.140) & 0.246 (0.158) & 
 \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Chapter-level METEOR mean (SD) by mode (full sample
 $n = 113$).}
@@ -1119,7 +1124,7 @@ Technical \& Org. Measures    & 0.293 (0.113) & 0.295 (0.108) & 0.280 (0.145) & 
 \end{tabular}
 \end{table}
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.7\linewidth]{chapter_nlp_rouge1.png}\\[1ex]
 \includegraphics[width=0.7\linewidth]{chapter_nlp_rouge2.png}\\[1ex]
@@ -1130,7 +1135,7 @@ showing all six ROPA chapters side by side.}
 \label{fig:chapter-nlp-boxplot-a}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{chapter_nlp_bleu.png}\\[1ex]
 \includegraphics[width=0.85\linewidth]{chapter_nlp_meteor.png}
@@ -1143,7 +1148,7 @@ six ROPA chapters side by side.}
 \subsection{BERT-Based and Sentence-Embedding Metrics}
 \label{app:items-chapter-nlp-bert}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Chapter-level BERTScore Precision mean (SD) by mode (full
 sample $n = 113$).}
@@ -1164,7 +1169,7 @@ Technical \& Org. Measures    & 0.854 (0.033) & 0.841 (0.038) & 0.858 (0.031) & 
 \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Chapter-level BERTScore Recall mean (SD) by mode (full
 sample $n = 113$).}
@@ -1185,7 +1190,7 @@ Technical \& Org. Measures    & 0.888 (0.025) & 0.889 (0.018) & 0.882 (0.032) & 
 \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Chapter-level BERTScore F1 mean (SD) by mode (full sample
 $n = 113$).}
@@ -1206,7 +1211,7 @@ Technical \& Org. Measures    & 0.871 (0.025) & 0.864 (0.027) & 0.870 (0.027) & 
 \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Chapter-level SBERT (ModernBERT) cosine similarity mean
 (SD) by mode (full sample $n = 113$).}
@@ -1227,7 +1232,7 @@ Technical \& Org. Measures    & 0.971 (0.010) & 0.967 (0.012) & 0.972 (0.010) & 
 \end{tabular}
 \end{table}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Chapter-level SBERT (\texttt{all-MiniLM-L6-v2}) cosine
 similarity mean (SD) by mode (full sample $n = 113$). Reported as
@@ -1249,7 +1254,7 @@ Technical \& Org. Measures    & 0.710 (0.095) & 0.711 (0.073) & 0.701 (0.110) & 
 \end{tabular}
 \end{table}
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{chapter_nlp_bertscore_p.png}\\[1ex]
 \includegraphics[width=0.85\linewidth]{chapter_nlp_bertscore_r.png}
@@ -1259,7 +1264,7 @@ Figure~\ref{fig:chapter-bert-boxplot-b}.}
 \label{fig:chapter-bert-boxplot-a}
 \end{figure}
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=0.85\linewidth]{chapter_nlp_bertscore_f1.png}\\[1ex]
 \includegraphics[width=0.85\linewidth]{chapter_nlp_sbert.png}

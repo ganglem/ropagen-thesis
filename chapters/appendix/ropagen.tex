@@ -1,7 +1,7 @@
 \chapter{ROPAgen and Judge Model Configuration}
 \label{app:ropagen}
 
-This appendix collects the static configuration of both LLMs that the study relies on. The first three sections cover ROPAgen --- the tool under study --- and reproduce its backend prompts, its three mode screenshots, and the expert-authored reference ROPA document that the NLP metric pipeline scores every participant document against. The fourth section covers the supplementary LLM-as-a-Judge evaluation layer --- its system and user prompts, its five-metric rubric, and the deterministic-decoding model configuration. All four sections are referenced from the Methodology chapter (Section~\ref{sec:ropagen} for the tool, Chapter~\ref{ch:methodology} for the judge).
+This appendix collects the static configuration of both LLMs that the study relies on. The first two sections cover ROPAgen --- the tool under study --- and reproduce its backend prompts and the expert-authored reference ROPA document that the NLP metric pipeline scores every participant document against. The third section covers the supplementary LLM-as-a-Judge evaluation layer --- its system and user prompts, its five-metric rubric, and the deterministic-decoding model configuration. All three sections are referenced from the Methodology chapter (Section~\ref{sec:ropagen} for the tool, Chapter~\ref{ch:methodology} for the judge); the mode screenshots themselves are presented inline in Section~\ref{sec:ropagen}.
 
 \lstset{
   basicstyle=\ttfamily\footnotesize,
@@ -789,56 +789,6 @@ DATA_UPDATE:
 \end{lstlisting}
 
 
-\section{ROPAgen Mode Screenshots}
-
-The figures in this section show the ROPAgen user interface as it appeared to participants, captured on the standardized study scenario (Section~\ref{app:scenario}). They illustrate the user-facing surface of the tool rather than the backend behavior reproduced in Section~\ref{app:ropagen-prompts}. The first subsection reproduces the two screens common to all three modes; the remaining three subsections show the mode-specific surface that sits between them.
-
-\subsection{Shared Across Modes: Organization Entry and Final Document}
-\label{app:ropagen-shared-screenshots}
-
-The introductory \emph{Organization} entry screen (Figure~\ref{fig:ropagen-intro}) and the final \emph{Generate Document} screen (Figure~\ref{fig:ropagen-generated}) are identical across the three interaction modes. They are reproduced once here to avoid repeating them in each mode's section that follows; the mode-specific interaction described in the subsequent subsections takes place between these two bookends.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\linewidth]{ropagen-intro.jpg}
-\caption{The \emph{Organization} entry screen, shown to participants before the mode-specific interaction begins. Identical across all three modes.}
-\label{fig:ropagen-intro}
-\end{figure}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\linewidth]{ropagen-generated.jpg}
-\caption{The final \emph{Generate Document} screen, shown to participants after the mode-specific interaction concludes. Identical across all three modes; the \texttt{finalropa} prompt (Section~\ref{app:ropagen-prompt-finalropa}) runs at this point regardless of which mode was used.}
-\label{fig:ropagen-generated}
-\end{figure}
-
-\subsection{Form Mode}
-\label{app:ropagen-form-screenshot}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\linewidth]{ropagen-form.jpg}
-\caption{Form mode. The eight thematic groups of the \texttt{DocumentData} schema are exposed as a linear questionnaire of checkboxes and short text fields. Each section offers an optional \emph{AI~Suggest} button that calls the LLM with the section-specific Form-mode prompt (Section~\ref{app:ropagen-prompts-form}).}
-\end{figure}
-
-\subsection{Ask Mode}
-\label{app:ropagen-ask-screenshot}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\linewidth]{ropagen-ask.jpg}
-\caption{Ask mode. Each section presents a free-form text field (no checkboxes) paired with a per-section chat panel that explains the section's purpose and answers follow-up questions. The LLM's reply is conversational only; no field is auto-populated and the user types all section content manually.}
-\end{figure}
-
-\subsection{Chat Mode}
-\label{app:ropagen-chat-screenshot}
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\linewidth]{ropagen-chat.jpg}
-\caption{Chat mode. The structured form is hidden; participants describe their processing activity in free-form text and the LLM populates the underlying \texttt{DocumentData} object via silent \texttt{DATA\_UPDATE} blocks emitted on every turn.}
-\end{figure}
-
 \section{ROPAgen Reference Document}
 \label{app:ropagen-reference}
 
@@ -1032,7 +982,7 @@ Return a single JSON object with exactly this shape:
 
 All five metrics share the same 1--5 Likert anchor: $1 = $ very poor, $2 = $ poor, $3 = $ adequate, $4 = $ good, $5 = $ excellent. The fourth metric, \texttt{hallucination\_inverse}, is inverted internally so that for all five metrics higher equals better. For each metric the judge returns both an integer score and a short English rationale (maximum two sentences).
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \small
 \begin{tabularx}{\textwidth}{lX}
@@ -1059,7 +1009,7 @@ Overall & Holistic judgment of how useful the document would be as a real Art.~3
 
 The configuration in Table \ref{tab:judge-config} is taken from the \texttt{judge} block of \texttt{python/judge/\allowbreak prompt.json} and the corresponding cells of \texttt{ROPAgen\_JUDGE.ipynb}. It is the minimal information required to reproduce the evaluation layer.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \small
 \begin{tabularx}{\textwidth}{lX}
