@@ -184,38 +184,64 @@ the international reader.}
 \end{tabularx}
 \end{table}
 
-Across modes, the chapter-level lead splits cleanly into three
-zones, and the split holds on every lexical metric without
-exception and is preserved by the BERT-based view:
-Ask leads on Chapter~1, Form on Chapters~2--4, and Chat on Chapters~5--6.
-Chapter 1 sits at the head of every metric in absolute terms;
-Chapter 5 carries the widest standard
-deviations.\footnote{Per-chapter, per-mode tables in
+Across modes, the chapter-level lead splits cleanly into zones.
+Chapter~1 is filled identically across all three modes by the
+ropagen system itself (the LLM has no role in its content), so
+the numerical lead Ask carries on Chapter~1 reflects an artefact
+of how the system assembles the controller block rather than a
+mode-architecture effect; the chapter is reported here for
+completeness but is excluded from the mode-comparison reading.
+On the chapters whose content the modes actually drive, the
+split holds on every lexical metric without exception and is
+preserved by the BERT-based view: Form leads on Chapters~2--4,
+and Chat leads on Chapters~5--6. Chapter 1 still sits at the
+head of every metric in absolute terms; Chapter 5 carries the
+widest standard deviations.\footnote{Per-chapter, per-mode tables in
 Appendix~\ref{app:items-chapter-nlp} (lexical in
 Appendix~\ref{app:items-chapter-nlp-lexical}, embedding-based in
 Appendix~\ref{app:items-chapter-nlp-bert}); chapter-level box
 plots are reproduced there as well.}
 Table~\ref{tab:nlp-chapter-winners} summarizes the three-zone
-pattern using one headline metric from each family: METEOR on the
-lexical side and BERTScore F1 on the embedding-based side.
+pattern using one headline metric from each of three families:
+METEOR on the lexical side (chosen over BLEU and ROUGE because its
+WordNet-based synonym and stem matching credits meaning-preserving
+paraphrase that pure $n$-gram metrics penalize, giving the fairest
+single-number lexical reading), BERTScore F1 as the token-level
+embedding metric, and SBERT cosine similarity as the passage-level
+embedding metric. Showing all three together makes the
+granularity story visible at a glance: where token-level and
+passage-level embeddings agree on a winner, the chapter's
+trade-off is consistent across resolutions; where they disagree,
+the disagreement is itself diagnostic of how the modes differ on
+that chapter (a token-level match without a passage-level match
+suggests reproduced vocabulary without preserved meaning, and the
+reverse suggests preserved meaning under different wording).
 
 \begin{table}[htbp]
 \centering
-\caption{Per-chapter winning mode on the headline lexical (METEOR)
-and embedding-based (BERTScore F1) metrics, with the winning value.
-Both scales are ``higher is better''. The full per-chapter per-mode
-means for every metric are in Appendix~\ref{app:items-chapter-nlp}.}
+\caption{Per-chapter winning mode on the headline lexical (METEOR),
+token-level embedding (BERTScore F1), and passage-level embedding
+(SBERT ModernBERT) metrics, with the winning value. All three
+scales are ``higher is better''. Chapter~1 is filled identically
+across all three modes by the system itself; any apparent winner
+there is not interpretable as a mode-architecture effect. The
+secondary MiniLM SBERT pass agrees with ModernBERT on the
+overall direction on Chapters 1, 3, 5, and 6 but disagrees on
+Chapters 2 and 4 (where MiniLM places Form ahead of Chat), a
+disagreement traceable to MiniLM's shorter context and stricter
+passage compression. The full per-chapter per-mode means for every
+metric are in Appendix~\ref{app:items-chapter-nlp}.}
 \label{tab:nlp-chapter-winners}
-\begin{tabularx}{\linewidth}{@{}c X l l@{}}
+\begin{tabularx}{\linewidth}{@{}c X l l l@{}}
 \toprule
-\# & Chapter & METEOR & BERTScore F1 \\
+\# & Chapter & METEOR & BERTScore F1 & SBERT \\
 \midrule
-1 & Controller and Contact Details              & Ask\hphantom{m}  $0.506$ & Ask\hphantom{m}  $0.875$ \\
-2 & Purposes and Legal Bases                    & Form $0.452$ & Form $0.891$ \\
-3 & Categories of Personal Data                 & Form $0.415$ & Form $0.903$ \\
-4 & Data Subjects and Recipients                & Form $0.440$ & Form $0.879$ \\
-5 & Retention and Deletion                      & Chat $0.362$ & Chat $0.867$ \\
-6 & Technical and Organizational Measures       & Chat $0.305$ & Chat $0.878$ \\
+1 & Controller and Contact Details              & Ask\hphantom{m}  $0.506$ & Ask\hphantom{m}  $0.875$ & Ask\hphantom{m}  $0.977$ \\
+2 & Purposes and Legal Bases                    & Form $0.452$ & Form $0.891$ & Chat $0.981$ \\
+3 & Categories of Personal Data                 & Form $0.415$ & Form $0.903$ & Form $0.982$ \\
+4 & Data Subjects and Recipients                & Form $0.440$ & Form $0.879$ & Form $0.973$ \\
+5 & Retention and Deletion                      & Chat $0.362$ & Chat $0.867$ & Chat $0.955$ \\
+6 & Technical and Organizational Measures       & Chat $0.305$ & Chat $0.878$ & Chat $0.975$ \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -223,10 +249,12 @@ means for every metric are in Appendix~\ref{app:items-chapter-nlp}.}
 \subsubsection{Lexical Metrics}
 \label{ssec:nlp-chapter-lexical}
 
-Chapter 1 (Controller and Contact Details) is the one chapter
-where Ask edges the other two modes, with the lead modest but
-consistent across every lexical metric (ROUGE-1 Ask $0.605$
-versus Form $0.550$, Chat $0.559$). The three middle chapters
+Chapter 1 (Controller and Contact Details) shows Ask numerically
+ahead of the other two modes on every lexical metric (ROUGE-1
+Ask $0.605$ versus Form $0.550$, Chat $0.559$), but as noted
+above the chapter is filled identically by the ropagen system
+itself, so the Ask lead reflects assembly-side variance rather
+than any property of the Ask interaction. The three middle chapters
 (Purposes and Legal Bases, Categories of Personal Data, Data
 Subjects and Recipients) all favor Form, with the gap widest on
 Chapter 3, where Form's ROUGE-1 of $0.600$ leads Ask ($0.366$) by
@@ -243,12 +271,14 @@ a smaller scale.
 \subsubsection{BERT-Based and Sentence-Embedding Metrics}
 \label{ssec:nlp-chapter-bert}
 
-The embedding-based view keeps the same three-zone pattern as the
-lexical metrics but compresses the absolute range. Chapter 1
-stays at the top of the BERT range with Ask still ahead;
-the smaller MiniLM encoder makes the Ask lead more apparent (SBERT
-MiniLM Ask $0.736$ versus Form $0.663$, Chat $0.662$). The middle
-chapters favor Form, with the document-level Recall-versus-Precision
+The embedding-based view keeps the same chapter-level pattern as
+the lexical metrics but compresses the absolute range. Chapter 1
+stays at the top of the BERT range with Ask numerically ahead,
+again reflecting system-side assembly variance rather than a
+mode effect; the smaller MiniLM encoder makes the apparent Ask
+lead more visible (SBERT MiniLM Ask $0.736$ versus Form $0.663$,
+Chat $0.662$). The middle chapters favor Form, with the
+document-level Recall-versus-Precision
 trade-off appearing locally on Chapters 2 and 4: Form leads
 Recall and F1 while Chat takes a narrow Precision lead on both.
 Chapter 3 is the cleanest sweep, with Form highest on every
@@ -276,10 +306,11 @@ metrics: Form leads the recall-oriented and bigram-sensitive
 metrics (most clearly BERTScore Recall), Chat leads the
 embedding-based ones (BERTScore Precision and SBERT), and Ask is
 the lower of every significant pairwise comparison. At the
-chapter level the same trade-off runs across chapters: Ask wins
-Chapter 1, Form wins Chapters 2--4, Chat wins Chapters 5 and 6,
-and the Form-leads-Recall / Chat-leads-Precision split
-re-emerges specifically on Chapters 2 and 4.
+chapter level the same trade-off runs across chapters: Chapter 1
+is system-filled identically across modes and therefore drops
+out of the mode comparison, Form wins Chapters 2--4, Chat wins
+Chapters 5 and 6, and the Form-leads-Recall / Chat-leads-Precision
+split re-emerges specifically on Chapters 2 and 4.
 Document-level means are higher than the average of chapter-level
 means (Table~\ref{tab:doc-vs-chapter}) as the document-level
 calculation pools tokens across all six chapters and smooths out
