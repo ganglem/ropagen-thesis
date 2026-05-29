@@ -1503,6 +1503,133 @@
       \verb https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
       \endverb
     \endentry
+    \entry{sharmaTowardsUnderstandingSycophancy2023}{misc}{}{}
+      \name{author}{19}{}{%
+        {{hash=49d116ec3ed86188a20d9d789823167a}{%
+           family={Sharma},
+           familyi={S\bibinitperiod},
+           given={Mrinank},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f80811b5e1dd2bd44d10c61bece6c20f}{%
+           family={Tong},
+           familyi={T\bibinitperiod},
+           given={Meg},
+           giveni={M\bibinitperiod}}}%
+        {{hash=fdb24b7e1395cadcdff75e54b32dc221}{%
+           family={Korbak},
+           familyi={K\bibinitperiod},
+           given={Tomasz},
+           giveni={T\bibinitperiod}}}%
+        {{hash=834f50f5d5a332c21effd10f07daf79e}{%
+           family={Duvenaud},
+           familyi={D\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=1e84eff933be9f4887bf369cf181bf12}{%
+           family={Askell},
+           familyi={A\bibinitperiod},
+           given={Amanda},
+           giveni={A\bibinitperiod}}}%
+        {{hash=fc3587de57b6b9868eab5cb9c8efc3fb}{%
+           family={Bowman},
+           familyi={B\bibinitperiod},
+           given={Samuel\bibnamedelima R.},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=2acfa56da9a4454a1dcb35c3f6bcd7ee}{%
+           family={Cheng},
+           familyi={C\bibinitperiod},
+           given={Newton},
+           giveni={N\bibinitperiod}}}%
+        {{hash=fb99a22b9a7e4d6e6827455fa420fc5f}{%
+           family={Durmus},
+           familyi={D\bibinitperiod},
+           given={Esin},
+           giveni={E\bibinitperiod}}}%
+        {{hash=b453e963913f0d9b4b7015dcdda7fab6}{%
+           family={Hatfield-Dodds},
+           familyi={H\bibinithyphendelim D\bibinitperiod},
+           given={Zac},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=2e63a5f2533a0f91153e9cc6917169b9}{%
+           family={Johnston},
+           familyi={J\bibinitperiod},
+           given={Scott\bibnamedelima R.},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=6cc94a80c21f9c5b346a6f1a21e75095}{%
+           family={Kravec},
+           familyi={K\bibinitperiod},
+           given={Shauna},
+           giveni={S\bibinitperiod}}}%
+        {{hash=5b69bffdc0edac21b7ffc14db9387ffa}{%
+           family={Maxwell},
+           familyi={M\bibinitperiod},
+           given={Timothy},
+           giveni={T\bibinitperiod}}}%
+        {{hash=b51e7c5fe92844f39ce52b8a5fa5675f}{%
+           family={McCandlish},
+           familyi={M\bibinitperiod},
+           given={Sam},
+           giveni={S\bibinitperiod}}}%
+        {{hash=5a51e2df8c9693c1274b429fada63fd6}{%
+           family={Ndousse},
+           familyi={N\bibinitperiod},
+           given={Kamal},
+           giveni={K\bibinitperiod}}}%
+        {{hash=059c4a45fbeaeb950683f41531009d7e}{%
+           family={Rausch},
+           familyi={R\bibinitperiod},
+           given={Oliver},
+           giveni={O\bibinitperiod}}}%
+        {{hash=145ba94765ef92b3094332c3fa573d26}{%
+           family={Schiefer},
+           familyi={S\bibinitperiod},
+           given={Nicholas},
+           giveni={N\bibinitperiod}}}%
+        {{hash=a77b52a56b510047e70537cb18a85cc2}{%
+           family={Yan},
+           familyi={Y\bibinitperiod},
+           given={Da},
+           giveni={D\bibinitperiod}}}%
+        {{hash=c04009ed3e7391baf859a001240fd543}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Miranda},
+           giveni={M\bibinitperiod}}}%
+        {{hash=79978685fd7b37606022b06c0f6419a1}{%
+           family={Perez},
+           familyi={P\bibinitperiod},
+           given={Ethan},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{1dba52bbe445c630712df6b2c2f730f8}
+      \strng{fullhash}{b5560adfc3a4b30193b2e6e9fc51cd8b}
+      \strng{fullhashraw}{b5560adfc3a4b30193b2e6e9fc51cd8b}
+      \strng{bibnamehash}{1dba52bbe445c630712df6b2c2f730f8}
+      \strng{authorbibnamehash}{1dba52bbe445c630712df6b2c2f730f8}
+      \strng{authornamehash}{1dba52bbe445c630712df6b2c2f730f8}
+      \strng{authorfullhash}{b5560adfc3a4b30193b2e6e9fc51cd8b}
+      \strng{authorfullhashraw}{b5560adfc3a4b30193b2e6e9fc51cd8b}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CL}
+      \field{eprinttype}{arXiv}
+      \field{title}{Towards Understanding Sycophancy in Language Models}
+      \field{year}{2023}
+      \verb{doi}
+      \verb 10.48550/arXiv.2310.13548
+      \endverb
+      \verb{eprint}
+      \verb 2310.13548
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2310.13548
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2310.13548
+      \endverb
+    \endentry
     \entry{suJuDGEBenchmarkingJudgment2025}{inproceedings}{}{}
       \name{author}{9}{}{%
         {{hash=e7aca689857c0f2e9e8ad17aa20e1186}{%

@@ -509,11 +509,11 @@ INPUT ./chapters/evaluation/judge.tex
 INPUT ./chapters/evaluation/judge.tex
 INPUT ./chapters/evaluation/judge.tex
 INPUT chapters/evaluation/judge.tex
-INPUT ./chapters/evaluation/summary.tex
-INPUT ./chapters/evaluation/summary.tex
-INPUT ./chapters/evaluation/summary.tex
-INPUT ./chapters/evaluation/summary.tex
-INPUT chapters/evaluation/summary.tex
+INPUT ./chapters/evaluation/nlp_summary.tex
+INPUT ./chapters/evaluation/nlp_summary.tex
+INPUT ./chapters/evaluation/nlp_summary.tex
+INPUT ./chapters/evaluation/nlp_summary.tex
+INPUT chapters/evaluation/nlp_summary.tex
 INPUT ./chapters/discussion.tex
 INPUT ./chapters/discussion.tex
 INPUT ./chapters/discussion.tex
