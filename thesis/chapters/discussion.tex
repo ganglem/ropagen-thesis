@@ -465,33 +465,41 @@ toward.
 \section{Summary}
 \label{sec:disc-summary}
 
-The three research questions answer cleanly when stated in plain
-language. RQ1: more LLM involvement does not improve the user
-experience, and Form, the mode with the least LLM involvement,
-was preferred on every measure the user study collected. RQ2:
-more LLM involvement does not produce categorically better
-documents either, and the three modes split the document into
-trade-offs no single ordering captures, with Ask losing on every
-angle. RQ3: confidence and quality come apart at the mode level
-on the reference-based metrics and align on the judge's holistic
-verdict; inside Chat specifically, individual confidence reliably
-tracks individual quality, because Chat is the only mode where
-the user genuinely shapes the content.
+Pulled together, the three answers tell a more interesting
+story than the original hypothesis allowed for. The thesis
+began by expecting that more LLM involvement would make ROPA
+documents both easier to write and better when written. Neither
+half of that expectation held.
 
-The architectural reading these three answers share is that the
-interaction surface decides what kind of help a novice can use,
-and what kind of error the resulting document will contain. A
-checkbox UI rewards over-supply and invites the model to
-fabricate plausible content to fill the slots. A conversational
-UI grounds the model in user-described scenarios but at the cost
-of structural coverage. An advisor-only UI helps no one who does
-not already know what to ask. None of the three modes delivers
-everything a novice needs, and the design implication is a
-co-author model rather than a teacher model: a tool whose
-interaction architecture varies by chapter content type, with
-enumerable fields presented as checkboxes, scenario-specific
-fields elicited through conversation, and system-known fields
-pre-filled without user interaction.
+Form, the mode with the least LLM involvement, was the one
+novices preferred to use. Chat, the mode with the most,
+produced the documents the LLM-as-judge rated best overall.
+Ask, sitting structurally between the two, lost on every front.
+The headline reading is not that more LLM is worse but that
+each mode redistributes the writing work between user and model
+in a different way, and each redistribution carries a different
+cost. Form gives the user a visible map of the document and
+pays for it with LLM opacity. Chat gives the user a collaborator
+and pays for it with structural coverage. Ask gives the user
+neither, because a novice with no prior domain knowledge cannot
+formulate the questions that would unlock the model's help in
+the first place.
+
+What this means for the design of LLM-assisted document tools
+for novices is recoverable from where each mode succeeded and
+failed. Novices in a domain they do not control need
+scaffolding, a collaborator, a safety net, and a sense of
+control. None of the three modes tested here delivers all four
+at once. A tool that did would route each Article~30
+sub-record through the architecture its content type demands:
+enumerable fields to a checkbox interface, scenario-specific
+fields to conversational extraction, system-known fields
+pre-filled without user interaction at all. The co-author
+principle this design rests on is not a softer synonym for
+collaboration; it is a claim about which party should hold
+curation, and on the evidence here the answer is the LLM where
+the user lacks the expertise to curate and the user where they
+have it.
 
 The methodological contribution sits alongside the substantive
 one. Prior user-facing legal-AI tools have largely been
@@ -499,12 +507,12 @@ validated through illustrative use
 cases~\cite{suryaAIPoweredInteractiveLegal2025,
 vayadandeAIPoweredLegalDocumentation2024}, and their authors
 flagged the absence of controlled novice studies as a
-limitation. This study fills that gap, and the
-confidence-quality pattern reported under RQ3 is the kind of
-finding inspection-based validation cannot produce: it requires
+limitation. This study fills that gap. The confidence-quality
+pattern reported under RQ3 is in particular the kind of finding
+inspection-based validation cannot produce, because it requires
 both a user-experience instrument and an independent quality
-assessment of the same documents the same users produced.
+assessment of the same documents the same users wrote.
 
-The Conclusion (Chapter~\ref{ch:conclusion}) returns to the
-research questions and draws the design lessons this Discussion
-has framed.
+The Conclusion (Chapter~\ref{ch:conclusion}) returns to RQ1,
+RQ2, and RQ3 and draws the design lessons this Discussion has
+framed.
