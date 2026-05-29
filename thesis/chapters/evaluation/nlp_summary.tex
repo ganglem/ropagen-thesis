@@ -1,5 +1,5 @@
 \section{Summary}
-\label{sec:eval-summary}
+\label{sec:nlp-summary}
 
 The chapter has reported the reference-based NLP metrics at both
 document and chapter resolutions
@@ -24,16 +24,21 @@ what the reference \emph{means}, and Ask documents do neither.
 \sloppy
 The chapter-level view distributes the document-level trade-off
 across chapters rather than across metrics. \emph{Controller and
-Contact Details} scores highest across all modes and is the one
-chapter where Ask leads. Form sweeps the middle chapters
-(\emph{Purposes and Legal Bases}, \emph{Categories of Personal
-Data}, \emph{Data Subjects and Recipients}) on every lexical
-metric and on BERTScore Recall and F1. Chat takes the last two
-chapters (\emph{Retention and Deletion}, \emph{Technical and
-Organizational Measures}) on every metric. The same trade-off
-that produces Form's document-level recall edge and Chat's
-document-level semantic edge thus appears at the chapter level
-as a clean three-way split by chapter.
+Contact Details} scores highest across all modes, but this
+chapter is filled identically across all three modes by the
+ropagen system itself (the LLM has no role in its content); any
+apparent mode difference there, including the Ask numerical
+lead, is therefore not interpretable as a mode-architecture
+effect. The mode-driven pattern emerges from Chapters 2--6. Form
+sweeps the middle chapters (\emph{Purposes and Legal Bases},
+\emph{Categories of Personal Data}, \emph{Data Subjects and
+Recipients}) on every lexical metric and on BERTScore Recall
+and F1. Chat takes the last two chapters (\emph{Retention and
+Deletion}, \emph{Technical and Organizational Measures}) on
+every metric. The same trade-off that produces Form's
+document-level recall edge and Chat's document-level semantic
+edge thus appears at the chapter level as a clean two-zone split
+across the chapters whose content the modes actually drive.
 
 The supplementary judge layer adds a GDPR-specific
 quality reading that the reference\hspace{0pt}-based
