@@ -160,8 +160,10 @@ pdfborder=0 0 0	% keine Box um die Links!
   Satz: PDF-\LaTeXe
 }
 
-% ab hier Zeilenabstand etwas größer 
+% ab hier Zeilenabstand etwas größer
 \setstretch{1.2}
+
+\input{chapters/abstract}
 
 \tableofcontents
 
@@ -177,6 +179,7 @@ pdfborder=0 0 0	% keine Box um die Links!
 % hier weitere Kapitel einbinden
 
 \appendix
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
 % Appendix-wide compaction: stat-heavy appendices benefit from tighter
 % float spacing, more permissive float fractions, tighter table row
 % stretch, reduced paragraph and section/subsection spacing. Tables in
