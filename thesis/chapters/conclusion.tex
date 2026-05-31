@@ -15,14 +15,17 @@ their work \emph{is}. The findings, set out in full in
 Chapter~\ref{ch:discussion}, can be summarized as a
 redistribution-of-work story. Each mode hands the writing
 task to user and model in a different proportion, and each
-proportion carries a different cost; the mode with the least
-LLM involvement turned out to be the one novices preferred,
-the mode with the most produced the documents an independent
-judge rated best overall, and the mode in the middle lost on
-every front. The original hypothesis, that more LLM
-involvement would improve both the experience and the output,
-was right about the direction the involvement would matter
-but wrong about which outcome it would move.
+proportion carries a different cost. The mode with the least
+LLM involvement, Form, was both the most usable and the most
+preferred; the mode with the most, Chat, produced the
+documents the judge rated highest on its holistic verdict;
+and the mode in the middle, Ask, trailed on every
+reference-based NLP measure and lost the experience
+comparison alongside. The original hypothesis, that more LLM
+involvement would yield a better user experience, was wrong:
+less involvement did. More involvement did improve the
+judge's verdict on the documents, just not on the dimension
+the hypothesis was aimed at.
 
 
 RQ1 asked how varying degrees of LLM support shape the novice
@@ -51,12 +54,13 @@ provide a way for the user to acquire it first.
 
 RQ2 asked how the same redistribution of work affects the
 quality of the resulting documents. The answer is that each
-mode fails in a different direction, and the difference is
-architectural rather than incidental. Form documents fail by
-inclusion: every required field is present, but some of what
-fills them was never described by the user. Chat documents
-fail by omission: what is on the page is grounded in the
-user's scenario, but a required paragraph may be missing.
+mode plays to a different strength, and the difference is
+architectural rather than incidental. Form supports
+inclusion: every required field is present, though some of
+what fills them was never described by the user. Chat
+supports precision: what is on the page is grounded in the
+user's scenario, though a required paragraph may be missing.
+Ask trails on both.
 Two independent measurement methodologies, reference-based
 NLP and the reference-free judge, read the same property from
 different sides (see Section~\ref{sec:disc-rq2}).
@@ -75,30 +79,29 @@ sub-record to the architecture its content type demands.
 
 RQ3 asked whether what users \emph{feel} about the AI's
 output tracks what the AI \emph{actually produces}. The
-answer is twofold and is the cleanest illustration of why
-the breadth-over-depth design was the right one. At the mode
-level, the confidence ordering and the reference-based
-quality ordering do not align: the most confident users and
-the least confident users produce documents whose BERTScore
-F1 differs only by rounding. At the same level, the
-confidence ordering does match the judge's holistic verdict,
-so the hypothesis the thesis began with reappears at this
-slice of the data, vindicated on the dimension it was not
-originally aimed at (see Section~\ref{sec:disc-rq3}).
-The sharper finding sits within Chat, the only mode where
-the user genuinely shapes content. There, individual user
-confidence does track individual document quality, while in
-Form and Ask the same relationship is absent. Calibration is
-therefore not a property of the user but of where in the
-interaction architecture the user is allowed to shape
-content. The consequence for design is uncomfortable: in the
-mode where users felt most certain that the model had
-identified the correct legal basis, the judge rated the
-legal basis least correct. Subjective confidence in a domain
-the user cannot independently verify is not a reliable
-quality signal, and tooling that surfaces or rewards it
-without an independent check risks substituting the
-appearance of correctness for the fact of it.
+answer depends on which quality measure is laid against
+perceived confidence, and the cross-stream reading is itself
+the cleanest illustration of why the breadth-over-depth
+design was the right one. Users felt clearly less confident
+in Form than in Ask or Chat, with the two conversational
+modes tied at the top of the perceived confidence composite.
+Against the reference-based NLP metrics, that ordering means
+nothing: the most and least confident users produce
+documents whose BERTScore F1 differs only by rounding.
+Against the judge's holistic Overall verdict, the ordering
+does match, so the hypothesis the thesis began with reappears
+at this slice of the data, vindicated on the dimension it
+was not originally aimed at. Against the judge's
+legal-correctness rubric, the ordering inverts: the mode
+users felt most confident about on legal-basis
+identification is the mode the judge rated worst on legal
+correctness (see Section~\ref{sec:disc-rq3}). The
+consequence for design is uncomfortable. Subjective
+confidence in a domain the user cannot independently verify
+is not a reliable quality signal, and tooling that surfaces
+or rewards it without an independent check risks
+substituting the appearance of correctness for the fact of
+it.
 
 
 The thesis contributes a controlled novice study to a
@@ -159,8 +162,8 @@ the lesson; whether the assignment criterion survives contact
 with a real implementation is the test it now needs.
 A second follow-on concerns the population the findings
 speak to. Participants here were chatbot-fluent students at
-a German university, and the within-Chat calibration
-finding is plausibly stronger in this sample than it would
+a German university, and Chat's strong showing against the
+judge is plausibly stronger in this sample than it would
 be in the small-organization staff who would actually own
 ROPA documentation in practice. Replication on a more
 representative compliance-officer sample is what would turn
