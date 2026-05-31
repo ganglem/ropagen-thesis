@@ -33,7 +33,10 @@ The goal of this thesis is to conduct a comprehensive evaluation of the existing
     \item[\textbf{RQ2.2}] As a supplementary, reference-free signal, what additional GDPR-specific quality properties (completeness, scenario faithfulness, legal correctness, hallucination) does an LLM-as-a-judge surface across the three modes?
 \end{itemize}
 \paragraph{RQ3 (Confidence--quality alignment).} \emph{Is there a discrepancy between user confidence (RQ1.3) and the document quality actually achieved (RQ2.1, RQ2.2)?} RQ3 is not answered by any single instrument: it requires reading the user-study and document-quality findings against each other, and is therefore taken up only in the Discussion chapter.
-Going into the study, the implicit prediction was that more LLM support would translate into a better user experience and a more preferred mode: the ordering Chat $\succ$ Form $\succ$ Ask was anticipated, with Chat (the free-form conversational mode where the LLM does the most work) expected to be the overall favorite among novice users. The evaluation that follows tests this prediction against the experience and outputs of $73$ novice participants.
+Going into the study, the implicit prediction was that more LLM support would translate into a better user experience and a more preferred mode:
+the ordering Chat $\succ$ Form $\succ$ Ask was anticipated, with Chat (the free-form conversational mode where the LLM does the most work)
+expected to be the overall favorite among novice users.
+The evaluation that follows tests this prediction against the experience and outputs of $73$ novice participants.
 
 \section{Thesis Structure}
 \label{sec:thesis-structure}
@@ -55,14 +58,13 @@ descriptively first and then inferentially.
 the document-quality analyses: the reference-based NLP metrics at
 document and chapter levels and the supplementary LLM-as-a-Judge
 layer.
-\textbf{Chapter~\ref{ch:discussion}} (Discussion) interprets the
+\textbf{Chapter~\ref{ch:discussion}} (Discussion) answers RQ1,
+RQ2, and RQ3; it interprets the
 confidence--quality gap that emerges across the user-study and
 document-quality streams, draws the design implications for
 novice-targeting LLM-assisted tooling, and names the study's
-limitations.
-\textbf{Chapter~\ref{ch:conclusion}} (Conclusion) answers RQ1,
-RQ2, and RQ3 and draws the design implications
-for LLM-assisted compliance tooling that follow.
+limitations, closing with \textbf{Chapter~\ref{ch:conclusion}} (Conclusion) summarizing
+the contributions and their implications for the design of LLM-assisted document tools.
 \textbf{Appendices A--C} contain the ROPAgen backend prompts and
 judge configuration, the verbatim study materials, and the full
 inferential statistics referenced from
