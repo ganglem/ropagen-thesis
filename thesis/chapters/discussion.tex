@@ -78,9 +78,9 @@ confidence. Users felt the \emph{most} confident in Chat, not in
 Form, that the AI had identified the correct legal basis. The
 contradiction is only apparent. In Form, the user has full
 transparency of possible answers, but the decisions still rest
-in their hands, and that responsibility surfaces as uncertainty:
-\emph{did I tick the right box?} In Chat, the LLM steps into the
-role of a collaborator. The interaction becomes conversational,
+in their hands, and that responsibility surfaces as uncertainty.
+In Chat, the LLM steps into therole of a collaborator.
+The interaction becomes conversational,
 and the user can offload both responsibility and knowledge onto
 the model. That feels like partnership, and partnership feels
 like competence. Whether the partner is actually competent on
@@ -141,8 +141,7 @@ can use. Looking forward, the same architecture suggests a
 developmental path rather than a fixed mode choice. Form is
 the natural entry point, and the GDPR literacy that users
 accumulate by working through its scaffolded fields is what
-would later make Ask and Chat productive for the same
-population.
+would later make Ask and Chat productive.
 
 
 \section{RQ2: Document Quality}
@@ -231,46 +230,38 @@ The third angle is the chapter-level breakdown, which sharpens
 the architectural reading further. The chapter-level NLP
 results, summarized across the three headline metric families,
 show the same trade-off rotating through the six Article~30
-sub-records along an axis the data makes visible. The Controller
-and Contact chapter sits outside this comparison: the section
-receives no LLM support in any mode, and the study scenario
-supplied the relevant organizational data to participants
-verbatim, so identity across modes reflects user fidelity to
-the prompt rather than a mode-architecture property, and any
-variance would be user error; the chapter is excluded from the
-architectural reading. The middle chapters whose content is
-\emph{enumerable} (Purposes and Legal Bases, Categories of
-Personal Data, Data Subjects and Recipients) favor Form across
-both METEOR and BERTScore F1, because the answer space is a
-small fixed list of options that a checkbox UI can present
-cleanly. The enumeration argument is cleanest for Legal
-Bases, where the lawful grounds under Art.~6(1) form a small
-fixed list; Categories of Personal Data and Data Subjects and
-Recipients are more organization-specific in practice (the
-relevant roles vary, and data categories can be cut at
-different granularities, e.g., \emph{name} as one item or
-\emph{first name} and \emph{last name} as two), so Form's
-checkbox set does constrain how finely these can be captured.
-For novices with no prior exposure, however, that same
-restriction works as a structural anchor: the predefined
-options name what would otherwise need to be invented. The
-last two chapters whose content is
-\emph{scenario-specific} (Retention and Deletion, Technical and
-Organizational Measures) favor Chat across the same metrics,
-because the right answer depends on what the user is actually
-doing, and only a conversation that captures the scenario can
-provide that grounding. Form offers checkboxes for retention as
-well, with a free-text justification field attached, but the
-checkbox metaphor crowds out the free-text field and novices
-skip it, leaving the LLM with no scenario anchor to write from.
+sub-records along an axis the data makes visible. The Controller and Contact chapter is excluded, because it
+receives no LLM support in any mode and the scenario supplied
+its content verbatim, so any variance would be user error. Where a chapter's content is largely \emph{enumerable}
+and standardized (Legal Bases under Art.~6(1),
+commonly-occurring data categories, predictable roles for data
+subjects and recipients), checkbox UIs that present the
+canonical option set anchor the answer space well; Form's
+predefined options name what novices would otherwise have to
+invent, and these chapters favor Form across both METEOR and
+BERTScore F1. Where the content is \emph{scenario-specific}
+(retention periods that depend on legal context and data type,
+technical and organizational measures that depend on what the
+organization actually does), free text is the right affordance,
+because no option set anticipates the answer and only the
+user's account of their actual situation can ground it; these
+chapters favor Chat across the same metrics. Either way, an
+LLM co-author that surfaces what each chapter requires beyond
+what the user volunteers is necessary: a novice without GDPR
+background will not know that retention periods or recipient
+categories are required ROPA elements until something or
+someone names that requirement, and neither a checkbox set
+without that anchoring layer nor a free-text field without a
+question-asking layer serves the novice on its own.
 
 
-In practice, this plays out as follows. Form documents fail by
-inclusion: every required field is present, but some of what
-fills them was never described by the user. Chat documents fail
-by omission: what is on the page is grounded, but a required
-paragraph may be missing. For a real ROPA, the costs of these
-two errors pull in opposite directions. An incomplete document
+In practice, this plays out as follows. Form supports
+inclusion: every required field is present, though some of what
+fills them was never described by the user. Chat supports
+precision: what is on the page is grounded in the scenario,
+though a required paragraph may be missing. Ask trails on both.
+For a real ROPA, the costs that come with each strength pull in
+opposite directions. An incomplete document
 is the worse \emph{legal} risk: it fails the Art.~30 compliance
 requirement directly and exposes the organization to fines and
 supervisory orders. A complete-but-fabricated document is the
@@ -314,8 +305,8 @@ twofold reading is itself the interesting result.
 Against the reference-based NLP metrics, the answer is striking.
 The mode with the \emph{lowest} confidence (Form) and the mode
 with the \emph{highest} confidence (Chat) produce documents
-whose BERTScore F1 differs only by rounding. Ask, the mode in
-the middle on the confidence question, is the outlier on the
+whose BERTScore F1 differs only by rounding. Ask, close behind
+Chat on the confidence question, is the outlier downward on the
 metric. So at the mode level, the most direct comparison of
 confidence and quality yields essentially no relationship: a
 user who feels more confident about the AI's output is no more
@@ -333,27 +324,13 @@ did not, but it did improve the judge's holistic verdict on the
 documents. The hypothesis was right about the direction. It was
 just pointed at the wrong outcome.
 
-There is a sharper finding inside this overall picture, and it
-is the only inferential confidence-quality result the study
-produced. Within Chat, individual user confidence reliably
-tracks individual document quality: more confident Chat users
-produce documents the judge rates higher. Within Form and Ask
-the same correlation is absent or even faintly inverted. The
-contrast is interpretable architecturally. Chat is the only mode
-where the user genuinely shapes the content, so individual user
-competence (loosely indexed by self-reported confidence)
-actually has leverage on what the model writes. Form and Ask
-largely remove the user from content generation, so individual
-confidence has nothing substantive to attach to. Calibration is
-therefore not a property of the user but of where in the
-architecture the user is allowed to shape content.
-
 Two caveats complete the picture. The first concerns the
-dimension the confidence item literally asks about, whether the
-AI identified the correct legal basis. On that dimension the
-judge places Chat \emph{lowest}, not highest, so the mode users
-trust most on legal correctness is the mode an independent judge
-rates least correct on it. The pattern is descriptive rather
+legal-basis dimension specifically, which one of the two items
+in the perceived confidence composite asks about directly. On
+that dimension the judge places Chat \emph{lowest}, not highest,
+so the mode users place in the top confidence cluster on
+legal-basis identification is the mode an independent judge rates
+least correct on it. The pattern is descriptive rather
 than statistically significant on this sample, but the direction
 is the one a critical reader should worry about.
 Users feel most confident on the dimension where the model performs worst.
@@ -382,12 +359,9 @@ altering the interaction layer.
 The second caveat concerns the sample. Participants in this
 study were tech-savvy and chatbot-fluent, and Chat's strong
 showing in the holistic-quality data plausibly reflects that
-fluency. Users who know how to talk to an LLM in a conversational
-way produce better Chat outputs than users who do not, and the
-within-Chat calibration finding (along with the holistic-quality
-lead Chat shows against the judge) is probably stronger in this
-sample than it would be in a more representative
-compliance-officer population. This bounds what should be
+fluency. The holistic-quality lead Chat shows
+against the judge is probably stronger in this sample than it
+would be in a more representative compliance-officer population. This bounds what should be
 generalized from the data, and Section~\ref{sec:disc-limits}
 returns to that bound in more detail.
 
@@ -395,158 +369,46 @@ returns to that bound in more detail.
 \section{Limitations}
 \label{sec:disc-limits}
 
-Several constraints bound where the findings generalize,
-though not whether they are real on this sample. The first
-and most consequential is the design choice that shaped
-everything downstream: this thesis pursued \emph{breadth}
-over depth, pairing a user study with an NLP-metric evaluation
-rather than committing to either alone. Breadth was the right
-choice for the question the thesis was built around, since
-the cross-stream comparison RQ3 required is only possible
-when both sides exist, and without it the confidence-quality
-reading would not have been visible at all. The cost is that
-no single thread opened here reached full depth. The Ask
-mechanism, the within-mode confidence-quality correlations,
-and the chapter-level NLP patterns each could support a
-study in its own right, and each is reported in this thesis
-only as far as a breadth-first design allows.
+Several constraints bound where the findings generalize, though
+not whether they are real on this sample. The breadth-over-depth
+design was necessary for the cross-stream RQ3 comparison, but no
+single thread reached full depth as a result; the Ask mechanism
+and the chapter-level NLP patterns each could support a study in
+its own right.
 
-Beyond the design itself, the sample profile narrows the
-population the findings actually speak to. Participants were
-IT-leaning, chatbot-fluent students at a German university,
-majority male and clustered tightly in their mid-twenties,
-with Bachelor-level degrees dominant. The findings therefore
-generalize most directly to novices who arrive at ROPA tooling
-already fluent in conversational LLM interfaces and
-unfamiliar with legal documentation. Practitioners outside
-this profile, particularly older non-IT employees in small
-organizations who would actually own ROPA documentation in
-practice, may show a different confidence-quality calibration,
-and replication on a more representative compliance-officer
-sample is a natural follow-on.
+The sample profile narrows the population the findings speak to.
+Participants were IT-leaning, chatbot-fluent students at a
+German university, majority male and clustered tightly in their
+mid-twenties; older non-IT staff in the small organizations that
+would actually own ROPA documentation in practice may show a
+different confidence-quality calibration, and replication on
+that population is a natural follow-on.
 
-Furthermore, the tool itself is a research prototype, built
-around a particular 2025 Mistral checkpoint shared across all
-three modes. The findings split along an
-architectural-versus-friction line: Ask's underperformance
-has an architectural cause intrinsic to the
-populator-versus-advisor distinction and transfers to any
-implementation that keeps the LLM passive, while UI-friction
-findings could shift with a polished frontend. Relative
-mode-rank trade-offs should survive a model swap, since they
-rest on the interaction surface rather than on the
-generator's raw quality, but the absolute quality figures are
-tied to this checkpoint and should not be extrapolated.
-Replication on a production-grade implementation, with the
-hybrid mode proposed in Section~\ref{sec:disc-rq2} as a
-fourth arm, would separate prototype-dependent friction from
-the architectural pattern.
+The tool itself is a research prototype built around a 2025
+Mistral checkpoint shared across all three modes. Relative
+mode-rank trade-offs should survive a model swap because they
+rest on the interaction surface rather than on the generator's
+raw quality, but the absolute quality figures are tied to this
+checkpoint and should not be extrapolated. Architectural
+findings, notably Ask's populator-versus-advisor problem,
+transfer to any implementation that keeps the LLM passive;
+UI-friction findings could shift with a polished frontend.
 
-In addition to the constraints on the system under study, the
-evaluation instruments themselves carry limitations of their
-own. The reference-based metrics judge each document against
-a single expert-written reference, checkbox-derived prose
-that slightly advantages Form on coverage measures. The
-judge layer, which uses no reference, independently agrees
-with the Form coverage finding, and Chat leads on BERTScore
-Precision and SBERT, so the bias is plausibly present but
-does not exhaust the pattern. A multi-reference design would
-dilute single-author idiosyncrasies, but expert annotation
-at this scale is expensive and ROPA documents are not
-publicly cataloged. The judge itself is a single pass of a
-single LLM, without inter-rater replication, legal-expert
-validation, or inferential testing of the scores. An upgraded
-judge would use a multi-model ensemble with expert
-spot-checks and reported inter-rater agreement. The current
-single-pass judge remains useful as a supplementary signal
-because it scores legal correctness, a dimension the
-reference-based metrics structurally cannot reach, but it is
-not a substitute for the expert review a deployed compliance
-tool would require.
+The evaluation instruments carry limitations of their own. The
+reference-based metrics judge each document against a single
+expert-written reference, checkbox-derived prose that slightly
+advantages Form on coverage measures. The LLM-as-judge is a
+single pass of a single model without inter-rater replication or
+legal-expert validation. A multi-reference design and a
+multi-model judge ensemble with expert spot-checks would
+strengthen both layers; the current single-pass judge remains
+useful as a supplementary signal on dimensions the
+reference-based metrics structurally cannot reach, but it is not
+a substitute for the expert review a deployed compliance tool
+would require.
 
-A separate question runs across all of these constraints and
-shapes what future work should attempt. No mode in this study
-reached the rubric midpoint on the holistic Overall score, so
-the ceiling on document quality cannot be reached by
-interaction redesign alone, and the natural follow-on splits
-into a user side and a system side. On the user side, the
-cleanest alternative is to remove the novice from content
-authorship entirely: the LLM receives a complete description
-of the processing scenario up front and generates the
-document without intervening dialogue. This trades the
-confidence-quality gap reported here for a different gap,
-between the description the organization thought it supplied
-and the processing it actually performs, but it eliminates
-the novice-as-curator failure that Form and Ask both exhibit.
-A weaker user-side direction, training novices before they
-encounter the tool, addresses the symptom rather than the
-cause and is unlikely to scale to the SME population ROPA
-tooling is meant to serve. On the system side, three
-directions target different bottlenecks. Replacing the
-underlying model with a stronger or GDPR-fine-tuned LLM
-raises the absolute quality ceiling the previous paragraph
-bounds. Retrieval-augmented generation against the GDPR text
-and authoritative supervisory guidance addresses the Legal
-Correctness flatness reported in
-Section~\ref{sec:disc-rq3}, which the architecture cannot
-move because the generator is shared across modes. A
-mandatory expert sign-off at submission addresses the
-residual gap that neither model nor architecture is likely
-to close on its own, and converts the LLM tool from a
-substitute for expert review into a means of making expert
-review tractable at SME scale. The realistic target is
-therefore not a single fix but a layered architecture in
-which interaction design, model capability, retrieval
-grounding, and expert oversight each carry the load on the
-dimensions they can move.
-
-
-\section{Summary}
-\label{sec:disc-summary}
-
-Pulled together, the three answers tell a more interesting
-story than the original hypothesis allowed for. The thesis
-began by expecting that more LLM involvement would make ROPA
-documents both easier to write and better when written. Neither
-half of that expectation held.
-
-Form, the mode with the least LLM involvement, was the one
-novices preferred to use. Chat, the mode with the most,
-produced the documents the LLM-as-judge rated best overall.
-Ask, sitting structurally between the two, lost on every front.
-The headline reading is not that more LLM is worse but that
-each mode redistributes the writing work between user and model
-in a different way, and each redistribution carries a different
-cost. Form gives the user a visible map of the document and
-pays for it with LLM opacity. Chat gives the user a collaborator
-and pays for it with structural coverage. Ask gives the user
-neither, because a novice with no prior domain knowledge cannot
-formulate the questions that would unlock the model's help in
-the first place.
-
-What this means for the design of LLM-assisted document tools
-for novices is recoverable from where each mode succeeded and
-failed. Novices in a domain they do not control need
-scaffolding, a collaborator, a safety net, and a sense of
-control. None of the three modes tested here delivers all four
-at once. A tool that did would assign each Article~30
-sub-record to the architecture its content type demands:
-enumerable fields to a checkbox interface, scenario-specific
-fields to conversational extraction. The co-author
-principle this design rests on is not a softer synonym for
-collaboration; it is a claim about which party should hold
-curation, and on the evidence here the answer is the LLM where
-the user lacks the expertise to curate and the user where they
-have it.
-
-The methodological contribution sits alongside the substantive
-one. Prior user-facing legal-AI tools have largely been
-validated through illustrative use
-cases~\cite{suryaAIPoweredInteractiveLegal2025,
-vayadandeAIPoweredLegalDocumentation2024}, and their authors
-flagged the absence of controlled novice studies as a
-limitation. This study fills that gap. The confidence-quality
-pattern reported under RQ3 is in particular the kind of finding
-inspection-based validation cannot produce, because it requires
-both a user-experience instrument and an independent quality
-assessment of the same documents the same users wrote.
+Finally, no mode in this study reached the rubric midpoint on
+the holistic Overall score, so the ceiling on document quality
+cannot be reached by interaction redesign alone; the model-side
+and oversight-side directions the Conclusion's follow-ons take
+up are what would lift it.
