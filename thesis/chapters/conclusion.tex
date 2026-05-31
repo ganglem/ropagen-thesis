@@ -3,184 +3,111 @@
 
 This thesis set out to assess how Large Language Model (LLM)
 support shapes the way novice users produce GDPR Records of
-Processing Activities (ROPA). The investigation paired a
-within-subjects user study of $73$ participants, each working
-through all three ropagen interaction modes (Form, Ask, Chat),
-with a document-quality analysis built from reference-based
-NLP metrics and a supplementary LLM-as-a-judge layer. The
-arrangement was deliberate: a single evaluation stream could
-not have reached the question the thesis was built around,
-whether what novices \emph{feel} about their work tracks what
-their work \emph{is}. The findings, set out in full in
-Chapter~\ref{ch:discussion}, can be summarized as a
-redistribution-of-work story. Each mode hands the writing
-task to user and model in a different proportion, and each
-proportion carries a different cost. The mode with the least
-LLM involvement, Form, was both the most usable and the most
-preferred; the mode with the most, Chat, produced the
-documents the judge rated highest on its holistic verdict;
-and the mode in the middle, Ask, trailed on every
-reference-based NLP measure and lost the experience
-comparison alongside. The original hypothesis, that more LLM
-involvement would yield a better user experience, was wrong:
-less involvement did. More involvement did improve the
-judge's verdict on the documents, just not on the dimension
-the hypothesis was aimed at.
+Processing Activities (ROPA). A within-subjects user study of
+$73$ participants, each working through all three ropagen
+interaction modes (Form, Ask, Chat), was held alongside a
+document-quality analysis built from reference-based NLP
+metrics and a supplementary LLM-as-a-judge layer. Three
+research questions framed the work: how varying degrees of
+LLM support shape the novice experience (RQ1), how that
+support affects the quality of the resulting documents (RQ2),
+and whether a discrepancy exists between user confidence and
+actual document quality (RQ3). This chapter summarizes the
+answers reached in Chapter~\ref{ch:discussion}, names the
+contributions that follow, and closes with what those
+contributions imply for the design of LLM-assisted document
+tools.
 
 
 RQ1 asked how varying degrees of LLM support shape the novice
-experience during ROPA creation. The answer is that less LLM
-involvement, not more, produced the better experience on this
-sample. Form was the most usable, the lightest on cognitive
-load, the most preferred in the ranking task, and the fastest
-to complete; four independent instruments converged on the
-same verdict (see Section~\ref{sec:disc-rq1}). The consequence
-is that the design intuition the thesis began with, that
-adding LLM presence to the interface would make the task feel
-easier, does not hold for users who lack the vocabulary to
-direct the model. What helped novices most was not a more
-communicative partner but a visible map of what the document
-required, an option set they did not have to invent, and a
-clear stopping rule.
-Ask, the middle mode, is the cautionary half of this answer.
-A novice cannot ask informed questions about a regulation
-they have never read, and the mode that depends on the user
-to drive the dialogue therefore fails the user it was
-designed to help. The consequence for tool design is that
-giving the user a microphone is not the same as giving them
-help; an architecture that presumes domain literacy must
-provide a way for the user to acquire it first.
+experience during ROPA creation. Less LLM involvement, not
+more, produced the better experience. Form was the most
+usable, the lightest on cognitive load, the most preferred in
+the ranking task, and the fastest to complete; four
+independent instruments converged on the same verdict (see
+Section~\ref{sec:disc-rq1}). The design intuition the thesis
+began with, that adding LLM presence to the interface would
+make the task feel easier, does not hold for users who lack
+the vocabulary to direct the model. Ask, the hybrid mode,
+lost the experience comparison and lost it for a structural
+reason: it depends on the user to drive the dialogue, and a
+novice without prior GDPR knowledge does not know what to
+ask. The mode that asked the user to carry the conversation
+failed the user it was designed to help.
 
 
-RQ2 asked how the same redistribution of work affects the
-quality of the resulting documents. The answer is that each
-mode plays to a different strength, and the difference is
-architectural rather than incidental. Form supports
-inclusion: every required field is present, though some of
-what fills them was never described by the user. Chat
-supports precision: what is on the page is grounded in the
-user's scenario, though a required paragraph may be missing.
-Ask trails on both.
-Two independent measurement methodologies, reference-based
-NLP and the reference-free judge, read the same property from
-different sides (see Section~\ref{sec:disc-rq2}).
-The consequence is that the choice of interaction mode is
-also a choice of which kind of risk a tool prefers to take
-on. An incomplete document is the worse legal risk, since it
-fails the Article~30 obligation directly. A
-complete-but-fabricated document is the worse operational
-risk, since it commits the organization to processing details
-that may not match what it actually does. Neither error is
-harmless, and the chapter-level evidence shows that the
-better tool is neither Form nor Chat in isolation but a
-content-typed assignment that hands each Article~30(1)
-sub-record to the architecture its content type demands.
+RQ2 asked how the redistribution of work affects the quality
+of the resulting documents. Each mode plays to a different
+strength, and the difference is architectural rather than
+incidental. Form supports inclusion: every required field is
+present, though some of what fills them was never described
+by the user. Chat supports precision: what is on the page
+is grounded in the user's scenario, though information may be missing.
+Ask trails on both. Two independent
+measurement methodologies, reference-based NLP and the
+reference-free judge, read the same property from different
+sides (see Section~\ref{sec:disc-rq2}). The choice of
+interaction mode is therefore also a choice of which kind of
+risk a tool prefers to take on: an incomplete document is the
+worse legal risk, since it fails the Article~30 obligation
+directly; a complete-but-fabricated document is the worse
+operational risk, since it commits the organization to
+processing details that may not match what it actually does.
 
 
-RQ3 asked whether what users \emph{feel} about the AI's
-output tracks what the AI \emph{actually produces}. The
-answer depends on which quality measure is laid against
-perceived confidence, and the cross-stream reading is itself
-the cleanest illustration of why the breadth-over-depth
-design was the right one. Users felt clearly less confident
-in Form than in Ask or Chat, with the two conversational
-modes tied at the top of the perceived confidence composite.
-Against the reference-based NLP metrics, that ordering means
-nothing: the most and least confident users produce
-documents whose BERTScore F1 differs only by rounding.
-Against the judge's holistic Overall verdict, the ordering
-does match, so the hypothesis the thesis began with reappears
-at this slice of the data, vindicated on the dimension it
-was not originally aimed at. Against the judge's
-legal-correctness rubric, the ordering inverts: the mode
-users felt most confident about on legal-basis
+RQ3 asked whether what users feel about the AI's output
+tracks what the AI actually produces. The answer depends on
+which quality measure is laid against perceived confidence.
+Users felt clearly less confident in Form than in Ask or
+Chat, with the two conversational modes tied at the top of
+the perceived confidence composite. Against the
+reference-based NLP metrics, that ordering means nothing: the
+most and least confident users produce documents whose
+BERTScore F1 differs only by rounding. Against the judge's
+holistic Overall verdict, the ordering does match. Against
+the judge's legal-correctness rubric, the ordering inverts:
+the mode users felt most confident about on legal-basis
 identification is the mode the judge rated worst on legal
-correctness (see Section~\ref{sec:disc-rq3}). The
-consequence for design is uncomfortable. Subjective
+correctness (see Section~\ref{sec:disc-rq3}). Subjective
 confidence in a domain the user cannot independently verify
 is not a reliable quality signal, and tooling that surfaces
-or rewards it without an independent check risks
-substituting the appearance of correctness for the fact of
-it.
+or rewards it without an independent check risks substituting
+the appearance of correctness for the fact of it.
 
 
-The thesis contributes a controlled novice study to a
-literature that has so far largely validated user-facing
-legal AI tools through illustrative use cases. The
-confidence-quality reading reported under RQ3 is exactly the
-kind of finding that inspection-based validation cannot
-reach, because it requires a user-experience instrument and
-an independent quality assessment of the same documents the
-same users wrote. The pairing is the methodological
-contribution: a user-experience battery (System Usability
-Scale, NASA Raw Task Load Index, confidence Likert items,
-mode preferences, completion time) was held alongside a
-reference-based NLP evaluation and a reference-free judge
-layer, and the three streams were read against each other
-rather than in isolation. The judge's role is supplementary
-rather than co-equal with the user study and the NLP
-metrics, but it earns its place precisely on the dimensions
-the reference-based metrics structurally cannot reach, and
-the agreement between the two layers on the selectivity
-finding is what gives that finding its weight.
 The substantive contribution sits in the content-typed
 assignment that follows from the chapter-level NLP results.
 The thesis is not arguing for a softer synonym of
-``hybrid''; it is naming the criterion. Enumerable
-sub-records (where the answer space is a small fixed list,
-such as legal bases under Article~6(1) GDPR) should be
-handed to a checkbox interface. Scenario-specific
-sub-records (where the right answer depends on what the
-organization actually does, such as retention periods or
-technical and organizational measures) should be handed to
-conversational extraction. The same principle generalizes
-beyond ROPA to any structured legal-document task whose
-sub-records can be classified along the enumerable and
-scenario-specific axes.
-A third contribution is architectural in a different sense.
-Legal Correctness was flat across modes, because the
-generator is the same LLM in all three. That finding
-separates the problems a UI redesign can solve from the
-problems only a model-side change can solve. Assigning
-sub-records to interaction architectures by content type
-is an architectural fix and moves coverage and faithfulness;
-raising legal-vocabulary quality is a model-side fix, and
-candidates include a stronger or fine-tuned generator,
-retrieval-augmented generation against the GDPR text, and an
-expert sign-off layer at submission. The separation is itself a result, and
-it is the cleanest one the thesis produced: knowing which
-dial moves which dimension is what allows a tool builder to
-spend effort where it returns yield.
+``hybrid''; it names the criterion. Enumerable sub-records,
+where the answer space is a small fixed list such as legal
+bases under Article~6(1) GDPR, should be handed to a
+checkbox interface. Scenario-specific sub-records, where the
+right answer depends on what the organization actually does,
+such as retention periods or technical and organizational
+measures, should be handed to conversational extraction. The
+same principle generalizes beyond ROPA to any structured
+legal-document task whose sub-records can be classified along
+the enumerable and scenario-specific axes. A separate
+architectural result reinforces the point: Legal Correctness
+was flat across modes because the generator is the same LLM
+in all three, so raising legal-vocabulary quality is a
+model-side problem and not a UI-side one. Knowing which dial
+moves which dimension is what allows a tool builder to spend
+effort where it returns yield.
 
-
-The most consequential follow-on is the obvious one: build
-the content-typed hybrid this thesis describes and add it as
-a fourth arm to a replication of the user study. The hybrid
-collapses the architectural lesson into a single design and
-puts it back into the same evaluation pipeline that produced
-the lesson; whether the assignment criterion survives contact
-with a real implementation is the test it now needs.
-A second follow-on concerns the population the findings
-speak to. Participants here were chatbot-fluent students at
-a German university, and Chat's strong showing against the
-judge is plausibly stronger in this sample than it would
-be in the small-organization staff who would actually own
-ROPA documentation in practice. Replication on a more
-representative compliance-officer sample is what would turn
-the pattern reported here into a claim about the population
-ropagen is designed to serve.
-A third follow-on lifts the absolute quality ceiling.
-No mode in this study reached the rubric midpoint on the
-judge's holistic Overall score, so interaction redesign
-alone cannot close the residual gap. The architectural
-flatness of Legal Correctness points to where the next
-contribution should go: retrieval-augmented generation
-against the GDPR text and authoritative supervisory
-guidance, paired with a mandatory expert sign-off at
-submission. The realistic deployment is not a single fix
-but a layered architecture in which interaction design,
-model capability, retrieval grounding, and expert oversight
-each carry the load on the dimensions they can move.
+The methodological contribution is the pairing itself. A
+user-experience battery, a reference-based NLP evaluation,
+and a reference-free judge layer were held alongside each
+other rather than read in isolation, and the
+confidence-quality reading reported under RQ3 is the kind of
+finding that no single stream could have reached. The
+follow-ons that matter most are to build the content-typed
+hybrid as a fourth arm in a replication of the user study, to
+extend that replication to a more representative
+compliance-officer sample, and to pair retrieval-augmented
+generation against the GDPR text with a mandatory expert
+sign-off at submission for the dimensions interaction
+redesign cannot move.
 
 
 The picture the thesis leaves behind is one of redistribution
@@ -188,9 +115,9 @@ rather than replacement. The LLM is useful as a co-author,
 not as a teacher: it can take on the parts of legal
 documentation the novice cannot supply, but it cannot give
 the novice the domain understanding the task presumes.
-Neither a novice nor an LLM alone suffices in the making of
-a domain-specific document like a ROPA. The user supplies
-the account of the processing scenario in their own terms;
-the model supplies the vocabulary, scaffolding, and curation
-the user cannot reasonably produce; and the document that
+Neither a novice nor an LLM alone suffices in the making of a
+domain-specific document like a ROPA. The user supplies the
+account of the processing scenario in their own terms; the
+model supplies the vocabulary, scaffolding, and curation the
+user cannot reasonably produce; and the document that
 satisfies Article~30 exists only where the two meet.
