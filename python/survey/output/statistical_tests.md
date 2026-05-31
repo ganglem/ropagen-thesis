@@ -62,6 +62,7 @@ labels: 0–0.1 weak, 0.1–0.3 moderate, 0.3–0.5 strong.
 | R-TLX Frustration | 8.93 | 2 | 0.012 | 0.065 | **Yes** |
 | R-TLX Performance (pos-coded) | 2.33 | 2 | 0.311 | 0.017 | No |
 | AI Confidence (item 5_ai) | 3.76 | 2 | 0.152 | 0.027 | No |
+| AI Correctness composite (items 4+5) | 4.50 | 2 | 0.105 | 0.033 | No |
 | AI Support (6-item composite) | 1.05 | 2 | 0.592 | 0.008 | No |
 | AI Reuse intention (item 6_ai) | 11.12 | 2 | 0.004 | 0.081 | **Yes** |
 
@@ -159,6 +160,7 @@ for those modes remains descriptive.
 | R-TLX composite (1–21) mean | 5.50 | 6.33 | 6.33 |
 | AI Support composite (1–5) mean | 3.86 | 3.97 | 3.80 |
 | AI Confidence 5_ai (1–5) mean | 3.58 | 3.74 | 3.81 |
+| AI Correctness composite, items 4+5 (1–5) mean | 3.49 | 3.77 | 3.75 |
 | AI Reuse 6_ai (1–5) mean | 3.99 | 3.55 | 3.42 |
 
 ### R-TLX Subscale Means by Mode (1–21 scale, n = 69)
@@ -189,6 +191,36 @@ absolute gap (Form 5.88 vs Ask 7.58). Ask and Chat are similar across all subsca
 Notable: Ask and Chat score higher than Form on transparency (3_ai) and trust (4_ai),
 but Form scores highest on efficiency (2_ai) and reuse intent (6_ai). Legal-basis
 confidence (5_ai) increases monotonically with LLM involvement: Form < Ask < Chat.
+
+### Perceived AI Correctness Composite (items 4+5, n = 69)
+
+The composite is the per-participant mean of items 4 ("I trust the AI made
+correct suggestions", whole-document scope) and 5 ("I am confident the AI
+identified the correct legal basis", per-section scope). Averaging the two
+yields a single correctness construct whose scope matches whole-document
+quality, replacing item 5 alone as the primary RQ3 confidence measure.
+Item 5 and the 6-item AI Support composite remain as secondary lenses.
+
+| Mode | Mean ± SD | Median |
+|---|---|---|
+| Form | 3.49 ± 0.91 | 3.50 |
+| Ask  | 3.77 ± 0.73 | 4.00 |
+| Chat | 3.75 ± 0.78 | 4.00 |
+
+Friedman omnibus: χ²(2, N = 69) = 4.50, p = 0.105, Kendall's W = 0.033
+(weak). Descriptive pairwise Wilcoxon signed-rank (sign convention:
+positive r means the first-named mode scores higher):
+
+| Pair | n | W | p | r | Sig. (Bonf α = 0.0167) |
+|---|---|---|---|---|---|
+| Form vs Ask  | 54 | 520.5 | 0.053 | −0.299 (small/medium) | No |
+| Form vs Chat | 53 | 521.5 | 0.083 | −0.271 (small) | No |
+| Ask vs Chat  | 42 | 434.5 | 0.827 | +0.038 (negligible) | No |
+
+The composite trends the same direction as item 5 alone (Form lowest,
+Ask/Chat tied roughly half a point higher), but the omnibus does not reach
+significance; the Form-vs-Ask gap is just above α = 0.05 with a near-medium
+effect.
 
 ---
 
