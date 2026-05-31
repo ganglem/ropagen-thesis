@@ -2455,10 +2455,8 @@
     <bcf:citekey order="74" intorder="1">nigamStructuredLegalDocument2025</bcf:citekey>
     <bcf:citekey order="74" intorder="2">liCaseGenBenchmarkMultiStage2025</bcf:citekey>
     <bcf:citekey order="75" intorder="1">sharmaTowardsUnderstandingSycophancy2023</bcf:citekey>
-    <bcf:citekey order="76" intorder="1">suryaAIPoweredInteractiveLegal2025</bcf:citekey>
-    <bcf:citekey order="76" intorder="2">vayadandeAIPoweredLegalDocumentation2024</bcf:citekey>
-    <bcf:citekey order="77" intorder="1">Brooke1996</bcf:citekey>
-    <bcf:citekey order="78" intorder="1">Hart2006</bcf:citekey>
+    <bcf:citekey order="76" intorder="1">Brooke1996</bcf:citekey>
+    <bcf:citekey order="77" intorder="1">Hart2006</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
