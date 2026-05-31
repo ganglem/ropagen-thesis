@@ -51,10 +51,6 @@ and box plots in Appendix~\ref{app:items-nlp-doc}.}
 
 \begin{table}[htbp]
 \centering
-\caption{Document-level NLP metrics, mean (SD) per mode (full
-sample $n = 113$). Lexical metrics in the upper block,
-embedding-based metrics in the lower.}
-\label{tab:nlp-doc-overview}
 \small
 \begin{tabular}{@{}l c c c c@{}}
 \toprule
@@ -72,6 +68,10 @@ BERTScore F1        & 0.902 (0.011) & \textbf{0.905} (0.009) & 0.897 (0.013) & 0
 SBERT (ModernBERT)  & 0.987 (0.004) & 0.986 (0.004) & 0.986 (0.005) & \textbf{0.990} (0.002) \\
 \bottomrule
 \end{tabular}
+\caption{Document-level NLP metrics, mean (SD) per mode (full
+sample $n = 113$). Lexical metrics in the upper block,
+embedding-based metrics in the lower.}
+\label{tab:nlp-doc-overview}
 \end{table}
 
 \subsubsection{Lexical Metrics}
@@ -166,10 +166,6 @@ purpose and T\&O chapters.
 
 \begin{table}[htbp]
 \centering
-\caption{The six rendered ROPA chapters. German titles are the
-verbatim form participants saw; English glosses are provided for
-the international reader.}
-\label{tab:ropa-chapters}
 \begin{tabularx}{\linewidth}{@{}c X X@{}}
 \toprule
 \# & German title & English gloss \\
@@ -182,6 +178,10 @@ the international reader.}
 6 & Technische und organisatorische Maßnahmen           & Technical and Organizational Measures \\
 \bottomrule
 \end{tabularx}
+\caption{The six rendered ROPA chapters. German titles are the
+verbatim form participants saw; English glosses are provided for
+the international reader.}
+\label{tab:ropa-chapters}
 \end{table}
 
 Across modes, the chapter-level lead splits cleanly into zones.
@@ -220,6 +220,18 @@ reverse suggests preserved meaning under different wording).
 
 \begin{table}[htbp]
 \centering
+\begin{tabularx}{\linewidth}{@{}c X l l l@{}}
+\toprule
+\# & Chapter & METEOR & BERTScore F1 & SBERT \\
+\midrule
+1 & Controller and Contact Details              & Ask\hphantom{m}  $0.506$ & Ask\hphantom{m}  $0.875$ & Ask\hphantom{m}  $0.977$ \\
+2 & Purposes and Legal Bases                    & Form $0.452$ & Form $0.891$ & Chat $0.981$ \\
+3 & Categories of Personal Data                 & Form $0.415$ & Form $0.903$ & Form $0.982$ \\
+4 & Data Subjects and Recipients                & Form $0.440$ & Form $0.879$ & Form $0.973$ \\
+5 & Retention and Deletion                      & Chat $0.362$ & Chat $0.867$ & Chat $0.955$ \\
+6 & Technical and Organizational Measures       & Chat $0.305$ & Chat $0.878$ & Chat $0.975$ \\
+\bottomrule
+\end{tabularx}
 \caption{Per-chapter winning mode on the headline lexical (METEOR),
 token-level embedding (BERTScore F1), and passage-level embedding
 (SBERT ModernBERT) metrics, with the winning value. All three
@@ -233,18 +245,6 @@ disagreement traceable to MiniLM's shorter context and stricter
 passage compression. The full per-chapter per-mode means for every
 metric are in Appendix~\ref{app:items-chapter-nlp}.}
 \label{tab:nlp-chapter-winners}
-\begin{tabularx}{\linewidth}{@{}c X l l l@{}}
-\toprule
-\# & Chapter & METEOR & BERTScore F1 & SBERT \\
-\midrule
-1 & Controller and Contact Details              & Ask\hphantom{m}  $0.506$ & Ask\hphantom{m}  $0.875$ & Ask\hphantom{m}  $0.977$ \\
-2 & Purposes and Legal Bases                    & Form $0.452$ & Form $0.891$ & Chat $0.981$ \\
-3 & Categories of Personal Data                 & Form $0.415$ & Form $0.903$ & Form $0.982$ \\
-4 & Data Subjects and Recipients                & Form $0.440$ & Form $0.879$ & Form $0.973$ \\
-5 & Retention and Deletion                      & Chat $0.362$ & Chat $0.867$ & Chat $0.955$ \\
-6 & Technical and Organizational Measures       & Chat $0.305$ & Chat $0.878$ & Chat $0.975$ \\
-\bottomrule
-\end{tabularx}
 \end{table}
 
 \subsubsection{Lexical Metrics}
@@ -335,11 +335,6 @@ documents the metric focuses on.
 
 \begin{table}[htbp]
 \centering
-\caption{Document-level versus mean chapter-level metric values by
-mode. The mean chapter-level value is the unweighted average across
-the six chapters. Differences are document-level minus chapter-level
-mean. Source: \texttt{doc\_vs\_chapter\_diff.csv}.}
-\label{tab:doc-vs-chapter}
 \small
 \begin{tabular}{@{}l r r r r r r@{}}
 \toprule
@@ -358,4 +353,9 @@ BERTScore F1        & \textbf{0.905} & \textbf{0.876} & 0.897 & 0.866 & 0.904 & 
 SBERT (ModernBERT)  & 0.986 & 0.970 & 0.986 & 0.968 & \textbf{0.990} & \textbf{0.971} \\
 \bottomrule
 \end{tabular}
+\caption{Document-level versus mean chapter-level metric values by
+mode. The mean chapter-level value is the unweighted average across
+the six chapters. Differences are document-level minus chapter-level
+mean. Source: \texttt{doc\_vs\_chapter\_diff.csv}.}
+\label{tab:doc-vs-chapter}
 \end{table}
