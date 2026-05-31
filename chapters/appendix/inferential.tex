@@ -98,8 +98,6 @@ correlations.}
 
 \begin{table}[H]
 \centering
-\caption{Shapiro--Wilk normality tests for user-study measures by mode.}
-\label{tab:app-survey-normality}
 \small
 \begin{tabular}{@{}l l r r l@{}}
 \toprule
@@ -122,6 +120,8 @@ AI Reuse ($6_{ai}$) & Ask  & 0.872 & $<0.001$ & No \\
 AI Reuse ($6_{ai}$) & Chat & 0.861 & $<0.001$ & No \\
 \bottomrule
 \end{tabular}
+\caption{Shapiro--Wilk normality tests for user-study measures by mode.}
+\label{tab:app-survey-normality}
 \end{table}
 
 Non-normal distributions are detected for nearly every measure. Non-parametric
@@ -132,9 +132,6 @@ throughout.
 
 \begin{table}[H]
 \centering
-\caption{Friedman omnibus tests across the three modes for user-study measures.
-Kendall's $W$: 0--0.1 weak, 0.1--0.3 moderate, 0.3--0.5 strong.}
-\label{tab:app-survey-friedman}
 \small
 \begin{tabular}{@{}l r r r r l@{}}
 \toprule
@@ -154,6 +151,9 @@ AI Support (6-item composite)   & 1.05  & 2 & 0.592  & 0.008 & No \\
 AI Reuse intention ($6_{ai}$)   & 11.12 & 2 & 0.004  & 0.081 & \textbf{Yes} \\
 \bottomrule
 \end{tabular}
+\caption{Friedman omnibus tests across the three modes for user-study measures.
+Kendall's $W$: 0--0.1 weak, 0.1--0.3 moderate, 0.3--0.5 strong.}
+\label{tab:app-survey-friedman}
 \end{table}
 
 \subsection{Pairwise Wilcoxon Signed-Rank Post-hoc (Bonferroni $\alpha = 0.0167$)}
@@ -165,8 +165,6 @@ $|r| < 0.1$ negligible, $0.1$--$0.3$ small, $0.3$--$0.5$ medium, $\geq 0.5$ larg
 
 \begin{table}[H]
 \centering
-\caption{Pairwise Wilcoxon signed-rank post-hoc tests for user-study measures.}
-\label{tab:app-survey-posthoc}
 \small
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}l l r r r r l@{}}
@@ -190,6 +188,8 @@ AI Reuse ($6_{ai}$) & Form vs Chat & 43 & 216.0 & 0.002 & $+0.543$ large       &
 AI Reuse ($6_{ai}$) & Ask vs Chat  & 45 & 454.5 & 0.468 & $+0.122$ small       & No \\
 \bottomrule
 \end{tabular}
+\caption{Pairwise Wilcoxon signed-rank post-hoc tests for user-study measures.}
+\label{tab:app-survey-posthoc}
 \end{table}
 
 \subsection{Mode Preference Ranking}
@@ -206,10 +206,6 @@ $V = 0.320$ (medium effect). The Friedman test on the full rank scores
 
 \begin{table}[H]
 \centering
-\caption{Kruskal--Wallis $H$ tests on the unbalanced full document
-set ($n = 113$). Primary omnibus for document-quality inferential
-testing.}
-\label{tab:app-nlp-kw}
 \small
 \begin{tabular}{@{}l r r l l@{}}
 \toprule
@@ -226,6 +222,10 @@ BERTScore F1          & 9.75  & 0.008  & Yes & 0.071 (moderate) \\
 SBERT (ModernBERT)    & 17.43 & $<0.001$ & Yes & 0.140 (large) \\
 \bottomrule
 \end{tabular}
+\caption{Kruskal--Wallis $H$ tests on the unbalanced full document
+set ($n = 113$). Primary omnibus for document-quality inferential
+testing.}
+\label{tab:app-nlp-kw}
 \end{table}
 
 \subsection{Pairwise Mann--Whitney $U$ ($n = 113$)}
@@ -238,9 +238,6 @@ for brevity.
 
 \begin{table}[H]
 \centering
-\caption{Pairwise Mann--Whitney $U$ post-hoc tests on the
-unbalanced full sample of $n = 113$ documents.}
-\label{tab:app-nlp-mwu}
 \small
 \begin{tabular}{@{}l l r r l@{}}
 \toprule
@@ -257,6 +254,9 @@ ROUGE-2          & Chat $>$ Ask  & 0.011    & 0.342 (medium) & Yes \\
 METEOR           & Form $>$ Ask  & 0.003    & 0.407 (medium) & Yes \\
 \bottomrule
 \end{tabular}
+\caption{Pairwise Mann--Whitney $U$ post-hoc tests on the
+unbalanced full sample of $n = 113$ documents.}
+\label{tab:app-nlp-mwu}
 \end{table}
 
 Ask is the significantly lowest-scoring mode (Ask $<$ Form, Ask
@@ -300,9 +300,6 @@ under \texttt{python/\allowbreak{}metrics/\allowbreak{}output/} and
 
 \begin{table}[H]
 \centering
-\caption{Per-mode means for the confidence, NLP, and judge measures
-on the joined RQ3 sample.}
-\label{tab:app-corr-means}
 \small
 \begin{tabular}{@{}l r r r@{}}
 \toprule
@@ -317,6 +314,9 @@ Judge legal correctness (1--5)               & $3.59$ & $3.58$ & $3.23$ \\
 Judge overall (1--5)                         & $2.38$ & $2.55$ & $2.69$ \\
 \bottomrule
 \end{tabular}
+\caption{Per-mode means for the confidence, NLP, and judge measures
+on the joined RQ3 sample.}
+\label{tab:app-corr-means}
 \end{table}
 
 \subsection{Pooled Spearman Correlations ($n = 102$)}
@@ -327,9 +327,6 @@ essentially zero and none are significant.
 
 \begin{table}[H]
 \centering
-\caption{Pooled Spearman rank correlations between confidence and
-reference-based NLP metrics ($n = 102$).}
-\label{tab:app-corr-pooled}
 \small
 \begin{tabular}{@{}l r r r r@{}}
 \toprule
@@ -342,6 +339,9 @@ Perceived Confidence ($\overline{4{+}5}$)  & $+0.037$ & $0.715$ & $+0.062$ & $0.
 \texttt{AI\_support} mean                  & $+0.066$ & $0.510$ & $-0.001$ & $0.995$ \\
 \bottomrule
 \end{tabular}
+\caption{Pooled Spearman rank correlations between confidence and
+reference-based NLP metrics ($n = 102$).}
+\label{tab:app-corr-pooled}
 \end{table}
 
 \subsection{Judge Cross-Check ($n = 102$)}
@@ -355,9 +355,6 @@ score.
 
 \begin{table}[H]
 \centering
-\caption{Pooled Spearman rank correlations involving the LLM
-judge ($n = 102$).}
-\label{tab:app-corr-judge-pooled}
 \small
 \begin{tabular}{@{}l r r@{}}
 \toprule
@@ -372,6 +369,9 @@ Perceived Confidence ($\overline{4{+}5}$) vs judge overall     & $+0.230$ & $0.0
 \texttt{AI\_support} vs judge overall                          & $+0.212$ & $0.03$ \\
 \bottomrule
 \end{tabular}
+\caption{Pooled Spearman rank correlations involving the LLM
+judge ($n = 102$).}
+\label{tab:app-corr-judge-pooled}
 \end{table}
 
 The confidence-correctness inversion identified in
@@ -401,9 +401,6 @@ Chat $W = 0.601$, $p < 0.001$). Source:
 
 \begin{table}[H]
 \centering
-\caption{Kruskal--Wallis $H$ test on per-mode completion time
-across the unbalanced full sample of $n = 113$ documents.}
-\label{tab:app-timing-kw}
 \small
 \begin{tabular}{@{}l r r l l@{}}
 \toprule
@@ -412,6 +409,9 @@ Measure & $H$ & $p$ & Sig ($\alpha = 0.05$) & $\varepsilon^2$ \\
 Completion time (s) & 16.455 & $<0.001$ & Yes & 0.147 (large) \\
 \bottomrule
 \end{tabular}
+\caption{Kruskal--Wallis $H$ test on per-mode completion time
+across the unbalanced full sample of $n = 113$ documents.}
+\label{tab:app-timing-kw}
 \end{table}
 
 \subsection{Pairwise Mann--Whitney $U$ ($n = 113$)}
@@ -422,11 +422,6 @@ is significant. Bonferroni-corrected $\alpha = 0.0167$.
 
 \begin{table}[H]
 \centering
-\caption{Pairwise Mann--Whitney $U$ post-hoc tests on per-mode
-completion time on the unbalanced full sample of $n = 113$
-documents. Effect-size $r$ is positive when the first-named mode
-is \emph{slower}.}
-\label{tab:app-timing-mwu}
 \small
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}l r r l r r l@{}}
@@ -438,6 +433,11 @@ Form vs Chat & 420.0 & 0.002    & $+0.418$ medium      & 420.0 & 717.0 & \textbf
 Ask vs Chat  & 793.5 & 0.457    & $-0.100$ negligible  & 858.0 & 717.0 & No \\
 \bottomrule
 \end{tabular}
+\caption{Pairwise Mann--Whitney $U$ post-hoc tests on per-mode
+completion time on the unbalanced full sample of $n = 113$
+documents. Effect-size $r$ is positive when the first-named mode
+is \emph{slower}.}
+\label{tab:app-timing-mwu}
 \end{table}
 
 Form is significantly faster than both Ask and Chat (large and

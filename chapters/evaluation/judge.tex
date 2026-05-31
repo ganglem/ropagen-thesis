@@ -1,3 +1,9 @@
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+
 \section{LLM-as-a-Judge}
 \label{sec:eval-judge}
 
@@ -20,17 +26,36 @@ inter-rater replication or legal-expert validation the resulting
 scores are reported as a supplementary, indicative signal
 alongside the user-study instruments and reference-based NLP
 metrics. All $113$ retained documents are scored.
+Table~\ref{tab:judge-summary} reports the per-metric mean and
+standard deviation per mode. The five rubric metrics split their
+winners between Form and Chat with Ask between them on every
+metric: Form leads Completeness and Legal Correctness; Chat leads
+Scenario Faithfulness, Hallucination (inverse), and Overall.
 
 \begin{table}[htbp]
 \centering
-\small
-\caption{The five LLM-as-Judge metrics. All share a $1$--$5$
-Likert anchor; higher is better, including for
-\emph{Hallucination (inverse)}, which is inverted internally so
-that fewer fabrications score higher. The full rubric is in
-Appendix~\ref{app:judge-rubric}.}
-\label{tab:judge-metrics}
-\begin{tabularx}{\textwidth}{@{}lX@{}}
+\begin{tabular}{@{}l c c c c@{}}
+\toprule
+Metric & Aggregated & Form & Ask & Chat \\
+\midrule
+Completeness            & 3.94 (1.43) & \textbf{4.84} (0.55) & 3.84 (1.54) & 3.18 (1.59) \\
+Scenario Faithfulness   & 2.21 (1.10) & 1.84 (0.76) & 2.30 (1.20) & \textbf{2.49} (1.19) \\
+Legal Correctness       & 3.39 (1.18) & \textbf{3.59} (0.55) & 3.43 (1.34) & 3.15 (1.42) \\
+Hallucination (inverse) & 2.20 (1.02) & 1.65 (0.72) & 2.40 (1.12) & \textbf{2.54} (0.91) \\
+Overall                 & 2.50 (1.04) & 2.41 (0.69) & 2.49 (1.04) & \textbf{2.62} (1.31) \\
+\bottomrule
+\end{tabular}
+\caption{LLM-as-Judge metric mean (SD) by mode (full sample
+$n = 113$, scale $1$--$5$, higher is better including for
+\emph{Hallucination (inverse)}). The Aggregated column is the
+mean across all $113$ documents.}
+\label{tab:judge-summary}
+\end{table}
+
+\begin{table}[htbp]
+    \centering
+    \small
+    \begin{tabularx}{\textwidth}{@{}lX@{}}
 \toprule
 Metric & What is assessed \\
 \midrule
@@ -44,33 +69,13 @@ Hallucination (inverse) & Absence of invented facts not supported by the scenari
 \addlinespace
 Overall                 & Holistic judgment of how useful the document would be as a real Art.~30 ROPA record, weighing the four metrics above. \\
 \bottomrule
-\end{tabularx}
-\end{table}
-
-Table~\ref{tab:judge-summary} reports the per-metric mean and
-standard deviation per mode. The five rubric metrics split their
-winners between Form and Chat with Ask between them on every
-metric: Form leads Completeness and Legal Correctness; Chat leads
-Scenario Faithfulness, Hallucination (inverse), and Overall.
-
-\begin{table}[htbp]
-\centering
-\caption{LLM-as-Judge metric mean (SD) by mode (full sample
-$n = 113$, scale $1$--$5$, higher is better including for
-\emph{Hallucination (inverse)}). The Aggregated column is the
-mean across all $113$ documents.}
-\label{tab:judge-summary}
-\begin{tabular}{@{}l c c c c@{}}
-\toprule
-Metric & Aggregated & Form & Ask & Chat \\
-\midrule
-Completeness            & 3.94 (1.43) & \textbf{4.84} (0.55) & 3.84 (1.54) & 3.18 (1.59) \\
-Scenario Faithfulness   & 2.21 (1.10) & 1.84 (0.76) & 2.30 (1.20) & \textbf{2.49} (1.19) \\
-Legal Correctness       & 3.39 (1.18) & \textbf{3.59} (0.55) & 3.43 (1.34) & 3.15 (1.42) \\
-Hallucination (inverse) & 2.20 (1.02) & 1.65 (0.72) & 2.40 (1.12) & \textbf{2.54} (0.91) \\
-Overall                 & 2.50 (1.04) & 2.41 (0.69) & 2.49 (1.04) & \textbf{2.62} (1.31) \\
-\bottomrule
-\end{tabular}
+    \end{tabularx}
+    \caption{The five LLM-as-Judge metrics. All share a $1$--$5$
+        Likert anchor; higher is better, including for
+        \emph{Hallucination (inverse)}, which is inverted internally so
+        that fewer fabrications score higher. The full rubric is in
+        Appendix~\ref{app:judge-rubric}.}
+    \label{tab:judge-metrics}
 \end{table}
 
 Three patterns emerge. First, the Completeness ordering (Form

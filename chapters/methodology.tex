@@ -19,11 +19,6 @@ The remainder of this section describes the internal representation of a ROPA do
 
 \begin{table}[htbp]
     \centering
-    \caption{The three ROPAgen interaction modes at a glance,
-    described in terms of who populates which part of the shared
-    \texttt{DocumentData} object that the final-generation step
-    (\texttt{finalropa}) receives.}
-    \label{tab:modes-overview}
     \small
     \begin{tabularx}{\linewidth}{@{}l X X X@{}}
         \toprule
@@ -34,6 +29,11 @@ The remainder of this section describes the internal representation of a ROPA do
         Chat & Conversational extractor; emits \texttt{DATA\_UPDATE} blocks merged into \texttt{DocumentData} & LLM (via \texttt{DATA\_UPDATE}) & LLM (via \texttt{DATA\_UPDATE}) \\
         \bottomrule
     \end{tabularx}
+    \caption{The three ROPAgen interaction modes at a glance,
+    described in terms of who populates which part of the shared
+    \texttt{DocumentData} object that the final-generation step
+    (\texttt{finalropa}) receives.}
+    \label{tab:modes-overview}
 \end{table}
 
 \subsection{ROPA Documents in ROPAgen}
@@ -112,13 +112,19 @@ In short, the user describes the processing in their own words and the LLM popul
 
 \subsection{LLM Backend}
 
-All three modes are backed by the same model: Mistral Large~3 (model identifier \texttt{mistralai/mistral-large-2512}),\footnote{Hugging Face model card: \url{https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512}.} accessed through the OpenRouter API gateway via the Vercel AI SDK. The choice of Mistral rests on three considerations relevant to a GDPR-compliance tool. First, Mistral AI is a European model provider~\cite{mistralAI}, which keeps the generation workload aligned, in spirit, with the data-protection regime ROPAgen is helping users to document. Second, Mistral AI has a public commitment to open-weight releases such as Mistral~7B~\cite{Jiang2023Mistral} and Mixtral~8x7B~\cite{Jiang2024Mixtral}; although the Mistral Large~3 variant used here is the company's commercial flagship rather than an open release, this lineage offers a credible path to a fully self-hosted deployment. Third, the Mistral family has shown competitive performance on the long-form reasoning and structured-output tasks relevant to legal-document generation~\cite{Jiang2023Mistral}. Two temperature regimes are used (Table~\ref{tab:ropagen-llm-params}). Conversational and suggestion calls (per-section LLM suggestions in Form mode, dialogue turns in Ask and Chat modes, and the silent data-extraction calls in Chat mode) use temperature~$0.2$ and top-$p$~$0.5$, which permits variation in phrasing while keeping the responses on-task. The final ROPA generation step, in contrast, uses temperature~$0.05$ and top-$p$~$0.05$, which makes the output close to deterministic given the same \texttt{DocumentData} input.
+All three modes are backed by the same model: Mistral Large~3 (model identifier \texttt{mistralai/mistral-large-2512}),\footnote{Hugging Face model card: \url{https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512}.}
+accessed through the OpenRouter API gateway via the Vercel AI SDK.
+The choice of Mistral rests on three considerations relevant to a GDPR-compliance tool. First, Mistral AI is a European model provider~\cite{mistralAI},
+which keeps the generation workload aligned, in spirit, with the data-protection regime ROPAgen is helping users to document.
+Second, Mistral AI has a public commitment to open-weight releases such as Mistral~7B~\cite{Jiang2023Mistral} and Mixtral~8x7B~\cite{Jiang2024Mixtral};
+although the Mistral Large~3 variant used here is the company's commercial flagship rather than an open release, this lineage offers a credible path to a fully self-hosted deployment.
+Third, the Mistral family has shown competitive performance on the long-form reasoning and structured-output tasks relevant to legal-document generation~\cite{Jiang2023Mistral}.
+Two temperature regimes are used (Table~\ref{tab:ropagen-llm-params}). Conversational and suggestion calls (per-section LLM suggestions in Form mode, dialogue turns in Ask and Chat modes,
+and the silent data-extraction calls in Chat mode) use temperature~$0.2$ and top-$p$~$0.5$, which permits variation in phrasing while keeping the responses on-task.
+The final ROPA generation step, in contrast, uses temperature~$0.05$ and top-$p$~$0.05$, which makes the output close to deterministic given the same \texttt{DocumentData} input.
 
 \begin{table}[htbp]
 \centering
-\caption{ROPAgen LLM call parameters. The same model
-(\texttt{mistralai/mistral-large-2512}) is used for both regimes.}
-\label{tab:ropagen-llm-params}
 \begin{tabular}{@{}l c c@{}}
 \toprule
 Call type & Temperature & top-$p$ \\
@@ -127,6 +133,9 @@ Conversational / suggestion & $0.2$  & $0.5$  \\
 Final ROPA generation       & $0.05$ & $0.05$ \\
 \bottomrule
 \end{tabular}
+\caption{ROPAgen LLM call parameters. The same model
+(\texttt{mistralai/mistral-large-2512}) is used for both regimes.}
+\label{tab:ropagen-llm-params}
 \end{table} Crucially, the prompt used in the final generation step is fixed across all three modes: the only thing that differs between a Form-mode output and a Chat-mode output is the contents of the \texttt{DocumentData} object that has been built up along the way.\footnote{Full text of the backend prompts in Appendix~\ref{app:ropagen-prompts}, as the counterpart to the LLM-as-a-judge configuration recorded in Appendix~\ref{app:judge}.}
 
 Whether the differing paths to \texttt{DocumentData} produce documents of differing quality, and whether those quality differences are visible to the user filling out the form, are the questions taken up by the user study described next.
@@ -181,8 +190,6 @@ Quantitative measures were collected after each mode. Table~\ref{tab:instruments
 
 \begin{table}[htbp]
 \centering
-\caption{Instruments collected during and after the user study.}
-\label{tab:instruments-overview}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
 \toprule
 Instrument & What it captures \\
@@ -195,6 +202,8 @@ Mode-preference ranking   & Post-experiment overall preference \\
 Demographics              & Age, gender, degree, field, prior GDPR/AI familiarity \\
 \bottomrule
 \end{tabularx}
+\caption{Instruments collected during and after the user study.}
+\label{tab:instruments-overview}
 \end{table}
 
 The \textit{System Usability Scale} (\textit{SUS})~\cite{Brooke1996} was administered as ten standardized questions on a 5-point Likert scale; the \textit{Raw Task Load Index} (\textit{R-TLX})~\cite{Hart1988,Hart2006} captured six cognitive load dimensions on the standard NASA 21-point scale (1 = lowest demand, 21 = highest), as Raw TLX retains the unweighted subscale ratings on their original NASA scale.\footnote{Full text of the 10 SUS items and the 6 NASA R-TLX subscale descriptions in Appendix~\ref{app:sus-rtlx-items}.} In addition, participants completed a six-item \textit{Perceived AI Support} instrument on a 5-point Likert scale:
@@ -220,8 +229,6 @@ The five NLP metrics summarized in Table~\ref{tab:nlp-metrics-overview} (BLEU~\c
 
 \begin{table}[htbp]
     \centering
-    \caption{NLP metrics used in the document-quality evaluation. Higher is better on all metrics.}
-    \label{tab:nlp-metrics-overview}
     \begin{tabularx}{\linewidth}{@{}l X@{}}
         \toprule
         Metric & What it measures \\
@@ -233,6 +240,8 @@ The five NLP metrics summarized in Table~\ref{tab:nlp-metrics-overview} (BLEU~\c
         SBERT cosine similarity   & Sentence-embedding cosine similarity (ModernBERT; chapter-level MiniLM robustness check) \\
         \bottomrule
     \end{tabularx}
+    \caption{NLP metrics used in the document-quality evaluation. Higher is better on all metrics.}
+    \label{tab:nlp-metrics-overview}
 \end{table}
 
 \subsection{BLEU}
@@ -240,6 +249,7 @@ The five NLP metrics summarized in Table~\ref{tab:nlp-metrics-overview} (BLEU~\c
 \emph{Bilingual Evaluation Understudy} --- $n$-gram precision with brevity penalty~\cite{Papineni2002}. BLEU rewards exact word-sequence overlap with the reference: a high BLEU score means the candidate reuses the reference's wording almost verbatim, while a low BLEU score can equally indicate a legitimate paraphrase or genuinely missing content; the metric does not distinguish the two on its own.
 
 BLEU computes the geometric mean of $n$-gram precisions $p_n$ between candidate and reference, multiplied by a brevity penalty (BP) that discourages outputs much shorter than the reference. With uniform weights $w_n = 1/N$, candidate length $c$, and closest reference length $r$:
+This work uses $N = 4$ (matching unigrams through 4-grams).
 \begin{equation}
 \label{eq:bleu}
 \mathrm{BLEU} = \mathrm{BP} \cdot \exp\!\left( \sum_{n=1}^{N} w_n \log p_n \right),
@@ -250,7 +260,7 @@ BLEU computes the geometric mean of $n$-gram precisions $p_n$ between candidate 
 e^{1 - r/c} & \text{if } c \leq r.
 \end{cases}
 \end{equation}
-This work uses $N = 4$ (matching unigrams through 4-grams).
+
 
 \subsection{ROUGE-1, ROUGE-2, ROUGE-L}
 
@@ -267,37 +277,44 @@ The same precision–recall–F1 form applies to ROUGE-2:
 \label{eq:rouge2}
 F1_{\text{ROUGE-2}} = \frac{2 P_2 R_2}{P_2 + R_2}.
 \end{equation}
-For ROUGE-L, $n$-gram counts are replaced by the length of $\mathrm{LCS}(X, Y)$:
+For ROUGE-L, $n$-gram counts are replaced by the length of $\mathrm{LCS}(X, Y)$. The reported ROUGE values are the F1 scores in each case:
 \begin{align}
 P_L &= \frac{|\mathrm{LCS}(X, Y)|}{|X|}, \notag \\
 R_L &= \frac{|\mathrm{LCS}(X, Y)|}{|Y|}, \notag \\
 F1_L &= \frac{2 P_L R_L}{P_L + R_L}. \label{eq:rougeL}
 \end{align}
-The reported ROUGE values are the F1 scores in each case.
 
+
+\bigskip
+\bigskip
 \subsection{METEOR}
 
 \emph{Metric for Evaluation of Translation with Explicit ORdering} --- precision--recall balance with synonym matching~\cite{Banerjee2005}. METEOR balances precision and recall, credits synonym and stem matches, and penalizes fragmented overlap where shared words appear in scattered positions. A high METEOR score signals that the candidate covers the reference's content with vocabulary that need not match it verbatim; a low score indicates either missing content or surface forms that the synonym and stem matcher could not align.
 
 METEOR is the weighted harmonic mean of unigram precision $P$ and recall $R$ (with recall up-weighted by $\alpha$), multiplied by a fragmentation penalty that grows with the number of disjoint matching chunks $\mathrm{ch}$ relative to the number of matched unigrams $m$:
+Standard values $\alpha = 0.9$, $\beta = 3$, $\gamma = 0.5$ are used; matching is performed against exact, stemmed, and synonym/paraphrase matches via WordNet.
 \begin{equation}
 \label{eq:meteor}
 \mathrm{METEOR} = \underbrace{\frac{P \cdot R}{\alpha P + (1 - \alpha) R}}_{F_{\mathrm{mean}}}
 \cdot
 \underbrace{\Bigl(1 - \gamma \bigl(\tfrac{\mathrm{ch}}{m}\bigr)^{\beta}\Bigr)}_{\text{penalty}}.
 \end{equation}
-Standard values $\alpha = 0.9$, $\beta = 3$, $\gamma = 0.5$ are used; matching is performed against exact, stemmed, and synonym/paraphrase matches via WordNet.
+
 
 \subsection{BERTScore}
 
 \emph{Precision, Recall, F1} --- token-level semantic similarity using ModernBERT embeddings~\cite{Zhang2020}. BERTScore measures similarity between the contextual embeddings of candidate and reference tokens rather than their surface forms. \emph{Precision} captures how many candidate tokens find a close meaning-match in the reference and therefore penalizes spurious or invented content; \emph{recall} captures how many reference tokens are covered and therefore penalizes omission; \emph{F1} is the harmonic mean and requires both to be reasonably high.
 
-BERTScore replaces surface-form $n$-gram matching with cosine similarities between contextual token embeddings produced by a pretrained transformer. The embedding model used here is ModernBERT-base~\cite{HFModernBERTBase,Warner2024}, chosen for its long context window of $8192$ tokens, which lets a whole ROPA be embedded without truncation, and for its popularity and positive reception in the Hugging Face community. With L2-normalized embeddings $\mathbf{x}_i$ for reference tokens and $\hat{\mathbf{x}}_j$ for candidate tokens:
+BERTScore replaces surface-form $n$-gram matching with cosine similarities between contextual token embeddings produced by a pretrained transformer.
+The embedding model used here is ModernBERT-base~\cite{HFModernBERTBase,Warner2024}, chosen for its long context window of $8192$ tokens,
+which lets a whole ROPA be embedded without truncation, and for its popularity and positive reception in the Hugging Face community.
+With L2-normalized embeddings $\mathbf{x}_i$ for reference tokens and $\hat{\mathbf{x}}_j$ for candidate tokens:
 \begin{align}
 P_{\text{BERT}} &= \frac{1}{|\hat{x}|} \sum_{\hat{x}_j \in \hat{x}} \max_{x_i \in x} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j, \label{eq:bertscore-p} \\
 R_{\text{BERT}} &= \frac{1}{|x|} \sum_{x_i \in x} \max_{\hat{x}_j \in \hat{x}} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j, \label{eq:bertscore-r} \\
 F1_{\text{BERT}} &= \frac{2 \cdot P_{\text{BERT}} \cdot R_{\text{BERT}}}{P_{\text{BERT}} + R_{\text{BERT}}}. \label{eq:bertscore-f1}
 \end{align}
+\bigskip
 
 \subsection{SBERT Cosine Similarity}
 
@@ -312,7 +329,19 @@ SBERT produces a single fixed-length embedding per passage by mean-pooling token
 \subsection{Score Implications}
 \label{ssec:score-implications}
 
-The metrics above are read in combination, not in isolation, since each captures a different facet of similarity to the reference. Four pairings recur in Chapter~\ref{ch:docquality}. A high lexical score (BLEU, ROUGE, or METEOR) combined with a low semantic score (BERTScore F1 or chapter-level SBERT) indicates mechanical surface copying that does not align in meaning, whereas the reverse pattern (low lexical, high semantic) is the signature of a legitimate paraphrase that preserves content with different wording. Within BERTScore, high recall paired with low precision points to a verbose candidate that covers the reference but adds material the reference does not contain, while low recall paired with high precision points to a conservative candidate that omits required content without fabricating new material. A further reading concerns the two embedding-based metrics: because BERTScore matches at token granularity and SBERT at passage granularity, the two register different kinds of similarity, with BERTScore rewarding a candidate that reproduces reference vocabulary token by token and SBERT rewarding a candidate that preserves passage-level meaning under reworded phrasing. The two can therefore order the same documents differently even though both are nominally ``semantic'', and Chapter~\ref{ch:docquality} reads the split as a granularity effect rather than as a contradiction. Finally, a high document-level score on the surface-form metrics, BERTScore, or SBERT paired with uneven chapter-level scores under the same metric signals that the aggregate is hiding per-section weakness; the chapter-level SBERT scores in particular serve as a per-section diagnostic alongside the whole-document SBERT summary. These heuristics are applied throughout Chapter~\ref{ch:docquality}.
+The metrics above are read in combination, not in isolation, since each captures a different facet of similarity to the reference.
+Four pairings recur in Chapter~\ref{ch:docquality}.
+A high lexical score (BLEU, ROUGE, or METEOR) combined with a low semantic score (BERTScore F1 or chapter-level SBERT)
+indicates mechanical surface copying that does not align in meaning, whereas the reverse pattern (low lexical, high semantic)
+is the signature of a legitimate paraphrase that preserves content with different wording.
+Within BERTScore, high recall paired with low precision points to a verbose candidate that covers the reference but adds material the reference does not contain,
+while low recall paired with high precision points to a conservative candidate that omits required content without fabricating new material.
+A further reading concerns the two embedding-based metrics: because BERTScore matches at token granularity and SBERT at passage granularity,
+the two register different kinds of similarity, with BERTScore rewarding a candidate that reproduces reference vocabulary token by token and SBERT
+rewarding a candidate that preserves passage-level meaning under reworded phrasing.
+The two can therefore order the same documents differently even though both are nominally ``semantic'', and Chapter~\ref{ch:docquality} reads the split as a granularity effect rather than as a contradiction.
+Finally, a high document-level score on the surface-form metrics, BERTScore, or SBERT paired with uneven chapter-level scores under the same metric signals that the aggregate is hiding per-section weakness;
+the chapter-level SBERT scores in particular serve as a per-section diagnostic alongside the whole-document SBERT summary. These heuristics are applied throughout Chapter~\ref{ch:docquality}.
 
 \section{LLM-as-a-Judge Evaluation}
 Documents are additionally evaluated using an LLM-as-a-judge approach, in which \textbf{Gemini~3.1 Pro Preview} (\texttt{google/gemini-3.1-pro-preview}, $T = 0$) serves as an automated evaluator assessing GDPR-specific quality. The judge is positioned as a \emph{supplementary} evaluator: it is a single-pass, single-model assessment without inter-rater replication or legal-expert validation, and its scores are reported alongside, not in place of, the NLP metrics. The reference-based NLP metrics remain the primary RQ2 evidence; the judge complements them by providing a reference-free signal that captures GDPR-specific quality properties (legal correctness, hallucination, scenario faithfulness) which similarity-based metrics cannot directly observe. The judge evaluates each document across five metrics on a 1--5 scale:
@@ -325,6 +354,8 @@ Documents are additionally evaluated using an LLM-as-a-judge approach, in which 
 \end{enumerate}
 The judge evaluation is applied to all 113 retained documents.\footnote{Full evaluation rubric, system prompt, and model configuration in Appendix~\ref{app:judge}.}
 
+
+
 \section{Statistical Analysis}
 \label{sec:stat-analysis}
 
@@ -332,10 +363,6 @@ All inferential tests are non-parametric: Shapiro--Wilk rejected normality on es
 
 \begin{table}[htbp]
 \centering
-\caption{Statistical tests and their effect sizes by analysis
-stream. $\alpha = 0.05$ throughout; Bonferroni-corrected
-$\alpha' = 0.0167$ for post-hoc families.}
-\label{tab:stat-tests-overview}
 \begin{tabular}{@{}l l l@{}}
 \toprule
 Analysis stream & Test & Effect size \\
@@ -347,75 +374,86 @@ NLP / timing (between, $n = 113$) & Kruskal--Wallis & $\varepsilon^2$ \\
 Mode preference ($n = 69$)  & $\chi^2$ goodness-of-fit & Cram\'{e}r's~$V$ \\
 \bottomrule
 \end{tabular}
+\caption{Statistical tests and their effect sizes by analysis
+stream. $\alpha = 0.05$ throughout; Bonferroni-corrected
+$\alpha' = 0.0167$ for post-hoc families.}
+\label{tab:stat-tests-overview}
 \end{table}
 
 \subsection{Shared Procedures}
 
-The \emph{Shapiro--Wilk test} screens whether a sample is plausibly normal. With order statistics $x_{(i)}$ and tabulated constants $a_i$,
+The \emph{Shapiro--Wilk test} screens whether a sample is plausibly normal. With order statistics $x_{(i)}$ and tabulated constants $a_i$.
+It is applied as a normality screen to every user-study, NLP, and timing measure; normality is rejected on essentially all of them, which justifies the non-parametric pipeline that follows.
 \begin{equation}
 W = \frac{\bigl( \sum_{i=1}^{n} a_i x_{(i)} \bigr)^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2}.
 \end{equation}
-It is applied as a normality screen to every user-study, NLP, and timing measure; normality is rejected on essentially all of them, which justifies the non-parametric pipeline that follows.
 
-The \emph{Bonferroni correction} divides the per-test threshold by the number of comparisons in a post-hoc family so the family-wise false-positive rate stays at $\alpha$:
+The \emph{Bonferroni correction} divides the per-test threshold by the number of comparisons in a post-hoc family so the family-wise false-positive rate stays at $\alpha$.
+Every post-hoc family compares three modes pairwise ($m = 3$), so $\alpha' = 0.05 / 3 = 0.0167$ throughout:
 \begin{equation}
 \alpha' = \alpha / m.
 \end{equation}
-Every post-hoc family compares three modes pairwise ($m = 3$), so $\alpha' = 0.05 / 3 = 0.0167$ throughout.
+\bigskip
+\bigskip
 
 \subsection{User-Study Instruments (Within-Subjects, $n = 69$)}
 
-Applied to \textit{SUS}, \textit{R-TLX}, the \textit{perceived AI support} items, and the \textit{perceived confidence} composite. Each participant rates every mode once, so the data are matched-pairs; Friedman with pairwise Wilcoxon signed-rank post-hocs is the standard non-parametric pipeline for ordinal Likert and workload data in repeated-measures usability studies~\cite{SauroLewis2016}.
+Applied to \textit{SUS}, \textit{R-TLX}, the \textit{perceived AI support} items, and the \textit{perceived confidence} composite.
+Each participant rates every mode once, so the data are matched-pairs; Friedman with pairwise Wilcoxon signed-rank post-hocs is the standard non-parametric pipeline for ordinal Likert and workload data in repeated-measures usability studies~\cite{SauroLewis2016}.
 
 The \emph{Friedman test}~\cite{Friedman1937} is the omnibus for $k \geq 3$ related samples. With $n$ participants, $k$ conditions, and rank sums $R_j$,
+asymptotically $\chi^2$ distributed with $k - 1$ degrees of freedom. Its effect size is \emph{Kendall's~$W$} (coefficient of concordance)~\cite{Kendall1939} on $[0, 1]$:
 \begin{equation}
 \chi^2_F = \frac{12}{n k (k+1)} \sum_{j=1}^{k} R_j^2 - 3 n (k+1),
 \end{equation}
-asymptotically $\chi^2$ distributed with $k - 1$ degrees of freedom. Its effect size is \emph{Kendall's~$W$} (coefficient of concordance)~\cite{Kendall1939} on $[0, 1]$:
 \begin{equation}
 W_{\mathrm{Kendall}} = \chi^2_F / (n (k - 1)).
 \end{equation}
 
-When Friedman is significant, the \emph{Wilcoxon signed-rank test}~\cite{Wilcoxon1945} is applied to each mode pair. Differences $d_i = x_i - y_i$ are ranked by absolute value:
+When Friedman is significant, the \emph{Wilcoxon signed-rank test}~\cite{Wilcoxon1945} is applied to each mode pair. Differences $d_i = x_i - y_i$ are ranked by absolute value,
+with the rank-biserial correlation as effect size on $[-1, +1]$. Positive $r$ means the first-named mode ranks higher:
 \begin{equation}
 W = \min(W_+, W_-),
 \quad W_+ = \!\!\!\sum_{d_i > 0}\!\! \mathrm{rank}(|d_i|), \quad
 W_- = \!\!\!\sum_{d_i < 0}\!\! \mathrm{rank}(|d_i|),
 \end{equation}
-with the rank-biserial correlation as effect size on $[-1, +1]$:
 \begin{equation}
 r = (W_+ - W_-) / (W_+ + W_-).
 \end{equation}
-Positive $r$ means the first-named mode ranks higher.
 
+
+\bigskip
 \subsection{Document-Quality Metrics and Completion Time (Between-Groups, $n = 113$)}
 
-Applied to BLEU, ROUGE-1/2/L, METEOR, BERTScore P/R/F1, SBERT, and per-mode completion time. The document sample is unbalanced across modes (Form $37$, Ask $37$, Chat $39$); a between-groups family preserves all $113$ submissions, where restricting to matched triples would discard valid data. Kruskal--Wallis with pairwise Mann--Whitney~$U$ post-hocs is the standard non-parametric counterpart to one-way ANOVA for unbalanced independent-groups designs~\cite{Field2018}.
-
+Applied to BLEU, ROUGE-1/2/L, METEOR, BERTScore P/R/F1, SBERT, and per-mode completion time.
+The document sample is unbalanced across modes (Form $37$, Ask $37$, Chat $39$); a between-groups family preserves all $113$ submissions,
+where restricting to matched triples would discard valid data. Kruskal--Wallis with pairwise Mann--Whitney~$U$ post-hocs is the standard non-parametric counterpart to one-way ANOVA for unbalanced independent-groups designs~\cite{Field2018}.
 The \emph{Kruskal--Wallis~$H$ test}~\cite{KruskalWallis1952} is the omnibus. With $N$ total observations, $n_j$ in group $j$, and rank sums $R_j$,
+its effect size is \emph{$\varepsilon^2$ (epsilon-squared)}~\cite{Kelley1935} on $[0, 1]$, the share of total score variance explained by mode membership:
 \begin{equation}
 H = \frac{12}{N (N+1)} \sum_{j=1}^{k} \frac{R_j^2}{n_j} - 3 (N + 1).
 \end{equation}
-Its effect size is \emph{$\varepsilon^2$ (epsilon-squared)}~\cite{Kelley1935} on $[0, 1]$, the share of total score variance explained by mode membership:
 \begin{equation}
 \varepsilon^2 = (H - k + 1) / (N - k).
 \end{equation}
 
 When Kruskal--Wallis is significant, the \emph{Mann--Whitney~$U$ test}~\cite{MannWhitney1947} is applied to each mode pair. With group sizes $n_1$, $n_2$ and rank sum $R_1$,
+with rank-biserial $r$ as effect size on the same $[-1, +1]$ scale as above.
+The same pipeline runs at both whole-document and per-chapter granularity, with Bonferroni correction applied within each (metric, chapter) family.
 \begin{equation}
 U = R_1 - \frac{n_1 (n_1 + 1)}{2},
 \end{equation}
-with rank-biserial $r$ as effect size on the same $[-1, +1]$ scale as above. The same pipeline runs at both whole-document and per-chapter granularity, with Bonferroni correction applied within each (metric, chapter) family.
 
 \subsection{Mode Preference Ranking ($n = 69$)}
 
 Each participant ranks the three modes 1st, 2nd, and 3rd at the end of the session. The inferential analysis collapses the ranking to its first-place column and tests whether the rank-1 vote distribution is uneven, which directly answers the headline question of whether a single dominant mode emerges. Reducing a preference ranking to its first-place counts for goodness-of-fit testing is a standard analytic choice when the question is whether one option dominates~\cite{SauroLewis2016}; the 2nd- and 3rd-place ranks remain in the descriptive summary.
 
-The \emph{chi-square goodness-of-fit test}~\cite{Pearson1900} compares observed counts $O_i$ to expected counts $E_i$ under a uniform null:
+The \emph{chi-square goodness-of-fit test}~\cite{Pearson1900} compares observed counts $O_i$ to expected counts $E_i$ under a uniform null,
+its effect size is \emph{Cram\'{e}r's~$V$}~\cite{Cramer1946} on $[0, 1]$:
 \begin{equation}
 \chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}.
 \end{equation}
-Its effect size is \emph{Cram\'{e}r's~$V$}~\cite{Cramer1946} on $[0, 1]$:
+
 \begin{equation}
 V = \sqrt{\chi^2 / (N (k - 1))}.
 \end{equation}
