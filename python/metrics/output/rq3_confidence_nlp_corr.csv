@@ -9,6 +9,11 @@ pooled,AI_support,SBERT_ModernBERT,-0.0007,0.9947,102,primary
 pooled,AI_support,BLEU,-0.1643,0.099,102,secondary
 pooled,AI_support,ROUGE-L,-0.0816,0.415,102,secondary
 pooled,AI_support,METEOR,0.0026,0.9797,102,secondary
+pooled,item45_avg,BERTScore_F1,0.0366,0.7151,102,primary
+pooled,item45_avg,SBERT_ModernBERT,0.0617,0.5378,102,primary
+pooled,item45_avg,BLEU,-0.1229,0.2184,102,secondary
+pooled,item45_avg,ROUGE-L,-0.1001,0.3167,102,secondary
+pooled,item45_avg,METEOR,-0.0641,0.5219,102,secondary
 form,item5,BERTScore_F1,-0.2173,0.217,34,primary
 form,item5,SBERT_ModernBERT,-0.1121,0.5279,34,primary
 form,item5,BLEU,-0.255,0.1455,34,secondary
@@ -19,6 +24,11 @@ form,AI_support,SBERT_ModernBERT,-0.2085,0.2368,34,primary
 form,AI_support,BLEU,-0.2839,0.1037,34,secondary
 form,AI_support,ROUGE-L,-0.3197,0.0653,34,secondary
 form,AI_support,METEOR,-0.2834,0.1043,34,secondary
+form,item45_avg,BERTScore_F1,-0.2057,0.2432,34,primary
+form,item45_avg,SBERT_ModernBERT,-0.0774,0.6635,34,primary
+form,item45_avg,BLEU,-0.2512,0.1519,34,secondary
+form,item45_avg,ROUGE-L,-0.2913,0.0946,34,secondary
+form,item45_avg,METEOR,-0.3049,0.0795,34,secondary
 ask,item5,BERTScore_F1,-0.2631,0.1391,33,primary
 ask,item5,SBERT_ModernBERT,-0.2259,0.2061,33,primary
 ask,item5,BLEU,-0.2048,0.2529,33,secondary
@@ -29,6 +39,11 @@ ask,AI_support,SBERT_ModernBERT,-0.0955,0.597,33,primary
 ask,AI_support,BLEU,-0.1494,0.4066,33,secondary
 ask,AI_support,ROUGE-L,-0.1405,0.4354,33,secondary
 ask,AI_support,METEOR,-0.145,0.4206,33,secondary
+ask,item45_avg,BERTScore_F1,-0.2416,0.1756,33,primary
+ask,item45_avg,SBERT_ModernBERT,-0.2165,0.2261,33,primary
+ask,item45_avg,BLEU,-0.1445,0.4225,33,secondary
+ask,item45_avg,ROUGE-L,-0.1764,0.3261,33,secondary
+ask,item45_avg,METEOR,-0.2088,0.2435,33,secondary
 chat,item5,BERTScore_F1,0.3321,0.0513,35,primary
 chat,item5,SBERT_ModernBERT,0.2201,0.2038,35,primary
 chat,item5,BLEU,-0.0018,0.9919,35,secondary
@@ -39,3 +54,8 @@ chat,AI_support,SBERT_ModernBERT,0.2048,0.2378,35,primary
 chat,AI_support,BLEU,-0.183,0.2926,35,secondary
 chat,AI_support,ROUGE-L,0.1058,0.5453,35,secondary
 chat,AI_support,METEOR,0.285,0.097,35,secondary
+chat,item45_avg,BERTScore_F1,0.4326,0.0094,35,primary
+chat,item45_avg,SBERT_ModernBERT,0.3255,0.0564,35,primary
+chat,item45_avg,BLEU,-0.0418,0.8118,35,secondary
+chat,item45_avg,ROUGE-L,0.2461,0.1541,35,secondary
+chat,item45_avg,METEOR,0.3504,0.039,35,secondary
