@@ -11,8 +11,10 @@ participants completed a six-item questionnaire on a five-point
 Likert scale ($1$ = strong disagreement, $5$ = strong agreement):
 helpfulness (item~1), efficiency (item~2), transparency (item~3),
 trust (item~4), legal-basis confidence (item~5), and re-use intent
-(item~6). Item~5 is the primary self-report confidence measure
-referenced in Chapter~\ref{ch:methodology}.\footnote{Full
+(item~6). Items~4 and~5 are averaged into the \emph{perceived
+confidence} composite that serves as the primary self-report
+confidence measure referenced in Chapter~\ref{ch:methodology};
+the remaining four items are reported individually.\footnote{Full
 per-item distribution in Appendix~\ref{app:items-ai}.}
 
 \begin{table}[htbp]
@@ -47,10 +49,14 @@ and Chat). Ask is the only mode that explicitly explains each
 suggestion (Section~\ref{sec:ropagen}); the transparency and
 trust leads follow directly from that design.
 
-Chat leads only on legal-basis confidence ($3.81$ vs Form $3.58$).
-Confidence is highest in the mode that exposes the LLM's reasoning
-least: Chat dissolves legal judgment into conversational fluency,
-while Ask presents it as explicit, second-guessable explanations.
+Chat leads only on legal-basis confidence ($3.81$ vs Form $3.58$);
+on the broader trust item, Ask leads ($3.80$ vs Form $3.41$).
+Averaged into the \emph{perceived confidence} composite, Ask and
+Chat tie at the top ($3.77$ and $3.75$), both clearly above Form
+($3.49$). Confidence in the legal basis specifically is highest
+in the mode that exposes the LLM's reasoning least: Chat dissolves
+legal judgment into conversational fluency, while Ask presents it
+as explicit, second-guessable explanations.
 Form leads on the two productivity-and-preference items: perceived
 speed-up ($4.43$, decreasing monotonically with LLM involvement to
 Chat $3.99$) and re-use intent ($3.99$ vs Chat $3.42$). Re-use
@@ -59,10 +65,12 @@ one to reach statistical significance after Bonferroni correction,
 with a large Form-versus-Chat effect; even when participants felt
 better about the LLM's content judgment, they still wanted to come
 back to Form. Perceived LLM support taken as a whole does not
-differ across modes, and the legal-basis confidence item on its
-own does not either.\footnote{Re-use intent $\chi^2(2) = 11.12$,
-$p = 0.004$; Form vs Chat $r = +0.543$. Full statistics in
-Appendix~\ref{app:inferential}.}
+differ across modes; the perceived confidence composite shows
+a Friedman trend ($\chi^2(2) = 4.50$, $p = 0.105$, $W = 0.033$)
+below conventional significance, and the legal-basis confidence
+item on its own does not reach it either.\footnote{Re-use intent
+$\chi^2(2) = 11.12$, $p = 0.004$; Form vs Chat $r = +0.543$. Full
+statistics in Appendix~\ref{app:inferential}.}
 
 Form is the fastest mode, both in user perception (perceived
 speed-up, item~2) and in actual completion time
@@ -78,11 +86,13 @@ Form does not offer that on-demand explanation, and Chat removes the
 control entirely by populating the document in the background as
 the conversation unfolds.
 
-Two findings cut against the headline picture. Users trust Chat
-with identifying the correct legal basis (item~5, the only item
-where Chat leads outright). And although users rated Ask
-the most helpful mode overall (item~1, by a thin $0.19$-point
-margin), they still intend to come back to Form (item~6).
+Two findings cut against the headline picture. Users credit the
+AI's content judgment in Ask and Chat over Form: Ask leads on
+overall trust, Chat on legal-basis confidence, and the two-item
+perceived confidence composite shows Ask and Chat tied above
+Form. And although users rated Ask the most helpful mode overall
+(item~1, by a thin $0.19$-point margin), they still intend to
+come back to Form (item~6).
 The behavioral counterpart, which mode participants actually
 choose when forced to rank, is taken up next in
 Section~\ref{sec:eval-freeform}.

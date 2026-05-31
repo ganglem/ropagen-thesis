@@ -186,7 +186,8 @@ the international reader.}
 
 Across modes, the chapter-level lead splits cleanly into zones.
 Chapter~1 is filled identically across all three modes by the
-ropagen system itself (the LLM has no role in its content), so
+user (the LLM has no role in its content), therefore any variance is noise rather than signal.
+The chapter is reported here for completeness but is excluded from the mode-comparison reading.
 the numerical lead Ask carries on Chapter~1 reflects an artefact
 of how the system assembles the controller block rather than a
 mode-architecture effect; the chapter is reported here for
@@ -250,12 +251,8 @@ metric are in Appendix~\ref{app:items-chapter-nlp}.}
 \label{ssec:nlp-chapter-lexical}
 
 Chapter 1 (Controller and Contact Details) shows Ask numerically
-ahead of the other two modes on every lexical metric (ROUGE-1
-Ask $0.605$ versus Form $0.550$, Chat $0.559$), but as noted
-above the chapter is filled identically by the ropagen system
-itself, so the Ask lead reflects assembly-side variance rather
-than any property of the Ask interaction. The three middle chapters
-(Purposes and Legal Bases, Categories of Personal Data, Data
+ahead of the other two modes on every lexical metric but is excluded from the mode-comparison reading.
+The three middle chapters (Purposes and Legal Bases, Categories of Personal Data, Data
 Subjects and Recipients) all favor Form, with the gap widest on
 Chapter 3, where Form's ROUGE-1 of $0.600$ leads Ask ($0.366$) by
 the largest within-chapter gap of the lexical results and Form
@@ -273,9 +270,8 @@ a smaller scale.
 
 The embedding-based view keeps the same chapter-level pattern as
 the lexical metrics but compresses the absolute range. Chapter 1
-stays at the top of the BERT range with Ask numerically ahead,
-again reflecting system-side assembly variance rather than a
-mode effect; the smaller MiniLM encoder makes the apparent Ask
+stays at the top of the BERT range with Ask numerically ahead.
+The smaller MiniLM encoder makes the apparent Ask
 lead more visible (SBERT MiniLM Ask $0.736$ versus Form $0.663$,
 Chat $0.662$). The middle chapters favor Form, with the
 document-level Recall-versus-Precision
@@ -305,10 +301,8 @@ At the document level the trade-off runs across
 metrics: Form leads the recall-oriented and bigram-sensitive
 metrics (most clearly BERTScore Recall), Chat leads the
 embedding-based ones (BERTScore Precision and SBERT), and Ask is
-the lower of every significant pairwise comparison. At the
-chapter level the same trade-off runs across chapters: Chapter 1
-is system-filled identically across modes and therefore drops
-out of the mode comparison, Form wins Chapters 2--4, Chat wins
+the lower of every significant pairwise comparison.
+Form wins Chapters 2--4, Chat wins
 Chapters 5 and 6, and the Form-leads-Recall / Chat-leads-Precision
 split re-emerges specifically on Chapters 2 and 4.
 Document-level means are higher than the average of chapter-level
