@@ -1,8 +1,6 @@
 \chapter{Discussion}
 \label{ch:discussion}
 
-Novices using LLM-assisted document tools do not behave the
-way designers expect them to, and that gap has consequences.
 This chapter draws together the findings from the user study
 (Chapter~\ref{ch:userstudy}) and the document-quality analysis
 (Chapter~\ref{ch:docquality}) to answer the three research
@@ -10,11 +8,7 @@ questions posed at the outset: how varying degrees of LLM
 support shape the novice experience during ROPA creation
 (RQ1), how that support affects the quality of the resulting
 documents (RQ2), and whether a discrepancy exists between user
-confidence and actual document quality (RQ3). Each section
-takes one question, gives the answer the data supports, names
-the supporting evidence, and works through what the findings
-imply for the design of LLM-assisted document tools for
-novices.
+confidence and actual document quality (RQ3).
 
 
 \section{RQ1: User Experience}
@@ -50,10 +44,16 @@ clearest mode and the easiest one to know when they were
 ``done.'' For a novice navigating a domain they do not control,
 this kind of scaffolding is what they need: a visible map of
 what the document requires, a fallback when stuck, and a clear
-stopping rule. (To put this into perspective: the thesis targets non-specialist staff in
+stopping rule. The weight of this finding depends on who the
+tool is for. This thesis targets the non-specialist staff of
 small organizations that must comply with the GDPR without a
 dedicated Data Protection Officer, not the trained compliance
-professionals of larger ones.)
+professionals of larger ones. For such users, the
+structural visibility Form provides substitutes for the legal
+vocabulary and procedural intuition a DPO would otherwise
+bring to the task. The mode that wins on usability in this
+study is the mode that compensates most directly for what the
+target user lacks.
 
 The trade-off is that Form is paradoxically also the
 \emph{least} transparent mode in terms of what the LLM is
@@ -79,13 +79,11 @@ Form, that the AI had identified the correct legal basis. The
 contradiction is only apparent. In Form, the user has full
 transparency of possible answers, but the decisions still rest
 in their hands, and that responsibility surfaces as uncertainty.
-In Chat, the LLM steps into therole of a collaborator.
+In Chat, the LLM steps into the role of a collaborator.
 The interaction becomes conversational,
 and the user can offload both responsibility and knowledge onto
 the model. That feels like partnership, and partnership feels
-like competence. Whether the partner is actually competent on
-the dimensions the user cannot independently verify is the
-question Section~\ref{sec:disc-rq3} takes up.
+like competence.
 
 Ask landed last on every user-experience measure, and that is
 not a coincidence. Ask sits structurally between Form and Chat:
@@ -117,21 +115,17 @@ place, confidence in Ask should rise, and the mode could
 become the better fit for the more complex ROPAs that Form's
 predefined categories cannot accommodate.
 
-In a wider sense, this means that novice users in a domain
-they do not control benefit from a guided approach, and the
-shape of that guidance is recoverable from the four needs that
-Form half-met and Chat half-met. They need scaffolding: a
-visible map of what the document requires. They need a
-collaborator: an LLM that takes on some of the writing rather
-than only explaining. They need a safety net: a way to get
-unstuck without already knowing the right question to ask. And
-they need a sense of control: the feeling that they remain the
-author, even when the model is doing most of the work. The
-closest current mode to this combination is Form, but Form
-sacrifices LLM transparency for it. The closest to partnership
-is Chat, but Chat sacrifices the visible map. Neither delivers
-all four at once, and Ask delivers none of them. The same
-conclusion has been reached from a different direction by von
+
+In a broader sense, novice users working in an unfamiliar domain benefit from a guided approach,
+and the shape of that guidance can be inferred from the four needs that Form and Chat each partially addressed.
+They benefit from scaffolding: a clear overview of what the document requires.
+They benefit from a collaborator: an LLM that contributes to the writing rather than only explaining it.
+They benefit from a safety net: a way to move forward without needing to know the right question to ask in advance.
+And they benefit from a sense of control: remaining the author even when the model is handling much of the drafting.
+Among the current modes, Form comes closest to this combination but at the cost of LLM transparency,
+while Chat comes closest to a collaborative dynamic but lacks the visible structure.
+Neither delivers all four at once, and Ask delivers none of them.
+The same conclusion has been reached from a different direction by von
 Schwerin et al.~\cite{schwerinSystematicComparisonOpen2024}, who
 argued for human-in-the-loop necessity on the basis of model
 limitations. This study reaches the same place from the
