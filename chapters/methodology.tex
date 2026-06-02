@@ -225,7 +225,7 @@ Following the dual-evaluation template adopted by Su et al.\ \cite{suJuDGEBenchm
 
 BLEU, ROUGE, METEOR, BERTScore, and SBERT are all computed at both the whole-document level and the per-chapter level, with ModernBERT-base as the embedding backbone for BERTScore and SBERT. At the chapter level, SBERT is additionally run with the smaller \texttt{all-MiniLM-L6-v2}; the MiniLM pass is chapter-only because its $512$-token input limit excludes whole-document scoring. Results at every available granularity are aggregated by mode.
 
-The five NLP metrics summarized in Table~\ref{tab:nlp-metrics-overview} (BLEU~\cite{Papineni2002}, ROUGE~\cite{Lin2004}, METEOR~\cite{Banerjee2005}, BERTScore~\cite{Zhang2020}, and SBERT~\cite{Reimers2019}) are defined formally below. Each is computed against the single expert-authored reference document; interpretive framing of the resulting values is deferred to Chapter~\ref{ch:docquality}.
+The five NLP metrics summarized in Table~\ref{tab:nlp-metrics-overview} (BLEU~\cite{Papineni2002}, ROUGE~\cite{Lin2004}, METEOR~\cite{Banerjee2005}, BERTScore~\cite{Zhang2020}, and SBERT~\cite{Reimers2019}) are defined formally below. Each is computed against the single expert-authored reference document; interpretive framing of the resulting values is deferred to Chapter~\ref{ch:docquality}. Because the metrics differ sharply in the scale on which they report, the expected ranges and good-versus-poor bands for each are collected for reference in Appendix~\ref{app:metric-scales}.
 
 \begin{table}[htbp]
     \centering
@@ -246,10 +246,8 @@ The five NLP metrics summarized in Table~\ref{tab:nlp-metrics-overview} (BLEU~\c
 
 \subsection{BLEU}
 
-\emph{Bilingual Evaluation Understudy} --- $n$-gram precision with brevity penalty~\cite{Papineni2002}. BLEU rewards exact word-sequence overlap with the reference: a high BLEU score means the candidate reuses the reference's wording almost verbatim, while a low BLEU score can equally indicate a legitimate paraphrase or genuinely missing content; the metric does not distinguish the two on its own.
-
-BLEU computes the geometric mean of $n$-gram precisions $p_n$ between candidate and reference, multiplied by a brevity penalty (BP) that discourages outputs much shorter than the reference. With uniform weights $w_n = 1/N$, candidate length $c$, and closest reference length $r$:
-This work uses $N = 4$ (matching unigrams through 4-grams).
+\emph{Bilingual Evaluation Understudy} --- $n$-gram precision with brevity penalty~\cite{Papineni2002}. BLEU rewards exact word-sequence overlap with the reference: a high BLEU score means the candidate reuses the reference's wording almost verbatim, while a low BLEU score can equally indicate a legitimate paraphrase or genuinely missing content; the metric does not distinguish the two on its own. BLEU is the most pessimistic measure in the suite: even strong machine output rarely clears $0.3$ to $0.4$ against a single reference, and for content that is faithful but freely reworded, values in the $0.05$ to $0.20$ range are the expected outcome rather than a sign of failure~\footnote{Appendix~\ref{app:metric-scales}}.
+BLEU computes the geometric mean of $n$-gram precisions $p_n$ between candidate and reference, multiplied by a brevity penalty (BP) that discourages outputs much shorter than the reference. With uniform weights $w_n = 1/N$, candidate length $c$, and closest reference length $r$. This work uses $N = 4$ (matching unigrams through 4-grams):
 \begin{equation}
 \label{eq:bleu}
 \mathrm{BLEU} = \mathrm{BP} \cdot \exp\!\left( \sum_{n=1}^{N} w_n \log p_n \right),
@@ -264,8 +262,7 @@ e^{1 - r/c} & \text{if } c \leq r.
 
 \subsection{ROUGE-1, ROUGE-2, ROUGE-L}
 
-\emph{Recall-Oriented Understudy for Gisting Evaluation} --- unigram, bigram, and longest-common-subsequence overlap (F1)~\cite{Lin2004}. ROUGE measures how much of the reference's vocabulary, bigrams, or longest common subsequence the candidate covers. A high ROUGE score signals strong lexical recall against the reference; a low score indicates that key reference content is absent from the candidate.
-
+\emph{Recall-Oriented Understudy for Gisting Evaluation} --- unigram, bigram, and longest-common-subsequence overlap (F1)~\cite{Lin2004}. ROUGE measures how much of the reference's vocabulary, bigrams, or longest common subsequence the candidate covers. A high ROUGE score signals strong lexical recall against the reference; a low score indicates that key reference content is absent from the candidate. ROUGE values run well above BLEU because single tokens and subsequences are easier to match than full $n$-grams: a ROUGE-1 in the $0.4$ to $0.6$ band reflects solid recall, while the bigram-based ROUGE-2 and subsequence-based ROUGE-L sit lower because contiguous matches are scarcer~\footnote{Appendix~\ref{app:metric-scales}}.
 ROUGE reports the F1 of $n$-gram or longest-common-subsequence (LCS) overlap between candidate $X$ and reference $Y$. ROUGE-1 counts unigrams, ROUGE-2 counts bigrams, and ROUGE-L counts the LCS. For ROUGE-N:
 \begin{align}
 P_N &= \frac{|\mathrm{ngrams}(X) \cap \mathrm{ngrams}(Y)|}{|\mathrm{ngrams}(X)|}, \notag \\
@@ -284,12 +281,9 @@ R_L &= \frac{|\mathrm{LCS}(X, Y)|}{|Y|}, \notag \\
 F1_L &= \frac{2 P_L R_L}{P_L + R_L}. \label{eq:rougeL}
 \end{align}
 
-
-\bigskip
-\bigskip
 \subsection{METEOR}
 
-\emph{Metric for Evaluation of Translation with Explicit ORdering} --- precision--recall balance with synonym matching~\cite{Banerjee2005}. METEOR balances precision and recall, credits synonym and stem matches, and penalizes fragmented overlap where shared words appear in scattered positions. A high METEOR score signals that the candidate covers the reference's content with vocabulary that need not match it verbatim; a low score indicates either missing content or surface forms that the synonym and stem matcher could not align.
+\emph{Metric for Evaluation of Translation with Explicit ORdering} --- precision--recall balance with synonym matching~\cite{Banerjee2005}. METEOR balances precision and recall, credits synonym and stem matches, and penalizes fragmented overlap where shared words appear in scattered positions. A high METEOR score signals that the candidate covers the reference's content with vocabulary that need not match it verbatim; a low score indicates either missing content or surface forms that the synonym and stem matcher could not align. METEOR typically lands between BLEU and ROUGE-1, often in the $0.2$ to $0.5$ band for content-equivalent text, since synonym and stem credit lift it above raw $n$-gram precision while the fragmentation penalty holds it below a pure recall count~\footnote{Appendix~\ref{app:metric-scales}}.
 
 METEOR is the weighted harmonic mean of unigram precision $P$ and recall $R$ (with recall up-weighted by $\alpha$), multiplied by a fragmentation penalty that grows with the number of disjoint matching chunks $\mathrm{ch}$ relative to the number of matched unigrams $m$:
 Standard values $\alpha = 0.9$, $\beta = 3$, $\gamma = 0.5$ are used; matching is performed against exact, stemmed, and synonym/paraphrase matches via WordNet.
@@ -303,7 +297,7 @@ Standard values $\alpha = 0.9$, $\beta = 3$, $\gamma = 0.5$ are used; matching i
 
 \subsection{BERTScore}
 
-\emph{Precision, Recall, F1} --- token-level semantic similarity using ModernBERT embeddings~\cite{Zhang2020}. BERTScore measures similarity between the contextual embeddings of candidate and reference tokens rather than their surface forms. \emph{Precision} captures how many candidate tokens find a close meaning-match in the reference and therefore penalizes spurious or invented content; \emph{recall} captures how many reference tokens are covered and therefore penalizes omission; \emph{F1} is the harmonic mean and requires both to be reasonably high.
+\emph{Precision, Recall, F1} --- token-level semantic similarity using ModernBERT embeddings~\cite{Zhang2020}. BERTScore measures similarity between the contextual embeddings of candidate and reference tokens rather than their surface forms. \emph{Precision} captures how many candidate tokens find a close meaning-match in the reference and therefore penalizes spurious or invented content; \emph{recall} captures how many reference tokens are covered and therefore penalizes omission; \emph{F1} is the harmonic mean and requires both to be reasonably high. Because the contextual embeddings of any two fluent texts are already broadly similar, BERTScore occupies a compressed high band: values below roughly $0.80$ are rare, and the meaningful signal lives in differences of a few hundredths within the $0.85$ to $0.95$ range, so its absolute scores should not be read on the same intuition as the lexical metrics~\footnote{Appendix~\ref{app:metric-scales}}.
 
 BERTScore replaces surface-form $n$-gram matching with cosine similarities between contextual token embeddings produced by a pretrained transformer.
 The embedding model used here is ModernBERT-base~\cite{HFModernBERTBase,Warner2024}, chosen for its long context window of $8192$ tokens,
@@ -314,11 +308,10 @@ P_{\text{BERT}} &= \frac{1}{|\hat{x}|} \sum_{\hat{x}_j \in \hat{x}} \max_{x_i \i
 R_{\text{BERT}} &= \frac{1}{|x|} \sum_{x_i \in x} \max_{\hat{x}_j \in \hat{x}} \mathbf{x}_i^{\top} \hat{\mathbf{x}}_j, \label{eq:bertscore-r} \\
 F1_{\text{BERT}} &= \frac{2 \cdot P_{\text{BERT}} \cdot R_{\text{BERT}}}{P_{\text{BERT}} + R_{\text{BERT}}}. \label{eq:bertscore-f1}
 \end{align}
-\bigskip
 
 \subsection{SBERT Cosine Similarity}
 
-\emph{Sentence-BERT} --- document- and chapter-level semantic similarity using sentence embeddings~\cite{Reimers2019}. SBERT compresses a passage into a single fixed-length embedding and reports the cosine similarity between the candidate and reference embeddings. Unlike BERTScore, which decomposes token-level matches into Precision, Recall, and F1, SBERT produces a single symmetric similarity score per comparison: the cosine of the angle between two compressed vectors does not distinguish candidate-into-reference coverage from reference-into-candidate coverage, so no separate precision and recall values are reported. SBERT is computed at both granularities: one whole-document score per ROPA against the full reference, and one chapter score per candidate chapter against the corresponding reference chapter. The primary encoder for both passes is ModernBERT-base~\cite{HFModernBERTBase}, whose $8192$-token context window accommodates a full ROPA without truncation. At the chapter level, a secondary pass with \texttt{all-MiniLM-L6-v2}~\cite{HFMiniLML6v2} is run over the same six chapters as a robustness check on the primary ModernBERT pass; MiniLM has a $512$-token input limit that excludes whole-document use. Both models were chosen for their popularity and positive reception in the Hugging Face community.
+\emph{Sentence-BERT} --- document- and chapter-level semantic similarity using sentence embeddings~\cite{Reimers2019}. SBERT compresses a passage into a single fixed-length embedding and reports the cosine similarity between the candidate and reference embeddings. Unlike BERTScore, which decomposes token-level matches into Precision, Recall, and F1, SBERT produces a single symmetric similarity score per comparison: the cosine of the angle between two compressed vectors does not distinguish candidate-into-reference coverage from reference-into-candidate coverage, so no separate precision and recall values are reported. SBERT is computed at both granularities: one whole-document score per ROPA against the full reference, and one chapter score per candidate chapter against the corresponding reference chapter. The primary encoder for both passes is ModernBERT-base~\cite{HFModernBERTBase}, whose $8192$-token context window accommodates a full ROPA without truncation. At the chapter level, a secondary pass with \texttt{all-MiniLM-L6-v2}~\cite{HFMiniLML6v2} is run over the same six chapters as a robustness check on the primary ModernBERT pass; MiniLM has a $512$-token input limit that excludes whole-document use. Both models were chosen for their popularity and positive reception in the Hugging Face community. Document-level cosine similarity is even more compressed than BERTScore, routinely exceeding $0.95$ for any two ROPAs written against the same scenario; near-unity values are therefore the expected baseline rather than evidence of near-identical documents, and only the relative gaps between modes carry interpretable signal~\footnote{Appendix~\ref{app:metric-scales}}.
 
 SBERT produces a single fixed-length embedding per passage by mean-pooling token embeddings from the underlying transformer (here, ModernBERT or MiniLM). Passage similarity is the cosine of the angle between two embeddings $\mathbf{e}(c_1)$ and $\mathbf{e}(c_2)$:
 \begin{equation}
@@ -422,7 +415,6 @@ r = (W_+ - W_-) / (W_+ + W_-).
 \end{equation}
 
 
-\bigskip
 \subsection{Document-Quality Metrics and Completion Time (Between-Groups, $n = 113$)}
 
 Applied to BLEU, ROUGE-1/2/L, METEOR, BERTScore P/R/F1, SBERT, and per-mode completion time.
