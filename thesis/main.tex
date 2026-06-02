@@ -179,7 +179,7 @@ pdfborder=0 0 0	% keine Box um die Links!
 % hier weitere Kapitel einbinden
 
 \appendix
-\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 % Appendix-wide compaction: stat-heavy appendices benefit from tighter
 % float spacing, more permissive float fractions, tighter table row
 % stretch, reduced paragraph and section/subsection spacing. Tables in
@@ -204,6 +204,10 @@ pdfborder=0 0 0	% keine Box um die Links!
   beforeskip=-1.4ex plus -0.4ex minus -0.2ex,
   afterskip=0.4ex plus 0.1ex
 ]{subsection}
+% Drop the appendix body font two steps (normalsize -> footnotesize) to
+% compact the stat-heavy material and reduce float-induced blank pages.
+% Sectioning headings keep their own sizes; this affects body text only.
+\footnotesize
 % hier Anhänge einbinden
 \input{chapters/appendix/ropagen}                  % A: ROPAgen + LLM-as-a-Judge Configuration
 \input{chapters/appendix/materials_descriptives}   % B: Study Materials + Demographics + Per-Item Tables
