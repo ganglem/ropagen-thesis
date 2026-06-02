@@ -31,102 +31,103 @@
 \contentsline {subsection}{\numberline {3.3.1}BLEU}{28}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}ROUGE-1, ROUGE-2, ROUGE-L}{29}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}METEOR}{30}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}BERTScore}{30}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.4}BERTScore}{31}{subsection.3.3.4}%
 \contentsline {subsection}{\numberline {3.3.5}SBERT Cosine Similarity}{31}{subsection.3.3.5}%
 \contentsline {subsection}{\numberline {3.3.6}Score Implications}{32}{subsection.3.3.6}%
-\contentsline {section}{\numberline {3.4}LLM-as-a-Judge Evaluation}{32}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Statistical Analysis}{33}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Shared Procedures}{34}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}User-Study Instruments (Within-Subjects, $n = 69$)}{34}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}Document-Quality Metrics and Completion Time (Between-Groups, $n = 113$)}{35}{subsection.3.5.3}%
-\contentsline {subsection}{\numberline {3.5.4}Mode Preference Ranking ($n = 69$)}{36}{subsection.3.5.4}%
-\contentsline {chapter}{\numberline {4}Qualitative Evaluation: User Study}{37}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Participant Demographics}{37}{section.4.1}%
-\contentsline {section}{\numberline {4.2}ROPAgen Usability — System Usability Scale}{40}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Cognitive Load — NASA Raw Task Load Index}{43}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Perceived AI Support}{46}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Mode Preference and Free-Text Feedback}{48}{section.4.5}%
-\contentsline {subsubsection}{\nonumberline Mode Preference Ranking}{48}{subsubsection*.24}%
-\contentsline {subsubsection}{\nonumberline Free-Text Comments}{49}{subsubsection*.27}%
-\contentsline {paragraph}{\nonumberline Form.}{49}{paragraph*.28}%
-\contentsline {paragraph}{\nonumberline Ask.}{50}{paragraph*.29}%
-\contentsline {paragraph}{\nonumberline Chat.}{50}{paragraph*.30}%
-\contentsline {paragraph}{\nonumberline Overall comments}{50}{paragraph*.31}%
-\contentsline {section}{\numberline {4.6}Summary}{51}{section.4.6}%
-\contentsline {chapter}{\numberline {5}Quantitative Evaluation: Document Quality}{52}{chapter.5}%
-\contentsline {section}{\numberline {5.1}NLP Metrics}{52}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Document-Level NLP Metrics}{53}{subsection.5.1.1}%
-\contentsline {subsubsection}{\nonumberline Lexical Metrics}{53}{subsubsection*.33}%
-\contentsline {subsubsection}{\nonumberline BERT-Based and Sentence-Embedding Metrics}{54}{subsubsection*.34}%
-\contentsline {subsection}{\numberline {5.1.2}Chapter-Level NLP Metrics}{55}{subsection.5.1.2}%
-\contentsline {subsubsection}{\nonumberline Lexical Metrics}{57}{subsubsection*.37}%
-\contentsline {subsubsection}{\nonumberline BERT-Based and Sentence-Embedding Metrics}{57}{subsubsection*.38}%
-\contentsline {subsection}{\numberline {5.1.3}Summary of Document-Level and Chapter-Level NLP Metrics}{58}{subsection.5.1.3}%
-\contentsline {section}{\numberline {5.2}LLM-as-a-Judge}{59}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Summary}{61}{section.5.3}%
-\contentsline {chapter}{\numberline {6}Discussion}{64}{chapter.6}%
-\contentsline {section}{\numberline {6.1}RQ1: User Experience}{64}{section.6.1}%
-\contentsline {section}{\numberline {6.2}RQ2: Document Quality}{67}{section.6.2}%
-\contentsline {section}{\numberline {6.3}RQ3: Confidence and Quality}{70}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Limitations}{72}{section.6.4}%
-\contentsline {chapter}{\numberline {7}Conclusion}{73}{chapter.7}%
+\contentsline {section}{\numberline {3.4}LLM-as-a-Judge Evaluation}{33}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Statistical Analysis}{34}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Shared Procedures}{35}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}User-Study Instruments (Within-Subjects, $n = 69$)}{35}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Document-Quality Metrics and Completion Time (Between-Groups, $n = 113$)}{36}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}Mode Preference Ranking ($n = 69$)}{37}{subsection.3.5.4}%
+\contentsline {chapter}{\numberline {4}Qualitative Evaluation: User Study}{38}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Participant Demographics}{38}{section.4.1}%
+\contentsline {section}{\numberline {4.2}ROPAgen Usability — System Usability Scale}{41}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Cognitive Load — NASA Raw Task Load Index}{44}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Perceived AI Support}{47}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Mode Preference and Free-Text Feedback}{49}{section.4.5}%
+\contentsline {subsubsection}{\nonumberline Mode Preference Ranking}{49}{subsubsection*.24}%
+\contentsline {subsubsection}{\nonumberline Free-Text Comments}{50}{subsubsection*.27}%
+\contentsline {paragraph}{\nonumberline Form.}{50}{paragraph*.28}%
+\contentsline {paragraph}{\nonumberline Ask.}{51}{paragraph*.29}%
+\contentsline {paragraph}{\nonumberline Chat.}{51}{paragraph*.30}%
+\contentsline {paragraph}{\nonumberline Overall comments}{51}{paragraph*.31}%
+\contentsline {section}{\numberline {4.6}Summary}{52}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Quantitative Evaluation: Document Quality}{53}{chapter.5}%
+\contentsline {section}{\numberline {5.1}NLP Metrics}{53}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Document-Level NLP Metrics}{54}{subsection.5.1.1}%
+\contentsline {subsubsection}{\nonumberline Lexical Metrics}{54}{subsubsection*.33}%
+\contentsline {subsubsection}{\nonumberline BERT-Based and Sentence-Embedding Metrics}{55}{subsubsection*.34}%
+\contentsline {subsection}{\numberline {5.1.2}Chapter-Level NLP Metrics}{56}{subsection.5.1.2}%
+\contentsline {subsubsection}{\nonumberline Lexical Metrics}{58}{subsubsection*.37}%
+\contentsline {subsubsection}{\nonumberline BERT-Based and Sentence-Embedding Metrics}{58}{subsubsection*.38}%
+\contentsline {subsection}{\numberline {5.1.3}Summary of Document-Level and Chapter-Level NLP Metrics}{59}{subsection.5.1.3}%
+\contentsline {section}{\numberline {5.2}LLM-as-a-Judge}{60}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Summary}{62}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Discussion}{65}{chapter.6}%
+\contentsline {section}{\numberline {6.1}RQ1: User Experience}{65}{section.6.1}%
+\contentsline {section}{\numberline {6.2}RQ2: Document Quality}{68}{section.6.2}%
+\contentsline {section}{\numberline {6.3}RQ3: Confidence and Quality}{71}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Limitations}{73}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Conclusion}{74}{chapter.7}%
 \def \@chapapp {\appendixname }
 \setcounter {tocdepth}{1}
-\contentsline {chapter}{\numberline {A}ROPAgen and Judge Model Configuration}{76}{appendix.A}%
-\contentsline {section}{\numberline {A.1}ROPAgen Backend Prompts}{76}{section.A.1}%
-\contentsline {subsection}{\numberline {A.1.1}Final ROPA Generation Prompt (\texttt {finalropa})}{77}{subsection.A.1.1}%
-\contentsline {subsection}{\numberline {A.1.2}Form Mode --- AI-Suggest Prompts}{79}{subsection.A.1.2}%
-\contentsline {subsection}{\numberline {A.1.3}Ask Mode --- Explanation Prompts}{87}{subsection.A.1.3}%
-\contentsline {subsection}{\numberline {A.1.4}Chat Mode --- Conversational Prompts}{93}{subsection.A.1.4}%
-\contentsline {section}{\numberline {A.2}ROPAgen Reference Document}{101}{section.A.2}%
-\contentsline {section}{\numberline {A.3}LLM-as-a-Judge Configuration}{104}{section.A.3}%
-\contentsline {subsection}{\numberline {A.3.1}System and User Prompt}{104}{subsection.A.3.1}%
-\contentsline {subsection}{\numberline {A.3.2}Rubric --- Five Metrics}{106}{subsection.A.3.2}%
-\contentsline {subsection}{\numberline {A.3.3}Model Configuration and Limitations}{107}{subsection.A.3.3}%
-\contentsline {paragraph}{\nonumberline Known limitations.}{108}{paragraph*.44}%
-\contentsline {chapter}{\numberline {B}Study Materials and Descriptive Tables}{109}{appendix.B}%
-\contentsline {section}{\numberline {B.1}Study Scenario}{109}{section.B.1}%
-\contentsline {subsection}{\numberline {B.1.1}Original (German)}{109}{subsection.B.1.1}%
-\contentsline {subsection}{\numberline {B.1.2}English Translation}{110}{subsection.B.1.2}%
-\contentsline {section}{\numberline {B.2}User-Study Instruments}{112}{section.B.2}%
-\contentsline {subsection}{\numberline {B.2.1}System Usability Scale (SUS)}{112}{subsection.B.2.1}%
-\contentsline {subsection}{\numberline {B.2.2}NASA Raw Task Load Index Subscales}{113}{subsection.B.2.2}%
-\contentsline {section}{\numberline {B.3}Participant Demographics in Full}{113}{section.B.3}%
-\contentsline {subsection}{\numberline {B.3.1}Numeric and Ordinal Variables}{113}{subsection.B.3.1}%
-\contentsline {subsection}{\numberline {B.3.2}Categorical Variables}{114}{subsection.B.3.2}%
-\contentsline {section}{\numberline {B.4}User-Study Per-Item Descriptive Tables}{114}{section.B.4}%
-\contentsline {subsection}{\numberline {B.4.1}System Usability Scale}{114}{subsection.B.4.1}%
-\contentsline {subsection}{\numberline {B.4.2}NASA Raw Task Load Index}{117}{subsection.B.4.2}%
-\contentsline {subsection}{\numberline {B.4.3}Perceived AI Support}{119}{subsection.B.4.3}%
-\contentsline {section}{\numberline {B.5}Worked Examples (Document Quality)}{121}{section.B.5}%
-\contentsline {paragraph}{\nonumberline Document-scale reading.}{121}{paragraph*.56}%
-\contentsline {paragraph}{\nonumberline Passage-scale reading.}{123}{paragraph*.57}%
-\contentsline {subsection}{\numberline {B.5.1}Lexical Metrics: Retention Chapter}{123}{subsection.B.5.1}%
-\contentsline {subsection}{\numberline {B.5.2}Embedding-Based Metrics: Purpose Chapter}{125}{subsection.B.5.2}%
-\contentsline {section}{\numberline {B.6}Document-Level NLP Metric Distributions}{127}{section.B.6}%
-\contentsline {subsection}{\numberline {B.6.1}Lexical Metrics}{128}{subsection.B.6.1}%
-\contentsline {subsection}{\numberline {B.6.2}BERT-Based and Sentence-Embedding Metrics}{130}{subsection.B.6.2}%
-\contentsline {section}{\numberline {B.7}Chapter-Level NLP Metric Distributions}{132}{section.B.7}%
-\contentsline {subsection}{\numberline {B.7.1}Lexical Metrics}{132}{subsection.B.7.1}%
-\contentsline {subsection}{\numberline {B.7.2}BERT-Based and Sentence-Embedding Metrics}{136}{subsection.B.7.2}%
-\contentsline {chapter}{\numberline {C}Inferential Statistics in Full}{139}{appendix.C}%
-\contentsline {section}{\numberline {C.1}Sample-Size Derivation}{139}{section.C.1}%
-\contentsline {section}{\numberline {C.2}User-Study Inferential Tests}{140}{section.C.2}%
-\contentsline {subsection}{\numberline {C.2.1}Normality (Shapiro--Wilk, $n = 69$)}{140}{subsection.C.2.1}%
-\contentsline {subsection}{\numberline {C.2.2}Friedman Omnibus ($n = 69$ matched triple)}{141}{subsection.C.2.2}%
-\contentsline {subsection}{\numberline {C.2.3}Pairwise Wilcoxon Signed-Rank Post-hoc (Bonferroni $\alpha = 0.0167$)}{141}{subsection.C.2.3}%
-\contentsline {subsection}{\numberline {C.2.4}Mode Preference Ranking}{142}{subsection.C.2.4}%
-\contentsline {section}{\numberline {C.3}NLP Metric Inferential Tests}{142}{section.C.3}%
-\contentsline {subsection}{\numberline {C.3.1}Kruskal--Wallis Omnibus ($n = 113$)}{142}{subsection.C.3.1}%
-\contentsline {subsection}{\numberline {C.3.2}Pairwise Mann--Whitney $U$ ($n = 113$)}{143}{subsection.C.3.2}%
-\contentsline {section}{\numberline {C.4}Confidence--Quality Correlations}{143}{section.C.4}%
-\contentsline {subsection}{\numberline {C.4.1}Joined Sample and Deduplication}{143}{subsection.C.4.1}%
-\contentsline {subsection}{\numberline {C.4.2}Per-Mode Descriptive Means ($n = 102$)}{144}{subsection.C.4.2}%
-\contentsline {subsection}{\numberline {C.4.3}Pooled Spearman Correlations ($n = 102$)}{144}{subsection.C.4.3}%
-\contentsline {subsection}{\numberline {C.4.4}Judge Cross-Check ($n = 102$)}{144}{subsection.C.4.4}%
-\contentsline {section}{\numberline {C.5}Timing Inferential Tests}{145}{section.C.5}%
-\contentsline {subsection}{\numberline {C.5.1}Kruskal--Wallis Omnibus ($n = 113$)}{145}{subsection.C.5.1}%
-\contentsline {subsection}{\numberline {C.5.2}Pairwise Mann--Whitney $U$ ($n = 113$)}{145}{subsection.C.5.2}%
-\contentsline {chapter}{\numberline {D}Acronyms}{147}{appendix.D}%
-\contentsline {chapter}{\nonumberline Bibliography}{148}{chapter*.94}%
+\contentsline {chapter}{\numberline {A}ROPAgen and Judge Model Configuration}{77}{appendix.A}%
+\contentsline {section}{\numberline {A.1}ROPAgen Backend Prompts}{77}{section.A.1}%
+\contentsline {subsection}{\numberline {A.1.1}Final ROPA Generation Prompt (\texttt {finalropa})}{78}{subsection.A.1.1}%
+\contentsline {subsection}{\numberline {A.1.2}Form Mode --- AI-Suggest Prompts}{80}{subsection.A.1.2}%
+\contentsline {subsection}{\numberline {A.1.3}Ask Mode --- Explanation Prompts}{88}{subsection.A.1.3}%
+\contentsline {subsection}{\numberline {A.1.4}Chat Mode --- Conversational Prompts}{94}{subsection.A.1.4}%
+\contentsline {section}{\numberline {A.2}ROPAgen Reference Document}{102}{section.A.2}%
+\contentsline {section}{\numberline {A.3}LLM-as-a-Judge Configuration}{105}{section.A.3}%
+\contentsline {subsection}{\numberline {A.3.1}System and User Prompt}{105}{subsection.A.3.1}%
+\contentsline {subsection}{\numberline {A.3.2}Rubric --- Five Metrics}{107}{subsection.A.3.2}%
+\contentsline {subsection}{\numberline {A.3.3}Model Configuration and Limitations}{108}{subsection.A.3.3}%
+\contentsline {paragraph}{\nonumberline Known limitations.}{109}{paragraph*.44}%
+\contentsline {chapter}{\numberline {B}Study Materials and Descriptive Tables}{110}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Study Scenario}{110}{section.B.1}%
+\contentsline {subsection}{\numberline {B.1.1}Original (German)}{110}{subsection.B.1.1}%
+\contentsline {subsection}{\numberline {B.1.2}English Translation}{111}{subsection.B.1.2}%
+\contentsline {section}{\numberline {B.2}User-Study Instruments}{113}{section.B.2}%
+\contentsline {subsection}{\numberline {B.2.1}System Usability Scale (SUS)}{113}{subsection.B.2.1}%
+\contentsline {subsection}{\numberline {B.2.2}NASA Raw Task Load Index Subscales}{114}{subsection.B.2.2}%
+\contentsline {section}{\numberline {B.3}Participant Demographics in Full}{114}{section.B.3}%
+\contentsline {subsection}{\numberline {B.3.1}Numeric and Ordinal Variables}{114}{subsection.B.3.1}%
+\contentsline {subsection}{\numberline {B.3.2}Categorical Variables}{115}{subsection.B.3.2}%
+\contentsline {section}{\numberline {B.4}User-Study Per-Item Descriptive Tables}{115}{section.B.4}%
+\contentsline {subsection}{\numberline {B.4.1}System Usability Scale}{115}{subsection.B.4.1}%
+\contentsline {subsection}{\numberline {B.4.2}NASA Raw Task Load Index}{118}{subsection.B.4.2}%
+\contentsline {subsection}{\numberline {B.4.3}Perceived AI Support}{120}{subsection.B.4.3}%
+\contentsline {section}{\numberline {B.5}NLP Metric Scale Reference}{122}{section.B.5}%
+\contentsline {section}{\numberline {B.6}Worked Examples (Document Quality)}{125}{section.B.6}%
+\contentsline {paragraph}{\nonumberline Document-scale reading.}{125}{paragraph*.57}%
+\contentsline {paragraph}{\nonumberline Passage-scale reading.}{125}{paragraph*.58}%
+\contentsline {subsection}{\numberline {B.6.1}Lexical Metrics: Retention Chapter}{125}{subsection.B.6.1}%
+\contentsline {subsection}{\numberline {B.6.2}Embedding-Based Metrics: Purpose Chapter}{126}{subsection.B.6.2}%
+\contentsline {section}{\numberline {B.7}Document-Level NLP Metric Distributions}{130}{section.B.7}%
+\contentsline {subsection}{\numberline {B.7.1}Lexical Metrics}{131}{subsection.B.7.1}%
+\contentsline {subsection}{\numberline {B.7.2}BERT-Based and Sentence-Embedding Metrics}{133}{subsection.B.7.2}%
+\contentsline {section}{\numberline {B.8}Chapter-Level NLP Metric Distributions}{135}{section.B.8}%
+\contentsline {subsection}{\numberline {B.8.1}Lexical Metrics}{135}{subsection.B.8.1}%
+\contentsline {subsection}{\numberline {B.8.2}BERT-Based and Sentence-Embedding Metrics}{139}{subsection.B.8.2}%
+\contentsline {chapter}{\numberline {C}Inferential Statistics in Full}{142}{appendix.C}%
+\contentsline {section}{\numberline {C.1}Sample-Size Derivation}{142}{section.C.1}%
+\contentsline {section}{\numberline {C.2}User-Study Inferential Tests}{143}{section.C.2}%
+\contentsline {subsection}{\numberline {C.2.1}Normality (Shapiro--Wilk, $n = 69$)}{143}{subsection.C.2.1}%
+\contentsline {subsection}{\numberline {C.2.2}Friedman Omnibus ($n = 69$ matched triple)}{144}{subsection.C.2.2}%
+\contentsline {subsection}{\numberline {C.2.3}Pairwise Wilcoxon Signed-Rank Post-hoc (Bonferroni $\alpha = 0.0167$)}{144}{subsection.C.2.3}%
+\contentsline {subsection}{\numberline {C.2.4}Mode Preference Ranking}{145}{subsection.C.2.4}%
+\contentsline {section}{\numberline {C.3}NLP Metric Inferential Tests}{145}{section.C.3}%
+\contentsline {subsection}{\numberline {C.3.1}Kruskal--Wallis Omnibus ($n = 113$)}{145}{subsection.C.3.1}%
+\contentsline {subsection}{\numberline {C.3.2}Pairwise Mann--Whitney $U$ ($n = 113$)}{146}{subsection.C.3.2}%
+\contentsline {section}{\numberline {C.4}Confidence--Quality Correlations}{146}{section.C.4}%
+\contentsline {subsection}{\numberline {C.4.1}Joined Sample and Deduplication}{146}{subsection.C.4.1}%
+\contentsline {subsection}{\numberline {C.4.2}Per-Mode Descriptive Means ($n = 102$)}{147}{subsection.C.4.2}%
+\contentsline {subsection}{\numberline {C.4.3}Pooled Spearman Correlations ($n = 102$)}{147}{subsection.C.4.3}%
+\contentsline {subsection}{\numberline {C.4.4}Judge Cross-Check ($n = 102$)}{147}{subsection.C.4.4}%
+\contentsline {section}{\numberline {C.5}Timing Inferential Tests}{148}{section.C.5}%
+\contentsline {subsection}{\numberline {C.5.1}Kruskal--Wallis Omnibus ($n = 113$)}{148}{subsection.C.5.1}%
+\contentsline {subsection}{\numberline {C.5.2}Pairwise Mann--Whitney $U$ ($n = 113$)}{148}{subsection.C.5.2}%
+\contentsline {chapter}{\numberline {D}Acronyms}{150}{appendix.D}%
+\contentsline {chapter}{\nonumberline Bibliography}{151}{chapter*.95}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

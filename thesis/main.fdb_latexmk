@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1780358956.07926 "main.bcf" "main.bbl" "main" 1780358965.08888 0
+["biber main"] 1780436374.16479 "main.bcf" "main.bbl" "main" 1780436390.84126 0
   "bibliography.bib" 1780012723.02335 30534 34c5613ead63c2fa80acb461aeb8b5be ""
-  "main.bcf" 1780358964.26428 114744 fa5bfb4487d140347088b72e4efcf546 "pdflatex"
+  "main.bcf" 1780436390.06273 114744 fa5bfb4487d140347088b72e4efcf546 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1780358956.94813 "main.tex" "main.pdf" "main" 1780358965.09213 0
+["pdflatex"] 1780436382.96427 "main.tex" "main.pdf" "main" 1780436390.84459 0
   "../python/metrics/output/chapter_nlp_bertscore_f1.png" 1779501733.93066 66239 9a49161be4792190bdb966cfe4350539 ""
   "../python/metrics/output/chapter_nlp_bertscore_p.png" 1779501733.61457 67649 c1f4e9ac0b28f7907015c4dc9182f7ab ""
   "../python/metrics/output/chapter_nlp_bertscore_r.png" 1779501733.77153 70076 b679ed834bc0780f3e641b491847e63a ""
@@ -117,6 +117,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1248133631 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb" 1248133631 32587 1788b0c1c5b39540c96f5e42ccd6dae8 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb" 1248133631 31764 459c573c03a4949a528c2cc7f557e217 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb" 1136849748 35941 f27169cc74234d5bd5e4cca5abafaabb ""
   "/usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb" 1136849748 44648 23115b2a545ebfe2c526c3ca99db8b95 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb" 1136849748 48169 b4fd9d908b9ee8c65d4305ad39071c5e ""
@@ -247,7 +248,7 @@
   "chapters/abstract.tex" 1780358924.55746 1813 dec0d73842bba81c0c99917ecb8de4c8 ""
   "chapters/appendix/acronyms.tex" 1779290249.47152 1524 a665b7c196e4d3bb56e5175ea7118dae ""
   "chapters/appendix/inferential.tex" 1780252129.184 18202 7226ca5e2d33c3cf83336c4464305f68 ""
-  "chapters/appendix/materials_descriptives.tex" 1780251986.3594 55186 60f4f952e7e0d587fc1537aff06518eb ""
+  "chapters/appendix/materials_descriptives.tex" 1780427120.63547 57807 12172122d6beb084107dbab9dbfa8ea8 ""
   "chapters/appendix/ropagen.tex" 1779928314.23216 57863 377dd82eee87fc017e4f39d201fffcfa ""
   "chapters/background.tex" 1780252845.94894 22628 12cacbf82a9c3ef4c94057f149b647ae ""
   "chapters/conclusion.tex" 1780251490.25899 6244 af80cdbdf5bb29c8b27499e43bbd2431 ""
@@ -257,13 +258,13 @@
   "chapters/evaluation/demographics.tex" 1780231106.98784 5075 f410df00639126769fa3ec7da820df1f ""
   "chapters/evaluation/freeform.tex" 1780252306.14156 7302 ce21109618572825d8d19aa4c4aa8246 ""
   "chapters/evaluation/judge.tex" 1780252200.23922 5947 64fb5d2005f48433d59a28b04f0f6300 ""
-  "chapters/evaluation/nlp_metrics.tex" 1780252271.62955 19026 e4ce206be9dc13cdb6223b72919ccccd ""
+  "chapters/evaluation/nlp_metrics.tex" 1780429146.99973 19026 e4ce206be9dc13cdb6223b72919ccccd ""
   "chapters/evaluation/nlp_summary.tex" 1780251380.80274 3874 cda02b976f0a4ae87b0c7148c44ae30b ""
   "chapters/evaluation/rtlx.tex" 1780252154.29674 7466 67d73a3c365ba170bbd1eed3e1eb1c03 ""
   "chapters/evaluation/sus.tex" 1780252294.99532 5852 f56578972bedc0f528928401feeafd7c ""
   "chapters/evaluation/userstudy_summary.tex" 1780236895.54414 1397 7eebfa65ef8a3fe3d5a535211f579422 ""
   "chapters/introduction.tex" 1780254258.82428 6313 60ead81faf09b5516a47e79093c221f9 ""
-  "chapters/methodology.tex" 1780251745.50239 46557 519e41f792ffe5f4e2260f9f4135395b ""
+  "chapters/methodology.tex" 1780436356.9637 48425 87d59fb15bc27b15b4cd009676af615e ""
   "chapters/userstudy.tex" 1780245448.81267 809 a2860d471fd0d0188b1694519b04b46c ""
   "images/logo_uulm_sw.png" 1774389830.6469 39184 ce8bf74eb48ff3d937d31d79f9817f21 ""
   "images/project_timeline.pdf" 1779147559.98977 48863 adb54e7b3a9622164d2db3f2e2aa0117 ""
@@ -272,11 +273,11 @@
   "images/ropagen-form.jpg" 1779673056.94061 785225 3439a1cb1e8782b84d0388c02dcae8c4 ""
   "images/ropagen-generated.jpg" 1779673127.68296 485720 ab38e1deff05e089a9eff03b4ec0feb5 ""
   "images/ropagen-intro.jpg" 1779672997.27865 500405 6e44480d7646fe65364a4c467bf9b4f1 ""
-  "main.aux" 1780358964.24036 94250 c7d8d64549cefd8e3f3a8e7be671b5ad "pdflatex"
-  "main.bbl" 1780358956.93053 94936 fdb8e2dc109a337d3e20b21388c3a968 "biber main"
-  "main.run.xml" 1780358964.27591 2307 fa280d158a7733084a6a66e2106e4193 "pdflatex"
+  "main.aux" 1780436390.03722 95959 e0caccd304653b76ef96fd1bfce20271 "pdflatex"
+  "main.bbl" 1780436374.97332 94936 fdb8e2dc109a337d3e20b21388c3a968 "biber main"
+  "main.run.xml" 1780436390.06623 2307 fa280d158a7733084a6a66e2106e4193 "pdflatex"
   "main.tex" 1780149645.98189 8011 9020645a779ff906c18e62622d3f98ea ""
-  "main.toc" 1780358964.27591 11865 923f8ad43644fcdc6c9186ee7e483d5e "pdflatex"
+  "main.toc" 1780436390.06623 11953 0f4c360e53db0532c95c2132531995f7 "pdflatex"
   "setspace.sty" 1774389830.60716 21972 cc53f66d4e62f6e032b3f45042648ee8 ""
   (generated)
   "main.aux"
