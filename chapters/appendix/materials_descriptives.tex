@@ -20,7 +20,7 @@ German original is the version actually shown.
 
 \begingroup
 \lstset{
-  basicstyle=\ttfamily\footnotesize,
+  basicstyle=\ttfamily\scriptsize,
   breaklines=true,
   breakatwhitespace=false,
   breakindent=0pt,
@@ -107,7 +107,7 @@ Austritt der jeweiligen Person gelöscht.
 
 \begingroup
 \lstset{
-  basicstyle=\ttfamily\footnotesize,
+  basicstyle=\ttfamily\scriptsize,
   breaklines=true,
   breakatwhitespace=false,
   breakindent=0pt,
@@ -624,7 +624,7 @@ thresholds: they are specific to comparison against one
 expert-written reference, and the embedding bands in particular
 are corpus-dependent.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \begin{tabularx}{\linewidth}{@{}l c c c c X@{}}
 \toprule
@@ -707,7 +707,7 @@ metrics' blindness to truth easiest to see.
 
 \begingroup
 \lstset{
-  basicstyle=\ttfamily\footnotesize,
+  basicstyle=\ttfamily\scriptsize,
   breaklines=true,
   breakatwhitespace=false,
   breakindent=0pt,
@@ -816,7 +816,7 @@ embedding-based metrics are designed to credit.
 
 \begingroup
 \lstset{
-  basicstyle=\ttfamily\footnotesize,
+  basicstyle=\ttfamily\scriptsize,
   breaklines=true,
   breakatwhitespace=false,
   breakindent=0pt,
@@ -889,8 +889,6 @@ in Figure~\ref{fig:worked-semantic-b}.}
 \label{fig:worked-semantic-a}
 \end{figure}
 
-\clearpage
-
 \begin{figure}[!htbp]
 \centering
 \noindent\textit{Participant B (Form) passage.}
@@ -958,6 +956,10 @@ into the lexical and embedding-based families.
 \subsection{Lexical Metrics}
 \label{app:items-nlp-doc-lexical}
 
+Table~\ref{tab:nlp-doc-distrib-lexical} reports the per-mode mean,
+dispersion, and quartiles for each surface-overlap metric on the
+full retained set of $113$ documents.
+
 \begin{sidewaystable}
 \centering
 \small
@@ -1011,6 +1013,9 @@ ROUGE-L, and METEOR by mode (full sample $n = 113$).}
 
 \subsection{BERT-Based and Sentence-Embedding Metrics}
 \label{app:items-nlp-doc-bert}
+
+Table~\ref{tab:nlp-doc-distrib-bert} reports the same descriptive
+breakdown for the embedding-based metrics across the three modes.
 
 \begin{sidewaystable}
 \centering
