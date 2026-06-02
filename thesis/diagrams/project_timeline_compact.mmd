@@ -1,0 +1,20 @@
+---
+title: Project Timeline
+---
+flowchart LR
+    P1["<b>1 · ROPAgen Development</b><br/>Tool built at DBIS, Univ. Ulm<br/>3 modes: Form · Ask · Chat<br/>Mistral Large 3 via OpenRouter"]
+    P2["<b>2 · Study Preparation</b><br/>APOR GmbH scenario<br/>Expert reference ROPA<br/>Latin Square (6 orderings)"]
+    P3["<b>3 · Data Collection</b> · n = 73 · ~90 min<br/>Briefing → 3 mode blocks (Latin Square)<br/>→ ranking → demographics"]
+    P4["<b>4 · Analysis</b><br/>Quality filter (69 / 113)<br/>NLP metrics · LLM-as-Judge<br/>Statistics"]
+
+    P1 --> P2 --> P3 --> P4
+
+    classDef phase1 fill:#FFD59A,stroke:#000,stroke-width:1px,color:#000
+    classDef phase2 fill:#A7C7E7,stroke:#000,stroke-width:1px,color:#000
+    classDef phase3 fill:#FFF9AE,stroke:#000,stroke-width:1px,color:#000
+    classDef phase4 fill:#E0BBE4,stroke:#000,stroke-width:1px,color:#000
+
+    class P1 phase1
+    class P2 phase2
+    class P3 phase3
+    class P4 phase4
