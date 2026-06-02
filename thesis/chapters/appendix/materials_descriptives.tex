@@ -600,6 +600,57 @@ distribution by mode ($n = 69$ per mode). Source:
 \end{figure}
 
 
+\section{NLP Metric Scale Reference}
+\label{app:metric-scales}
+
+The five NLP metrics report on sharply different scales, so the
+same numeral means very different things from one metric to the
+next. They fall into two regimes. The lexical metrics (BLEU,
+ROUGE, METEOR) span a wide range but sit low in absolute terms
+when a candidate paraphrases the reference rather than reusing
+its wording, with BLEU the most pessimistic of all because it
+requires contiguous $n$-gram matches. The embedding-based
+metrics (BERTScore, SBERT) are compressed toward the top of
+the $[0,1]$ interval, because the contextual embeddings of any
+two fluent texts on the same topic are already broadly similar;
+for these, a difference of a few hundredths is substantial and
+the absolute value should not be read on the same intuition as
+a lexical score. Table~\ref{tab:metric-scales} gives heuristic
+weak-versus-strong bands for the single-reference, free-text
+comparison used in this thesis, alongside the mean actually
+observed across the $113$ retained documents. The bands are
+orientation aids for reading the results, not universal
+thresholds: they are specific to comparison against one
+expert-written reference, and the embedding bands in particular
+are corpus-dependent.
+
+\begin{table}[htbp]
+\centering
+\begin{tabularx}{\linewidth}{@{}l c c c c X@{}}
+\toprule
+Metric & Range & Weak ($\lesssim$) & Strong ($\gtrsim$) & Observed & Note \\
+\midrule
+BLEU              & $0$--$1$ & $0.05$ & $0.30$ & $0.13$ & Floor-heavy; needs verbatim $n$-grams \\
+ROUGE-1           & $0$--$1$ & $0.30$ & $0.55$ & $0.49$ & Unigram recall \\
+ROUGE-2           & $0$--$1$ & $0.15$ & $0.35$ & $0.29$ & Bigrams; structurally lower \\
+ROUGE-L           & $0$--$1$ & $0.25$ & $0.45$ & $0.38$ & Longest common subsequence \\
+METEOR            & $0$--$1$ & $0.20$ & $0.50$ & $0.39$ & Synonym and stem credit \\
+\midrule
+BERTScore P/R/F1  & $0$--$1$ & $0.82$ & $0.92$ & $0.90$ & Compressed; below $0.80$ rare \\
+SBERT cosine      & $0$--$1$ & $0.90$ & $0.97$ & $0.99$ & Most compressed; above $0.95$ is baseline \\
+\bottomrule
+\end{tabularx}
+\caption{Heuristic scale reference for the NLP metrics. Weak and
+strong columns are approximate orientation bands for free-text
+comparison against a single reference, not universal thresholds;
+the observed column is the aggregated mean across the $113$
+retained documents (Table~\ref{tab:nlp-doc-overview}). Lexical
+metrics span a wide range but read low for paraphrased content;
+embedding-based metrics are compressed near the top of their
+range, so small differences are meaningful.}
+\label{tab:metric-scales}
+\end{table}
+
 \section{Worked Examples (Document Quality)}
 \label{app:worked-examples}
 
