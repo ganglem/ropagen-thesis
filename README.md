@@ -3,6 +3,9 @@
 [![Compile Thesis](https://github.com/ganglem/ropagen-thesis/actions/workflows/compile-thesis.yml/badge.svg)](https://github.com/ganglem/ropagen-thesis/actions/workflows/compile-thesis.yml)
 &nbsp;[**Read the thesis (PDF)**](https://ganglem.github.io/ropagen-thesis/thesis.pdf)
 
+[![Compile Presentation](https://github.com/ganglem/ropagen-thesis/actions/workflows/compile-presentation.yml/badge.svg)](https://github.com/ganglem/ropagen-thesis/actions/workflows/compile-presentation.yml)
+&nbsp;[**View the defense slides (PDF)**](https://ganglem.github.io/ropagen-thesis/presentation.pdf)
+
 ---
 
 Research repository for the Master's thesis:
@@ -17,10 +20,15 @@ Research repository for the Master's thesis:
 ## Structure
 
 ```
-python/     # Data analysis — Jupyter notebooks, NLP metrics, survey statistics
-thesis/     # LaTeX thesis source
-jester/     # You don't need to worry about this one
+python/                 # Data analysis — Jupyter notebooks, NLP metrics, survey statistics
+thesis/                 # LaTeX thesis source
+thesis/presentation/    # Defense slides — uulm Beamer deck (main.tex)
+jester/                 # You don't need to worry about this one
 ```
+
+The defense slides are built by the **Compile Presentation** workflow on every
+push to `thesis/presentation/**`. Each run uploads `presentation.pdf` as a
+downloadable artifact and publishes it to GitHub Pages (linked by the badge above).
 
 ## Setup
 
