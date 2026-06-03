@@ -555,6 +555,33 @@ LLM-as-a-Judge evaluation template~\cite{suJuDGEBenchmarkingJudgment2025}}
 \end{frame}
 
 % ============================================================
+% 19c -- Limitations
+% ============================================================
+\begin{frame}{Limitations}
+\footnotesize
+\linespread{0.97}\selectfont
+\begin{itemize}
+  \setlength{\itemsep}{0.22cm}
+  \item \textbf{Breadth over depth.} The cross-stream design was needed to compare confidence
+        against quality (RQ3), but no single thread reached full depth: Ask's mechanism and the
+        chapter-level NLP patterns could each support a study of their own.
+  \item \textbf{Sample profile.} Participants were \textbf{IT-leaning, chatbot-fluent students}
+        (majority male, mid-twenties). Older, non-IT staff who actually own ROPA documentation may
+        calibrate confidence and quality differently, and may favor Chat less than this sample did.
+  \item \textbf{Prototype tool, fixed model.} ROPAgen is a research prototype on a single
+        \textbf{2025 Mistral} checkpoint shared by all modes. Relative mode trade-offs should
+        survive a model swap (they rest on the interaction surface), but the \emph{absolute}
+        quality figures are tied to this checkpoint and should not be extrapolated.
+  \item \textbf{Evaluation instruments.} A \textbf{single} expert reference (checkbox-derived,
+        slightly favoring Form on coverage) and a \textbf{single-pass LLM-as-judge} without
+        inter-rater replication or legal-expert validation. Multi-reference scoring and a
+        multi-model judge ensemble would strengthen both layers.
+  \item \textbf{Quality ceiling.} No mode reached the rubric midpoint on the Overall score, so
+        the ceiling on document quality cannot be raised by interaction redesign alone.
+\end{itemize}
+\end{frame}
+
+% ============================================================
 % 20 -- Detailed Data Plots divider (backup)
 % ============================================================
 \begin{frame}
