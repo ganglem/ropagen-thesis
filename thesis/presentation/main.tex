@@ -135,22 +135,23 @@
   % logo top right
   \node[anchor=north east] at ([xshift=-0.95cm,yshift=-0.4cm]current page.north east)
     {\includegraphics[height=0.72cm]{uulm_logo.png}};
-  % left: campus photo
-  \node[anchor=north west,inner sep=0pt] at ([xshift=0.5cm,yshift=-1.85cm]current page.north west)
-    {\includegraphics[width=0.455\paperwidth]{campus.png}};
+  % left: GDPR photo (full), vertically centered
+  \node[anchor=west,inner sep=0pt] at ([xshift=0.5cm,yshift=-5.45cm]current page.north west)
+    {\includegraphics[width=0.455\paperwidth]{GDPR-scaled.jpg}};
   % institute label above photo
   \node[anchor=south west,font=\bfseries\small,text=uulmtitle]
     at ([xshift=0.55cm,yshift=-1.75cm]current page.north west)
     {Institut f\"ur Datenbanken und Informationssysteme};
-  % right: red panel
-  \fill[uulmred] ([xshift=0cm,yshift=-1.85cm]current page.north)
-    rectangle ([xshift=-0.5cm,yshift=0.95cm]current page.south east);
+  % right: red panel (matched to the photo's height)
+  \fill[uulmred] ([yshift=-3.03cm]current page.north)
+    rectangle ([xshift=-0.5cm,yshift=-7.87cm]current page.north east);
   % title text
   \node[anchor=north west,text=white,align=left,text width=0.45\paperwidth,
         font=\bfseries]
-    at ([xshift=0.35cm,yshift=-2.4cm]current page.north)
-    {{\fontsize{16}{20}\selectfont Assessing the Effectiveness of Large Language Model Support for Generating GDPR ROPA Documentation}\\[1.0cm]
-     {\fontsize{12}{15}\selectfont Master Thesis Presentation}\\[0.35cm]
+    at ([xshift=0.35cm,yshift=-3.35cm]current page.north)
+    {\hyphenpenalty=10000\exhyphenpenalty=10000%
+     {\fontsize{14}{18}\selectfont Assessing the Effectiveness of Large Language Model Support for Generating GDPR ROPA Documentation}\\[0.45cm]
+     {\fontsize{12}{15}\selectfont Master Thesis Presentation}\\[0.3cm]
      {\fontsize{12}{15}\selectfont Emilija Kastratovi\'c}};
 \end{tikzpicture}
 \end{frame}
@@ -265,6 +266,13 @@
 \end{itemize}
 \end{column}
 \end{columns}
+\end{frame}
+
+% ============================================================
+% 7a -- Research questions overview (all three in focus)
+% ============================================================
+\begin{frame}
+\rqband{\rqbody{white}{white}{white}}
 \end{frame}
 
 % ============================================================
@@ -397,15 +405,15 @@ Ask  & 12 & 17.4\,\% & 2.14\\
 \begin{columns}[T]
 \begin{column}{0.3\textwidth}
 \colorbox{uulmblue!25}{\parbox[t][2.7cm][t]{\linewidth}{\centering\textbf{1.\ Form}\\[0.3cm]
-\raggedright\footnotesize \plus speed\\ \plus clarity\\ \plus control\\ \minus LLM ``guesses''}}
+\raggedright\footnotesize \plus speed\\ \plus clarity\\ \plus control\\ \minus LLM least transparent}}
 \end{column}
 \begin{column}{0.3\textwidth}
 \colorbox{uulmred!18}{\parbox[t][2.7cm][t]{\linewidth}{\centering\textbf{2.\ Chat}\\[0.3cm]
-\raggedright\footnotesize \plus comfort (``LLM takes care of it'')\\ \minus LLM opacity}}
+\raggedright\footnotesize \plus comfort and offloading responsibility (``LLM takes care of it'') \\ \plus most confident \\ \minus LLM opacity}}
 \end{column}
 \begin{column}{0.3\textwidth}
 \colorbox{uulmgold!30}{\parbox[t][2.7cm][t]{\linewidth}{\centering\textbf{3.\ Ask}\\[0.3cm]
-\raggedright\footnotesize \plus high transparency\\ \minus cumbersome workflow}}
+\raggedright\footnotesize \plus high LLM transparency\\ \minus cumbersome workflow}}
 \end{column}
 \end{columns}
 \end{frame}
@@ -500,21 +508,52 @@ LLM-as-a-Judge evaluation template~\cite{suJuDGEBenchmarkingJudgment2025}}
 % 16-18 -- Mode screenshots revisited (RQ2/RQ3 quality angle)
 % ============================================================
 \begin{frame}{Form Mode -- Checkboxes}
-\centering
-\includegraphics[width=0.92\linewidth,height=0.72\textheight,keepaspectratio]{ropagen-form.jpg}\\[0.15cm]
-{\scriptsize \textbf{Entry point} for novices, but high recall comes with \textbf{overhead}: every required field is present, even content the user never actually described.}
+\begin{columns}[c]
+\begin{column}{0.62\textwidth}\centering
+\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{ropagen-form.jpg}
+\end{column}
+\begin{column}{0.36\textwidth}
+\scriptsize
+\begin{itemize}\setlength{\itemsep}{0.3cm}
+  \item \textbf{Scaffolding}: structure beats LLM reasoning.
+  \item \textbf{Entry point} for novices, but high recall brings \textbf{overhead} (fields present even when never described).
+  \item Users tend to \textbf{overcompensate}.
+  \item \textbf{Least transparent} LLM involvement.
+\end{itemize}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{Ask Mode -- Hybrid}
-\centering
-\includegraphics[width=0.92\linewidth,height=0.72\textheight,keepaspectratio]{ropagen-ask.jpg}\\[0.15cm]
-{\scriptsize \textbf{Ask fails} the user it was built for: a novice cannot do everything alone (know what to ask). The LLM must act as a \textbf{co-author}, not wait to be asked.}
+\begin{columns}[c]
+\begin{column}{0.62\textwidth}\centering
+\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{ropagen-ask.jpg}
+\end{column}
+\begin{column}{0.36\textwidth}
+\scriptsize
+\begin{itemize}\setlength{\itemsep}{0.3cm}
+  \item \textbf{Ask fails} the user it was built for: a novice cannot do everything alone (know what to ask).
+  \item The LLM must act as a \textbf{co-author}, not wait to be asked.
+\end{itemize}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{Chat Mode -- Autonomous LLM}
-\centering
-\includegraphics[width=0.92\linewidth,height=0.72\textheight,keepaspectratio]{ropagen-chat.jpg}\\[0.15cm]
-{\scriptsize \textbf{Chat plays too much into the user} (it affirms rather than corrects) and trades completeness for grounding: \textbf{risk of omission}.}
+\begin{columns}[c]
+\begin{column}{0.62\textwidth}\centering
+\includegraphics[width=\linewidth,height=0.78\textheight,keepaspectratio]{ropagen-chat.jpg}
+\end{column}
+\begin{column}{0.36\textwidth}
+\scriptsize
+\begin{itemize}\setlength{\itemsep}{0.3cm}
+  \item \textbf{Plays too much into the user} (affirms rather than corrects); trades completeness for grounding: \textbf{risk of omission}.
+  \item High confidence \textbf{offloads responsibility} to the LLM.
+  \item Works as a \textbf{collaborator}.
+  \item Participants were \textbf{chatbot-fluent} (sample caveat).
+\end{itemize}
+\end{column}
+\end{columns}
 \end{frame}
 
 % ============================================================
@@ -539,9 +578,9 @@ LLM-as-a-Judge evaluation template~\cite{suJuDGEBenchmarkingJudgment2025}}
         (every required field present, though some was never described by the user); Chat supports
         \emph{precision} (grounded in the scenario, though content may be missing); Ask trails both.
         An incomplete ROPA is the worse legal risk; a complete-but-fabricated one the worse operational risk.
-  \item \textbf{RQ3 --- Confidence does not track quality.} Users felt most confident in the
-        conversational modes, yet on legal correctness the judge rated those lowest; conversational
-        LLMs default to affirming the user's framing.
+  \item \textbf{RQ3 --- It depends which quality measure is laid against confidence.} Confidence
+        carries no signal against reference-based NLP, matches the judge's holistic Overall score,
+        and \emph{inverts} on legal correctness, where the most-trusted mode is rated lowest.
   \item \textbf{Contribution --- a content-typed assignment.} \emph{Enumerable} sub-records (e.g.
         legal bases under Art~6(1)) belong in a checkbox UI; \emph{scenario-specific} sub-records
         (e.g. retention periods, technical \& organizational measures) belong in conversational
@@ -599,6 +638,11 @@ LLM-as-a-Judge evaluation template~\cite{suJuDGEBenchmarkingJudgment2025}}
 \begin{frame}{NASA R-TLX Detail}
 \centering
 \includegraphics[width=\linewidth,height=0.80\textheight,keepaspectratio]{tlx_subquestions_boxplot.png}
+\end{frame}
+
+\begin{frame}{Perceived AI Support Detail}
+\centering
+\includegraphics[width=\linewidth,height=0.80\textheight,keepaspectratio]{ai_subquestions_boxplot.png}
 \end{frame}
 
 \begin{frame}{NLP Metrics (Document)}
